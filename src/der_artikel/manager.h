@@ -24,6 +24,10 @@ public:
 
 private:
 
+    QObject* AddWord(QString text);
+
+private:
+
     QQuickItem* _root_item;
     
 };
