@@ -84,13 +84,6 @@ Item {
         return WordItem;
     }
 
-    ListModel {
-        id: wordModel
-        ListElement{Word:"Wohnung"}
-        ListElement{Word:"Hause"}
-        ListElement{Word:"Bleistift"}
-    }
-
     Component.onCompleted:
     {
         addWord("Wohnung")
