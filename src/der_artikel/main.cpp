@@ -1,5 +1,5 @@
 #include <QtGui/QGuiApplication>
-#include <QQMLContext>
+#include <QQmlContext>
 #include "qtquick2applicationviewer.h"
 #include "manager.h"
 

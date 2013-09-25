@@ -8,14 +8,29 @@ Item {
     height: 360
 
     property color currentColor
+    Header {
+        id: headerItem
+        height: 40
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+    }
+
     Rectangle
     {
         id: articleFrame
-        anchors.top: parent.top
+        anchors.top: headerItem.bottom
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         width: childrenRect.width + 8;
-        color:"lightblue"
+        gradient: Gradient {
+                  GradientStop { position: 0.0; color: "#8E9CA4" }
+                  GradientStop { position: 0.10; color: "#9CAFB8" }
+                  GradientStop { position: 0.90; color: "#9CAFB8" }
+                  GradientStop { position: 1.0; color: "#8E9CA4" }
+              }
 
         ExclusiveGroup {
             id: articleGroup
@@ -57,7 +72,7 @@ Item {
     Flickable
     {
         id: wordsFrame
-        anchors.top: rootItem.top
+        anchors.top: headerItem.bottom
         anchors.bottom: rootItem.bottom
         anchors.left: articleFrame.right
         anchors.right: rootItem.right
