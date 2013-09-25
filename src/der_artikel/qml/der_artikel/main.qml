@@ -30,7 +30,7 @@ Item {
                 id: mannlisch
                 text: "Der"
                 exclusiveGroup: articleGroup
-
+                checked: true
                 onCheckedChanged: {
                     currentColor = "red"
                 }
@@ -83,40 +83,5 @@ Item {
 
         return WordItem;
     }
-
-    Component.onCompleted:
-    {
-        addWord("Wohnung")
-        addWord("Hause")
-        addWord("Bleistift")
-        addWord("Kuli")
-        addWord("Wohnung")
-        addWord("Hause")
-        addWord("Bleistift")
-        addWord("Kuli")
-        addWord("Wohnung")
-        addWord("Hause")
-        addWord("Bleistift")
-        addWord("Kuli")
-        addWord("Wohnung")
-        addWord("Hause")
-        addWord("Bleistift")
-        addWord("Kuli")
-        addWord("Wohnung")
-        addWord("Hause")
-        addWord("Bleistift")
-        addWord("Kuli")
-        addWord("Wohnung")
-        addWord("Hause")
-        addWord("Bleistift")
-        addWord("Kuli")
-        addWord("Wohnung")
-        addWord("Hause")
-        addWord("Bleistift")
-        addWord("Kuli")
-        mannlisch.checked = true
-
-    }
-
 }
 
