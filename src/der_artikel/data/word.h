@@ -13,6 +13,7 @@ public:
 
 public:
     bool Read(const QDomElement& element);
+    bool Write(QDomElement& element);
     bool IsCorrect() const;
 
 private:

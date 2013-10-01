@@ -1,4 +1,4 @@
-QT += xml
+QT += xml widgets
 
 # Add more folders to ship with the application, here
 folder_01.source = qml/der_artikel
@@ -17,7 +17,8 @@ QML_IMPORT_PATH =
 SOURCES += main.cpp \
     manager.cpp \
     data/word.cpp \
-    data/thema.cpp
+    data/thema.cpp \
+    thema_builder.cpp
 
 # Installation path
 # target.path =
@@ -30,4 +31,8 @@ HEADERS += \
     manager.h \
     data/word.h \
     common.h \
-    data/thema.h
+    data/thema.h \
+    thema_builder.h
+
+FORMS += \
+    thema_builder.ui

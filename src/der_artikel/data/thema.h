@@ -11,7 +11,13 @@ public:
     Thema_C();
 
 public:
+
+    void SetText(QString text) { _text = text; }
+    void SetTrText(QString text) { _translation = text; }
+
+public:
     bool Read(const QDomElement& element);
+    bool Write(QDomElement& element);
 
 private:
     QString _text;

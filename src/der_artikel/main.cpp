@@ -1,11 +1,15 @@
-#include <QtGui/QGuiApplication>
+#include <QApplication>
 #include <QQmlContext>
 #include "qtquick2applicationviewer.h"
 #include "manager.h"
+#include "thema_builder.h"
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
+    QApplication app(argc, argv);
+
+    ThemaBuilder_C thema_builder;
+    thema_builder.show();
 
     Manager_C manager;
 
