@@ -2,13 +2,17 @@
 #define WORD_H
 #include "common.h"
 #include <QDomElement>
+#include <QObject>
 
-class Word_C
+class Word_C : public QObject
 {
 public:
-    Word_C();
+    Word_C(QObject* parent=0);
+
 public:
+    void SetUserArtikel(ARTIKEL::Artikel article) { _user_artikel = article; }
     ARTIKEL::Artikel GetUserArtikel() const { return _user_artikel; }
+
     ARTIKEL::Artikel GetArtikel() const { return _artikel; }
 
 public:
@@ -20,6 +24,9 @@ private:
     QString _text;
     ARTIKEL::Artikel _artikel;
     ARTIKEL::Artikel _user_artikel;
+
+private:
+    friend class ThemaBuilder_C;
 };
 
 #endif // WORD_H

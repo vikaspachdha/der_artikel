@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     manager.cpp \
     data/word.cpp \
     data/thema.cpp \
-    thema_builder.cpp
+    thema_builder.cpp \
+    common.cpp
 
 # Installation path
 # target.path =

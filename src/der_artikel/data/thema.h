@@ -2,7 +2,7 @@
 #define THEMA_H
 #include <QObject>
 #include <QDomElement>
-#include <QHash>
+#include <QVector>
 #include "word.h"
 
 class Thema_C
@@ -22,7 +22,10 @@ public:
 private:
     QString _text;
     QString _translation;
-    QHash<QObject*, Word_C*> _words;
+    QVector<Word_C*> _words;
+
+private:
+    friend class ThemaBuilder_C;
 };
 
 #endif // THEMA_H

@@ -1,6 +1,6 @@
 #include "word.h"
 
-Word_C::Word_C():
+Word_C::Word_C(QObject* parent): QObject(parent),
 _text(""),
 _artikel(ARTIKEL::INVALID),
 _user_artikel(ARTIKEL::INVALID)
@@ -16,7 +16,7 @@ bool Word_C::Write(QDomElement &element)
 {
     bool success = false;
 
-    if( element.isNull()) {
+    if( !element.isNull()) {
         QDomDocument domDocument = element.ownerDocument();
 
         if(!domDocument.isNull() && !_text.isEmpty() && _artikel != ARTIKEL::INVALID) {

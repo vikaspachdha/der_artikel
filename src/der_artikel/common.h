@@ -1,6 +1,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
+#include <QString>
 
 namespace ARTIKEL
 {
@@ -12,5 +13,7 @@ namespace ARTIKEL
         NA,
         INVALID
     };
+
+    QString ArtikelText(Artikel artikel);
 }
 #endif // COMMON_H

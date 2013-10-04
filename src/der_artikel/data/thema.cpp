@@ -31,12 +31,13 @@ bool Thema_C::Write(QDomElement &element)
             dom_translation.appendChild(translation_thema);
             dom_thema.appendChild(dom_translation);
 
-            QHash<QObject*, Word_C*>::Iterator iter =_words.begin();
+            QVector<Word_C*>::Iterator iter =_words.begin();
             while(iter != _words.end()) {
-                Word_C* word = iter.value();
+                Word_C* word = *iter;
                 if(word) {
                     word->Write(dom_thema);
                 }
+                ++iter;
             }
 
             element.appendChild(dom_thema);
