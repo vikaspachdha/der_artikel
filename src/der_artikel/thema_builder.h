@@ -35,6 +35,7 @@ private slots:
 private:
     bool Write(QIODevice* pDevice);
     void AddWordToList(Word_C *new_word);
+    void ResetUI();
 private:
     Ui::ThemaBuilder_C *ui;
     Thema_C* _thema;

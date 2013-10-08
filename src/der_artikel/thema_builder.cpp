@@ -63,6 +63,7 @@ void ThemaBuilder_C::OnLoad()
             if(_thema) {
                 delete _thema;
             }
+            ResetUI();
             _thema = new_thema;
         }
     }
@@ -90,7 +91,7 @@ void ThemaBuilder_C::OnAddClicked()
     new_word->_text = text;
     AddWordToList(new_word);
     _thema->_words.append(new_word);
-
+    ui->_word_edit->setText("");
 }
 
 void ThemaBuilder_C::OnWordTextChanged(QString new_text)
@@ -187,4 +188,13 @@ void ThemaBuilder_C::AddWordToList(Word_C* new_word)
 
         ui->_word_list->addItem(list_item);
     }
+}
+
+void ThemaBuilder_C::ResetUI()
+{
+    ui->_thema_name_edit->setText("");
+    ui->_thema_name_edit->setText("");
+    ui->_word_edit->setText("");
+    ui->_word_list->clear();
+    ui->_thema_name_edit->setFocus();
 }
