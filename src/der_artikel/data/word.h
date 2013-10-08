@@ -6,6 +6,7 @@
 
 class Word_C : public QObject
 {
+    Q_OBJECT
 public:
     Word_C(QObject* parent=0);
 
@@ -14,6 +15,8 @@ public:
     ARTIKEL::Artikel GetUserArtikel() const { return _user_artikel; }
 
     ARTIKEL::Artikel GetArtikel() const { return _artikel; }
+
+    QString GetWordText() const { return _text; }
 
 public:
     bool Read(const QDomElement& element);

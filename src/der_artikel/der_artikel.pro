@@ -37,3 +37,6 @@ HEADERS += \
 
 FORMS += \
     thema_builder.ui
+
+RESOURCES += \
+    resources.qrc

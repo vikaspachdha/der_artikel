@@ -19,13 +19,14 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     _thema = new Thema_C();
 
     connect(ui->_btn_box, SIGNAL(clicked(QAbstractButton*)), this, SLOT(OnDlgButtonClicked(QAbstractButton*)) );
+    connect(ui->_save_btn,SIGNAL(clicked()), this,SLOT(OnSave()) );
     connect(ui->_add_btn,SIGNAL(clicked()), this,SLOT(OnAddClicked()) );
     connect(ui->_word_edit,SIGNAL(textChanged(QString)), this, SLOT(OnWordTextChanged(QString)));
     connect(ui->_thema_name_edit,SIGNAL(textChanged(QString)), this, SLOT(OnThemaNameChanged(QString)));
-    connect(ui->_word_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(OnItemDoubleClicked(QListWidgetItem)) );
+    connect(ui->_word_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(OnItemDoubleClicked(QListWidgetItem*)) );
 
     ui->_add_btn->setEnabled(false);
-    ui->_btn_box->button(QDialogButtonBox::Save)->setEnabled(false);
+    ui->_save_btn->setEnabled(false);
 }
 
 ThemaBuilder_C::~ThemaBuilder_C()
@@ -36,9 +37,7 @@ ThemaBuilder_C::~ThemaBuilder_C()
 
 void ThemaBuilder_C::OnDlgButtonClicked(QAbstractButton *btn)
 {
-    if(ui->_btn_box->standardButton(btn) == QDialogButtonBox::Save) {
-        OnSave();
-    } else {
+    if(ui->_btn_box->standardButton(btn) == QDialogButtonBox::Close) {
         close();
     }
 }
@@ -84,12 +83,16 @@ void ThemaBuilder_C::OnWordTextChanged(QString new_text)
 
 void ThemaBuilder_C::OnThemaNameChanged(QString new_text)
 {
-    ui->_btn_box->button(QDialogButtonBox::Save)->setEnabled(!new_text.isEmpty());
+    ui->_save_btn->setEnabled(!new_text.isEmpty());
 }
 
 void ThemaBuilder_C::OnItemDoubleClicked(QListWidgetItem *item)
 {
-
+    if(item)
+    {
+        Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
+        qDebug()<<word->GetWordText();
+    }
 }
 
 void ThemaBuilder_C::OnSave()

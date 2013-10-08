@@ -21,13 +21,13 @@ public:
 
 private slots:
     void OnDlgButtonClicked(QAbstractButton* btn);
+    void OnSave();
     void OnAddClicked();
     void OnWordTextChanged(QString new_text);
     void OnThemaNameChanged(QString new_text);
     void OnItemDoubleClicked(QListWidgetItem *item);
 
 private:
-    void OnSave();
     bool Write(QIODevice* pDevice);
 private:
     Ui::ThemaBuilder_C *ui;
