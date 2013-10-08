@@ -9,6 +9,8 @@
 
 #include "data/thema.h"
 #include "common.h"
+#include "version.h"
+#include "thema_loader.h"
 
 ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     QWidget(parent),
@@ -20,6 +22,7 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
 
     // Connections
     connect(ui->_btn_box, SIGNAL(clicked(QAbstractButton*)), this, SLOT(OnDlgButtonClicked(QAbstractButton*)) );
+    connect(ui->_open_btn,SIGNAL(clicked()), this,SLOT(OnLoad()) );
     connect(ui->_save_btn,SIGNAL(clicked()), this,SLOT(OnSave()) );
     connect(ui->_add_btn,SIGNAL(clicked()), this,SLOT(OnAddClicked()) );
     connect(ui->_word_edit,SIGNAL(textChanged(QString)), this, SLOT(OnWordTextChanged(QString)));
@@ -48,6 +51,24 @@ void ThemaBuilder_C::OnDlgButtonClicked(QAbstractButton *btn)
     }
 }
 
+void ThemaBuilder_C::OnLoad()
+{
+    QString file_path = QFileDialog::getOpenFileName(this,tr("Select file name"),
+                                                     QDir::homePath() + QDir::separator() + "untitled.AKL",
+                                                     tr("Thema files (*.AKL);; All files (*.*)"));
+    if(!file_path.isEmpty()) {
+        ThemaLoader_C loader;
+        Thema_C* new_thema = loader.LoadThema(file_path);
+        if(new_thema) {
+            if(_thema) {
+                delete _thema;
+            }
+            _thema = new_thema;
+        }
+    }
+
+}
+
 void ThemaBuilder_C::OnAddClicked()
 {
     QString text = ui->_word_edit->text();
@@ -67,19 +88,9 @@ void ThemaBuilder_C::OnAddClicked()
     Word_C* new_word = new Word_C();
     new_word->_artikel = article;
     new_word->_text = text;
-
-    QString listItemText;
-    if(article == ARTIKEL::NA) {
-        listItemText = text;
-    } else {
-        listItemText = QString("%1 %2").arg(ARTIKEL::ArtikelText(article)).arg(text);
-    }
-
-    QListWidgetItem* list_item = new QListWidgetItem(listItemText,ui->_word_list);
-    list_item->setData(Qt::UserRole,QVariant::fromValue<Word_C*>(new_word));
-
-    ui->_word_list->addItem(list_item);
+    AddWordToList(new_word);
     _thema->_words.append(new_word);
+
 }
 
 void ThemaBuilder_C::OnWordTextChanged(QString new_text)
@@ -149,7 +160,7 @@ bool ThemaBuilder_C::Write(QIODevice* pDevice)
 
     QTextStream out(pDevice);
     QDomElement root = domDocument.createElement("Root");
-    root.setAttribute("Version", "1.0");
+    root.setAttribute("Version", QString::number(APP_VERSION));
 
     _thema->SetText(ui->_thema_name_edit->text().trimmed());
     _thema->SetTrText(ui->_theam_tr_name_edit->text().trimmed());
@@ -159,4 +170,21 @@ bool ThemaBuilder_C::Write(QIODevice* pDevice)
     domDocument.save(out, 4);
 
     return true;
+}
+
+void ThemaBuilder_C::AddWordToList(Word_C* new_word)
+{
+    if(new_word) {
+        QString listItemText;
+        if(new_word->_artikel == ARTIKEL::NA) {
+            listItemText = new_word->_text;
+        } else {
+            listItemText = QString("%1 %2").arg(ARTIKEL::ArtikelText(new_word->_artikel)).arg(new_word->_text);
+        }
+
+        QListWidgetItem* list_item = new QListWidgetItem(listItemText,ui->_word_list);
+        list_item->setData(Qt::UserRole,QVariant::fromValue<Word_C*>(new_word));
+
+        ui->_word_list->addItem(list_item);
+    }
 }

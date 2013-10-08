@@ -6,6 +6,14 @@ Thema_C::Thema_C():
 {
 }
 
+Thema_C::~Thema_C()
+{
+    foreach(Word_C* word, _words) {
+        delete word;
+    }
+    _words.clear();
+}
+
 bool Thema_C::Read(const QDomElement &element)
 {
     return true;

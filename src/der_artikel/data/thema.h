@@ -9,6 +9,7 @@ class Thema_C
 {
 public:
     Thema_C();
+    ~Thema_C();
 
 public:
 

@@ -19,7 +19,8 @@ SOURCES += main.cpp \
     data/word.cpp \
     data/thema.cpp \
     thema_builder.cpp \
-    common.cpp
+    common.cpp \
+    thema_loader.cpp
 
 # Installation path
 # target.path =
@@ -33,7 +34,9 @@ HEADERS += \
     data/word.h \
     common.h \
     data/thema.h \
-    thema_builder.h
+    thema_builder.h \
+    thema_loader.h \
+    version.h
 
 FORMS += \
     thema_builder.ui
