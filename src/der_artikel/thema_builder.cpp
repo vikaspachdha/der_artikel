@@ -18,15 +18,21 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
 
     _thema = new Thema_C();
 
+    // Connections
     connect(ui->_btn_box, SIGNAL(clicked(QAbstractButton*)), this, SLOT(OnDlgButtonClicked(QAbstractButton*)) );
     connect(ui->_save_btn,SIGNAL(clicked()), this,SLOT(OnSave()) );
     connect(ui->_add_btn,SIGNAL(clicked()), this,SLOT(OnAddClicked()) );
     connect(ui->_word_edit,SIGNAL(textChanged(QString)), this, SLOT(OnWordTextChanged(QString)));
     connect(ui->_thema_name_edit,SIGNAL(textChanged(QString)), this, SLOT(OnThemaNameChanged(QString)));
     connect(ui->_word_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(OnItemDoubleClicked(QListWidgetItem*)) );
+    connect(ui->_word_list,SIGNAL(itemSelectionChanged()), this, SLOT(OnWordSelectionChanged()));
+    connect(ui->_delete_btn,SIGNAL(clicked()), this, SLOT(OnDelete()) );
 
+
+    // Disable buttons. Enable only when pre-conditions are met.
     ui->_add_btn->setEnabled(false);
     ui->_save_btn->setEnabled(false);
+    ui->_delete_btn->setEnabled(false);
 }
 
 ThemaBuilder_C::~ThemaBuilder_C()
@@ -92,6 +98,30 @@ void ThemaBuilder_C::OnItemDoubleClicked(QListWidgetItem *item)
     {
         Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
         qDebug()<<word->GetWordText();
+    }
+}
+
+void ThemaBuilder_C::OnWordSelectionChanged()
+{
+    QList<QListWidgetItem*> selected_items = ui->_word_list->selectedItems();
+    ui->_delete_btn->setEnabled(selected_items.count() > 0);
+}
+
+void ThemaBuilder_C::OnDelete()
+{
+    if(_thema) {
+        QList<QListWidgetItem*> selected_items = ui->_word_list->selectedItems();
+        foreach( QListWidgetItem* item, selected_items ) {
+            if(item)
+            {
+                Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
+                if(word) {
+                    _thema->_words.remove(_thema->_words.indexOf(word));
+                    delete word;
+                    delete item;
+                }
+            }
+        }
     }
 }
 

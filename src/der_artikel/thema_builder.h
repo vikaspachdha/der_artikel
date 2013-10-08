@@ -26,6 +26,8 @@ private slots:
     void OnWordTextChanged(QString new_text);
     void OnThemaNameChanged(QString new_text);
     void OnItemDoubleClicked(QListWidgetItem *item);
+    void OnWordSelectionChanged();
+    void OnDelete();
 
 private:
     bool Write(QIODevice* pDevice);
