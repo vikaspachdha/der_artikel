@@ -20,7 +20,7 @@ bool Thema_C::Read(const QDomElement &element)
         _text = element.firstChildElement("ThemaText").text();
         success = !_text.isEmpty();
 
-        _translation = element.firstChildElement("ThemaText").text();
+        _translation = element.firstChildElement("Translation").text();
 
         QDomElement words_root_node = element.firstChildElement("Words");
 

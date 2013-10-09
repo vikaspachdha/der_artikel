@@ -14,7 +14,8 @@
 
 ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ThemaBuilder_C)
+    ui(new Ui::ThemaBuilder_C),
+    _edit_item(0)
 {
     ui->setupUi(this);
 
@@ -53,8 +54,9 @@ void ThemaBuilder_C::OnDlgButtonClicked(QAbstractButton *btn)
 
 void ThemaBuilder_C::OnLoad()
 {
+    static QString last_open_path = QDir::homePath();
     QString file_path = QFileDialog::getOpenFileName(this,tr("Select file name"),
-                                                     QDir::homePath() + QDir::separator() + "untitled.AKL",
+                                                     last_open_path,
                                                      tr("Thema files (*.AKL);; All files (*.*)"));
     if(!file_path.isEmpty()) {
         ThemaLoader_C loader;
@@ -66,6 +68,7 @@ void ThemaBuilder_C::OnLoad()
             ResetUI();
             _thema = new_thema;
             PopulateUI(_thema);
+            last_open_path = file_path;
         }
     }
 
@@ -87,11 +90,20 @@ void ThemaBuilder_C::OnAddClicked()
         article = ARTIKEL::DAS;
     }
 
-    Word_C* new_word = new Word_C();
-    new_word->_artikel = article;
-    new_word->_text = text;
-    AddWordToList(new_word);
-    _thema->_words.append(new_word);
+    if(_edit_item) {
+        Word_C* edit_word = _edit_item->data(Qt::UserRole).value<Word_C*>();
+        edit_word->_artikel = article;
+        edit_word->_text = text;
+        UpdateItem(_edit_item);
+        SetWordUiState(ADD_STATE);
+    } else {
+        Word_C* new_word = new Word_C();
+        new_word->_artikel = article;
+        new_word->_text = text;
+        AddWordToList(new_word);
+        _thema->_words.append(new_word);
+    }
+
     ui->_word_edit->setText("");
 }
 
@@ -110,7 +122,30 @@ void ThemaBuilder_C::OnItemDoubleClicked(QListWidgetItem *item)
     if(item)
     {
         Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
-        qDebug()<<word->GetWordText();
+        if(word) {
+            _edit_item = item;
+
+            ui->_word_edit->setText(word->GetWordText());
+
+            switch(word->GetArtikel()) {
+            case ARTIKEL::DAS:
+                ui->_das_radio->setChecked(true);
+                break;
+            case ARTIKEL::DER:
+                ui->_der_radio->setChecked(true);
+                break;
+            case ARTIKEL::DIE:
+                ui->_die_radio->setChecked(true);
+                break;
+            case ARTIKEL::NA:
+                ui->_na_radio->setChecked(true);
+                break;
+            default:
+                break;
+            }
+
+            SetWordUiState(UPDATE_STATE);
+        }
     }
 }
 
@@ -127,6 +162,10 @@ void ThemaBuilder_C::OnDelete()
         foreach( QListWidgetItem* item, selected_items ) {
             if(item)
             {
+                if(_edit_item == item) {
+                    SetWordUiState(ADD_STATE);
+
+                }
                 Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
                 if(word) {
                     _thema->_words.remove(_thema->_words.indexOf(word));
@@ -138,16 +177,35 @@ void ThemaBuilder_C::OnDelete()
     }
 }
 
+void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
+{
+    if(item) {
+        Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
+        if(word) {
+            QString listItemText;
+            if(word->_artikel == ARTIKEL::NA) {
+                listItemText = word->_text;
+            } else {
+                listItemText = QString("%1 %2").arg(ARTIKEL::ArtikelText(word->_artikel)).arg(word->_text);
+            }
+            item->setText(listItemText);
+        }
+    }
+}
+
 void ThemaBuilder_C::OnSave()
 {
+    static QString last_save_path = QDir::homePath() + QDir::separator() + "untitled.AKL";
     QString save_file = QFileDialog::getSaveFileName(this,tr("Select file name"),
-                                                     QDir::homePath() + QDir::separator() + "untitled.AKL",
+                                                     last_save_path,
                                                      tr("Thema files (*.AKL);; All files (*.*)"));
 
     if(!save_file.isEmpty()) {
         QFile file(save_file);
         if (file.open(QFile::WriteOnly | QFile::Text)) {
-            Write(&file);
+            if(Write(&file)) {
+                last_save_path = save_file;
+            }
         } else {
             qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
         }
@@ -177,16 +235,9 @@ bool ThemaBuilder_C::Write(QIODevice* pDevice)
 void ThemaBuilder_C::AddWordToList(Word_C* new_word)
 {
     if(new_word) {
-        QString listItemText;
-        if(new_word->_artikel == ARTIKEL::NA) {
-            listItemText = new_word->_text;
-        } else {
-            listItemText = QString("%1 %2").arg(ARTIKEL::ArtikelText(new_word->_artikel)).arg(new_word->_text);
-        }
-
-        QListWidgetItem* list_item = new QListWidgetItem(listItemText,ui->_word_list);
+        QListWidgetItem* list_item = new QListWidgetItem(ui->_word_list);
         list_item->setData(Qt::UserRole,QVariant::fromValue<Word_C*>(new_word));
-
+        UpdateItem(list_item);
         ui->_word_list->addItem(list_item);
     }
 }
@@ -194,10 +245,11 @@ void ThemaBuilder_C::AddWordToList(Word_C* new_word)
 void ThemaBuilder_C::ResetUI()
 {
     ui->_thema_name_edit->setText("");
-    ui->_thema_name_edit->setText("");
+    ui->_theam_tr_name_edit->setText("");
     ui->_word_edit->setText("");
+    ui->_na_radio->setChecked(true);
     ui->_word_list->clear();
-    ui->_thema_name_edit->setFocus();
+    SetWordUiState(ADD_STATE);
 }
 
 void ThemaBuilder_C::PopulateUI(Thema_C *thema)
@@ -208,5 +260,17 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
         foreach(Word_C* word, thema->_words) {
             AddWordToList(word);
         }
+    }
+}
+
+void ThemaBuilder_C::SetWordUiState(ThemaBuilder_C::WordUIState new_state)
+{
+    if(new_state == ADD_STATE) {
+        _edit_item = 0;
+        ui->_add_btn->setText(tr("Add"));
+        ui->_word_edit->setText("");
+        ui->_na_radio->setChecked(true);
+    } else {
+        ui->_add_btn->setText(tr("Update"));
     }
 }

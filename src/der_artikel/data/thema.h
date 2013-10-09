@@ -17,6 +17,7 @@ public:
 
     void SetText(QString text) { _text = text; }
     QString GetText() const { return _text; }
+
     void SetTrText(QString text) { _translation = text; }
     QString GetTrText() const { return _translation; }
 

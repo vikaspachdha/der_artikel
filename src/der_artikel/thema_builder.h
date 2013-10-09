@@ -17,6 +17,11 @@ class ThemaBuilder_C : public QWidget
 {
     Q_OBJECT
 
+enum WordUIState {
+    ADD_STATE,
+    UPDATE_STATE
+};
+
 public:
     explicit ThemaBuilder_C(QWidget *parent = 0);
     ~ThemaBuilder_C();
@@ -33,14 +38,17 @@ private slots:
     void OnDelete();
 
 private:
+    void UpdateItem(QListWidgetItem* item);
     bool Write(QIODevice* pDevice);
     void AddWordToList(Word_C *new_word);
     void ResetUI();
     void PopulateUI(Thema_C* thema);
+    void SetWordUiState(WordUIState new_state);
 
 private:
     Ui::ThemaBuilder_C *ui;
     Thema_C* _thema;
+    QListWidgetItem* _edit_item;
 };
 
 #endif // THEMA_BUILDER_H
