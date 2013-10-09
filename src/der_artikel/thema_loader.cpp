@@ -24,7 +24,7 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
         int error_col;
         if(thema_doc.setContent(&thema_file, &error_msg, &error_line, &error_col)) {
             //parse the file and read the thema.
-            QDomElement root = thema_doc.firstChildElement("DerArtikel");
+            QDomElement root = thema_doc.firstChildElement("Root");
             QDomAttr versionAttr = root.attributeNode("Version");
             QString versionStr = versionAttr.value();
 
@@ -42,6 +42,7 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
                                 thema = 0;
                             }
                         }
+                        domNode = domNode.nextSibling();
                     }
 
                 } else {
