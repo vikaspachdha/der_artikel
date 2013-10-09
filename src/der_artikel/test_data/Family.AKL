@@ -3,29 +3,31 @@
     <Thema>
         <ThemaText>Familie</ThemaText>
         <Translation>Family</Translation>
-        <Word>
-            <WordText>Schwester</WordText>
-            <Artikel>1</Artikel>
-        </Word>
-        <Word>
-            <WordText>Bruder</WordText>
-            <Artikel>0</Artikel>
-        </Word>
-        <Word>
-            <WordText>vater</WordText>
-            <Artikel>0</Artikel>
-        </Word>
-        <Word>
-            <WordText>mutter</WordText>
-            <Artikel>1</Artikel>
-        </Word>
-        <Word>
-            <WordText>oma</WordText>
-            <Artikel>1</Artikel>
-        </Word>
-        <Word>
-            <WordText>onkel</WordText>
-            <Artikel>0</Artikel>
-        </Word>
+        <Words>
+            <Word>
+                <WordText>Schwester</WordText>
+                <Artikel>1</Artikel>
+            </Word>
+            <Word>
+                <WordText>Bruder</WordText>
+                <Artikel>0</Artikel>
+            </Word>
+            <Word>
+                <WordText>Vater</WordText>
+                <Artikel>0</Artikel>
+            </Word>
+            <Word>
+                <WordText>Opa</WordText>
+                <Artikel>0</Artikel>
+            </Word>
+            <Word>
+                <WordText>Mutter</WordText>
+                <Artikel>1</Artikel>
+            </Word>
+            <Word>
+                <WordText>Oma</WordText>
+                <Artikel>1</Artikel>
+            </Word>
+        </Words>
     </Thema>
 </Root>

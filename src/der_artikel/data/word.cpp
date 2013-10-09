@@ -9,7 +9,27 @@ _user_artikel(ARTIKEL::INVALID)
 
 bool Word_C::Read(const QDomElement &element)
 {
-    return true;
+    bool success = false;
+    if(!element.isNull()) {
+        _text = element.firstChildElement("WordText").text();
+        success = !_text.isEmpty();
+
+        int article_value = element.firstChildElement("Artikel").text().toInt(&success);
+        if(success) {
+            switch(article_value) {
+            case ARTIKEL::DAS:
+            case ARTIKEL::DER:
+            case ARTIKEL::DIE:
+            case ARTIKEL::NA:
+                _artikel = (ARTIKEL::Artikel) article_value;
+                break;
+            default:
+                success = false;
+                break;
+            }
+        }
+    }
+    return success;
 }
 
 bool Word_C::Write(QDomElement &element)

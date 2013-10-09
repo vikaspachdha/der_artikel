@@ -1,6 +1,7 @@
 #include "thema.h"
+#include <QDebug>
 
-Thema_C::Thema_C():
+Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
     _translation("")
 {
@@ -8,15 +9,36 @@ Thema_C::Thema_C():
 
 Thema_C::~Thema_C()
 {
-    foreach(Word_C* word, _words) {
-        delete word;
-    }
-    _words.clear();
+    ClearWords();
 }
 
 bool Thema_C::Read(const QDomElement &element)
 {
-    return true;
+    bool success = false;
+    ClearWords();
+    if(!element.isNull()) {
+        _text = element.firstChildElement("ThemaText").text();
+        success = !_text.isEmpty();
+
+        _translation = element.firstChildElement("ThemaText").text();
+
+        QDomElement words_root_node = element.firstChildElement("Words");
+
+        QDomNode word_node = words_root_node.firstChild();
+
+        while(!word_node.isNull()) {
+            Word_C* word = new Word_C(this);
+            if(!word->Read(word_node.toElement())) {
+                delete word;
+                qDebug()<<"Invalid Word in thema.";
+            } else {
+                _words.append(word);
+            }
+            word_node = word_node.nextSibling();
+        }
+
+    }
+    return success;
 }
 
 bool Thema_C::Write(QDomElement &element)
@@ -39,20 +61,32 @@ bool Thema_C::Write(QDomElement &element)
             dom_translation.appendChild(translation_thema);
             dom_thema.appendChild(dom_translation);
 
+            QDomElement dom_words_root = domDocument.createElement("Words");
+
             QVector<Word_C*>::Iterator iter =_words.begin();
             while(iter != _words.end()) {
                 Word_C* word = *iter;
                 if(word) {
-                    word->Write(dom_thema);
+                    word->Write(dom_words_root);
                 }
                 ++iter;
             }
 
+            dom_thema.appendChild(dom_words_root);
             element.appendChild(dom_thema);
+
             success = true;
         }
     }
 
     return success;
+}
+
+void Thema_C::ClearWords()
+{
+    foreach(Word_C* word, _words) {
+        delete word;
+    }
+    _words.clear();
 }
 

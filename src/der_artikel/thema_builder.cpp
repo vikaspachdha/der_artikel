@@ -65,6 +65,7 @@ void ThemaBuilder_C::OnLoad()
             }
             ResetUI();
             _thema = new_thema;
+            PopulateUI(_thema);
         }
     }
 
@@ -197,4 +198,15 @@ void ThemaBuilder_C::ResetUI()
     ui->_word_edit->setText("");
     ui->_word_list->clear();
     ui->_thema_name_edit->setFocus();
+}
+
+void ThemaBuilder_C::PopulateUI(Thema_C *thema)
+{
+    if(thema) {
+        ui->_thema_name_edit->setText(thema->GetText());
+        ui->_theam_tr_name_edit->setText(thema->GetTrText());
+        foreach(Word_C* word, thema->_words) {
+            AddWordToList(word);
+        }
+    }
 }

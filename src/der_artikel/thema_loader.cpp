@@ -40,6 +40,7 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
                             if(!thema->Read(domNode.toElement())) {
                                 delete thema;
                                 thema = 0;
+                                qDebug()<<"Invalid Thema.";
                             }
                         }
                         domNode = domNode.nextSibling();
