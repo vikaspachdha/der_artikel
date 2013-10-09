@@ -17,7 +17,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Thema builder</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="6" column="0" colspan="4">
@@ -71,21 +71,21 @@
         <item>
          <widget class="QRadioButton" name="_die_radio">
           <property name="text">
-           <string>die</string>
+           <string>Die</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="_der_radio">
           <property name="text">
-           <string>der</string>
+           <string>Der</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QRadioButton" name="_das_radio">
           <property name="text">
-           <string>das</string>
+           <string>Das</string>
           </property>
          </widget>
         </item>
@@ -93,6 +93,9 @@
          <widget class="QRadioButton" name="_na_radio">
           <property name="text">
            <string>NA</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -106,7 +109,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="_word_edit"/>
+       <widget class="QLineEdit" name="_word_edit">
+        <property name="placeholderText">
+         <string>Enter word.</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="_add_btn">
@@ -195,10 +202,18 @@
     </widget>
    </item>
    <item row="2" column="1" colspan="3">
-    <widget class="QLineEdit" name="_thema_name_edit"/>
+    <widget class="QLineEdit" name="_thema_name_edit">
+     <property name="placeholderText">
+      <string>Enter thema name.</string>
+     </property>
+    </widget>
    </item>
    <item row="3" column="1" colspan="3">
-    <widget class="QLineEdit" name="_theam_tr_name_edit"/>
+    <widget class="QLineEdit" name="_theam_tr_name_edit">
+     <property name="placeholderText">
+      <string>Enter translation or description.</string>
+     </property>
+    </widget>
    </item>
    <item row="9" column="0" colspan="4">
     <widget class="QDialogButtonBox" name="_btn_box">
