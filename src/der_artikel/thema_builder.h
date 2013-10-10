@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+#ifdef ENABLE_THEMA_BUILDER
+
 class Thema_C;
 
 namespace Ui {
@@ -62,5 +64,6 @@ private:
     Thema_C* _thema;
     QListWidgetItem* _edit_item;
 };
+#endif // ENABLE_THEMA_BUILDER
 
 #endif // THEMA_BUILDER_H

@@ -14,6 +14,9 @@
 #include "version.h"
 #include "thema_loader.h"
 
+
+#ifdef ENABLE_THEMA_BUILDER
+
 ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ThemaBuilder_C),
@@ -383,3 +386,5 @@ void ThemaBuilder_C::SetUmlautUpperCase(bool upper_case)
         ui->_u_umlaut_btn->setText("ü");
     }
 }
+
+#endif
