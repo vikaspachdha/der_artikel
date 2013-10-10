@@ -1,15 +1,34 @@
 #include "thema_loader.h"
 
 #include <QDomDocument>
+#include <QDir>
 #include <QFile>
 #include <QMessageBox>
+#include <QThreadPool>
 #include <QDebug>
 
 #include "version.h"
 #include "data/thema.h"
 
-ThemaLoader_C::ThemaLoader_C(QObject *parent) : QObject(parent)
+ThemaLoader_C::ThemaLoader_C(QObject *thema_parent, QObject *parent) : QObject(parent),
+    _thema_parent(thema_parent)
 {
+    setAutoDelete(false);
+}
+
+void ThemaLoader_C::run()
+{
+    QDir root_thema_dir = ARTIKEL::GetResourcePath("test_data");
+    QStringList nameFilters;
+    nameFilters<<"*.AKL";
+    QFileInfoList thema_files= root_thema_dir.entryInfoList(nameFilters,QDir::Files | QDir::NoSymLinks|QDir::NoDotAndDotDot);
+
+    foreach(QFileInfo thema_file, thema_files) {
+        Thema_C* thema = LoadThema(thema_file.absoluteFilePath());
+        if(thema) {
+            emit ThemaLoaded(thema);
+        }
+    }
 }
 
 Thema_C *ThemaLoader_C::LoadThema(QString file_path)
@@ -36,7 +55,7 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
                     QDomNode domNode = root.firstChild();
                     while (!domNode.isNull()) {
                         if(domNode.nodeName().compare("Thema") == 0) {
-                            thema = new Thema_C();
+                            thema = new Thema_C(_thema_parent);
                             if(!thema->Read(domNode.toElement())) {
                                 delete thema;
                                 thema = 0;
@@ -61,4 +80,9 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
     }
 
     return thema;
+}
+
+void ThemaLoader_C::StartLoading()
+{
+    QThreadPool::globalInstance()->start(this);
 }

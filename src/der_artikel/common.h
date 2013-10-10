@@ -15,5 +15,8 @@ namespace ARTIKEL
     };
 
     QString ArtikelText(Artikel artikel);
+
+    QString GetResourcePath(const QString &path);
+
 }
 #endif // COMMON_H
