@@ -12,6 +12,7 @@ class QIODevice;
 class QAbstractButton;
 class QListWidgetItem;
 class Word_C;
+class QKeyEvent;
 
 class ThemaBuilder_C : public QWidget
 {
@@ -26,6 +27,10 @@ public:
     explicit ThemaBuilder_C(QWidget *parent = 0);
     ~ThemaBuilder_C();
 
+protected:
+    virtual void keyPressEvent(QKeyEvent *e);
+    virtual void keyReleaseEvent(QKeyEvent *e);
+
 private slots:
     void OnDlgButtonClicked(QAbstractButton* btn);
     void OnLoad();
@@ -37,6 +42,11 @@ private slots:
     void OnWordSelectionChanged();
     void OnDelete();
 
+    void InsertAUmlaut();
+    void InsertOUmlaut();
+    void InsertUUmlaut();
+    void InsertEszett();
+
 private:
     void UpdateItem(QListWidgetItem* item);
     bool Write(QIODevice* pDevice);
@@ -44,6 +54,8 @@ private:
     void ResetUI();
     void PopulateUI(Thema_C* thema);
     void SetWordUiState(WordUIState new_state);
+    void InsertSplText(QString str);
+    void SetUmlautUpperCase( bool upper_case);
 
 private:
     Ui::ThemaBuilder_C *ui;

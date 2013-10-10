@@ -91,13 +91,47 @@
       </item>
       <item row="1" column="2">
        <widget class="QToolButton" name="_a_umlaut_btn">
+        <property name="minimumSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Insert ä - shortcut is &lt;b&gt;Alt + a&lt;/b&gt; or &lt;b&gt;Alt + Shift + a&lt;/b&gt; </string>
+        </property>
         <property name="text">
          <string>ä</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
         </property>
        </widget>
       </item>
       <item row="1" column="5">
-       <widget class="QToolButton" name="_esset_btn">
+       <widget class="QToolButton" name="_eszett_btn">
+        <property name="minimumSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Insert ß</string>
+        </property>
         <property name="text">
          <string>ß</string>
         </property>
@@ -112,6 +146,20 @@
       </item>
       <item row="1" column="3">
        <widget class="QToolButton" name="_o_umlaut_btn">
+        <property name="minimumSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Insert ö - shortcut is &lt;b&gt;Alt + o&lt;/b&gt; or &lt;b&gt;Alt + Shift + o&lt;/b&gt; </string>
+        </property>
         <property name="text">
          <string>ö</string>
         </property>
@@ -119,6 +167,20 @@
       </item>
       <item row="1" column="4">
        <widget class="QToolButton" name="_u_umlaut_btn">
+        <property name="minimumSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Insert ü - shortcut is &lt;b&gt;Alt + o&lt;/b&gt; or &lt;b&gt;Alt + Shift + o&lt;/b&gt; </string>
+        </property>
         <property name="text">
          <string>ü</string>
         </property>
@@ -385,7 +447,7 @@
   <tabstop>_a_umlaut_btn</tabstop>
   <tabstop>_o_umlaut_btn</tabstop>
   <tabstop>_u_umlaut_btn</tabstop>
-  <tabstop>_esset_btn</tabstop>
+  <tabstop>_eszett_btn</tabstop>
   <tabstop>_word_edit</tabstop>
   <tabstop>_add_btn</tabstop>
   <tabstop>_word_list</tabstop>

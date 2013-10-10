@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QQmlContext>
+
 #include "qtquick2applicationviewer.h"
 #include "manager.h"
 #include "thema_builder.h"

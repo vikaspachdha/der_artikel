@@ -5,6 +5,8 @@
 #include <QFileDialog>
 #include <QListWidgetItem>
 #include <QFile>
+#include <QShortcut>
+#include <QKeyEvent>
 #include <QDebug>
 
 #include "data/thema.h"
@@ -32,6 +34,45 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     connect(ui->_word_list,SIGNAL(itemSelectionChanged()), this, SLOT(OnWordSelectionChanged()));
     connect(ui->_delete_btn,SIGNAL(clicked()), this, SLOT(OnDelete()) );
 
+    connect(ui->_a_umlaut_btn, SIGNAL(clicked()), SLOT(InsertAUmlaut()));
+    connect(ui->_o_umlaut_btn, SIGNAL(clicked()), SLOT(InsertOUmlaut()));
+    connect(ui->_u_umlaut_btn, SIGNAL(clicked()), SLOT(InsertUUmlaut()));
+    connect(ui->_eszett_btn, SIGNAL(clicked()), SLOT(InsertEszett()));
+
+    // Shortcut for a & A umlaut chars
+    QShortcut* a_umlaut_shortcut =  new QShortcut(this);
+    a_umlaut_shortcut->setKey(QKeySequence(Qt::ALT + Qt::Key_A));
+    connect(a_umlaut_shortcut, SIGNAL(activated()), SLOT(InsertAUmlaut()));
+
+    QShortcut* caps_a_umlaut_shortcut =  new QShortcut(this);
+    caps_a_umlaut_shortcut->setKey(QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_A));
+    connect(caps_a_umlaut_shortcut, SIGNAL(activated()), SLOT(InsertAUmlaut()));
+
+
+    // Shortcut for o & O umlaut chars
+    QShortcut* o_umlaut_shortcut =  new QShortcut(this);
+    o_umlaut_shortcut->setKey(QKeySequence(Qt::ALT + Qt::Key_O));
+    connect(o_umlaut_shortcut, SIGNAL(activated()), SLOT(InsertOUmlaut()));
+
+    QShortcut* caps_o_umlaut_shortcut =  new QShortcut(this);
+    caps_o_umlaut_shortcut->setKey(QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_O));
+    connect(caps_o_umlaut_shortcut, SIGNAL(activated()), SLOT(InsertOUmlaut()));
+
+
+    // Shortcut for u & U umlaut chars
+    QShortcut* u_umlaut_shortcut =  new QShortcut(this);
+    u_umlaut_shortcut->setKey(QKeySequence(Qt::ALT + Qt::Key_U));
+    connect(u_umlaut_shortcut, SIGNAL(activated()), SLOT(InsertUUmlaut()));
+
+    QShortcut* caps_u_umlaut_shortcut =  new QShortcut(this);
+    caps_u_umlaut_shortcut->setKey(QKeySequence(Qt::ALT + Qt::SHIFT + Qt::Key_U));
+    connect(caps_u_umlaut_shortcut, SIGNAL(activated()), SLOT(InsertUUmlaut()));
+
+
+    // Shortcut for eszett char
+    QShortcut* eszett_shortcut =  new QShortcut(this);
+    eszett_shortcut->setKey(QKeySequence(Qt::ALT + Qt::Key_S));
+    connect(eszett_shortcut, SIGNAL(activated()), SLOT(InsertEszett()));
 
     // Disable buttons. Enable only when pre-conditions are met.
     ui->_add_btn->setEnabled(false);
@@ -43,6 +84,20 @@ ThemaBuilder_C::~ThemaBuilder_C()
 {
     delete ui;
     delete _thema;
+}
+
+void ThemaBuilder_C::keyPressEvent(QKeyEvent *e)
+{
+    if(e && e->key() == Qt::Key_Shift) {
+        SetUmlautUpperCase(true);
+    }
+}
+
+void ThemaBuilder_C::keyReleaseEvent(QKeyEvent *e)
+{
+    if(e && e->key() == Qt::Key_Shift) {
+        SetUmlautUpperCase(false);
+    }
 }
 
 void ThemaBuilder_C::OnDlgButtonClicked(QAbstractButton *btn)
@@ -177,6 +232,38 @@ void ThemaBuilder_C::OnDelete()
     }
 }
 
+void ThemaBuilder_C::InsertAUmlaut()
+{
+    if(QApplication::keyboardModifiers() & Qt::SHIFT) {
+        InsertSplText("Ä");
+    } else {
+        InsertSplText("ä");
+    }
+}
+
+void ThemaBuilder_C::InsertOUmlaut()
+{
+    if(QApplication::keyboardModifiers() & Qt::SHIFT) {
+        InsertSplText("Ö");
+    } else {
+        InsertSplText("ö");
+    }
+}
+
+void ThemaBuilder_C::InsertUUmlaut()
+{
+    if(QApplication::keyboardModifiers() & Qt::SHIFT) {
+        InsertSplText("Ü");
+    } else {
+        InsertSplText("ü");
+    }
+}
+
+void ThemaBuilder_C::InsertEszett()
+{
+    InsertSplText("ß");
+}
+
 void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
 {
     if(item) {
@@ -272,5 +359,27 @@ void ThemaBuilder_C::SetWordUiState(ThemaBuilder_C::WordUIState new_state)
         ui->_na_radio->setChecked(true);
     } else {
         ui->_add_btn->setText(tr("Update"));
+    }
+}
+
+void ThemaBuilder_C::InsertSplText(QString str)
+{
+    QWidget* widget = QApplication::focusWidget();
+    QLineEdit* editor = dynamic_cast<QLineEdit*>(widget);
+    if(editor) {
+        editor->insert(str);
+    }
+}
+
+void ThemaBuilder_C::SetUmlautUpperCase(bool upper_case)
+{
+    if(upper_case) {
+        ui->_a_umlaut_btn->setText("Ä");
+        ui->_o_umlaut_btn->setText("Ö");
+        ui->_u_umlaut_btn->setText("Ü");
+    } else {
+        ui->_a_umlaut_btn->setText("ä");
+        ui->_o_umlaut_btn->setText("ö");
+        ui->_u_umlaut_btn->setText("ü");
     }
 }
