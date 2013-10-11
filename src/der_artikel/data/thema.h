@@ -21,6 +21,8 @@ public:
     void SetTrText(QString text) { _translation = text; }
     QString GetTrText() const { return _translation; }
 
+    QVector<Word_C*> GetWords() const { return _words; }
+
 public:
     bool Read(const QDomElement& element);
     bool Write(QDomElement& element);

@@ -23,16 +23,18 @@ public slots:
     void OnNewThemaLoaded(Thema_C* new_thema);
 
 public:
-    void AddWords();
 
 // Helper methods
 private:
     void LoadDefaultThemas();
+    void SetCurrentThema(Thema_C* thema);
+    void AddWords(const Thema_C *thema);
     QObject* AddWord(QString text);
 
 private:
     QQuickItem* _root_item;
     QVector<Thema_C*> _themas;
+    Thema_C* _current_thema;
 };
 
 #endif // MANAGER_H

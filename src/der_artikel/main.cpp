@@ -27,7 +27,6 @@ int main(int argc, char *argv[])
     manager.SetRootItem(root_item);
 
     viewer.showExpanded();
-    manager.AddWords();
 
     return app.exec();
 }

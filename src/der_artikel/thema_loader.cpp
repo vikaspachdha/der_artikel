@@ -55,12 +55,13 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
                     QDomNode domNode = root.firstChild();
                     while (!domNode.isNull()) {
                         if(domNode.nodeName().compare("Thema") == 0) {
-                            thema = new Thema_C(_thema_parent);
+                            thema = new Thema_C();
                             if(!thema->Read(domNode.toElement())) {
                                 delete thema;
                                 thema = 0;
                                 qDebug()<<"Invalid Thema.";
                             }
+                            thema->moveToThread(_thema_parent->thread());
                         }
                         domNode = domNode.nextSibling();
                     }
