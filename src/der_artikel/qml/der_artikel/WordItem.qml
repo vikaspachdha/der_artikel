@@ -17,7 +17,7 @@ Rectangle {
 
     onSelectedChanged:
     {
-        console.log("Slected changed " + wordText + " - " + selected)
+        color = manager.current_word_color;
     }
 
     // Child elements

@@ -47,6 +47,9 @@ Item {
                 exclusiveGroup: articleGroup
                 checked: true
                 onCheckedChanged: {
+                    if(checked) {
+                        manager.selected_article = 1
+                    }
                     currentColor = "red"
                 }
             }
@@ -54,6 +57,9 @@ Item {
                 text: "Die"
                 exclusiveGroup: articleGroup
                 onCheckedChanged: {
+                    if(checked) {
+                        manager.selected_article = 2
+                    }
                     currentColor = "pink"
                 }
             }
@@ -61,9 +67,23 @@ Item {
                 text: "Das"
                 exclusiveGroup: articleGroup
                 onCheckedChanged: {
+                    if(checked) {
+                        manager.selected_article = 3
+                    }
                     currentColor = "lightgray"
                 }
             }
+            RadioButton {
+                text: "None"
+                exclusiveGroup: articleGroup
+                onCheckedChanged: {
+                    if(checked) {
+                        manager.selected_article = 4
+                    }
+                    currentColor = "lightgray"
+                }
+            }
+
         }
     }
 

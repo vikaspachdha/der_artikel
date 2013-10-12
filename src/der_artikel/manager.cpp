@@ -9,7 +9,9 @@ Manager_C::Manager_C(QObject *parent) :
     _root_item(0),
     _current_thema(0)
 {
+    _current_word_color = QColor("#5287B1");
     LoadDefaultThemas();
+    connect(this,SIGNAL(SelectedArticleChanged()), this, SLOT(OnSelectedArticleChanged()) );
 }
 
 Manager_C::~Manager_C()
@@ -19,12 +21,39 @@ Manager_C::~Manager_C()
     }
 }
 
+void Manager_C::SetSelectedArticle(uint article)
+{
+    _selected_article = (ARTIKEL::Artikel)article;
+    switch (_selected_article) {
+    case ARTIKEL::DER:
+        _current_word_color = QColor("#5287B1");
+        break;
+    case ARTIKEL::DIE:
+        _current_word_color = QColor("#E882DA");
+        break;
+    case ARTIKEL::DAS:
+        _current_word_color = QColor("#B9B9B9");
+        break;
+    case ARTIKEL::NA:
+        _current_word_color = QColor("#FEF574");
+        break;
+    default:
+        break;
+    }
+}
+
+
 void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
 {
     Q_ASSERT(new_thema);
     new_thema->setParent(this);
     _themas.append(new_thema);
     SetCurrentThema(new_thema);
+}
+
+void Manager_C::OnSelectedArticleChanged()
+{
+
 }
 
 void Manager_C::AddWords(const Thema_C* thema)

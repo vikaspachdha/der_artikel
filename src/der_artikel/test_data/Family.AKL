@@ -6,27 +6,27 @@
         <Words>
             <Word>
                 <WordText>Schwester</WordText>
-                <Artikel>1</Artikel>
+                <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Bruder</WordText>
-                <Artikel>0</Artikel>
+                <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Vater</WordText>
-                <Artikel>0</Artikel>
+                <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Opa</WordText>
-                <Artikel>0</Artikel>
+                <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Mutter</WordText>
-                <Artikel>1</Artikel>
+                <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Oma</WordText>
-                <Artikel>1</Artikel>
+                <Artikel>2</Artikel>
             </Word>
         </Words>
     </Thema>

@@ -7,7 +7,7 @@ namespace ARTIKEL
 {
     enum Artikel
     {
-        DER,
+        DER = 1,
         DIE,
         DAS,
         NA,
