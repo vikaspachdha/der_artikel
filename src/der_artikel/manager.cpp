@@ -7,7 +7,8 @@
 Manager_C::Manager_C(QObject *parent) :
     QObject(parent),
     _root_item(0),
-    _current_thema(0)
+    _current_thema(0),
+    _selected_article(ARTIKEL::DER)
 {
     _current_word_color = QColor("#5287B1");
     LoadDefaultThemas();
@@ -56,10 +57,28 @@ void Manager_C::OnSelectedArticleChanged()
 
 }
 
+void Manager_C::OnWordClicked()
+{
+    QObject* word_item = sender();
+    Q_ASSERT(word_item);
+    Word_C* word = _item_word_hash[word_item];
+    if(word) {
+        word->SetUserArtikel(_selected_article);
+    }
+}
+
+void Manager_C::showResult()
+{
+    qDebug() <<_current_thema->GetCorrectArticleCount()<<"/"<<_current_thema->GetWordCount();
+}
+
 void Manager_C::AddWords(const Thema_C* thema)
 {
     foreach(Word_C* word, thema->GetWords()) {
-        AddWord(word->GetWordText());
+        QObject* word_item = AddWord(word->GetWordText());
+        Q_ASSERT(word_item);
+        _item_word_hash[word_item] = word;
+        connect(word_item, SIGNAL(wordClicked()), this, SLOT(OnWordClicked()) );
     }
 }
 
@@ -73,6 +92,7 @@ void Manager_C::LoadDefaultThemas()
 void Manager_C::SetCurrentThema(Thema_C *thema)
 {
     if(thema && thema != _current_thema) {
+        ClearWordItems();
         _current_thema = thema;
         AddWords(_current_thema);
     }
@@ -88,4 +108,11 @@ QObject *Manager_C::AddWord(QString text)
             Q_ARG(QVariant, text));
     QObject* word_item = returned_value.value<QObject*>();
     return word_item;
+}
+
+void Manager_C::ClearWordItems()
+{
+    foreach(QObject* word_item, _item_word_hash.keys()) {
+        delete word_item;
+    }
 }

@@ -6,7 +6,6 @@ Rectangle {
     property alias wordText: label.text
     property int wordPtSz: 12
     property color bkColor: "gray";
-    property bool selected: false
 
     // Signals
     signal wordClicked
@@ -14,11 +13,6 @@ Rectangle {
     // Properties initilization
     color: bkColor
     radius: 8.0
-
-    onSelectedChanged:
-    {
-        color = manager.current_word_color;
-    }
 
     // Child elements
     Text {
@@ -41,7 +35,8 @@ Rectangle {
         anchors.fill: parent
         onClicked:
         {
-            parent.selected = parent.selected == true ? false: true;
+            wordClicked()
+            color = manager.current_word_color;
         }
     }
 

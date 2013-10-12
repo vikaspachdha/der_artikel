@@ -27,6 +27,8 @@ public:
     bool Read(const QDomElement& element);
     bool Write(QDomElement& element);
     void ClearWords();
+    uint GetWordCount() const;
+    uint GetCorrectArticleCount() const;
 
 private:
     QString _text;

@@ -3,11 +3,13 @@
 
 #include <QObject>
 #include <QVector>
+#include <QHash>
 #include <QColor>
 #include "common.h"
 
 class QQuickItem;
 class Thema_C;
+class Word_C;
 
 class Manager_C : public QObject
 {
@@ -27,6 +29,8 @@ public:
     uint GetSelectedArticle() const { return (uint)_selected_article; }
 
     QColor GetCurrentWordColor() const { return _current_word_color; }
+public:
+    Q_INVOKABLE void showResult();
 
 signals:
     void SelectedArticleChanged();
@@ -34,8 +38,8 @@ signals:
 private slots:
     void OnNewThemaLoaded(Thema_C* new_thema);
     void OnSelectedArticleChanged();
+    void OnWordClicked();
 
-public:
 
 // Helper methods
 private:
@@ -43,10 +47,12 @@ private:
     void SetCurrentThema(Thema_C* thema);
     void AddWords(const Thema_C *thema);
     QObject* AddWord(QString text);
+    void ClearWordItems();
 
 private:
     QQuickItem* _root_item;
     QVector<Thema_C*> _themas;
+    QHash<QObject*, Word_C*> _item_word_hash;
     Thema_C* _current_thema;
     ARTIKEL::Artikel _selected_article;
     QColor _current_word_color;

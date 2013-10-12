@@ -24,7 +24,7 @@ Item {
         anchors.top: headerItem.bottom
         anchors.bottom: parent.bottom
         anchors.left: parent.left
-        width: childrenRect.width + 8;
+        width: childrenRect.width + 4;
         gradient: Gradient {
                   GradientStop { position: 0.0; color: "#8E9CA4" }
                   GradientStop { position: 0.10; color: "#9CAFB8" }
@@ -36,6 +36,16 @@ Item {
             id: articleGroup
         }
 
+        Button {
+            text: "Show Result"
+            height: 24
+            anchors{
+                bottom: parent.bottom
+            }
+            onClicked: {
+                manager.showResult();
+            }
+        }
 
         Column {
             id: articleCol
