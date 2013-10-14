@@ -61,7 +61,9 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
                                 thema = 0;
                                 qDebug()<<"Invalid Thema.";
                             }
-                            thema->moveToThread(_thema_parent->thread());
+                            if(_thema_parent) {
+                                thema->moveToThread(_thema_parent->thread());
+                            }
                         }
                         domNode = domNode.nextSibling();
                     }
