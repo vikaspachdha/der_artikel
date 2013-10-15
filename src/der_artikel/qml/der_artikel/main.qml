@@ -128,5 +128,14 @@ Item {
 
         return WordItem;
     }
+
+    Message_bar {
+        id: msg_bar
+        height: parent.height * 0.2
+        color:"red"
+
+        anchors.left: parent.left
+        anchors.right: parent.right
+    }
 }
 
