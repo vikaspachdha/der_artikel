@@ -8,9 +8,9 @@ Item {
     height: 360
 
     property color currentColor
-    Header {
-        id: headerItem
-        height: 40
+    Title_bar {
+        id: title_item
+        height: rootItem.height*0.2
         anchors {
             top: parent.top
             left: parent.left
@@ -21,15 +21,15 @@ Item {
     Rectangle
     {
         id: articleFrame
-        anchors.top: headerItem.bottom
+        anchors.top: title_item.bottom
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         width: childrenRect.width + 4;
         gradient: Gradient {
-                  GradientStop { position: 0.0; color: "#8E9CA4" }
-                  GradientStop { position: 0.10; color: "#9CAFB8" }
-                  GradientStop { position: 0.90; color: "#9CAFB8" }
-                  GradientStop { position: 1.0; color: "#8E9CA4" }
+                  GradientStop { position: 0.0; color: "#FFFFFF" }
+                  GradientStop { position: 0.33; color: "#9CAFB8" }
+                  GradientStop { position: 0.66; color: "#9CAFB8" }
+                  GradientStop { position: 1.0; color: "#FFFFFF" }
               }
 
         ExclusiveGroup {
@@ -102,7 +102,7 @@ Item {
     Flickable
     {
         id: wordsFrame
-        anchors.top: headerItem.bottom
+        anchors.top: title_item.bottom
         anchors.bottom: rootItem.bottom
         anchors.left: articleFrame.right
         anchors.right: rootItem.right
@@ -129,13 +129,13 @@ Item {
         return WordItem;
     }
 
-    Message_bar {
-        id: msg_bar
-        height: parent.height * 0.2
-        color:"red"
+//    Message_bar {
+//        id: msg_bar
+//        height: parent.height * 0.2
+//        color:"red"
 
-        anchors.left: parent.left
-        anchors.right: parent.right
-    }
+//        anchors.left: parent.left
+//        anchors.right: parent.right
+//    }
 }
 
