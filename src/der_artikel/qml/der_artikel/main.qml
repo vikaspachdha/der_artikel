@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
+import QtGraphicalEffects 1.0
 
 Item {
     id: rootItem;
@@ -142,6 +143,17 @@ Item {
 
         anchors.left: parent.left
         anchors.right: parent.right
+    }
+
+    DropShadow {
+        anchors.fill: msg_bar
+        horizontalOffset: 4
+        verticalOffset: 8
+        radius: 0
+        spread: 0.3
+        samples: 16
+        color: "#66000000"
+        source: msg_bar
     }
 }
 

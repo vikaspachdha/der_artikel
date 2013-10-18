@@ -7,16 +7,28 @@ Rectangle {
     property alias title:msg_title.text
     property alias message:msg_text.text
     property alias animation_pause:pause_anim.duration
-    property  alias animate: animation.running
+    property alias animate: animation.running
     y: -msg_bar.parent.height
+
+    radius:4
+
+    gradient: Gradient {
+        GradientStop { position: 0.0; color: "#576495" }
+        GradientStop { position: 0.05; color: "#6876B2" }
+        //GradientStop { position: 0.33; color: "#6876B2" }
+        GradientStop { position: 0.95; color: "#6876B2" }
+        GradientStop { position: 1.0; color: "#576495" }
+    }
+
     Rectangle {
         id: icon
-        height: width
+        width:height
         color:"red"
         anchors {
             left: msg_bar.left
             top: msg_bar.top
             bottom: msg_bar.bottom
+            margins: 4
         }
     }
 
@@ -77,5 +89,7 @@ Rectangle {
 
         }
     }
+
+
 
 }
