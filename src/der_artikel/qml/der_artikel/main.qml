@@ -100,8 +100,7 @@ Item {
     }
 
 
-
-    Flickable
+    Rectangle
     {
         id: wordsFrame
         anchors.top: title_item.bottom
@@ -109,25 +108,16 @@ Item {
         anchors.left: articleFrame.right
         anchors.right: rootItem.right
         anchors.margins:4
-        clip: true
-        contentHeight: wordFlow.childrenRect.height
-        Flow
-        {
-            id: wordFlow
-            width:wordsFrame.width
-            spacing: 6
+        Words_page {
+            id: words_page_item
+            anchors.fill: parent
         }
-
     }
+
 
     function addWord(itemText)
     {
-        var WordComponent = Qt.createComponent("Word_item.qml");
-        if(WordComponent.status == Component.Ready) {
-            var WordItem = WordComponent.createObject(wordFlow);
-            WordItem.wordText = itemText;
-        }
-
+        var WordItem = words_page_item.appendWordToFlow(itemText)
         return WordItem;
     }
 
