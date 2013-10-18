@@ -40,7 +40,8 @@ Rectangle {
             top: msg_bar.top
             right: msg_bar.right
         }
-        font.pointSize: height
+        font.pointSize: height*0.8
+        font.italic: true
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
         text:"Title"
@@ -57,8 +58,8 @@ Rectangle {
         }
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
-        font.pointSize: height/3
-        text:"message"
+        font.pointSize: height*0.30
+        text:"message\nnext line"
     }
 
     SequentialAnimation {
@@ -71,13 +72,13 @@ Rectangle {
             easing.type: Easing.OutCubic
 
         }
-        PauseAnimation { id: pause_anim; duration: 2000 }
+        PauseAnimation { id: pause_anim; duration: 6000 }
         NumberAnimation {
             target: msg_bar
             property: "y"
             to: msg_bar.parent.height
             duration: 400
-            easing.type: Easing.OutCubic
+            easing.type: Easing.InCubic
 
         }
         NumberAnimation {
