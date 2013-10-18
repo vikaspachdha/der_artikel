@@ -31,7 +31,7 @@ Rectangle {
             left:page_icon.right
             leftMargin: 4
         }
-        font.pixelSize: 16
+        font.pixelSize: 14
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignVCenter
@@ -43,10 +43,9 @@ Rectangle {
         anchors {
             top:heading_1.bottom
             left:page_icon.right
-            bottom: root_item.bottom
             leftMargin: 4
         }
-        font.pixelSize: 14
+        font.pixelSize: 12
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignTop
@@ -56,15 +55,15 @@ Rectangle {
         id: heading_3
         text:"00:00:00"
         anchors {
-            top:root_item.top
-            left:heading_1.right
-            right:root_item.right
-            bottom:root_item.bottom
-            leftMargin: 16
+            top:heading_2.bottom
+            left:page_icon.right
+            right: root_item.right
+            bottom: root_item.bottom
+            rightMargin: 4
         }
-        font.pixelSize: 36
+        font.pixelSize: 18
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignRight
-        verticalAlignment:  Text.AlignVCenter
+        verticalAlignment:  Text.AlignBottom
     }
 }

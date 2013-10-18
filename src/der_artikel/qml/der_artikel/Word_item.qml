@@ -37,7 +37,6 @@ Rectangle {
         {
             wordClicked()
             color = manager.current_word_color;
-            wordText = "Der " + wordText
         }
     }
 

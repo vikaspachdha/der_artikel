@@ -6,7 +6,9 @@ Rectangle {
     color:"blue"
     property alias title:msg_title.text
     property alias message:msg_text.text
-
+    property alias animation_pause:pause_anim.duration
+    property  alias animate: animation.running
+    y: -msg_bar.parent.height
     Rectangle {
         id: icon
         height: width
@@ -47,22 +49,33 @@ Rectangle {
         text:"message"
     }
 
-    Button {
-        text:"test Button"
-        onClicked: {
-            if(msg_bar.y == rootItem.y) {
-                msg_bar.y = rootItem.height - msg_bar.height
-            } else {
-               msg_bar.y = rootItem.y
-            }
+    SequentialAnimation {
+        id: animation
+        NumberAnimation {
+            target: msg_bar
+            property: "y"
+            to: (msg_bar.parent.height - msg_bar.height)*0.5
+            duration: 400
+            easing.type: Easing.OutCubic
+
+        }
+        PauseAnimation { id: pause_anim; duration: 2000 }
+        NumberAnimation {
+            target: msg_bar
+            property: "y"
+            to: msg_bar.parent.height
+            duration: 400
+            easing.type: Easing.OutCubic
+
+        }
+        NumberAnimation {
+            target: msg_bar
+            property: "y"
+            to: -msg_bar.parent.height
+            duration: 0
+            easing.type: Easing.OutCubic
+
         }
     }
-    Behavior on y {
-            NumberAnimation {
-                id: bouncebehavior
-                duration: 400
-                easing.type: Easing.OutCubic
 
-            }
-    }
 }

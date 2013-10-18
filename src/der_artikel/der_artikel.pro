@@ -51,4 +51,5 @@ FORMS += \
 RESOURCES += \
     resources.qrc
 
-OTHER_FILES +=
+OTHER_FILES += \
+    qml/der_artikel/Word_item.qml

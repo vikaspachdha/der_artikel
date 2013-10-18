@@ -44,6 +44,7 @@ Item {
             }
             onClicked: {
                 manager.showResult();
+                showMessage();
             }
         }
 
@@ -120,7 +121,7 @@ Item {
 
     function addWord(itemText)
     {
-        var WordComponent = Qt.createComponent("WordItem.qml");
+        var WordComponent = Qt.createComponent("Word_item.qml");
         if(WordComponent.status == Component.Ready) {
             var WordItem = WordComponent.createObject(wordFlow);
             WordItem.wordText = itemText;
@@ -129,13 +130,18 @@ Item {
         return WordItem;
     }
 
-//    Message_bar {
-//        id: msg_bar
-//        height: parent.height * 0.2
-//        color:"red"
+    function showMessage()
+    {
+        msg_bar.animate = true
+    }
 
-//        anchors.left: parent.left
-//        anchors.right: parent.right
-//    }
+    Message_bar {
+        id: msg_bar
+        height: parent.height * 0.2
+        color:"red"
+
+        anchors.left: parent.left
+        anchors.right: parent.right
+    }
 }
 
