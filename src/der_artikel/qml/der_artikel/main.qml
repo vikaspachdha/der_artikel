@@ -5,8 +5,8 @@ import QtGraphicalEffects 1.0
 
 Item {
     id: rootItem;
-    width: 360
-    height: 360
+    width: 400
+    height: 400
 
     property color currentColor
     Title_bar {
@@ -111,19 +111,20 @@ Item {
         Words_page {
             id: words_page_item
             anchors.fill: parent
-            visible:false
+            visible:true
         }
 
-        Thema_page {
-            id: thema_page_item
-            anchors.fill: parent
-            visible:false
-        }
+//        Thema_page {
+//            id: thema_page_item
+//            anchors.fill: parent
+//            visible:false
+//        }
 
-        Result_page {
-            id: result_page_item
-            anchors.fill: parent
-        }
+//        Result_page {
+//            id: result_page_item
+//            anchors.fill: parent
+//            visible:false
+//        }
     }
 
 
