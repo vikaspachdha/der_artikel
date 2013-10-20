@@ -91,6 +91,42 @@ Rectangle {
         }
     }
 
+    states:[
+        State {
+            id:base
+            AnchorChanges{
+                target: msg_bar
+                anchors.top: undefined
+                anchors.verticalCenter: undefined
+                anchors.bottom : msg_bar.parent.top
+            }
+        },
+        State {
+            id:middle
+            AnchorChanges{
+                target: msg_bar
+                anchors.bottom: undefined
+                anchors.top : undefined
+                anchors.verticalCenter: msg_bar.parent.verticalCenter
+            }
+        },
+        State {
+            id:bottom
+            AnchorChanges{
+                target: msg_bar
+                anchors.verticalCenter: undefined
+                anchors.bottom: undefined
+                anchors.top : msg_bar.parent.bottom
+            }
+        }
+
+    ]
+
+    function showMessage()
+    {
+
+    }
+
 
 
 }
