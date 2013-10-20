@@ -114,17 +114,17 @@ Item {
             visible:true
         }
 
-//        Thema_page {
-//            id: thema_page_item
-//            anchors.fill: parent
-//            visible:false
-//        }
+        Thema_page {
+            id: thema_page_item
+            anchors.fill: parent
+            visible:false
+        }
 
-//        Result_page {
-//            id: result_page_item
-//            anchors.fill: parent
-//            visible:false
-//        }
+        Result_page {
+            id: result_page_item
+            anchors.fill: parent
+            visible:false
+        }
     }
 
 
