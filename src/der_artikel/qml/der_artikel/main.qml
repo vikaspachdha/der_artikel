@@ -100,37 +100,20 @@ Item {
     }
 
 
-    Rectangle
+    Content_frame
     {
-        id: wordsFrame
+        id: content_frame
         anchors.top: title_item.bottom
         anchors.bottom: rootItem.bottom
         anchors.left: articleFrame.right
         anchors.right: rootItem.right
         anchors.margins:4
-        Words_page {
-            id: words_page_item
-            anchors.fill: parent
-            visible:true
-        }
-
-        Thema_page {
-            id: thema_page_item
-            anchors.fill: parent
-            visible:false
-        }
-
-        Result_page {
-            id: result_page_item
-            anchors.fill: parent
-            visible:false
-        }
     }
 
 
     function addWord(itemText)
     {
-        var WordItem = words_page_item.appendWordToFlow(itemText)
+        var WordItem = content_frame.word_page.appendWordToFlow(itemText)
         return WordItem;
     }
 
