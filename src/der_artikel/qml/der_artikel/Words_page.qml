@@ -2,22 +2,23 @@ import QtQuick 2.0
 
 Rectangle {
     id: word_page_root
-    anchors.fill: parent
+
     Flickable
     {
         id: wordsFrame
-        anchors.fill: parent
+        anchors.fill: word_page_root
         clip: true
         contentHeight: wordFlow.childrenRect.height
-        Flow
-        {
-            id: wordFlow
-            width:wordsFrame.width
-            spacing: 6
-        }
-
     }
 
+    Flow
+    {
+        id: wordFlow
+        anchors.left: wordsFrame.left
+        anchors.right: wordsFrame.right
+        anchors.top: wordsFrame.top
+        spacing: 6
+    }
     function appendWordToFlow(itemText)
     {
         var WordComponent = Qt.createComponent("Word_item.qml");

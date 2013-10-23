@@ -7,6 +7,7 @@ Item {
     id: rootItem;
     width: 400
     height: 400
+    clip:true
 
     property color currentColor
     Title_bar {
@@ -38,14 +39,15 @@ Item {
         }
 
         Button {
-            text: "Show Result"
+            text: "Home"
             height: 24
             anchors{
                 bottom: parent.bottom
             }
             onClicked: {
                 manager.showResult();
-                showMessage();
+                //showMessage();
+                content_frame.showThemaPage()
             }
         }
 
