@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QQmlContext>
+#include <QtQml>
 
 #include "qtquick2applicationviewer.h"
 #include "manager.h"
@@ -11,6 +12,8 @@
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    qmlRegisterUncreatableType<Manager_C>("com.vystosi.qmlcomponents", 1, 0, "Manager","reason");
 
 #ifdef ENABLE_THEMA_BUILDER
     ThemaBuilder_C thema_builder;

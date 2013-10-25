@@ -12,7 +12,7 @@ Manager_C::Manager_C(QObject *parent) :
 {
     _current_word_color = QColor("#5287B1");
     LoadDefaultThemas();
-    connect(this,SIGNAL(SelectedArticleChanged()), this, SLOT(OnSelectedArticleChanged()) );
+    connect(this,SIGNAL(selectedArticleChanged()), this, SLOT(OnSelectedArticleChanged()) );
 }
 
 Manager_C::~Manager_C()
@@ -40,6 +40,15 @@ void Manager_C::SetSelectedArticle(uint article)
         break;
     default:
         break;
+    }
+}
+
+void Manager_C::SetCurrentPage(Manager_C::PageType new_page)
+{
+    if(_current_page != new_page) {
+        PageType old_page = _current_page;
+        _current_page = new_page;
+        emit currentPageChanged(old_page,new_page);
     }
 }
 
