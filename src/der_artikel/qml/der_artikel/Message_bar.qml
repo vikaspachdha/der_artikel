@@ -93,7 +93,7 @@ Rectangle {
 
     states:[
         State {
-            id:base
+            name:"base"
             AnchorChanges{
                 target: msg_bar
                 anchors.top: undefined
@@ -102,7 +102,7 @@ Rectangle {
             }
         },
         State {
-            id:middle
+            name:"middle"
             AnchorChanges{
                 target: msg_bar
                 anchors.bottom: undefined
@@ -111,7 +111,7 @@ Rectangle {
             }
         },
         State {
-            id:bottom
+            name:"bottom"
             AnchorChanges{
                 target: msg_bar
                 anchors.verticalCenter: undefined
@@ -121,6 +121,11 @@ Rectangle {
         }
 
     ]
+
+    Component.onCompleted:
+    {
+        state="base"
+    }
 
     function showMessage()
     {

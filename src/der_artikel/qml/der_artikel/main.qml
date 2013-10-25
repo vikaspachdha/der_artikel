@@ -3,13 +3,17 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 import QtGraphicalEffects 1.0
 
-Item {
+Image {
     id: rootItem;
     width: 400
     height: 400
     clip:true
-
+    source: "qrc:/res/resources/background_texture.png"
+    fillMode: Image.Tile
+    horizontalAlignment: Image.AlignLeft
+    verticalAlignment: Image.AlignTop
     property color currentColor
+
     Title_bar {
         id: title_item
         height: rootItem.height*0.2
@@ -133,15 +137,15 @@ Item {
         anchors.right: parent.right
     }
 
-    DropShadow {
-        anchors.fill: msg_bar
-        horizontalOffset: 4
-        verticalOffset: 8
-        radius: 0
-        spread: 0.3
-        samples: 16
-        color: "#66000000"
-        source: msg_bar
-    }
+//    DropShadow {
+//        anchors.fill: msg_bar
+//        horizontalOffset: 4
+//        verticalOffset: 8
+//        radius: 0
+//        spread: 0.3
+//        samples: 16
+//        color: "#66000000"
+//        source: msg_bar
+//    }
 }
 

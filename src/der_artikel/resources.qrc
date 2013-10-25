@@ -3,5 +3,8 @@
         <file>resources/open.png</file>
         <file>resources/save.png</file>
         <file>resources/delete.png</file>
+        <file>resources/background_texture.png</file>
+        <file>resources/alt_background_texture.png</file>
+        <file>resources/default_thema.png</file>
     </qresource>
 </RCC>

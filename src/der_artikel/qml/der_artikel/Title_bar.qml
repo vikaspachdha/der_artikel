@@ -1,25 +1,46 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
-Rectangle {
+Item {
     id: root_item
-    gradient: Gradient {
-              GradientStop { position: 0.0; color: "#8E9CA4" }
-              GradientStop { position: 0.10; color: "#9CAFB8" }
-              GradientStop { position: 0.90; color: "#9CAFB8" }
-              GradientStop { position: 1.0; color: "#8E9CA4" }
-          }
+
+    Image {
+        id: background_image
+        anchors.fill: parent
+        anchors.margins: 8
+        source:"qrc:/res/resources/alt_background_texture.png"
+        fillMode: Image.Tile
+        horizontalAlignment: Image.AlignLeft
+        verticalAlignment: Image.AlignTop
+    }
+
+    DropShadow {
+        anchors.fill: background_image
+        horizontalOffset: 2
+        verticalOffset: 4
+        radius: 0
+        spread: 0.3
+        samples: 16
+        color: "#66000000"
+        source: background_image
+    }
+
+
     clip: true
 
-    Rectangle {
+    Image {
         id: page_icon
         width: height
         anchors {
-            top:parent.top
-            left:parent.left
-            bottom: parent.bottom
+            top:background_image.top
+            left:background_image.left
+            bottom: background_image.bottom
             margins:4
         }
-        color:"yellow"
+        source:"qrc:/res/resources/default_thema.png"
+        fillMode: Image.PreserveAspectFit
+        horizontalAlignment: Image.AlignLeft
+        verticalAlignment: Image.AlignTop
     }
 
 
@@ -27,7 +48,7 @@ Rectangle {
         id: heading_1
         text:"Thema : Wohnung"
         anchors {
-            top:root_item.top
+            top:background_image.top
             left:page_icon.right
             leftMargin: 4
         }
@@ -57,8 +78,8 @@ Rectangle {
         anchors {
             top:heading_2.bottom
             left:page_icon.right
-            right: root_item.right
-            bottom: root_item.bottom
+            right: background_image.right
+            bottom: background_image.bottom
             rightMargin: 4
         }
         font.pixelSize: 18
