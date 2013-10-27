@@ -8,7 +8,8 @@ Manager_C::Manager_C(QObject *parent) :
     QObject(parent),
     _root_item(0),
     _current_thema(0),
-    _selected_article(ARTIKEL::DER)
+    _selected_article(ARTIKEL::DER),
+    _current_page(HOME_PAGE)
 {
     _current_word_color = QColor("#5287B1");
     LoadDefaultThemas();
@@ -43,7 +44,7 @@ void Manager_C::SetSelectedArticle(uint article)
     }
 }
 
-void Manager_C::SetCurrentPage(Manager_C::PageType new_page)
+void Manager_C::setCurrentPage(Manager_C::PageType new_page)
 {
     if(_current_page != new_page) {
         PageType old_page = _current_page;

@@ -6,5 +6,7 @@
         <file>resources/background_texture.png</file>
         <file>resources/alt_background_texture.png</file>
         <file>resources/default_thema.png</file>
+        <file>resources/home.png</file>
+        <file>resources/thema_icon.png</file>
     </qresource>
 </RCC>

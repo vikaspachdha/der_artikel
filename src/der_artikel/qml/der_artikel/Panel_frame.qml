@@ -4,46 +4,48 @@ import com.vystosi.qmlcomponents 1.0
 Item {
     id: root_item
 
-    property Item current_page
-    property Item next_page
-
-    property alias word_page: words_page_item
+    property Item current_panel
+    property Item next_panel
 
 
-    Home_page {
-        id: home_page_item
+    Home_page_panel {
+        id: home_page_panel_item
         anchors.top: root_item.top
         anchors.right: root_item.right
         anchors.bottom: root_item.bottom
         anchors.left: root_item.left
         anchors.margins: 4
+        width:root_item.width
     }
 
-    Words_page {
-        id: words_page_item
+    Words_page_panel {
+        id: words_page_panel_item
         anchors.top: root_item.top
-        anchors.right: undefined
+        anchors.right: root_item.left
         anchors.bottom: root_item.bottom
-        anchors.left: root_item.right
+        anchors.left: undefined
         anchors.margins: 4
+        width:root_item.width
     }
 
-    Thema_page {
-        id: thema_page_item
+    Thema_page_panel {
+        id: thema_page_panel_item
         anchors.top: root_item.top
-        anchors.right: undefined
+        anchors.right: root_item.left
         anchors.bottom: root_item.bottom
-        anchors.left: root_item.right
+        anchors.left: undefined
         anchors.margins: 4
+        width:root_item.width
     }
 
-    Result_page {
-        id: result_page_item
+    Result_page_panel {
+        id: result_page_panel_item
         anchors.top: root_item.top
-        anchors.right: undefined
+        anchors.right: root_item.left
         anchors.bottom: root_item.bottom
-        anchors.left: root_item.right
+        anchors.left: undefined
         anchors.margins: 4
+        width:root_item.width
     }
 
 
@@ -52,36 +54,36 @@ Item {
         State {
             name: ""
             AnchorChanges {
-                target:next_page
+                target:next_panel
                 anchors.top: root_item.top
                 anchors.right: root_item.right
                 anchors.bottom: root_item.bottom
                 anchors.left: root_item.left
             }
             AnchorChanges {
-                target:current_page
+                target:current_panel
                 anchors.top: root_item.top
-                anchors.right: undefined
+                anchors.right: root_item.left
                 anchors.bottom: root_item.bottom
-                anchors.left: root_item.right
+                anchors.left: undefined
             }
 
         },
         State {
             name: "slide_in"
             AnchorChanges {
-                target:next_page
+                target:next_panel
                 anchors.top: root_item.top
                 anchors.right: root_item.right
                 anchors.bottom: root_item.bottom
                 anchors.left: root_item.left
             }
             AnchorChanges {
-                target:current_page
+                target:current_panel
                 anchors.top: root_item.top
-                anchors.right: undefined
+                anchors.right: root_item.left
                 anchors.bottom: root_item.bottom
-                anchors.left: root_item.right
+                anchors.left: undefined
             }
 
         }
@@ -95,18 +97,18 @@ Item {
             reversible: true
             AnchorAnimation {
                 duration:400
-                easing.type: Easing.OutExpo
+                easing.type: Easing.OutQuad
             }
             onRunningChanged: {
                 if(running==false) {
-                    current_page=next_page
+                    current_panel=next_panel
                 }
             }
         }
     ]
 
 Component.onCompleted: {
-    current_page = home_page_item
+    current_panel = home_page_panel_item
     manager.currentPageChanged.connect(onCurrenPageChanged)
 }
 
@@ -114,13 +116,13 @@ Component.onCompleted: {
 function onCurrenPageChanged(old_page, new_page)
 {
     if(new_page == Manager.HOME_PAGE) {
-        next_page=home_page_item
+        next_panel=home_page_panel_item
     } else if(new_page == Manager.THEMA_PAGE) {
-        next_page=thema_page_item
+        next_panel=thema_page_panel_item
     }else if(new_page == Manager.RESULT_PAGE) {
-        next_page=result_page_item
+        next_panel=result_page_panel_item
     }else if(new_page == Manager.WORDS_PAGE) {
-        next_page=words_page_item
+        next_panel=words_page_panel_item
     }
 
     state=state=="slide_in"?"":"slide_in"

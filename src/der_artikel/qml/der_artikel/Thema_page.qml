@@ -3,8 +3,8 @@ import QtQuick 2.0
 Item {
     //anchors.fill: parent
 
-    width: 800
-    height: 600
+    //width: 800
+    //height: 600
 
     GridView {
         id: grid_view1

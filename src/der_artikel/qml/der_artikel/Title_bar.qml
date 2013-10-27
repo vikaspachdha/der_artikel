@@ -37,7 +37,7 @@ Item {
             bottom: background_image.bottom
             margins:4
         }
-        source:"qrc:/res/resources/default_thema.png"
+        source:"qrc:/res/resources/thema_icon.png"
         fillMode: Image.PreserveAspectFit
         horizontalAlignment: Image.AlignLeft
         verticalAlignment: Image.AlignTop

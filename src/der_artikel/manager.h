@@ -19,7 +19,7 @@ class Manager_C : public QObject
 
     Q_PROPERTY(uint selected_article READ GetSelectedArticle WRITE SetSelectedArticle NOTIFY selectedArticleChanged)
     Q_PROPERTY(QColor current_word_color READ GetCurrentWordColor)
-    Q_PROPERTY(PageType current_page READ GetCurrentPage WRITE SetCurrentPage NOTIFY currentPageChanged)
+    Q_PROPERTY(PageType current_page READ getCurrentPage WRITE setCurrentPage NOTIFY currentPageChanged)
 
 public:
     enum PageType
@@ -30,7 +30,8 @@ public:
         RESULT_PAGE,
         STATS_PAGE,
         PREF_PAGE,
-        ABOUT_PAGE
+        ABOUT_PAGE,
+        INVALID
     };
 
 public:
@@ -45,8 +46,8 @@ public:
 
     QColor GetCurrentWordColor() const { return _current_word_color; }
 
-    void SetCurrentPage(PageType new_page);
-    PageType GetCurrentPage() const { return _current_page; }
+    void setCurrentPage(PageType new_page);
+    PageType getCurrentPage() const { return _current_page; }
 
 
 public:
