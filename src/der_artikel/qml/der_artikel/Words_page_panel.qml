@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
+import com.vystosi.qmlcomponents 1.0
 
 Page_panel {
     ExclusiveGroup {
@@ -8,8 +9,9 @@ Page_panel {
 
     Column {
         id: articleCol
-        anchors.verticalCenter: parent.verticalCenter
-        spacing: 16
+        anchors.top: parent.top
+        anchors.left: parent.left
+        spacing: 4
         RadioButton {
             id: mannlisch
             text: "Der"
@@ -51,6 +53,19 @@ Page_panel {
                 }
                 currentColor = "lightgray"
             }
+        }
+    }
+    Command_item
+    {
+        id: home_cmd
+        //anchors.left: parent.left
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 4
+        cmd_text: qsTr("Finish")
+        cmd_icon: "qrc:/res/resources/result_32.png"
+        onCommandActivated: {
+            manager.current_page = Manager.RESULT_PAGE
         }
     }
 

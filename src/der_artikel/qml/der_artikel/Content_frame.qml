@@ -8,7 +8,7 @@ Item {
     property Item next_page
 
     property alias word_page: words_page_item
-
+    clip:true
 
     Home_page {
         id: home_page_item
@@ -100,6 +100,7 @@ Item {
             onRunningChanged: {
                 if(running==false) {
                     current_page=next_page
+                    console.log(current_page)
                 }
             }
         }

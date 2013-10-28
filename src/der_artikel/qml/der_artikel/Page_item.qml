@@ -2,8 +2,8 @@ import QtQuick 2.0
 import com.vystosi.qmlcomponents 1.0
 Item {
     id: root_item
-    width: 64
-    height: 74
+    width: 44
+    height: 44
     property alias label_text:item_label.text
     property alias page_icon:icon.source
     property int page_id: Manager.INVALID
@@ -16,6 +16,7 @@ Item {
         anchors.leftMargin: 0
         anchors.top: parent.top
         anchors.topMargin: 0
+        fillMode: Image.PreserveAspectFit
         source: "qrc:/res/resources/default_thema.png"
     }
 

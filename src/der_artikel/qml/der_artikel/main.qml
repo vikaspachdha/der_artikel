@@ -28,6 +28,7 @@ Image {
         id: cmd_panel_frame
         anchors.top: title_item.bottom
         anchors.bottom: home_cmd.top
+        anchors.bottomMargin: 4
         anchors.left: rootItem.left
         width: 80
     }
@@ -35,7 +36,6 @@ Image {
     Command_item
     {
         id: home_cmd
-        //anchors.left: parent.left
         anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4

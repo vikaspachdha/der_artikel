@@ -12,5 +12,7 @@
         <file>resources/thumbs_down_64.png</file>
         <file>resources/thumbs_up_32.png</file>
         <file>resources/thumbs_up_64.png</file>
+        <file>resources/result_32.png</file>
+        <file>resources/result_64.png</file>
     </qresource>
 </RCC>
