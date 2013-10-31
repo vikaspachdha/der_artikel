@@ -9,16 +9,17 @@ Item {
         anchors.fill: word_page_root
         clip: true
         contentHeight: wordFlow.childrenRect.height
+        Flow
+        {
+            id: wordFlow
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            spacing: 6
+        }
     }
 
-    Flow
-    {
-        id: wordFlow
-        anchors.left: wordsFrame.left
-        anchors.right: wordsFrame.right
-        anchors.top: wordsFrame.top
-        spacing: 6
-    }
+
     function appendWordToFlow(itemText)
     {
         var WordComponent = Qt.createComponent("Word_item.qml");
