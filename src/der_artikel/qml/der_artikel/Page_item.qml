@@ -6,7 +6,6 @@ Item {
     height: 44
     property alias label_text:item_label.text
     property alias page_icon:icon.source
-    property int page_id: Manager.INVALID
     Image {
         id: icon
         height: width
@@ -37,7 +36,7 @@ Item {
         id: mouse_area
         anchors.fill: parent
         onClicked: {
-            manager.current_page=page_id
+            manager.current_page=model.src_page_id
         }
     }
 }

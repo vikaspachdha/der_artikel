@@ -19,7 +19,6 @@ Item {
         delegate: Page_item {
             label_text: title
             page_icon: icon_src
-            page_id:src_page_id
         }
     }
 }
