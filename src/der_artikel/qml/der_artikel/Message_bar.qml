@@ -40,7 +40,7 @@ Rectangle {
             top: msg_bar.top
             right: msg_bar.right
         }
-        font.pointSize: height*0.8
+        font.pointSize: 12
         font.italic: true
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
@@ -58,7 +58,7 @@ Rectangle {
         }
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
-        font.pointSize: height*0.30
+        font.pointSize: 12
         text:"message\nnext line"
     }
 
