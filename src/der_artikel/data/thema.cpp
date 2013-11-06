@@ -90,19 +90,18 @@ void Thema_C::ClearWords()
     _words.clear();
 }
 
-uint Thema_C::GetWordCount() const
+unsigned int Thema_C::GetWordCount() const
 {
-    return (uint)_words.size();
+    return (uint)_words.count();
 }
 
-uint Thema_C::GetCorrectArticleCount() const
+const Word_C *Thema_C::GetWord(unsigned int index) const
 {
-    uint count = 0;
-    foreach(Word_C* word, _words) {
-        if(word->GetArtikel() == word->GetUserArtikel()) {
-            ++count;
-        }
+    Word_C* word = 0;
+    if(index < _words.count()) {
+        word = _words.at(index);
     }
-    return count;
+    return word;
 }
+
 
