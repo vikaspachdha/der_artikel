@@ -46,10 +46,10 @@ HEADERS += \
     thema_builder.h \
     thema_loader.h \
     version.h \
-    data/Thema_I.h \
     algo/strict_result_algo.h \
     algo/result_algo.h \
-    data/result.h
+    data/result.h \
+    data/thema_interface.h
 
 FORMS += \
     thema_builder.ui

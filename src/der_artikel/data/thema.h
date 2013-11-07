@@ -4,7 +4,7 @@
 #include <QDomElement>
 #include <QVector>
 #include "word.h"
-#include "Thema_I.h"
+#include "thema_interface.h"
 
 class Thema_C : public QObject, public Thema_I
 {

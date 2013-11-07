@@ -1,6 +1,6 @@
 #include "strict_result_algo.h"
 #include "data/word.h"
-#include "data/Thema.h"
+#include "data/thema.h"
 #include "data/result.h"
 
 StrictResultAlgo_C::StrictResultAlgo_C():ResultAlgo_I()
