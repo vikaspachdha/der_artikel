@@ -10,6 +10,7 @@
 class QQuickItem;
 class Thema_C;
 class Word_C;
+class ResultAlgo_I;
 
 class Manager_C : public QObject
 {
@@ -78,6 +79,7 @@ private:
     ARTIKEL::Artikel _selected_article;
     QColor _current_word_color;
     PageType _current_page;
+    ResultAlgo_I* _result_algo;
 };
 
 #endif // MANAGER_H

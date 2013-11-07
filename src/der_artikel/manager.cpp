@@ -3,16 +3,22 @@
 
 #include "data/thema.h"
 #include "thema_loader.h"
+#include "algo/strict_result_algo.h"
+#include "data/result.h"
 
 Manager_C::Manager_C(QObject *parent) :
     QObject(parent),
     _root_item(0),
     _current_thema(0),
     _selected_article(ARTIKEL::DER),
-    _current_page(HOME_PAGE)
+    _current_page(HOME_PAGE),
+    _result_algo(0)
 {
     _current_word_color = QColor("#5287B1");
     LoadDefaultThemas();
+
+    _result_algo = new StrictResultAlgo_C;
+
     connect(this,SIGNAL(selectedArticleChanged()), this, SLOT(OnSelectedArticleChanged()) );
 }
 
@@ -79,7 +85,10 @@ void Manager_C::OnWordClicked()
 
 void Manager_C::showResult()
 {
-    qDebug() <<_current_thema->GetCorrectArticleCount()<<"/"<<_current_thema->GetWordCount();
+    if(_current_thema) {
+        Result_C result;
+        _result_algo->Calculate(*_current_thema,result);
+    }
 }
 
 void Manager_C::AddWords(const Thema_C* thema)
