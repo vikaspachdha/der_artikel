@@ -60,6 +60,8 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
                                 delete thema;
                                 thema = 0;
                                 qDebug()<<"Invalid Thema.";
+                            } else {
+                                thema->SetFilePath(file_path);
                             }
                             if(_thema_parent) {
                                 thema->moveToThread(_thema_parent->thread());

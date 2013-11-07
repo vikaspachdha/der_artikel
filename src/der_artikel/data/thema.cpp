@@ -3,7 +3,12 @@
 
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
-    _translation("")
+    _translation(""),
+    _defered_read(false),
+    _3rd_last_score(0.0),
+    _2nd_last_score(0.0),
+    _last_score(0.0),
+    _played_count(0)
 {
 }
 
