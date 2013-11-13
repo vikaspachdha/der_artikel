@@ -30,8 +30,5 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
     double score = (double)(correct_count - (incorrect_count/2.0) - (unplayed_count/4.0))/count;
 
-    result.SetScore(score);
-    result.SetCorrectWordCount(correct_count);
-    result.SetMistakesCount(incorrect_count);
-    result.SetUnplayedCount(unplayed_count);
+    result.UpdateResult(score,correct_count, incorrect_count, unplayed_count);
 }

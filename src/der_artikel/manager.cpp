@@ -12,18 +12,21 @@ Manager_C::Manager_C(QObject *parent) :
     _current_thema(0),
     _selected_article(ARTIKEL::DER),
     _current_page(HOME_PAGE),
-    _result_algo(0)
+    _result_algo(0),
+    _current_result(0)
 {
     _current_word_color = QColor("#5287B1");
     LoadDefaultThemas();
 
     _result_algo = new StrictResultAlgo_C;
+    _current_result = new Result_C(this);
 
     connect(this,SIGNAL(selectedArticleChanged()), this, SLOT(OnSelectedArticleChanged()) );
 }
 
 Manager_C::~Manager_C()
 {
+    delete _current_result;
     foreach(Thema_C* thema, _themas) {
         delete thema;
     }
@@ -83,11 +86,11 @@ void Manager_C::OnWordClicked()
     }
 }
 
-void Manager_C::showResult()
+void Manager_C::calculateResult()
 {
+    Q_ASSERT(_current_result);
     if(_current_thema) {
-        Result_C result;
-        _result_algo->Calculate(*_current_thema,result);
+        _result_algo->Calculate(*_current_thema,*_current_result);
     }
 }
 

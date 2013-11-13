@@ -65,6 +65,7 @@ Page_panel {
         cmd_text: qsTr("Finish")
         cmd_icon: "qrc:/res/resources/result_32.png"
         onCommandActivated: {
+            manager.calculateResult()
             manager.current_page = Manager.RESULT_PAGE
         }
     }

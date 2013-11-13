@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import com.vystosi.qmlcomponents 1.0
 
 Item {
     id: rectangle1
@@ -84,7 +85,7 @@ Item {
         Text {
             id: score_text
             anchors.fill: parent
-            text: qsTr("80% Accuracy")
+            //text: currentResult.score * 100 + qsTr("% Accuracy")
             font.pixelSize: height * 0.8
             horizontalAlignment: Text.AlignHCenter
             fontSizeMode: Text.Fit
@@ -105,12 +106,20 @@ Item {
         Text {
             id: title_word_list
             anchors.fill: parent
-            text: qsTr("Mistakes")
+            //text: currentResult.mistakes_count + qsTr(" Mistakes")
             font.pixelSize: height * 0.8
             horizontalAlignment: Text.AlignHCenter
             fontSizeMode: Text.Fit
         }
     }
 
+    function onResultUpdated()
+    {
+        score_text.text = currentResult.score * 100 + qsTr("% Accuracy")
+        title_word_list.text = currentResult.mistakes_count + qsTr(" Mistakes")
+    }
 
+    Component.onCompleted: {
+        currentResult.resultUpdated.connect(onResultUpdated)
+    }
 }

@@ -5,6 +5,7 @@
 #include <QVector>
 #include <QHash>
 #include <QColor>
+#include "data/result.h"
 #include "common.h"
 
 class QQuickItem;
@@ -50,9 +51,11 @@ public:
     void setCurrentPage(PageType new_page);
     PageType getCurrentPage() const { return _current_page; }
 
+    Result_C* GetCurrentResult() { return _current_result; }
+
 
 public:
-    Q_INVOKABLE void showResult();
+    Q_INVOKABLE void calculateResult();
 
 signals:
     void selectedArticleChanged();
@@ -80,6 +83,7 @@ private:
     QColor _current_word_color;
     PageType _current_page;
     ResultAlgo_I* _result_algo;
+    Result_C* _current_result;
 };
 
 #endif // MANAGER_H
