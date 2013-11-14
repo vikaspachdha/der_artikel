@@ -4,36 +4,53 @@ import com.vystosi.qmlcomponents 1.0
 Item {
     id: rectangle1
 
-    //anchors.fill: parent
-
     width: 800
     height: 600
 
-    Rectangle {
-        id: title_rect
-        height: parent.height * 0.1
+
+
+    Custom_label {
+        id: title_label
         anchors {
             top: parent.top
             left: parent.left
             right: parent.right
         }
-        color: "#ABB5DA"
-
-        Text {
-            id: title_text
-            anchors.fill: parent
-            text: qsTr("Result")
-            font.pixelSize: height * 0.8
-            horizontalAlignment: Text.AlignHCenter
-            fontSizeMode: Text.Fit
-        }
     }
+
+    Custom_label {
+        id: score_label
+        anchors.right: parent.right
+        anchors.left: parent.left
+        anchors.top: title_label.bottom
+        anchors.topMargin: 2
+        font_size:14
+    }
+
+    Custom_label {
+        id: mistakes_label
+        anchors.right: parent.right
+        anchors.left: parent.left
+        anchors.top: score_label.bottom
+        anchors.topMargin: 2
+        font_size:12
+    }
+
+    Custom_label {
+        id: unplayed_label
+        anchors.right: parent.right
+        anchors.left: parent.left
+        anchors.top: mistakes_label.bottom
+        anchors.topMargin: 2
+        font_size:12
+    }
+
 
     ListView {
         id: list_view1
 
-        anchors.top: rectangle3.bottom
-        anchors.topMargin: 4
+        anchors.top: unplayed_label.bottom
+        anchors.topMargin: 2
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: parent.bottom
@@ -71,52 +88,14 @@ Item {
         }
     }
 
-    Rectangle {
-        id: rectangle2
-        height: parent.height * 0.1
-        color: "#abb5da"
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.top: title_rect.bottom
-        anchors.topMargin: 4
 
-        Text {
-            id: score_text
-            anchors.fill: parent
-            //text: currentResult.score * 100 + qsTr("% Accuracy")
-            font.pixelSize: height * 0.8
-            horizontalAlignment: Text.AlignHCenter
-            fontSizeMode: Text.Fit
-        }
-    }
-
-    Rectangle {
-        id: rectangle3
-        height: parent.height*0.05
-        color: "#abb5da"
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.top: rectangle2.bottom
-        anchors.topMargin: 4
-
-        Text {
-            id: title_word_list
-            anchors.fill: parent
-            //text: currentResult.mistakes_count + qsTr(" Mistakes")
-            font.pixelSize: height * 0.8
-            horizontalAlignment: Text.AlignHCenter
-            fontSizeMode: Text.Fit
-        }
-    }
 
     function onResultUpdated()
     {
-        score_text.text = currentResult.score * 100 + qsTr("% Accuracy")
-        title_word_list.text = currentResult.mistakes_count + qsTr(" Mistakes")
+        title_label.text = currentResult.grade_string
+        score_label.text = currentResult.score_string
+        mistakes_label.text = currentResult.mistake_string
+        unplayed_label.text = currentResult.unplayed_string
     }
 
     Component.onCompleted: {
