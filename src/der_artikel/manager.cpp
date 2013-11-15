@@ -15,7 +15,7 @@ Manager_C::Manager_C(QObject *parent) :
     _result_algo(0),
     _current_result(0)
 {
-    _current_word_color = QColor("#5287B1");
+    SetSelectedArticle(_selected_article);
     LoadDefaultThemas();
 
     _result_algo = new StrictResultAlgo_C;
@@ -43,7 +43,7 @@ void Manager_C::SetSelectedArticle(uint article)
         _current_word_color = QColor("#E882DA");
         break;
     case ARTIKEL::DAS:
-        _current_word_color = QColor("#B9B9B9");
+        _current_word_color = QColor("#FFFFFF");
         break;
     case ARTIKEL::NA:
         _current_word_color = QColor("#FEF574");
@@ -51,6 +51,8 @@ void Manager_C::SetSelectedArticle(uint article)
     default:
         break;
     }
+
+    _current_word_color.setAlpha(70);
 }
 
 void Manager_C::setCurrentPage(Manager_C::PageType new_page)

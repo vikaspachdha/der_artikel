@@ -1,34 +1,54 @@
 import QtQuick 2.0
+import QtGraphicalEffects 1.0
 
-Rectangle {
-
+Item {
+    id: root
     // Properties definition
     property alias wordText: label.text
-    property int wordPtSz: 12
-    property color bkColor: "gray";
+    property alias wordPixelSz: label.font.pixelSize
 
     // Signals
     signal wordClicked
 
-    // Properties initilization
-    color: bkColor
-    radius: 8.0
+    height: childrenRect.height
+    width:childrenRect.width
 
+
+    Image {
+        id: left_image
+        height: text_area.height
+        width:sourceSize.width
+        source: "qrc:/res/resources/paper_texture_2_left.png"
+    }
+
+    Image {
+        id:text_area
+        width:label.width
+        height:label.height
+        anchors.left: left_image.right
+        source: "qrc:/res/resources/paper_texture_2_middle.png"
+        fillMode: Image.TileHorizontally
+    }
+
+    Image {
+        id: right_image
+        height: text_area.height
+        width:sourceSize.width
+        anchors.left: text_area.right
+        source: "qrc:/res/resources/paper_texture_2_right.png"
+    }
+
+    ColorOverlay {
+        id:overlay
+        anchors.fill: root
+        source: root
+        color: "#00000000"
+    }
     // Child elements
     Text {
         id: label
-        anchors.centerIn: parent
-        font.pointSize : wordPtSz
-        Component.onCompleted:
-        {
-            parent.width = paintedWidth +4
-            parent.height = paintedHeight +4
-        }
-        onTextChanged:
-        {
-            parent.width = paintedWidth +4
-            parent.height = paintedHeight +4
-        }
+        anchors.left: text_area.left
+        font.pixelSize: 22
     }
 
     MouseArea {
@@ -36,7 +56,7 @@ Rectangle {
         onClicked:
         {
             wordClicked()
-            color = manager.current_word_color;
+            overlay.color = manager.current_word_color;
         }
     }
 
