@@ -30,6 +30,7 @@ Item {
         font.pixelSize: 12
         horizontalAlignment: Text.AlignHCenter
         smooth:true
+        color:"white"
     }
 
     MouseArea {

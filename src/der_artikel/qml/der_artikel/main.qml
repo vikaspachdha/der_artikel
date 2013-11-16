@@ -16,7 +16,7 @@ Image {
 
     Title_bar {
         id: title_item
-        height: rootItem.height*0.2
+        height: 80
         anchors {
             top: parent.top
             left: parent.left
