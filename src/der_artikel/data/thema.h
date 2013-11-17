@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QDomElement>
 #include <QVector>
+#include <QUrl>
 #include "word.h"
 #include "thema_interface.h"
 
@@ -29,7 +30,7 @@ public:
     bool Selected() const { return _selected; }
     void SetSelected(bool selected);
 
-    QPixmap& GetThemaIcon() const;
+    const QUrl& GetIconUrl() const { return _icon_url; }
 
     // Thema_I implementation
 public:
@@ -54,7 +55,7 @@ private:
     double _last_score;
     double _played_count;
     bool _selected;
-    QPixmap* _icon;
+    QUrl _icon_url;
 
 
 private:

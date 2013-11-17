@@ -81,7 +81,6 @@ private:
 
 private:
     QQuickItem* _root_item;
-    QVector<Thema_C*> _themas;
     QHash<QObject*, Word_C*> _item_word_hash;
     Thema_C* _current_thema;
     ARTIKEL::Artikel _selected_article;

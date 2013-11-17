@@ -2,18 +2,24 @@
 #include "data/thema.h"
 #include <QPixmap>
 
-ThemaModel_C::ThemaModel_C(QVector<Thema_C *> thema_list, QObject *parent):
-    QAbstractListModel(parent),
-    _thema_list(thema_list)
+ThemaModel_C::ThemaModel_C(QObject *parent):
+    QAbstractListModel(parent)
 {
 
+}
+
+ThemaModel_C::~ThemaModel_C()
+{
+    foreach(Thema_C* thema, _thema_list) {
+        delete thema;
+    }
 }
 
 QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
 {
     QVariant data;
 
-    if(index.isValid()) {
+    if(index.isValid() && index.row() < _thema_list.count()) {
         Thema_C* thema = _thema_list.at(index.row());
         if(thema) {
 
@@ -28,7 +34,7 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
                 break;
 
             case ICON:
-                data = QVariant::fromValue<QPixmap>(thema->GetThemaIcon());
+                data = thema->GetIconUrl();
                 break;
 
             case SELECTED:
@@ -37,6 +43,10 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
 
             case PROGRESS:
                 data = 0.5;
+                break;
+
+            case WORD_COUNT:
+                data = thema->GetWordCount();
                 break;
             default:
                 break;
@@ -63,6 +73,7 @@ QHash<int, QByteArray> ThemaModel_C::roleNames() const
     roleNames[ICON] = "icon";
     roleNames[SELECTED] = "selected";
     roleNames[PROGRESS] = "progress";
+    roleNames[WORD_COUNT] = "word_count";
     return roleNames;
 }
 
@@ -101,5 +112,7 @@ bool ThemaModel_C::setData(const QModelIndex &index, const QVariant &value, int 
 void ThemaModel_C::AddThema(Thema_C *new_thema)
 {
     Q_ASSERT(new_thema);
+    beginInsertRows(QModelIndex(),_thema_list.count(),_thema_list.count());
     _thema_list.append(new_thema);
+    endInsertRows();
 }

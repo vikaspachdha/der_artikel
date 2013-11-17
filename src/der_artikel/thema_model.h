@@ -2,7 +2,7 @@
 #define THEMA_MODEL_H
 
 #include <QAbstractListModel>
-#include <QVector>
+#include <QList>
 
 class Thema_C;
 
@@ -15,11 +15,13 @@ class ThemaModel_C : public QAbstractListModel
         TR_NAME,
         ICON,
         SELECTED,
-        PROGRESS
+        PROGRESS,
+        WORD_COUNT
     };
 
 public:
-    explicit ThemaModel_C(QVector<Thema_C*> thema_list, QObject *parent = 0);
+    explicit ThemaModel_C(QObject *parent = 0);
+    ~ThemaModel_C();
 
 // QAbstarctItemModel Implementation.
 public:
@@ -33,7 +35,7 @@ public:
     void AddThema(Thema_C* new_thema);
 
 private:
-    QVector<Thema_C*>& _thema_list;
+    QList<Thema_C*> _thema_list;
 
 };
 

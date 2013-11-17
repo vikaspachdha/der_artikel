@@ -17,9 +17,10 @@ Manager_C::Manager_C(QObject *parent) :
     _current_result(0)
 {
     SetSelectedArticle(_selected_article);
-    LoadDefaultThemas();
 
-    _thema_model = new ThemaModel_C(_themas, this);
+    _thema_model = new ThemaModel_C(this);
+
+    LoadDefaultThemas();
 
     _result_algo = new StrictResultAlgo_C;
     _current_result = new Result_C(this);
@@ -30,9 +31,7 @@ Manager_C::Manager_C(QObject *parent) :
 Manager_C::~Manager_C()
 {
     delete _current_result;
-    foreach(Thema_C* thema, _themas) {
-        delete thema;
-    }
+    delete _thema_model;
 }
 
 void Manager_C::SetSelectedArticle(uint article)
@@ -74,7 +73,6 @@ void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
     Q_ASSERT(_thema_model);
     new_thema->setParent(this);
     _thema_model->AddThema(new_thema);
-    //_themas.append(new_thema);
     SetCurrentThema(new_thema);
 }
 

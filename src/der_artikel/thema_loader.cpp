@@ -84,6 +84,8 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
         qDebug()<<thema_file.errorString();
     }
 
+    thema_file.close();
+
     return thema;
 }
 
