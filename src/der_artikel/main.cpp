@@ -14,6 +14,7 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    qmlRegisterType<QAbstractItemModel>();
     qmlRegisterUncreatableType<Manager_C>("com.vystosi.qmlcomponents", 1, 0, "Manager","reason");
     qmlRegisterUncreatableType<Result_C>("com.vystosi.qmlcomponents", 1, 0, "Result","reason");
 

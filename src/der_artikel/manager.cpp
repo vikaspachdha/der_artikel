@@ -6,6 +6,7 @@
 #include "algo/strict_result_algo.h"
 #include "data/result.h"
 
+
 Manager_C::Manager_C(QObject *parent) :
     QObject(parent),
     _root_item(0),
@@ -17,6 +18,8 @@ Manager_C::Manager_C(QObject *parent) :
 {
     SetSelectedArticle(_selected_article);
     LoadDefaultThemas();
+
+    _thema_model = new ThemaModel_C(_themas, this);
 
     _result_algo = new StrictResultAlgo_C;
     _current_result = new Result_C(this);
@@ -68,8 +71,10 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
 void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
 {
     Q_ASSERT(new_thema);
+    Q_ASSERT(_thema_model);
     new_thema->setParent(this);
-    _themas.append(new_thema);
+    _thema_model->AddThema(new_thema);
+    //_themas.append(new_thema);
     SetCurrentThema(new_thema);
 }
 
@@ -140,3 +145,4 @@ void Manager_C::ClearWordItems()
         delete word_item;
     }
 }
+

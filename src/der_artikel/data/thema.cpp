@@ -1,5 +1,6 @@
 #include "thema.h"
 #include <QDebug>
+#include <QPixmap>
 
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
@@ -8,7 +9,8 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _3rd_last_score(0.0),
     _2nd_last_score(0.0),
     _last_score(0.0),
-    _played_count(0)
+    _played_count(0),
+    _icon(0)
 {
 }
 
@@ -43,6 +45,15 @@ bool Thema_C::Read(const QDomElement &element)
         }
 
     }
+
+    // TODO: Fix icon loading
+    if(success) {
+        if(_icon) {
+            delete _icon;
+        }
+        _icon = new QPixmap("qrc:/res/resources/thema_icon.png");
+    }
+
     return success;
 }
 
@@ -94,6 +105,18 @@ void Thema_C::ClearWords()
     }
     _words.clear();
 }
+
+void Thema_C::SetSelected(bool selected)
+{
+    _selected = selected;
+}
+
+QPixmap &Thema_C::GetThemaIcon() const
+{
+    Q_ASSERT(_icon);
+    return *_icon;
+}
+
 
 unsigned int Thema_C::GetWordCount() const
 {

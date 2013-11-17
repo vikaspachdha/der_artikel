@@ -26,6 +26,11 @@ public:
 
     QVector<Word_C*> GetWords() const { return _words; }
 
+    bool Selected() const { return _selected; }
+    void SetSelected(bool selected);
+
+    QPixmap& GetThemaIcon() const;
+
     // Thema_I implementation
 public:
     virtual unsigned int GetWordCount() const;
@@ -35,6 +40,8 @@ public:
     bool Read(const QDomElement& element);
     bool Write(QDomElement& element);
     void ClearWords();
+
+
 
 private:
     QString _text;
@@ -46,6 +53,8 @@ private:
     double _2nd_last_score;
     double _last_score;
     double _played_count;
+    bool _selected;
+    QPixmap* _icon;
 
 
 private:

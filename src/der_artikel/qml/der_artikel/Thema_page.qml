@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import com.vystosi.qmlcomponents 1.0
 
 Item {
     //anchors.fill: parent
@@ -13,27 +14,7 @@ Item {
         anchors.bottomMargin: 4
         anchors.topMargin: 4
         anchors.fill: parent
-        model: ListModel {
-            ListElement {
-                name: "Grey"
-                colorCode: "grey"
-            }
-
-            ListElement {
-                name: "Red"
-                colorCode: "red"
-            }
-
-            ListElement {
-                name: "Blue"
-                colorCode: "blue"
-            }
-
-            ListElement {
-                name: "Green"
-                colorCode: "green"
-            }
-        }
+        model: manager.thema_model
         cellHeight: 48
         delegate: Item {
             x: 5
@@ -42,13 +23,13 @@ Item {
                 Rectangle {
                     width: 40
                     height: 40
-                    color: colorCode
+                    color: "green"
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
                 Text {
                     x: 5
-                    text: name
+                    text: tr_name
                     font.bold: true
                     anchors.horizontalCenter: parent.horizontalCenter
                 }

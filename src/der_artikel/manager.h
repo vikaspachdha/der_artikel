@@ -7,11 +7,13 @@
 #include <QColor>
 #include "data/result.h"
 #include "common.h"
+#include "thema_model.h"
 
 class QQuickItem;
 class Thema_C;
 class Word_C;
 class ResultAlgo_I;
+//class ThemaModel_C;
 
 class Manager_C : public QObject
 {
@@ -22,6 +24,7 @@ class Manager_C : public QObject
     Q_PROPERTY(uint selected_article READ GetSelectedArticle WRITE SetSelectedArticle NOTIFY selectedArticleChanged)
     Q_PROPERTY(QColor current_word_color READ GetCurrentWordColor)
     Q_PROPERTY(PageType current_page READ getCurrentPage WRITE setCurrentPage NOTIFY currentPageChanged)
+    Q_PROPERTY(QAbstractItemModel* thema_model READ GetThemaModel)
 
 public:
     enum PageType
@@ -57,6 +60,8 @@ public:
 public:
     Q_INVOKABLE void calculateResult();
 
+    QAbstractItemModel* GetThemaModel() {return _thema_model; }
+
 signals:
     void selectedArticleChanged();
     void currentPageChanged(PageType old_page, PageType new_page);
@@ -84,6 +89,7 @@ private:
     PageType _current_page;
     ResultAlgo_I* _result_algo;
     Result_C* _current_result;
+    ThemaModel_C* _thema_model;
 };
 
 #endif // MANAGER_H
