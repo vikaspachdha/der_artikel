@@ -23,7 +23,7 @@ public:
     void SetTrText(QString text) { _translation = text; }
     QString GetTrText() const { return _translation; }
 
-    void SetFilePath(QString file_path) { _file_path = file_path; }
+    void SetFilePath(QString file_path);
 
     QVector<Word_C*> GetWords() const { return _words; }
 

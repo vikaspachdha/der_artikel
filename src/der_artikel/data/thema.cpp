@@ -1,6 +1,8 @@
 #include "thema.h"
 #include <QDebug>
 #include <QPixmap>
+#include <QFileInfo>
+#include <QDir>
 
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
@@ -11,11 +13,24 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _last_score(0.0),
     _played_count(0)
 {
+    _icon_url = QUrl("qrc:/res/resources/thema_generic.png");
 }
 
 Thema_C::~Thema_C()
 {
     ClearWords();
+}
+
+void Thema_C::SetFilePath(QString file_path)
+{
+    _file_path = file_path;
+    QFileInfo file_info(file_path);
+    QString icon_file_path = file_info.absoluteDir().absolutePath() + QDir::separator() + file_info.baseName() + ".png";
+
+    QFileInfo icon_file(icon_file_path);
+    if(icon_file.exists()) {
+        _icon_url =QUrl(icon_file_path);
+    }
 }
 
 bool Thema_C::Read(const QDomElement &element)
@@ -45,7 +60,6 @@ bool Thema_C::Read(const QDomElement &element)
 
     }
 
-    _icon_url = QUrl("qrc:/res/resources/thema_icon.png");
 
     return success;
 }

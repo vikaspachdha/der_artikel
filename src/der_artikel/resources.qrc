@@ -18,5 +18,6 @@
         <file>resources/paper_texture_2_middle.png</file>
         <file>resources/paper_texture_2_right.png</file>
         <file>resources/info.png</file>
+        <file>resources/thema_generic.png</file>
     </qresource>
 </RCC>
