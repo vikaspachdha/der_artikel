@@ -48,6 +48,10 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
             case WORD_COUNT:
                 data = thema->GetWordCount();
                 break;
+
+            case THEMA_OBJECT:
+                data = QVariant::fromValue<QObject*>(thema);
+                break;
             default:
                 break;
             }
@@ -74,6 +78,7 @@ QHash<int, QByteArray> ThemaModel_C::roleNames() const
     roleNames[SELECTED] = "selected";
     roleNames[PROGRESS] = "progress";
     roleNames[WORD_COUNT] = "word_count";
+    roleNames[THEMA_OBJECT] = "thema_object";
     return roleNames;
 }
 
@@ -91,10 +96,16 @@ bool ThemaModel_C::setData(const QModelIndex &index, const QVariant &value, int 
 
         if(thema) {
             QVector<int> changedRoles;
+            bool selected = value.toBool();
             switch(role) {
 
             case SELECTED:
-                thema->SetSelected(value.toBool());
+                thema->SetSelected(selected);
+                if(selected) {
+                    _selected_thema_list.append(thema);
+                } else {
+                    _selected_thema_list.removeAll(thema);
+                }
                 success = true;
                 changedRoles<<SELECTED;
                 emit dataChanged(index,index,changedRoles);
@@ -114,5 +125,23 @@ void ThemaModel_C::AddThema(Thema_C *new_thema)
     Q_ASSERT(new_thema);
     beginInsertRows(QModelIndex(),_thema_list.count(),_thema_list.count());
     _thema_list.append(new_thema);
+    connect(new_thema, SIGNAL(selectionChanged()),this,SLOT(OnThemaSelectionChanged()));
     endInsertRows();
+}
+
+Thema_C* ThemaModel_C::GetSelectedThema()
+{
+    Thema_C* thema = _selected_thema_list.at(0);
+    return thema;
+}
+
+void ThemaModel_C::OnThemaSelectionChanged()
+{
+    Thema_C* thema = qobject_cast<Thema_C*>(sender());
+    Q_ASSERT(thema);
+    if(thema->Selected()) {
+        _selected_thema_list.append(thema);
+    } else {
+        _selected_thema_list.removeAll(thema);
+    }
 }

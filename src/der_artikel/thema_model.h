@@ -16,7 +16,8 @@ class ThemaModel_C : public QAbstractListModel
         ICON,
         SELECTED,
         PROGRESS,
-        WORD_COUNT
+        WORD_COUNT,
+        THEMA_OBJECT
     };
 
 public:
@@ -33,9 +34,14 @@ public:
 
 public:
     void AddThema(Thema_C* new_thema);
+    Thema_C* GetSelectedThema();
+
+private slots:
+    void OnThemaSelectionChanged();
 
 private:
     QList<Thema_C*> _thema_list;
+    QList<Thema_C*> _selected_thema_list;
 
 };
 

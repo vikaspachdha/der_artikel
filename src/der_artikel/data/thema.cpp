@@ -115,7 +115,10 @@ void Thema_C::ClearWords()
 
 void Thema_C::SetSelected(bool selected)
 {
-    _selected = selected;
+    if(_selected != selected) {
+        _selected = selected;
+        emit selectionChanged();
+    }
 }
 
 unsigned int Thema_C::GetWordCount() const

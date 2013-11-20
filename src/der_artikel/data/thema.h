@@ -11,6 +11,9 @@ class Thema_C : public QObject, public Thema_I
 {
 
     Q_OBJECT
+    Q_PROPERTY(bool selected READ Selected WRITE SetSelected)
+
+
 public:
     Thema_C(QObject* parent = 0);
     ~Thema_C();
@@ -42,7 +45,8 @@ public:
     bool Write(QDomElement& element);
     void ClearWords();
 
-
+signals:
+    void selectionChanged();
 
 private:
     QString _text;

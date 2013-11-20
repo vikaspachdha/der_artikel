@@ -20,6 +20,9 @@ Item {
             count:word_count
             width:grid_view.cellWidth-4
             height:grid_view.cellHeight-4
+            onThema_selectedChanged: {
+                thema_object.selected = thema_selected
+            }
         }
     }
 }

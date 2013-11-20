@@ -62,6 +62,10 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
     if(_current_page != new_page) {
         PageType old_page = _current_page;
         _current_page = new_page;
+        if(_current_page == WORDS_PAGE) {
+            // determine the thema
+            SetCurrentThema(_thema_model->GetSelectedThema());
+        }
         emit currentPageChanged(old_page,new_page);
     }
 }
@@ -73,7 +77,6 @@ void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
     Q_ASSERT(_thema_model);
     new_thema->setParent(this);
     _thema_model->AddThema(new_thema);
-    SetCurrentThema(new_thema);
 }
 
 void Manager_C::OnSelectedArticleChanged()
