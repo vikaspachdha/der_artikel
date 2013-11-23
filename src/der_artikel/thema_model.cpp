@@ -125,17 +125,20 @@ void ThemaModel_C::AddThema(Thema_C *new_thema)
     Q_ASSERT(new_thema);
     beginInsertRows(QModelIndex(),_thema_list.count(),_thema_list.count());
     _thema_list.append(new_thema);
-    connect(new_thema, SIGNAL(selectionChanged()),this,SLOT(OnThemaSelectionChanged()));
+    connect(new_thema, SIGNAL(selectionChanged()),this,SLOT(OnThemaItemSelectionChanged()));
     endInsertRows();
 }
 
 Thema_C* ThemaModel_C::GetSelectedThema()
 {
-    Thema_C* thema = _selected_thema_list.at(0);
+    Thema_C* thema = 0;
+    if(_selected_thema_list.count() > 0 ) {
+        thema = _selected_thema_list.at(0);
+    }
     return thema;
 }
 
-void ThemaModel_C::OnThemaSelectionChanged()
+void ThemaModel_C::OnThemaItemSelectionChanged()
 {
     Thema_C* thema = qobject_cast<Thema_C*>(sender());
     Q_ASSERT(thema);
@@ -144,4 +147,5 @@ void ThemaModel_C::OnThemaSelectionChanged()
     } else {
         _selected_thema_list.removeAll(thema);
     }
+    emit themaSelectionChanged();
 }

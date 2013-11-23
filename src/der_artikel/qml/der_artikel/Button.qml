@@ -6,7 +6,8 @@ Rectangle {
     property alias buttonText:label.text
     property alias textPxSize:label.font.pixelSize
     property bool isDown:false
-
+    property color btnColor: "#dadef1"
+    property alias text_anchors: label.anchors
     signal activated();
 
 
@@ -21,12 +22,12 @@ Rectangle {
 
         GradientStop {
             position: 0.2
-            color: mousearea1.pressed ? "#8d8b8b":"#dadef1"
+            color: mousearea1.pressed || isDown ? "#8d8b8b":btnColor
         }
 
         GradientStop {
             position: 0.8
-            color: "#dadef1"
+            color: btnColor
         }
 
         GradientStop {
@@ -49,7 +50,6 @@ Rectangle {
         id: mousearea1
         anchors.fill: parent
         onClicked: {
-            isDown = !isDown
             btn_root.activated()
         }
     }

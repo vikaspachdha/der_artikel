@@ -5,7 +5,7 @@ Item {
     width: childrenRect.width
     height: childrenRect.height
     property alias cmd_text:item_label.text
-    property alias cmd_icon:icon.source
+    property string icon_name:"command"
 
     signal commandActivated
 
@@ -15,7 +15,7 @@ Item {
         width:sourceSize.width
         anchors.left: parent.left
         anchors.top: parent.top
-        source: "qrc:/res/resources/default_thema.png"
+        source: mouse_area.pressed ? "qrc:/res/resources/" + icon_name +"_active.png" : root_item.enabled ? "qrc:/res/resources/" + icon_name +".png" : "qrc:/res/resources/" + icon_name +"_disabled.png"
     }
 
     Text {

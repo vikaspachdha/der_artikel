@@ -2,8 +2,8 @@
 
 Word_C::Word_C(QObject* parent): QObject(parent),
 _text(""),
-_artikel(ARTIKEL::INVALID),
-_user_artikel(ARTIKEL::INVALID)
+_artikel(Article_C::INVALID),
+_user_artikel(Article_C::INVALID)
 {
 }
 
@@ -17,11 +17,11 @@ bool Word_C::Read(const QDomElement &element)
         int article_value = element.firstChildElement("Artikel").text().toInt(&success);
         if(success) {
             switch(article_value) {
-            case ARTIKEL::DAS:
-            case ARTIKEL::DER:
-            case ARTIKEL::DIE:
-            case ARTIKEL::NA:
-                _artikel = (ARTIKEL::Artikel) article_value;
+            case Article_C::DAS:
+            case Article_C::DER:
+            case Article_C::DIE:
+            case Article_C::NA:
+                _artikel = (Article_C::Artikel) article_value;
                 break;
             default:
                 success = false;
@@ -39,7 +39,7 @@ bool Word_C::Write(QDomElement &element)
     if( !element.isNull()) {
         QDomDocument domDocument = element.ownerDocument();
 
-        if(!domDocument.isNull() && !_text.isEmpty() && _artikel != ARTIKEL::INVALID) {
+        if(!domDocument.isNull() && !_text.isEmpty() && _artikel != Article_C::INVALID) {
             QDomElement dom_word = domDocument.createElement("Word");
 
             QDomElement dom_text = domDocument.createElement("WordText");
@@ -64,8 +64,8 @@ bool Word_C::IsCorrect() const
 {
     bool correct = false;
 
-    if( (_artikel != ARTIKEL::INVALID)
-            && (_user_artikel != ARTIKEL::INVALID)
+    if( (_artikel != Article_C::INVALID)
+            && (_user_artikel != Article_C::INVALID)
             && (_artikel == _user_artikel) ) {
         correct = true;
     }

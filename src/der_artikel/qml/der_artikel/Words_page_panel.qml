@@ -1,70 +1,76 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.0
-import QtQuick.Controls.Styles 1.0
 import com.vystosi.qmlcomponents 1.0
 
 Page_panel {
-    ExclusiveGroup {
-        id: articleGroup
+
+    Label {
+        id: level_lbl
+        anchors.top: parent.top
+        anchors.topMargin: 2
+        anchors.left: parent.left
+        anchors.leftMargin: 2
+        anchors.right: parent.right
+        anchors.rightMargin: 2
+        text_anchors.horizontalCenter: level_lbl.horizontalCenter
+        lblText: qsTr("Article")
     }
 
     Column {
-        id: articleCol
-        anchors.top: parent.top
+        id: game_level_col
+        anchors.top: level_lbl.bottom
+        anchors.topMargin: 6
         anchors.left: parent.left
+        anchors.leftMargin: 4
+        anchors.right: parent.right
+        anchors.rightMargin: 4
         spacing: 4
-        RadioButton {
-            id: mannlisch
-            text: "Der"
-            exclusiveGroup: articleGroup
-            checked: true
-            onCheckedChanged: {
-                if(checked) {
-                    manager.selected_article = 1
-                }
-                currentColor = "red"
-            }
+
+        Button {
+            id:der_btn
+            width:parent.width
+            text_anchors.horizontalCenter: der_btn.horizontalCenter
+            isDown: manager.selected_article === Article.DER
+            buttonText: qsTr("Der")
+            onActivated: manager.selected_article = Article.DER
         }
-        RadioButton {
-            text: "Die"
-            exclusiveGroup: articleGroup
-            onCheckedChanged: {
-                if(checked) {
-                    manager.selected_article = 2
-                }
-                currentColor = "pink"
-            }
+
+        Button {
+            id:die_btn
+            width:parent.width
+            text_anchors.horizontalCenter: die_btn.horizontalCenter
+            isDown: manager.selected_article === Article.DIE
+            buttonText: qsTr("Die")
+            onActivated: manager.selected_article = Article.DIE
         }
-        RadioButton {
-            text: "Das"
-            exclusiveGroup: articleGroup
-            onCheckedChanged: {
-                if(checked) {
-                    manager.selected_article = 3
-                }
-                currentColor = "lightgray"
-            }
+
+        Button {
+            id:das_btn
+            width:parent.width
+            text_anchors.horizontalCenter: das_btn.horizontalCenter
+            isDown: manager.selected_article === Article.DAS
+            buttonText: qsTr("Das")
+            onActivated: manager.selected_article = Article.DAS
         }
-        RadioButton {
-            text: "None"
-            exclusiveGroup: articleGroup
-            onCheckedChanged: {
-                if(checked) {
-                    manager.selected_article = 4
-                }
-                currentColor = "lightgray"
-            }
+
+        Button {
+            id:na_btn
+            width:parent.width
+            text_anchors.horizontalCenter: na_btn.horizontalCenter
+            isDown: manager.selected_article === Article.NA
+            buttonText: qsTr("None")
+            onActivated: manager.selected_article = Article.NA
         }
+
     }
+
+
     Command_item
     {
         id: home_cmd
-        //anchors.left: parent.left
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
         cmd_text: qsTr("Finish")
-        cmd_icon: "qrc:/res/resources/result_32.png"
         onCommandActivated: {
             manager.calculateResult()
             manager.current_page = Manager.RESULT_PAGE

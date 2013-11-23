@@ -11,14 +11,16 @@ Manager_C::Manager_C(QObject *parent) :
     QObject(parent),
     _root_item(0),
     _current_thema(0),
-    _selected_article(ARTIKEL::DER),
+    _selected_article(Article_C::INVALID),
     _current_page(HOME_PAGE),
     _result_algo(0),
-    _current_result(0)
+    _current_result(0),
+    _thema_selected(false)
 {
-    SetSelectedArticle(_selected_article);
+    SetSelectedArticle(Article_C::DER);
 
     _thema_model = new ThemaModel_C(this);
+    connect(_thema_model,SIGNAL(themaSelectionChanged()), this, SLOT(onThemaSelectionChanged()));
 
     LoadDefaultThemas();
 
@@ -34,27 +36,30 @@ Manager_C::~Manager_C()
     delete _thema_model;
 }
 
-void Manager_C::SetSelectedArticle(uint article)
+void Manager_C::SetSelectedArticle(Article_C::Artikel article)
 {
-    _selected_article = (ARTIKEL::Artikel)article;
-    switch (_selected_article) {
-    case ARTIKEL::DER:
-        _current_word_color = QColor("#5287B1");
-        break;
-    case ARTIKEL::DIE:
-        _current_word_color = QColor("#E882DA");
-        break;
-    case ARTIKEL::DAS:
-        _current_word_color = QColor("#FFFFFF");
-        break;
-    case ARTIKEL::NA:
-        _current_word_color = QColor("#FEF574");
-        break;
-    default:
-        break;
-    }
+    if(_selected_article != article) {
+        _selected_article = article;
+        switch (_selected_article) {
+        case Article_C::DER:
+            _current_word_color = QColor("#5287B1");
+            break;
+        case Article_C::DIE:
+            _current_word_color = QColor("#E882DA");
+            break;
+        case Article_C::DAS:
+            _current_word_color = QColor("#FFFFFF");
+            break;
+        case Article_C::NA:
+            _current_word_color = QColor("#FEF574");
+            break;
+        default:
+            break;
+        }
 
-    _current_word_color.setAlpha(70);
+        _current_word_color.setAlpha(70);
+        emit selectedArticleChanged();
+    }
 }
 
 void Manager_C::setCurrentPage(Manager_C::PageType new_page)
@@ -67,6 +72,14 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
             SetCurrentThema(_thema_model->GetSelectedThema());
         }
         emit currentPageChanged(old_page,new_page);
+    }
+}
+
+void Manager_C::setGameLevel(Manager_C::GameLevel game_level)
+{
+    if(_game_level != game_level) {
+        _game_level = game_level;
+        emit gameLevelChanged();
     }
 }
 
@@ -92,6 +105,12 @@ void Manager_C::OnWordClicked()
     if(word) {
         word->SetUserArtikel(_selected_article);
     }
+}
+
+void Manager_C::onThemaSelectionChanged()
+{
+    _thema_selected = _thema_model->GetSelectedThema() ? true : false;
+    emit themaSelectionStateChanged();
 }
 
 void Manager_C::calculateResult()

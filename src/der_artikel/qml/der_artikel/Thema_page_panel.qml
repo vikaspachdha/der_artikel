@@ -2,37 +2,55 @@ import QtQuick 2.0
 import com.vystosi.qmlcomponents 1.0
 Page_panel
 {
-    Button {
-        id:easy_btn
+    Label {
+        id: level_lbl
+        anchors.top: parent.top
+        anchors.topMargin: 2
         anchors.left: parent.left
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        anchors.bottom: moderate_btn.top
-        anchors.bottomMargin: 4
-        buttonText: qsTr("Easy")
+        text_anchors.horizontalCenter: level_lbl.horizontalCenter
+        lblText: qsTr("Game Level")
     }
-
-    Button {
-        id:moderate_btn
+    Column {
+        id: game_level_col
+        anchors.top: level_lbl.bottom
+        anchors.topMargin: 6
         anchors.left: parent.left
-        anchors.leftMargin: 2
+        anchors.leftMargin: 4
         anchors.right: parent.right
-        anchors.rightMargin: 2
-        anchors.bottom: expert_btn.top
-        anchors.bottomMargin: 4
-        buttonText: qsTr("Moderate")
-    }
+        anchors.rightMargin: 4
+        spacing: 4
 
-    Button {
-        id:expert_btn
-        anchors.left: parent.left
-        anchors.leftMargin: 2
-        anchors.right: parent.right
-        anchors.rightMargin: 2
-        anchors.bottom: start_cmd.top
-        anchors.bottomMargin: 8
-        buttonText: qsTr("Expert")
+
+        Button {
+            id:easy_btn
+            width:parent.width
+            text_anchors.horizontalCenter: easy_btn.horizontalCenter
+            isDown: manager.game_level === Manager.EASY
+            buttonText: qsTr("Easy")
+            onActivated: manager.game_level = Manager.EASY
+        }
+
+        Button {
+            id:moderate_btn
+            width:parent.width
+            text_anchors.horizontalCenter: moderate_btn.horizontalCenter
+            isDown: manager.game_level === Manager.MODERATE
+            buttonText: qsTr("Moderate")
+            onActivated: manager.game_level = Manager.MODERATE
+        }
+
+        Button {
+            id:expert_btn
+            width:parent.width
+            text_anchors.horizontalCenter: expert_btn.horizontalCenter
+            isDown: manager.game_level === Manager.EXPERT
+            buttonText: qsTr("Expert")
+            onActivated: manager.game_level = Manager.EXPERT
+        }
+
     }
 
     Command_item
@@ -41,8 +59,9 @@ Page_panel
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
+        enabled: manager.thema_selected
         cmd_text: qsTr("Start")
-        cmd_icon: "qrc:/res/resources/start.png"
+        icon_name: "start"
         onCommandActivated: {
             manager.current_page = Manager.WORDS_PAGE
         }

@@ -36,8 +36,14 @@ public:
     void AddThema(Thema_C* new_thema);
     Thema_C* GetSelectedThema();
 
+
+signals:
+    void themaSelectionChanged();
+
+
 private slots:
-    void OnThemaSelectionChanged();
+    void OnThemaItemSelectionChanged();
+
 
 private:
     QList<Thema_C*> _thema_list;

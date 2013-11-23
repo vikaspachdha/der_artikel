@@ -3,6 +3,7 @@
 #include "data/thema.h"
 #include "data/result.h"
 
+
 StrictResultAlgo_C::StrictResultAlgo_C():ResultAlgo_I()
 {
 }
@@ -16,7 +17,7 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
     for(unsigned int index = 0; index < count; ++index) {
         const Word_C* word = thema.GetWord(index);
-        if(word->GetUserArtikel() == ARTIKEL::INVALID || word->GetUserArtikel() == ARTIKEL::NA) {
+        if(word->GetUserArtikel() == Article_C::INVALID || word->GetUserArtikel() == Article_C::NA) {
             ++unplayed_count;
         } else {
             if(word->GetArtikel() == word->GetUserArtikel()) {

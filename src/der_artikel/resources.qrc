@@ -20,5 +20,12 @@
         <file>resources/info.png</file>
         <file>resources/thema_generic.png</file>
         <file>resources/start.png</file>
+        <file>resources/start_disabled.png</file>
+        <file>resources/start_active.png</file>
+        <file>resources/command_active.png</file>
+        <file>resources/command_disabled.png</file>
+        <file>resources/command.png</file>
+        <file>resources/home_disabled.png</file>
+        <file>resources/home_active.png</file>
     </qresource>
 </RCC>

@@ -30,7 +30,8 @@ SOURCES += main.cpp \
     thema_loader.cpp \
     algo/strict_result_algo.cpp \
     data/result.cpp \
-    thema_model.cpp
+    thema_model.cpp \
+    article.cpp
 
 # Installation path
 # target.path =
@@ -51,7 +52,8 @@ HEADERS += \
     algo/result_algo.h \
     data/result.h \
     data/thema_interface.h \
-    thema_model.h
+    thema_model.h \
+    article.h
 
 FORMS += \
     thema_builder.ui

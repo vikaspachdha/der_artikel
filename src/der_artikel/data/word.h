@@ -1,6 +1,6 @@
 #ifndef WORD_H
 #define WORD_H
-#include "common.h"
+#include "article.h"
 #include <QDomElement>
 #include <QObject>
 
@@ -11,10 +11,10 @@ public:
     Word_C(QObject* parent=0);
 
 public:
-    void SetUserArtikel(ARTIKEL::Artikel article) { _user_artikel = article; }
-    ARTIKEL::Artikel GetUserArtikel() const { return _user_artikel; }
+    void SetUserArtikel(Article_C::Artikel article) { _user_artikel = article; }
+    Article_C::Artikel GetUserArtikel() const { return _user_artikel; }
 
-    ARTIKEL::Artikel GetArtikel() const { return _artikel; }
+    Article_C::Artikel GetArtikel() const { return _artikel; }
 
     QString GetWordText() const { return _text; }
 
@@ -25,8 +25,8 @@ public:
 
 private:
     QString _text;
-    ARTIKEL::Artikel _artikel;
-    ARTIKEL::Artikel _user_artikel;
+    Article_C::Artikel _artikel;
+    Article_C::Artikel _user_artikel;
 
 private:
     friend class ThemaBuilder_C;

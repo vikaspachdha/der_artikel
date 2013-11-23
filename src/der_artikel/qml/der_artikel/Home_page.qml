@@ -8,7 +8,7 @@ Item {
         id: page_model
         ListElement { title:"Thema"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.THEMA_PAGE}
         ListElement { title:"Result"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.RESULT_PAGE}
-        ListElement { title:"words page"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.WORDS_PAGE}
+        //ListElement { title:"words page"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.WORDS_PAGE}
         ListElement { title:"About"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.ABOUT_PAGE}
     }
 

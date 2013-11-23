@@ -30,7 +30,7 @@ Image {
         anchors.bottom: home_cmd.top
         anchors.bottomMargin: 4
         anchors.left: rootItem.left
-        width: 80
+        width: 100
     }
 
     Command_item
@@ -39,8 +39,9 @@ Image {
         anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
+        enabled: manager.current_page !== Manager.HOME_PAGE
         cmd_text: qsTr("Home")
-        cmd_icon: "qrc:/res/resources/home.png"
+        icon_name: "home"
         onCommandActivated: {
             manager.current_page = Manager.HOME_PAGE
         }
@@ -89,13 +90,5 @@ Image {
         source: msg_bar
     }
 
-    function onCurrenPageChanged(old_page_id, new_page_id)
-    {
-        home_cmd.visible = new_page_id == Manager.HOME_PAGE ? false : true
-    }
-
-    Component.onCompleted: {
-        manager.currentPageChanged.connect(onCurrenPageChanged)
-    }
 }
 

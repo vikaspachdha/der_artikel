@@ -6,7 +6,7 @@
 #include <QMessageBox>
 #include <QThreadPool>
 #include <QDebug>
-
+#include "common.h"
 #include "version.h"
 #include "data/thema.h"
 
