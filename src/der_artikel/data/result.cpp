@@ -1,6 +1,6 @@
 #include "result.h"
-
-#include <QtQmlDepends>
+#include <QLocale>
+#include <QDomElement>
 
 Result_C::Result_C(QObject *parent):
     QObject(parent),
@@ -80,6 +80,56 @@ void Result_C::UpdateResult(double score, unsigned int correct_word_count, unsig
 
     _grade_string.prepend(tr("Result : "));
     emit resultUpdated();
+}
+
+bool Result_C::Read(const QDomElement &element)
+{
+    bool success = false;
+    return success;
+}
+
+bool Result_C::Write(QDomElement &element)
+{
+    bool success = false;
+
+    if( !element.isNull()) {
+        QDomDocument domDocument = element.ownerDocument();
+
+        if(!domDocument.isNull()) {
+            QDomElement dom_result = domDocument.createElement("Result");
+
+            QDomElement dom_date_time = domDocument.createElement("DateTime");
+            QDomText text_date_time = domDocument.createTextNode(QString::number(_result_date_time.toMSecsSinceEpoch()));
+            dom_date_time.appendChild(text_date_time);
+            dom_result.appendChild(dom_date_time);
+
+            QDomElement dom_score = domDocument.createElement("Score");
+            QDomText text_score = domDocument.createTextNode(QString::number(_score,'f',2));
+            dom_score.appendChild(text_score);
+            dom_result.appendChild(dom_score);
+
+            QDomElement dom_correct_count = domDocument.createElement("CorrectCount");
+            QDomText text_correct_count = domDocument.createTextNode(QString::number(_correct_word_count));
+            dom_correct_count.appendChild(text_correct_count);
+            dom_result.appendChild(dom_correct_count);
+
+            QDomElement dom_mistakes_count = domDocument.createElement("MistakesCount");
+            QDomText text_mistakes_count = domDocument.createTextNode(QString::number(_mistakes_count));
+            dom_mistakes_count.appendChild(text_mistakes_count);
+            dom_result.appendChild(dom_mistakes_count);
+
+            QDomElement dom_unplayed_count = domDocument.createElement("UnplayedCount");
+            QDomText text_unplayed_count = domDocument.createTextNode(QString::number(_unplayed_count));
+            dom_unplayed_count.appendChild(text_unplayed_count);
+            dom_result.appendChild(dom_unplayed_count);
+
+            element.appendChild(dom_result);
+
+            success = true;
+        }
+    }
+
+    return success;
 }
 
 

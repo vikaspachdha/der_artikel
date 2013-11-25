@@ -1,19 +1,22 @@
 #ifndef RESULT_H
 #define RESULT_H
 #include <QObject>
+#include <QDateTime>
+
+class QDomElement;
 
 class Result_C : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(double score READ Score)
-    Q_PROPERTY(unsigned int mistakes_count READ MistakesCount)
-    Q_PROPERTY(unsigned int unplayed_count READ UnplayedCount)
-    Q_PROPERTY(unsigned int correct_word_count READ CorrectWordCount)
-    Q_PROPERTY(QString score_string READ ScoreString)
-    Q_PROPERTY(QString mistake_string READ MistakeString)
-    Q_PROPERTY(QString grade_string READ GradeString)
-    Q_PROPERTY(QString unplayed_string READ UnplayedString)
+    Q_PROPERTY(double score READ Score CONSTANT)
+    Q_PROPERTY(unsigned int mistakes_count READ MistakesCount CONSTANT)
+    Q_PROPERTY(unsigned int unplayed_count READ UnplayedCount CONSTANT)
+    Q_PROPERTY(unsigned int correct_word_count READ CorrectWordCount CONSTANT)
+    Q_PROPERTY(QString score_string READ ScoreString CONSTANT)
+    Q_PROPERTY(QString mistake_string READ MistakeString CONSTANT)
+    Q_PROPERTY(QString grade_string READ GradeString CONSTANT)
+    Q_PROPERTY(QString unplayed_string READ UnplayedString CONSTANT)
 
 public:
     Result_C(QObject* parent=0);
@@ -40,7 +43,8 @@ public:
 public:
     void Clear();
     void UpdateResult(double score, unsigned int correct_word_count, unsigned int mistakes_count, unsigned int unplayed_count);
-
+    bool Read(const QDomElement& element);
+    bool Write(QDomElement& element);
 private:
     double _score;
     unsigned int _correct_word_count;
@@ -50,6 +54,7 @@ private:
     QString _mistake_string;
     QString _grade_string;
     QString _unplayed_string;
+    QDateTime _result_date_time;
 };
 
 #endif // RESULT_H
