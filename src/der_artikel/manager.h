@@ -26,7 +26,7 @@ class Manager_C : public QObject
     Q_PROPERTY(Article_C::Artikel selected_article READ GetSelectedArticle WRITE SetSelectedArticle NOTIFY selectedArticleChanged)
     Q_PROPERTY(QColor current_word_color READ GetCurrentWordColor)
     Q_PROPERTY(PageType current_page READ getCurrentPage WRITE setCurrentPage NOTIFY currentPageChanged)
-    Q_PROPERTY(QAbstractItemModel* thema_model READ GetThemaModel)
+    Q_PROPERTY(QAbstractItemModel* thema_model READ GetThemaModel CONSTANT)
     Q_PROPERTY(GameLevel game_level READ gameLevel WRITE setGameLevel NOTIFY gameLevelChanged)
     Q_PROPERTY(bool thema_selected READ isThemaSelected NOTIFY themaSelectionStateChanged)
 
