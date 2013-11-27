@@ -45,6 +45,10 @@ public:
     void UpdateResult(double score, unsigned int correct_word_count, unsigned int mistakes_count, unsigned int unplayed_count);
     bool Read(const QDomElement& element);
     bool Write(QDomElement& element);
+
+private:
+    void UpdateStringData();
+
 private:
     double _score;
     unsigned int _correct_word_count;
