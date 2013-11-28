@@ -2,6 +2,7 @@
 #define THEMA_H
 #include <QObject>
 #include <QDomElement>
+#include <QDateTime>
 #include <QVector>
 #include <QUrl>
 #include "word.h"
@@ -35,18 +36,28 @@ public:
 
     const QUrl& GetIconUrl() const { return _icon_url; }
 
+    int ExperiencePoints() const { return _experience_points; }
+
+    QDateTime LastPlayed() const { return _last_played; }
+    void SetLastPlayed(const QDateTime &LastPlayed);
+
     // Thema_I implementation
 public:
     virtual unsigned int GetWordCount() const;
     virtual const Word_C* GetWord(unsigned int index) const;
+    virtual void AddExperiencePoints(int points);
+    virtual void DeductExperiencePoints(int points);
+
 
 public:
     bool Read(const QDomElement& element);
     bool Write(QDomElement& element);
     void ClearWords();
 
+
 signals:
     void selectionChanged();
+    void experiencePointsChanged();
 
 private:
     QString _text;
@@ -54,10 +65,8 @@ private:
     QString _file_path;
     QVector<Word_C*> _words;
     bool _defered_read;
-    double _3rd_last_score;
-    double _2nd_last_score;
-    double _last_score;
-    double _played_count;
+    QDateTime _last_played;
+    int _experience_points;
     bool _selected;
     QUrl _icon_url;
 

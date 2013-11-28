@@ -32,4 +32,19 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
     double score = (double)(correct_count - (incorrect_count/2.0) - (unplayed_count/4.0))/count;
 
     result.UpdateResult(score,correct_count, incorrect_count, unplayed_count);
+
+    Result_C::GRADE grade = result.Grade();
+    if(grade >= Result_C::GRADE_AP) {
+        thema.AddExperiencePoints(10);
+    } else if(grade >= Result_C::GRADE_A) {
+        thema.AddExperiencePoints(8);
+    } else if (grade >= Result_C::GRADE_BP) {
+        thema.AddExperiencePoints(7);
+    } else if (grade >= Result_C::GRADE_C) {
+        thema.AddExperiencePoints(6);
+    } else if(grade >= Result_C::GRADE_D){
+        thema.AddExperiencePoints(4);
+    } else {
+        thema.DeductExperiencePoints(2);
+    }
 }

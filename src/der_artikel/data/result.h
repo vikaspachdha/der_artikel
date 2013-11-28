@@ -19,6 +19,18 @@ class Result_C : public QObject
     Q_PROPERTY(QString unplayed_string READ UnplayedString CONSTANT)
 
 public:
+
+    enum GRADE {
+        GRADE_E=1,  // < 50
+        GRADE_D,    // 50 - 60
+        GRADE_C,    // 60 - 70
+        GRADE_B,    // 70 - 80
+        GRADE_BP,   // 80 - 90
+        GRADE_A,    // 90 - 95
+        GRADE_AP    // 95+
+    };
+
+public:
     Result_C(QObject* parent=0);
 
 signals:
@@ -40,6 +52,8 @@ public:
 
     unsigned int CorrectWordCount() const;
 
+    GRADE Grade() const { return _grade; }
+
 public:
     void Clear();
     void UpdateResult(double score, unsigned int correct_word_count, unsigned int mistakes_count, unsigned int unplayed_count);
@@ -51,6 +65,7 @@ private:
 
 private:
     double _score;
+    GRADE _grade;
     unsigned int _correct_word_count;
     unsigned int _mistakes_count;
     unsigned int _unplayed_count;

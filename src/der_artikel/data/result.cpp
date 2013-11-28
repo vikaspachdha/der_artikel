@@ -59,6 +59,24 @@ void Result_C::UpdateResult(double score, unsigned int correct_word_count, unsig
     _mistakes_count= mistakes_count;
     _unplayed_count= unplayed_count;
 
+    double percentage_score = _score *100.0;
+
+    if(percentage_score > 94.99) {
+        _grade = GRADE_AP;
+    } else if(percentage_score > 89.99) {
+        _grade = GRADE_A;
+    } else if(percentage_score > 79.99) {
+        _grade = GRADE_BP;
+    } else if(percentage_score > 69.99) {
+        _grade = GRADE_B;
+    } else if(percentage_score > 59.99) {
+        _grade = GRADE_C;
+    } else if(percentage_score > 49.99) {
+        _grade = GRADE_D;
+    } else  {
+        _grade = GRADE_E;
+    }
+
     UpdateStringData();
     emit resultUpdated();
 }
@@ -82,7 +100,7 @@ bool Result_C::Read(const QDomElement &element)
 
         if(success) {
             QDomElement dom_score = element.firstChildElement("Score");
-            if(dom_score.isNull()) {
+            if(!dom_score.isNull()) {
                 ok= false;
                 double score = dom_score.text().toDouble(&ok);
                 if(ok) {
@@ -196,13 +214,15 @@ void Result_C::UpdateStringData()
     _mistake_string = tr("%1 articles are incorrect").arg(_mistakes_count);
     _unplayed_string = tr("%1 words are unplayed").arg(_unplayed_count);
 
-    if(score > 89.99) {
+    if(_grade >= GRADE_AP) {
+        _grade_string = tr("Execelent");
+    } else if(_grade >= GRADE_A) {
         _grade_string = tr("Very good");
-    } else if (score > 79.99) {
+    } else if (_grade >= GRADE_BP) {
         _grade_string = tr("Good");
-    } else if (score > 64.99) {
+    } else if (_grade >= GRADE_C) {
         _grade_string = tr("Satisfactory");
-    } else if(score > 49.99){
+    } else if(_grade >= GRADE_D){
         _grade_string = tr("Sufficient");
     } else {
         _grade_string = tr("Failed");
