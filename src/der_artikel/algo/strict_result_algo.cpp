@@ -47,4 +47,5 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
     } else {
         thema.DeductExperiencePoints(2);
     }
+
 }

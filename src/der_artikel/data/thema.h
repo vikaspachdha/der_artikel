@@ -8,6 +8,9 @@
 #include "word.h"
 #include "thema_interface.h"
 
+class QIODevice;
+
+
 class Thema_C : public QObject, public Thema_I
 {
 
@@ -52,12 +55,16 @@ public:
 public:
     bool Read(const QDomElement& element);
     bool Write(QDomElement& element);
+    void Save(QString file_path="");
     void ClearWords();
 
 
 signals:
     void selectionChanged();
     void experiencePointsChanged();
+
+private:
+    bool Write(QIODevice* pDevice);
 
 private:
     QString _text;

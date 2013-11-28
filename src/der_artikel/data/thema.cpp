@@ -4,6 +4,8 @@
 #include <QFileInfo>
 #include <QDir>
 
+#include "version.h"
+
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
     _translation(""),
@@ -142,12 +144,44 @@ bool Thema_C::Write(QDomElement &element)
     return success;
 }
 
+void Thema_C::Save(QString file_path)
+{
+    QString save_file = file_path.isEmpty() ? _file_path : file_path;
+
+    if(!save_file.isEmpty()) {
+        QFile file(save_file);
+        if (file.open(QFile::WriteOnly | QFile::Text)) {
+            if(Write(&file)) {
+                _file_path = save_file;
+            }
+        } else {
+            qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
+        }
+    }
+}
+
 void Thema_C::ClearWords()
 {
     foreach(Word_C* word, _words) {
         delete word;
     }
     _words.clear();
+}
+
+bool Thema_C::Write(QIODevice* pDevice)
+{
+    QDomDocument domDocument("DerArtikel");
+
+    QTextStream out(pDevice);
+    QDomElement root = domDocument.createElement("Root");
+    root.setAttribute("Version", QString::number(APP_VERSION));
+
+    Write(root);
+
+    domDocument.appendChild(root);
+    domDocument.save(out, 4);
+
+    return true;
 }
 
 void Thema_C::AddExperiencePoints(int points)
@@ -171,8 +205,6 @@ void Thema_C::SetLastPlayed(const QDateTime &last_played)
 {
     _last_played = last_played;
 }
-
-
 
 void Thema_C::SetSelected(bool selected)
 {

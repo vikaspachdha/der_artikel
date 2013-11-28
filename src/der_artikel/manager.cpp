@@ -118,6 +118,7 @@ void Manager_C::calculateResult()
     Q_ASSERT(_current_result);
     if(_current_thema) {
         _result_algo->Calculate(*_current_thema,*_current_result);
+        _current_thema->Save();
     }
 }
 
