@@ -11,7 +11,8 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _translation(""),
     _defered_read(false),
     _last_played(QDateTime::currentDateTime()),
-    _experience_points(0)
+    _experience_points(0),
+    _selected(false)
 {
     _icon_url = QUrl("qrc:/res/resources/thema_generic.png");
 }

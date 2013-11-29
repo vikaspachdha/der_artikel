@@ -138,6 +138,14 @@ Thema_C* ThemaModel_C::GetSelectedThema()
     return thema;
 }
 
+void ThemaModel_C::ClearSelection()
+{
+    foreach (Thema_C* thema, _selected_thema_list) {
+       thema->SetSelected(false);
+    }
+    _selected_thema_list.clear();
+}
+
 void ThemaModel_C::OnThemaItemSelectionChanged()
 {
     Thema_C* thema = qobject_cast<Thema_C*>(sender());
@@ -148,4 +156,8 @@ void ThemaModel_C::OnThemaItemSelectionChanged()
         _selected_thema_list.removeAll(thema);
     }
     emit themaSelectionChanged();
+    QModelIndex thema_index = index(_thema_list.indexOf(thema));
+    QVector<int> roles;
+    roles<<SELECTED;
+    emit dataChanged(thema_index,thema_index,roles);
 }

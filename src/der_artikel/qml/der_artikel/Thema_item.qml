@@ -13,6 +13,8 @@ Flipable {
     front: thema_rect
     back:info_rect
 
+    signal themaClicked()
+
     Rectangle {
         id: info_rect
         color: thema_item_root.thema_selected ? "lightsteelblue" : "lightgray"
@@ -116,11 +118,7 @@ Flipable {
         MouseArea {
             anchors.fill: thema_rect
             onClicked: {
-                if(thema_item_root.flipped) {
-                    thema_item_root.flipped = !thema_item_root.flipped
-                }else {
-                    thema_item_root.thema_selected = !thema_item_root.thema_selected
-                }
+                thema_item_root.themaClicked()
             }
         }
 

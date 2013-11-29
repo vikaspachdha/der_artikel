@@ -35,7 +35,7 @@ public:
 public:
     void AddThema(Thema_C* new_thema);
     Thema_C* GetSelectedThema();
-
+    void ClearSelection();
 
 signals:
     void themaSelectionChanged();

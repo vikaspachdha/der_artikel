@@ -69,6 +69,7 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
         if(_current_page == WORDS_PAGE) {
             // determine the thema
             SetCurrentThema(_thema_model->GetSelectedThema());
+            _thema_model->ClearSelection();
             if(_result_algo) {
                 delete _result_algo;
             }
