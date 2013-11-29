@@ -1,14 +1,14 @@
-#include "strict_result_algo.h"
+#include "moderate_result_algo.h"
 #include "data/word.h"
 #include "data/thema.h"
 #include "data/result.h"
 
 
-StrictResultAlgo_C::StrictResultAlgo_C():ResultAlgo_I()
+ModerateResultAlgo_C::ModerateResultAlgo_C():ResultAlgo_I()
 {
 }
 
-void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
+void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 {
     unsigned int count = thema.GetWordCount();
     unsigned int correct_count = 0;
@@ -29,23 +29,24 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
     }
 
-    double score = (double)(correct_count - (incorrect_count/2.0) - (unplayed_count/4.0))/count;
+    double score = (double)(correct_count - (incorrect_count/2.0))/count;
 
     result.UpdateResult(score,correct_count, incorrect_count, unplayed_count);
 
     Result_C::GRADE grade = result.Grade();
     if(grade >= Result_C::GRADE_AP) {
-        thema.AddExperiencePoints(100);
-    } else if(grade >= Result_C::GRADE_A) {
         thema.AddExperiencePoints(80);
-    } else if (grade >= Result_C::GRADE_BP) {
-        thema.AddExperiencePoints(70);
-    } else if (grade >= Result_C::GRADE_C) {
+    } else if(grade >= Result_C::GRADE_A) {
         thema.AddExperiencePoints(60);
-    } else if(grade >= Result_C::GRADE_D){
+    } else if (grade >= Result_C::GRADE_BP) {
+        thema.AddExperiencePoints(50);
+    } else if (grade >= Result_C::GRADE_C) {
         thema.AddExperiencePoints(40);
+    } else if(grade >= Result_C::GRADE_D){
+        thema.AddExperiencePoints(30);
     } else {
-        thema.DeductExperiencePoints(20);
+        thema.DeductExperiencePoints(2);
     }
 
 }
+

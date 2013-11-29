@@ -3,6 +3,8 @@
 
 #include "data/thema.h"
 #include "thema_loader.h"
+#include "algo/easy_result_algo.h"
+#include "algo/moderate_result_algo.h"
 #include "algo/strict_result_algo.h"
 #include "data/result.h"
 
@@ -23,10 +25,7 @@ Manager_C::Manager_C(QObject *parent) :
     connect(_thema_model,SIGNAL(themaSelectionChanged()), this, SLOT(onThemaSelectionChanged()));
 
     LoadDefaultThemas();
-
-    _result_algo = new StrictResultAlgo_C;
     _current_result = new Result_C(this);
-
     connect(this,SIGNAL(selectedArticleChanged()), this, SLOT(OnSelectedArticleChanged()) );
 }
 
@@ -70,6 +69,23 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
         if(_current_page == WORDS_PAGE) {
             // determine the thema
             SetCurrentThema(_thema_model->GetSelectedThema());
+            if(_result_algo) {
+                delete _result_algo;
+            }
+            switch (_game_level) {
+            case EASY:
+                _result_algo = new EasyResultAlgo_C();
+                break;
+            case MODERATE:
+                _result_algo = new ModerateResultAlgo_C();
+                break;
+            case EXPERT:
+                _result_algo = new StrictResultAlgo_C();
+                break;
+            default:
+                break;
+            }
+
         }
         emit currentPageChanged(old_page,new_page);
     }

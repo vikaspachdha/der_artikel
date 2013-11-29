@@ -84,6 +84,7 @@ signals:
     void currentPageChanged(PageType old_page, PageType new_page);
     void gameLevelChanged();
     void themaSelectionStateChanged();
+    void newResultAvailable();
     
 private slots:
     void OnNewThemaLoaded(Thema_C* new_thema);
