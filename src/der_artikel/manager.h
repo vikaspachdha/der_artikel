@@ -99,6 +99,7 @@ private:
     void AddWords(const Thema_C *thema);
     QObject* AddWord(QString text);
     void ClearWordItems();
+    void CreateResultAlgo();
 
 private:
     QQuickItem* _root_item;

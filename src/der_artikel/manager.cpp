@@ -66,28 +66,25 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
     if(_current_page != new_page) {
         PageType old_page = _current_page;
         _current_page = new_page;
-        if(_current_page == WORDS_PAGE) {
+
+        switch(_current_page){
+
+        case WORDS_PAGE:
             // determine the thema
+            _current_thema = 0;
             SetCurrentThema(_thema_model->GetSelectedThema());
             _thema_model->ClearSelection();
-            if(_result_algo) {
-                delete _result_algo;
-            }
-            switch (_game_level) {
-            case EASY:
-                _result_algo = new EasyResultAlgo_C();
-                break;
-            case MODERATE:
-                _result_algo = new ModerateResultAlgo_C();
-                break;
-            case EXPERT:
-                _result_algo = new StrictResultAlgo_C();
-                break;
-            default:
-                break;
-            }
+            CreateResultAlgo();
 
+            break;
+
+        case RESULT_PAGE:
+            ClearWordItems();
+            break;
+        default:
+            break;
         }
+
         emit currentPageChanged(old_page,new_page);
     }
 }
@@ -181,6 +178,28 @@ void Manager_C::ClearWordItems()
 {
     foreach(QObject* word_item, _item_word_hash.keys()) {
         delete word_item;
+    }
+    _item_word_hash.clear();
+}
+
+void Manager_C::CreateResultAlgo()
+{
+    if(_result_algo) {
+        delete _result_algo;
+        _result_algo = 0;
+    }
+    switch (_game_level) {
+        case EASY:
+            _result_algo = new EasyResultAlgo_C();
+            break;
+        case MODERATE:
+            _result_algo = new ModerateResultAlgo_C();
+            break;
+        case EXPERT:
+            _result_algo = new StrictResultAlgo_C();
+            break;
+        default:
+            break;
     }
 }
 
