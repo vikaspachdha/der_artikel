@@ -9,8 +9,25 @@ class Thema_C;
 class ThemaModel_C : public QAbstractListModel
 {
     Q_OBJECT
+    Q_ENUMS(SelectionState_TP)
 
-    enum ROLES {
+    // Properties
+    Q_PROPERTY(SelectionState_TP selection_state READ SelectionState NOTIFY themaSelectionChanged)
+
+
+// Data types
+public:
+
+    enum SelectionState_TP {
+        NO_SELECTION = 1,
+        SINGLE_SELECTION,
+        MULTIPLE_SELECTION
+    };
+
+
+private:
+
+    enum ROLES_TP {
         DISPLAY_NAME=Qt::UserRole+1,
         TR_NAME,
         ICON,
@@ -19,6 +36,7 @@ class ThemaModel_C : public QAbstractListModel
         WORD_COUNT,
         THEMA_OBJECT
     };
+
 
 public:
     explicit ThemaModel_C(QObject *parent = 0);
@@ -36,6 +54,7 @@ public:
     void AddThema(Thema_C* new_thema);
     Thema_C* GetSelectedThema();
     void ClearSelection();
+    SelectionState_TP SelectionState() const;
 
 signals:
     void themaSelectionChanged();
@@ -48,7 +67,6 @@ private slots:
 private:
     QList<Thema_C*> _thema_list;
     QList<Thema_C*> _selected_thema_list;
-
 };
 
 #endif // THEMA_MODEL_H

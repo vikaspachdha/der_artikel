@@ -146,6 +146,25 @@ void ThemaModel_C::ClearSelection()
     _selected_thema_list.clear();
 }
 
+ThemaModel_C::SelectionState_TP ThemaModel_C::SelectionState() const
+{
+    SelectionState_TP selection_state;
+
+    switch (_selected_thema_list.count()) {
+        case 0:
+           selection_state = NO_SELECTION;
+            break;
+        case 1:
+           selection_state = SINGLE_SELECTION;
+            break;
+        default:
+            selection_state = MULTIPLE_SELECTION;
+            break;
+    }
+
+    return selection_state;
+}
+
 void ThemaModel_C::OnThemaItemSelectionChanged()
 {
     Thema_C* thema = qobject_cast<Thema_C*>(sender());
