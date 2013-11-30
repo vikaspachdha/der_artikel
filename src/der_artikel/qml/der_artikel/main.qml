@@ -39,7 +39,7 @@ Image {
         anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
-        enabled: manager.current_page !== Manager.HOME_PAGE
+        visible: manager.current_page !== Manager.HOME_PAGE
         cmd_text: qsTr("Home")
         icon_name: "home"
         onCommandActivated: {
@@ -47,6 +47,19 @@ Image {
         }
     }
 
+    Command_item
+    {
+        id: quit_cmd
+        anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 4
+        visible: manager.current_page == Manager.HOME_PAGE
+        cmd_text: qsTr("Quit")
+        icon_name: "quit"
+        onCommandActivated: {
+            Qt.quit()
+        }
+    }
 
     Content_frame
     {

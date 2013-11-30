@@ -21,11 +21,14 @@
         <file>resources/thema_generic.png</file>
         <file>resources/start.png</file>
         <file>resources/start_disabled.png</file>
-        <file>resources/start_active.png</file>
-        <file>resources/command_active.png</file>
+        <file>resources/start_activ.png</file>
+        <file>resources/command_activ.png</file>
         <file>resources/command_disabled.png</file>
         <file>resources/command.png</file>
         <file>resources/home_disabled.png</file>
-        <file>resources/home_active.png</file>
+        <file>resources/home_activ.png</file>
+        <file>resources/quit.png</file>
+        <file>resources/quit_disabled.png</file>
+        <file>resources/quit_activ.png</file>
     </qresource>
 </RCC>

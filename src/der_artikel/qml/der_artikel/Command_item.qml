@@ -15,7 +15,7 @@ Item {
         width:sourceSize.width
         anchors.left: parent.left
         anchors.top: parent.top
-        source: mouse_area.pressed ? "qrc:/res/resources/" + icon_name +"_active.png" : root_item.enabled ? "qrc:/res/resources/" + icon_name +".png" : "qrc:/res/resources/" + icon_name +"_disabled.png"
+        source: mouse_area.pressed ? "qrc:/res/resources/" + icon_name +"_activ.png" : root_item.enabled ? "qrc:/res/resources/" + icon_name +".png" : "qrc:/res/resources/" + icon_name +"_disabled.png"
     }
 
     Text {
