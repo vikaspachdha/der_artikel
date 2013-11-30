@@ -15,8 +15,8 @@ class Thema_C : public QObject, public Thema_I
 {
 
     Q_OBJECT
-    Q_PROPERTY(bool selected READ Selected WRITE SetSelected)
-
+    Q_PROPERTY(bool selected READ Selected WRITE SetSelected NOTIFY selectionChanged)
+    Q_PROPERTY(int experience READ ExperiencePoints NOTIFY experiencePointsChanged)
 
 public:
     Thema_C(QObject* parent = 0);

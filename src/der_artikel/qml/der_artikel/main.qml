@@ -1,8 +1,8 @@
 import QtQuick 2.0
-import QtQuick.Controls 1.0
-import QtQuick.Controls.Styles 1.0
 import QtGraphicalEffects 1.0
 import com.vystosi.qmlcomponents 1.0
+
+
 Image {
     id: rootItem;
     width: 400
@@ -19,6 +19,14 @@ Image {
         height: 80
         anchors {
             top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+    }
+
+    Thema_page_title {
+        height: 80
+        anchors {
             left: parent.left
             right: parent.right
         }
