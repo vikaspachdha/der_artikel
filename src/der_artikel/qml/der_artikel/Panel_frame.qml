@@ -59,63 +59,6 @@ Item {
     }
 
 
-//    states: [
-//        State {
-//            name: ""
-//            AnchorChanges {
-//                target:next_panel
-//                anchors.top: root_item.top
-//                anchors.right: root_item.right
-//                anchors.bottom: root_item.bottom
-//                anchors.left: root_item.left
-//            }
-//            AnchorChanges {
-//                target:current_panel
-//                anchors.top: root_item.top
-//                anchors.right: root_item.left
-//                anchors.bottom: root_item.bottom
-//                anchors.left: undefined
-//            }
-
-//        },
-//        State {
-//            name: "slide_in"
-//            AnchorChanges {
-//                target:next_panel
-//                anchors.top: root_item.top
-//                anchors.right: root_item.right
-//                anchors.bottom: root_item.bottom
-//                anchors.left: root_item.left
-//            }
-//            AnchorChanges {
-//                target:current_panel
-//                anchors.top: root_item.top
-//                anchors.right: root_item.left
-//                anchors.bottom: root_item.bottom
-//                anchors.left: undefined
-//            }
-
-//        }
-//    ]
-
-//    transitions: [
-//        Transition {
-//            id:trans
-//            from: ""
-//            to: "slide_in"
-//            reversible: true
-//            AnchorAnimation {
-//                duration:400
-//                easing.type: Easing.OutQuad
-//            }
-//            onRunningChanged: {
-//                if(running==false) {
-//                    current_panel=next_panel
-//                }
-//            }
-//        }
-//    ]
-
 Component.onCompleted: {
     current_panel = home_page_panel_item
     manager.currentPageChanged.connect(onCurrenPageChanged)

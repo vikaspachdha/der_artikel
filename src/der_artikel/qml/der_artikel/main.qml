@@ -32,19 +32,51 @@ Image {
         }
     }
 
-    Panel_frame {
-        id: cmd_panel_frame
+
+    Home_page_panel {
+        id: home_page_panel_item
         anchors.top: title_item.bottom
         anchors.bottom: home_cmd.top
         anchors.bottomMargin: 4
-        anchors.left: rootItem.left
+        width: 100
+    }
+
+    Words_page_panel {
+        id: words_page_panel_item
+        anchors.top: title_item.bottom
+        anchors.bottom: home_cmd.top
+        anchors.bottomMargin: 4
+        width: 100
+    }
+
+    Thema_page_panel {
+        id: thema_page_panel_item
+        anchors.top: title_item.bottom
+        anchors.bottom: home_cmd.top
+        anchors.bottomMargin: 4
+        width: 100
+    }
+
+    Result_page_panel {
+        id: result_page_panel_item
+        anchors.top: title_item.bottom
+        anchors.bottom: home_cmd.top
+        anchors.bottomMargin: 4
+        width: 100
+    }
+
+    About_page_panel {
+        id: about_page_panel_item
+        anchors.top: title_item.bottom
+        anchors.bottom: home_cmd.top
+        anchors.bottomMargin: 4
         width: 100
     }
 
     Command_item
     {
         id: home_cmd
-        anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
+        x:44//anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
         visible: manager.current_page !== Manager.HOME_PAGE
@@ -58,7 +90,7 @@ Image {
     Command_item
     {
         id: quit_cmd
-        anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
+        x:44//anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
         visible: manager.current_page == Manager.HOME_PAGE
@@ -72,9 +104,11 @@ Image {
     Content_frame
     {
         id: content_frame
+        //x:100
         anchors.top: title_item.bottom
         anchors.bottom: rootItem.bottom
-        anchors.left: cmd_panel_frame.right
+        anchors.left: parent.left
+        anchors.leftMargin: 118
         anchors.right: rootItem.right
     }
 
