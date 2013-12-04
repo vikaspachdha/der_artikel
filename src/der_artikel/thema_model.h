@@ -13,7 +13,7 @@ class ThemaModel_C : public QAbstractListModel
 
     // Properties
     Q_PROPERTY(SelectionState_TP selection_state READ SelectionState NOTIFY themaSelectionChanged)
-
+    Q_PROPERTY(Thema_C* selected_thema READ GetSelectedThema NOTIFY themaSelectionChanged)
 
 // Data types
 public:

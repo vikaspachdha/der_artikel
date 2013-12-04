@@ -5,7 +5,9 @@
 #include "qtquick2applicationviewer.h"
 #include "manager.h"
 #include "data/result.h"
+#include "data/thema.h"
 #include "thema_model.h"
+
 
 #ifdef ENABLE_THEMA_BUILDER
 #include "thema_builder.h"
@@ -19,6 +21,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Manager_C>("com.vystosi.qmlcomponents", 1, 0, "Manager","");
     qmlRegisterUncreatableType<Result_C>("com.vystosi.qmlcomponents", 1, 0, "Result","");
     qmlRegisterUncreatableType<Article_C>("com.vystosi.qmlcomponents", 1, 0, "Article","");
+    qmlRegisterUncreatableType<Thema_C>("com.vystosi.qmlcomponents", 1, 0, "Thema","");
     qmlRegisterUncreatableType<ThemaModel_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaModel","");
 
 #ifdef ENABLE_THEMA_BUILDER

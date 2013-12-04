@@ -12,7 +12,8 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _defered_read(false),
     _last_played(QDateTime::currentDateTime()),
     _experience_points(0),
-    _selected(false)
+    _selected(false),
+    _state(RUSTY)
 {
     _icon_url = QUrl("qrc:/res/resources/thema_generic.png");
 }
@@ -193,6 +194,15 @@ void Thema_C::AddExperiencePoints(int points)
     }
 
     if(points !=0) {
+        if(_experience_points > 499) {
+            _state = INERT;
+        } else if(_experience_points > 249) {
+            _state = GOLD;
+        } else if(_experience_points > 99) {
+            _state = SILVER;
+        } else {
+            _state= RUSTY;
+        }
         emit experiencePointsChanged();
     }
 }

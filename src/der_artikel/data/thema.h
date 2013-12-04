@@ -15,8 +15,24 @@ class Thema_C : public QObject, public Thema_I
 {
 
     Q_OBJECT
+
     Q_PROPERTY(bool selected READ Selected WRITE SetSelected NOTIFY selectionChanged)
     Q_PROPERTY(int experience READ ExperiencePoints NOTIFY experiencePointsChanged)
+    Q_PROPERTY(QUrl icon_url READ GetIconUrl CONSTANT)
+    Q_PROPERTY(QString name READ GetText CONSTANT)
+    Q_PROPERTY(QString tr_name READ GetTrText CONSTANT)
+    Q_PROPERTY(unsigned int word_count READ GetWordCount CONSTANT)
+    Q_PROPERTY(QDateTime last_played_date READ LastPlayed CONSTANT)
+    Q_PROPERTY(State_TP state READ state NOTIFY experiencePointsChanged)
+    Q_ENUMS(State_TP)
+
+public:
+    enum State_TP {
+        RUSTY,
+        SILVER,
+        GOLD,
+        INERT
+    };
 
 public:
     Thema_C(QObject* parent = 0);
@@ -43,6 +59,8 @@ public:
 
     QDateTime LastPlayed() const { return _last_played; }
     void SetLastPlayed(const QDateTime &LastPlayed);
+
+    State_TP state() const { return _state; }
 
     // Thema_I implementation
 public:
@@ -76,7 +94,7 @@ private:
     int _experience_points;
     bool _selected;
     QUrl _icon_url;
-
+    State_TP _state;
 
 private:
     friend class ThemaBuilder_C;
