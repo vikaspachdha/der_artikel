@@ -30,5 +30,7 @@
         <file>resources/quit.png</file>
         <file>resources/quit_disabled.png</file>
         <file>resources/quit_activ.png</file>
+        <file>resources/fonts/custom_command.ttf</file>
+        <file>resources/fonts/custom_regular.ttf</file>
     </qresource>
 </RCC>

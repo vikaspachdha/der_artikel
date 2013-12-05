@@ -43,7 +43,8 @@ Rectangle {
         x:2
         anchors.verticalCenter: parent.verticalCenter
         text: qsTr("Button")
-        font.pixelSize: 14
+        font.family: custom_command.name
+        font.pixelSize: 16
     }
 
     MouseArea {

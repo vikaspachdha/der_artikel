@@ -14,6 +14,17 @@ Image {
     verticalAlignment: Image.AlignTop
     property color currentColor
 
+    FontLoader {
+        id: custom_regular
+        source: "qrc:/res/resources/fonts/custom_regular.ttf"
+    }
+
+    FontLoader {
+        id: custom_command
+        source: "qrc:/res/resources/fonts/custom_command.ttf"
+    }
+
+
     Title_bar {
         id: title_item
         height: 80

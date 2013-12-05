@@ -26,13 +26,24 @@ Title_bar {
 
     Text {
         id: heading_1
-        text:themaModel.selection_state===ThemaModel.SINGLE_SELECTION ? themaModel.selected_thema.name:qsTr("Select Thema")
+        text:{
+                switch(themaModel.selection_state) {
+                    case ThemaModel.MULTIPLE_SELECTION:
+                        return qsTr("Multi Mode - Coming soon")
+                    case ThemaModel.SINGLE_SELECTION:
+                        return themaModel.selected_thema.name
+                    default:
+                        return qsTr("Select Thema")
+                }
+            }
+
         anchors {
             top:parent.top
             left:page_icon.right
             leftMargin: 12
-            topMargin: 8
+            topMargin: 10
         }
+        font.family: custom_regular.name
         font.pixelSize: 16
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
@@ -46,8 +57,9 @@ Title_bar {
             top:parent.top
             right:parent.right
             rightMargin:10
-            topMargin: 8
+            topMargin: 10
         }
+        font.family: custom_regular.name
         font.pixelSize: 16
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
@@ -62,6 +74,7 @@ Title_bar {
             left:page_icon.right
             leftMargin: 12
         }
+        font.family: custom_regular.name
         font.pixelSize: 12
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
@@ -73,26 +86,34 @@ Title_bar {
         text: {
                 if(themaModel.selection_state===ThemaModel.SINGLE_SELECTION) {
                     var currentState = themaModel.selected_thema.state
-                    if(currentState===Thema.RUSTY) {
-                        return qsTr("Rusty")
+                    var state_str = qsTr("State - ")
+                    switch(currentState) {
+                        case Thema.INERT:
+                            state_str += qsTr("Inert")
+                            break
+                        case Thema.GOLD:
+                            state_str += qsTr("Gold")
+                            break;
+                        case Thema.SILVER:
+                            state_str += qsTr("Silver")
+                            break;
+                        default:
+                            state_str += qsTr("Rusty")
+                            break;
                     }
-                    if (currentState===Thema.SILVER) {
-                        return qsTr("Silver")
-                    }
-                    if (currentState===Thema.GOLD) {
-                        return qsTr("Gold")
-                    }
-                    return qsTr("Inert")
                 } else {
                     return ""
                 }
+                return state_str
             }
 
         anchors {
-            top:heading_1.bottom
+            bottom:parent.bottom
+            bottomMargin: 10
             right:parent.right
             rightMargin:10
         }
+        font.family: custom_regular.name
         font.pixelSize: 18
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft

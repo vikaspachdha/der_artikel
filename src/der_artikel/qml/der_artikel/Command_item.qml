@@ -24,6 +24,7 @@ Item {
         anchors.top: icon.bottom
         anchors.right: parent.right
         anchors.left: parent.left
+        font.family: custom_command.name
         font.pointSize: 12
         horizontalAlignment: Text.AlignHCenter
         smooth:true
