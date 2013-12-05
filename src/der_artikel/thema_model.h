@@ -4,7 +4,7 @@
 #include <QAbstractListModel>
 #include <QList>
 
-class Thema_C;
+#include "data/thema.h"
 
 class ThemaModel_C : public QAbstractListModel
 {
@@ -61,7 +61,7 @@ signals:
 
 
 private slots:
-    void OnThemaItemSelectionChanged();
+    void OnThemaItemSelectionChanged(Thema_C::SelectionType_TP type);
 
 
 private:

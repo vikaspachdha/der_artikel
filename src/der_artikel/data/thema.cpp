@@ -217,11 +217,11 @@ void Thema_C::SetLastPlayed(const QDateTime &last_played)
     _last_played = last_played;
 }
 
-void Thema_C::SetSelected(bool selected)
+void Thema_C::setSelected(bool selected, SelectionType_TP type)
 {
     if(_selected != selected) {
         _selected = selected;
-        emit selectionChanged();
+        emit selectionChanged(type);
     }
 }
 

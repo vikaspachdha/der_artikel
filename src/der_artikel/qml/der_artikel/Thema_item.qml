@@ -14,6 +14,7 @@ Flipable {
     back:info_rect
 
     signal themaClicked()
+    signal themaLongClicked()
 
     Rectangle {
         id: info_rect
@@ -119,6 +120,9 @@ Flipable {
             anchors.fill: thema_rect
             onClicked: {
                 thema_item_root.themaClicked()
+            }
+            onPressAndHold: {
+                thema_item_root.themaLongClicked()
             }
         }
 

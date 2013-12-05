@@ -1,5 +1,4 @@
 #include "thema_model.h"
-#include "data/thema.h"
 #include <QPixmap>
 
 ThemaModel_C::ThemaModel_C(QObject *parent):
@@ -100,7 +99,7 @@ bool ThemaModel_C::setData(const QModelIndex &index, const QVariant &value, int 
             switch(role) {
 
             case SELECTED:
-                thema->SetSelected(selected);
+                thema->setSelected(selected);
                 if(selected) {
                     _selected_thema_list.append(thema);
                 } else {
@@ -125,7 +124,7 @@ void ThemaModel_C::AddThema(Thema_C *new_thema)
     Q_ASSERT(new_thema);
     beginInsertRows(QModelIndex(),_thema_list.count(),_thema_list.count());
     _thema_list.append(new_thema);
-    connect(new_thema, SIGNAL(selectionChanged()),this,SLOT(OnThemaItemSelectionChanged()));
+    connect(new_thema, SIGNAL(selectionChanged(Thema_C::SelectionType_TP)),this,SLOT(OnThemaItemSelectionChanged(Thema_C::SelectionType_TP)));
     endInsertRows();
 }
 
@@ -141,7 +140,7 @@ Thema_C* ThemaModel_C::GetSelectedThema()
 void ThemaModel_C::ClearSelection()
 {
     foreach (Thema_C* thema, _selected_thema_list) {
-       thema->SetSelected(false);
+       thema->setSelected(false);
     }
     _selected_thema_list.clear();
 }
@@ -165,10 +164,13 @@ ThemaModel_C::SelectionState_TP ThemaModel_C::SelectionState() const
     return selection_state;
 }
 
-void ThemaModel_C::OnThemaItemSelectionChanged()
+void ThemaModel_C::OnThemaItemSelectionChanged(Thema_C::SelectionType_TP type)
 {
     Thema_C* thema = qobject_cast<Thema_C*>(sender());
     Q_ASSERT(thema);
+    if(type == Thema_C::SINGLE_SELECTION) {
+        ClearSelection();
+    }
     if(thema->Selected()) {
         _selected_thema_list.append(thema);
     } else {

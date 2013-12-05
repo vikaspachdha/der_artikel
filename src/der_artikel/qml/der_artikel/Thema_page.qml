@@ -25,8 +25,11 @@ Item {
                 if(flipped) {
                     flipped = !flipped
                 }else {
-                    thema_object.selected = !selected
+                    thema_object.setSelected(!selected)
                 }
+            }
+            onThemaLongClicked: {
+                thema_object.setSelected(true,Thema.MULTI_SELECTION)
             }
         }
     }

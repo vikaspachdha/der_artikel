@@ -60,7 +60,7 @@ Page_panel
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
-        enabled: manager.thema_selected
+        enabled: themaModel.selection_state===ThemaModel.SINGLE_SELECTION
         cmd_text: qsTr("Start")
         icon_name: "start"
         onCommandActivated: {

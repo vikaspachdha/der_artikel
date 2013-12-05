@@ -16,7 +16,7 @@ class Thema_C : public QObject, public Thema_I
 
     Q_OBJECT
 
-    Q_PROPERTY(bool selected READ Selected WRITE SetSelected NOTIFY selectionChanged)
+    Q_PROPERTY(bool selected READ Selected NOTIFY selectionChanged)
     Q_PROPERTY(int experience READ ExperiencePoints NOTIFY experiencePointsChanged)
     Q_PROPERTY(QUrl icon_url READ GetIconUrl CONSTANT)
     Q_PROPERTY(QString name READ GetText CONSTANT)
@@ -24,7 +24,9 @@ class Thema_C : public QObject, public Thema_I
     Q_PROPERTY(unsigned int word_count READ GetWordCount CONSTANT)
     Q_PROPERTY(QDateTime last_played_date READ LastPlayed CONSTANT)
     Q_PROPERTY(State_TP state READ state NOTIFY experiencePointsChanged)
+
     Q_ENUMS(State_TP)
+    Q_ENUMS(SelectionType_TP)
 
 public:
     enum State_TP {
@@ -32,6 +34,11 @@ public:
         SILVER,
         GOLD,
         INERT
+    };
+
+    enum SelectionType_TP {
+        SINGLE_SELECTION,
+        MULTI_SELECTION
     };
 
 public:
@@ -51,7 +58,7 @@ public:
     QVector<Word_C*> GetWords() const { return _words; }
 
     bool Selected() const { return _selected; }
-    void SetSelected(bool selected);
+    Q_INVOKABLE void setSelected(bool selected, SelectionType_TP type = SINGLE_SELECTION);
 
     const QUrl& GetIconUrl() const { return _icon_url; }
 
@@ -78,7 +85,7 @@ public:
 
 
 signals:
-    void selectionChanged();
+    void selectionChanged(Thema_C::SelectionType_TP);
     void experiencePointsChanged();
 
 private:
@@ -99,5 +106,7 @@ private:
 private:
     friend class ThemaBuilder_C;
 };
+
+Q_DECLARE_METATYPE(Thema_C::SelectionType_TP)
 
 #endif // THEMA_H
