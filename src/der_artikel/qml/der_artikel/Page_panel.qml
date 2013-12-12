@@ -15,13 +15,11 @@ Item {
         }
     }
 
-    Image {
+    Rectangle {
         id: background_image
         anchors.fill: parent
-        source:"qrc:/res/resources/alt_background_texture.png"
-        fillMode: Image.Tile
-        horizontalAlignment: Image.AlignLeft
-        verticalAlignment: Image.AlignTop
+        radius:6
+        color:cp_blue.colorBg01
     }
 
     DropShadow {

@@ -15,25 +15,9 @@ Rectangle {
     height: label.height+8
     radius: 0
     gradient: Gradient {
-        GradientStop {
-            position: 0
-            color: "#8d8b8b"
-        }
-
-        GradientStop {
-            position: 0.2
-            color: mousearea1.pressed || isDown ? "#8d8b8b":btnColor
-        }
-
-        GradientStop {
-            position: 0.8
-            color: btnColor
-        }
-
-        GradientStop {
-            position: 1
-            color: "#8d8b8b"
-        }
+        GradientStop {position: 0  ;color: cp_blue.colorBtn02}
+        GradientStop {position: 0.2;color: mousearea1.pressed || isDown ? cp_blue.colorBtn01:cp_blue.colorBtn02}
+        GradientStop {position: 1;color: cp_blue.colorBtn01}
     }
 
     border.width: mousearea1.pressed | isDown ? 1:0

@@ -43,6 +43,7 @@ Title_bar {
             leftMargin: 12
             topMargin: 10
         }
+        color: cp_blue.colorf01
         font.family: custom_regular.name
         font.pixelSize: 16
         fontSizeMode: Text.Fit
@@ -59,6 +60,7 @@ Title_bar {
             rightMargin:10
             topMargin: 10
         }
+        color: cp_blue.colorf01
         font.family: custom_regular.name
         font.pixelSize: 16
         fontSizeMode: Text.Fit
@@ -74,6 +76,7 @@ Title_bar {
             left:page_icon.right
             leftMargin: 12
         }
+        color: cp_blue.colorf01
         font.family: custom_regular.name
         font.pixelSize: 12
         fontSizeMode: Text.Fit
@@ -113,6 +116,7 @@ Title_bar {
             right:parent.right
             rightMargin:10
         }
+        color: cp_blue.colorf01
         font.family: custom_regular.name
         font.pixelSize: 18
         fontSizeMode: Text.Fit

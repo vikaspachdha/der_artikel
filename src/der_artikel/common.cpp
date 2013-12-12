@@ -1,6 +1,7 @@
 #include "common.h"
 #include <QCoreApplication>
 #include <QFileInfo>
+#include <QDir>
 
 namespace ARTIKEL{
 

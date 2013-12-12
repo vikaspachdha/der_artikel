@@ -12,7 +12,10 @@ Image {
     fillMode: Image.Tile
     horizontalAlignment: Image.AlignLeft
     verticalAlignment: Image.AlignTop
-    property color currentColor
+
+    ColorPaletteBlue {
+        id:cp_blue
+    }
 
     FontLoader {
         id: custom_regular
