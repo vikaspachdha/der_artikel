@@ -102,6 +102,8 @@ Image {
         color: "#66000000"
         source: msg_bar
     }
-
+    Component.onCompleted: {
+        manager.current_page = Manager.HOME_PAGE
+    }
 }
 

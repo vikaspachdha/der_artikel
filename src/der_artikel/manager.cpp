@@ -14,7 +14,7 @@ Manager_C::Manager_C(QObject *parent) :
     _root_item(0),
     _current_thema(0),
     _selected_article(Article_C::INVALID),
-    _current_page(HOME_PAGE),
+    _current_page(INVALID),
     _result_algo(0),
     _current_result(0),
     _thema_selected(false)
