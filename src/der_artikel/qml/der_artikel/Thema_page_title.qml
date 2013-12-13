@@ -3,10 +3,7 @@ import com.vystosi.qmlcomponents 1.0
 
 Title_bar {
 
-    y: manager.current_page === Manager.THEMA_PAGE ? 0 : -height
-    Behavior on y {
-        NumberAnimation { duration:400 }
-    }
+    pageId: Manager.THEMA_PAGE
 
     Image {
         id: page_icon

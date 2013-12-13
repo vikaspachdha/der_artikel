@@ -27,105 +27,49 @@ Image {
         source: "qrc:/res/resources/fonts/custom_command.ttf"
     }
 
-
-    Title_bar {
-        id: title_item
-        height: 80
-        anchors {
+    Title_frame{
+        id: title_frame
+        anchors{
             top: parent.top
-            left: parent.left
-            right: parent.right
+            left:parent.left
+            leftMargin:8
+            right:parent.right
+            rightMargin: 8
         }
     }
 
-    Thema_page_title {
-        height: 80
-        anchors {
-            left: parent.left
-            right: parent.right
+    Panel_frame {
+        id: panel_frame
+        anchors{
+            top: title_frame.bottom
+            topMargin: 6
+            left:parent.left
+            bottom:command_frame.top
+            bottomMargin: 6
         }
     }
 
-
-    Home_page_panel {
-        id: home_page_panel_item
-        anchors.top: title_item.bottom
-        anchors.bottom: home_cmd.top
-        anchors.bottomMargin: 4
-        width: 100
-    }
-
-    Words_page_panel {
-        id: words_page_panel_item
-        anchors.top: title_item.bottom
-        anchors.bottom: home_cmd.top
-        anchors.bottomMargin: 4
-        width: 100
-    }
-
-    Thema_page_panel {
-        id: thema_page_panel_item
-        anchors.top: title_item.bottom
-        anchors.bottom: home_cmd.top
-        anchors.bottomMargin: 4
-        width: 100
-    }
-
-    Result_page_panel {
-        id: result_page_panel_item
-        anchors.top: title_item.bottom
-        anchors.bottom: home_cmd.top
-        anchors.bottomMargin: 4
-        width: 100
-    }
-
-    About_page_panel {
-        id: about_page_panel_item
-        anchors.top: title_item.bottom
-        anchors.bottom: home_cmd.top
-        anchors.bottomMargin: 4
-        width: 100
-    }
-
-    Command_item
-    {
-        id: home_cmd
-        x:44//anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 4
-        visible: manager.current_page !== Manager.HOME_PAGE
-        cmd_text: qsTr("Home")
-        icon_name: "home"
-        onCommandActivated: {
-            manager.current_page = Manager.HOME_PAGE
-        }
-    }
-
-    Command_item
-    {
-        id: quit_cmd
-        x:44//anchors.horizontalCenter: cmd_panel_frame.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 4
-        visible: manager.current_page == Manager.HOME_PAGE
-        cmd_text: qsTr("Quit")
-        icon_name: "quit"
-        onCommandActivated: {
-            Qt.quit()
+    Command_frame {
+        id:command_frame
+        width:100
+        height:80
+        anchors{
+            left:parent.left
+            leftMargin: 8
+            bottom:parent.bottom
+            bottomMargin: 6
         }
     }
 
     Content_frame
     {
         id: content_frame
-        //x:100
-        anchors.top: title_item.bottom
+        anchors.top: title_frame.bottom
         anchors.bottom: rootItem.bottom
         anchors.left: parent.left
         anchors.leftMargin: 118
         anchors.right: rootItem.right
     }
-
 
     function addWord(itemText)
     {
