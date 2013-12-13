@@ -13,7 +13,7 @@ Rectangle {
 
     width: label.width+12
     height: label.height+8
-    radius: 0
+    radius: 4
     gradient: Gradient {
         GradientStop {position: 0  ;color: cp_blue.colorBtn02}
         GradientStop {position: 0.2;color: mousearea1.pressed || isDown ? cp_blue.colorBtn01:cp_blue.colorBtn02}
@@ -21,6 +21,15 @@ Rectangle {
     }
 
     border.width: mousearea1.pressed | isDown ? 1:0
+
+    Rectangle {
+        height: 4
+        width: height
+        radius: 2
+        anchors{left:parent.left;top:parent.top;margins: 4}
+        visible: isDown
+        color:"black"
+    }
 
     Text {
         id: label
