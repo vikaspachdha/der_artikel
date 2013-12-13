@@ -3,12 +3,15 @@ import QtGraphicalEffects 1.0
 
 Item {
     id: root_item
-    property var pageId
-    y: manager.current_page === pageId ? 4 : -height-4
+    property var page_id
+    y: manager.current_page === page_id ? 4 : -height-4
     height:60
     anchors{left:parent.left;right:parent.right}
     Behavior on y {
-        NumberAnimation { duration:400 }
+        SequentialAnimation {
+            PauseAnimation { duration: (manager.current_page === page_id) ? 0 : 500}
+            NumberAnimation { duration:400; easing.type: Easing.InOutElastic; easing.amplitude: 2.0; easing.period: 2.0}
+        }
     }
 
     Rectangle {

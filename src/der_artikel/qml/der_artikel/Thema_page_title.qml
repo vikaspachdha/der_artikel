@@ -3,7 +3,7 @@ import com.vystosi.qmlcomponents 1.0
 
 Title_bar {
 
-    pageId: Manager.THEMA_PAGE
+    page_id: Manager.THEMA_PAGE
 
     Image {
         id: page_icon
