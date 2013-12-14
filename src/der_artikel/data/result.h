@@ -2,8 +2,13 @@
 #define RESULT_H
 #include <QObject>
 #include <QDateTime>
+#include <QList>
+#include <QVariantList>
+#include "data/word.h"
+#include "word_model.h"
 
 class QDomElement;
+class Word_C;
 
 class Result_C : public QObject
 {
@@ -17,6 +22,7 @@ class Result_C : public QObject
     Q_PROPERTY(QString mistake_string READ MistakeString CONSTANT)
     Q_PROPERTY(QString grade_string READ GradeString CONSTANT)
     Q_PROPERTY(QString unplayed_string READ UnplayedString CONSTANT)
+    Q_PROPERTY(QAbstractItemModel* incorrectWordsModel READ GetIncorrectWordModel CONSTANT)
 
 public:
 
@@ -54,9 +60,11 @@ public:
 
     GRADE Grade() const { return _grade; }
 
+    QAbstractItemModel* GetIncorrectWordModel() { return _incorrect_words_model; }
+
 public:
     void Clear();
-    void UpdateResult(double score, unsigned int correct_word_count, unsigned int mistakes_count, unsigned int unplayed_count);
+    void UpdateResult(double score, unsigned int correct_word_count, unsigned int unplayed_count, QList<const Word_C *> incorrect_words);
     bool Read(const QDomElement& element);
     bool Write(QDomElement& element);
 
@@ -74,6 +82,7 @@ private:
     QString _grade_string;
     QString _unplayed_string;
     QDateTime _result_date_time;
+    WordModel_C* _incorrect_words_model;
 };
 
 #endif // RESULT_H

@@ -105,5 +105,24 @@ Image {
     Component.onCompleted: {
         manager.current_page = Manager.HOME_PAGE
     }
+
+    function articleText(article) {
+        var text;
+        switch(article) {
+        case Article.DER:
+            text = "Der"
+            break
+        case Article.DIE:
+            text = "Die"
+            break
+        case Article.DAS:
+            text = "Das"
+            break;
+        default:
+            text = ""
+            break;
+        }
+        return text;
+    }
 }
 

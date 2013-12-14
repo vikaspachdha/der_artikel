@@ -12,7 +12,7 @@ void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 {
     unsigned int count = thema.GetWordCount();
     unsigned int correct_count = 0;
-    unsigned int incorrect_count = 0;
+    QList<const Word_C*>incorrect_words;
     unsigned int unplayed_count = 0;
 
     for(unsigned int index = 0; index < count; ++index) {
@@ -23,15 +23,15 @@ void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
             if(word->GetArtikel() == word->GetUserArtikel()) {
                 ++correct_count;
             } else {
-                ++incorrect_count;
+                incorrect_words<<word;
             }
         }
 
     }
 
-    double score = (double)(correct_count - (incorrect_count/2.0))/count;
+    double score = (double)(correct_count - (incorrect_words.count()/2.0))/count;
 
-    result.UpdateResult(score,correct_count, incorrect_count, unplayed_count);
+    result.UpdateResult(score,correct_count, unplayed_count, incorrect_words);
 
     Result_C::GRADE grade = result.Grade();
     if(grade >= Result_C::GRADE_AP) {

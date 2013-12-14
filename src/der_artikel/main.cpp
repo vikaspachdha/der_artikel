@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Article_C>("com.vystosi.qmlcomponents", 1, 0, "Article","");
     qmlRegisterUncreatableType<Thema_C>("com.vystosi.qmlcomponents", 1, 0, "Thema","");
     qmlRegisterUncreatableType<ThemaModel_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaModel","");
+    //qmlRegisterUncreatableType<Word_C>("com.vystosi.qmlcomponents", 1, 0, "Word","");
 
 #ifdef ENABLE_THEMA_BUILDER
     ThemaBuilder_C thema_builder;

@@ -1,6 +1,8 @@
 #include "result.h"
 #include <QLocale>
 #include <QDomElement>
+#include "data/word.h"
+#include "word_model.h"
 
 Result_C::Result_C(QObject *parent):
     QObject(parent),
@@ -13,7 +15,7 @@ Result_C::Result_C(QObject *parent):
     _grade_string(tr("Result")),
     _unplayed_string("")
 {
-
+    _incorrect_words_model = new WordModel_C(this);
 }
 
 unsigned int Result_C::CorrectWordCount() const
@@ -49,15 +51,16 @@ void Result_C::Clear()
     _unplayed_string="";
 }
 
-void Result_C::UpdateResult(double score, unsigned int correct_word_count, unsigned int mistakes_count, unsigned int unplayed_count)
+void Result_C::UpdateResult(double score, unsigned int correct_word_count, unsigned int unplayed_count, QList<const Word_C*>incorrect_words)
 {
     if(score <0.0) {
         score = 0.0;
     }
     _score = score;
     _correct_word_count= correct_word_count;
-    _mistakes_count= mistakes_count;
+    _mistakes_count= incorrect_words.count();
     _unplayed_count= unplayed_count;
+    _incorrect_words_model->UpdateWords(incorrect_words);
 
     double percentage_score = _score *100.0;
 

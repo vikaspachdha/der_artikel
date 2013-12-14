@@ -56,39 +56,13 @@ Item {
         anchors.bottom: parent.bottom
         spacing:4
         clip:true
-        model: ListModel {
-            ListElement {
-                incorrect_word: "Die Bruder"
-                correct_word: "Der Bruder"
-            }
-            ListElement {
-                incorrect_word: "Die Bruder"
-                correct_word: "Der Bruder"
-            }
-            ListElement {
-                incorrect_word: "Die Bruder"
-                correct_word: "Der Bruder"
-            }
-            ListElement {
-                incorrect_word: "Die Bruder"
-                correct_word: "Der Bruder"
-            }
-            ListElement {
-                incorrect_word: "Die Bruder"
-                correct_word: "Der Bruder"
-            }
-
-
-        }
+        model: currentResult.incorrectWordsModel
         delegate: Result_item {
-
             height: 20
-            item_title: model.incorrect_word
-            item_result: model.correct_word
+            item_title: articleText(article)+" " + word_text
+            item_result: articleText(user_article) + " " + word_text
         }
     }
-
-
 
     function onResultUpdated()
     {
@@ -101,4 +75,5 @@ Item {
     Component.onCompleted: {
         currentResult.resultUpdated.connect(onResultUpdated)
     }
+
 }

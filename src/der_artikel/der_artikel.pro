@@ -1,3 +1,4 @@
+cache()
 QT += xml widgets
 
 #DEFINES += ENABLE_THEMA_BUILDER
@@ -33,7 +34,8 @@ SOURCES += main.cpp \
     thema_model.cpp \
     article.cpp \
     algo/easy_result_algo.cpp \
-    algo/moderate_result_algo.cpp
+    algo/moderate_result_algo.cpp \
+    word_model.cpp
 
 # Installation path
 # target.path =
@@ -57,7 +59,8 @@ HEADERS += \
     thema_model.h \
     article.h \
     algo/easy_result_algo.h \
-    algo/moderate_result_algo.h
+    algo/moderate_result_algo.h \
+    word_model.h
 
 FORMS += \
     thema_builder.ui

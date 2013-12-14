@@ -7,6 +7,8 @@
 class Word_C : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString word_text READ GetWordText CONSTANT)
+
 public:
     Word_C(QObject* parent=0);
 
@@ -31,5 +33,4 @@ private:
 private:
     friend class ThemaBuilder_C;
 };
-
 #endif // WORD_H
