@@ -158,6 +158,7 @@ void Manager_C::SetCurrentThema(Thema_C *thema)
     if(thema && thema != _current_thema) {
         ClearWordItems();
         _current_thema = thema;
+        _current_thema->ClearUserInput();
         AddWords(_current_thema);
     }
 }

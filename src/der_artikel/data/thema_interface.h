@@ -15,6 +15,7 @@ public:
     virtual const Word_C* GetWord(unsigned int index) const = 0;
     virtual void AddExperiencePoints(int points) = 0;
     virtual void DeductExperiencePoints(int points) = 0;
+    virtual void ClearUserInput() = 0;
 };
 
 #endif // THEMA_I_H

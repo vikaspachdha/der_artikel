@@ -75,7 +75,7 @@ public:
     virtual const Word_C* GetWord(unsigned int index) const;
     virtual void AddExperiencePoints(int points);
     virtual void DeductExperiencePoints(int points);
-
+    virtual void ClearUserInput();
 
 public:
     bool Read(const QDomElement& element);

@@ -212,6 +212,13 @@ void Thema_C::DeductExperiencePoints(int points)
     AddExperiencePoints(-points);
 }
 
+void Thema_C::ClearUserInput()
+{
+    foreach(Word_C* word, _words) {
+        word->SetUserArtikel(Article_C::INVALID);
+    }
+}
+
 void Thema_C::SetLastPlayed(const QDateTime &last_played)
 {
     _last_played = last_played;
