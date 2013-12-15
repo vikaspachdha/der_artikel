@@ -65,6 +65,7 @@ Image {
     {
         id: content_frame
         anchors.top: title_frame.bottom
+        anchors.topMargin: 6
         anchors.bottom: rootItem.bottom
         anchors.left: parent.left
         anchors.leftMargin: 118
