@@ -17,6 +17,7 @@ Manager_C::Manager_C(QObject *parent) :
     _current_page(INVALID),
     _result_algo(0),
     _current_result(0),
+    _game_level(EASY),
     _thema_selected(false)
 {
     SetSelectedArticle(Article_C::DER);
