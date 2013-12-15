@@ -24,8 +24,9 @@ Item {
         anchors.top: icon.bottom
         anchors.right: parent.right
         anchors.left: parent.left
+        color:cp_blue.colorf01
         font.family: custom_command.name
-        font.pointSize: 12
+        font.pixelSize: 16
         horizontalAlignment: Text.AlignHCenter
         smooth:true
     }
