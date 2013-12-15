@@ -9,8 +9,8 @@ Item {
     anchors{left:parent.left;right:parent.right}
     Behavior on y {
         SequentialAnimation {
-            PauseAnimation { duration: (manager.current_page === page_id) ? 0 : 500}
-            NumberAnimation { duration:400; easing.type: Easing.InOutElastic; easing.amplitude: 2.0; easing.period: 2.0}
+            PauseAnimation { duration: (manager.current_page === page_id) ? 0 : 300}
+            NumberAnimation { duration:200; easing.type: Easing.InOutElastic; easing.amplitude: 2.0; easing.period: 2.0}
         }
     }
 
