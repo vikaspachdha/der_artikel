@@ -5,22 +5,6 @@ Title_bar {
 
     page_id: Manager.THEMA_PAGE
 
-    Image {
-        id: page_icon
-        width: height
-        anchors {
-            top:parent.top
-            left:parent.left
-            bottom: parent.bottom
-            margins:12
-        }
-        source:themaModel.selection_state===ThemaModel.SINGLE_SELECTION ? themaModel.selected_thema.icon_url:""
-        fillMode: Image.PreserveAspectFit
-        horizontalAlignment: Image.AlignLeft
-        verticalAlignment: Image.AlignTop
-    }
-
-
     Text {
         id: heading_1
         text:{
@@ -36,7 +20,7 @@ Title_bar {
 
         anchors {
             top:parent.top
-            left:page_icon.right
+            left:parent.left
             leftMargin: 12
             topMargin: 10
         }
@@ -50,7 +34,7 @@ Title_bar {
 
     Text {
         id: heading_1_right
-        text:themaModel.selection_state===ThemaModel.SINGLE_SELECTION ? themaModel.selected_thema.word_count + qsTr(" Words"):""
+        text:themaModel.selection_state===ThemaModel.SINGLE_SELECTION ? qsTr("Experience : ")+themaModel.selected_thema.experience:""
         anchors {
             top:parent.top
             right:parent.right
@@ -70,7 +54,7 @@ Title_bar {
         text:themaModel.selection_state===ThemaModel.SINGLE_SELECTION ? themaModel.selected_thema.name:""
         anchors {
             top:heading_1.bottom
-            left:page_icon.right
+            left:parent.left
             leftMargin: 12
         }
         color: cp_blue.colorf01

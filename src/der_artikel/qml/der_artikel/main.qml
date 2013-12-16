@@ -23,7 +23,7 @@ Image {
     }
 
     FontLoader {
-        id: custom_command
+        id: command_font
         source: "qrc:/res/resources/fonts/custom_command.ttf"
     }
 
@@ -68,7 +68,7 @@ Image {
         anchors.topMargin: 6
         anchors.bottom: rootItem.bottom
         anchors.left: parent.left
-        anchors.leftMargin: 118
+        anchors.leftMargin: 112
         anchors.right: rootItem.right
     }
 

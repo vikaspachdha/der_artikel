@@ -6,7 +6,6 @@ Rectangle {
     property alias buttonText:label.text
     property alias textPxSize:label.font.pixelSize
     property bool isDown:false
-    property color btnColor: "#dadef1"
     property alias text_anchors: label.anchors
     signal activated();
 
@@ -28,7 +27,7 @@ Rectangle {
         radius: 2
         anchors{left:parent.left;top:parent.top;margins: 4}
         visible: isDown
-        color:"black"
+        color:cp_blue.colorf02
     }
 
     Text {
@@ -36,7 +35,8 @@ Rectangle {
         x:2
         anchors.verticalCenter: parent.verticalCenter
         text: qsTr("Button")
-        font.family: custom_command.name
+        color:cp_blue.colorf02
+        font.family: command_font.name
         font.pixelSize: 16
     }
 

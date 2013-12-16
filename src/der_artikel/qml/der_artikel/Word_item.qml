@@ -48,7 +48,7 @@ Item {
     Text {
         id: label
         anchors.left: text_area.left
-        font.family: custom_command.name
+        font.family: command_font.name
         font.pixelSize: 22
     }
 

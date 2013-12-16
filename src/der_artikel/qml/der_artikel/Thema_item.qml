@@ -29,17 +29,43 @@ Flipable {
             anchors.leftMargin: 2
             anchors.right: parent.right
             text:qsTr("Author :")
-            font.pixelSize: 12
+            color:cp_blue.colorf02
+            font.family:command_font.name
+            font.pixelSize: 16
         }
         Text {
             id:author
             anchors.top: author_label.bottom
-            anchors.topMargin: 2
             anchors.left:parent.left
             anchors.leftMargin: 2
             anchors.right: parent.right
             text:"Vikas Pachdha"
-            font.pixelSize: 12
+            color:cp_blue.colorf02
+            font.family:command_font.name
+            font.pixelSize: 16
+        }
+        Text {
+            id:date_label
+            anchors.top:author.bottom
+            anchors.topMargin: 8
+            anchors.left:parent.left
+            anchors.leftMargin: 2
+            anchors.right: parent.right
+            text:qsTr("Last Played :")
+            color:cp_blue.colorf02
+            font.family:command_font.name
+            font.pixelSize: 16
+        }
+        Text {
+            id:date
+            anchors.top: date_label.bottom
+            anchors.left:parent.left
+            anchors.leftMargin: 2
+            anchors.right: parent.right
+            text:"10 . 12 . 2013"
+            color:cp_blue.colorf02
+            font.family:command_font.name
+            font.pixelSize: 18
         }
     }
 
@@ -49,6 +75,13 @@ Flipable {
         color: thema_item_root.thema_selected ? "lightsteelblue" : "lightgray"
         radius:4
         anchors.fill: parent
+        Image {
+            anchors.fill: parent
+            source:"qrc:/res/resources/rust_texture.png"
+            fillMode: Image.Tile
+            opacity: 0.5
+        }
+
         Image {
             id: thema_icon
             width: 64
@@ -61,29 +94,33 @@ Flipable {
         }
 
         Text {
-            id: thema_tr_text
+            id: thema_title
             height: 14
             text: qsTr("translation")
             anchors.right: parent.right
             anchors.rightMargin: 4
             anchors.left: parent.left
             anchors.leftMargin: 4
-            anchors.top: thema_title.bottom
-            anchors.topMargin: 4
-            font.pixelSize: 12
+            anchors.top: thema_icon.bottom
+            anchors.topMargin: 2
+            color:cp_blue.colorf01
+            font.family:command_font.name
+            font.pixelSize: 18
         }
 
         Text {
-            id: thema_title
+            id: thema_tr_text
             height: 14
             text: qsTr("Title")
-            anchors.top: thema_icon.bottom
-            anchors.topMargin: 4
+            anchors.top: thema_title.bottom
+            anchors.topMargin: 2
             anchors.right: parent.right
             anchors.rightMargin: 4
             anchors.left: parent.left
             anchors.leftMargin: 4
-            font.pixelSize: 14
+            color:cp_blue.colorf01
+            font.family:command_font.name
+            font.pixelSize: 16
         }
 
         Text {
@@ -98,7 +135,9 @@ Flipable {
             anchors.topMargin: 8
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            font.pixelSize: 12
+            color:cp_blue.colorf01
+            font.family:command_font.name
+            font.pixelSize: 16
         }
 
         Text {
@@ -112,8 +151,10 @@ Flipable {
             anchors.left: thema_icon.right
             anchors.leftMargin: 4
             anchors.top: word_count_label.bottom
-            anchors.topMargin: 4
-            font.pixelSize: 12
+            anchors.topMargin: 0
+            color:cp_blue.colorf01
+            font.family:command_font.name
+            font.pixelSize: 24
         }
 
         MouseArea {
