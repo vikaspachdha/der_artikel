@@ -14,14 +14,14 @@ class Result_C : public QObject
 {
     Q_OBJECT
 
-    Q_PROPERTY(double score READ Score CONSTANT)
-    Q_PROPERTY(unsigned int mistakes_count READ MistakesCount CONSTANT)
-    Q_PROPERTY(unsigned int unplayed_count READ UnplayedCount CONSTANT)
-    Q_PROPERTY(unsigned int correct_word_count READ CorrectWordCount CONSTANT)
-    Q_PROPERTY(QString score_string READ ScoreString CONSTANT)
-    Q_PROPERTY(QString mistake_string READ MistakeString CONSTANT)
-    Q_PROPERTY(QString grade_string READ GradeString CONSTANT)
-    Q_PROPERTY(QString unplayed_string READ UnplayedString CONSTANT)
+    Q_PROPERTY(double score READ Score NOTIFY resultUpdated)
+    Q_PROPERTY(unsigned int mistakes_count READ MistakesCount NOTIFY resultUpdated)
+    Q_PROPERTY(unsigned int unplayed_count READ UnplayedCount NOTIFY resultUpdated)
+    Q_PROPERTY(unsigned int correct_word_count READ CorrectWordCount NOTIFY resultUpdated)
+    Q_PROPERTY(QString score_string READ ScoreString NOTIFY resultUpdated)
+    Q_PROPERTY(QString mistake_string READ MistakeString NOTIFY resultUpdated)
+    Q_PROPERTY(QString grade_string READ GradeString NOTIFY resultUpdated)
+    Q_PROPERTY(QString unplayed_string READ UnplayedString NOTIFY resultUpdated)
     Q_PROPERTY(QAbstractItemModel* incorrectWordsModel READ GetIncorrectWordModel CONSTANT)
 
 public:

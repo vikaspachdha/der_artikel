@@ -11,6 +11,7 @@ Item {
 
     Custom_label {
         id: title_label
+        text: list_view.count>0 ? qsTr("Mistakes") : qsTr("No Mistakes")
         anchors {
             top: parent.top
             left: parent.left
@@ -18,38 +19,10 @@ Item {
         }
     }
 
-    Custom_label {
-        id: score_label
-        anchors.right: parent.right
-        anchors.left: parent.left
-        anchors.top: title_label.bottom
-        anchors.topMargin: 2
-        font_size:14
-    }
-
-    Custom_label {
-        id: mistakes_label
-        anchors.right: parent.right
-        anchors.left: parent.left
-        anchors.top: score_label.bottom
-        anchors.topMargin: 2
-        font_size:12
-    }
-
-    Custom_label {
-        id: unplayed_label
-        anchors.right: parent.right
-        anchors.left: parent.left
-        anchors.top: mistakes_label.bottom
-        anchors.topMargin: 2
-        font_size:12
-    }
-
-
     ListView {
-        id: list_view1
+        id: list_view
 
-        anchors.top: unplayed_label.bottom
+        anchors.top: title_label.bottom
         anchors.topMargin: 2
         anchors.right: parent.right
         anchors.left: parent.left
@@ -70,10 +43,6 @@ Item {
         score_label.text = currentResult.score_string
         mistakes_label.text = currentResult.mistake_string
         unplayed_label.text = currentResult.unplayed_string
-    }
-
-    Component.onCompleted: {
-        currentResult.resultUpdated.connect(onResultUpdated)
     }
 
 }

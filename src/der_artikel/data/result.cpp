@@ -213,9 +213,9 @@ void Result_C::UpdateStringData()
 {
     QLocale locale;
     double score = _score*100;
-    _score_string = tr("You Scored %1 %").arg(locale.toString(score,'f',2));
-    _mistake_string = tr("%1 articles are incorrect").arg(_mistakes_count);
-    _unplayed_string = tr("%1 words are unplayed").arg(_unplayed_count);
+    _score_string = tr("Score : %1 %").arg(locale.toString(score,'f',2));
+    _mistake_string = tr("Mistakes : %1").arg(_mistakes_count);
+    _unplayed_string = tr("Unplayed : %1").arg(_unplayed_count);
 
     if(_grade >= GRADE_AP) {
         _grade_string = tr("Execelent");
