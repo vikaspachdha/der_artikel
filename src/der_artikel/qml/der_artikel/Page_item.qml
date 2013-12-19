@@ -1,10 +1,9 @@
 import QtQuick 2.0
 import com.vystosi.qmlcomponents 1.0
-Rectangle {
+Item {
     id: root_item
     width: 44
     height: 44
-    color:"red"
     property alias label_text:item_label.text
     property alias page_icon:icon.source
     Image {

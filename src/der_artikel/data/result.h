@@ -17,6 +17,7 @@ class Result_C : public QObject
     Q_PROPERTY(double score READ Score NOTIFY resultUpdated)
     Q_PROPERTY(unsigned int mistakes_count READ MistakesCount NOTIFY resultUpdated)
     Q_PROPERTY(unsigned int unplayed_count READ UnplayedCount NOTIFY resultUpdated)
+    Q_PROPERTY(int experience_change READ ExperienceChange NOTIFY experienceChanged)
     Q_PROPERTY(unsigned int correct_word_count READ CorrectWordCount NOTIFY resultUpdated)
     Q_PROPERTY(QString score_string READ ScoreString NOTIFY resultUpdated)
     Q_PROPERTY(QString mistake_string READ MistakeString NOTIFY resultUpdated)
@@ -41,6 +42,7 @@ public:
 
 signals:
     void resultUpdated();
+    void experienceChanged();
 
 public:
 
@@ -51,6 +53,9 @@ public:
     QString MistakeString() const {return _mistake_string; }
 
     double UnplayedCount() const;
+
+    int ExperienceChange() const { return _experience_change; }
+    void setExperienceChange(int change);
 
     QString GradeString() const {return _grade_string; }
 
@@ -77,6 +82,7 @@ private:
     unsigned int _correct_word_count;
     unsigned int _mistakes_count;
     unsigned int _unplayed_count;
+    int _experience_change;
     QString _score_string;
     QString _mistake_string;
     QString _grade_string;

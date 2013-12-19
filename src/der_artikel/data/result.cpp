@@ -10,6 +10,7 @@ Result_C::Result_C(QObject *parent):
     _correct_word_count(0),
     _mistakes_count(0),
     _unplayed_count(0),
+    _experience_change(0),
     _score_string(tr("No game data.")),
     _mistake_string(""),
     _grade_string(tr("Result")),
@@ -38,12 +39,21 @@ double Result_C::UnplayedCount() const
     return _unplayed_count;
 }
 
+void Result_C::setExperienceChange(int change)
+{
+    if(change != _experience_change) {
+        _experience_change = change;
+        emit experienceChanged();
+    }
+}
+
 void Result_C::Clear()
 {
     _score=0.0;
     _correct_word_count=0;
     _mistakes_count=0;
     _unplayed_count=0;
+    _experience_change = 0;
 
     _score_string = tr("No game data.");
     _mistake_string = "";

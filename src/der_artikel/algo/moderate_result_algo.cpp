@@ -34,19 +34,21 @@ void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
     result.UpdateResult(score,correct_count, unplayed_count, incorrect_words);
 
     Result_C::GRADE grade = result.Grade();
+    int exp_change = 0;
     if(grade >= Result_C::GRADE_AP) {
-        thema.AddExperiencePoints(80);
+        exp_change = 80;
     } else if(grade >= Result_C::GRADE_A) {
-        thema.AddExperiencePoints(60);
+        exp_change = 60;
     } else if (grade >= Result_C::GRADE_BP) {
-        thema.AddExperiencePoints(50);
+        exp_change = 50;
     } else if (grade >= Result_C::GRADE_C) {
-        thema.AddExperiencePoints(40);
+        exp_change = 40;
     } else if(grade >= Result_C::GRADE_D){
-        thema.AddExperiencePoints(30);
+        exp_change = 30;
     } else {
-        thema.DeductExperiencePoints(2);
+        exp_change = -10;
     }
-
+    thema.AddExperiencePoints(exp_change);
+    result.setExperienceChange(exp_change);
 }
 

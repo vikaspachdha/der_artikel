@@ -27,7 +27,7 @@ Title_bar {
             top:parent.top
             right:parent.right
             rightMargin:10
-            topMargin: 10
+            topMargin: 6
         }
         color: cp_blue.colorf01
         font.family: custom_regular.name
@@ -42,7 +42,7 @@ Title_bar {
         text:currentResult.score_string
         anchors {
             top:heading_1.bottom
-            topMargin: 4
+            topMargin: 6
             left:parent.left
             leftMargin: 12
         }
@@ -60,6 +60,7 @@ Title_bar {
 
         anchors {
             top:heading_1_right.bottom
+            topMargin: 3
             right:parent.right
             rightMargin:10
         }
@@ -73,10 +74,17 @@ Title_bar {
 
     Text {
         id: heading_3_right
-        text: themaModel.selected_thema === null ?"": qsTr("Experience : ") + themaModel.selected_thema.experience
+        text: {
+            if(currentResult.experience_change<0) {
+                return qsTr("Lost experience : " + -1*currentResult.experience_change)
+            } else {
+                return qsTr("Gained experience : " + currentResult.experience_change)
+            }
+        }
 
         anchors {
             top:heading_2_right.bottom
+            topMargin: 3
             right:parent.right
             rightMargin:10
         }
