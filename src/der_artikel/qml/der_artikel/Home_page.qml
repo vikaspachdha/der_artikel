@@ -9,6 +9,8 @@ Item {
         ListElement { title:"Thema"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.THEMA_PAGE}
         ListElement { title:"Result"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.RESULT_PAGE}
         ListElement { title:"About"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.ABOUT_PAGE}
+        ListElement { title:"Statistics"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.STATS_PAGE}
+        ListElement { title:"Settings"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.PREF_PAGE}
     }
 
     GridView {
