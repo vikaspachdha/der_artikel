@@ -68,27 +68,32 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
         PageType old_page = _current_page;
         _current_page = new_page;
 
+        switch(old_page){
+            case RESULT_PAGE:
+                // from result to words page keep thema selection.
+                // replay case
+                if(_current_page != Manager_C::WORDS_PAGE) {
+                    _thema_model->ClearSelection();
+                }
+                break;
+            default:
+                break;
+        }
+
         switch(_current_page){
+            case WORDS_PAGE:
+                // determine the thema
+                _current_thema = 0;
+                SetCurrentThema(_thema_model->GetSelectedThema());
+                CreateResultAlgo();
+                break;
 
-        case WORDS_PAGE:
-            // determine the thema
-            _current_thema = 0;
-            SetCurrentThema(_thema_model->GetSelectedThema());
-            CreateResultAlgo();
-            break;
+            case RESULT_PAGE:
+                ClearWordItems();
+                break;
 
-        case RESULT_PAGE:
-            ClearWordItems();
-            break;
-
-        case HOME_PAGE:
-            if(old_page == Manager_C::RESULT_PAGE) {
-                _thema_model->ClearSelection();
-            }
-            break;
-
-        default:
-            break;
+            default:
+                break;
         }
 
         emit currentPageChanged(old_page,new_page);
