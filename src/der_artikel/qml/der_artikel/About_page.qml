@@ -1,5 +1,6 @@
 import QtQuick 2.0
+import com.vystosi.qmlcomponents 1.0
 
-Rectangle {
-    color:"red"
+Page {
+    page_id:Manager.RESULT_PAGE
 }

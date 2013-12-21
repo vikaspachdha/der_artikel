@@ -1,6 +1,8 @@
 import QtQuick 2.0
+import com.vystosi.qmlcomponents 1.0
 
-Item {
+Page {
+    page_id:Manager.WORDS_PAGE
     id: word_page_root
 
     Flickable

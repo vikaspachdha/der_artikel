@@ -1,7 +1,8 @@
 import QtQuick 2.0
 import com.vystosi.qmlcomponents 1.0
 
-Item {
+Page {
+    page_id:Manager.THEMA_PAGE
 
     GridView {
         id: grid_view
