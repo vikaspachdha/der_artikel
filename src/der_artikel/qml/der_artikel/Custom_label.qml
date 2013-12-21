@@ -9,8 +9,6 @@ Rectangle {
     property alias text_vertical_alignment: label_text.verticalAlignment
 
     height: childrenRect.height+4
-    color: "#ABB5DA"
-
     Text {
         y:2
         id: label_text
@@ -18,5 +16,6 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         horizontalAlignment: Text.AlignHCenter
+        font.family: command_font.name
     }
 }

@@ -13,8 +13,9 @@ Item {
         id: label
         x:2
         anchors.verticalCenter: parent.verticalCenter
+        font.family: command_font.name
         text: qsTr("Label")
         color:cp_blue.colorf01
-        font.pixelSize: 14
+        font.pixelSize: 18
     }
 }

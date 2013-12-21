@@ -74,14 +74,19 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
             // determine the thema
             _current_thema = 0;
             SetCurrentThema(_thema_model->GetSelectedThema());
-            _thema_model->ClearSelection();
             CreateResultAlgo();
-
             break;
 
         case RESULT_PAGE:
             ClearWordItems();
             break;
+
+        case HOME_PAGE:
+            if(old_page == Manager_C::RESULT_PAGE) {
+                _thema_model->ClearSelection();
+            }
+            break;
+
         default:
             break;
         }

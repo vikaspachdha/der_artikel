@@ -5,45 +5,50 @@ Rectangle {
 
     property alias item_title: text1.text
     property alias item_result: text2.text
-
-    color: "#C7CDE6"
     width:parent.width
-
-    Image {
-        id: image1
-        width: height
-        anchors.left: parent.left
-        anchors.leftMargin: 4
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        source: "qrc:/res/resources/thumbs_down_32.png"
+    radius:4
+    gradient: Gradient {
+        GradientStop {position:0.0;color:cp_blue.colorBg02}
+        GradientStop {position:0.1;color:cp_blue.colorBg01}
+        GradientStop {position:0.9;color:cp_blue.colorBg01}
+        GradientStop {position:1.0;color:cp_blue.colorBg02}
     }
 
     Text {
         id: text1
-        height: parent.height*0.5
-        font.pixelSize: height* 0.9
-        smooth: true
-        anchors.rightMargin: 0
+        anchors.top:parent.top
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: centerText.left
+        horizontalAlignment: Text.AlignRight
         verticalAlignment: Text.AlignVCenter
-        anchors.left: image1.right
-        anchors.leftMargin: 4
-        anchors.top: parent.top
-        anchors.topMargin: 0
+        font.family:command_font.name
+        font.pixelSize: 18
+        color:"#75110C"
+    }
+
+    Text {
+        id: centerText
+        anchors.top:parent.top
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        verticalAlignment: Text.AlignVCenter
+        text:" -> "
+        font.family:command_font.name
+        font.pixelSize: 18
+        color:cp_blue.colorf01
     }
 
     Text {
         id: text2
-        verticalAlignment: Text.AlignVCenter
-        anchors.leftMargin: 4
-        anchors.top: text1.bottom
+        anchors.top:parent.top
         anchors.bottom: parent.bottom
-        anchors.left: image1.right
-        anchors.topMargin: 0
-        font.pixelSize: height*0.9
-        color:"green"
+        anchors.left: centerText.right
+        anchors.right: parent.right
+        font.family:command_font.name
+        font.pixelSize: 18
+        verticalAlignment: Text.AlignVCenter
+        color:"#17CC00"
     }
 
 }

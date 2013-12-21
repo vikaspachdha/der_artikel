@@ -66,7 +66,7 @@ Page_panel {
 
     Command_item
     {
-        id: home_cmd
+        id: finish_cmd
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4

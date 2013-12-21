@@ -18,7 +18,7 @@ Flipable {
 
     Rectangle {
         id: info_rect
-        color: thema_item_root.thema_selected ? "lightsteelblue" : "lightgray"
+        color:cp_blue.colorBtn02
         radius:4
         anchors.fill: parent
         Text {
@@ -72,14 +72,14 @@ Flipable {
 
     Rectangle {
         id: thema_rect
-        color: thema_item_root.thema_selected ? "lightsteelblue" : "lightgray"
+        color:cp_blue.colorBtn02
         radius:4
         anchors.fill: parent
         Image {
             anchors.fill: parent
             source:"qrc:/res/resources/rust_texture.png"
             fillMode: Image.Tile
-            opacity: 0.5
+            opacity:0.5
         }
 
         Image {
@@ -191,6 +191,15 @@ Flipable {
         origin.y: thema_item_root.height/2
         axis.x: 0; axis.y: 1; axis.z: 0     // set axis.y to 1 to rotate around y-axis
         angle: 0    // the default angle
+    }
+
+    Rectangle {
+        height: 4
+        width: height
+        radius: 2
+        anchors{left:parent.left;top:parent.top;margins: 4}
+        visible: thema_item_root.thema_selected
+        color:cp_blue.colorf02
     }
 
     states: State {
