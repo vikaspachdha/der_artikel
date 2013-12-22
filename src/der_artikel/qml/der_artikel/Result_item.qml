@@ -3,8 +3,8 @@ import QtQuick 2.0
 Rectangle {
     id: rectangle1
 
-    property alias item_title: text1.text
-    property alias item_result: text2.text
+    property alias incorrect_text: text1.text
+    property alias correct_text: text2.text
     width:parent.width
     radius:4
     gradient: Gradient {
