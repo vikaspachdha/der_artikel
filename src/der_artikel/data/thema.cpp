@@ -46,6 +46,7 @@ bool Thema_C::Read(const QDomElement &element)
         _translation = element.firstChildElement("Translation").text();
 
         bool ok = false;
+
         QDomElement dom_date_time = element.firstChildElement("LastPlayed");
         if(!dom_date_time.isNull()) {
             qint64 msecs = dom_date_time.text().toLongLong(&ok);
@@ -64,7 +65,12 @@ bool Thema_C::Read(const QDomElement &element)
                 int experience = dom_experience.text().toInt(&ok);
                 if(ok) {
                     _experience_points = experience;
+                    UpdateThemaState();
                     success = true;
+                    int lapsed_days = _last_played.daysTo(QDateTime::currentDateTime());
+                    if( (lapsed_days > 0) && (_state != INERT) ) {
+                        DeductExperiencePoints(lapsed_days*10);
+                    }
                 } else {
                     success = false;
                 }
@@ -186,6 +192,25 @@ bool Thema_C::Write(QIODevice* pDevice)
     return true;
 }
 
+void Thema_C::UpdateThemaState()
+{
+    State_TP state;
+    if(_experience_points > 499) {
+        state = INERT;
+    } else if(_experience_points > 249) {
+        state = GOLD;
+    } else if(_experience_points > 99) {
+        state = SILVER;
+    } else {
+        state= RUSTY;
+    }
+
+    if(_state != state) {
+        _state = state;
+        emit stateChanged();
+    }
+}
+
 void Thema_C::AddExperiencePoints(int points)
 {
     _experience_points += points;
@@ -194,15 +219,7 @@ void Thema_C::AddExperiencePoints(int points)
     }
 
     if(points !=0) {
-        if(_experience_points > 499) {
-            _state = INERT;
-        } else if(_experience_points > 249) {
-            _state = GOLD;
-        } else if(_experience_points > 99) {
-            _state = SILVER;
-        } else {
-            _state= RUSTY;
-        }
+        UpdateThemaState();
         emit experiencePointsChanged();
     }
 }

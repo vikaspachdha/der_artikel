@@ -23,7 +23,7 @@ class Thema_C : public QObject, public Thema_I
     Q_PROPERTY(QString tr_name READ GetTrText CONSTANT)
     Q_PROPERTY(unsigned int word_count READ GetWordCount CONSTANT)
     Q_PROPERTY(QDateTime last_played_date READ LastPlayed CONSTANT)
-    Q_PROPERTY(State_TP state READ state NOTIFY experiencePointsChanged)
+    Q_PROPERTY(State_TP state READ state NOTIFY stateChanged)
 
     Q_ENUMS(State_TP)
     Q_ENUMS(SelectionType_TP)
@@ -87,9 +87,11 @@ public:
 signals:
     void selectionChanged(Thema_C::SelectionType_TP);
     void experiencePointsChanged();
+    void stateChanged();
 
 private:
     bool Write(QIODevice* pDevice);
+    void UpdateThemaState();
 
 private:
     QString _text;
