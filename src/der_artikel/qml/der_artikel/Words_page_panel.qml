@@ -72,7 +72,6 @@ Page_panel {
         anchors.bottomMargin: 4
         cmd_text: qsTr("Finish")
         onCommandActivated: {
-            manager.calculateResult()
             manager.current_page = Manager.RESULT_PAGE
         }
     }

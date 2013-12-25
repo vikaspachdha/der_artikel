@@ -75,8 +75,7 @@ public:
     bool isThemaSelected() const { return _thema_selected; }
 
 public:
-    Q_INVOKABLE void calculateResult();
-
+    void CalculateResult();
     QAbstractItemModel* GetThemaModel() {return _thema_model; }
 
 signals:

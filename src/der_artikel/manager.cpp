@@ -76,6 +76,11 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
                     _thema_model->ClearSelection();
                 }
                 break;
+        case WORDS_PAGE:
+            if(_current_page == Manager_C::RESULT_PAGE) {
+                CalculateResult();
+                ClearWordItems();
+            }
             default:
                 break;
         }
@@ -86,10 +91,6 @@ void Manager_C::setCurrentPage(Manager_C::PageType new_page)
                 _current_thema = 0;
                 SetCurrentThema(_thema_model->GetSelectedThema());
                 CreateResultAlgo();
-                break;
-
-            case RESULT_PAGE:
-                ClearWordItems();
                 break;
 
             default:
@@ -138,7 +139,7 @@ void Manager_C::onThemaSelectionChanged()
     emit themaSelectionStateChanged();
 }
 
-void Manager_C::calculateResult()
+void Manager_C::CalculateResult()
 {
     Q_ASSERT(_current_result);
     if(_current_thema) {
