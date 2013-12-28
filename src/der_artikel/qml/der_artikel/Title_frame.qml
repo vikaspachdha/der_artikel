@@ -26,4 +26,8 @@ Item {
     Help_page_title {
 
     }
+
+    Stats_page_title {
+
+    }
 }

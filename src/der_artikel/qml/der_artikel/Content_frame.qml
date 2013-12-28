@@ -30,6 +30,10 @@ Item {
         id: help_page_item
     }
 
+    Stats_page {
+        id: stats_page_item
+    }
+
     About_page {
        id: about_page_item
     }
