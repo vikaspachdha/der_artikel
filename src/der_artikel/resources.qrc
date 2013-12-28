@@ -32,6 +32,9 @@
         <file>resources/quit_activ.png</file>
         <file>resources/fonts/custom_command.ttf</file>
         <file>resources/fonts/custom_regular.ttf</file>
-        <file>resources/rust_texture.png</file>
+        <file>resources/50_cent_gold.png</file>
+        <file>resources/50_cent_inert.png</file>
+        <file>resources/50_cent_rusty.png</file>
+        <file>resources/50_cent_silver.png</file>
     </qresource>
 </RCC>

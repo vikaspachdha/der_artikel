@@ -5,18 +5,54 @@ Title_bar {
 
     page_id: Manager.THEMA_PAGE
 
+    Image {
+        id:coin
+        source: getTexture()
+        visible: themaModel.selection_state === ThemaModel.SINGLE_SELECTION ? true:false
+        anchors.left: parent.left
+        anchors.top:parent.top
+        anchors.bottom:parent.bottom
+        anchors.leftMargin: 2
+        width:height
+        fillMode: Image.Stretch
+        transform: Rotation {
+            id: rotation
+            origin.x: coin.width/2
+            origin.y: coin.height/2
+            axis.x: 0; axis.y: 1; axis.z: 0
+            angle: 0
+            Behavior on angle {
+                NumberAnimation{
+                    duration: rotation.angle===0?800:0
+                    onRunningChanged: {
+                        if(running === false) {
+                           rotation.angle = 0
+                        }
+                    }
+                }
+            }
+        }
+
+        Timer {
+            interval: 4000
+            running: true
+            repeat: true
+            onTriggered: {
+                rotation.angle = 360
+            }
+        }
+    }
+
     Text {
         id: heading_1
         text:{
-                switch(themaModel.selection_state) {
-                    case ThemaModel.MULTIPLE_SELECTION:
-                        return qsTr("Multi Mode - Coming soon")
-                    case ThemaModel.SINGLE_SELECTION:
-                        return themaModel.selected_thema.name
-                    default:
-                        return qsTr("Select Thema")
-                }
+            switch(themaModel.selection_state) {
+            case ThemaModel.MULTIPLE_SELECTION:
+                return qsTr("Multi Mode - Coming soon")
+            default:
+                return qsTr("Select Thema")
             }
+        }
 
         anchors {
             top:parent.top
@@ -24,6 +60,7 @@ Title_bar {
             leftMargin: 12
             topMargin: 10
         }
+        visible: themaModel.selection_state === ThemaModel.SINGLE_SELECTION ? false:true
         color: cp_blue.colorf01
         font.family: custom_regular.name
         font.pixelSize: 16
@@ -50,46 +87,30 @@ Title_bar {
     }
 
     Text {
-        id: heading_2
-        text:themaModel.selection_state===ThemaModel.SINGLE_SELECTION ? themaModel.selected_thema.name:""
-        anchors {
-            top:heading_1.bottom
-            left:parent.left
-            leftMargin: 12
-        }
-        color: cp_blue.colorf01
-        font.family: custom_regular.name
-        font.pixelSize: 12
-        fontSizeMode: Text.Fit
-        horizontalAlignment: Text.AlignLeft
-        verticalAlignment:  Text.AlignTop
-    }
-
-    Text {
         id: heading_2_right
         text: {
-                if(themaModel.selection_state===ThemaModel.SINGLE_SELECTION) {
-                    var currentState = themaModel.selected_thema.state
-                    var state_str = qsTr("State - ")
-                    switch(currentState) {
-                        case Thema.INERT:
-                            state_str += qsTr("Inert")
-                            break
-                        case Thema.GOLD:
-                            state_str += qsTr("Gold")
-                            break;
-                        case Thema.SILVER:
-                            state_str += qsTr("Silver")
-                            break;
-                        default:
-                            state_str += qsTr("Rusty")
-                            break;
-                    }
-                } else {
-                    return ""
+            if(themaModel.selection_state===ThemaModel.SINGLE_SELECTION) {
+                var currentState = themaModel.selected_thema.state
+                var state_str = qsTr("State - ")
+                switch(currentState) {
+                case Thema.INERT:
+                    state_str += qsTr("Inert")
+                    break
+                case Thema.GOLD:
+                    state_str += qsTr("Gold")
+                    break;
+                case Thema.SILVER:
+                    state_str += qsTr("Silver")
+                    break;
+                default:
+                    state_str += qsTr("Rusty")
+                    break;
                 }
-                return state_str
+            } else {
+                return ""
             }
+            return state_str
+        }
 
         anchors {
             bottom:parent.bottom
@@ -103,5 +124,27 @@ Title_bar {
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignTop
+    }
+
+    function getTexture()
+    {
+        var image_url = ""
+        if(themaModel.selection_state===ThemaModel.SINGLE_SELECTION) {
+            switch(themaModel.selected_thema.state) {
+            case Thema.RUSTY:
+                image_url = "qrc:/res/resources/50_cent_rusty.png";
+                break;
+            case Thema.SILVER:
+                image_url = "qrc:/res/resources/50_cent_silver.png";
+                break;
+            case Thema.GOLD:
+                image_url = "qrc:/res/resources/50_cent_gold.png";
+                break;
+            case Thema.INERT:
+                image_url = "qrc:/res/resources/50_cent_inert.png";
+                break;
+            }
+        }
+        return image_url
     }
 }

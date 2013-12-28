@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import com.vystosi.qmlcomponents 1.0
 
 
 Flipable {
@@ -76,13 +77,6 @@ Flipable {
         radius:4
         anchors.fill: parent
         Image {
-            anchors.fill: parent
-            source:"qrc:/res/resources/rust_texture.png"
-            fillMode: Image.Tile
-            opacity:0.5
-        }
-
-        Image {
             id: thema_icon
             width: 64
             height: 64
@@ -103,7 +97,7 @@ Flipable {
             anchors.leftMargin: 4
             anchors.top: thema_icon.bottom
             anchors.topMargin: 2
-            color:cp_blue.colorf01
+            color:cp_blue.colorf02
             font.family:command_font.name
             font.pixelSize: 18
         }
@@ -118,7 +112,7 @@ Flipable {
             anchors.rightMargin: 4
             anchors.left: parent.left
             anchors.leftMargin: 4
-            color:cp_blue.colorf01
+            color:cp_blue.colorf02
             font.family:command_font.name
             font.pixelSize: 16
         }
@@ -132,10 +126,10 @@ Flipable {
             anchors.left: thema_icon.right
             anchors.leftMargin: 4
             anchors.top: parent.top
-            anchors.topMargin: 8
+            anchors.topMargin: 4
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            color:cp_blue.colorf01
+            color:cp_blue.colorf02
             font.family:command_font.name
             font.pixelSize: 16
         }
@@ -152,7 +146,7 @@ Flipable {
             anchors.leftMargin: 4
             anchors.top: word_count_label.bottom
             anchors.topMargin: 0
-            color:cp_blue.colorf01
+            color:cp_blue.colorf02
             font.family:command_font.name
             font.pixelSize: 24
         }
@@ -229,6 +223,7 @@ Flipable {
             flip_timer.stop()
         }
     }
+
 }
 
 

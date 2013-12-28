@@ -48,6 +48,10 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
                 data = thema->GetWordCount();
                 break;
 
+            case THEMA_STATE:
+                data = thema->state();
+                break;
+
             case THEMA_OBJECT:
                 data = QVariant::fromValue<QObject*>(thema);
                 break;
@@ -77,6 +81,7 @@ QHash<int, QByteArray> ThemaModel_C::roleNames() const
     roleNames[SELECTED] = "selected";
     roleNames[PROGRESS] = "progress";
     roleNames[WORD_COUNT] = "word_count";
+    roleNames[THEMA_STATE] = "thema_state";
     roleNames[THEMA_OBJECT] = "thema_object";
     return roleNames;
 }

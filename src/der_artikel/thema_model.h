@@ -34,6 +34,7 @@ private:
         SELECTED,
         PROGRESS,
         WORD_COUNT,
+        THEMA_STATE,
         THEMA_OBJECT
     };
 
