@@ -1,0 +1,64 @@
+import QtQuick 2.0
+import com.vystosi.qmlcomponents 1.0
+
+Page_panel
+{
+    page_id:Manager.HELP_PAGE
+
+    Label {
+        id: help_lbl
+        anchors.top: parent.top
+        anchors.topMargin: 2
+        anchors.left: parent.left
+        anchors.leftMargin: 2
+        anchors.right: parent.right
+        anchors.rightMargin: 2
+        text_anchors.horizontalCenter: help_lbl.horizontalCenter
+        lblText: qsTr("Help")
+    }
+
+    Column {
+        id: help_btn_col
+        anchors.top: help_lbl.bottom
+        anchors.topMargin: 6
+        anchors.left: parent.left
+        anchors.leftMargin: 4
+        anchors.right: parent.right
+        anchors.rightMargin: 4
+        spacing: 4
+
+        Button {
+            id:gen_btn
+            width:parent.width
+            text_anchors.horizontalCenter: gen_btn.horizontalCenter
+            buttonText: qsTr("General")
+            onActivated: help_page = "General_help.qml"
+        }
+
+        Button {
+            id:rules_btn
+            width:parent.width
+            text_anchors.horizontalCenter: rules_btn.horizontalCenter
+            buttonText: qsTr("Rules")
+            onActivated: help_page = "Rules_help.qml"
+        }
+
+        Button {
+            id:score_btn
+            width:parent.width
+            text_anchors.horizontalCenter: score_btn.horizontalCenter
+            buttonText: qsTr("Scoring")
+            onActivated: help_page = "Scoring_help.qml"
+        }
+
+        Button {
+            id:other_btn
+            width:parent.width
+            text_anchors.horizontalCenter: other_btn.horizontalCenter
+            buttonText: qsTr("Other")
+            onActivated: help_page = "Others_help.qml"
+        }
+
+    }
+
+}

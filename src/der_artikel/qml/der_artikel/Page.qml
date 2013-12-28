@@ -27,4 +27,5 @@ Item {
     anchors.bottom: root_item.bottom
     anchors.topMargin: 6
     anchors.bottomMargin: 6
+    clip:true
 }

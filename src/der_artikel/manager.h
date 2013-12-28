@@ -40,6 +40,7 @@ public:
         THEMA_PAGE,
         WORDS_PAGE,
         RESULT_PAGE,
+        HELP_PAGE,
         STATS_PAGE,
         PREF_PAGE,
         ABOUT_PAGE,

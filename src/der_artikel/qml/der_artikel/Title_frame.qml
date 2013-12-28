@@ -22,4 +22,8 @@ Item {
     About_page_title {
 
     }
+
+    Help_page_title {
+
+    }
 }

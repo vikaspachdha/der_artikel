@@ -26,6 +26,10 @@ Item {
         id: result_page_item
     }
 
+    Help_page {
+        id: help_page_item
+    }
+
     About_page {
        id: about_page_item
     }

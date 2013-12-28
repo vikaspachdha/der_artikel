@@ -29,6 +29,12 @@ Item {
         height:parent.height
     }
 
+    Help_page_panel {
+        id: help_page_panel_item
+        width:100
+        height:parent.height
+    }
+
     About_page_panel {
         id: about_page_panel_item
         width:100
