@@ -41,10 +41,12 @@ void EasyResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
         exp_change = 40;
     } else if (grade >= Result_C::GRADE_BP) {
         exp_change = 30;
-    } else if (grade >= Result_C::GRADE_C) {
+    } else if (grade >= Result_C::GRADE_B) {
         exp_change = 20;
-    } else if(grade >= Result_C::GRADE_D) {
+    } else if (grade >= Result_C::GRADE_C) {
         exp_change = 10;
+    } else if(grade >= Result_C::GRADE_D) {
+        exp_change = 5;
     }
     thema.AddExperiencePoints(exp_change);
     result.setExperienceChange(exp_change);

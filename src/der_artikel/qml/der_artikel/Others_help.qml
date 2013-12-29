@@ -6,7 +6,7 @@ Flickable {
     Text {
         id: content_text
         anchors.fill: parent
-        text:"mail : mail@vikaspachdha.com"
+        text:"For any other assistance or help please mail your queries to \nmail@vikaspachdha.com"
 
         wrapMode: Text.WordWrap
         font.family: custom_regular.name

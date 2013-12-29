@@ -41,8 +41,10 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
         exp_change = 80;
     } else if (grade >= Result_C::GRADE_BP) {
         exp_change = 70;
-    } else if (grade >= Result_C::GRADE_C) {
+    } else if (grade >= Result_C::GRADE_B) {
         exp_change = 60;
+    } else if (grade >= Result_C::GRADE_C) {
+        exp_change = 50;
     } else if(grade >= Result_C::GRADE_D){
         exp_change = 40;
     } else {
