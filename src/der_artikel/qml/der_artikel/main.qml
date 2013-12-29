@@ -6,8 +6,6 @@ import com.vystosi.qmlcomponents 1.0
 Image {
     id: rootItem;
 
-    property string help_page: "General_help.qml"
-
     width: 400
     height: 400
     clip:true
@@ -75,6 +73,7 @@ Image {
         anchors.right: rootItem.right
         anchors.rightMargin: 4
     }
+
 
     function addWord(itemText)
     {

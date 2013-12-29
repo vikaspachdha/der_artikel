@@ -7,6 +7,7 @@
 #include "data/result.h"
 #include "data/thema.h"
 #include "thema_model.h"
+#include "pages/help_page.h"
 
 
 #ifdef ENABLE_THEMA_BUILDER
@@ -23,19 +24,23 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Article_C>("com.vystosi.qmlcomponents", 1, 0, "Article","");
     qmlRegisterUncreatableType<Thema_C>("com.vystosi.qmlcomponents", 1, 0, "Thema","");
     qmlRegisterUncreatableType<ThemaModel_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaModel","");
-    //qmlRegisterUncreatableType<Word_C>("com.vystosi.qmlcomponents", 1, 0, "Word","");
+    qmlRegisterUncreatableType<HelpPage_C>("com.vystosi.qmlcomponents", 1, 0, "HelpPage","");
 
 #ifdef ENABLE_THEMA_BUILDER
     ThemaBuilder_C thema_builder;
     thema_builder.show();
 #endif
 
-    Manager_C manager;
-
     QtQuick2ApplicationViewer viewer;
-    viewer.rootContext()->setContextProperty("manager", &manager);
-    viewer.rootContext()->setContextProperty("currentResult", manager.GetCurrentResult());
-    viewer.rootContext()->setContextProperty("themaModel", manager.GetThemaModel());
+
+    QQmlContext* root_contet = viewer.rootContext();
+    Manager_C manager(*root_contet);
+
+    root_contet->setContextProperty("manager", &manager);
+    root_contet->setContextProperty("currentResult", manager.GetCurrentResult());
+    root_contet->setContextProperty("themaModel", manager.GetThemaModel());
+
+
     viewer.setMainQmlFile(QStringLiteral("qml/der_artikel/main.qml"));
 
     QQuickItem* root_item = viewer.rootObject();

@@ -1,5 +1,7 @@
 #include "manager.h"
 #include <QQuickItem>
+#include <QQmlContext>
+#include <QDebug>
 
 #include "data/thema.h"
 #include "thema_loader.h"
@@ -8,18 +10,22 @@
 #include "algo/strict_result_algo.h"
 #include "data/result.h"
 
+#include "pages/help_page.h"
 
-Manager_C::Manager_C(QObject *parent) :
+
+Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     QObject(parent),
+    _root_context(ref_root_context),
     _root_item(0),
     _current_thema(0),
     _selected_article(Article_C::INVALID),
-    _current_page(INVALID),
+    _current_page(INVALID_PAGE),
     _result_algo(0),
     _current_result(0),
     _game_level(EASY),
     _thema_selected(false)
 {
+    InitPages();
     SetSelectedArticle(Article_C::DER);
 
     _thema_model = new ThemaModel_C(this);
@@ -62,42 +68,66 @@ void Manager_C::SetSelectedArticle(Article_C::Artikel article)
     }
 }
 
-void Manager_C::setCurrentPage(Manager_C::PageType new_page)
+void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
 {
     if(_current_page != new_page) {
-        PageType old_page = _current_page;
-        _current_page = new_page;
+        PageId_TP old_page = _current_page;
 
-        switch(old_page){
-            case RESULT_PAGE:
-                // from result to words page keep thema selection.
-                // replay case
-                if(_current_page != Manager_C::WORDS_PAGE) {
-                    _thema_model->ClearSelection();
-                }
-                break;
-        case WORDS_PAGE:
-            if(_current_page == Manager_C::RESULT_PAGE) {
-                CalculateResult();
-                ClearWordItems();
+        bool continue_shift = true;
+        Page_I* old_page_instance = _page_hash[old_page];
+        Page_I* new_page_instance =_page_hash[new_page];
+
+        if(old_page_instance && !old_page_instance->canLeave()) {
+            continue_shift = false;
+        }
+
+        if(new_page_instance && !new_page_instance->canEnter()) {
+            continue_shift = false;
+        }
+
+        if(continue_shift) {
+
+            _current_page = new_page;
+
+            switch(old_page){
+                case RESULT_PAGE:
+                    // from result to words page keep thema selection.
+                    // replay case
+                    if(_current_page != Manager_C::WORDS_PAGE) {
+                        _thema_model->ClearSelection();
+                    }
+                    break;
+                case WORDS_PAGE:
+                    if(_current_page == Manager_C::RESULT_PAGE) {
+                        CalculateResult();
+                        ClearWordItems();
+                    }
+                default:
+                    break;
             }
-            default:
-                break;
+
+            switch(_current_page){
+                case WORDS_PAGE:
+                    // determine the thema
+                    _current_thema = 0;
+                    SetCurrentThema(_thema_model->GetSelectedThema());
+                    CreateResultAlgo();
+                    break;
+
+                default:
+                    break;
+            }
+
+            if(old_page_instance) {
+                old_page_instance->leave();
+            }
+
+            if(new_page_instance) {
+                new_page_instance->enter();
+            }
+
+            emit currentPageChanged(old_page,new_page);
         }
-
-        switch(_current_page){
-            case WORDS_PAGE:
-                // determine the thema
-                _current_thema = 0;
-                SetCurrentThema(_thema_model->GetSelectedThema());
-                CreateResultAlgo();
-                break;
-
-            default:
-                break;
-        }
-
-        emit currentPageChanged(old_page,new_page);
     }
 }
 
@@ -148,6 +178,54 @@ void Manager_C::CalculateResult()
     }
 }
 
+void Manager_C::setPageItem(Manager_C::PageId_TP page_id, QQuickItem *item)
+{
+    if(page_id != INVALID_PAGE && item) {
+        _page_items_hash[page_id]._page_item = item;
+    }
+}
+
+QQuickItem *Manager_C::pageItem(Manager_C::PageId_TP page_id)
+{
+    QQuickItem *item = 0;
+    if(_page_items_hash.contains(page_id)) {
+        item = _page_items_hash[page_id]._page_item;
+    }
+    return item;
+}
+
+void Manager_C::setPanelItem(Manager_C::PageId_TP page_id, QQuickItem *item)
+{
+    if(page_id != INVALID_PAGE && item) {
+        _page_items_hash[page_id]._panel_item = item;
+    }
+}
+
+QQuickItem *Manager_C::panelItem(Manager_C::PageId_TP page_id)
+{
+    QQuickItem *item = 0;
+    if(_page_items_hash.contains(page_id)) {
+        item = _page_items_hash[page_id]._panel_item;
+    }
+    return item;
+}
+
+void Manager_C::setTitleItem(Manager_C::PageId_TP page_id, QQuickItem *item)
+{
+    if(page_id != INVALID_PAGE && item) {
+        _page_items_hash[page_id]._title_item = item;
+    }
+}
+
+QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
+{
+    QQuickItem *item = 0;
+    if(_page_items_hash.contains(page_id)) {
+        item = item = _page_items_hash[page_id]._title_item;
+    }
+    return item;
+}
+
 void Manager_C::AddWords(const Thema_C* thema)
 {
     foreach(Word_C* word, thema->GetWords()) {
@@ -181,8 +259,8 @@ QObject *Manager_C::AddWord(QString text)
 
     QVariant returned_value;
     QMetaObject::invokeMethod(_root_item, "addWord",
-            Q_RETURN_ARG(QVariant, returned_value),
-            Q_ARG(QVariant, text));
+                              Q_RETURN_ARG(QVariant, returned_value),
+                              Q_ARG(QVariant, text));
     QObject* word_item = returned_value.value<QObject*>();
     return word_item;
 }
@@ -202,17 +280,22 @@ void Manager_C::CreateResultAlgo()
         _result_algo = 0;
     }
     switch (_game_level) {
-        case EASY:
-            _result_algo = new EasyResultAlgo_C();
-            break;
-        case MODERATE:
-            _result_algo = new ModerateResultAlgo_C();
-            break;
-        case EXPERT:
-            _result_algo = new StrictResultAlgo_C();
-            break;
-        default:
-            break;
+    case EASY:
+        _result_algo = new EasyResultAlgo_C();
+        break;
+    case MODERATE:
+        _result_algo = new ModerateResultAlgo_C();
+        break;
+    case EXPERT:
+        _result_algo = new StrictResultAlgo_C();
+        break;
+    default:
+        break;
     }
+}
+
+void Manager_C::InitPages()
+{
+    _page_hash[HELP_PAGE] = new HelpPage_C(*this, _root_context,this);
 }
 

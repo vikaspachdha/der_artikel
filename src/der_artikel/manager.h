@@ -13,19 +13,23 @@ class QQuickItem;
 class Thema_C;
 class Word_C;
 class ResultAlgo_I;
+class QQuickItem;
+class QQmlContext;
+class Page_I;
+
 //class ThemaModel_C;
 
 class Manager_C : public QObject
 {
     Q_OBJECT
 
-    Q_ENUMS(PageType)
+    Q_ENUMS(PageId_TP)
     Q_ENUMS(GameLevel)
     Q_ENUMS(Artikel)
 
     Q_PROPERTY(Article_C::Artikel selected_article READ GetSelectedArticle WRITE SetSelectedArticle NOTIFY selectedArticleChanged)
     Q_PROPERTY(QColor current_word_color READ GetCurrentWordColor)
-    Q_PROPERTY(PageType current_page READ getCurrentPage WRITE setCurrentPage NOTIFY currentPageChanged)
+    Q_PROPERTY(PageId_TP current_page READ getCurrentPage WRITE setCurrentPage NOTIFY currentPageChanged)
     Q_PROPERTY(QAbstractItemModel* thema_model READ GetThemaModel CONSTANT)
     Q_PROPERTY(GameLevel game_level READ gameLevel WRITE setGameLevel NOTIFY gameLevelChanged)
     Q_PROPERTY(bool thema_selected READ isThemaSelected NOTIFY themaSelectionStateChanged)
@@ -34,7 +38,7 @@ public:
 
 
 
-    enum PageType
+    enum PageId_TP
     {
         HOME_PAGE =1,
         THEMA_PAGE,
@@ -44,7 +48,7 @@ public:
         STATS_PAGE,
         PREF_PAGE,
         ABOUT_PAGE,
-        INVALID
+        INVALID_PAGE
     };
 
     enum GameLevel {
@@ -53,8 +57,19 @@ public:
         EXPERT
     };
 
+private:
+    struct PageItems_TP {
+        PageItems_TP() :
+            _page_item(0),
+            _panel_item(0),
+            _title_item(0){}
+        QQuickItem* _page_item;
+        QQuickItem* _panel_item;
+        QQuickItem* _title_item;
+    };
+
 public:
-    explicit Manager_C(QObject *parent = 0);
+    explicit Manager_C(QQmlContext &ref_root_context, QObject *parent = 0);
     ~Manager_C();
     
 public:
@@ -65,8 +80,8 @@ public:
 
     QColor GetCurrentWordColor() const { return _current_word_color; }
 
-    void setCurrentPage(PageType new_page);
-    PageType getCurrentPage() const { return _current_page; }
+    void setCurrentPage(PageId_TP new_page);
+    PageId_TP getCurrentPage() const { return _current_page; }
 
     Result_C* GetCurrentResult() { return _current_result; }
 
@@ -79,9 +94,18 @@ public:
     void CalculateResult();
     QAbstractItemModel* GetThemaModel() {return _thema_model; }
 
+    Q_INVOKABLE void setPageItem(PageId_TP page_id, QQuickItem* item);
+    QQuickItem* pageItem(PageId_TP page_id);
+
+    Q_INVOKABLE void setPanelItem(PageId_TP page_id, QQuickItem* item);
+    QQuickItem* panelItem(PageId_TP page_id);
+
+    Q_INVOKABLE void setTitleItem(PageId_TP page_id, QQuickItem* item);
+    QQuickItem* titleItem(PageId_TP page_id);
+
 signals:
     void selectedArticleChanged();
-    void currentPageChanged(PageType old_page, PageType new_page);
+    void currentPageChanged(PageId_TP old_page, PageId_TP new_page);
     void gameLevelChanged();
     void themaSelectionStateChanged();
     void newResultAvailable();
@@ -100,14 +124,18 @@ private:
     QObject* AddWord(QString text);
     void ClearWordItems();
     void CreateResultAlgo();
+    void InitPages();
 
 private:
+    QQmlContext& _root_context;
     QQuickItem* _root_item;
     QHash<QObject*, Word_C*> _item_word_hash;
+    QHash<PageId_TP, PageItems_TP> _page_items_hash;
+    QHash<PageId_TP, Page_I*> _page_hash;
     Thema_C* _current_thema;
     Article_C::Artikel _selected_article;
     QColor _current_word_color;
-    PageType _current_page;
+    PageId_TP _current_page;
     ResultAlgo_I* _result_algo;
     Result_C* _current_result;
     ThemaModel_C* _thema_model;

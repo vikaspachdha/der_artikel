@@ -35,7 +35,11 @@ SOURCES += main.cpp \
     article.cpp \
     algo/easy_result_algo.cpp \
     algo/moderate_result_algo.cpp \
-    word_model.cpp
+    word_model.cpp \
+    pages/home_page.cpp \
+    pages/page.cpp \
+    pages/settings_page.cpp \
+    pages/help_page.cpp
 
 # Installation path
 # target.path =
@@ -60,7 +64,12 @@ HEADERS += \
     article.h \
     algo/easy_result_algo.h \
     algo/moderate_result_algo.h \
-    word_model.h
+    word_model.h \
+    pages/home_page.h \
+    pages/page_i.h \
+    pages/page.h \
+    pages/settings_page.h \
+    pages/help_page.h
 
 FORMS += \
     thema_builder.ui

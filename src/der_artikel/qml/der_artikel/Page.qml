@@ -28,4 +28,8 @@ Item {
     anchors.topMargin: 6
     anchors.bottomMargin: 6
     clip:true
+
+    Component.onCompleted: {
+        manager.setPageItem(page_id,page)
+    }
 }

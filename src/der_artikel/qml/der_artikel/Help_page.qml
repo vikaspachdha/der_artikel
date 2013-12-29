@@ -14,6 +14,6 @@ Page {
     Loader {
         id:loader
         anchors.fill: background
-        source: help_page
+        source: help_page_instance.sub_page
     }
 }

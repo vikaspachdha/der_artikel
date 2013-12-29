@@ -3,6 +3,7 @@ import com.vystosi.qmlcomponents 1.0
 import QtGraphicalEffects 1.0
 
 Item {
+    id:panel
     property int page_id
     x: manager.current_page === page_id ? 8 : -width -12
     Behavior on x {
@@ -28,6 +29,10 @@ Item {
         samples: 16
         color: "#66000000"
         source: background_image
+    }
+
+    Component.onCompleted: {
+        manager.setPanelItem(page_id,panel)
     }
 
 

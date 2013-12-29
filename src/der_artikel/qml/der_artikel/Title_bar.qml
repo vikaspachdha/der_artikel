@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QtGraphicalEffects 1.0
 
 Item {
-    id: root_item
+    id: title
     property var page_id
     y: manager.current_page === page_id ? 4 : -height-4
     height:60
@@ -30,5 +30,9 @@ Item {
         samples: 16
         color: "#66000000"
         source: background_image
+    }
+
+    Component.onCompleted: {
+        manager.setTitleItem(page_id,title)
     }
 }

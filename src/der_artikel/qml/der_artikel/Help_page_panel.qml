@@ -14,7 +14,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: help_lbl.horizontalCenter
-        lblText: qsTr("Help")
+        lblText: qsTr("Topics")
     }
 
     Column {
@@ -32,7 +32,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: gen_btn.horizontalCenter
             buttonText: qsTr("General")
-            onActivated: help_page = "General_help.qml"
+            onActivated: help_page_instance.sub_page_type = HelpPage.GENERAL
         }
 
         Button {
@@ -40,7 +40,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: rules_btn.horizontalCenter
             buttonText: qsTr("Rules")
-            onActivated: help_page = "Rules_help.qml"
+            onActivated: help_page_instance.sub_page_type = HelpPage.RULES
         }
 
         Button {
@@ -48,7 +48,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: score_btn.horizontalCenter
             buttonText: qsTr("Scoring")
-            onActivated: help_page = "Scoring_help.qml"
+            onActivated: help_page_instance.sub_page_type = HelpPage.SCORING
         }
 
         Button {
@@ -56,7 +56,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: other_btn.horizontalCenter
             buttonText: qsTr("Other")
-            onActivated: help_page = "Others_help.qml"
+            onActivated: help_page_instance.sub_page_type = HelpPage.OTHERS
         }
 
     }
