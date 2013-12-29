@@ -53,3 +53,8 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
     thema.AddExperiencePoints(exp_change);
     result.setExperienceChange(exp_change);
 }
+
+int StrictResultAlgo_C::playTime(Thema_I &thema)
+{
+    return thema.GetWordCount();
+}

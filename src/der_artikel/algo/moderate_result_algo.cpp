@@ -54,3 +54,8 @@ void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
     result.setExperienceChange(exp_change);
 }
 
+int ModerateResultAlgo_C::playTime(Thema_I &thema)
+{
+    return thema.GetWordCount() * 2;
+}
+

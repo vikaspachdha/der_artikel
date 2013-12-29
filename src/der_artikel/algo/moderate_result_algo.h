@@ -11,5 +11,6 @@ public:
 
 public:
     virtual void Calculate(Thema_I& thema, Result_C& result);
+    virtual int playTime(Thema_I& thema);
 };
 #endif // MODERATE_RESULT_ALGO_H

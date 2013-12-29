@@ -7,4 +7,7 @@ QtObject {
     property color colorBtn02: "#AFAFAF"
     property color colorf01: "#ffffff"
     property color colorf02: "#303030"
+
+    property color colorInfo: "#FFE97F"
+    property color colorWarn: "#701414"
 }

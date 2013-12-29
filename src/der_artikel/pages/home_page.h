@@ -10,8 +10,10 @@ class HomePage_C : public Page_C
 {
     Q_OBJECT
 public:
-    explicit HomePage_C(Manager_C& refPageManager, QObject *parent = 0);
+    explicit HomePage_C(Manager_C& page_manager, QQmlContext& root_context,QObject *parent = 0);
 
+private:
+    QQmlContext& _root_context;
 };
 
 #endif // HOMEPAGE_H

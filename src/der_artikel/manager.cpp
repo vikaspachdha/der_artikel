@@ -11,6 +11,7 @@
 #include "data/result.h"
 
 #include "pages/help_page.h"
+#include "pages/words_page.h"
 
 
 Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
@@ -297,5 +298,6 @@ void Manager_C::CreateResultAlgo()
 void Manager_C::InitPages()
 {
     _page_hash[HELP_PAGE] = new HelpPage_C(*this, _root_context,this);
+    _page_hash[WORDS_PAGE] = new WordsPage_C(*this, _root_context,this);
 }
 

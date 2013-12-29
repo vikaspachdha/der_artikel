@@ -2,14 +2,28 @@ import QtQuick 2.0
 import com.vystosi.qmlcomponents 1.0
 
 Title_bar {
-    property int time_in_secs: 3610
+    property int play_time: 1
+    property alias timer_running:play_timer.running
     page_id: Manager.WORDS_PAGE
     Timer {
+        id: play_timer
         interval: 1000
-        running: true
         repeat: true
         onTriggered: {
-            timer_text.text = toTime(--time_in_secs)
+            if(play_time<=1) {
+                running = false
+                manager.current_page = Manager.RESULT_PAGE
+            }
+
+            if(play_time <=20) {
+                timer_text.color = cp_blue.colorInfo
+            }
+
+            if(play_time <=10) {
+                timer_text.color = cp_blue.colorWarn
+            }
+
+            timer_text.text = toTime(--play_time)
         }
     }
 
@@ -35,10 +49,14 @@ Title_bar {
             bottom:parent.bottom
             bottomMargin: 6
         }
-        text: qsTr("00:00:00")
+        text: qsTr("Infinite")
         font.family: custom_regular.name
         color:cp_blue.colorf01
         font.pixelSize: 20
+    }
+
+    onPlay_timeChanged: {
+        timer_text.text = toTime(play_time)
     }
 
     function toTime(secs) {

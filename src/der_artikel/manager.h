@@ -25,7 +25,6 @@ class Manager_C : public QObject
 
     Q_ENUMS(PageId_TP)
     Q_ENUMS(GameLevel)
-    Q_ENUMS(Artikel)
 
     Q_PROPERTY(Article_C::Artikel selected_article READ GetSelectedArticle WRITE SetSelectedArticle NOTIFY selectedArticleChanged)
     Q_PROPERTY(QColor current_word_color READ GetCurrentWordColor)
@@ -83,6 +82,8 @@ public:
     void setCurrentPage(PageId_TP new_page);
     PageId_TP getCurrentPage() const { return _current_page; }
 
+    ResultAlgo_I* resultAlgo() { return _result_algo; }
+
     Result_C* GetCurrentResult() { return _current_result; }
 
     GameLevel gameLevel() const { return _game_level; }
@@ -92,7 +93,7 @@ public:
 
 public:
     void CalculateResult();
-    QAbstractItemModel* GetThemaModel() {return _thema_model; }
+    ThemaModel_C* GetThemaModel() {return _thema_model; }
 
     Q_INVOKABLE void setPageItem(PageId_TP page_id, QQuickItem* item);
     QQuickItem* pageItem(PageId_TP page_id);
