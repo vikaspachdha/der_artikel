@@ -55,7 +55,7 @@ Page_panel
             id:other_btn
             width:parent.width
             text_anchors.horizontalCenter: other_btn.horizontalCenter
-            buttonText: qsTr("Other")
+            buttonText: qsTr("Contact")
             onActivated: help_page_instance.sub_page_type = HelpPage.OTHERS
         }
 
