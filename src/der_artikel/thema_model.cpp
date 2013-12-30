@@ -40,8 +40,8 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
                 data = thema->Selected();
                 break;
 
-            case PROGRESS:
-                data = 0.5;
+            case EXPERIENCE:
+                data = thema->ExperiencePoints();
                 break;
 
             case WORD_COUNT:
@@ -79,7 +79,7 @@ QHash<int, QByteArray> ThemaModel_C::roleNames() const
     roleNames[TR_NAME] = "tr_name";
     roleNames[ICON] = "icon";
     roleNames[SELECTED] = "selected";
-    roleNames[PROGRESS] = "progress";
+    roleNames[EXPERIENCE] = "experience";
     roleNames[WORD_COUNT] = "word_count";
     roleNames[THEMA_STATE] = "thema_state";
     roleNames[THEMA_OBJECT] = "thema_object";

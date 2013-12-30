@@ -32,6 +32,11 @@ public:
     virtual void leave();
 
 protected:
+    QQuickItem* titleItem();
+    QQuickItem* pageItem();
+    QQuickItem* panelItem();
+
+protected:
     Manager_C::PageId_TP _page_id;
     Manager_C& _page_manager;
 };

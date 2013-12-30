@@ -36,8 +36,8 @@ Page {
         model: currentResult.incorrectWordsModel
         delegate: Result_item {
             height: 20
-            correct_text: articleText(article)+" " + word_text
-            incorrect_text: articleText(user_article) + " " + word_text
+            right_text: articleText(article)+" " + word_text
+            left_text: articleText(user_article) + " " + word_text
         }
     }
 

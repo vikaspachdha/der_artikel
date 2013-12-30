@@ -3,8 +3,11 @@ import QtQuick 2.0
 Rectangle {
     id: rectangle1
 
-    property alias incorrect_text: text1.text
-    property alias correct_text: text2.text
+    property alias left_text: text1.text
+    property alias left_text_color: text1.color
+    property alias right_text: text2.text
+    property alias right_text_color: text2.color
+    property alias center_text: centerText.text
     width:parent.width
     radius:4
     gradient: Gradient {
@@ -25,6 +28,7 @@ Rectangle {
         font.family:command_font.name
         font.pixelSize: 18
         color:"#75110C"
+        elide: Text.ElideRight
     }
 
     Text {
@@ -49,6 +53,7 @@ Rectangle {
         font.pixelSize: 18
         verticalAlignment: Text.AlignVCenter
         color:"#17CC00"
+        elide: Text.ElideRight
     }
 
 }

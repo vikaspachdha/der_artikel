@@ -24,15 +24,12 @@ public:
         MULTIPLE_SELECTION
     };
 
-
-private:
-
     enum ROLES_TP {
         DISPLAY_NAME=Qt::UserRole+1,
         TR_NAME,
         ICON,
         SELECTED,
-        PROGRESS,
+        EXPERIENCE,
         WORD_COUNT,
         THEMA_STATE,
         THEMA_OBJECT
@@ -46,7 +43,7 @@ public:
 // QAbstarctItemModel Implementation.
 public:
     QVariant data(const QModelIndex &index, int role) const;
-    int rowCount(const QModelIndex &parent) const;
+    int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QHash<int,QByteArray> roleNames() const;
     Qt::ItemFlags flags(const QModelIndex &index) const;
     bool setData(const QModelIndex &index, const QVariant &value, int role);

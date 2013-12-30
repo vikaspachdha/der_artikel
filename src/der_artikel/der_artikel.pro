@@ -40,7 +40,8 @@ SOURCES += main.cpp \
     pages/page.cpp \
     pages/settings_page.cpp \
     pages/help_page.cpp \
-    pages/words_page.cpp
+    pages/words_page.cpp \
+    pages/stats_page.cpp
 
 # Installation path
 # target.path =
@@ -71,7 +72,8 @@ HEADERS += \
     pages/page.h \
     pages/settings_page.h \
     pages/help_page.h \
-    pages/words_page.h
+    pages/words_page.h \
+    pages/stats_page.h
 
 FORMS += \
     thema_builder.ui

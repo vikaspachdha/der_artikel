@@ -1,4 +1,5 @@
 #include "page.h"
+#include "manager.h"
 
 
 /********************************************************************************/
@@ -67,4 +68,19 @@ bool Page_C::canLeave() const
 void Page_C::leave()
 {
 
+}
+
+QQuickItem *Page_C::titleItem()
+{
+    return _page_manager.titleItem(_page_id);
+}
+
+QQuickItem *Page_C::pageItem()
+{
+    return _page_manager.pageItem(_page_id);
+}
+
+QQuickItem *Page_C::panelItem()
+{
+    return _page_manager.panelItem(_page_id);
 }
