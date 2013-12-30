@@ -7,13 +7,6 @@
         <file>resources/alt_background_texture.png</file>
         <file>resources/default_thema.png</file>
         <file>resources/home.png</file>
-        <file>resources/thema_icon.png</file>
-        <file>resources/thumbs_down_32.png</file>
-        <file>resources/thumbs_down_64.png</file>
-        <file>resources/thumbs_up_32.png</file>
-        <file>resources/thumbs_up_64.png</file>
-        <file>resources/result_32.png</file>
-        <file>resources/result_64.png</file>
         <file>resources/paper_texture_2_left.png</file>
         <file>resources/paper_texture_2_middle.png</file>
         <file>resources/paper_texture_2_right.png</file>
@@ -21,20 +14,20 @@
         <file>resources/thema_generic.png</file>
         <file>resources/start.png</file>
         <file>resources/start_disabled.png</file>
-        <file>resources/start_activ.png</file>
-        <file>resources/command_activ.png</file>
+        <file>resources/command_active.png</file>
         <file>resources/command_disabled.png</file>
         <file>resources/command.png</file>
         <file>resources/home_disabled.png</file>
-        <file>resources/home_activ.png</file>
         <file>resources/quit.png</file>
         <file>resources/quit_disabled.png</file>
-        <file>resources/quit_activ.png</file>
         <file>resources/fonts/custom_command.ttf</file>
         <file>resources/fonts/custom_regular.ttf</file>
         <file>resources/50_cent_gold.png</file>
         <file>resources/50_cent_inert.png</file>
         <file>resources/50_cent_rusty.png</file>
         <file>resources/50_cent_silver.png</file>
+        <file>resources/home_active.png</file>
+        <file>resources/quit_active.png</file>
+        <file>resources/start_active.png</file>
     </qresource>
 </RCC>
