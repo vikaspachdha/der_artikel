@@ -2,8 +2,8 @@ import QtQuick 2.0
 
 Item {
     id: root_item
-    width: childrenRect.width
-    height: childrenRect.height
+    width: 52
+    height: 52
     property alias cmd_text:item_label.text
     property string icon_name:"command"
 
@@ -12,8 +12,8 @@ Item {
     Image {
         id: icon
         height: width
-        width:sourceSize.width
-        anchors.left: parent.left
+        width:32
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         source: mouse_area.pressed ? "qrc:/res/resources/" + icon_name +"_activ.png" : root_item.enabled ? "qrc:/res/resources/" + icon_name +".png" : "qrc:/res/resources/" + icon_name +"_disabled.png"
     }
