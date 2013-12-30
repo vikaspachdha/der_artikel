@@ -22,9 +22,9 @@ Rectangle {
     border.width: mousearea1.pressed | isDown ? 1:0
 
     Rectangle {
-        height: 4
+        height: 6
         width: height
-        radius: 2
+        radius: 3
         anchors{left:parent.left;top:parent.top;margins: 4}
         visible: isDown
         color:cp_blue.colorf02

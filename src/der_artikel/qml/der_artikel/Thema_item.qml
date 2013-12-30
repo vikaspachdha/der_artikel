@@ -19,7 +19,7 @@ Flipable {
 
     Rectangle {
         id: info_rect
-        color:cp_blue.colorBtn02
+        color:cp_blue.colorBtn01
         radius:4
         anchors.fill: parent
         Text {
@@ -73,7 +73,7 @@ Flipable {
 
     Rectangle {
         id: thema_rect
-        color:cp_blue.colorBtn02
+        color:cp_blue.colorBtn01
         radius:4
         anchors.fill: parent
         Image {
@@ -188,9 +188,9 @@ Flipable {
     }
 
     Rectangle {
-        height: 4
+        height: 6
         width: height
-        radius: 2
+        radius: 3
         anchors{left:parent.left;top:parent.top;margins: 4}
         visible: thema_item_root.thema_selected
         color:cp_blue.colorf02

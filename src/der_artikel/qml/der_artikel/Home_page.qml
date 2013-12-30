@@ -18,8 +18,8 @@ Page {
         id: grid1
         anchors.fill: parent
         model:page_model
-        cellWidth:65
-        cellHeight:75
+        cellWidth:84
+        cellHeight:84
         delegate: Page_item {
             label_text: title
             page_icon: icon_src
