@@ -31,7 +31,10 @@ Page_panel {
             text_anchors.horizontalCenter: der_btn.horizontalCenter
             isDown: manager.selected_article === Article.DER
             buttonText: qsTr("Der")
-            onActivated: manager.selected_article = Article.DER
+            onActivated:  {
+                words_page.info_mode = false
+                manager.selected_article = Article.DER
+            }
         }
 
         Button {
@@ -40,7 +43,10 @@ Page_panel {
             text_anchors.horizontalCenter: die_btn.horizontalCenter
             isDown: manager.selected_article === Article.DIE
             buttonText: qsTr("Die")
-            onActivated: manager.selected_article = Article.DIE
+            onActivated:  {
+                words_page.info_mode = false
+                manager.selected_article = Article.DIE
+            }
         }
 
         Button {
@@ -49,16 +55,22 @@ Page_panel {
             text_anchors.horizontalCenter: das_btn.horizontalCenter
             isDown: manager.selected_article === Article.DAS
             buttonText: qsTr("Das")
-            onActivated: manager.selected_article = Article.DAS
+            onActivated: {
+                words_page.info_mode = false
+                manager.selected_article = Article.DAS
+            }
         }
 
         Button {
             id:na_btn
             width:parent.width
             text_anchors.horizontalCenter: na_btn.horizontalCenter
-            isDown: manager.selected_article === Article.NA
-            buttonText: qsTr("None")
-            onActivated: manager.selected_article = Article.NA
+            isDown: words_page.info_mode === true
+            buttonText: qsTr("Info")
+            onActivated: {
+                manager.selected_article = Article.NA
+                words_page.info_mode = true
+            }
         }
 
     }

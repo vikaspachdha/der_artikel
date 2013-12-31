@@ -6,6 +6,7 @@ Item {
     // Properties definition
     property alias wordText: label.text
     property alias wordPixelSz: label.font.pixelSize
+    property bool info_mode: words_page.info_mode
 
     // Signals
     signal wordClicked
@@ -56,11 +57,12 @@ Item {
         anchors.fill: parent
         onClicked:
         {
-            wordClicked()
-            overlay.color = manager.current_word_color;
-        }
-        onPressAndHold: {
-            manager.showMessage()
+            if(info_mode) {
+                showMessage(wordText,"")
+            } else {
+                wordClicked()
+                overlay.color = manager.current_word_color;
+            }
         }
     }
 
