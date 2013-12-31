@@ -81,21 +81,6 @@ Image {
         return WordItem;
     }
 
-    function showMessage()
-    {
-        msg_bar.animate = true
-    }
-
-    Message_bar {
-        id: msg_bar
-        height: parent.height * 0.2
-        color:"red"
-
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottomMargin:8
-    }
-
     DropShadow {
         anchors.fill: msg_bar
         horizontalOffset: 4
@@ -105,6 +90,32 @@ Image {
         samples: 16
         color: "#66000000"
         source: msg_bar
+    }
+
+    Blanket {
+        id:blanket
+        anchors.fill: parent
+    }
+
+    Message_bar {
+        id: msg_bar
+        height: 72
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottomMargin:8
+
+        onMsgCompleted: {
+            rootItem.enabled = true
+            blanket.show = false;
+        }
+    }
+
+
+    function showMessage(title,msg,duration,msg_type)
+    {
+        rootItem.enabled = false
+        blanket.show = true;
+        msg_bar.showMessage(title,msg,duration,msg_type);// = true
     }
 
     Component.onCompleted: {

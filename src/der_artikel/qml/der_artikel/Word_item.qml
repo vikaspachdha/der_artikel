@@ -59,6 +59,9 @@ Item {
             wordClicked()
             overlay.color = manager.current_word_color;
         }
+        onPressAndHold: {
+            manager.showMessage()
+        }
     }
 
 }

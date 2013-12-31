@@ -141,6 +141,12 @@ void Manager_C::setGameLevel(Manager_C::GameLevel game_level)
     }
 }
 
+void Manager_C::showMessage()
+{
+    QVariant returnedVal;
+    QMetaObject::invokeMethod(_root_item,"showMessage",Q_RETURN_ARG(QVariant,returnedVal));
+}
+
 
 void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
 {

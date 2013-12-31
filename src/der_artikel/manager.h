@@ -91,6 +91,8 @@ public:
 
     bool isThemaSelected() const { return _thema_selected; }
 
+    Q_INVOKABLE void showMessage();
+
 public:
     void CalculateResult();
     ThemaModel_C* GetThemaModel() {return _thema_model; }

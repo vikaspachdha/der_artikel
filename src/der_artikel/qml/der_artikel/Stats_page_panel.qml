@@ -32,6 +32,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: share_btn.horizontalCenter
             buttonText: qsTr("Share")
+            onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available"),1200)
         }
     }
 }

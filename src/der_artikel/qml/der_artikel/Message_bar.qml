@@ -3,32 +3,36 @@ import QtQuick.Controls 1.0
 
 Rectangle {
     id: msg_bar
-    color:"blue"
-    property alias title:msg_title.text
-    property alias message:msg_text.text
-    property alias animation_pause:pause_anim.duration
-    property alias animate: animation.running
+    property alias title_text:msg_title.text
+    property alias message_txt:msg_text.text
+    property alias msg_duration:pause_anim.duration
+    property int type:0
+
+    signal msgCompleted()
+
     y: -msg_bar.parent.height
-
     radius:4
-
     gradient: Gradient {
-        GradientStop { position: 0.0; color: "#576495" }
-        GradientStop { position: 0.05; color: "#6876B2" }
-        //GradientStop { position: 0.33; color: "#6876B2" }
-        GradientStop { position: 0.95; color: "#6876B2" }
-        GradientStop { position: 1.0; color: "#576495" }
+        GradientStop {position: 0  ;color: cp_blue.colorBtn02}
+        GradientStop {position: 0.5;color: cp_blue.colorBtn01}
+        GradientStop {position: 1;color: cp_blue.colorBtn01}
     }
 
-    Rectangle {
+    Image {
         id: icon
+        height:64
         width:height
-        color:"red"
         anchors {
             left: msg_bar.left
-            top: msg_bar.top
-            bottom: msg_bar.bottom
-            margins: 4
+            leftMargin: 4
+            verticalCenter: parent.verticalCenter
+        }
+        source: {
+            switch(msg_bar.type) {
+            case 1: return "qrc:/res/resources/warning.png";
+            case 2: return "qrc:/res/resources/error.png";
+            default: return "qrc:/res/resources/info.png";
+            }
         }
     }
 
@@ -36,30 +40,34 @@ Rectangle {
         id: msg_title
         height: msg_bar.height * 0.40
         anchors {
-            left: icon.left
+            left: icon.right
             top: msg_bar.top
             right: msg_bar.right
         }
-        font.pointSize: 12
-        font.italic: true
+        font.family: custom_regular.name
+        color:cp_blue.colorf02
+        font.pixelSize: 20
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
-        text:"Title"
     }
 
     Text {
         id: msg_text
         height: msg_bar.height * 0.40
         anchors {
-            left: icon.left
+            left: icon.right
             top: msg_title.bottom
             right: msg_bar.right
             bottom: msg_bar.bottom
         }
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
-        font.pointSize: 12
-        text:"message\nnext line"
+        font.family: custom_regular.name
+        color:cp_blue.colorf02
+        font.pixelSize: 16
+        elide:Text.ElideRight
+        maximumLineCount: 2
+        wrapMode: Text.WordWrap
     }
 
     SequentialAnimation {
@@ -89,49 +97,16 @@ Rectangle {
             easing.type: Easing.OutCubic
 
         }
+        onStopped: msg_bar.msgCompleted()
     }
 
-    states:[
-        State {
-            name:"base"
-            AnchorChanges{
-                target: msg_bar
-                anchors.top: undefined
-                anchors.verticalCenter: undefined
-                anchors.bottom : msg_bar.parent.top
-            }
-        },
-        State {
-            name:"middle"
-            AnchorChanges{
-                target: msg_bar
-                anchors.bottom: undefined
-                anchors.top : undefined
-                anchors.verticalCenter: msg_bar.parent.verticalCenter
-            }
-        },
-        State {
-            name:"bottom"
-            AnchorChanges{
-                target: msg_bar
-                anchors.verticalCenter: undefined
-                anchors.bottom: undefined
-                anchors.top : msg_bar.parent.bottom
-            }
-        }
-
-    ]
-
-    Component.onCompleted:
+    function showMessage(title,msg,duration,msg_type)
     {
-        state="base"
+        msg_bar.title_text=title
+        msg_bar.message_txt=msg
+        msg_bar.msg_duration = duration || 1200
+        msg_bar.type = msg_type || 0
+        animation.start()
     }
-
-    function showMessage()
-    {
-
-    }
-
-
 
 }

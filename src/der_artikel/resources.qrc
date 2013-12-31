@@ -29,5 +29,7 @@
         <file>resources/home_active.png</file>
         <file>resources/quit_active.png</file>
         <file>resources/start_active.png</file>
+        <file>resources/error.png</file>
+        <file>resources/warning.png</file>
     </qresource>
 </RCC>
