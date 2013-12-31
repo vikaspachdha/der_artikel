@@ -12,7 +12,7 @@ public:
 
 public:
     virtual unsigned int GetWordCount() const = 0;
-    virtual const Word_C* GetWord(unsigned int index) const = 0;
+    virtual const Word_C* GetWord(int index) const = 0;
     virtual void AddExperiencePoints(int points) = 0;
     virtual void DeductExperiencePoints(int points) = 0;
     virtual void ClearUserInput() = 0;

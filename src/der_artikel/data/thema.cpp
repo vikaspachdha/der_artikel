@@ -254,10 +254,10 @@ unsigned int Thema_C::GetWordCount() const
     return (uint)_words.count();
 }
 
-const Word_C *Thema_C::GetWord(unsigned int index) const
+const Word_C *Thema_C::GetWord(int index) const
 {
     Word_C* word = 0;
-    if(index < _words.count()) {
+    if(index > -1 && index < _words.count()) {
         word = _words.at(index);
     }
     return word;

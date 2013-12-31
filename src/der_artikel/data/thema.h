@@ -72,7 +72,7 @@ public:
     // Thema_I implementation
 public:
     virtual unsigned int GetWordCount() const;
-    virtual const Word_C* GetWord(unsigned int index) const;
+    virtual const Word_C* GetWord(int index) const;
     virtual void AddExperiencePoints(int points);
     virtual void DeductExperiencePoints(int points);
     virtual void ClearUserInput();
