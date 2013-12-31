@@ -37,6 +37,7 @@ QVariant WordModel_C::data(const QModelIndex &index, int role) const
 
 int WordModel_C::rowCount(const QModelIndex &parent) const
 {
+    Q_UNUSED(parent)
     return _words.count();
 }
 
