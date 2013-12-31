@@ -21,6 +21,8 @@ public:
 private:
     explicit Article_C(QObject *parent = 0);
 
+public:
+    static QString ArtikelText(Article_C::Artikel artikel);
 };
 
 #endif // ARTICLE_H

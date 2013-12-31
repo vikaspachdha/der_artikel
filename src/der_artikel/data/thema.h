@@ -47,11 +47,11 @@ public:
 
 public:
 
-    void SetText(QString text) { _text = text; }
     QString GetText() const { return _text; }
 
-    void SetTrText(QString text) { _translation = text; }
     QString GetTrText() const { return _translation; }
+
+    QString Author() const { return _author; }
 
     void SetFilePath(QString file_path);
 
@@ -96,6 +96,7 @@ private:
 private:
     QString _text;
     QString _translation;
+    QString _author;
     QString _file_path;
     QVector<Word_C*> _words;
     bool _defered_read;

@@ -20,6 +20,8 @@ public:
 
     QString GetWordText() const { return _text; }
 
+    QString GetDescription() const  { return _description; }
+
 public:
     bool Read(const QDomElement& element);
     bool Write(QDomElement& element);
@@ -27,6 +29,7 @@ public:
 
 private:
     QString _text;
+    QString _description;
     Article_C::Artikel _artikel;
     Article_C::Artikel _user_artikel;
 

@@ -124,7 +124,7 @@ private:
     void LoadDefaultThemas();
     void SetCurrentThema(Thema_C* thema);
     void AddWords(const Thema_C *thema);
-    QObject* AddWord(QString text);
+    QObject* AddWord(QString text, QString desc);
     void ClearWordItems();
     void CreateResultAlgo();
     void InitPages();

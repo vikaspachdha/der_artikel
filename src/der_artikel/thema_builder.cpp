@@ -7,6 +7,7 @@
 #include <QFile>
 #include <QShortcut>
 #include <QKeyEvent>
+#include <QStandardPaths>
 #include <QDebug>
 
 #include "data/thema.h"
@@ -23,6 +24,8 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     _edit_item(0)
 {
     ui->setupUi(this);
+
+    ui->_author_name_edit->setText(UserName());
 
     _thema = new Thema_C();
 
@@ -134,35 +137,39 @@ void ThemaBuilder_C::OnLoad()
 
 void ThemaBuilder_C::OnAddClicked()
 {
-    QString text = ui->_word_edit->text();
+    QString text = ui->_word_edit->text().trimmed();
+    QString desc = ui->_desc_edit->text().trimmed();
 
     Q_ASSERT(!text.isEmpty());
     Q_ASSERT(_thema);
 
-    ARTIKEL::Artikel article = ARTIKEL::NA;
+    Article_C::Artikel article = Article_C::NA;
     if(ui->_die_radio->isChecked()) {
-        article = ARTIKEL::DIE;
+        article = Article_C::DIE;
     } else if(ui->_der_radio->isChecked()) {
-        article = ARTIKEL::DER;
+        article = Article_C::DER;
     } else if(ui->_das_radio->isChecked()) {
-        article = ARTIKEL::DAS;
+        article = Article_C::DAS;
     }
 
     if(_edit_item) {
         Word_C* edit_word = _edit_item->data(Qt::UserRole).value<Word_C*>();
         edit_word->_artikel = article;
         edit_word->_text = text;
+        edit_word->_description = desc;
         UpdateItem(_edit_item);
         SetWordUiState(ADD_STATE);
     } else {
         Word_C* new_word = new Word_C();
         new_word->_artikel = article;
         new_word->_text = text;
+        new_word->_description = desc;
         AddWordToList(new_word);
         _thema->_words.append(new_word);
     }
 
     ui->_word_edit->setText("");
+    ui->_desc_edit->setText("");
 }
 
 void ThemaBuilder_C::OnWordTextChanged(QString new_text)
@@ -184,18 +191,19 @@ void ThemaBuilder_C::OnItemDoubleClicked(QListWidgetItem *item)
             _edit_item = item;
 
             ui->_word_edit->setText(word->GetWordText());
+            ui->_desc_edit->setText(word->GetDescription());
 
             switch(word->GetArtikel()) {
-            case ARTIKEL::DAS:
+            case Article_C::DAS:
                 ui->_das_radio->setChecked(true);
                 break;
-            case ARTIKEL::DER:
+            case Article_C::DER:
                 ui->_der_radio->setChecked(true);
                 break;
-            case ARTIKEL::DIE:
+            case Article_C::DIE:
                 ui->_die_radio->setChecked(true);
                 break;
-            case ARTIKEL::NA:
+            case Article_C::NA:
                 ui->_na_radio->setChecked(true);
                 break;
             default:
@@ -273,10 +281,10 @@ void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
         Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
         if(word) {
             QString listItemText;
-            if(word->_artikel == ARTIKEL::NA) {
+            if(word->_artikel == Article_C::NA) {
                 listItemText = word->_text;
             } else {
-                listItemText = QString("%1 %2").arg(ARTIKEL::ArtikelText(word->_artikel)).arg(word->_text);
+                listItemText = QString("%1 %2").arg(Article_C::ArtikelText(word->_artikel)).arg(word->_text);
             }
             item->setText(listItemText);
         }
@@ -312,8 +320,9 @@ bool ThemaBuilder_C::Write(QIODevice* pDevice)
     QDomElement root = domDocument.createElement("Root");
     root.setAttribute("Version", QString::number(APP_VERSION));
 
-    _thema->SetText(ui->_thema_name_edit->text().trimmed());
-    _thema->SetTrText(ui->_theam_tr_name_edit->text().trimmed());
+    _thema->_text = ui->_thema_name_edit->text().trimmed();
+    _thema->_translation =  ui->_thema_tr_name_edit->text().trimmed();
+    _thema->_author = ui->_author_name_edit->text().trimmed();
     _thema->Write(root);
 
     domDocument.appendChild(root);
@@ -335,8 +344,10 @@ void ThemaBuilder_C::AddWordToList(Word_C* new_word)
 void ThemaBuilder_C::ResetUI()
 {
     ui->_thema_name_edit->setText("");
-    ui->_theam_tr_name_edit->setText("");
+    ui->_thema_tr_name_edit->setText("");
+    ui->_author_name_edit->setText("");
     ui->_word_edit->setText("");
+    ui->_desc_edit->setText("");
     ui->_na_radio->setChecked(true);
     ui->_word_list->clear();
     SetWordUiState(ADD_STATE);
@@ -346,7 +357,12 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
 {
     if(thema) {
         ui->_thema_name_edit->setText(thema->GetText());
-        ui->_theam_tr_name_edit->setText(thema->GetTrText());
+        ui->_thema_tr_name_edit->setText(thema->GetTrText());
+        if(thema->Author().isEmpty()) {
+            ui->_author_name_edit->setText(UserName());
+        } else {
+            ui->_author_name_edit->setText(thema->Author());
+        }
         foreach(Word_C* word, thema->_words) {
             AddWordToList(word);
         }
@@ -359,6 +375,7 @@ void ThemaBuilder_C::SetWordUiState(ThemaBuilder_C::WordUIState new_state)
         _edit_item = 0;
         ui->_add_btn->setText(tr("Add"));
         ui->_word_edit->setText("");
+        ui->_desc_edit->setText("");
         ui->_na_radio->setChecked(true);
     } else {
         ui->_add_btn->setText(tr("Update"));
@@ -385,6 +402,19 @@ void ThemaBuilder_C::SetUmlautUpperCase(bool upper_case)
         ui->_o_umlaut_btn->setText("ö");
         ui->_u_umlaut_btn->setText("ü");
     }
+}
+
+QString ThemaBuilder_C::UserName()
+{
+    QString user_name;
+    user_name = getenv("USER");
+    if(user_name.isEmpty()) {
+        user_name = getenv("USERNAME");
+    }
+    if(user_name.isEmpty()) {
+        user_name = "Anonymous Andy";
+    }
+    return user_name;
 }
 
 #endif

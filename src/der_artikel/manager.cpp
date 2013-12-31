@@ -237,7 +237,7 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
 void Manager_C::AddWords(const Thema_C* thema)
 {
     foreach(Word_C* word, thema->GetWords()) {
-        QObject* word_item = AddWord(word->GetWordText());
+        QObject* word_item = AddWord(word->GetWordText(), word->GetDescription());
         Q_ASSERT(word_item);
         _item_word_hash[word_item] = word;
         connect(word_item, SIGNAL(wordClicked()), this, SLOT(OnWordClicked()) );
@@ -261,14 +261,14 @@ void Manager_C::SetCurrentThema(Thema_C *thema)
     }
 }
 
-QObject *Manager_C::AddWord(QString text)
+QObject *Manager_C::AddWord(QString text, QString desc)
 {
     Q_ASSERT(_root_item);
 
     QVariant returned_value;
     QMetaObject::invokeMethod(_root_item, "addWord",
                               Q_RETURN_ARG(QVariant, returned_value),
-                              Q_ARG(QVariant, text));
+                              Q_ARG(QVariant, text), Q_ARG(QVariant, desc));
     QObject* word_item = returned_value.value<QObject*>();
     return word_item;
 }

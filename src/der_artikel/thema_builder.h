@@ -58,6 +58,7 @@ private:
     void SetWordUiState(WordUIState new_state);
     void InsertSplText(QString str);
     void SetUmlautUpperCase( bool upper_case);
+    QString UserName();
 
 private:
     Ui::ThemaBuilder_C *ui;

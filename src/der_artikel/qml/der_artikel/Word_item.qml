@@ -5,6 +5,7 @@ Item {
     id: root
     // Properties definition
     property alias wordText: label.text
+    property string description_text:""
     property alias wordPixelSz: label.font.pixelSize
     property bool info_mode: words_page.info_mode
 
@@ -58,7 +59,7 @@ Item {
         onClicked:
         {
             if(info_mode) {
-                showMessage(wordText,"")
+                showMessage(wordText,description_text)
             } else {
                 wordClicked()
                 overlay.color = manager.current_word_color;

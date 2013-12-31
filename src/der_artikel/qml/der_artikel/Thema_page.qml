@@ -17,6 +17,7 @@ Page {
         delegate: Thema_item {
             title:display_name
             translation: tr_name
+            author_name: author
             icon_url: icon
             count:word_count
             width:grid_view.cellWidth-4

@@ -27,6 +27,7 @@ public:
     enum ROLES_TP {
         DISPLAY_NAME=Qt::UserRole+1,
         TR_NAME,
+        AUTHOR,
         ICON,
         SELECTED,
         EXPERIENCE,

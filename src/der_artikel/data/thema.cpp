@@ -44,6 +44,7 @@ bool Thema_C::Read(const QDomElement &element)
         success = !_text.isEmpty();
 
         _translation = element.firstChildElement("Translation").text();
+        _author = element.firstChildElement("Author").text();
 
         bool ok = false;
 
@@ -120,6 +121,11 @@ bool Thema_C::Write(QDomElement &element)
             QDomText translation_thema = domDocument.createTextNode(_translation);
             dom_translation.appendChild(translation_thema);
             dom_thema.appendChild(dom_translation);
+
+            QDomElement dom_author = domDocument.createElement("Author");
+            QDomText author_text = domDocument.createTextNode(_author);
+            dom_author.appendChild(author_text);
+            dom_thema.appendChild(dom_author);
 
             QDomElement dom_experience = domDocument.createElement("ExperiencePoints");
             QDomText text_experience = domDocument.createTextNode(QString::number(_experience_points));

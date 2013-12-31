@@ -6,6 +6,7 @@ Flipable {
     id: thema_item_root
     property alias title: thema_title.text
     property alias translation: thema_tr_text.text
+    property alias author_name: author.text
     property alias icon_url:thema_icon.source
     property int count:0
     property bool thema_selected: false
@@ -40,7 +41,7 @@ Flipable {
             anchors.left:parent.left
             anchors.leftMargin: 2
             anchors.right: parent.right
-            text:"Vikas Pachdha"
+            text:"-"
             color:cp_blue.colorf02
             font.family:command_font.name
             font.pixelSize: 16

@@ -75,9 +75,9 @@ Image {
     }
 
 
-    function addWord(itemText)
+    function addWord(itemText, desc)
     {
-        var WordItem = content_frame.word_page.appendWordToFlow(itemText)
+        var WordItem = content_frame.word_page.appendWordToFlow(itemText, desc)
         return WordItem;
     }
 

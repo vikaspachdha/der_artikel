@@ -22,12 +22,13 @@ Page {
     }
 
 
-    function appendWordToFlow(itemText)
+    function appendWordToFlow(itemText,desc)
     {
         var WordComponent = Qt.createComponent("Word_item.qml");
         if(WordComponent.status == Component.Ready) {
             var WordItem = WordComponent.createObject(wordFlow);
             WordItem.wordText = itemText;
+            WordItem.description_text = desc;
         }
 
         return WordItem;

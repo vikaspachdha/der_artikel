@@ -3,145 +3,183 @@
     <Thema>
         <ThemaText>Familie</ThemaText>
         <Translation>Family</Translation>
+        <Author>Vikas Pachdha</Author>
+        <ExperiencePoints>0</ExperiencePoints>
+        <LastPlayed>1388519293020</LastPlayed>
         <Words>
             <Word>
                 <WordText>Schwester</WordText>
+                <Description>Sister, बहन</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Bruder</WordText>
+                <Description>Brother, भाई</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Vater</WordText>
+                <Description>Father, पिता</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Opa</WordText>
+                <Description>grandfather, दादाजी</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Mutter</WordText>
+                <Description>Mother, मां</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Oma</WordText>
+                <Description>Grandmother, दादी</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Vorfahre</WordText>
+                <Description>ancestor, पूर्वज</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Sohn</WordText>
+                <Description>Son</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Onkel</WordText>
+                <Description></Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Junge</WordText>
+                <Description></Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Schwager</WordText>
+                <Description></Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Cousin</WordText>
+                <Description></Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Großvater</WordText>
+                <Description></Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Urgroßvater</WordText>
+                <Description></Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Mann</WordText>
+                <Description></Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Junggeselle</WordText>
+                <Description></Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Männer</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Vorfahren</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Familie</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Schwiegertochter</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Tochter</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Kusine</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Enkeltochter</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Familien</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Großmutter</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Großeltern</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Eltern</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Geschwister</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Frau</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Herkunft</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Baby</WordText>
+                <Description></Description>
                 <Artikel>3</Artikel>
             </Word>
             <Word>
                 <WordText>Kind</WordText>
+                <Description></Description>
                 <Artikel>3</Artikel>
             </Word>
             <Word>
                 <WordText>Enkelkind </WordText>
+                <Description></Description>
                 <Artikel>3</Artikel>
             </Word>
             <Word>
                 <WordText>Mädchen</WordText>
+                <Description></Description>
                 <Artikel>3</Artikel>
             </Word>
             <Word>
                 <WordText>Kinder</WordText>
+                <Description></Description>
                 <Artikel>2</Artikel>
             </Word>
         </Words>

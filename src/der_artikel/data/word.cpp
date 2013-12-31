@@ -13,6 +13,7 @@ bool Word_C::Read(const QDomElement &element)
     if(!element.isNull()) {
         _text = element.firstChildElement("WordText").text();
         success = !_text.isEmpty();
+        _description = element.firstChildElement("Description").text();
 
         int article_value = element.firstChildElement("Artikel").text().toInt(&success);
         if(success) {
@@ -46,6 +47,11 @@ bool Word_C::Write(QDomElement &element)
             QDomText text_word = domDocument.createTextNode(_text);
             dom_text.appendChild(text_word);
             dom_word.appendChild(dom_text);
+
+            QDomElement dom_description = domDocument.createElement("Description");
+            QDomText text_description = domDocument.createTextNode(_description);
+            dom_description.appendChild(text_description);
+            dom_word.appendChild(dom_description);
 
             QDomElement dom_artikel = domDocument.createElement("Artikel");
             QDomText artikel_code = domDocument.createTextNode(QString::number(_artikel));
