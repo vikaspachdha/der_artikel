@@ -1,7 +1,7 @@
 import QtQuick 2.0
 
 Item {
-    height: 64
+    height: 76
 
     Thema_page_title {
 

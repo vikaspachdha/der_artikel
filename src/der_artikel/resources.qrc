@@ -31,5 +31,6 @@
         <file>resources/start_active.png</file>
         <file>resources/error.png</file>
         <file>resources/warning.png</file>
+        <file>resources/app.png</file>
     </qresource>
 </RCC>

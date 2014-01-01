@@ -32,6 +32,7 @@ class Manager_C : public QObject
     Q_PROPERTY(QAbstractItemModel* thema_model READ GetThemaModel CONSTANT)
     Q_PROPERTY(GameLevel game_level READ gameLevel WRITE setGameLevel NOTIFY gameLevelChanged)
     Q_PROPERTY(bool thema_selected READ isThemaSelected NOTIFY themaSelectionStateChanged)
+    Q_PROPERTY(QString version_string READ versionString CONSTANT)
 
 public:
 
@@ -93,6 +94,8 @@ public:
 
     Q_INVOKABLE void showMessage();
 
+    Q_INVOKABLE QString versionString() {return _version_string;}
+
 public:
     void CalculateResult();
     ThemaModel_C* GetThemaModel() {return _thema_model; }
@@ -144,6 +147,7 @@ private:
     ThemaModel_C* _thema_model;
     GameLevel _game_level;
     bool _thema_selected;
+    QString _version_string;
 };
 
 #endif // MANAGER_H

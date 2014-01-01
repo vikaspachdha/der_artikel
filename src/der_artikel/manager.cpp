@@ -9,6 +9,7 @@
 #include "algo/moderate_result_algo.h"
 #include "algo/strict_result_algo.h"
 #include "data/result.h"
+#include "version.h"
 
 #include "pages/help_page.h"
 #include "pages/words_page.h"
@@ -27,6 +28,13 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _game_level(EASY),
     _thema_selected(false)
 {
+    int version = APP_VERSION;
+    while(version >= 10) {
+        _version_string.prepend("."+QString::number(version%10));
+        version /= 10;
+    }
+    _version_string.prepend(QString::number(version));
+
     InitPages();
     SetSelectedArticle(Article_C::DER);
 
@@ -146,7 +154,6 @@ void Manager_C::showMessage()
     QVariant returnedVal;
     QMetaObject::invokeMethod(_root_item,"showMessage",Q_RETURN_ARG(QVariant,returnedVal));
 }
-
 
 void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
 {

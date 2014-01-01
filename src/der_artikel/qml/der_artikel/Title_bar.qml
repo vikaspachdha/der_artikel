@@ -5,7 +5,7 @@ Item {
     id: title
     property var page_id
     y: manager.current_page === page_id ? 4 : -height-4
-    height:60
+    height:72
     anchors{left:parent.left;right:parent.right}
     Behavior on y {
         SequentialAnimation {
