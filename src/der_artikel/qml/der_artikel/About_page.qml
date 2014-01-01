@@ -6,7 +6,7 @@ Page {
     Rectangle {
         id: background
         anchors.fill: parent
-        color:cp_blue.colorBtn02
+        color:cp_blue.colorBg01
         radius: 4
     }
     Flickable {
@@ -23,7 +23,7 @@ Page {
 
             wrapMode: Text.WordWrap
             font.family: custom_regular.name
-            color:cp_blue.colorf02
+            color:cp_blue.colorf01
             font.pixelSize: 18
             horizontalAlignment: Text.AlignHCenter
         }
@@ -39,7 +39,7 @@ FITNESS FOR A PARTICULAR PURPOSE."
 
             wrapMode: Text.WordWrap
             font.family: custom_regular.name
-            color:cp_blue.colorf02
+            color:cp_blue.colorf01
             font.pixelSize: 16
         }
 

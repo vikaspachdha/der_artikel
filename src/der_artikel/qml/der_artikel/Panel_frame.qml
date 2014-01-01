@@ -47,4 +47,10 @@ Item {
         height:parent.height
     }
 
+    Settings_page_panel {
+        id: settings_page_panel_item
+        width:100
+        height:parent.height
+    }
+
 }

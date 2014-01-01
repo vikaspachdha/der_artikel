@@ -12,13 +12,6 @@ Page {
     property int rusty_thema_count:0
     property string best_thema_name:""
 
-    Rectangle {
-        id: background
-        anchors.fill: parent
-        color:cp_blue.colorBtn02
-        radius: 4
-    }
-
     Flickable {
         anchors.fill: parent
         contentHeight: 6 * 32 + 12
@@ -26,7 +19,7 @@ Page {
         model:6
         delegate: Result_item {
             height: 30
-            width:background.width - 12
+            width:parent.width - 12
             x:6
             y: (index*32) + 6
             left_text: {

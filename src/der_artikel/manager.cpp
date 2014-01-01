@@ -5,6 +5,7 @@
 
 #include "data/thema.h"
 #include "thema_loader.h"
+#include "settings.h"
 #include "algo/easy_result_algo.h"
 #include "algo/moderate_result_algo.h"
 #include "algo/strict_result_algo.h"
@@ -14,10 +15,12 @@
 #include "pages/help_page.h"
 #include "pages/words_page.h"
 #include "pages/stats_page.h"
+#include "pages/settings_page.h"
 
 
 Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     QObject(parent),
+    _settings(0),
     _root_context(ref_root_context),
     _root_item(0),
     _current_thema(0),
@@ -34,6 +37,8 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
         version /= 10;
     }
     _version_string.prepend(QString::number(version));
+
+    _settings = new Settings_C(this);
 
     InitPages();
     SetSelectedArticle(Article_C::DER);
@@ -314,5 +319,6 @@ void Manager_C::InitPages()
     _page_hash[HELP_PAGE] = new HelpPage_C(*this, _root_context,this);
     _page_hash[WORDS_PAGE] = new WordsPage_C(*this, _root_context,this);
     _page_hash[STATS_PAGE] = new StatsPage_C(*this,_root_context,this);
+    _page_hash[SETTINGS_PAGE] = new SettingsPage_C(*this,_root_context,this);
 }
 

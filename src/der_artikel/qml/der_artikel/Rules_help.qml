@@ -39,7 +39,7 @@ untill you reach the INERT state."
 
         wrapMode: Text.WordWrap
         font.family: custom_regular.name
-        color:cp_blue.colorf02
+        color:cp_blue.colorf01
         font.pixelSize: 16
         textFormat: Text.RichText
     }

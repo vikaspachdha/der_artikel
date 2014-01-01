@@ -30,4 +30,8 @@ Item {
     Stats_page_title {
 
     }
+
+    Settings_page_title {
+
+    }
 }

@@ -15,6 +15,7 @@ class Word_C;
 class ResultAlgo_I;
 class QQuickItem;
 class QQmlContext;
+class Settings_C;
 class Page_I;
 
 //class ThemaModel_C;
@@ -46,7 +47,7 @@ public:
         RESULT_PAGE,
         HELP_PAGE,
         STATS_PAGE,
-        PREF_PAGE,
+        SETTINGS_PAGE,
         ABOUT_PAGE,
         INVALID_PAGE
     };
@@ -100,6 +101,8 @@ public:
     void CalculateResult();
     ThemaModel_C* GetThemaModel() {return _thema_model; }
 
+    Settings_C* GetSettings() const { return _settings; }
+
     Q_INVOKABLE void setPageItem(PageId_TP page_id, QQuickItem* item);
     QQuickItem* pageItem(PageId_TP page_id);
 
@@ -133,6 +136,7 @@ private:
     void InitPages();
 
 private:
+    Settings_C* _settings;
     QQmlContext& _root_context;
     QQuickItem* _root_item;
     QHash<QObject*, Word_C*> _item_word_hash;

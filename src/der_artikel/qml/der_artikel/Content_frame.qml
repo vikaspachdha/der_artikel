@@ -34,6 +34,10 @@ Item {
         id: stats_page_item
     }
 
+    Settings_page {
+        id: settings_page_item
+    }
+
     About_page {
        id: about_page_item
     }
