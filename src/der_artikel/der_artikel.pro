@@ -1,7 +1,7 @@
 cache()
 QT += xml widgets
 
-#DEFINES += ENABLE_THEMA_BUILDER
+DEFINES += ENABLE_THEMA_BUILDER
 
 # Add more folders to ship with the application, here
 folder_01.source = qml/der_artikel

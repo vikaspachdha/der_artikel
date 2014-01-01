@@ -32,5 +32,7 @@
         <file>resources/error.png</file>
         <file>resources/warning.png</file>
         <file>resources/app.png</file>
+        <file>resources/export.png</file>
+        <file>resources/import.png</file>
     </qresource>
 </RCC>
