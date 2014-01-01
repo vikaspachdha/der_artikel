@@ -44,142 +44,142 @@
             </Word>
             <Word>
                 <WordText>Sohn</WordText>
-                <Description>Son</Description>
+                <Description>Son, बेटा, पुत्र</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Onkel</WordText>
-                <Description></Description>
+                <Description>uncle, चाचा, मामा</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Junge</WordText>
-                <Description></Description>
+                <Description>Boy, लड़का</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Schwager</WordText>
-                <Description></Description>
+                <Description>brother-in-law, बहनोई, साला</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Cousin</WordText>
-                <Description></Description>
+                <Description>cousin, चचेरा भाई, ममेरा भाई</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Großvater</WordText>
-                <Description></Description>
+                <Description>grandfather, दादा, नाना</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Urgroßvater</WordText>
-                <Description></Description>
+                <Description>great grandfather, पढदादा</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Mann</WordText>
-                <Description></Description>
+                <Description>Man, आदमी</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Junggeselle</WordText>
-                <Description></Description>
+                <Description>bachelor, कुंवारा</Description>
                 <Artikel>1</Artikel>
             </Word>
             <Word>
                 <WordText>Männer</WordText>
-                <Description></Description>
+                <Description>men, आदमी (बहुवचन)</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Vorfahren</WordText>
-                <Description></Description>
+                <Description>ancestors, पूर्वजों (बहुवचन)</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Familie</WordText>
-                <Description></Description>
+                <Description>family, परिवार</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Schwiegertochter</WordText>
-                <Description></Description>
+                <Description>daughter-in-law, बहू</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Tochter</WordText>
-                <Description></Description>
+                <Description>daughter, बेटी</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Kusine</WordText>
-                <Description></Description>
+                <Description>cousin [female], चचेरे बहन [स्त्रीलिंग]</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Enkeltochter</WordText>
-                <Description></Description>
+                <Description>granddaughter, पोती</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Familien</WordText>
-                <Description></Description>
+                <Description>families, परिवारों</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Großmutter</WordText>
-                <Description></Description>
+                <Description>grandmother, दादी, नानी</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Großeltern</WordText>
-                <Description></Description>
+                <Description>grandparents, दादा - दादी</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Eltern</WordText>
-                <Description></Description>
+                <Description>parents, माता - पिता</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Geschwister</WordText>
-                <Description></Description>
+                <Description>sibling, सहोदर</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Frau</WordText>
-                <Description></Description>
+                <Description>wife, female, महिला, पत्नी</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Herkunft</WordText>
-                <Description></Description>
+                <Description>origin, ancestry, पुरखे, वंश</Description>
                 <Artikel>2</Artikel>
             </Word>
             <Word>
                 <WordText>Baby</WordText>
-                <Description></Description>
+                <Description>Baby, बच्चा, शिशु</Description>
                 <Artikel>3</Artikel>
             </Word>
             <Word>
                 <WordText>Kind</WordText>
-                <Description></Description>
+                <Description>Baby, शिशु</Description>
                 <Artikel>3</Artikel>
             </Word>
             <Word>
-                <WordText>Enkelkind </WordText>
-                <Description></Description>
+                <WordText>Enkelkind</WordText>
+                <Description>grandchild, नाती</Description>
                 <Artikel>3</Artikel>
             </Word>
             <Word>
                 <WordText>Mädchen</WordText>
-                <Description></Description>
+                <Description>girls, लड़कियों</Description>
                 <Artikel>3</Artikel>
             </Word>
             <Word>
                 <WordText>Kinder</WordText>
-                <Description></Description>
+                <Description>kids, बच्चे</Description>
                 <Artikel>2</Artikel>
             </Word>
         </Words>
