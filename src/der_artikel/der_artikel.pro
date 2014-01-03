@@ -84,7 +84,6 @@ RESOURCES += \
     resources.qrc
 
 OTHER_FILES += \
-    qml/der_artikel/Word_item.qml \
     android/AndroidManifest.xml \
     android/res/values-nl/strings.xml \
     android/res/values-fa/strings.xml \
@@ -113,4 +112,4 @@ OTHER_FILES += \
     android/src/org/qtproject/qt5/android/bindings/QtActivity.java \
     android/src/org/kde/necessitas/ministro/IMinistro.aidl \
     android/src/org/kde/necessitas/ministro/IMinistroCallback.aidl \
-    ColorPaletteBlue.qml
+    qml/der_artikel/Color_palette_blue.qml

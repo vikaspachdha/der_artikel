@@ -11,10 +11,10 @@ Rectangle {
     width:parent.width
     radius:4
     gradient: Gradient {
-        GradientStop {position:0.0;color:cp_blue.colorBg02}
-        GradientStop {position:0.1;color:cp_blue.colorBg01}
-        GradientStop {position:0.9;color:cp_blue.colorBg01}
-        GradientStop {position:1.0;color:cp_blue.colorBg02}
+        GradientStop {position:0.0;color:color_palette.color_bg_02}
+        GradientStop {position:0.1;color:color_palette.color_bg_01}
+        GradientStop {position:0.9;color:color_palette.color_bg_01}
+        GradientStop {position:1.0;color:color_palette.color_bg_02}
     }
 
     Text {
@@ -40,7 +40,7 @@ Rectangle {
         text:" -> "
         font.family:command_font.name
         font.pixelSize: 18
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
     }
 
     Text {

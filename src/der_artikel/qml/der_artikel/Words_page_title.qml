@@ -16,11 +16,11 @@ Title_bar {
             }
 
             if(play_time <=20) {
-                timer_text.color = cp_blue.colorInfo
+                timer_text.color = color_palette.color_info
             }
 
             if(play_time <=10) {
-                timer_text.color = cp_blue.colorWarn
+                timer_text.color = color_palette.color_warn
             }
 
             timer_text.text = toTime(--play_time)
@@ -37,7 +37,7 @@ Title_bar {
         }
         text: themaModel.selected_thema ? themaModel.selected_thema.name + "\n" + themaModel.selected_thema.tr_name : ""
         font.family: custom_regular.name
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
         font.pixelSize: 20
     }
 
@@ -51,7 +51,7 @@ Title_bar {
         }
         text: qsTr("Remaining time")
         font.family: custom_regular.name
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
         font.pixelSize: 20
     }
 
@@ -65,7 +65,7 @@ Title_bar {
         }
         text: qsTr("Infinite")
         font.family: custom_regular.name
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
         font.pixelSize: 20
     }
 

@@ -6,7 +6,7 @@ Page {
     Rectangle {
         id: background
         anchors.fill: parent
-        color:cp_blue.colorBg01
+        color:color_palette.color_bg_01
         radius: 4
     }
     Flickable {
@@ -28,7 +28,7 @@ Page {
 
                 wrapMode: Text.WordWrap
                 font.family: custom_regular.name
-                color:cp_blue.colorf01
+                color:color_palette.color_font_01
                 font.pixelSize: 18
                 horizontalAlignment: Text.AlignHCenter
             }
@@ -45,7 +45,7 @@ FITNESS FOR A PARTICULAR PURPOSE."
 
                 wrapMode: Text.WordWrap
                 font.family: custom_regular.name
-                color:cp_blue.colorf01
+                color:color_palette.color_font_01
                 font.pixelSize: 14
             }
 
@@ -64,7 +64,7 @@ Mohita Gandotra"
                 wrapMode: Text.WordWrap
                 textFormat: Text.StyledText
                 font.family: custom_regular.name
-                color:cp_blue.colorf01
+                color:color_palette.color_font_01
                 font.pixelSize: 14
                 horizontalAlignment: Text.AlignHCenter
             }

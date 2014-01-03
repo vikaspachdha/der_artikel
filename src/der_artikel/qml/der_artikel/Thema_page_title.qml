@@ -61,7 +61,7 @@ Title_bar {
             topMargin: 6
         }
         visible: themaModel.selection_state === ThemaModel.SINGLE_SELECTION ? false:true
-        color: cp_blue.colorf01
+        color: color_palette.color_font_01
         font.family: custom_regular.name
         font.pixelSize: 16
         fontSizeMode: Text.Fit
@@ -78,7 +78,7 @@ Title_bar {
             rightMargin:6
             topMargin: 6
         }
-        color: cp_blue.colorf01
+        color: color_palette.color_font_01
         font.family: custom_regular.name
         font.pixelSize: 16
         fontSizeMode: Text.Fit
@@ -118,7 +118,7 @@ Title_bar {
             right:parent.right
             rightMargin:6
         }
-        color: cp_blue.colorf01
+        color: color_palette.color_font_01
         font.family: custom_regular.name
         font.pixelSize: 18
         fontSizeMode: Text.Fit

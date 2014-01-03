@@ -18,7 +18,7 @@ Item {
         id: background_image
         anchors.fill: parent
         radius:6
-        color:cp_blue.colorBg01
+        color:color_palette.color_bg_01
     }
 
     DropShadow {
@@ -28,7 +28,7 @@ Item {
         radius: 0
         spread: 0.3
         samples: 16
-        color: "#66000000"
+        color: color_palette.shadow_color
         source: background_image
     }
 

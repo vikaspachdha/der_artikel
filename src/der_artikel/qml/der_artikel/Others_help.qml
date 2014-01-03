@@ -11,7 +11,7 @@ Flickable {
 
         wrapMode: Text.WordWrap
         font.family: custom_regular.name
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
         font.pixelSize: 16
     }
     contentHeight: content_text.contentHeight

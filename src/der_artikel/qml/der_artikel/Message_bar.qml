@@ -13,9 +13,9 @@ Rectangle {
     y: -msg_bar.parent.height
     radius:4
     gradient: Gradient {
-        GradientStop {position: 0  ;color: cp_blue.colorBtn02}
-        GradientStop {position: 0.5;color: cp_blue.colorBtn01}
-        GradientStop {position: 1;color: cp_blue.colorBtn01}
+        GradientStop {position: 0  ;color: color_palette.color_btn_02}
+        GradientStop {position: 0.5;color: color_palette.color_btn_01}
+        GradientStop {position: 1;color: color_palette.color_btn_01}
     }
 
     Image {
@@ -45,7 +45,7 @@ Rectangle {
             right: msg_bar.right
         }
         font.family: custom_regular.name
-        color:cp_blue.colorf02
+        color:color_palette.color_font_02
         font.pixelSize: 20
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
@@ -63,7 +63,7 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
         font.family: custom_regular.name
-        color:cp_blue.colorf02
+        color:color_palette.color_font_02
         font.pixelSize: 16
         elide:Text.ElideRight
         maximumLineCount: 2

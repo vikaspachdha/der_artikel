@@ -5,7 +5,7 @@ Item {
     Rectangle {
         id:rect
         anchors.fill: parent
-        color:cp_blue.colorf02
+        color:color_palette.color_font_02
         opacity:0
         Behavior on opacity {
             NumberAnimation { duration: 200 }

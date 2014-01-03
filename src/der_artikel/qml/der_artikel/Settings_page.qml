@@ -8,7 +8,7 @@ Page {
     Rectangle {
         id: background
         anchors.fill: parent
-        color:cp_blue.colorBg01
+        color:color_palette.color_bg_01
         radius: 4
     }
 

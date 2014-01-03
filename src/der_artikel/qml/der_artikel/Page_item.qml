@@ -26,7 +26,7 @@ Item {
         anchors.topMargin: 0
         horizontalAlignment: Text.AlignHCenter
         smooth:true
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
         font.family: command_font.name
         font.pixelSize: 18
     }

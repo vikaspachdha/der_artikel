@@ -21,7 +21,7 @@ Title_bar {
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
         font.family: custom_regular.name
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
         font.pixelSize: 42
         horizontalAlignment: Text.AlignHCenter
     }

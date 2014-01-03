@@ -7,11 +7,18 @@ Image {
     id: rootItem;
     width: 400
     height: 400
+    property QtObject color_palette : cp_blue
+
+
     source: "qrc:/res/resources/background_texture.png"
     fillMode: Image.Tile
 
-    ColorPaletteBlue {
+    Color_palette_blue {
         id:cp_blue
+    }
+
+    Color_palette_night {
+        id:cp_night
     }
 
     FontLoader {

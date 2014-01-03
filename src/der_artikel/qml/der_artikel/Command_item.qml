@@ -24,7 +24,7 @@ Item {
         anchors.top: icon.bottom
         anchors.right: parent.right
         anchors.left: parent.left
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
         font.family: command_font.name
         font.pixelSize: 16
         horizontalAlignment: Text.AlignHCenter

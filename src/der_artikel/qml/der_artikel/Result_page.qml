@@ -8,12 +8,12 @@ Page {
     Custom_label {
         id: title_label
         text: list_view.count>0 ? qsTr("Mistakes") : qsTr("No Mistakes")
-        font_color:cp_blue.colorf02
+        font_color:color_palette.color_font_02
         gradient: Gradient {
-            GradientStop {position:0.0;color:cp_blue.colorBg02}
-            GradientStop {position:0.1;color:cp_blue.colorBg01}
-            GradientStop {position:0.9;color:cp_blue.colorBg01}
-            GradientStop {position:1.0;color:cp_blue.colorBg02}
+            GradientStop {position:0.0;color:color_palette.color_bg_02}
+            GradientStop {position:0.1;color:color_palette.color_bg_01}
+            GradientStop {position:0.9;color:color_palette.color_bg_01}
+            GradientStop {position:1.0;color:color_palette.color_bg_02}
         }
         radius:4
         anchors {

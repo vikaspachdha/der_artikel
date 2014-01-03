@@ -42,8 +42,8 @@ Page {
                     case 5:return rusty_thema_count
                 }
             }
-            left_text_color: cp_blue.colorf01
-            right_text_color: cp_blue.colorf01
+            left_text_color: color_palette.color_font_01
+            right_text_color: color_palette.color_font_01
             center_text: " : "
         }
     }

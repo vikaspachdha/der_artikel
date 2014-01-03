@@ -32,7 +32,7 @@ Item {
     Rectangle {
         id: background_rect
         anchors.fill: parent
-        color:cp_blue.colorBg01
+        color:color_palette.color_bg_01
     }
 
     DropShadow {
@@ -52,7 +52,7 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         font.family: custom_regular.name
-        color:cp_blue.colorf01
+        color:color_palette.color_font_01
         font.pixelSize: 42
     }
 

@@ -14,9 +14,9 @@ Rectangle {
     height: label.height+8
     radius: 4
     gradient: Gradient {
-        GradientStop {position: 0  ;color: cp_blue.colorBtn02}
-        GradientStop {position: 0.2;color: mousearea1.pressed || isDown ? cp_blue.colorBtn01:cp_blue.colorBtn02}
-        GradientStop {position: 1;color: cp_blue.colorBtn01}
+        GradientStop {position: 0  ;color: color_palette.color_btn_02}
+        GradientStop {position: 0.2;color: mousearea1.pressed || isDown ? color_palette.color_btn_01:color_palette.color_btn_02}
+        GradientStop {position: 1;color: color_palette.color_btn_01}
     }
 
     border.width: mousearea1.pressed | isDown ? 1:0
@@ -27,7 +27,7 @@ Rectangle {
         radius: 3
         anchors{left:parent.left;top:parent.top;margins: 4}
         visible: isDown
-        color:cp_blue.colorf02
+        color:color_palette.color_font_02
     }
 
     Text {
@@ -35,7 +35,7 @@ Rectangle {
         x:2
         anchors.verticalCenter: parent.verticalCenter
         text: qsTr("Button")
-        color:cp_blue.colorf02
+        color:color_palette.color_font_02
         font.family: command_font.name
         font.pixelSize: 16
     }

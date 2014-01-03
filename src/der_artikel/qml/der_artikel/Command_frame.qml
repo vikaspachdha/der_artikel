@@ -30,7 +30,7 @@ Flipable {
         id: background
         anchors.fill: parent
         radius:6
-        color:cp_blue.colorBg01
+        color:color_palette.color_bg_01
     }
 
     DropShadow {

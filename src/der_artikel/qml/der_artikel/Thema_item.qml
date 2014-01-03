@@ -20,7 +20,7 @@ Flipable {
 
     Rectangle {
         id: info_rect
-        color:cp_blue.colorBtn01
+        color:color_palette.color_btn_01
         radius:4
         anchors.fill: parent
         Text {
@@ -31,7 +31,7 @@ Flipable {
             anchors.leftMargin: 2
             anchors.right: parent.right
             text:qsTr("Author :")
-            color:cp_blue.colorf02
+            color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 16
         }
@@ -42,7 +42,7 @@ Flipable {
             anchors.leftMargin: 2
             anchors.right: parent.right
             text:"-"
-            color:cp_blue.colorf02
+            color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 16
         }
@@ -54,7 +54,7 @@ Flipable {
             anchors.leftMargin: 2
             anchors.right: parent.right
             text:qsTr("Last Played :")
-            color:cp_blue.colorf02
+            color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 16
         }
@@ -65,7 +65,7 @@ Flipable {
             anchors.leftMargin: 2
             anchors.right: parent.right
             text:"10 . 12 . 2013"
-            color:cp_blue.colorf02
+            color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 18
         }
@@ -74,7 +74,7 @@ Flipable {
 
     Rectangle {
         id: thema_rect
-        color:cp_blue.colorBtn01
+        color:color_palette.color_btn_01
         radius:4
         anchors.fill: parent
         Image {
@@ -98,7 +98,7 @@ Flipable {
             anchors.leftMargin: 4
             anchors.top: thema_icon.bottom
             anchors.topMargin: 2
-            color:cp_blue.colorf02
+            color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 18
         }
@@ -113,7 +113,7 @@ Flipable {
             anchors.rightMargin: 4
             anchors.left: parent.left
             anchors.leftMargin: 4
-            color:cp_blue.colorf02
+            color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 16
         }
@@ -130,7 +130,7 @@ Flipable {
             anchors.topMargin: 4
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            color:cp_blue.colorf02
+            color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 16
         }
@@ -147,7 +147,7 @@ Flipable {
             anchors.leftMargin: 4
             anchors.top: word_count_label.bottom
             anchors.topMargin: 0
-            color:cp_blue.colorf02
+            color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 24
         }
@@ -194,7 +194,7 @@ Flipable {
         radius: 3
         anchors{left:parent.left;top:parent.top;margins: 4}
         visible: thema_item_root.thema_selected
-        color:cp_blue.colorf02
+        color:color_palette.color_font_02
     }
 
     states: State {
