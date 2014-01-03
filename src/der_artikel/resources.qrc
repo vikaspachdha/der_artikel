@@ -37,5 +37,9 @@
         <file>resources/help.png</file>
         <file>resources/information.png</file>
         <file>resources/settings.png</file>
+        <file>resources/about.png</file>
+        <file>resources/result.png</file>
+        <file>resources/stats.png</file>
+        <file>resources/thema.png</file>
     </qresource>
 </RCC>
