@@ -7,11 +7,8 @@ Image {
     id: rootItem;
     width: 400
     height: 400
-    clip:true
     source: "qrc:/res/resources/background_texture.png"
     fillMode: Image.Tile
-    horizontalAlignment: Image.AlignLeft
-    verticalAlignment: Image.AlignTop
 
     ColorPaletteBlue {
         id:cp_blue
@@ -65,7 +62,6 @@ Image {
     {
         id: content_frame
         anchors.top: title_frame.bottom
-        //anchors.topMargin: 2
         anchors.bottom: rootItem.bottom
         anchors.left: parent.left
         anchors.leftMargin: 112

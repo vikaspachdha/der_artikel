@@ -24,10 +24,11 @@ Item {
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.topMargin: 0
-        font.pixelSize: 14
         horizontalAlignment: Text.AlignHCenter
         smooth:true
-        color:"white"
+        color:cp_blue.colorf01
+        font.family: command_font.name
+        font.pixelSize: 18
     }
 
     MouseArea {

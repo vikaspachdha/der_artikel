@@ -19,7 +19,7 @@ Page {
         anchors.fill: parent
         model:page_model
         cellWidth:84
-        cellHeight:84
+        cellHeight:94
         delegate: Page_item {
             label_text: title
             page_icon: icon_src

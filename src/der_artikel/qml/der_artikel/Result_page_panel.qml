@@ -13,7 +13,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: result_lbl.horizontalCenter
-        lblText: qsTr("You can")
+        lblText: qsTr("Options")
     }
 
     Column {

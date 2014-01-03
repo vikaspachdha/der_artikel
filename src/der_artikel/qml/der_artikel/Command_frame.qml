@@ -7,6 +7,7 @@ Flipable {
     front: home_cmd
     back: quit_cmd
     property bool flipped: manager.current_page === Manager.HOME_PAGE ? true : false
+    property int animation_duration: 500
 
     transform: Rotation {
         id: rotation
@@ -22,25 +23,29 @@ Flipable {
     }
 
     transitions: Transition {
-        NumberAnimation { target: rotation; property: "angle"; duration: 500 }
+        NumberAnimation { target: rotation; property: "angle"; duration: animation_duration }
     }
 
     Rectangle {
-        id: background_image
+        id: background
         anchors.fill: parent
         radius:6
         color:cp_blue.colorBg01
     }
 
     DropShadow {
-        anchors.fill: background_image
-        horizontalOffset: 4
+        anchors.fill: background
+        horizontalOffset: flipable.flipped ? -4 : 4
         verticalOffset: 4
         radius: 0
         spread: 0.3
         samples: 16
         color: "#66000000"
-        source: background_image
+        source: background
+
+        Behavior on horizontalOffset {
+            NumberAnimation { duration: animation_duration }
+        }
     }
 
     Command_item
