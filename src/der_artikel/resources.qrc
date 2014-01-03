@@ -41,5 +41,8 @@
         <file>resources/result.png</file>
         <file>resources/stats.png</file>
         <file>resources/thema.png</file>
+        <file>resources/finish_active.png</file>
+        <file>resources/finish_disabled.png</file>
+        <file>resources/finish.png</file>
     </qresource>
 </RCC>

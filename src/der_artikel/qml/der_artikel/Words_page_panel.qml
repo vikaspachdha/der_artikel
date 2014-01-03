@@ -83,6 +83,7 @@ Page_panel {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
         cmd_text: qsTr("Finish")
+        icon_name: "finish"
         onCommandActivated: {
             manager.current_page = Manager.RESULT_PAGE
         }
