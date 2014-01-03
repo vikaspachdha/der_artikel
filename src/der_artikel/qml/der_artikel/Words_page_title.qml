@@ -28,6 +28,20 @@ Title_bar {
     }
 
     Text {
+        id: thema_title
+        anchors {
+            left:parent.left
+            leftMargin: 6
+            top:parent.top
+            topMargin: 6
+        }
+        text: themaModel.selected_thema ? themaModel.selected_thema.name + "\n" + themaModel.selected_thema.tr_name : ""
+        font.family: custom_regular.name
+        color:cp_blue.colorf01
+        font.pixelSize: 20
+    }
+
+    Text {
         id: timer_title
         anchors {
             right: parent.right

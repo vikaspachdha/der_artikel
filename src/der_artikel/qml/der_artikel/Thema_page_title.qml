@@ -57,8 +57,8 @@ Title_bar {
         anchors {
             top:parent.top
             left:parent.left
-            leftMargin: 12
-            topMargin: 10
+            leftMargin: 6
+            topMargin: 6
         }
         visible: themaModel.selection_state === ThemaModel.SINGLE_SELECTION ? false:true
         color: cp_blue.colorf01
@@ -75,8 +75,8 @@ Title_bar {
         anchors {
             top:parent.top
             right:parent.right
-            rightMargin:10
-            topMargin: 10
+            rightMargin:6
+            topMargin: 6
         }
         color: cp_blue.colorf01
         font.family: custom_regular.name
@@ -114,9 +114,9 @@ Title_bar {
 
         anchors {
             bottom:parent.bottom
-            bottomMargin: 10
+            bottomMargin: 6
             right:parent.right
-            rightMargin:10
+            rightMargin:6
         }
         color: cp_blue.colorf01
         font.family: custom_regular.name

@@ -9,8 +9,8 @@ Title_bar {
         anchors {
             top:parent.top
             left:parent.left
-            leftMargin: 12
-            topMargin: 10
+            leftMargin: 6
+            topMargin: 6
         }
         color: cp_blue.colorf01
         font.family: custom_regular.name
@@ -26,7 +26,7 @@ Title_bar {
         anchors {
             top:parent.top
             right:parent.right
-            rightMargin:10
+            rightMargin:6
             topMargin: 6
         }
         color: cp_blue.colorf01
@@ -44,7 +44,7 @@ Title_bar {
             top:heading_1.bottom
             topMargin: 6
             left:parent.left
-            leftMargin: 12
+            leftMargin: 6
         }
         color: cp_blue.colorf01
         font.family: custom_regular.name
@@ -60,9 +60,9 @@ Title_bar {
 
         anchors {
             top:heading_1_right.bottom
-            topMargin: 3
+            topMargin: 6
             right:parent.right
-            rightMargin:10
+            rightMargin:6
         }
         color: cp_blue.colorf01
         font.family: custom_regular.name
@@ -84,9 +84,9 @@ Title_bar {
 
         anchors {
             top:heading_2_right.bottom
-            topMargin: 3
+            topMargin: 6
             right:parent.right
-            rightMargin:10
+            rightMargin:6
         }
         color: cp_blue.colorf01
         font.family: custom_regular.name
