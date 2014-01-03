@@ -36,5 +36,6 @@
         <file>resources/import.png</file>
         <file>resources/help.png</file>
         <file>resources/information.png</file>
+        <file>resources/settings.png</file>
     </qresource>
 </RCC>
