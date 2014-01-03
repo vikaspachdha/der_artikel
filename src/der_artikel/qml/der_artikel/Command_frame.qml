@@ -63,7 +63,7 @@ Flipable {
         cmd_text: qsTr("Quit")
         icon_name: "quit"
         onCommandActivated: {
-            Qt.quit()
+            manager.quit()
         }
     }
 }

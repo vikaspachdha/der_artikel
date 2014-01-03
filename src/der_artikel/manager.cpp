@@ -1,6 +1,8 @@
 #include "manager.h"
+#include <QApplication>
 #include <QQuickItem>
 #include <QQmlContext>
+#include <QMessageBox>
 #include <QDebug>
 
 #include "data/thema.h"
@@ -244,6 +246,17 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
         item = item = _page_items_hash[page_id]._title_item;
     }
     return item;
+}
+
+void Manager_C::quit()
+{
+    QMessageBox::StandardButton res  =
+            QMessageBox::information(0,tr("Quit"),
+                                     tr("Do you realy want to quit"),
+                                     QMessageBox::Yes,QMessageBox::No);
+    if(res == QMessageBox::Yes) {
+        QApplication::quit();
+    }
 }
 
 void Manager_C::AddWords(const Thema_C* thema)

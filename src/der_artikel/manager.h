@@ -112,6 +112,8 @@ public:
     Q_INVOKABLE void setTitleItem(PageId_TP page_id, QQuickItem* item);
     QQuickItem* titleItem(PageId_TP page_id);
 
+    Q_INVOKABLE void quit();
+
 signals:
     void selectedArticleChanged();
     void currentPageChanged(PageId_TP old_page, PageId_TP new_page);

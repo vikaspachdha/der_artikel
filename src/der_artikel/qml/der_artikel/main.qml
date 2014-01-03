@@ -5,7 +5,6 @@ import com.vystosi.qmlcomponents 1.0
 
 Image {
     id: rootItem;
-
     width: 400
     height: 400
     clip:true
@@ -111,6 +110,7 @@ Image {
     }
 
 
+
     function showMessage(title,msg,duration,msg_type)
     {
         rootItem.enabled = false
@@ -120,6 +120,12 @@ Image {
 
     Component.onCompleted: {
         manager.current_page = Manager.HOME_PAGE
+
+        // self destroying statrtup screen
+        var startup_component = Qt.createComponent("Startup_screen.qml");
+        if(startup_component.status === Component.Ready) {
+            startup_component.createObject(rootItem);
+        }
     }
 
     function articleText(article) {
