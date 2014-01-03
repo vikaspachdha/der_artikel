@@ -12,37 +12,64 @@ Page {
     Flickable {
         anchors.fill: background
         anchors.margins: 4
-        Text {
-            id: version_text
+        Item {
+            id:text_rect
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
-            height:60
-            anchors.topMargin: 8
-            text:qsTr("Version\n") + manager.version_string
+            height:childrenRect.height
+            Text {
+                id: version_text
+                anchors.top: parent.top
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.topMargin: 8
+                text:qsTr("Version\n") + manager.version_string
 
-            wrapMode: Text.WordWrap
-            font.family: custom_regular.name
-            color:cp_blue.colorf01
-            font.pixelSize: 18
-            horizontalAlignment: Text.AlignHCenter
-        }
+                wrapMode: Text.WordWrap
+                font.family: custom_regular.name
+                color:cp_blue.colorf01
+                font.pixelSize: 18
+                horizontalAlignment: Text.AlignHCenter
+            }
 
-        Text {
-            id: content_text
-            anchors.top: version_text.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            text:"The program is provided AS IS with NO \
+            Text {
+                id: content_text
+                anchors.top: version_text.bottom
+                anchors.topMargin: 10
+                anchors.left: parent.left
+                anchors.right: parent.right
+                text:"The program is provided AS IS with NO \
 WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND \
 FITNESS FOR A PARTICULAR PURPOSE."
 
-            wrapMode: Text.WordWrap
-            font.family: custom_regular.name
-            color:cp_blue.colorf01
-            font.pixelSize: 16
+                wrapMode: Text.WordWrap
+                font.family: custom_regular.name
+                color:cp_blue.colorf01
+                font.pixelSize: 14
+            }
+
+            Text {
+                id: developer_text
+                anchors.top: content_text.bottom
+                anchors.topMargin: 10
+                anchors.left: parent.left
+                anchors.right: parent.right
+                text:"<u>Developers:</u><br><br> \
+Vikas Pachdha (www.vikaspachdha.com)<br><br>Mohita Gandotra (mohitagandotra@gmail.com)<br><br><br> \
+<u>Thema contributors:</u><br><br> \
+Vikas Pachdha<br><br> \
+Mohita Gandotra"
+
+                wrapMode: Text.WordWrap
+                textFormat: Text.StyledText
+                font.family: custom_regular.name
+                color:cp_blue.colorf01
+                font.pixelSize: 14
+                horizontalAlignment: Text.AlignHCenter
+            }
         }
 
-        contentHeight: content_text.height + version_text.height
+        contentHeight: text_rect.childrenRect.height
     }
 }
