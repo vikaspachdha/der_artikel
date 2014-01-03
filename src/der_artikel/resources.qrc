@@ -34,5 +34,7 @@
         <file>resources/app.png</file>
         <file>resources/export.png</file>
         <file>resources/import.png</file>
+        <file>resources/help.png</file>
+        <file>resources/information.png</file>
     </qresource>
 </RCC>

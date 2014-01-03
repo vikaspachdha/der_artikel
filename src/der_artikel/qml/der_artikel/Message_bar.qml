@@ -31,7 +31,7 @@ Rectangle {
             switch(msg_bar.type) {
             case 1: return "qrc:/res/resources/warning.png";
             case 2: return "qrc:/res/resources/error.png";
-            default: return "qrc:/res/resources/info.png";
+            default: return "qrc:/res/resources/information.png";
             }
         }
     }

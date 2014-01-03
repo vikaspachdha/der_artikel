@@ -9,7 +9,7 @@ Page {
         ListElement { title:"Thema"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.THEMA_PAGE}
         ListElement { title:"Result"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.RESULT_PAGE}
         ListElement { title:"Statistics"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.STATS_PAGE}
-        ListElement { title:"Help"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.HELP_PAGE}
+        ListElement { title:"Help"; icon_src:"qrc:/res/resources/help.png";src_page_id:Manager.HELP_PAGE}
         ListElement { title:"Settings"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.SETTINGS_PAGE}
         ListElement { title:"About"; icon_src:"qrc:/res/resources/default_thema.png";src_page_id:Manager.ABOUT_PAGE}
     }

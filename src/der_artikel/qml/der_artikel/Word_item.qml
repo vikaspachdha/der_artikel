@@ -56,8 +56,7 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        onClicked:
-        {
+        onClicked: {
             if(info_mode) {
                 showMessage(wordText,description_text)
             } else {
