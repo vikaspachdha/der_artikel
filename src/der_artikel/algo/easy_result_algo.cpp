@@ -54,5 +54,5 @@ void EasyResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
 int EasyResultAlgo_C::playTime(Thema_I &thema)
 {
-    return thema.GetWordCount()*3;
+    return thema.GetWordCount()*4;
 }

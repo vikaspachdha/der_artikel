@@ -56,5 +56,5 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
 int StrictResultAlgo_C::playTime(Thema_I &thema)
 {
-    return thema.GetWordCount();
+    return thema.GetWordCount()*2;
 }

@@ -56,6 +56,6 @@ void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
 int ModerateResultAlgo_C::playTime(Thema_I &thema)
 {
-    return thema.GetWordCount() * 2;
+    return thema.GetWordCount() * 3;
 }
 
