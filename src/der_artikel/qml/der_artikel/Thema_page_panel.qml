@@ -61,7 +61,7 @@ Page_panel
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
         enabled: themaModel.selection_state===ThemaModel.SINGLE_SELECTION
-        cmd_text: qsTr("Start")
+        cmd_text: qsTr("Play")
         icon_name: "start"
         onCommandActivated: {
             manager.current_page = Manager.WORDS_PAGE
