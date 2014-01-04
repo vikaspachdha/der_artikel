@@ -89,7 +89,8 @@ hack_for_qml_lupdate {
 }
 
 TRANSLATIONS += ./der_artikel_de.ts \
-    ./der_artikel_en.ts
+    ./der_artikel_en.ts \
+    ./der_artikel_hin.ts
 
 OTHER_FILES += \
     android/AndroidManifest.xml \
