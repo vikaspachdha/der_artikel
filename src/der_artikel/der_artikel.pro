@@ -83,6 +83,14 @@ FORMS += \
 RESOURCES += \
     resources.qrc
 
+# Lupdate cosiders files added under SOURCES variable only.
+hack_for_qml_lupdate {
+    SOURCES += qml/der_artikel/*.qml
+}
+
+TRANSLATIONS += ./der_artikel_de.ts \
+    ./der_artikel_en.ts
+
 OTHER_FILES += \
     android/AndroidManifest.xml \
     android/res/values-nl/strings.xml \
@@ -111,5 +119,4 @@ OTHER_FILES += \
     android/src/org/qtproject/qt5/android/bindings/QtApplication.java \
     android/src/org/qtproject/qt5/android/bindings/QtActivity.java \
     android/src/org/kde/necessitas/ministro/IMinistro.aidl \
-    android/src/org/kde/necessitas/ministro/IMinistroCallback.aidl \
-    qml/der_artikel/Color_palette_blue.qml
+    android/src/org/kde/necessitas/ministro/IMinistroCallback.aidl
