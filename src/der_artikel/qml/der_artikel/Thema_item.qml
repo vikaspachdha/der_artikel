@@ -85,7 +85,6 @@ Flipable {
             anchors.leftMargin: 4
             anchors.top: parent.top
             anchors.topMargin: 4
-            source: "qrc:/qtquickplugin/images/template_image.png"
         }
 
         Text {

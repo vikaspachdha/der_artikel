@@ -43,5 +43,58 @@
         <file>resources/finish_active.png</file>
         <file>resources/finish_disabled.png</file>
         <file>resources/finish.png</file>
+        <file>qml/der_artikel/About_page_panel.qml</file>
+        <file>qml/der_artikel/About_page_title.qml</file>
+        <file>qml/der_artikel/About_page.qml</file>
+        <file>qml/der_artikel/Blanket.qml</file>
+        <file>qml/der_artikel/Button.qml</file>
+        <file>qml/der_artikel/Color_palette_blue.qml</file>
+        <file>qml/der_artikel/Color_palette_night.qml</file>
+        <file>qml/der_artikel/Color_theme_settings.qml</file>
+        <file>qml/der_artikel/Command_frame.qml</file>
+        <file>qml/der_artikel/Command_item.qml</file>
+        <file>qml/der_artikel/Content_frame.qml</file>
+        <file>qml/der_artikel/Custom_label.qml</file>
+        <file>qml/der_artikel/Game_play_settings.qml</file>
+        <file>qml/der_artikel/General_help.qml</file>
+        <file>qml/der_artikel/Help_page_panel.qml</file>
+        <file>qml/der_artikel/Help_page_title.qml</file>
+        <file>qml/der_artikel/Help_page.qml</file>
+        <file>qml/der_artikel/Home_page_panel.qml</file>
+        <file>qml/der_artikel/Home_page_title.qml</file>
+        <file>qml/der_artikel/Home_page.qml</file>
+        <file>qml/der_artikel/Label.qml</file>
+        <file>qml/der_artikel/Language_settings.qml</file>
+        <file>qml/der_artikel/main.qml</file>
+        <file>qml/der_artikel/Message_bar.qml</file>
+        <file>qml/der_artikel/Others_help.qml</file>
+        <file>qml/der_artikel/Page_item.qml</file>
+        <file>qml/der_artikel/Page_panel.qml</file>
+        <file>qml/der_artikel/Page.qml</file>
+        <file>qml/der_artikel/Panel_frame.qml</file>
+        <file>qml/der_artikel/Result_item.qml</file>
+        <file>qml/der_artikel/Result_page_panel.qml</file>
+        <file>qml/der_artikel/Result_page_title.qml</file>
+        <file>qml/der_artikel/Result_page.qml</file>
+        <file>qml/der_artikel/Rules_help.qml</file>
+        <file>qml/der_artikel/Scoring_help.qml</file>
+        <file>qml/der_artikel/Settings_page_panel.qml</file>
+        <file>qml/der_artikel/Settings_page_title.qml</file>
+        <file>qml/der_artikel/Settings_page.qml</file>
+        <file>qml/der_artikel/Sound_settings.qml</file>
+        <file>qml/der_artikel/Startup_screen.qml</file>
+        <file>qml/der_artikel/Stats_page_panel.qml</file>
+        <file>qml/der_artikel/Stats_page_title.qml</file>
+        <file>qml/der_artikel/Stats_page.qml</file>
+        <file>qml/der_artikel/Thema_item.qml</file>
+        <file>qml/der_artikel/Thema_page_panel.qml</file>
+        <file>qml/der_artikel/Thema_page_title.qml</file>
+        <file>qml/der_artikel/Thema_page.qml</file>
+        <file>qml/der_artikel/Title_bar.qml</file>
+        <file>qml/der_artikel/Title_frame.qml</file>
+        <file>qml/der_artikel/Word_item.qml</file>
+        <file>qml/der_artikel/Words_page_panel.qml</file>
+        <file>qml/der_artikel/Words_page_title.qml</file>
+        <file>qml/der_artikel/Words_page.qml</file>
     </qresource>
 </RCC>

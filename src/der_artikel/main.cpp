@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     root_context->setContextProperty("settings", manager.GetSettings());
 
 
-    viewer.setMainQmlFile(QStringLiteral("qml/der_artikel/main.qml"));
+    viewer.setSource(QUrl("qrc:/res/qml/der_artikel/main.qml"));
 
     QQuickItem* root_item = viewer.rootObject();
     manager.SetRootItem(root_item);

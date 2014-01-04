@@ -31,7 +31,7 @@ void Thema_C::SetFilePath(QString file_path)
 
     QFileInfo icon_file(icon_file_path);
     if(icon_file.exists()) {
-        _icon_url =QUrl(icon_file_path);
+        _icon_url =QUrl(QUrl::fromLocalFile(icon_file_path));
     }
 }
 
