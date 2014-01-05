@@ -679,17 +679,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="94"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="93"/>
         <source>translation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="109"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="108"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="124"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="123"/>
         <source>Words</source>
         <translation type="unfinished"></translation>
     </message>
@@ -718,7 +718,7 @@
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="64"/>
-        <source>Start</source>
+        <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

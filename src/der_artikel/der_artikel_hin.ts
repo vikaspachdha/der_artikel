@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.0" language="hi_IN" sourcelanguage="en_US">
+<TS version="2.1" language="hi_IN" sourcelanguage="en_US">
 <context>
     <name>About_page</name>
     <message>
@@ -679,17 +679,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="94"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="93"/>
         <source>translation</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="109"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="108"/>
         <source>Title</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="124"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="123"/>
         <source>Words</source>
         <translation type="unfinished"></translation>
     </message>
@@ -718,7 +718,7 @@
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="64"/>
-        <source>Start</source>
+        <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
