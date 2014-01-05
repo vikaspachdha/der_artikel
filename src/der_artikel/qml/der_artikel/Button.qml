@@ -45,6 +45,7 @@ Rectangle {
         anchors.fill: parent
         onClicked: {
             btn_root.activated()
+            click.play()
         }
     }
 }

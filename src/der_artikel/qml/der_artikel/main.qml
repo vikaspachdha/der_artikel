@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
+import QtMultimedia 5.0
 import com.vystosi.qmlcomponents 1.0
-
 
 Image {
     id: rootItem;
@@ -12,6 +12,12 @@ Image {
 
     source: "qrc:/res/resources/background_texture.png"
     fillMode: Image.Tile
+
+    SoundEffect {
+        id: click
+        source: "qrc:/res/resources/sounds/click.wav"
+        volume: settings.sound_level
+    }
 
     Color_palette_blue {
         id:cp_blue

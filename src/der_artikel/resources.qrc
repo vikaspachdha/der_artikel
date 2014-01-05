@@ -96,5 +96,6 @@
         <file>qml/der_artikel/Words_page_panel.qml</file>
         <file>qml/der_artikel/Words_page_title.qml</file>
         <file>qml/der_artikel/Words_page.qml</file>
+        <file>resources/sounds/click.wav</file>
     </qresource>
 </RCC>
