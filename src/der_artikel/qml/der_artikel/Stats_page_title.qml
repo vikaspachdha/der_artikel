@@ -5,7 +5,7 @@ Title_bar {
     page_id: Manager.STATS_PAGE
     Text {
         id: name
-        text: qsTr("Statistics")
+        text: qsTr("Statistics") + settings.i18n_empty_string
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         font.family: custom_regular.name

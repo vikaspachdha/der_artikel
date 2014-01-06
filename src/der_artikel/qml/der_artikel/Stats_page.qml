@@ -24,12 +24,12 @@ Page {
             y: (index*32) + 6
             left_text: {
                 switch(index) {
-                    case 0:return qsTr("Thema count")
-                    case 1:return qsTr("Best Thema")
-                    case 2:return qsTr("Inert themas");
-                    case 3:return qsTr("Golden themas")
-                    case 4:return qsTr("Silver themas")
-                    case 5:return qsTr("Rusty themas")
+                    case 0:return qsTr("Thema count") + settings.i18n_empty_string
+                    case 1:return qsTr("Best Thema") + settings.i18n_empty_string
+                    case 2:return qsTr("Inert themas") + settings.i18n_empty_string
+                    case 3:return qsTr("Golden themas") + settings.i18n_empty_string
+                    case 4:return qsTr("Silver themas") + settings.i18n_empty_string
+                    case 5:return qsTr("Rusty themas") + settings.i18n_empty_string
                 }
             }
             right_text: {

@@ -30,7 +30,7 @@ Flipable {
             anchors.left:parent.left
             anchors.leftMargin: 2
             anchors.right: parent.right
-            text:qsTr("Author :")
+            text:qsTr("Author :") + settings.i18n_empty_string
             color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 16
@@ -53,7 +53,7 @@ Flipable {
             anchors.left:parent.left
             anchors.leftMargin: 2
             anchors.right: parent.right
-            text:qsTr("Last Played :")
+            text:qsTr("Last Played :") + settings.i18n_empty_string
             color:color_palette.color_font_02
             font.family:command_font.name
             font.pixelSize: 16
@@ -90,7 +90,6 @@ Flipable {
         Text {
             id: thema_title
             height: 14
-            text: qsTr("translation")
             anchors.right: parent.right
             anchors.rightMargin: 4
             anchors.left: parent.left
@@ -105,7 +104,6 @@ Flipable {
         Text {
             id: thema_tr_text
             height: 14
-            text: qsTr("Title")
             anchors.top: thema_title.bottom
             anchors.topMargin: 2
             anchors.right: parent.right

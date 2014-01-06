@@ -12,7 +12,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: level_lbl.horizontalCenter
-        lblText: qsTr("Game Level")
+        lblText: qsTr("Game Level") + settings.i18n_empty_string
     }
     Column {
         id: game_level_col
@@ -30,7 +30,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: easy_btn.horizontalCenter
             isDown: manager.game_level === Manager.EASY
-            buttonText: qsTr("Easy")
+            buttonText: qsTr("Easy") + settings.i18n_empty_string
             onActivated: manager.game_level = Manager.EASY
         }
 
@@ -39,7 +39,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: moderate_btn.horizontalCenter
             isDown: manager.game_level === Manager.MODERATE
-            buttonText: qsTr("Moderate")
+            buttonText: qsTr("Moderate") + settings.i18n_empty_string
             onActivated: manager.game_level = Manager.MODERATE
         }
 
@@ -48,7 +48,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: expert_btn.horizontalCenter
             isDown: manager.game_level === Manager.EXPERT
-            buttonText: qsTr("Expert")
+            buttonText: qsTr("Expert") + settings.i18n_empty_string
             onActivated: manager.game_level = Manager.EXPERT
         }
 
@@ -61,7 +61,7 @@ Page_panel
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
         enabled: themaModel.selection_state===ThemaModel.SINGLE_SELECTION
-        cmd_text: qsTr("Start")
+        cmd_text: qsTr("Start") + settings.i18n_empty_string
         icon_name: "start"
         onCommandActivated: {
             manager.current_page = Manager.WORDS_PAGE

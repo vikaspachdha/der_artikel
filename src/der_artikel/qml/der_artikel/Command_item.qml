@@ -20,7 +20,6 @@ Item {
 
     Text {
         id: item_label
-        text: qsTr("Unkown CMD")
         anchors.top: icon.bottom
         anchors.right: parent.right
         anchors.left: parent.left

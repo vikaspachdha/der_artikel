@@ -7,7 +7,7 @@
         <location filename="qml/der_artikel/About_page.qml" line="27"/>
         <source>Version
 </source>
-        <translation type="unfinished"></translation>
+        <translation>संस्करण\n</translation>
     </message>
 </context>
 <context>
@@ -15,30 +15,22 @@
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="17"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>विकल्प</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="34"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>अपडेट</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
         <source>Latest version</source>
-        <translation type="unfinished"></translation>
+        <translation>नवीनतम संस्करण</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
         <source>No update is available</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>About_page_title</name>
-    <message>
-        <location filename="qml/der_artikel/About_page_title.qml" line="19"/>
-        <source>Der Artikel</source>
-        <translation type="unfinished"></translation>
+        <translation>कोई अपडेट उपलब्ध नहीं है</translation>
     </message>
 </context>
 <context>
@@ -54,20 +46,12 @@
     <message>
         <location filename="qml/der_artikel/Command_frame.qml" line="56"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>मुख पृष्ठ</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Command_frame.qml" line="68"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Command_item</name>
-    <message>
-        <location filename="qml/der_artikel/Command_item.qml" line="23"/>
-        <source>Unkown CMD</source>
-        <translation type="unfinished"></translation>
+        <translation>बाहर िनकले</translation>
     </message>
 </context>
 <context>
@@ -75,22 +59,22 @@
     <message>
         <location filename="pages/help_page.cpp" line="22"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>सामान्य</translation>
     </message>
     <message>
         <location filename="pages/help_page.cpp" line="25"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation>नियम</translation>
     </message>
     <message>
         <location filename="pages/help_page.cpp" line="28"/>
         <source>Scoring</source>
-        <translation type="unfinished"></translation>
+        <translation>अंक</translation>
     </message>
     <message>
         <location filename="pages/help_page.cpp" line="31"/>
         <source>Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>संपर्क</translation>
     </message>
     <message>
         <location filename="pages/help_page.cpp" line="45"/>
@@ -118,27 +102,27 @@
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="17"/>
         <source>Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>विषय</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="34"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">सामान्य</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="42"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">नियम</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="50"/>
         <source>Scoring</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">अंक</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="58"/>
         <source>Contact</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">संपर्क</translation>
     </message>
 </context>
 <context>
@@ -146,7 +130,7 @@
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="16"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">मुख पृष्ठ</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="33"/>
@@ -165,39 +149,15 @@
     </message>
 </context>
 <context>
-    <name>Home_page_title</name>
-    <message>
-        <location filename="qml/der_artikel/Home_page_title.qml" line="8"/>
-        <source>Der Artikel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Label</name>
-    <message>
-        <location filename="qml/der_artikel/Label.qml" line="18"/>
-        <source>Label</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Manager_C</name>
     <message>
         <location filename="manager.cpp" line="254"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">बाहर िनकले</translation>
     </message>
     <message>
         <location filename="manager.cpp" line="255"/>
         <source>Do you realy want to quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Page_item</name>
-    <message>
-        <location filename="qml/der_artikel/Page_item.qml" line="21"/>
-        <source>Unkown Page</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -284,7 +244,7 @@
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="16"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">विकल्प</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="33"/>
@@ -298,46 +258,39 @@
     </message>
 </context>
 <context>
+    <name>Result_page_title</name>
+    <message>
+        <location filename="qml/der_artikel/Result_page_title.qml" line="79"/>
+        <source>Lost experience : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Result_page_title.qml" line="81"/>
+        <source>Gained experience : </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage_C</name>
     <message>
         <location filename="pages/settings_page.cpp" line="22"/>
         <source>Language settings</source>
-        <translation type="unfinished"></translation>
+        <translation>भाषा विकल्प</translation>
     </message>
     <message>
         <location filename="pages/settings_page.cpp" line="25"/>
         <source>Sound settings</source>
-        <translation type="unfinished"></translation>
+        <translation>ध्वनि विकल्प</translation>
     </message>
     <message>
         <location filename="pages/settings_page.cpp" line="28"/>
         <source>Color theme settings</source>
-        <translation type="unfinished"></translation>
+        <translation>रंग विकल्प</translation>
     </message>
     <message>
         <location filename="pages/settings_page.cpp" line="31"/>
         <source>Game Play Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/settings_page.cpp" line="45"/>
-        <source>Language_settings.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/settings_page.cpp" line="48"/>
-        <source>Sound_settings.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/settings_page.cpp" line="51"/>
-        <source>Color_theme_settings.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/settings_page.cpp" line="54"/>
-        <source>Game_play_settings.qml</source>
-        <translation type="unfinished"></translation>
+        <translation>खेल खेलने के विकल्प</translation>
     </message>
 </context>
 <context>
@@ -345,27 +298,27 @@
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="17"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>विकल्प</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="35"/>
         <source>Language</source>
-        <translation type="unfinished"></translation>
+        <translation>भाषा</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="44"/>
         <source>Sound</source>
-        <translation type="unfinished"></translation>
+        <translation>ध्वनि</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="53"/>
         <source>Color theme</source>
-        <translation type="unfinished"></translation>
+        <translation>रंग</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="62"/>
         <source>Game play</source>
-        <translation type="unfinished"></translation>
+        <translation>खेल</translation>
     </message>
 </context>
 <context>
@@ -373,15 +326,7 @@
     <message>
         <location filename="qml/der_artikel/Settings_page_title.qml" line="8"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Startup_screen</name>
-    <message>
-        <location filename="qml/der_artikel/Startup_screen.qml" line="51"/>
-        <source>Der Artikel</source>
-        <translation type="unfinished"></translation>
+        <translation>विकल्प</translation>
     </message>
 </context>
 <context>
@@ -640,7 +585,7 @@
     <message>
         <location filename="thema_builder.cpp" line="381"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">अपडेट</translation>
     </message>
 </context>
 <context>
@@ -679,17 +624,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="94"/>
-        <source>translation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="109"/>
-        <source>Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="124"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="121"/>
         <source>Words</source>
         <translation type="unfinished"></translation>
     </message>
@@ -735,32 +670,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="74"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="75"/>
         <source>Experience : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="94"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="95"/>
         <source>State - </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="97"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="98"/>
         <source>Inert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="100"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="101"/>
         <source>Gold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="103"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="104"/>
         <source>Silver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="106"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="107"/>
         <source>Rusty</source>
         <translation type="unfinished"></translation>
     </message>
@@ -803,11 +738,6 @@
     <message>
         <location filename="qml/der_artikel/Words_page_title.qml" line="52"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Words_page_title.qml" line="66"/>
-        <source>Infinite</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

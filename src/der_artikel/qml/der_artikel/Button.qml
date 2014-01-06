@@ -34,7 +34,7 @@ Rectangle {
         id: label
         x:2
         anchors.verticalCenter: parent.verticalCenter
-        text: qsTr("Button")
+        text: qsTr("Button") + settings.i18n_empty_string
         color:color_palette.color_font_02
         font.family: command_font.name
         font.pixelSize: 16

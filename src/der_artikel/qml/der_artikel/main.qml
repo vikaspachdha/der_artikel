@@ -9,7 +9,6 @@ Image {
     height: 400
     property QtObject color_palette : cp_blue
 
-
     source: "qrc:/res/resources/background_texture.png"
     fillMode: Image.Tile
 

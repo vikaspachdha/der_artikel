@@ -13,7 +13,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: result_lbl.horizontalCenter
-        lblText: qsTr("Options")
+        lblText: qsTr("Options") + settings.i18n_empty_string
     }
 
     Column {
@@ -30,7 +30,7 @@ Page_panel
             id:replay_btn
             width:parent.width
             text_anchors.horizontalCenter: replay_btn.horizontalCenter
-            buttonText: qsTr("Replay")
+            buttonText: qsTr("Replay") + settings.i18n_empty_string
             onActivated: manager.current_page = Manager.WORDS_PAGE
         }
 
@@ -38,7 +38,7 @@ Page_panel
             id:stats_btn
             width:parent.width
             text_anchors.horizontalCenter: stats_btn.horizontalCenter
-            buttonText: qsTr("Stats")
+            buttonText: qsTr("Stats") + settings.i18n_empty_string
             onActivated: manager.current_page = Manager.STATS_PAGE
         }
     }

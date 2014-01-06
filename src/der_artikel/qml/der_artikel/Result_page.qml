@@ -7,7 +7,7 @@ Page {
 
     Custom_label {
         id: title_label
-        text: list_view.count>0 ? qsTr("Mistakes") : qsTr("No Mistakes")
+        text: (list_view.count>0 ? qsTr("Mistakes") : qsTr("No Mistakes")) + settings.i18n_empty_string
         font_color:color_palette.color_font_02
         gradient: Gradient {
             GradientStop {position:0.0;color:color_palette.color_bg_02}

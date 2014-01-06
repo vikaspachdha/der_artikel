@@ -15,7 +15,6 @@ Item {
         x:2
         anchors.verticalCenter: parent.verticalCenter
         font.family: command_font.name
-        text: qsTr("Label")
         color:color_palette.color_font_01
         font.pixelSize: 18
     }

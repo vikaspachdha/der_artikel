@@ -14,7 +14,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: stats_lbl.horizontalCenter
-        lblText: qsTr("Lets Brag!")
+        lblText: qsTr("Lets Brag!") + settings.i18n_empty_string
     }
 
     Column {
@@ -31,7 +31,7 @@ Page_panel
             id:share_btn
             width:parent.width
             text_anchors.horizontalCenter: share_btn.horizontalCenter
-            buttonText: qsTr("Share")
+            buttonText: qsTr("Share") + settings.i18n_empty_string
             onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available"),1200)
         }
     }

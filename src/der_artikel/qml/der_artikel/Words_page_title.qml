@@ -49,7 +49,7 @@ Title_bar {
             top:parent.top
             topMargin: 6
         }
-        text: qsTr("Remaining time")
+        text: qsTr("Remaining time") + settings.i18n_empty_string
         font.family: custom_regular.name
         color:color_palette.color_font_01
         font.pixelSize: 20
@@ -63,7 +63,6 @@ Title_bar {
             bottom:parent.bottom
             bottomMargin: 6
         }
-        text: qsTr("Infinite")
         font.family: custom_regular.name
         color:color_palette.color_font_01
         font.pixelSize: 20

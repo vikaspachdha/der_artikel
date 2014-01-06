@@ -14,7 +14,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: option_lbl.horizontalCenter
-        lblText: qsTr("Options")
+        lblText: qsTr("Options") + settings.i18n_empty_string
     }
 
     Column {
@@ -31,7 +31,7 @@ Page_panel
             id:replay_btn
             width:parent.width
             text_anchors.horizontalCenter: replay_btn.horizontalCenter
-            buttonText: qsTr("Update")
+            buttonText: qsTr("Update") + settings.i18n_empty_string
             onActivated: showMessage(qsTr("Latest version"), qsTr("No update is available"),1200)
         }
     }

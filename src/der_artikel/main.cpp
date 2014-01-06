@@ -11,6 +11,7 @@
 #include "pages/help_page.h"
 #include "pages/words_page.h"
 #include "pages/settings_page.h"
+#include "common.h"
 
 
 #ifdef ENABLE_THEMA_BUILDER

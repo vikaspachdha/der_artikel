@@ -8,6 +8,9 @@ folder_01.source = test_data
 folder_01.target = ./
 DEPLOYMENTFOLDERS = folder_01
 
+folder_02.source = languages
+folder_02.target = ./
+DEPLOYMENTFOLDERS += folder_02
 
 # Additional import path used to resolve QML modules in Creator's code model
 QML_IMPORT_PATH =

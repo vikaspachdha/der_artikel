@@ -24,7 +24,7 @@ Page {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.topMargin: 8
-                text:qsTr("Version\n") + manager.version_string
+                text:qsTr("Version\n") + manager.version_string + settings.i18n_empty_string
 
                 wrapMode: Text.WordWrap
                 font.family: custom_regular.name

@@ -48,9 +48,9 @@ Title_bar {
         text:{
             switch(themaModel.selection_state) {
             case ThemaModel.MULTIPLE_SELECTION:
-                return qsTr("Multi Mode - Coming soon")
+                return qsTr("Multi Mode - Coming soon") + settings.i18n_empty_string
             default:
-                return qsTr("Select Thema")
+                return qsTr("Select Thema") + settings.i18n_empty_string
             }
         }
 
@@ -71,7 +71,8 @@ Title_bar {
 
     Text {
         id: heading_1_right
-        text:themaModel.selection_state===ThemaModel.SINGLE_SELECTION ? qsTr("Experience : ")+themaModel.selected_thema.experience:""
+        text:themaModel.selection_state===ThemaModel.SINGLE_SELECTION ?
+                 qsTr("Experience : ") + settings.i18n_empty_string+themaModel.selected_thema.experience:""
         anchors {
             top:parent.top
             right:parent.right
@@ -91,19 +92,19 @@ Title_bar {
         text: {
             if(themaModel.selection_state===ThemaModel.SINGLE_SELECTION) {
                 var currentState = themaModel.selected_thema.state
-                var state_str = qsTr("State - ")
+                var state_str = qsTr("State - ") + settings.i18n_empty_string
                 switch(currentState) {
                 case Thema.INERT:
-                    state_str += qsTr("Inert")
+                    state_str += qsTr("Inert") + settings.i18n_empty_string
                     break
                 case Thema.GOLD:
-                    state_str += qsTr("Gold")
+                    state_str += qsTr("Gold") + settings.i18n_empty_string
                     break;
                 case Thema.SILVER:
-                    state_str += qsTr("Silver")
+                    state_str += qsTr("Silver") + settings.i18n_empty_string
                     break;
                 default:
-                    state_str += qsTr("Rusty")
+                    state_str += qsTr("Rusty") + settings.i18n_empty_string
                     break;
                 }
             } else {

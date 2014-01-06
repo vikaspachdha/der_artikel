@@ -76,9 +76,9 @@ Title_bar {
         id: heading_3_right
         text: {
             if(currentResult.experience_change<0) {
-                return qsTr("Lost experience : " + -1*currentResult.experience_change)
+                return qsTr("Lost experience : ") + -1*currentResult.experience_change + settings.i18n_empty_string
             } else {
-                return qsTr("Gained experience : " + currentResult.experience_change)
+                return qsTr("Gained experience : ") + currentResult.experience_change + settings.i18n_empty_string
             }
         }
 

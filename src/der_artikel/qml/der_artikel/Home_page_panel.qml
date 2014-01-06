@@ -13,7 +13,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: home_lbl.horizontalCenter
-        lblText: qsTr("Home")
+        lblText: qsTr("Home") + settings.i18n_empty_string
     }
 
     Column {
@@ -30,7 +30,7 @@ Page_panel
             id:rate_btn
             width:parent.width
             text_anchors.horizontalCenter: rate_btn.horizontalCenter
-            buttonText: qsTr("Rate App")
+            buttonText: qsTr("Rate App") + settings.i18n_empty_string
             onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available"),1200)
         }
     }

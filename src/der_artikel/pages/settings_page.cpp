@@ -42,16 +42,16 @@ QString SettingsPage_C::subPage() const
     QString sub_page = "";
     switch(_sub_page_type) {
     case LANGUAGE:
-        sub_page = tr("Language_settings.qml");
+        sub_page = "Language_settings.qml";
         break;
     case SOUND:
-        sub_page = tr("Sound_settings.qml");
+        sub_page = "Sound_settings.qml";
         break;
     case COLOR_THEME:
-        sub_page = tr("Color_theme_settings.qml");
+        sub_page = "Color_theme_settings.qml";
         break;
     case GAME_PLAY:
-        sub_page = tr("Game_play_settings.qml");
+        sub_page = "Game_play_settings.qml";
         break;
     default:
         break;

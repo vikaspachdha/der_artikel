@@ -16,7 +16,7 @@ Title_bar {
 
     Text {
         id: name
-        text: qsTr("Der Artikel")
+        text: "Der Artikel"
         anchors.left: icon.right
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter

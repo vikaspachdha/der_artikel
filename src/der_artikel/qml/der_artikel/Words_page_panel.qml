@@ -30,7 +30,7 @@ Page_panel {
             width:parent.width
             text_anchors.horizontalCenter: der_btn.horizontalCenter
             isDown: manager.selected_article === Article.DER
-            buttonText: qsTr("Der")
+            buttonText: qsTr("Der") + settings.i18n_empty_string
             onActivated:  {
                 words_page.info_mode = false
                 manager.selected_article = Article.DER
@@ -42,7 +42,7 @@ Page_panel {
             width:parent.width
             text_anchors.horizontalCenter: die_btn.horizontalCenter
             isDown: manager.selected_article === Article.DIE
-            buttonText: qsTr("Die")
+            buttonText: qsTr("Die") + settings.i18n_empty_string
             onActivated:  {
                 words_page.info_mode = false
                 manager.selected_article = Article.DIE
@@ -54,7 +54,7 @@ Page_panel {
             width:parent.width
             text_anchors.horizontalCenter: das_btn.horizontalCenter
             isDown: manager.selected_article === Article.DAS
-            buttonText: qsTr("Das")
+            buttonText: qsTr("Das") + settings.i18n_empty_string
             onActivated: {
                 words_page.info_mode = false
                 manager.selected_article = Article.DAS
@@ -66,7 +66,7 @@ Page_panel {
             width:parent.width
             text_anchors.horizontalCenter: na_btn.horizontalCenter
             isDown: words_page.info_mode === true
-            buttonText: qsTr("Info")
+            buttonText: qsTr("Info") + settings.i18n_empty_string
             onActivated: {
                 manager.selected_article = Article.NA
                 words_page.info_mode = true
@@ -82,7 +82,7 @@ Page_panel {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
-        cmd_text: qsTr("Finish")
+        cmd_text: qsTr("Finish") + settings.i18n_empty_string
         icon_name: "finish"
         onCommandActivated: {
             manager.current_page = Manager.RESULT_PAGE

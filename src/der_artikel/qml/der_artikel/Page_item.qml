@@ -18,7 +18,6 @@ Item {
 
     Text {
         id: item_label
-        text: qsTr("Unkown Page")
         anchors.top: icon.bottom
         anchors.right: parent.right
         anchors.bottom: parent.bottom

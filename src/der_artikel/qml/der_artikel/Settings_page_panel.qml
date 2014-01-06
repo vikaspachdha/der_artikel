@@ -14,7 +14,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: options_lbl.horizontalCenter
-        lblText: qsTr("Options")
+        lblText: qsTr("Options") + settings.i18n_empty_string
     }
 
     Column {
@@ -32,7 +32,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: language_btn.horizontalCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.LANGUAGE
-            buttonText: qsTr("Language")
+            buttonText: qsTr("Language") + settings.i18n_empty_string
             onActivated: settings_page_instance.sub_page_type = SettingsPage.LANGUAGE
         }
 
@@ -41,7 +41,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: sound_btn.horizontalCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.SOUND
-            buttonText: qsTr("Sound")
+            buttonText: qsTr("Sound") + settings.i18n_empty_string
             onActivated: settings_page_instance.sub_page_type = SettingsPage.SOUND
         }
 
@@ -50,7 +50,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: color_theme_btn.horizontalCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.COLOR_THEME
-            buttonText: qsTr("Color theme")
+            buttonText: qsTr("Color theme") + settings.i18n_empty_string
             onActivated: settings_page_instance.sub_page_type = SettingsPage.COLOR_THEME
         }
 
@@ -59,7 +59,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: game_play_btn.horizontalCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.GAME_PLAY
-            buttonText: qsTr("Game play")
+            buttonText: qsTr("Game play") + settings.i18n_empty_string
             onActivated: settings_page_instance.sub_page_type = SettingsPage.GAME_PLAY
         }
     }

@@ -48,7 +48,7 @@ Item {
 
     Text {
         id: name
-        text: qsTr("Der Artikel")
+        text: "Der Artikel"
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         font.family: custom_regular.name

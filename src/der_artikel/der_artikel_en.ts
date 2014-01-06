@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US">
+<TS version="2.1" language="en_US" sourcelanguage="en_US">
 <context>
     <name>About_page</name>
     <message>
@@ -34,14 +34,6 @@
     </message>
 </context>
 <context>
-    <name>About_page_title</name>
-    <message>
-        <location filename="qml/der_artikel/About_page_title.qml" line="19"/>
-        <source>Der Artikel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Button</name>
     <message>
         <location filename="qml/der_artikel/Button.qml" line="37"/>
@@ -59,14 +51,6 @@
     <message>
         <location filename="qml/der_artikel/Command_frame.qml" line="68"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Command_item</name>
-    <message>
-        <location filename="qml/der_artikel/Command_item.qml" line="23"/>
-        <source>Unkown CMD</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -165,22 +149,6 @@
     </message>
 </context>
 <context>
-    <name>Home_page_title</name>
-    <message>
-        <location filename="qml/der_artikel/Home_page_title.qml" line="8"/>
-        <source>Der Artikel</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Label</name>
-    <message>
-        <location filename="qml/der_artikel/Label.qml" line="18"/>
-        <source>Label</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Manager_C</name>
     <message>
         <location filename="manager.cpp" line="254"/>
@@ -190,14 +158,6 @@
     <message>
         <location filename="manager.cpp" line="255"/>
         <source>Do you realy want to quit</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Page_item</name>
-    <message>
-        <location filename="qml/der_artikel/Page_item.qml" line="21"/>
-        <source>Unkown Page</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -298,6 +258,19 @@
     </message>
 </context>
 <context>
+    <name>Result_page_title</name>
+    <message>
+        <location filename="qml/der_artikel/Result_page_title.qml" line="79"/>
+        <source>Lost experience : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Result_page_title.qml" line="81"/>
+        <source>Gained experience : </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>SettingsPage_C</name>
     <message>
         <location filename="pages/settings_page.cpp" line="22"/>
@@ -317,26 +290,6 @@
     <message>
         <location filename="pages/settings_page.cpp" line="31"/>
         <source>Game Play Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/settings_page.cpp" line="45"/>
-        <source>Language_settings.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/settings_page.cpp" line="48"/>
-        <source>Sound_settings.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/settings_page.cpp" line="51"/>
-        <source>Color_theme_settings.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/settings_page.cpp" line="54"/>
-        <source>Game_play_settings.qml</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -373,14 +326,6 @@
     <message>
         <location filename="qml/der_artikel/Settings_page_title.qml" line="8"/>
         <source>Settings</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
-    <name>Startup_screen</name>
-    <message>
-        <location filename="qml/der_artikel/Startup_screen.qml" line="51"/>
-        <source>Der Artikel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -679,17 +624,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="94"/>
-        <source>translation</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="109"/>
-        <source>Title</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="124"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="121"/>
         <source>Words</source>
         <translation type="unfinished"></translation>
     </message>
@@ -735,32 +670,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="74"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="75"/>
         <source>Experience : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="94"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="95"/>
         <source>State - </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="97"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="98"/>
         <source>Inert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="100"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="101"/>
         <source>Gold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="103"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="104"/>
         <source>Silver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="106"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="107"/>
         <source>Rusty</source>
         <translation type="unfinished"></translation>
     </message>
@@ -803,11 +738,6 @@
     <message>
         <location filename="qml/der_artikel/Words_page_title.qml" line="52"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Words_page_title.qml" line="66"/>
-        <source>Infinite</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -53,7 +53,7 @@ Flipable {
         id: home_cmd
         anchors.centerIn: parent
         enabled: manager.current_page !== Manager.HOME_PAGE
-        cmd_text: qsTr("Home")
+        cmd_text: qsTr("Home") + settings.i18n_empty_string
         icon_name: "home"
         onCommandActivated: {
             manager.current_page = Manager.HOME_PAGE
@@ -65,7 +65,7 @@ Flipable {
         id: quit_cmd
         anchors.centerIn: parent
         enabled: manager.current_page === Manager.HOME_PAGE
-        cmd_text: qsTr("Quit")
+        cmd_text: qsTr("Quit") + settings.i18n_empty_string
         icon_name: "quit"
         onCommandActivated: {
             manager.quit()
