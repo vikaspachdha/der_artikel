@@ -243,7 +243,7 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
 {
     QQuickItem *item = 0;
     if(_page_items_hash.contains(page_id)) {
-        item = item = _page_items_hash[page_id]._title_item;
+        item = _page_items_hash[page_id]._title_item;
     }
     return item;
 }
