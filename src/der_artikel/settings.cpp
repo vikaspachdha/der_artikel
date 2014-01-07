@@ -8,7 +8,8 @@
 
 Settings_C::Settings_C(QObject *parent) :
     QObject(parent),
-    _current_language(ENGLISH)
+    _current_language(ENGLISH),
+    _sound_level(0.1)
 {
     updateLangauge();
 }
@@ -65,4 +66,11 @@ void Settings_C::updateLangauge()
 
 }
 
+void Settings_C::setSoundLevel(double sound_level)
+{
+    if(qAbs(sound_level-_sound_level) > 0.001 ) {
+        _sound_level = sound_level;
+        emit soundLevelChanged();
+    }
+}
 

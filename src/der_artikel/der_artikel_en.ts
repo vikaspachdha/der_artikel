@@ -505,7 +505,7 @@
     </message>
     <message>
         <location filename="thema_builder.ui" line="220"/>
-        <location filename="thema_builder.cpp" line="376"/>
+        <location filename="thema_builder.cpp" line="507"/>
         <source>Add</source>
         <translation type="unfinished"></translation>
     </message>
@@ -571,19 +571,61 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_builder.cpp" line="119"/>
-        <location filename="thema_builder.cpp" line="297"/>
+        <location filename="thema_builder.cpp" line="122"/>
+        <location filename="thema_builder.cpp" line="305"/>
+        <location filename="thema_builder.cpp" line="324"/>
         <source>Select file name</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_builder.cpp" line="121"/>
-        <location filename="thema_builder.cpp" line="299"/>
+        <location filename="thema_builder.cpp" line="124"/>
+        <location filename="thema_builder.cpp" line="307"/>
         <source>Thema files (*.AKL);; All files (*.*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_builder.cpp" line="381"/>
+        <location filename="thema_builder.cpp" line="326"/>
+        <location filename="thema_builder.cpp" line="346"/>
+        <source>CSV files (*.csv);; All files (*.*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_builder.cpp" line="333"/>
+        <source>Export failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_builder.cpp" line="333"/>
+        <source>Invalid file or permissions</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_builder.cpp" line="344"/>
+        <source>Select file to import</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_builder.cpp" line="354"/>
+        <source>Import failed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_builder.cpp" line="354"/>
+        <source>Invalid file or format</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_builder.cpp" line="455"/>
+        <source>Duplicate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_builder.cpp" line="455"/>
+        <source>%1 already exists. Duplicate words are not allowed.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_builder.cpp" line="512"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
@@ -653,7 +695,7 @@
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="64"/>
-        <source>Start</source>
+        <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

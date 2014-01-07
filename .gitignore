@@ -220,3 +220,6 @@ pip-log.txt
 moc_*
 *-Debug*
 *-Release*
+src/der_artikel/der_artikel_de.ts
+
+*.ts
