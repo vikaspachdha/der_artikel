@@ -27,8 +27,6 @@ class Manager_C : public QObject
     Q_ENUMS(PageId_TP)
     Q_ENUMS(GameLevel)
 
-    Q_PROPERTY(Article_C::Artikel selected_article READ GetSelectedArticle WRITE SetSelectedArticle NOTIFY selectedArticleChanged)
-    Q_PROPERTY(QColor current_word_color READ GetCurrentWordColor)
     Q_PROPERTY(PageId_TP current_page READ getCurrentPage WRITE setCurrentPage NOTIFY currentPageChanged)
     Q_PROPERTY(QAbstractItemModel* thema_model READ GetThemaModel CONSTANT)
     Q_PROPERTY(GameLevel game_level READ gameLevel WRITE setGameLevel NOTIFY gameLevelChanged)
@@ -76,11 +74,6 @@ public:
 public:
     void SetRootItem(QQuickItem* root_Item) { _root_item = root_Item; }
 
-    void SetSelectedArticle(Article_C::Artikel article);
-    Article_C::Artikel GetSelectedArticle() const { return _selected_article; }
-
-    QColor GetCurrentWordColor() const { return _current_word_color; }
-
     void setCurrentPage(PageId_TP new_page);
     PageId_TP getCurrentPage() const { return _current_page; }
 
@@ -115,7 +108,6 @@ public:
     Q_INVOKABLE void quit();
 
 signals:
-    void selectedArticleChanged();
     void currentPageChanged(PageId_TP old_page, PageId_TP new_page);
     void gameLevelChanged();
     void themaSelectionStateChanged();
@@ -123,17 +115,11 @@ signals:
     
 private slots:
     void OnNewThemaLoaded(Thema_C* new_thema);
-    void OnSelectedArticleChanged();
-    void OnWordClicked();
     void onThemaSelectionChanged();
 
 // Helper methods
 private:
     void LoadDefaultThemas();
-    void SetCurrentThema(Thema_C* thema);
-    void AddWords(const Thema_C *thema);
-    QObject* AddWord(QString text, QString desc);
-    void ClearWordItems();
     void CreateResultAlgo();
     void InitPages();
 
@@ -141,12 +127,9 @@ private:
     Settings_C* _settings;
     QQmlContext& _root_context;
     QQuickItem* _root_item;
-    QHash<QObject*, Word_C*> _item_word_hash;
     QHash<PageId_TP, PageItems_TP> _page_items_hash;
     QHash<PageId_TP, Page_I*> _page_hash;
     Thema_C* _current_thema;
-    Article_C::Artikel _selected_article;
-    QColor _current_word_color;
     PageId_TP _current_page;
     ResultAlgo_I* _result_algo;
     Result_C* _current_result;

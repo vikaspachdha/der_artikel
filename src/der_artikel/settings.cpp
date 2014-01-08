@@ -57,9 +57,6 @@ void Settings_C::updateLangauge()
             if(translator->load(file.absoluteFilePath())) {
                 QApplication::installTranslator(translator);
                 _installed_translators<<translator;
-                qDebug()<<"Transalation loaded "<<file.absoluteFilePath();
-            } else {
-                qDebug()<<"Transalation load failed "<<file.absoluteFilePath();
             }
         }
     }

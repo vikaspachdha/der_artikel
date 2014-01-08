@@ -61,7 +61,7 @@ Item {
                 showMessage(wordText,description_text)
             } else {
                 wordClicked()
-                overlay.color = manager.current_word_color;
+                overlay.color = words_page.current_word_color;
             }
         }
     }

@@ -22,7 +22,7 @@ Page {
     }
 
 
-    function appendWordToFlow(itemText,desc)
+    function addWord(itemText,desc)
     {
         var WordComponent = Qt.createComponent("Word_item.qml");
         if(WordComponent.status == Component.Ready) {

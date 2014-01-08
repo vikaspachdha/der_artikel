@@ -26,7 +26,6 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _root_context(ref_root_context),
     _root_item(0),
     _current_thema(0),
-    _selected_article(Article_C::INVALID),
     _current_page(INVALID_PAGE),
     _result_algo(0),
     _current_result(0),
@@ -43,46 +42,18 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _settings = new Settings_C(this);
 
     InitPages();
-    SetSelectedArticle(Article_C::DER);
 
     _thema_model = new ThemaModel_C(this);
     connect(_thema_model,SIGNAL(themaSelectionChanged()), this, SLOT(onThemaSelectionChanged()));
 
     LoadDefaultThemas();
     _current_result = new Result_C(this);
-    connect(this,SIGNAL(selectedArticleChanged()), this, SLOT(OnSelectedArticleChanged()) );
 }
 
 Manager_C::~Manager_C()
 {
     delete _current_result;
     delete _thema_model;
-}
-
-void Manager_C::SetSelectedArticle(Article_C::Artikel article)
-{
-    if(_selected_article != article) {
-        _selected_article = article;
-        switch (_selected_article) {
-        case Article_C::DER:
-            _current_word_color = QColor("#5287B1");
-            break;
-        case Article_C::DIE:
-            _current_word_color = QColor("#E882DA");
-            break;
-        case Article_C::DAS:
-            _current_word_color = QColor("#FFFFFF");
-            break;
-        case Article_C::NA:
-            _current_word_color = QColor("#FEF574");
-            break;
-        default:
-            break;
-        }
-
-        _current_word_color.setAlpha(70);
-        emit selectedArticleChanged();
-    }
 }
 
 void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
@@ -117,7 +88,6 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
                 case WORDS_PAGE:
                     if(_current_page == Manager_C::RESULT_PAGE) {
                         CalculateResult();
-                        ClearWordItems();
                     }
                 default:
                     break;
@@ -125,9 +95,6 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
 
             switch(_current_page){
                 case WORDS_PAGE:
-                    // determine the thema
-                    _current_thema = 0;
-                    SetCurrentThema(_thema_model->GetSelectedThema());
                     CreateResultAlgo();
                     break;
 
@@ -170,21 +137,6 @@ void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
     _thema_model->AddThema(new_thema);
 }
 
-void Manager_C::OnSelectedArticleChanged()
-{
-
-}
-
-void Manager_C::OnWordClicked()
-{
-    QObject* word_item = sender();
-    Q_ASSERT(word_item);
-    Word_C* word = _item_word_hash[word_item];
-    if(word) {
-        word->SetUserArtikel(_selected_article);
-    }
-}
-
 void Manager_C::onThemaSelectionChanged()
 {
     _thema_selected = _thema_model->GetSelectedThema() ? true : false;
@@ -194,9 +146,10 @@ void Manager_C::onThemaSelectionChanged()
 void Manager_C::CalculateResult()
 {
     Q_ASSERT(_current_result);
-    if(_current_thema) {
-        _result_algo->Calculate(*_current_thema,*_current_result);
-        _current_thema->Save();
+    Thema_C* current_thema = _thema_model->GetSelectedThema();
+    if(current_thema) {
+        _result_algo->Calculate(*current_thema,*_current_result);
+        current_thema->Save();
     }
 }
 
@@ -259,51 +212,11 @@ void Manager_C::quit()
     }
 }
 
-void Manager_C::AddWords(const Thema_C* thema)
-{
-    foreach(Word_C* word, thema->GetWords()) {
-        QObject* word_item = AddWord(word->GetWordText(), word->GetDescription());
-        Q_ASSERT(word_item);
-        _item_word_hash[word_item] = word;
-        connect(word_item, SIGNAL(wordClicked()), this, SLOT(OnWordClicked()) );
-    }
-}
-
 void Manager_C::LoadDefaultThemas()
 {
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
     connect(thema_loader, SIGNAL(ThemaLoaded(Thema_C*)), this, SLOT(OnNewThemaLoaded(Thema_C*)) );
     thema_loader->StartLoading();
-}
-
-void Manager_C::SetCurrentThema(Thema_C *thema)
-{
-    if(thema && thema != _current_thema) {
-        ClearWordItems();
-        _current_thema = thema;
-        _current_thema->ClearUserInput();
-        AddWords(_current_thema);
-    }
-}
-
-QObject *Manager_C::AddWord(QString text, QString desc)
-{
-    Q_ASSERT(_root_item);
-
-    QVariant returned_value;
-    QMetaObject::invokeMethod(_root_item, "addWord",
-                              Q_RETURN_ARG(QVariant, returned_value),
-                              Q_ARG(QVariant, text), Q_ARG(QVariant, desc));
-    QObject* word_item = returned_value.value<QObject*>();
-    return word_item;
-}
-
-void Manager_C::ClearWordItems()
-{
-    foreach(QObject* word_item, _item_word_hash.keys()) {
-        delete word_item;
-    }
-    _item_word_hash.clear();
 }
 
 void Manager_C::CreateResultAlgo()

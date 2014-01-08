@@ -29,11 +29,11 @@ Page_panel {
             id:der_btn
             width:parent.width
             text_anchors.horizontalCenter: der_btn.horizontalCenter
-            isDown: manager.selected_article === Article.DER
+            isDown: words_page.selected_article === Article.DER
             buttonText: qsTr("Der") + settings.i18n_empty_string
             onActivated:  {
                 words_page.info_mode = false
-                manager.selected_article = Article.DER
+                words_page.selected_article = Article.DER
             }
         }
 
@@ -41,11 +41,11 @@ Page_panel {
             id:die_btn
             width:parent.width
             text_anchors.horizontalCenter: die_btn.horizontalCenter
-            isDown: manager.selected_article === Article.DIE
+            isDown: words_page.selected_article === Article.DIE
             buttonText: qsTr("Die") + settings.i18n_empty_string
             onActivated:  {
                 words_page.info_mode = false
-                manager.selected_article = Article.DIE
+                words_page.selected_article = Article.DIE
             }
         }
 
@@ -53,11 +53,11 @@ Page_panel {
             id:das_btn
             width:parent.width
             text_anchors.horizontalCenter: das_btn.horizontalCenter
-            isDown: manager.selected_article === Article.DAS
+            isDown: words_page.selected_article === Article.DAS
             buttonText: qsTr("Das") + settings.i18n_empty_string
             onActivated: {
                 words_page.info_mode = false
-                manager.selected_article = Article.DAS
+                words_page.selected_article = Article.DAS
             }
         }
 
@@ -68,7 +68,7 @@ Page_panel {
             isDown: words_page.info_mode === true
             buttonText: qsTr("Info") + settings.i18n_empty_string
             onActivated: {
-                manager.selected_article = Article.NA
+                words_page.selected_article = Article.NA
                 words_page.info_mode = true
             }
         }
