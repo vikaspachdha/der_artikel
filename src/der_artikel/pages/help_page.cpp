@@ -42,16 +42,16 @@ QString HelpPage_C::subPage() const
     QString title = "";
     switch(_sub_page_type) {
     case GENERAL:
-        title = tr("General_help.qml");
+        title = "General_help.qml";
         break;
     case RULES:
-        title = tr("Rules_help.qml");
+        title = "Rules_help.qml";
         break;
     case SCORING:
-        title = tr("Scoring_help.qml");
+        title = "Scoring_help.qml";
         break;
     case OTHERS:
-        title = tr("Others_help.qml");
+        title = "Others_help.qml";
         break;
     default:
         break;

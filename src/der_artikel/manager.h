@@ -92,6 +92,7 @@ public:
 
 public:
     void CalculateResult();
+
     ThemaModel_C* GetThemaModel() {return _thema_model; }
 
     Settings_C* GetSettings() const { return _settings; }
@@ -111,7 +112,6 @@ signals:
     void currentPageChanged(PageId_TP old_page, PageId_TP new_page);
     void gameLevelChanged();
     void themaSelectionStateChanged();
-    void newResultAvailable();
     
 private slots:
     void OnNewThemaLoaded(Thema_C* new_thema);

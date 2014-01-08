@@ -18,6 +18,7 @@
 #include "pages/words_page.h"
 #include "pages/stats_page.h"
 #include "pages/settings_page.h"
+#include "pages/thema_page.h"
 
 
 Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
@@ -78,13 +79,6 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
             _current_page = new_page;
 
             switch(old_page){
-                case RESULT_PAGE:
-                    // from result to words page keep thema selection.
-                    // replay case
-                    if(_current_page != Manager_C::WORDS_PAGE) {
-                        _thema_model->ClearSelection();
-                    }
-                    break;
                 case WORDS_PAGE:
                     if(_current_page == Manager_C::RESULT_PAGE) {
                         CalculateResult();
@@ -246,5 +240,6 @@ void Manager_C::InitPages()
     _page_hash[WORDS_PAGE] = new WordsPage_C(*this, _root_context,this);
     _page_hash[STATS_PAGE] = new StatsPage_C(*this,_root_context,this);
     _page_hash[SETTINGS_PAGE] = new SettingsPage_C(*this,_root_context,this);
+    _page_hash[THEMA_PAGE] = new ThemaPage_C(*this,this);
 }
 
