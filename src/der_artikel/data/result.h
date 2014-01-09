@@ -38,7 +38,8 @@ public:
     };
 
 public:
-    Result_C(QObject* parent=0);
+    explicit Result_C(QObject* parent=0);
+    Result_C &operator =(const Result_C& other);
 
 signals:
     void resultUpdated();

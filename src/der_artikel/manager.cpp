@@ -8,9 +8,7 @@
 #include "data/thema.h"
 #include "thema_loader.h"
 #include "settings.h"
-#include "algo/easy_result_algo.h"
-#include "algo/moderate_result_algo.h"
-#include "algo/strict_result_algo.h"
+
 #include "data/result.h"
 #include "version.h"
 
@@ -28,7 +26,6 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _root_item(0),
     _current_thema(0),
     _current_page(INVALID_PAGE),
-    _result_algo(0),
     _current_result(0),
     _game_level(EASY),
     _thema_selected(false)
@@ -78,30 +75,12 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
 
             _current_page = new_page;
 
-            switch(old_page){
-                case WORDS_PAGE:
-                    if(_current_page == Manager_C::RESULT_PAGE) {
-                        CalculateResult();
-                    }
-                default:
-                    break;
-            }
-
-            switch(_current_page){
-                case WORDS_PAGE:
-                    CreateResultAlgo();
-                    break;
-
-                default:
-                    break;
-            }
-
             if(old_page_instance) {
-                old_page_instance->leave();
+                old_page_instance->leave(_current_page);
             }
 
             if(new_page_instance) {
-                new_page_instance->enter();
+                new_page_instance->enter(old_page);
             }
 
             emit currentPageChanged(old_page,new_page);
@@ -137,15 +116,7 @@ void Manager_C::onThemaSelectionChanged()
     emit themaSelectionStateChanged();
 }
 
-void Manager_C::CalculateResult()
-{
-    Q_ASSERT(_current_result);
-    Thema_C* current_thema = _thema_model->GetSelectedThema();
-    if(current_thema) {
-        _result_algo->Calculate(*current_thema,*_current_result);
-        current_thema->Save();
-    }
-}
+
 
 void Manager_C::setPageItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 {
@@ -211,27 +182,6 @@ void Manager_C::LoadDefaultThemas()
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
     connect(thema_loader, SIGNAL(ThemaLoaded(Thema_C*)), this, SLOT(OnNewThemaLoaded(Thema_C*)) );
     thema_loader->StartLoading();
-}
-
-void Manager_C::CreateResultAlgo()
-{
-    if(_result_algo) {
-        delete _result_algo;
-        _result_algo = 0;
-    }
-    switch (_game_level) {
-    case EASY:
-        _result_algo = new EasyResultAlgo_C();
-        break;
-    case MODERATE:
-        _result_algo = new ModerateResultAlgo_C();
-        break;
-    case EXPERT:
-        _result_algo = new StrictResultAlgo_C();
-        break;
-    default:
-        break;
-    }
 }
 
 void Manager_C::InitPages()

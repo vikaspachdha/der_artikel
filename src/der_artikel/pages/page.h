@@ -27,9 +27,9 @@ public:
 public:
     virtual Manager_C::PageId_TP pageId() const;
     virtual bool canEnter() const;
-    virtual void enter();
+    virtual void enter(Manager_C::PageId_TP prev_page_id);
     virtual bool canLeave() const;
-    virtual void leave();
+    virtual void leave(Manager_C::PageId_TP next_page_id);
 
 protected:
     QQuickItem* titleItem();

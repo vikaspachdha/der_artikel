@@ -19,8 +19,8 @@ public:
     explicit WordsPage_C(Manager_C& page_manager, QQmlContext& root_context, QObject *parent = 0);
 
 public:
-    virtual void enter();
-    virtual void leave();
+    virtual void enter(Manager_C::PageId_TP prev_page_id);
+    virtual void leave(Manager_C::PageId_TP next_page_id);
 
 public:
     bool infoMode() const { return _info_mode; }
@@ -42,6 +42,8 @@ private:
     void AddWords(const Thema_C *thema);
     QObject* AddWord(QString text, QString desc);
     void ClearWordItems();
+    void CreateResultAlgo();
+    void CalculateResult();
 
 private:
     QQmlContext& _root_context;
@@ -49,6 +51,7 @@ private:
     QHash<QObject*, Word_C*> _item_word_hash;
     Article_C::Artikel _selected_article;
     QColor _current_word_color;
+    ResultAlgo_I* _result_algo;
 };
 
 #endif // WORDS_PAGE_H

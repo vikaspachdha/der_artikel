@@ -9,8 +9,9 @@ HelpPage_C::HelpPage_C(Manager_C& page_manager,QQmlContext &root_context, QObjec
     _root_context.setContextProperty("help_page_instance",this);
 }
 
-void HelpPage_C::enter()
+void HelpPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
+    Q_UNUSED(prev_page_id)
     setSubPageType(GENERAL);
 }
 

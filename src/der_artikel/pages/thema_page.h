@@ -10,8 +10,8 @@ public:
     explicit ThemaPage_C(Manager_C& page_manager, QObject *parent = 0);
 
 public:
-    virtual void enter();
-    virtual void leave();
+    virtual void enter(Manager_C::PageId_TP prev_page_id);
+    virtual void leave(Manager_C::PageId_TP next_page_id);
 
 };
 

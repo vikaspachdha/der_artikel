@@ -35,8 +35,6 @@ class Manager_C : public QObject
 
 public:
 
-
-
     enum PageId_TP
     {
         HOME_PAGE =1,
@@ -77,8 +75,6 @@ public:
     void setCurrentPage(PageId_TP new_page);
     PageId_TP getCurrentPage() const { return _current_page; }
 
-    ResultAlgo_I* resultAlgo() { return _result_algo; }
-
     Result_C* GetCurrentResult() { return _current_result; }
 
     GameLevel gameLevel() const { return _game_level; }
@@ -91,8 +87,6 @@ public:
     Q_INVOKABLE QString versionString() {return _version_string;}
 
 public:
-    void CalculateResult();
-
     ThemaModel_C* GetThemaModel() {return _thema_model; }
 
     Settings_C* GetSettings() const { return _settings; }
@@ -120,7 +114,6 @@ private slots:
 // Helper methods
 private:
     void LoadDefaultThemas();
-    void CreateResultAlgo();
     void InitPages();
 
 private:
@@ -131,7 +124,6 @@ private:
     QHash<PageId_TP, Page_I*> _page_hash;
     Thema_C* _current_thema;
     PageId_TP _current_page;
-    ResultAlgo_I* _result_algo;
     Result_C* _current_result;
     ThemaModel_C* _thema_model;
     GameLevel _game_level;

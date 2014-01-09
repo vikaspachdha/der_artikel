@@ -43,9 +43,9 @@ bool Page_C::canEnter() const
  *  Override this method to write initialization code for the corresponding page.
 *   @sa enter
 *********************************************************************************/
-void Page_C::enter()
+void Page_C::enter(Manager_C::PageId_TP prev_page_id)
 {
-
+    Q_UNUSED(prev_page_id)
 }
 
 /********************************************************************************/
@@ -65,9 +65,9 @@ bool Page_C::canLeave() const
  *  Override this method to write clean up code for the corresponding page.
 *   @sa leave
 *********************************************************************************/
-void Page_C::leave()
+void Page_C::leave(Manager_C::PageId_TP next_page_id)
 {
-
+    Q_UNUSED(next_page_id)
 }
 
 QQuickItem *Page_C::titleItem()

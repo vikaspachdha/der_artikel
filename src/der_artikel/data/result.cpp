@@ -19,6 +19,11 @@ Result_C::Result_C(QObject *parent):
     _incorrect_words_model = new WordModel_C(this);
 }
 
+Result_C &Result_C::operator =(const Result_C &other)
+{
+    return *this;
+}
+
 unsigned int Result_C::CorrectWordCount() const
 {
     return _correct_word_count;

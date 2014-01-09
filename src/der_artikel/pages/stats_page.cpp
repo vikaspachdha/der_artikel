@@ -7,8 +7,9 @@ StatsPage_C::StatsPage_C(Manager_C &page_manager, QQmlContext &root_context, QOb
 {
 }
 
-void StatsPage_C::enter()
+void StatsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
+    Q_UNUSED(prev_page_id)
     ThemaModel_C* thema_model = _page_manager.GetThemaModel();
     Q_ASSERT(thema_model);
     int thema_count = thema_model->rowCount();

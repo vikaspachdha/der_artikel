@@ -36,7 +36,7 @@ public:
      *  Implement this method to write initialization code for the corresponding page.
     *   @sa enter
     *********************************************************************************/
-    virtual void enter() = 0;
+    virtual void enter(Manager_C::PageId_TP prev_page_id) = 0;
 
     /********************************************************************************/
     /** @brief \ref CPageManger calls this method to decide whether conditions are
@@ -52,7 +52,7 @@ public:
      *  Implement this method to write clean up code for the corresponding page.
     *   @sa leave
     *********************************************************************************/
-    virtual void leave() = 0;
+    virtual void leave(Manager_C::PageId_TP next_page_id) = 0;
 };
 
 #endif // IPAGE_H

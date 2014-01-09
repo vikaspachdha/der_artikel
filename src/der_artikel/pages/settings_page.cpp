@@ -9,8 +9,9 @@ SettingsPage_C::SettingsPage_C(Manager_C& page_manager,QQmlContext &root_context
     _root_context.setContextProperty("settings_page_instance",this);
 }
 
-void SettingsPage_C::enter()
+void SettingsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
+    Q_UNUSED(prev_page_id)
     setSubPageType(LANGUAGE);
 }
 

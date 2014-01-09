@@ -4,37 +4,47 @@
 #include <QQmlContext>
 
 #include "algo/result_algo.h"
+#include "algo/easy_result_algo.h"
+#include "algo/moderate_result_algo.h"
+#include "algo/strict_result_algo.h"
 #include "thema_model.h"
 
 WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, QObject *parent):
     Page_C(Manager_C::WORDS_PAGE,page_manager, parent),
     _root_context(root_context),
     _info_mode(false),
-    _selected_article(Article_C::INVALID)
+    _selected_article(Article_C::INVALID),
+    _result_algo(0)
 {
     _root_context.setContextProperty("words_page",this);
     SetSelectedArticle(Article_C::DER);
 }
 
-void WordsPage_C::enter()
+void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
+    Q_UNUSED(prev_page_id)
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
     Q_ASSERT(thema);
     AddWords(thema);
 
-    ResultAlgo_I* algo = _page_manager.resultAlgo();
-    if(algo) {
-        int play_time = algo->playTime(*thema);
-        QQuickItem* title_item = _page_manager.titleItem(_page_id);
-        if(title_item) {
-            title_item->setProperty("play_time",play_time);
-            title_item->setProperty("timer_running",true);
-        }
+    CreateResultAlgo();
+
+    Q_ASSERT(_result_algo);
+
+    int play_time = _result_algo->playTime(*thema);
+    QQuickItem* title_item = _page_manager.titleItem(_page_id);
+    if(title_item) {
+        title_item->setProperty("play_time",play_time);
+        title_item->setProperty("timer_running",true);
     }
+
 }
 
-void WordsPage_C::leave()
+void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
 {
+    if(next_page_id==Manager_C::RESULT_PAGE) {
+        CalculateResult();
+    }
     ClearWordItems();
 
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
@@ -117,6 +127,36 @@ void WordsPage_C::ClearWordItems()
         delete word_item;
     }
     _item_word_hash.clear();
+}
+
+void WordsPage_C::CreateResultAlgo()
+{
+    if(_result_algo) {
+        delete _result_algo;
+        _result_algo = 0;
+    }
+    switch (_page_manager.gameLevel()) {
+        case Manager_C::EASY:
+            _result_algo = new EasyResultAlgo_C();
+            break;
+        case Manager_C::MODERATE:
+            _result_algo = new ModerateResultAlgo_C();
+            break;
+        case Manager_C::EXPERT:
+            _result_algo = new StrictResultAlgo_C();
+            break;
+        default:
+            break;
+    }
+}
+
+void WordsPage_C::CalculateResult()
+{
+    Thema_C* current_thema = _page_manager.GetThemaModel()->GetSelectedThema();
+    if(current_thema) {
+        _result_algo->Calculate(*current_thema,*(_page_manager.GetCurrentResult()));
+        current_thema->Save();
+    }
 }
 
 

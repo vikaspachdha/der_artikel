@@ -9,7 +9,7 @@ public:
     explicit StatsPage_C(Manager_C& page_manager, QQmlContext& root_context, QObject *parent = 0);
 
 public:
-    virtual void enter();
+    virtual void enter(Manager_C::PageId_TP prev_page_id);
 
 private:
     QQmlContext& _root_context;
