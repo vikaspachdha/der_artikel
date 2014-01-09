@@ -103,7 +103,11 @@ void WordsPage_C::OnWordClicked()
 
 void WordsPage_C::AddWords(const Thema_C* thema)
 {
-    foreach(Word_C* word, thema->GetWords()) {
+    QVector<Word_C*> words = thema->GetWords();
+    srand(QDateTime::currentMSecsSinceEpoch());
+    while (words.count() > 0) {
+        int index = rand()%words.count();
+        Word_C* word = words.takeAt(index);
         QObject* word_item = AddWord(word->GetWordText(), word->GetDescription());
         Q_ASSERT(word_item);
         _item_word_hash[word_item] = word;
