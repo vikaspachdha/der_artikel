@@ -15,7 +15,7 @@ QtObject {
 
     property string color_der: "#5287B1"
     property string color_die: "#E882DA"
-    property string color_das: "#FFFFFF"
+    property string color_das: "#AAAAAA"
 
     property string shadow_color: "#00000000"
 }

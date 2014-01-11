@@ -163,7 +163,6 @@ Image {
         } else {
             new_color = "#" + hex_opacity + color.substring(1)
         }
-        console.log(new_color)
         return new_color
     }
 }
