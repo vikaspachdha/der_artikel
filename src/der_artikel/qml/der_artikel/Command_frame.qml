@@ -40,7 +40,7 @@ Flipable {
         radius: 0
         spread: 0.3
         samples: 16
-        color: "#66000000"
+        color: color_palette.shadow_color
         source: background
 
         Behavior on horizontalOffset {

@@ -11,10 +11,10 @@ Rectangle {
     width:parent.width
     radius:4
     gradient: Gradient {
-        GradientStop {position:0.0;color:color_palette.color_bg_02}
-        GradientStop {position:0.1;color:color_palette.color_bg_01}
-        GradientStop {position:0.9;color:color_palette.color_bg_01}
-        GradientStop {position:1.0;color:color_palette.color_bg_02}
+        GradientStop {position:0.0;color:color_palette.color_btn_02}
+        GradientStop {position:0.1;color:color_palette.color_btn_01}
+        GradientStop {position:0.9;color:color_palette.color_btn_01}
+        GradientStop {position:1.0;color:color_palette.color_btn_02}
     }
 
     Text {

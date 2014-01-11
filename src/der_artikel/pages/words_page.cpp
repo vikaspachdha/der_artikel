@@ -69,24 +69,6 @@ void WordsPage_C::SetSelectedArticle(Article_C::Artikel article)
 {
     if(_selected_article != article) {
         _selected_article = article;
-        switch (_selected_article) {
-        case Article_C::DER:
-            _current_word_color = QColor("#5287B1");
-            break;
-        case Article_C::DIE:
-            _current_word_color = QColor("#E882DA");
-            break;
-        case Article_C::DAS:
-            _current_word_color = QColor("#FFFFFF");
-            break;
-        case Article_C::NA:
-            _current_word_color = QColor("#FEF574");
-            break;
-        default:
-            break;
-        }
-
-        _current_word_color.setAlpha(70);
         emit selectedArticleChanged();
     }
 }

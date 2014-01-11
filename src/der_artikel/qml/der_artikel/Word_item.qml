@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
+import com.vystosi.qmlcomponents 1.0
 
 Item {
     id: root
@@ -61,8 +62,17 @@ Item {
                 showMessage(wordText,description_text)
             } else {
                 wordClicked()
-                overlay.color = words_page.current_word_color;
+                overlay.color = getArticleColor(words_page.selected_article)
             }
+        }
+    }
+
+    function getArticleColor(article) {
+        switch(article) {
+            case Article.DER:return colorOpacity(color_palette.color_der,0.4);
+            case Article.DIE:return colorOpacity(color_palette.color_die,0.4);
+            case Article.DAS:return colorOpacity(color_palette.color_das,0.4);
+            default:return "#00000000";
         }
     }
 

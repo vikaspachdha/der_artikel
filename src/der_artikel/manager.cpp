@@ -24,7 +24,6 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _settings(0),
     _root_context(ref_root_context),
     _root_item(0),
-    _current_thema(0),
     _current_page(INVALID_PAGE),
     _current_result(0),
     _game_level(EASY),
@@ -115,8 +114,6 @@ void Manager_C::onThemaSelectionChanged()
     _thema_selected = _thema_model->GetSelectedThema() ? true : false;
     emit themaSelectionStateChanged();
 }
-
-
 
 void Manager_C::setPageItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 {

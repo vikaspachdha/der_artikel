@@ -122,7 +122,6 @@ private:
     QQuickItem* _root_item;
     QHash<PageId_TP, PageItems_TP> _page_items_hash;
     QHash<PageId_TP, Page_I*> _page_hash;
-    Thema_C* _current_thema;
     PageId_TP _current_page;
     Result_C* _current_result;
     ThemaModel_C* _thema_model;
