@@ -42,7 +42,8 @@ SOURCES += main.cpp \
     pages/words_page.cpp \
     pages/stats_page.cpp \
     settings.cpp \
-    pages/thema_page.cpp
+    pages/thema_page.cpp \
+    conflict_dlg.cpp
 
 # Installation path
 # target.path =
@@ -76,10 +77,12 @@ HEADERS += \
     pages/words_page.h \
     pages/stats_page.h \
     settings.h \
-    pages/thema_page.h
+    pages/thema_page.h \
+    conflict_dlg.h
 
 FORMS += \
-    thema_builder.ui
+    thema_builder.ui \
+    conflict_dlg.ui
 
 RESOURCES += \
     resources.qrc

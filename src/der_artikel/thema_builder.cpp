@@ -14,6 +14,7 @@
 #include "common.h"
 #include "version.h"
 #include "thema_loader.h"
+#include "conflict_dlg.h"
 
 
 #ifdef ENABLE_THEMA_BUILDER
@@ -31,6 +32,7 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
 
     // Connections
     connect(ui->_btn_box, SIGNAL(clicked(QAbstractButton*)), this, SLOT(OnDlgButtonClicked(QAbstractButton*)) );
+    connect(ui->_new_btn,SIGNAL(clicked()), this,SLOT(OnNew()) );
     connect(ui->_open_btn,SIGNAL(clicked()), this,SLOT(OnLoad()) );
     connect(ui->_save_btn,SIGNAL(clicked()), this,SLOT(OnSave()) );
     connect(ui->_export_data_btn,SIGNAL(clicked()), this,SLOT(OnExport()) );
@@ -116,6 +118,12 @@ void ThemaBuilder_C::OnDlgButtonClicked(QAbstractButton *btn)
     }
 }
 
+void ThemaBuilder_C::OnNew()
+{
+    Reset();
+    _thema = new Thema_C();
+}
+
 void ThemaBuilder_C::OnLoad()
 {
     static QString last_open_path = QDir::homePath();
@@ -126,17 +134,32 @@ void ThemaBuilder_C::OnLoad()
         ThemaLoader_C loader;
         Thema_C* new_thema = loader.LoadThema(file_path);
         if(new_thema) {
-            if(_thema) {
-                delete _thema;
-            }
-            ResetUI();
-            _words_set.clear();
+            Reset();
             _thema = new_thema;
             PopulateUI(_thema);
             last_open_path = file_path;
         }
     }
 
+}
+
+void ThemaBuilder_C::OnSave()
+{
+    static QString last_save_path = QDir::homePath() + QDir::separator() + "untitled.AKL";
+    QString save_file = QFileDialog::getSaveFileName(this,tr("Select file name"),
+                                                     last_save_path,
+                                                     tr("Thema files (*.AKL);; All files (*.*)"));
+
+    if(!save_file.isEmpty()) {
+        QFile file(save_file);
+        if (file.open(QFile::WriteOnly | QFile::Text)) {
+            if(Write(&file)) {
+                last_save_path = save_file;
+            }
+        } else {
+            qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
+        }
+    }
 }
 
 void ThemaBuilder_C::OnAddClicked()
@@ -161,7 +184,7 @@ void ThemaBuilder_C::OnAddClicked()
         edit_word->_artikel = article;
         _words_set.remove(edit_word->_text);
         edit_word->_text = text;
-         _words_set.insert(edit_word->_text);
+         _words_set[edit_word->_text] = edit_word;
         edit_word->_description = desc;
         UpdateItem(_edit_item);
         SetWordUiState(ADD_STATE);
@@ -242,6 +265,8 @@ void ThemaBuilder_C::OnDelete()
                 Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
                 if(word) {
                     _thema->_words.remove(_thema->_words.indexOf(word));
+                    _word_item_hash.remove(word);
+                    _words_set.remove(word->GetWordText());
                     delete word;
                     delete item;
                 }
@@ -295,25 +320,6 @@ void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
                 listItemText = QString("%1 %2").arg(Article_C::ArtikelText(word->_artikel)).arg(word->_text);
             }
             item->setText(listItemText);
-        }
-    }
-}
-
-void ThemaBuilder_C::OnSave()
-{
-    static QString last_save_path = QDir::homePath() + QDir::separator() + "untitled.AKL";
-    QString save_file = QFileDialog::getSaveFileName(this,tr("Select file name"),
-                                                     last_save_path,
-                                                     tr("Thema files (*.AKL);; All files (*.*)"));
-
-    if(!save_file.isEmpty()) {
-        QFile file(save_file);
-        if (file.open(QFile::WriteOnly | QFile::Text)) {
-            if(Write(&file)) {
-                last_save_path = save_file;
-            }
-        } else {
-            qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
         }
     }
 }
@@ -441,6 +447,7 @@ bool ThemaBuilder_C::AddWordToList(Word_C* new_word)
         list_item->setData(Qt::UserRole,QVariant::fromValue<Word_C*>(new_word));
         UpdateItem(list_item);
         ui->_word_list->addItem(list_item);
+        _word_item_hash[new_word] = list_item;
         UpdateUI();
         success = true;
     }
@@ -452,19 +459,37 @@ bool ThemaBuilder_C::AddWordToThema(Word_C *new_word)
     bool success = false;
     if(new_word) {
         if(_words_set.contains(new_word->_text)) {
-            QMessageBox::warning(this,tr("Duplicate"), tr("%1 already exists. Duplicate words are not allowed.").arg(new_word->_text));
+            Word_C* old_word = _words_set[new_word->_text];
+            ConflictDlg_C conflict_dlg(*old_word, *new_word, this);
+            if(conflict_dlg.exec() == QDialog::Accepted) {
+                QListWidgetItem* list_item = _word_item_hash[old_word];
+                Q_ASSERT(list_item);
+                if(conflict_dlg.updateArticle()) {
+                    old_word->_artikel = new_word->_artikel;
+                }
+                if(conflict_dlg.updateTranslation()) {
+                    old_word->_description = new_word->_description;
+                }
+                UpdateItem(list_item);
+            }
         } else {
             AddWordToList(new_word);
             _thema->_words.append(new_word);
-            _words_set.insert(new_word->_text);
+            _words_set[new_word->_text] = new_word;
             success = true;
         }
     }
     return success;
 }
 
-void ThemaBuilder_C::ResetUI()
+void ThemaBuilder_C::Reset()
 {
+    if(_thema) {
+        delete _thema;
+        _thema = 0;
+    }
+    _words_set.clear();
+    _word_item_hash.clear();
     ui->_thema_name_edit->setText("");
     ui->_thema_tr_name_edit->setText("");
     ui->_author_name_edit->setText("");
@@ -473,11 +498,14 @@ void ThemaBuilder_C::ResetUI()
     ui->_na_radio->setChecked(true);
     ui->_word_list->clear();
     SetWordUiState(ADD_STATE);
+    UpdateUI();
 }
 
 void ThemaBuilder_C::UpdateUI()
 {
-    if(ui->_word_list->count() > 0) {
+    int word_count = ui->_word_list->count();
+    ui->_word_count_lbl->setText(QString::number(word_count));
+    if(word_count > 0) {
         ui->_export_data_btn->setEnabled(true);
     } else {
         ui->_export_data_btn->setEnabled(false);

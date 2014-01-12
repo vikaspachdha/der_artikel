@@ -6,7 +6,7 @@
 #ifdef ENABLE_THEMA_BUILDER
 
 #include <QWidget>
-#include <QSet>
+#include <QHash>
 
 class Thema_C;
 
@@ -38,6 +38,7 @@ protected:
 
 private slots:
     void OnDlgButtonClicked(QAbstractButton* btn);
+    void OnNew();
     void OnLoad();
     void OnSave();
     void OnExport();
@@ -61,7 +62,7 @@ private:
     bool Import(QIODevice* pDevice);
     bool AddWordToList(Word_C *new_word);
     bool AddWordToThema(Word_C *new_word);
-    void ResetUI();
+    void Reset();
     void UpdateUI();
     void PopulateUI(Thema_C* thema);
     void SetWordUiState(WordUIState new_state);
@@ -72,7 +73,8 @@ private:
 private:
     Ui::ThemaBuilder_C *ui;
     Thema_C* _thema;
-    QSet<QString> _words_set;
+    QHash<QString, Word_C*> _words_set;
+    QHash<Word_C*, QListWidgetItem*> _word_item_hash;
     QListWidgetItem* _edit_item;
 };
 #endif // ENABLE_THEMA_BUILDER
