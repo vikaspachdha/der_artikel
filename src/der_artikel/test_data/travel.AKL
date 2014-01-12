@@ -1,0 +1,52 @@
+<!DOCTYPE DerArtikel>
+<Root Version="100">
+    <Thema>
+        <ThemaText>das Reisen</ThemaText>
+        <Translation>Travel</Translation>
+        <Author>Vikas Pachdha</Author>
+        <ExperiencePoints>0</ExperiencePoints>
+        <LastPlayed>1389512663998</LastPlayed>
+        <Words>
+            <Word>
+                <WordText>Norden</WordText>
+                <Description>the north</Description>
+                <Artikel>1</Artikel>
+            </Word>
+            <Word>
+                <WordText>Süden</WordText>
+                <Description>the south</Description>
+                <Artikel>1</Artikel>
+            </Word>
+            <Word>
+                <WordText>Osten</WordText>
+                <Description>the east</Description>
+                <Artikel>1</Artikel>
+            </Word>
+            <Word>
+                <WordText>Westen</WordText>
+                <Description>the west</Description>
+                <Artikel>1</Artikel>
+            </Word>
+            <Word>
+                <WordText>Stadt</WordText>
+                <Description>the city</Description>
+                <Artikel>2</Artikel>
+            </Word>
+            <Word>
+                <WordText>Landkarte</WordText>
+                <Description>The map</Description>
+                <Artikel>2</Artikel>
+            </Word>
+            <Word>
+                <WordText>Land</WordText>
+                <Description>country</Description>
+                <Artikel>3</Artikel>
+            </Word>
+            <Word>
+                <WordText>Museum</WordText>
+                <Description>Museum</Description>
+                <Artikel>3</Artikel>
+            </Word>
+        </Words>
+    </Thema>
+</Root>
