@@ -3,7 +3,7 @@
 #include <QObject>
 #include <QDomElement>
 #include <QDateTime>
-#include <QVector>
+#include <QList>
 #include <QUrl>
 #include "word.h"
 #include "thema_interface.h"
@@ -55,7 +55,7 @@ public:
 
     void SetFilePath(QString file_path);
 
-    QVector<Word_C*> GetWords() const { return _words; }
+    QList<Word_C*> GetWords() const { return _words; }
 
     bool Selected() const { return _selected; }
     Q_INVOKABLE void setSelected(bool selected, SelectionType_TP type = SINGLE_SELECTION);
@@ -98,7 +98,7 @@ private:
     QString _translation;
     QString _author;
     QString _file_path;
-    QVector<Word_C*> _words;
+    QList<Word_C*> _words;
     bool _defered_read;
     QDateTime _last_played;
     int _experience_points;

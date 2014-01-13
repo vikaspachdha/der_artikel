@@ -264,7 +264,7 @@ void ThemaBuilder_C::OnDelete()
                 }
                 Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
                 if(word) {
-                    _thema->_words.remove(_thema->_words.indexOf(word));
+                    _thema->_words.removeAt(_thema->_words.indexOf(word));
                     _word_item_hash.remove(word);
                     _words_set.remove(word->GetWordText());
                     delete word;

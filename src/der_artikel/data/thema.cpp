@@ -139,7 +139,7 @@ bool Thema_C::Write(QDomElement &element)
 
             QDomElement dom_words_root = domDocument.createElement("Words");
 
-            QVector<Word_C*>::Iterator iter =_words.begin();
+            QList<Word_C*>::Iterator iter =_words.begin();
             while(iter != _words.end()) {
                 Word_C* word = *iter;
                 if(word) {

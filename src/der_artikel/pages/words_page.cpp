@@ -85,7 +85,7 @@ void WordsPage_C::OnWordClicked()
 
 void WordsPage_C::AddWords(const Thema_C* thema)
 {
-    QVector<Word_C*> words = thema->GetWords();
+    QList<Word_C*> words = thema->GetWords();
     srand(QDateTime::currentMSecsSinceEpoch());
     while (words.count() > 0) {
         int index = rand()%words.count();
