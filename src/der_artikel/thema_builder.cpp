@@ -35,6 +35,7 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     connect(ui->_new_btn,SIGNAL(clicked()), this,SLOT(OnNew()) );
     connect(ui->_open_btn,SIGNAL(clicked()), this,SLOT(OnLoad()) );
     connect(ui->_save_btn,SIGNAL(clicked()), this,SLOT(OnSave()) );
+    connect(ui->_icon_btn,SIGNAL(clicked()), this,SLOT(OnIcon()) );
     connect(ui->_export_data_btn,SIGNAL(clicked()), this,SLOT(OnExport()) );
     connect(ui->_import_data_btn,SIGNAL(clicked()), this,SLOT(OnImport()) );
     connect(ui->_add_btn,SIGNAL(clicked()), this,SLOT(OnAddClicked()) );
@@ -344,6 +345,23 @@ void ThemaBuilder_C::OnExport()
     }
 }
 
+void ThemaBuilder_C::OnIcon()
+{
+    static QString last_open_path = QDir::homePath();
+    QString file_path = QFileDialog::getOpenFileName(this,tr("Select a png file"),
+                                                     last_open_path,
+                                                     tr("Png files (*.png);; All files (*.*)"));
+    if(!file_path.isEmpty()) {
+        QPixmap p(file_path);
+        if(p.isNull()) {
+            QMessageBox::warning(this,tr("Invalid Image"), tr("Invalid image file"));
+        } else {
+            p = p.scaled(64,64);
+            ui->_icon_lbl->setPixmap(p);
+        }
+    }
+}
+
 void ThemaBuilder_C::OnImport()
 {
     static QString last_open_path = QDir::homePath();
@@ -371,18 +389,20 @@ bool ThemaBuilder_C::Write(QIODevice* pDevice)
 
     QDomDocument domDocument("DerArtikel");
 
-    QTextStream out(pDevice);
+    QDataStream out(pDevice);
     QDomElement root = domDocument.createElement("Root");
     root.setAttribute("Version", QString::number(APP_VERSION));
 
     _thema->_text = ui->_thema_name_edit->text().trimmed();
     _thema->_translation =  ui->_thema_tr_name_edit->text().trimmed();
     _thema->_author = ui->_author_name_edit->text().trimmed();
+    Q_ASSERT(_thema->_icon);
+    *(_thema->_icon) = *(ui->_icon_lbl->pixmap());
     _thema->Write(root);
 
     domDocument.appendChild(root);
-    domDocument.save(out, 4);
-
+    QByteArray xml_data = domDocument.toByteArray(4);
+    out<<qCompress(xml_data,ARTIKEL::COMPRESSION_LEVEL);
     return true;
 }
 
@@ -525,6 +545,7 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
         foreach(Word_C* word, thema->_words) {
             AddWordToList(word);
         }
+        ui->_icon_lbl->setPixmap(*_thema->_icon);
     }
 }
 

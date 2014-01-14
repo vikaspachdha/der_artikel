@@ -42,6 +42,7 @@ private slots:
     void OnLoad();
     void OnSave();
     void OnExport();
+    void OnIcon();
     void OnImport();
     void OnAddClicked();
     void OnWordTextChanged(QString new_text);

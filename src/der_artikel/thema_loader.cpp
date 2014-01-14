@@ -37,11 +37,15 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
     QFile thema_file(file_path);
 
     if(thema_file.open(QFile::ReadOnly)) {
+        QDataStream data_stream(&thema_file);
+        QByteArray xml_data;
+        data_stream>>xml_data;
+        xml_data = qUncompress(xml_data);
         QDomDocument thema_doc;
         QString error_msg;
         int error_line;
         int error_col;
-        if(thema_doc.setContent(&thema_file, &error_msg, &error_line, &error_col)) {
+        if(thema_doc.setContent(xml_data, &error_msg, &error_line, &error_col)) {
             //parse the file and read the thema.
             QDomElement root = thema_doc.firstChildElement("Root");
             QDomAttr versionAttr = root.attributeNode("Version");

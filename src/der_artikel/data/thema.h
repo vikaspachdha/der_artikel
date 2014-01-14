@@ -92,6 +92,8 @@ signals:
 private:
     bool Write(QIODevice* pDevice);
     void UpdateThemaState();
+    QByteArray IconData() const;
+    void UpdateIcon(QByteArray data);
 
 private:
     QString _text;
@@ -104,6 +106,7 @@ private:
     int _experience_points;
     bool _selected;
     QUrl _icon_url;
+    QPixmap* _icon;
     State_TP _state;
 
 private:

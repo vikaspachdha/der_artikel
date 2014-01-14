@@ -3,8 +3,10 @@
 #include <QPixmap>
 #include <QFileInfo>
 #include <QDir>
+#include <QBuffer>
 
 #include "version.h"
+#include "common.h"
 
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
@@ -16,11 +18,13 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _state(RUSTY)
 {
     _icon_url = QUrl("qrc:/res/resources/thema_generic.png");
+    _icon = new QPixmap("qrc:/res/resources/thema_generic.png");
 }
 
 Thema_C::~Thema_C()
 {
     ClearWords();
+    delete _icon;
 }
 
 void Thema_C::SetFilePath(QString file_path)
@@ -45,6 +49,9 @@ bool Thema_C::Read(const QDomElement &element)
 
         _translation = element.firstChildElement("Translation").text();
         _author = element.firstChildElement("Author").text();
+
+        QByteArray icon_data = QByteArray::fromBase64(element.firstChildElement("Icon").text().toUtf8());
+        UpdateIcon(icon_data);
 
         bool ok = false;
 
@@ -127,6 +134,13 @@ bool Thema_C::Write(QDomElement &element)
             dom_author.appendChild(author_text);
             dom_thema.appendChild(dom_author);
 
+            QDomElement dom_icon = domDocument.createElement("Icon");
+            QByteArray icon_arr = IconData().toBase64();
+            QString icon_data = QString::fromUtf8(icon_arr);
+            QDomText icon_text = domDocument.createTextNode(icon_data);
+            dom_icon.appendChild(icon_text);
+            dom_thema.appendChild(dom_icon);
+
             QDomElement dom_experience = domDocument.createElement("ExperiencePoints");
             QDomText text_experience = domDocument.createTextNode(QString::number(_experience_points));
             dom_experience.appendChild(text_experience);
@@ -186,15 +200,15 @@ bool Thema_C::Write(QIODevice* pDevice)
 {
     QDomDocument domDocument("DerArtikel");
 
-    QTextStream out(pDevice);
+    QDataStream out(pDevice);
     QDomElement root = domDocument.createElement("Root");
     root.setAttribute("Version", QString::number(APP_VERSION));
 
     Write(root);
 
     domDocument.appendChild(root);
-    domDocument.save(out, 4);
-
+    QByteArray xml_data = domDocument.toByteArray(4);
+    out<<qCompress(xml_data,ARTIKEL::COMPRESSION_LEVEL);
     return true;
 }
 
@@ -214,6 +228,26 @@ void Thema_C::UpdateThemaState()
     if(_state != state) {
         _state = state;
         emit stateChanged();
+    }
+}
+
+QByteArray Thema_C::IconData() const
+{
+    QByteArray data;
+    QBuffer buffer(&data);
+    buffer.open(QIODevice::WriteOnly);
+    QDataStream data_stream(&buffer);
+    data_stream<<*_icon;
+    return data;
+}
+
+void Thema_C::UpdateIcon(QByteArray data)
+{
+    if(data.size() > 0) {
+        QBuffer buffer(&data);
+        buffer.open(QIODevice::ReadOnly);
+        QDataStream data_stream(&buffer);
+        data_stream>>*_icon;
     }
 }
 
