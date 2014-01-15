@@ -36,10 +36,6 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
                 data = thema->Author();
                 break;
 
-            case ICON:
-                data = thema->GetIconUrl();
-                break;
-
             case SELECTED:
                 data = thema->Selected();
                 break;
@@ -82,7 +78,6 @@ QHash<int, QByteArray> ThemaModel_C::roleNames() const
     roleNames[DISPLAY_NAME] = "display_name";
     roleNames[TR_NAME] = "tr_name";
     roleNames[AUTHOR] = "author";
-    roleNames[ICON] = "icon";
     roleNames[SELECTED] = "selected";
     roleNames[EXPERIENCE] = "experience";
     roleNames[WORD_COUNT] = "word_count";

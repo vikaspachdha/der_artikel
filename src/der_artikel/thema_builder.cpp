@@ -396,8 +396,7 @@ bool ThemaBuilder_C::Write(QIODevice* pDevice)
     _thema->_text = ui->_thema_name_edit->text().trimmed();
     _thema->_translation =  ui->_thema_tr_name_edit->text().trimmed();
     _thema->_author = ui->_author_name_edit->text().trimmed();
-    Q_ASSERT(_thema->_icon);
-    *(_thema->_icon) = *(ui->_icon_lbl->pixmap());
+    _thema->_icon = *(ui->_icon_lbl->pixmap());
     _thema->Write(root);
 
     domDocument.appendChild(root);
@@ -545,7 +544,7 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
         foreach(Word_C* word, thema->_words) {
             AddWordToList(word);
         }
-        ui->_icon_lbl->setPixmap(*_thema->_icon);
+        ui->_icon_lbl->setPixmap(_thema->_icon);
     }
 }
 

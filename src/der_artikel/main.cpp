@@ -4,6 +4,7 @@
 
 #include "qtquick2applicationviewer.h"
 #include "manager.h"
+#include "image_provider.h"
 #include "data/result.h"
 #include "data/thema.h"
 #include "thema_model.h"
@@ -12,7 +13,6 @@
 #include "pages/words_page.h"
 #include "pages/settings_page.h"
 #include "common.h"
-
 
 #ifdef ENABLE_THEMA_BUILDER
 #include "thema_builder.h"
@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
     root_context->setContextProperty("currentResult", manager.GetCurrentResult());
     root_context->setContextProperty("themaModel", manager.GetThemaModel());
     root_context->setContextProperty("settings", manager.GetSettings());
-
+    root_context->engine()->addImageProvider("rootImageProvider",manager.GetImageProvider());
 
     viewer.setSource(QUrl("qrc:/res/qml/der_artikel/main.qml"));
 

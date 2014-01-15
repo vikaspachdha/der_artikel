@@ -18,7 +18,7 @@ Page {
             title:display_name
             translation: tr_name
             author_name: author
-            icon_url: icon
+            icon_url: "image://rootImageProvider/"+display_name
             count:word_count
             width:grid_view.cellWidth-4
             height:grid_view.cellHeight-4

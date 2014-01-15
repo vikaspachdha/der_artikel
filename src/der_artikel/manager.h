@@ -10,6 +10,7 @@
 #include "thema_model.h"
 
 class QQuickItem;
+class ImageProvider_C;
 class Thema_C;
 class Word_C;
 class ResultAlgo_I;
@@ -86,6 +87,8 @@ public:
 
     Q_INVOKABLE QString versionString() {return _version_string;}
 
+    ImageProvider_C* GetImageProvider() { return _image_provider; }
+
 public:
     ThemaModel_C* GetThemaModel() {return _thema_model; }
 
@@ -128,6 +131,7 @@ private:
     GameLevel _game_level;
     bool _thema_selected;
     QString _version_string;
+    ImageProvider_C* _image_provider;
 };
 
 #endif // MANAGER_H

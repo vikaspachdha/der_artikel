@@ -28,7 +28,6 @@ public:
         DISPLAY_NAME=Qt::UserRole+1,
         TR_NAME,
         AUTHOR,
-        ICON,
         SELECTED,
         EXPERIENCE,
         WORD_COUNT,

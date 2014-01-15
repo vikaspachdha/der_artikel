@@ -11,6 +11,7 @@
 
 #include "data/result.h"
 #include "version.h"
+#include "image_provider.h"
 
 #include "pages/help_page.h"
 #include "pages/words_page.h"
@@ -27,7 +28,8 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _current_page(INVALID_PAGE),
     _current_result(0),
     _game_level(EASY),
-    _thema_selected(false)
+    _thema_selected(false),
+    _image_provider(new ImageProvider_C)
 {
     int version = APP_VERSION;
     while(version >= 10) {
@@ -107,6 +109,7 @@ void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
     Q_ASSERT(_thema_model);
     new_thema->setParent(this);
     _thema_model->AddThema(new_thema);
+    _image_provider->AddImage(new_thema->GetText(),new_thema->GetIcon());
 }
 
 void Manager_C::onThemaSelectionChanged()

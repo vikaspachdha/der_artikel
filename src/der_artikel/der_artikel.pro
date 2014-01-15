@@ -43,7 +43,8 @@ SOURCES += main.cpp \
     pages/stats_page.cpp \
     settings.cpp \
     pages/thema_page.cpp \
-    conflict_dlg.cpp
+    conflict_dlg.cpp \
+    image_provider.cpp
 
 # Installation path
 # target.path =
@@ -78,7 +79,8 @@ HEADERS += \
     pages/stats_page.h \
     settings.h \
     pages/thema_page.h \
-    conflict_dlg.h
+    conflict_dlg.h \
+    image_provider.h
 
 FORMS += \
     thema_builder.ui \

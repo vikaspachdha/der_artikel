@@ -3,6 +3,7 @@
 #include <QObject>
 #include <QDomElement>
 #include <QDateTime>
+#include <QPixmap>
 #include <QList>
 #include <QUrl>
 #include "word.h"
@@ -18,7 +19,6 @@ class Thema_C : public QObject, public Thema_I
 
     Q_PROPERTY(bool selected READ Selected NOTIFY selectionChanged)
     Q_PROPERTY(int experience READ ExperiencePoints NOTIFY experiencePointsChanged)
-    Q_PROPERTY(QUrl icon_url READ GetIconUrl CONSTANT)
     Q_PROPERTY(QString name READ GetText CONSTANT)
     Q_PROPERTY(QString tr_name READ GetTrText CONSTANT)
     Q_PROPERTY(unsigned int word_count READ GetWordCount CONSTANT)
@@ -60,7 +60,7 @@ public:
     bool Selected() const { return _selected; }
     Q_INVOKABLE void setSelected(bool selected, SelectionType_TP type = SINGLE_SELECTION);
 
-    const QUrl& GetIconUrl() const { return _icon_url; }
+    const QPixmap& GetIcon() const { return _icon; }
 
     int ExperiencePoints() const { return _experience_points; }
 
@@ -105,8 +105,7 @@ private:
     QDateTime _last_played;
     int _experience_points;
     bool _selected;
-    QUrl _icon_url;
-    QPixmap* _icon;
+    QPixmap _icon;
     State_TP _state;
 
 private:

@@ -1,6 +1,5 @@
 #include "thema.h"
 #include <QDebug>
-#include <QPixmap>
 #include <QFileInfo>
 #include <QDir>
 #include <QBuffer>
@@ -17,26 +16,17 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _selected(false),
     _state(RUSTY)
 {
-    _icon_url = QUrl("qrc:/res/resources/thema_generic.png");
-    _icon = new QPixmap("qrc:/res/resources/thema_generic.png");
+    _icon =  QPixmap("qrc:/res/resources/thema_generic.png");
 }
 
 Thema_C::~Thema_C()
 {
     ClearWords();
-    delete _icon;
 }
 
 void Thema_C::SetFilePath(QString file_path)
 {
     _file_path = file_path;
-    QFileInfo file_info(file_path);
-    QString icon_file_path = file_info.absoluteDir().absolutePath() + QDir::separator() + file_info.baseName() + ".png";
-
-    QFileInfo icon_file(icon_file_path);
-    if(icon_file.exists()) {
-        _icon_url =QUrl(QUrl::fromLocalFile(icon_file_path));
-    }
 }
 
 bool Thema_C::Read(const QDomElement &element)
@@ -237,7 +227,7 @@ QByteArray Thema_C::IconData() const
     QBuffer buffer(&data);
     buffer.open(QIODevice::WriteOnly);
     QDataStream data_stream(&buffer);
-    data_stream<<*_icon;
+    data_stream<<_icon;
     return data;
 }
 
@@ -247,7 +237,7 @@ void Thema_C::UpdateIcon(QByteArray data)
         QBuffer buffer(&data);
         buffer.open(QIODevice::ReadOnly);
         QDataStream data_stream(&buffer);
-        data_stream>>*_icon;
+        data_stream>>_icon;
     }
 }
 
