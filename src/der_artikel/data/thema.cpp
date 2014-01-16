@@ -62,12 +62,25 @@ bool Thema_C::Read(const QDomElement &element)
                 ok= false;
                 int experience = dom_experience.text().toInt(&ok);
                 if(ok) {
-                    _experience_points = experience;
-                    UpdateThemaState();
+                    AddExperiencePoints(experience);
                     success = true;
                     int lapsed_days = _last_played.daysTo(QDateTime::currentDateTime());
-                    if( (lapsed_days > 0) && (_state != INERT) ) {
-                        DeductExperiencePoints(lapsed_days*10);
+                    while( (lapsed_days-- > 0) ) {
+                        // Progressively deduct experience points.
+                        switch (_state) {
+                            case INERT:
+                                DeductExperiencePoints(2);
+                                break;
+                            case GOLD:
+                                DeductExperiencePoints(5);
+                                break;
+                            case SILVER:
+                                DeductExperiencePoints(10);
+                                break;
+                            default:
+                                DeductExperiencePoints(20);
+                                break;
+                        }
                     }
                 } else {
                     success = false;
