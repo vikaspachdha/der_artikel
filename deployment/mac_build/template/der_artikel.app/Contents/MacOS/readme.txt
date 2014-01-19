@@ -1,0 +1,1 @@
+The release binary is copied here.

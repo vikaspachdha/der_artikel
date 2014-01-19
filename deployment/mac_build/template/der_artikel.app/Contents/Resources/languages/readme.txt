@@ -1,0 +1,1 @@
+The translation files(.qm) are copied here here.
