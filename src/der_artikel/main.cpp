@@ -40,6 +40,7 @@ int main(int argc, char *argv[])
 #endif
 
     QtQuick2ApplicationViewer viewer;
+    app.setWindowIcon(QIcon("qrc:/res/resources/app.png"));
 
     QQmlContext* root_context = viewer.rootContext();
     Manager_C manager(*root_context);

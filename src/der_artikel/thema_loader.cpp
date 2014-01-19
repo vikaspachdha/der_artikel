@@ -18,7 +18,7 @@ ThemaLoader_C::ThemaLoader_C(QObject *thema_parent, QObject *parent) : QObject(p
 
 void ThemaLoader_C::run()
 {
-    QDir root_thema_dir = ARTIKEL::GetResourcePath("test_data");
+    QDir root_thema_dir = ARTIKEL::GetResourcePath("thema");
     QStringList nameFilters;
     nameFilters<<"*.AKL";
     QFileInfoList thema_files= root_thema_dir.entryInfoList(nameFilters,QDir::Files | QDir::NoSymLinks|QDir::NoDotAndDotDot);

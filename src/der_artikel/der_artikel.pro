@@ -1,10 +1,10 @@
 cache()
 QT += xml widgets
 
-DEFINES += ENABLE_THEMA_BUILDER
+#DEFINES += ENABLE_THEMA_BUILDER
 
 # Add more folders to ship with the application, here
-folder_01.source = test_data
+folder_01.source = thema
 folder_01.target = ./
 DEPLOYMENTFOLDERS = folder_01
 
