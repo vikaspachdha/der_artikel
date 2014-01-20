@@ -42,7 +42,7 @@ Page_panel
             text_anchors.horizontalCenter: sound_btn.horizontalCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.SOUND
             buttonText: qsTr("Sound") + settings.i18n_empty_string
-            onActivated: settings_page_instance.sub_page_type = SettingsPage.SOUND
+            onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available"),1200)
         }
 
         Button {

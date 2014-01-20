@@ -1,22 +1,15 @@
 import QtQuick 2.0
 import QtGraphicalEffects 1.0
-import QtMultimedia 5.0
 import com.vystosi.qmlcomponents 1.0
 
 Image {
     id: rootItem;
-    width: 400
+    width: 480
     height: 400
     property QtObject color_palette : cp_blue
 
     source: "qrc:/res/resources/background_texture.png"
     fillMode: Image.Tile
-
-    SoundEffect {
-        id: click
-        source: "qrc:/res/resources/sounds/click.wav"
-        volume: settings.sound_level
-    }
 
     Color_palette_blue {
         id:cp_blue
@@ -116,8 +109,6 @@ Image {
             blanket.show = false;
         }
     }
-
-
 
     function showMessage(title,msg,duration,msg_type)
     {

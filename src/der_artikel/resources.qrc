@@ -81,7 +81,6 @@
         <file>qml/der_artikel/Settings_page_panel.qml</file>
         <file>qml/der_artikel/Settings_page_title.qml</file>
         <file>qml/der_artikel/Settings_page.qml</file>
-        <file>qml/der_artikel/Sound_settings.qml</file>
         <file>qml/der_artikel/Startup_screen.qml</file>
         <file>qml/der_artikel/Stats_page_panel.qml</file>
         <file>qml/der_artikel/Stats_page_title.qml</file>

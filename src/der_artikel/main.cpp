@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
     QQuickItem* root_item = viewer.rootObject();
     manager.SetRootItem(root_item);
 
+    viewer.setMinimumSize(QSize(480,400));
     viewer.showExpanded();
 
     return app.exec();

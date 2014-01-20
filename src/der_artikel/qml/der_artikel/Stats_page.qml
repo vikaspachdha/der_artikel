@@ -44,6 +44,7 @@ Page {
             }
             left_text_color: color_palette.color_font_02
             right_text_color: color_palette.color_font_02
+            center_text_color: color_palette.color_font_02
             center_text: " : "
         }
     }

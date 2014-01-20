@@ -8,6 +8,7 @@ Rectangle {
     property alias right_text: text2.text
     property alias right_text_color: text2.color
     property alias center_text: centerText.text
+    property alias center_text_color: centerText.color
     width:parent.width
     radius:4
     gradient: Gradient {
