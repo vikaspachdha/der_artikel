@@ -101,4 +101,3 @@ TRANSLATIONS += ./der_artikel_de.ts \
 OTHER_FILES += ./der_artikel_de.ts \
     ./der_artikel_en.ts \
     ./der_artikel_hin.ts
-

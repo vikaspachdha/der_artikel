@@ -97,5 +97,6 @@
         <file>qml/der_artikel/Words_page.qml</file>
         <file>resources/sounds/click.wav</file>
         <file>resources/new_file.png</file>
+        <file>qml/der_artikel/Slider.qml</file>
     </qresource>
 </RCC>

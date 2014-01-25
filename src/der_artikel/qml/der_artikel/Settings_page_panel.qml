@@ -38,6 +38,7 @@ Page_panel
 
         Button {
             id:sound_btn
+            visible:false
             width:parent.width
             text_anchors.horizontalCenter: sound_btn.horizontalCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.SOUND
@@ -59,7 +60,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: game_play_btn.horizontalCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.GAME_PLAY
-            buttonText: qsTr("Game play") + settings.i18n_empty_string
+            buttonText: qsTr("Game") + settings.i18n_empty_string
             onActivated: settings_page_instance.sub_page_type = SettingsPage.GAME_PLAY
         }
     }

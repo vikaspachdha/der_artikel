@@ -6,10 +6,14 @@
 #include <QDebug>
 #include "common.h"
 
+static const int MIN_WORD_MSG_TIME = 500;
+static const int MAX_WORD_MSG_TIME = 5000;
+
 Settings_C::Settings_C(QObject *parent) :
     QObject(parent),
     _current_language(ENGLISH),
-    _sound_level(0.1)
+    _sound_level(0.1),
+    _word_message_time(1200)
 {
     updateLangauge();
 }
@@ -69,5 +73,43 @@ void Settings_C::setSoundLevel(double sound_level)
         _sound_level = sound_level;
         emit soundLevelChanged();
     }
+}
+
+QString Settings_C::wordMsgTimeStr() const
+{
+    return QString::number(_word_message_time);
+}
+
+void Settings_C::setWordMsgTimeStr(QString new_time_str)
+{
+    bool ok = false;
+    int msecs = new_time_str.toInt(&ok);
+    if(ok) {
+        setWordMsgTime(msecs);
+    }
+}
+
+void Settings_C::setWordMsgTime(int new_time)
+{
+    if(new_time < 500) {
+        new_time = 500;
+    }
+    if(new_time > 5000) {
+        new_time = 5000;
+    }
+    if(_word_message_time != new_time) {
+        _word_message_time = new_time;
+        emit wordMsgTimeChanged();
+    }
+}
+
+int Settings_C::minWordMsgTime() const
+{
+    return MIN_WORD_MSG_TIME;
+}
+
+int Settings_C::maxWordMsgTime() const
+{
+    return MAX_WORD_MSG_TIME;
 }
 

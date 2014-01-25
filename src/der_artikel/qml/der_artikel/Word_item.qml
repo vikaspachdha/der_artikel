@@ -59,7 +59,7 @@ Item {
         anchors.fill: parent
         onClicked: {
             if(info_mode) {
-                showMessage(wordText,description_text)
+                showMessage(wordText,description_text,settings.word_msg_time)
             } else {
                 wordClicked()
                 overlay.color = getArticleColor(words_page.selected_article)
