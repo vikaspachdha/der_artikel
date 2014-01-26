@@ -16,6 +16,7 @@ Item {
         width:40
         height:msg_time_input.contentHeight + 4
         radius: 4
+        color:color_palette.color_btn_01
         TextInput {
             id:msg_time_input
             width:parent.width
