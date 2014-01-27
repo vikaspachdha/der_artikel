@@ -41,7 +41,7 @@ class Manager_C : public QObject
 public:
 
     /**
-     * @brief
+     * @brief Pages id's. Every page has an unique id.
      *
      */
     enum PageId_TP
@@ -58,8 +58,8 @@ public:
     };
 
     /**
-     * @brief
-     *
+     * @brief Game levels. A user can choose between these levels to play game.
+     * Different levels define different scoring and time to play the game.
      */
     enum GameLevel {
         EASY=1,
@@ -69,12 +69,12 @@ public:
 
 private:
     /**
-     * @brief
-     *
+     * @brief Each page has a panel item for hosting commands and a main display
+     * item called page item and a title item to show extra information.
      */
     struct PageItems_TP {
 /**
- * @brief
+ * @brief Constructor
  *
  */
         PageItems_TP() :
@@ -88,63 +88,69 @@ private:
 
 public:
     /**
-     * @brief
+     * @brief Main manager class responsible for workflow and pivot for exposing data models to UI.
      *
-     * @param ref_root_context
-     * @param parent
+     * @param ref_root_context The root qml context.
+     * @param parent Parent object instance
      */
     explicit Manager_C(QQmlContext &ref_root_context, QObject *parent = 0);
+
     /**
-     * @brief
+     * @brief Destructor
      *
      */
     ~Manager_C();
     
 public:
     /**
-     * @brief
+     * @brief Sets the root qml Item. i.e the main item.
      *
      * @param root_Item
      */
     void SetRootItem(QQuickItem* root_Item) { _root_item = root_Item; }
 
     /**
-     * @brief
+     * @brief Changes the current page displayed on the ui. Call this method to change the page.
+     * The page will only be changed if the conditions are met for the last page to leave and
+     * new page to enter.
      *
-     * @param new_page
+     * @param new_page The id of the new page to show.
      */
     void setCurrentPage(PageId_TP new_page);
+
     /**
-     * @brief
+     * @brief Returns the id of the current page visible.
      *
-     * @return PageId_TP
+     * @return PageId_TP @ref PageId_TP of current page.
      */
     PageId_TP getCurrentPage() const { return _current_page; }
 
     /**
-     * @brief
+     * @brief Returns the current result instance. The instance stores the result data
+     * of the las game played and the instance is updated as soon as user finished a game.
      *
      * @return Result_C
      */
     Result_C* GetCurrentResult() { return _current_result; }
 
     /**
-     * @brief
+     * @brief Returns the current game level selected.
      *
-     * @return GameLevel
+     * @return GameLevel The current @ref GameLevel selected.
      */
     GameLevel gameLevel() const { return _game_level; }
+
     /**
-     * @brief
+     * @brief Sets the game level.
      *
-     * @param game_level
+     * @param game_level The new game level.
      */
     void setGameLevel(GameLevel game_level);
 
     /**
-     * @brief
+     * @brief Returns state of thema selection.
      *
-     * @return bool
+     * @return bool True if a thema selection is available, false otherwise.
      */
     bool isThemaSelected() const { return _thema_selected; }
 
