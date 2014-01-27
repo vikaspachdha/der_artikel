@@ -154,6 +154,8 @@ public:
      */
     bool isThemaSelected() const { return _thema_selected; }
 
+
+public:
     /**
      * @brief
      *
@@ -161,100 +163,106 @@ public:
     Q_INVOKABLE void showMessage();
 
     /**
-     * @brief
+     * @brief Returns the version string.
      *
-     * @return QString
+     * @return QString Version string
      */
     Q_INVOKABLE QString versionString() {return _version_string;}
 
     /**
-     * @brief
+     * @brief Returns the Image provider instance. Dynamic images are provided
+     * by this image provider e.g. Thema icons.
      *
-     * @return ImageProvider_C
+     * @return ImageProvider_C Image provider instance.
      */
     ImageProvider_C* GetImageProvider() { return _image_provider; }
 
-public:
     /**
-     * @brief
+     * @brief Returns Thema model instance. This thema data is exposed by the
+     * returned object.
      *
-     * @return ThemaModel_C
+     * @return ThemaModel_C Thema model.
      */
     ThemaModel_C* GetThemaModel() {return _thema_model; }
 
     /**
-     * @brief
+     * @brief Returns the @ref Settings_C instance. All the serializable settings are
+     * maintained by the returned instance.
      *
-     * @return Settings_C
+     * @return Settings_C The @ref Settings_C instance.
      */
     Settings_C* GetSettings() const { return _settings; }
 
     /**
-     * @brief
+     * @brief This method is called by the qml to set the Page item for the correspoding page.
      *
-     * @param page_id
-     * @param item
+     * @param page_id The id of the page to which the item belongs.
+     * @param item The page item.
      */
     Q_INVOKABLE void setPageItem(PageId_TP page_id, QQuickItem* item);
+
     /**
-     * @brief
+     * @brief Returns the page item of the page.
      *
-     * @param page_id
-     * @return QQuickItem
+     * @param page_id The id of the page.
+     * @return QQuickItem The page item of the page.
      */
     QQuickItem* pageItem(PageId_TP page_id);
 
     /**
-     * @brief
+     * @brief This method is called by the qml to set the Panel item for the correspoding page.
      *
-     * @param page_id
-     * @param item
+     * @param page_id The id of the page to which the item belongs.
+     * @param item The panel item of the page.
      */
     Q_INVOKABLE void setPanelItem(PageId_TP page_id, QQuickItem* item);
     /**
-     * @brief
+     * @brief Returns the panel item of the page.
      *
-     * @param page_id
-     * @return QQuickItem
+     * @param page_id The id of the page.
+     * @return QQuickItem The panel item of the page.
      */
     QQuickItem* panelItem(PageId_TP page_id);
 
     /**
-     * @brief
+     * @brief This method is called by the qml to set the Title item for the correspoding page.
      *
-     * @param page_id
-     * @param item
+     * @param page_id The id of the page.
+     * @param item The title item of the page
      */
     Q_INVOKABLE void setTitleItem(PageId_TP page_id, QQuickItem* item);
+
     /**
-     * @brief
+     * @brief Returns the title item of the page.
      *
-     * @param page_id
-     * @return QQuickItem
+     * @param page_id The id of the page.
+     * @return QQuickItem The title item of the page.
      */
     QQuickItem* titleItem(PageId_TP page_id);
 
     /**
-     * @brief
+     * @brief Quits the application
      *
      */
     Q_INVOKABLE void quit();
 
 signals:
     /**
-     * @brief
+     * @brief Emitted when current page is changed.
      *
-     * @param old_page
-     * @param new_page
+     * @param old_page The page that is removed
+     * @param new_page The page that is set as the new page.
      */
     void currentPageChanged(PageId_TP old_page, PageId_TP new_page);
+
     /**
-     * @brief
+     * @brief Emitted when game level is changed by the user.
      *
      */
     void gameLevelChanged();
+
     /**
-     * @brief
+     * @brief Emitted when thema selection state is changed.
      *
      */
     void themaSelectionStateChanged();
