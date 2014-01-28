@@ -6,9 +6,14 @@
 #include <QDebug>
 #include "common.h"
 
-static const int MIN_WORD_MSG_TIME = 500;
-static const int MAX_WORD_MSG_TIME = 5000;
+static const int MIN_WORD_MSG_TIME = 500; /*!< TODO */
+static const int MAX_WORD_MSG_TIME = 5000; /*!< TODO */
 
+/*!
+ \brief
+
+ \param parent
+*/
 Settings_C::Settings_C(QObject *parent) :
     QObject(parent),
     _current_language(ENGLISH),
@@ -18,6 +23,11 @@ Settings_C::Settings_C(QObject *parent) :
     updateLangauge();
 }
 
+/*!
+ \brief
+
+ \param language
+*/
 void Settings_C::SetLanguage(Settings_C::Language_TP language)
 {
     if(_current_language != language) {
@@ -27,6 +37,10 @@ void Settings_C::SetLanguage(Settings_C::Language_TP language)
     }
 }
 
+/*!
+ \brief
+
+*/
 void Settings_C::updateLangauge()
 {
     QString language_code = "en";
@@ -67,6 +81,11 @@ void Settings_C::updateLangauge()
 
 }
 
+/*!
+ \brief
+
+ \param sound_level
+*/
 void Settings_C::setSoundLevel(double sound_level)
 {
     if(qAbs(sound_level-_sound_level) > 0.001 ) {
@@ -75,11 +94,21 @@ void Settings_C::setSoundLevel(double sound_level)
     }
 }
 
+/*!
+ \brief
+
+ \return QString
+*/
 QString Settings_C::wordMsgTimeStr() const
 {
     return QString::number(_word_message_time);
 }
 
+/*!
+ \brief
+
+ \param new_time_str
+*/
 void Settings_C::setWordMsgTimeStr(QString new_time_str)
 {
     bool ok = false;
@@ -89,6 +118,11 @@ void Settings_C::setWordMsgTimeStr(QString new_time_str)
     }
 }
 
+/*!
+ \brief
+
+ \param new_time
+*/
 void Settings_C::setWordMsgTime(int new_time)
 {
     if(new_time < 500) {
@@ -103,11 +137,21 @@ void Settings_C::setWordMsgTime(int new_time)
     }
 }
 
+/*!
+ \brief
+
+ \return int
+*/
 int Settings_C::minWordMsgTime() const
 {
     return MIN_WORD_MSG_TIME;
 }
 
+/*!
+ \brief
+
+ \return int
+*/
 int Settings_C::maxWordMsgTime() const
 {
     return MAX_WORD_MSG_TIME;

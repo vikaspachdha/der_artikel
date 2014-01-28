@@ -4,6 +4,11 @@
 #include "data/word.h"
 #include "word_model.h"
 
+/*!
+ \brief
+
+ \param parent
+*/
 Result_C::Result_C(QObject *parent):
     QObject(parent),
     _score(0.0),
@@ -19,26 +24,51 @@ Result_C::Result_C(QObject *parent):
     _incorrect_words_model = new WordModel_C(this);
 }
 
+/*!
+ \brief
+
+ \return unsigned int
+*/
 unsigned int Result_C::CorrectWordCount() const
 {
     return _correct_word_count;
 }
 
+/*!
+ \brief
+
+ \return double
+*/
 double Result_C::Score() const
 {
     return _score;
 }
 
+/*!
+ \brief
+
+ \return unsigned int
+*/
 unsigned int Result_C::MistakesCount() const
 {
     return _mistakes_count;
 }
 
+/*!
+ \brief
+
+ \return double
+*/
 double Result_C::UnplayedCount() const
 {
     return _unplayed_count;
 }
 
+/*!
+ \brief
+
+ \param change
+*/
 void Result_C::setExperienceChange(int change)
 {
     if(change != _experience_change) {
@@ -47,6 +77,10 @@ void Result_C::setExperienceChange(int change)
     }
 }
 
+/*!
+ \brief
+
+*/
 void Result_C::Clear()
 {
     _score=0.0;
@@ -61,6 +95,14 @@ void Result_C::Clear()
     _unplayed_string="";
 }
 
+/*!
+ \brief
+
+ \param score
+ \param correct_word_count
+ \param unplayed_count
+ \param incorrect_words
+*/
 void Result_C::UpdateResult(double score, unsigned int correct_word_count, unsigned int unplayed_count, QList<const Word_C*>incorrect_words)
 {
     if(score <0.0) {
@@ -94,6 +136,12 @@ void Result_C::UpdateResult(double score, unsigned int correct_word_count, unsig
     emit resultUpdated();
 }
 
+/*!
+ \brief
+
+ \param element
+ \return bool
+*/
 bool Result_C::Read(const QDomElement &element)
 {
     bool success = false;
@@ -175,6 +223,12 @@ bool Result_C::Read(const QDomElement &element)
     return success;
 }
 
+/*!
+ \brief
+
+ \param element
+ \return bool
+*/
 bool Result_C::Write(QDomElement &element)
 {
     bool success = false;
@@ -219,6 +273,10 @@ bool Result_C::Write(QDomElement &element)
     return success;
 }
 
+/*!
+ \brief
+
+*/
 void Result_C::UpdateStringData()
 {
     QLocale locale;

@@ -10,12 +10,22 @@
 #include "version.h"
 #include "data/thema.h"
 
+/*!
+ \brief
+
+ \param thema_parent
+ \param parent
+*/
 ThemaLoader_C::ThemaLoader_C(QObject *thema_parent, QObject *parent) : QObject(parent),
     _thema_parent(thema_parent)
 {
     setAutoDelete(false);
 }
 
+/*!
+ \brief
+
+*/
 void ThemaLoader_C::run()
 {
     QDir root_thema_dir = ARTIKEL::GetResourcePath("thema");
@@ -31,6 +41,12 @@ void ThemaLoader_C::run()
     }
 }
 
+/*!
+ \brief
+
+ \param file_path
+ \return Thema_C
+*/
 Thema_C *ThemaLoader_C::LoadThema(QString file_path)
 {
     Thema_C* thema = 0;
@@ -93,6 +109,10 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path)
     return thema;
 }
 
+/*!
+ \brief
+
+*/
 void ThemaLoader_C::StartLoading()
 {
     QThreadPool::globalInstance()->start(this);

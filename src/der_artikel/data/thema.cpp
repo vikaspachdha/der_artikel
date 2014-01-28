@@ -7,6 +7,11 @@
 #include "version.h"
 #include "common.h"
 
+/*!
+ \brief
+
+ \param parent
+*/
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
     _translation(""),
@@ -19,16 +24,31 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _icon =  QPixmap("qrc:/res/resources/thema_generic.png");
 }
 
+/*!
+ \brief
+
+*/
 Thema_C::~Thema_C()
 {
     ClearWords();
 }
 
+/*!
+ \brief
+
+ \param file_path
+*/
 void Thema_C::SetFilePath(QString file_path)
 {
     _file_path = file_path;
 }
 
+/*!
+ \brief
+
+ \param element
+ \return bool
+*/
 bool Thema_C::Read(const QDomElement &element)
 {
     bool success = false;
@@ -112,6 +132,12 @@ bool Thema_C::Read(const QDomElement &element)
 }
 
 
+/*!
+ \brief
+
+ \param element
+ \return bool
+*/
 bool Thema_C::Write(QDomElement &element)
 {
     bool success = false;
@@ -175,6 +201,11 @@ bool Thema_C::Write(QDomElement &element)
     return success;
 }
 
+/*!
+ \brief
+
+ \param file_path
+*/
 void Thema_C::Save(QString file_path)
 {
     QString save_file = file_path.isEmpty() ? _file_path : file_path;
@@ -191,6 +222,10 @@ void Thema_C::Save(QString file_path)
     }
 }
 
+/*!
+ \brief
+
+*/
 void Thema_C::ClearWords()
 {
     foreach(Word_C* word, _words) {
@@ -199,6 +234,12 @@ void Thema_C::ClearWords()
     _words.clear();
 }
 
+/*!
+ \brief
+
+ \param pDevice
+ \return bool
+*/
 bool Thema_C::Write(QIODevice* pDevice)
 {
     QDomDocument domDocument("DerArtikel");
@@ -215,6 +256,10 @@ bool Thema_C::Write(QIODevice* pDevice)
     return true;
 }
 
+/*!
+ \brief
+
+*/
 void Thema_C::UpdateThemaState()
 {
     State_TP state;
@@ -234,6 +279,11 @@ void Thema_C::UpdateThemaState()
     }
 }
 
+/*!
+ \brief
+
+ \return QByteArray
+*/
 QByteArray Thema_C::IconData() const
 {
     QByteArray data;
@@ -244,6 +294,11 @@ QByteArray Thema_C::IconData() const
     return data;
 }
 
+/*!
+ \brief
+
+ \param data
+*/
 void Thema_C::UpdateIcon(QByteArray data)
 {
     if(data.size() > 0) {
@@ -254,6 +309,11 @@ void Thema_C::UpdateIcon(QByteArray data)
     }
 }
 
+/*!
+ \brief
+
+ \param points
+*/
 void Thema_C::AddExperiencePoints(int points)
 {
     _experience_points += points;
@@ -267,11 +327,20 @@ void Thema_C::AddExperiencePoints(int points)
     }
 }
 
+/*!
+ \brief
+
+ \param points
+*/
 void Thema_C::DeductExperiencePoints(int points)
 {
     AddExperiencePoints(-points);
 }
 
+/*!
+ \brief
+
+*/
 void Thema_C::ClearUserInput()
 {
     foreach(Word_C* word, _words) {
@@ -279,11 +348,22 @@ void Thema_C::ClearUserInput()
     }
 }
 
+/*!
+ \brief
+
+ \param last_played
+*/
 void Thema_C::SetLastPlayed(const QDateTime &last_played)
 {
     _last_played = last_played;
 }
 
+/*!
+ \brief
+
+ \param selected
+ \param type
+*/
 void Thema_C::setSelected(bool selected, SelectionType_TP type)
 {
     if(_selected != selected) {
@@ -292,11 +372,22 @@ void Thema_C::setSelected(bool selected, SelectionType_TP type)
     }
 }
 
+/*!
+ \brief
+
+ \return unsigned int
+*/
 unsigned int Thema_C::GetWordCount() const
 {
     return (uint)_words.count();
 }
 
+/*!
+ \brief
+
+ \param index
+ \return const Word_C
+*/
 const Word_C *Thema_C::GetWord(int index) const
 {
     Word_C* word = 0;

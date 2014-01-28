@@ -3,6 +3,13 @@
 #include "data/word.h"
 #include "article.h"
 
+/*!
+ \brief
+
+ \param old_word
+ \param new_word
+ \param parent
+*/
 ConflictDlg_C::ConflictDlg_C(Word_C &old_word, Word_C &new_word, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ConflictDlg_C)
@@ -36,16 +43,30 @@ ConflictDlg_C::ConflictDlg_C(Word_C &old_word, Word_C &new_word, QWidget *parent
     adjustSize();
 }
 
+/*!
+ \brief
+
+*/
 ConflictDlg_C::~ConflictDlg_C()
 {
     delete ui;
 }
 
+/*!
+ \brief
+
+ \return bool
+*/
 bool ConflictDlg_C::updateArticle() const
 {
     return ui->_update_article_chk->isChecked();
 }
 
+/*!
+ \brief
+
+ \return bool
+*/
 bool ConflictDlg_C::updateTranslation() const
 {
     return ui->_update_translation_chk->isChecked();
