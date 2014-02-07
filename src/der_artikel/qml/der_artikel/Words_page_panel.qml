@@ -23,6 +23,7 @@ Page_panel {
         anchors.leftMargin: 4
         anchors.right: parent.right
         anchors.rightMargin: 4
+        enabled: manager.game_level !== Manager.PRACTICE
         spacing: 4
 
         Button {
@@ -82,6 +83,7 @@ Page_panel {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
+        enabled: manager.game_level !== Manager.PRACTICE
         cmd_text: qsTr("Finish") + settings.i18n_empty_string
         icon_name: "finish"
         onCommandActivated: {

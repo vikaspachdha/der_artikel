@@ -94,7 +94,7 @@ private:
      *
      * @param thema
      */
-    void AddWords(const Thema_C *thema);
+    void AddWords(const Thema_C *thema, bool practice_mode=false);
     /**
      * @brief
      *
@@ -102,7 +102,7 @@ private:
      * @param desc
      * @return QObject
      */
-    QObject* AddWord(QString text, QString desc);
+    QObject* AddWord(Word_C &word);
     /**
      * @brief
      *

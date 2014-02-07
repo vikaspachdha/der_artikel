@@ -7,6 +7,14 @@ _user_artikel(Article_C::INVALID)
 {
 }
 
+void Word_C::SetUserArtikel(Article_C::Artikel article)
+{
+    if(_user_artikel != article) {
+        _user_artikel = article;
+        emit userArticleChanged();
+    }
+}
+
 bool Word_C::Read(const QDomElement &element)
 {
     bool success = false;

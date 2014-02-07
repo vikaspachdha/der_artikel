@@ -52,6 +52,15 @@ Page_panel
             onActivated: manager.game_level = Manager.EXPERT
         }
 
+        Button {
+            id:practice_btn
+            width:parent.width
+            text_anchors.horizontalCenter: practice_btn.horizontalCenter
+            isDown: manager.game_level === Manager.PRACTICE
+            buttonText: qsTr("Practice") + settings.i18n_empty_string
+            onActivated: manager.game_level = Manager.PRACTICE
+        }
+
     }
 
     Command_item

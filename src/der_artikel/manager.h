@@ -64,7 +64,8 @@ public:
     enum GameLevel {
         EASY=1,
         MODERATE,
-        EXPERT
+        EXPERT,
+        PRACTICE
     };
 
 private:

@@ -9,7 +9,7 @@ Item {
     property string description_text:""
     property alias wordPixelSz: label.font.pixelSize
     property bool info_mode: words_page.info_mode
-
+    property QtObject word
     // Signals
     signal wordClicked
 
@@ -45,7 +45,7 @@ Item {
         id:overlay
         anchors.fill: root
         source: root
-        color: "#00000000"
+        color: getArticleColor(word == null ? Article.INVALID :word.user_article)
     }
     // Child elements
     Text {
@@ -62,7 +62,7 @@ Item {
                 showMessage(wordText,description_text,settings.word_msg_time)
             } else {
                 wordClicked()
-                overlay.color = getArticleColor(words_page.selected_article)
+                //overlay.color = getArticleColor(words_page.selected_article)
             }
         }
     }

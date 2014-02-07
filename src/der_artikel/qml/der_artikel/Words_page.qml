@@ -22,15 +22,16 @@ Page {
     }
 
 
-    function addWord(itemText,desc)
+    function addWord(word_object,itemText,desc)
     {
-        var WordComponent = Qt.createComponent("Word_item.qml");
-        if(WordComponent.status == Component.Ready) {
-            var WordItem = WordComponent.createObject(wordFlow);
-            WordItem.wordText = itemText;
-            WordItem.description_text = desc;
+        var wordComponent = Qt.createComponent("Word_item.qml");
+        if(wordComponent.status == Component.Ready) {
+            var wordItem = wordComponent.createObject(wordFlow);
+            wordItem.word = word_object;
+            wordItem.wordText = itemText;
+            wordItem.description_text = desc;
         }
 
-        return WordItem;
+        return wordItem;
     }
 }

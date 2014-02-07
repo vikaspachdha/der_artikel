@@ -12,6 +12,8 @@ class Word_C : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QString word_text READ GetWordText CONSTANT)
+    Q_PROPERTY(Article_C::Artikel user_article READ GetUserArtikel NOTIFY userArticleChanged)
+    Q_PROPERTY(Article_C::Artikel article READ GetArtikel CONSTANT)
 
 public:
 /**
@@ -27,7 +29,7 @@ public:
      *
      * @param article
      */
-    void SetUserArtikel(Article_C::Artikel article) { _user_artikel = article; }
+    void SetUserArtikel(Article_C::Artikel article);
     /**
      * @brief
      *
@@ -77,6 +79,9 @@ public:
      * @return bool
      */
     bool IsCorrect() const;
+
+signals:
+    void userArticleChanged();
 
 private:
     QString _text; /**< TODO */

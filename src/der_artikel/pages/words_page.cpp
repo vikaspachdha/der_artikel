@@ -25,19 +25,23 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
     Q_UNUSED(prev_page_id)
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
     Q_ASSERT(thema);
-    AddWords(thema);
+    if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
+        // Add words to page.
+        AddWords(thema,true);
+    } else {
+        CreateResultAlgo();
 
-    CreateResultAlgo();
+        Q_ASSERT(_result_algo);
 
-    Q_ASSERT(_result_algo);
-
-    int play_time = _result_algo->playTime(*thema);
-    QQuickItem* title_item = _page_manager.titleItem(_page_id);
-    if(title_item) {
-        title_item->setProperty("play_time",play_time);
-        title_item->setProperty("timer_running",true);
+        int play_time = _result_algo->playTime(*thema);
+        QQuickItem* title_item = _page_manager.titleItem(_page_id);
+        if(title_item) {
+            title_item->setProperty("play_time",play_time);
+            title_item->setProperty("timer_running",true);
+        }
+        // Add words to page.
+        AddWords(thema);
     }
-
 }
 
 void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
@@ -83,26 +87,31 @@ void WordsPage_C::OnWordClicked()
     }
 }
 
-void WordsPage_C::AddWords(const Thema_C* thema)
+void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
 {
     QList<Word_C*> words = thema->GetWords();
     srand(QDateTime::currentMSecsSinceEpoch());
     while (words.count() > 0) {
         int index = rand()%words.count();
         Word_C* word = words.takeAt(index);
-        QObject* word_item = AddWord(word->GetWordText(), word->GetDescription());
+        if(practice_mode) {
+            word->SetUserArtikel(word->GetArtikel());
+        }
+        QObject* word_item = AddWord(*word);
         Q_ASSERT(word_item);
         _item_word_hash[word_item] = word;
         connect(word_item, SIGNAL(wordClicked()), this, SLOT(OnWordClicked()) );
     }
 }
 
-QObject *WordsPage_C::AddWord(QString text, QString desc)
+QObject *WordsPage_C::AddWord(Word_C& word)
 {
     QVariant returned_value;
     QMetaObject::invokeMethod(pageItem(), "addWord",
                               Q_RETURN_ARG(QVariant, returned_value),
-                              Q_ARG(QVariant, text), Q_ARG(QVariant, desc));
+                              Q_ARG(QVariant, QVariant::fromValue<QObject*>(&word)),
+                              Q_ARG(QVariant, word.GetWordText()),
+                              Q_ARG(QVariant, word.GetDescription()));
     QObject* word_item = returned_value.value<QObject*>();
     return word_item;
 }
