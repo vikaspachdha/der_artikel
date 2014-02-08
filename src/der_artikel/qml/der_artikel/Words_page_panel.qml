@@ -31,9 +31,9 @@ Page_panel {
             width:parent.width
             text_anchors.horizontalCenter: der_btn.horizontalCenter
             isDown: words_page.selected_article === Article.DER
+            visible: manager.game_level !== Manager.PRACTICE
             buttonText: qsTr("Der") + settings.i18n_empty_string
             onActivated:  {
-                words_page.info_mode = false
                 words_page.selected_article = Article.DER
             }
         }
@@ -43,9 +43,9 @@ Page_panel {
             width:parent.width
             text_anchors.horizontalCenter: die_btn.horizontalCenter
             isDown: words_page.selected_article === Article.DIE
+            visible: manager.game_level !== Manager.PRACTICE
             buttonText: qsTr("Die") + settings.i18n_empty_string
             onActivated:  {
-                words_page.info_mode = false
                 words_page.selected_article = Article.DIE
             }
         }
@@ -55,21 +55,20 @@ Page_panel {
             width:parent.width
             text_anchors.horizontalCenter: das_btn.horizontalCenter
             isDown: words_page.selected_article === Article.DAS
+            visible: manager.game_level !== Manager.PRACTICE
             buttonText: qsTr("Das") + settings.i18n_empty_string
             onActivated: {
-                words_page.info_mode = false
                 words_page.selected_article = Article.DAS
             }
         }
 
         Button {
-            id:na_btn
+            id:info_mode_btn
             width:parent.width
-            text_anchors.horizontalCenter: na_btn.horizontalCenter
+            text_anchors.horizontalCenter: info_mode_btn.horizontalCenter
             isDown: words_page.info_mode === true
             buttonText: qsTr("Info") + settings.i18n_empty_string
             onActivated: {
-                words_page.selected_article = Article.NA
                 words_page.info_mode = true
             }
         }
@@ -83,7 +82,8 @@ Page_panel {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
-        enabled: manager.game_level !== Manager.PRACTICE
+        enabled: visible
+        visible: manager.game_level !== Manager.PRACTICE
         cmd_text: qsTr("Finish") + settings.i18n_empty_string
         icon_name: "finish"
         onCommandActivated: {

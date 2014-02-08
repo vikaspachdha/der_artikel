@@ -4,6 +4,7 @@ import com.vystosi.qmlcomponents 1.0
 Title_bar {
     property int play_time: 1
     property alias timer_running:play_timer.running
+    property string timer_text_str: ""
     page_id: Manager.WORDS_PAGE
     Timer {
         id: play_timer
@@ -23,7 +24,7 @@ Title_bar {
                 timer_text.color = color_palette.color_warn
             }
 
-            timer_text.text = toTime(--play_time)
+            timer_text_str = toTime(--play_time)
         }
     }
 
@@ -63,6 +64,7 @@ Title_bar {
             bottom:parent.bottom
             bottomMargin: 6
         }
+        text:manager.game_level === Manager.PRACTICE?"∞":timer_text_str
         font.family: custom_regular.name
         color:color_palette.color_font_01
         font.pixelSize: 20

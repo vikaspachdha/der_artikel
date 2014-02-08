@@ -28,17 +28,20 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
     if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
         // Add words to page.
         AddWords(thema,true);
+        setInfoMode(true);
     } else {
+        setInfoMode(false);
         CreateResultAlgo();
-
         Q_ASSERT(_result_algo);
 
+        // Calculate play time
         int play_time = _result_algo->playTime(*thema);
         QQuickItem* title_item = _page_manager.titleItem(_page_id);
         if(title_item) {
             title_item->setProperty("play_time",play_time);
             title_item->setProperty("timer_running",true);
         }
+
         // Add words to page.
         AddWords(thema);
     }
@@ -65,6 +68,9 @@ void WordsPage_C::setInfoMode(bool info_mode)
 {
     if(_info_mode != info_mode) {
         _info_mode = info_mode;
+        if(_info_mode) {
+            SetSelectedArticle(Article_C::NA);
+        }
         emit infoModeChanged();
     }
 }
@@ -73,6 +79,9 @@ void WordsPage_C::SetSelectedArticle(Article_C::Artikel article)
 {
     if(_selected_article != article) {
         _selected_article = article;
+        if(_selected_article != Article_C::NA) {
+            setInfoMode(false);
+        }
         emit selectedArticleChanged();
     }
 }
