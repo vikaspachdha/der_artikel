@@ -5,6 +5,12 @@
 
 namespace ARTIKEL{
 
+/*!
+ \brief
+
+ \param path
+ \return QString
+*/
 QString GetResourcePath(const QString &path)
 {
 #if defined(Q_OS_MAC)

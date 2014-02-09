@@ -9,6 +9,13 @@
 #include "algo/strict_result_algo.h"
 #include "thema_model.h"
 
+/*!
+ \brief
+
+ \param page_manager
+ \param root_context
+ \param parent
+*/
 WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, QObject *parent):
     Page_C(Manager_C::WORDS_PAGE,page_manager, parent),
     _root_context(root_context),
@@ -20,6 +27,11 @@ WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, QOb
     SetSelectedArticle(Article_C::DER);
 }
 
+/*!
+ \brief
+
+ \param prev_page_id
+*/
 void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
@@ -47,6 +59,11 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
     }
 }
 
+/*!
+ \brief
+
+ \param next_page_id
+*/
 void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
 {
     if(next_page_id==Manager_C::RESULT_PAGE) {
@@ -64,6 +81,11 @@ void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
     }
 }
 
+/*!
+ \brief
+
+ \param info_mode
+*/
 void WordsPage_C::setInfoMode(bool info_mode)
 {
     if(_info_mode != info_mode) {
@@ -75,6 +97,11 @@ void WordsPage_C::setInfoMode(bool info_mode)
     }
 }
 
+/*!
+ \brief
+
+ \param article
+*/
 void WordsPage_C::SetSelectedArticle(Article_C::Artikel article)
 {
     if(_selected_article != article) {
@@ -86,6 +113,10 @@ void WordsPage_C::SetSelectedArticle(Article_C::Artikel article)
     }
 }
 
+/*!
+ \brief
+
+*/
 void WordsPage_C::OnWordClicked()
 {
     QObject* word_item = sender();
@@ -96,6 +127,12 @@ void WordsPage_C::OnWordClicked()
     }
 }
 
+/*!
+ \brief
+
+ \param thema
+ \param practice_mode
+*/
 void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
 {
     QList<Word_C*> words = thema->GetWords();
@@ -113,6 +150,12 @@ void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
     }
 }
 
+/*!
+ \brief
+
+ \param word
+ \return QObject
+*/
 QObject *WordsPage_C::AddWord(Word_C& word)
 {
     QVariant returned_value;
@@ -125,6 +168,10 @@ QObject *WordsPage_C::AddWord(Word_C& word)
     return word_item;
 }
 
+/*!
+ \brief
+
+*/
 void WordsPage_C::ClearWordItems()
 {
     foreach(QObject* word_item, _item_word_hash.keys()) {
@@ -133,6 +180,10 @@ void WordsPage_C::ClearWordItems()
     _item_word_hash.clear();
 }
 
+/*!
+ \brief
+
+*/
 void WordsPage_C::CreateResultAlgo()
 {
     if(_result_algo) {
@@ -154,6 +205,10 @@ void WordsPage_C::CreateResultAlgo()
     }
 }
 
+/*!
+ \brief
+
+*/
 void WordsPage_C::CalculateResult()
 {
     Thema_C* current_thema = _page_manager.GetThemaModel()->GetSelectedThema();

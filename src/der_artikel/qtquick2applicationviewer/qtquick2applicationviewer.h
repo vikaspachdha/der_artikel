@@ -13,48 +13,21 @@
 
 #include <QtQuick/QQuickView>
 
-/**
- * @brief
- *
- */
 class QtQuick2ApplicationViewer : public QQuickView
 {
     Q_OBJECT
 
 public:
-    /**
-     * @brief
-     *
-     * @param parent
-     */
     explicit QtQuick2ApplicationViewer(QWindow *parent = 0);
-    /**
-     * @brief
-     *
-     */
     virtual ~QtQuick2ApplicationViewer();
 
-    /**
-     * @brief
-     *
-     * @param file
-     */
     void setMainQmlFile(const QString &file);
-    /**
-     * @brief
-     *
-     * @param path
-     */
     void addImportPath(const QString &path);
 
-    /**
-     * @brief
-     *
-     */
     void showExpanded();
 
 private:
-    class QtQuick2ApplicationViewerPrivate *d; /**< TODO */
+    class QtQuick2ApplicationViewerPrivate *d;
 };
 
 #endif // QTQUICK2APPLICATIONVIEWER_H

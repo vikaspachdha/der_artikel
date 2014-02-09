@@ -1,12 +1,24 @@
 #include "stats_page.h"
 #include <QQuickItem>
 
+/*!
+ \brief
+
+ \param page_manager
+ \param root_context
+ \param parent
+*/
 StatsPage_C::StatsPage_C(Manager_C &page_manager, QQmlContext &root_context, QObject *parent) :
     Page_C(Manager_C::STATS_PAGE, page_manager, parent),
     _root_context(root_context)
 {
 }
 
+/*!
+ \brief
+
+ \param prev_page_id
+*/
 void StatsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)

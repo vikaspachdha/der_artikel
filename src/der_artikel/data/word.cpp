@@ -1,5 +1,10 @@
 #include "word.h"
 
+/*!
+ \brief
+
+ \param parent
+*/
 Word_C::Word_C(QObject* parent): QObject(parent),
 _text(""),
 _artikel(Article_C::INVALID),
@@ -15,6 +20,12 @@ void Word_C::SetUserArtikel(Article_C::Artikel article)
     }
 }
 
+/*!
+ \brief
+
+ \param element
+ \return bool
+*/
 bool Word_C::Read(const QDomElement &element)
 {
     bool success = false;
@@ -41,6 +52,12 @@ bool Word_C::Read(const QDomElement &element)
     return success;
 }
 
+/*!
+ \brief
+
+ \param element
+ \return bool
+*/
 bool Word_C::Write(QDomElement &element)
 {
     bool success = false;
@@ -74,6 +91,11 @@ bool Word_C::Write(QDomElement &element)
     return success;
 }
 
+/*!
+ \brief
+
+ \return bool
+*/
 bool Word_C::IsCorrect() const
 {
     bool correct = false;

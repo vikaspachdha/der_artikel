@@ -1,6 +1,13 @@
 #include "help_page.h"
 #include <QQmlContext>
 
+/*!
+ \brief
+
+ \param page_manager
+ \param root_context
+ \param parent
+*/
 HelpPage_C::HelpPage_C(Manager_C& page_manager,QQmlContext &root_context, QObject *parent) :
     Page_C(Manager_C::HELP_PAGE, page_manager, parent),
     _root_context(root_context),
@@ -9,12 +16,22 @@ HelpPage_C::HelpPage_C(Manager_C& page_manager,QQmlContext &root_context, QObjec
     _root_context.setContextProperty("help_page_instance",this);
 }
 
+/*!
+ \brief
+
+ \param prev_page_id
+*/
 void HelpPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
     setSubPageType(GENERAL);
 }
 
+/*!
+ \brief
+
+ \return QString
+*/
 QString HelpPage_C::title() const
 {
     QString title = "";
@@ -38,6 +55,11 @@ QString HelpPage_C::title() const
     return title;
 }
 
+/*!
+ \brief
+
+ \return QString
+*/
 QString HelpPage_C::subPage() const
 {
     QString title = "";
@@ -61,6 +83,11 @@ QString HelpPage_C::subPage() const
     return title;
 }
 
+/*!
+ \brief
+
+ \param sub_page_type
+*/
 void HelpPage_C::setSubPageType(const SubPage_TP &sub_page_type)
 {
     if(_sub_page_type != sub_page_type) {

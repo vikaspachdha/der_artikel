@@ -18,6 +18,13 @@
 #include "thema_builder.h"
 #endif
 
+/*!
+ \brief
+
+ \param argc
+ \param argv[]
+ \return int
+*/
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);

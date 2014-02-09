@@ -1,6 +1,13 @@
 #include "settings_page.h"
 #include <QQmlContext>
 
+/*!
+ \brief
+
+ \param page_manager
+ \param root_context
+ \param parent
+*/
 SettingsPage_C::SettingsPage_C(Manager_C& page_manager,QQmlContext &root_context, QObject *parent) :
     Page_C(Manager_C::SETTINGS_PAGE, page_manager, parent),
     _root_context(root_context),
@@ -9,12 +16,22 @@ SettingsPage_C::SettingsPage_C(Manager_C& page_manager,QQmlContext &root_context
     _root_context.setContextProperty("settings_page_instance",this);
 }
 
+/*!
+ \brief
+
+ \param prev_page_id
+*/
 void SettingsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
     setSubPageType(LANGUAGE);
 }
 
+/*!
+ \brief
+
+ \return QString
+*/
 QString SettingsPage_C::title() const
 {
     QString title = "";
@@ -38,6 +55,11 @@ QString SettingsPage_C::title() const
     return title;
 }
 
+/*!
+ \brief
+
+ \return QString
+*/
 QString SettingsPage_C::subPage() const
 {
     QString sub_page = "";
@@ -61,6 +83,11 @@ QString SettingsPage_C::subPage() const
     return sub_page;
 }
 
+/*!
+ \brief
+
+ \param sub_page_type
+*/
 void SettingsPage_C::setSubPageType(const SubPage_TP &sub_page_type)
 {
     if(_sub_page_type != sub_page_type) {

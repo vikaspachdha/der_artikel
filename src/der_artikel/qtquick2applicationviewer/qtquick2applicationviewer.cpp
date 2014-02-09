@@ -14,13 +14,29 @@
 #include <QtCore/QDir>
 #include <QtQml/QQmlEngine>
 
+/*!
+ \brief
+
+*/
 class QtQuick2ApplicationViewerPrivate
 {
-    QString mainQmlFile;
+    QString mainQmlFile; /*!< TODO */
     friend class QtQuick2ApplicationViewer;
+    /*!
+     \brief
+
+     \param path
+     \return QString
+    */
     static QString adjustPath(const QString &path);
 };
 
+/*!
+ \brief
+
+ \param path
+ \return QString
+*/
 QString QtQuick2ApplicationViewerPrivate::adjustPath(const QString &path)
 {
 #if defined(Q_OS_MAC)
@@ -43,6 +59,11 @@ QString QtQuick2ApplicationViewerPrivate::adjustPath(const QString &path)
     return path;
 }
 
+/*!
+ \brief
+
+ \param parent
+*/
 QtQuick2ApplicationViewer::QtQuick2ApplicationViewer(QWindow *parent)
     : QQuickView(parent)
     , d(new QtQuick2ApplicationViewerPrivate())
@@ -51,11 +72,20 @@ QtQuick2ApplicationViewer::QtQuick2ApplicationViewer(QWindow *parent)
     setResizeMode(QQuickView::SizeRootObjectToView);
 }
 
+/*!
+ \brief
+
+*/
 QtQuick2ApplicationViewer::~QtQuick2ApplicationViewer()
 {
     delete d;
 }
 
+/*!
+ \brief
+
+ \param file
+*/
 void QtQuick2ApplicationViewer::setMainQmlFile(const QString &file)
 {
     d->mainQmlFile = QtQuick2ApplicationViewerPrivate::adjustPath(file);
@@ -66,11 +96,20 @@ void QtQuick2ApplicationViewer::setMainQmlFile(const QString &file)
 #endif
 }
 
+/*!
+ \brief
+
+ \param path
+*/
 void QtQuick2ApplicationViewer::addImportPath(const QString &path)
 {
     engine()->addImportPath(QtQuick2ApplicationViewerPrivate::adjustPath(path));
 }
 
+/*!
+ \brief
+
+*/
 void QtQuick2ApplicationViewer::showExpanded()
 {
 #if defined(Q_WS_SIMULATOR) || defined(Q_OS_QNX)

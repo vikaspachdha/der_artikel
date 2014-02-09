@@ -10,10 +10,6 @@
 class QDomElement;
 class Word_C;
 
-/**
- * @brief
- *
- */
 class Result_C : public QObject
 {
     Q_OBJECT
@@ -31,10 +27,6 @@ class Result_C : public QObject
 
 public:
 
-    /**
-     * @brief
-     *
-     */
     enum GRADE {
         GRADE_E=1,  // < 50
         GRADE_D,    // 50 - 60
@@ -46,158 +38,57 @@ public:
     };
 
 public:
-    /**
-     * @brief
-     *
-     * @param parent
-     */
     explicit Result_C(QObject* parent=0);
 
 signals:
-    /**
-     * @brief
-     *
-     */
     void resultUpdated();
-    /**
-     * @brief
-     *
-     */
     void experienceChanged();
 
 public:
 
-    /**
-     * @brief
-     *
-     * @return double
-     */
     double Score() const;
-    /**
-     * @brief
-     *
-     * @return QString
-     */
     QString ScoreString() const {return _score_string; }
 
-    /**
-     * @brief
-     *
-     * @return unsigned int
-     */
     unsigned int MistakesCount() const;
-    /**
-     * @brief
-     *
-     * @return QString
-     */
     QString MistakeString() const {return _mistake_string; }
 
-    /**
-     * @brief
-     *
-     * @return double
-     */
     double UnplayedCount() const;
 
-    /**
-     * @brief
-     *
-     * @return int
-     */
     int ExperienceChange() const { return _experience_change; }
-    /**
-     * @brief
-     *
-     * @param change
-     */
     void setExperienceChange(int change);
 
-    /**
-     * @brief
-     *
-     * @return QString
-     */
     QString GradeString() const {return _grade_string; }
 
-    /**
-     * @brief
-     *
-     * @return QString
-     */
     QString UnplayedString() const {return _unplayed_string; }
 
-    /**
-     * @brief
-     *
-     * @return unsigned int
-     */
     unsigned int CorrectWordCount() const;
 
-    /**
-     * @brief
-     *
-     * @return GRADE
-     */
     GRADE Grade() const { return _grade; }
 
-    /**
-     * @brief
-     *
-     * @return QAbstractItemModel
-     */
     QAbstractItemModel* GetIncorrectWordModel() { return _incorrect_words_model; }
 
 public:
-    /**
-     * @brief
-     *
-     */
     void Clear();
-    /**
-     * @brief
-     *
-     * @param score
-     * @param correct_word_count
-     * @param unplayed_count
-     * @param incorrect_words
-     */
     void UpdateResult(double score, unsigned int correct_word_count, unsigned int unplayed_count, QList<const Word_C *> incorrect_words);
-    /**
-     * @brief
-     *
-     * @param element
-     * @return bool
-     */
     bool Read(const QDomElement& element);
-    /**
-     * @brief
-     *
-     * @param element
-     * @return bool
-     */
     bool Write(QDomElement& element);
 
 private:
-    /**
-     * @brief
-     *
-     */
     void UpdateStringData();
 
 private:
-    double _score; /**< TODO */
-    GRADE _grade; /**< TODO */
-    unsigned int _correct_word_count; /**< TODO */
-    unsigned int _mistakes_count; /**< TODO */
-    unsigned int _unplayed_count; /**< TODO */
-    int _experience_change; /**< TODO */
-    QString _score_string; /**< TODO */
-    QString _mistake_string; /**< TODO */
-    QString _grade_string; /**< TODO */
-    QString _unplayed_string; /**< TODO */
-    QDateTime _result_date_time; /**< TODO */
-    WordModel_C* _incorrect_words_model; /**< TODO */
+    double _score;
+    GRADE _grade;
+    unsigned int _correct_word_count;
+    unsigned int _mistakes_count;
+    unsigned int _unplayed_count;
+    int _experience_change;
+    QString _score_string;
+    QString _mistake_string;
+    QString _grade_string;
+    QString _unplayed_string;
+    QDateTime _result_date_time;
+    WordModel_C* _incorrect_words_model;
 };
 
 #endif // RESULT_H

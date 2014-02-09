@@ -1,3 +1,28 @@
+/****************************************************************************
+**
+** Copyright (C) 2014 Vikas Pachdha, Mohita Gandotra.
+** Contact: http://www.vikaspachdha.com
+**
+** This file is part of the application der_artikel.
+**
+** GNU Lesser General Public License Usage
+** This file may be used under the terms of the GNU Lesser
+** General Public License version 2.1 as published by the Free Software
+** Foundation and appearing in the file LICENSE.LGPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU Lesser General Public License version 2.1 requirements
+** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** GNU General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 3.0 as published by the Free Software
+** Foundation and appearing in the file LICENSE.GPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU General Public License version 3.0 requirements will be
+** met: http://www.gnu.org/copyleft/gpl.html.
+**
+****************************************************************************/
+
 #ifndef MANAGER_H
 #define MANAGER_H
 
@@ -19,12 +44,11 @@ class QQmlContext;
 class Settings_C;
 class Page_I;
 
-//class ThemaModel_C;
-
-/**
- * @brief
+/*!
+ * \brief Main manager class responsible for workflow and pivot for exposing data models to UI.
  *
  */
+
 class Manager_C : public QObject
 {
     Q_OBJECT
@@ -40,10 +64,7 @@ class Manager_C : public QObject
 
 public:
 
-    /**
-     * @brief Pages id's. Every page has an unique id.
-     *
-     */
+    //! Pages id's. Every page has an unique id.
     enum PageId_TP
     {
         HOME_PAGE =1,
@@ -57,10 +78,8 @@ public:
         INVALID_PAGE
     };
 
-    /**
-     * @brief Game levels. A user can choose between these levels to play game.
-     * Different levels define different scoring and time to play the game.
-     */
+    //! Game levels. A user can choose between these levels to play game.
+    //! Different levels define different scoring and time to play the game.
     enum GameLevel {
         EASY=1,
         MODERATE,
@@ -69,244 +88,99 @@ public:
     };
 
 private:
-    /**
-     * @brief Each page has a panel item for hosting commands and a main display
-     * item called page item and a title item to show extra information.
-     */
+    //! Each page has a panel item for hosting commands and a main display
+    //! item called page item and a title item to show extra information.
     struct PageItems_TP {
-/**
- * @brief Constructor
- *
- */
         PageItems_TP() :
             _page_item(0),
             _panel_item(0),
             _title_item(0){}
-        QQuickItem* _page_item; /**< TODO */
-        QQuickItem* _panel_item; /**< TODO */
-        QQuickItem* _title_item; /**< TODO */
+        QQuickItem* _page_item;
+        QQuickItem* _panel_item;
+        QQuickItem* _title_item;
     };
 
 public:
-    /**
-     * @brief Main manager class responsible for workflow and pivot for exposing data models to UI.
-     *
-     * @param ref_root_context The root qml context.
-     * @param parent Parent object instance
-     */
     explicit Manager_C(QQmlContext &ref_root_context, QObject *parent = 0);
-
-    /**
-     * @brief Destructor
-     *
-     */
     ~Manager_C();
-    
+
 public:
-    /**
-     * @brief Sets the root qml Item. i.e the main item.
-     *
-     * @param root_Item
-     */
+    //! Sets the root qml Item. i.e the main item.
     void SetRootItem(QQuickItem* root_Item) { _root_item = root_Item; }
 
-    /**
-     * @brief Changes the current page displayed on the ui. Call this method to change the page.
-     * The page will only be changed if the conditions are met for the last page to leave and
-     * new page to enter.
-     *
-     * @param new_page The id of the new page to show.
-     */
     void setCurrentPage(PageId_TP new_page);
-
-    /**
-     * @brief Returns the id of the current page visible.
-     *
-     * @return PageId_TP @ref PageId_TP of current page.
-     */
+    //! Returns the id of the current page visible.
     PageId_TP getCurrentPage() const { return _current_page; }
 
-    /**
-     * @brief Returns the current result instance. The instance stores the result data
-     * of the las game played and the instance is updated as soon as user finished a game.
-     *
-     * @return Result_C
-     */
+    //! Returns the current result instance. The instance stores the result data
+    //! of the las game played and the instance is updated as soon as user finished a game.
     Result_C* GetCurrentResult() { return _current_result; }
 
-    /**
-     * @brief Returns the current game level selected.
-     *
-     * @return GameLevel The current @ref GameLevel selected.
-     */
+    //! Returns the current game level selected.
     GameLevel gameLevel() const { return _game_level; }
-
-    /**
-     * @brief Sets the game level.
-     *
-     * @param game_level The new game level.
-     */
     void setGameLevel(GameLevel game_level);
 
-    /**
-     * @brief Returns state of thema selection.
-     *
-     * @return bool True if a thema selection is available, false otherwise.
-     */
+    //! True if a thema selection is available, false otherwise.
     bool isThemaSelected() const { return _thema_selected; }
 
-
-public:
-    /**
-     * @brief
-     *
-     */
     Q_INVOKABLE void showMessage();
 
-    /**
-     * @brief Returns the version string.
-     *
-     * @return QString Version string
-     */
+    //! Returns the version string.
     Q_INVOKABLE QString versionString() {return _version_string;}
 
-    /**
-     * @brief Returns the Image provider instance. Dynamic images are provided
-     * by this image provider e.g. Thema icons.
-     *
-     * @return ImageProvider_C Image provider instance.
-     */
+    //! Returns the Image provider instance. Dynamic images are provided
+    //! by this image provider e.g. Thema icons.
     ImageProvider_C* GetImageProvider() { return _image_provider; }
 
-    /**
-     * @brief Returns Thema model instance. This thema data is exposed by the
-     * returned object.
-     *
-     * @return ThemaModel_C Thema model.
-     */
+public:
     ThemaModel_C* GetThemaModel() {return _thema_model; }
 
-    /**
-     * @brief Returns the @ref Settings_C instance. All the serializable settings are
-     * maintained by the returned instance.
-     *
-     * @return Settings_C The @ref Settings_C instance.
-     */
+    //! Returns the \ref Settings_C instance. All the serializable settings are maintained by the returned instance.
     Settings_C* GetSettings() const { return _settings; }
 
-    /**
-     * @brief This method is called by the qml to set the Page item for the correspoding page.
-     *
-     * @param page_id The id of the page to which the item belongs.
-     * @param item The page item.
-     */
     Q_INVOKABLE void setPageItem(PageId_TP page_id, QQuickItem* item);
-
-    /**
-     * @brief Returns the page item of the page.
-     *
-     * @param page_id The id of the page.
-     * @return QQuickItem The page item of the page.
-     */
     QQuickItem* pageItem(PageId_TP page_id);
 
-    /**
-     * @brief This method is called by the qml to set the Panel item for the correspoding page.
-     *
-     * @param page_id The id of the page to which the item belongs.
-     * @param item The panel item of the page.
-     */
     Q_INVOKABLE void setPanelItem(PageId_TP page_id, QQuickItem* item);
-    /**
-     * @brief Returns the panel item of the page.
-     *
-     * @param page_id The id of the page.
-     * @return QQuickItem The panel item of the page.
-     */
     QQuickItem* panelItem(PageId_TP page_id);
 
-    /**
-     * @brief This method is called by the qml to set the Title item for the correspoding page.
-     *
-     * @param page_id The id of the page.
-     * @param item The title item of the page
-     */
     Q_INVOKABLE void setTitleItem(PageId_TP page_id, QQuickItem* item);
-
-    /**
-     * @brief Returns the title item of the page.
-     *
-     * @param page_id The id of the page.
-     * @return QQuickItem The title item of the page.
-     */
     QQuickItem* titleItem(PageId_TP page_id);
 
-    /**
-     * @brief Quits the application
-     *
-     */
     Q_INVOKABLE void quit();
 
 signals:
-    /**
-     * @brief Emitted when current page is changed.
-     *
-     * @param old_page The page that is removed
-     * @param new_page The page that is set as the new page.
-     */
+    //! Emitted when current page is changed. \param old_page The page that is removed
+    //! \param new_page The page that is set as the new page.
     void currentPageChanged(PageId_TP old_page, PageId_TP new_page);
 
-    /**
-     * @brief Emitted when game level is changed by the user.
-     *
-     */
+    //! Emitted when game level is changed by the user.
     void gameLevelChanged();
 
-    /**
-     * @brief Emitted when thema selection state is changed.
-     *
-     */
+    //! Emitted when thema selection state is changed.
     void themaSelectionStateChanged();
-    
+
 private slots:
-    /**
-     * @brief
-     *
-     * @param new_thema
-     */
     void OnNewThemaLoaded(Thema_C* new_thema);
-    /**
-     * @brief
-     *
-     */
     void onThemaSelectionChanged();
 
-// Helper methods
 private:
-    /**
-     * @brief
-     *
-     */
     void LoadDefaultThemas();
-    /**
-     * @brief
-     *
-     */
     void InitPages();
 
 private:
-    Settings_C* _settings; /**< TODO */
-    QQmlContext& _root_context; /**< TODO */
-    QQuickItem* _root_item; /**< TODO */
-    QHash<PageId_TP, PageItems_TP> _page_items_hash; /**< TODO */
-    QHash<PageId_TP, Page_I*> _page_hash; /**< TODO */
-    PageId_TP _current_page; /**< TODO */
-    Result_C* _current_result; /**< TODO */
-    ThemaModel_C* _thema_model; /**< TODO */
-    GameLevel _game_level; /**< TODO */
-    bool _thema_selected; /**< TODO */
-    QString _version_string; /**< TODO */
-    ImageProvider_C* _image_provider; /**< TODO */
+    Settings_C* _settings;
+    QQmlContext& _root_context;
+    QQuickItem* _root_item;
+    QHash<PageId_TP, PageItems_TP> _page_items_hash;
+    QHash<PageId_TP, Page_I*> _page_hash;
+    PageId_TP _current_page;
+    Result_C* _current_result;
+    ThemaModel_C* _thema_model;
+    GameLevel _game_level;
+    bool _thema_selected;
+    QString _version_string;
+    ImageProvider_C* _image_provider;
 };
 
 #endif // MANAGER_H

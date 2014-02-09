@@ -4,10 +4,6 @@
 #include <QDomElement>
 #include <QObject>
 
-/**
- * @brief
- *
- */
 class Word_C : public QObject
 {
     Q_OBJECT
@@ -16,78 +12,31 @@ class Word_C : public QObject
     Q_PROPERTY(Article_C::Artikel article READ GetArtikel CONSTANT)
 
 public:
-/**
- * @brief
- *
- * @param parent
- */
     Word_C(QObject* parent=0);
 
 public:
-    /**
-     * @brief
-     *
-     * @param article
-     */
     void SetUserArtikel(Article_C::Artikel article);
-    /**
-     * @brief
-     *
-     * @return Article_C::Artikel
-     */
     Article_C::Artikel GetUserArtikel() const { return _user_artikel; }
 
-    /**
-     * @brief
-     *
-     * @return Article_C::Artikel
-     */
     Article_C::Artikel GetArtikel() const { return _artikel; }
 
-    /**
-     * @brief
-     *
-     * @return QString
-     */
     QString GetWordText() const { return _text; }
 
-    /**
-     * @brief
-     *
-     * @return QString
-     */
     QString GetDescription() const  { return _description; }
 
 public:
-    /**
-     * @brief
-     *
-     * @param element
-     * @return bool
-     */
     bool Read(const QDomElement& element);
-    /**
-     * @brief
-     *
-     * @param element
-     * @return bool
-     */
     bool Write(QDomElement& element);
-    /**
-     * @brief
-     *
-     * @return bool
-     */
     bool IsCorrect() const;
 
 signals:
     void userArticleChanged();
 
 private:
-    QString _text; /**< TODO */
-    QString _description; /**< TODO */
-    Article_C::Artikel _artikel; /**< TODO */
-    Article_C::Artikel _user_artikel; /**< TODO */
+    QString _text;
+    QString _description;
+    Article_C::Artikel _artikel;
+    Article_C::Artikel _user_artikel;
 
 private:
     friend class ThemaBuilder_C;

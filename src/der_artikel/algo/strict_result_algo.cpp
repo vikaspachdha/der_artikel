@@ -4,10 +4,20 @@
 #include "data/result.h"
 
 
+/*!
+ \brief
+
+*/
 StrictResultAlgo_C::StrictResultAlgo_C():ResultAlgo_I()
 {
 }
 
+/*!
+ \brief
+
+ \param thema
+ \param result
+*/
 void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 {
     unsigned int count = thema.GetWordCount();
@@ -54,6 +64,12 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
     result.setExperienceChange(exp_change);
 }
 
+/*!
+ \brief
+
+ \param thema
+ \return int
+*/
 int StrictResultAlgo_C::playTime(Thema_I &thema)
 {
     return thema.GetWordCount()*2;
