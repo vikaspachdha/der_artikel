@@ -77,9 +77,11 @@ Item {
             id:url_input
             width:parent.width-4
             anchors{centerIn: parent}
-            text:settings.thema_update_url
             onTextChanged: {
                 settings.thema_update_url = text;
+            }
+            Component.onCompleted: {
+                url_input.text = settings.thema_update_url
             }
         }
     }

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QHash>
+#include <QUrl>
 
 class QTranslator;
 
@@ -16,7 +17,7 @@ class Settings_C : public QObject
     Q_PROPERTY(int word_msg_time READ wordMsgTime WRITE setWordMsgTime NOTIFY wordMsgTimeChanged)
     Q_PROPERTY(int min_word_msg_time READ minWordMsgTime CONSTANT)
     Q_PROPERTY(int max_word_msg_time READ maxWordMsgTime CONSTANT)
-    Q_PROPERTY(QString thema_update_url READ themaUpdateUrl WRITE setThemaUpdateUrl NOTIFY themaUpdateUrlChanged)
+    Q_PROPERTY(QUrl thema_update_url READ themaUpdateUrl WRITE setThemaUpdateUrl NOTIFY themaUpdateUrlChanged)
     Q_ENUMS(Language_TP)
 
 public:
@@ -47,8 +48,8 @@ public:
     int minWordMsgTime() const;
     int maxWordMsgTime() const;
 
-    QString themaUpdateUrl() const { return _thema_update_url_str; }
-    void setThemaUpdateUrl(QString url_str);
+    QUrl themaUpdateUrl() const { return _thema_update_url_str; }
+    void setThemaUpdateUrl(QUrl url_str);
 
 signals:
     void LanguageChanged();
@@ -65,7 +66,7 @@ private:
     QList <QTranslator*> _installed_translators;
     double _sound_level;
     int _word_message_time;
-    QString _thema_update_url_str;
+    QUrl _thema_update_url_str;
 };
 
 #endif // SETTINGS_H

@@ -163,7 +163,7 @@ int Settings_C::maxWordMsgTime() const
 
  \param url_str
 */
-void Settings_C::setThemaUpdateUrl(QString url_str)
+void Settings_C::setThemaUpdateUrl(QUrl url_str)
 {
     if(url_str != _thema_update_url_str) {
         _thema_update_url_str = url_str;
