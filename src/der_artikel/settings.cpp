@@ -21,6 +21,7 @@ Settings_C::Settings_C(QObject *parent) :
     _word_message_time(1200)
 {
     updateLangauge();
+    _thema_update_url_str = "www.vikaspachdha.com/der_artikel_data";
 }
 
 /*!
@@ -155,5 +156,18 @@ int Settings_C::minWordMsgTime() const
 int Settings_C::maxWordMsgTime() const
 {
     return MAX_WORD_MSG_TIME;
+}
+
+/*!
+ \brief
+
+ \param url_str
+*/
+void Settings_C::setThemaUpdateUrl(QString url_str)
+{
+    if(url_str != _thema_update_url_str) {
+        _thema_update_url_str = url_str;
+        emit themaUpdateUrlChanged();
+    }
 }
 
