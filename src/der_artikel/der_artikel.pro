@@ -1,5 +1,5 @@
 cache()
-QT += xml widgets
+QT += xml widgets network
 
 DEFINES += ENABLE_THEMA_BUILDER
 
@@ -44,7 +44,8 @@ SOURCES += main.cpp \
     settings.cpp \
     pages/thema_page.cpp \
     conflict_dlg.cpp \
-    image_provider.cpp
+    image_provider.cpp \
+    file_downloader.cpp
 
 # Installation path
 # target.path =
@@ -80,7 +81,8 @@ HEADERS += \
     settings.h \
     pages/thema_page.h \
     conflict_dlg.h \
-    image_provider.h
+    image_provider.h \
+    file_downloader.h
 
 FORMS += \
     thema_builder.ui \
