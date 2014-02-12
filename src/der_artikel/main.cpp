@@ -13,6 +13,7 @@
 #include "pages/words_page.h"
 #include "pages/settings_page.h"
 #include "common.h"
+#include "thema_updater.h"
 
 #ifdef ENABLE_THEMA_BUILDER
 #include "thema_builder.h"
@@ -51,8 +52,10 @@ int main(int argc, char *argv[])
 
     QQmlContext* root_context = viewer.rootContext();
     Manager_C manager(*root_context);
+    ThemaUpdater_C thema_updater;
 
     root_context->setContextProperty("manager", &manager);
+    root_context->setContextProperty("themaUpdater", &thema_updater);
     root_context->setContextProperty("currentResult", manager.GetCurrentResult());
     root_context->setContextProperty("themaModel", manager.GetThemaModel());
     root_context->setContextProperty("settings", manager.GetSettings());

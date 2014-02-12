@@ -94,7 +94,15 @@ Item {
         anchors.topMargin: 20
         buttonText:qsTr("Update thema")
         onActivated: {
-            onActivated: showMessage(qsTr("Thema update"), qsTr("No thema update is available"),1200)
+                themaUpdater.checkUpdate(url_input.text);
+                showMessage(qsTr("Thema update"), qsTr("No thema update is available"),1200)
+        }
+    }
+
+    Connections {
+        target:themaUpdater
+        onUpdateResponse: {
+            console.log(response_code)
         }
     }
 }

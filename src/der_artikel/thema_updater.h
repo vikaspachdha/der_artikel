@@ -11,7 +11,15 @@
 class ThemaUpdater_C : public QObject
 {
     Q_OBJECT
+    Q_ENUMS(UpdateResponse_TP)
 public:
+
+    enum UpdateResponse_TP {
+        UPDATE_AVAILABLE=1,
+        UPDATE_NOT_AVAILABLE,
+        UPDATE_ERROR
+    };
+
     enum FileType_TP {
         IS_INDEX = 1,
         IS_THEMA,
@@ -38,10 +46,14 @@ public:
     void setRemoteThemaFolderUrl(QUrl url);
 
 public:
-    void checkUpdate();
+    Q_INVOKABLE void checkUpdate(QString url_str);
 
 private slots:
     void onFileDownloadFinished();
+    void onFileDownloadAborted();
+
+signals:
+    void updateResponse(UpdateResponse_TP response_code);
 
 private:
     bool ParseIndexFile(QByteArray file_data, QHash<QString, QDateTime>& parsed_data);
