@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import com.vystosi.qmlcomponents 1.0
 
 Item {
     anchors.fill: parent
@@ -95,14 +96,18 @@ Item {
         buttonText:qsTr("Update thema")
         onActivated: {
                 themaUpdater.checkUpdate(url_input.text);
-                showMessage(qsTr("Thema update"), qsTr("No thema update is available"),1200)
+
         }
     }
 
     Connections {
         target:themaUpdater
         onUpdateResponse: {
-            console.log(response_code)
+            switch(response_code) {
+            case ThemaUpdater.UPDATE_AVAILABLE:
+                showMessage(qsTr("Thema update"), qsTr("Thema update is available"),1200)
+                break;
+            }
         }
     }
 }

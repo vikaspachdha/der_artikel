@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<HelpPage_C>("com.vystosi.qmlcomponents", 1, 0, "HelpPage","");
     qmlRegisterUncreatableType<Settings_C>("com.vystosi.qmlcomponents", 1, 0, "Settings","");
     qmlRegisterUncreatableType<SettingsPage_C>("com.vystosi.qmlcomponents", 1, 0, "SettingsPage","");
+    qmlRegisterUncreatableType<ThemaUpdater_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaUpdater","");
 
     //qmlRegisterUncreatableType<WordsPage_C>("com.vystosi.qmlcomponents", 1, 0, "WordsPage","");
 

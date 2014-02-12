@@ -16,7 +16,6 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
     _translation(""),
     _defered_read(false),
-    _last_played(QDateTime::currentDateTime()),
     _experience_points(0),
     _selected(false),
     _state(RUSTY)
@@ -70,6 +69,14 @@ bool Thema_C::Read(const QDomElement &element)
             qint64 msecs = dom_date_time.text().toLongLong(&ok);
             if(ok) {
                 _last_played = QDateTime::fromMSecsSinceEpoch(msecs);
+            }
+        }
+
+        QDomElement dom_last_updated = element.firstChildElement("LastUpdated");
+        if(!dom_last_updated.isNull()) {
+            qint64 msecs = dom_last_updated.text().toLongLong(&ok);
+            if(ok) {
+                _last_updated = QDateTime::fromMSecsSinceEpoch(msecs).toUTC();
                 success = true;
             } else {
                 success = false;
@@ -84,10 +91,11 @@ bool Thema_C::Read(const QDomElement &element)
                 if(ok) {
                     AddExperiencePoints(experience);
                     success = true;
-                    int lapsed_days = _last_played.daysTo(QDateTime::currentDateTime());
-                    while( (lapsed_days-- > 0) ) {
-                        // Progressively deduct experience points.
-                        switch (_state) {
+                    if(_last_played.isValid()) {
+                        int lapsed_days = _last_played.daysTo(QDateTime::currentDateTime());
+                        while( (lapsed_days-- > 0) ) {
+                            // Progressively deduct experience points.
+                            switch (_state) {
                             case INERT:
                                 DeductExperiencePoints(2);
                                 break;
@@ -100,6 +108,7 @@ bool Thema_C::Read(const QDomElement &element)
                             default:
                                 DeductExperiencePoints(20);
                                 break;
+                            }
                         }
                     }
                 } else {
@@ -175,10 +184,17 @@ bool Thema_C::Write(QDomElement &element)
             dom_experience.appendChild(text_experience);
             dom_thema.appendChild(dom_experience);
 
-            QDomElement dom_last_played = domDocument.createElement("LastPlayed");
-            QDomText text_last_played = domDocument.createTextNode(QString::number(_last_played.toMSecsSinceEpoch()));
-            dom_last_played.appendChild(text_last_played);
-            dom_thema.appendChild(dom_last_played);
+            if(_last_played.isValid()) {
+                QDomElement dom_last_played = domDocument.createElement("LastPlayed");
+                QDomText text_last_played = domDocument.createTextNode(QString::number(_last_played.toMSecsSinceEpoch()));
+                dom_last_played.appendChild(text_last_played);
+                dom_thema.appendChild(dom_last_played);
+            }
+
+            QDomElement dom_last_updated = domDocument.createElement("LastUpdated");
+            QDomText text_last_updated = domDocument.createTextNode(QString::number(_last_updated.toMSecsSinceEpoch()));
+            dom_last_updated.appendChild(text_last_updated);
+            dom_thema.appendChild(dom_last_updated);
 
             QDomElement dom_words_root = domDocument.createElement("Words");
 
@@ -353,9 +369,14 @@ void Thema_C::ClearUserInput()
 
  \param last_played
 */
-void Thema_C::SetLastPlayed(const QDateTime &last_played)
+void Thema_C::setLastPlayed(const QDateTime &Last_played)
 {
-    _last_played = last_played;
+    _last_played = Last_played;
+}
+
+void Thema_C::setLastUpdated(const QDateTime &last_updated)
+{
+    _last_updated = last_updated;
 }
 
 /*!

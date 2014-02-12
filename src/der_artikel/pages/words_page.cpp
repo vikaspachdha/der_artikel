@@ -214,6 +214,7 @@ void WordsPage_C::CalculateResult()
     Thema_C* current_thema = _page_manager.GetThemaModel()->GetSelectedThema();
     if(current_thema) {
         _result_algo->Calculate(*current_thema,*(_page_manager.GetCurrentResult()));
+        current_thema->setLastPlayed(QDateTime::currentDateTimeUtc());
         current_thema->Save();
     }
 }

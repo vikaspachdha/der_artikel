@@ -22,7 +22,7 @@ class Thema_C : public QObject, public Thema_I
     Q_PROPERTY(QString name READ GetText CONSTANT)
     Q_PROPERTY(QString tr_name READ GetTrText CONSTANT)
     Q_PROPERTY(unsigned int word_count READ GetWordCount CONSTANT)
-    Q_PROPERTY(QDateTime last_played_date READ LastPlayed CONSTANT)
+    Q_PROPERTY(QDateTime last_played_date READ lastPlayed CONSTANT)
     Q_PROPERTY(State_TP state READ state NOTIFY stateChanged)
 
     Q_ENUMS(State_TP)
@@ -64,8 +64,11 @@ public:
 
     int ExperiencePoints() const { return _experience_points; }
 
-    QDateTime LastPlayed() const { return _last_played; }
-    void SetLastPlayed(const QDateTime &LastPlayed);
+    QDateTime lastPlayed() const { return _last_played; }
+    void setLastPlayed(const QDateTime &Last_played);
+
+    QDateTime LastUpdated() const { return _last_updated; }
+    void setLastUpdated(const QDateTime &last_updated);
 
     State_TP state() const { return _state; }
 
@@ -103,6 +106,7 @@ private:
     QList<Word_C*> _words;
     bool _defered_read;
     QDateTime _last_played;
+    QDateTime _last_updated;
     int _experience_points;
     bool _selected;
     QPixmap _icon;
