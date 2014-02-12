@@ -15,9 +15,14 @@ class FileDownloader_C : public QObject
 public:
     explicit FileDownloader_C(QObject *parent = 0);
 
-private slots:
+public:
+    QByteArray fileData() const {return _file_data; }
+
+public:
     void startDownload(QUrl url);
     void stopDownload();
+
+private slots:
     void onDownloadProgress(qint64 bytes_recieved, qint64 total_bytes);
     void onError(QNetworkReply::NetworkError errorCode);
     void onFinished();
