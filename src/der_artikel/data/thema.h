@@ -53,6 +53,8 @@ public:
 
     QString Author() const { return _author; }
 
+    QString filePath() const { return _file_path; }
+
     void SetFilePath(QString file_path);
 
     QList<Word_C*> GetWords() const { return _words; }

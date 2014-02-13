@@ -17,7 +17,7 @@ class Settings_C : public QObject
     Q_PROPERTY(int word_msg_time READ wordMsgTime WRITE setWordMsgTime NOTIFY wordMsgTimeChanged)
     Q_PROPERTY(int min_word_msg_time READ minWordMsgTime CONSTANT)
     Q_PROPERTY(int max_word_msg_time READ maxWordMsgTime CONSTANT)
-    Q_PROPERTY(QUrl thema_update_url READ themaUpdateUrl WRITE setThemaUpdateUrl NOTIFY themaUpdateUrlChanged)
+    Q_PROPERTY(QString thema_remote_path READ themaRemotePath WRITE setThemaRemotePath NOTIFY themaRemotePathChanged)
     Q_ENUMS(Language_TP)
 
 public:
@@ -48,14 +48,14 @@ public:
     int minWordMsgTime() const;
     int maxWordMsgTime() const;
 
-    QUrl themaUpdateUrl() const { return _thema_update_url_str; }
-    void setThemaUpdateUrl(QUrl url_str);
+    QString themaRemotePath() const { return _thema_remote_path; }
+    void setThemaRemotePath(QString url_str);
 
 signals:
     void LanguageChanged();
     void soundLevelChanged();
     void wordMsgTimeChanged();
-    void themaUpdateUrlChanged();
+    void themaRemotePathChanged();
 
 private:
     void updateLangauge();
@@ -66,7 +66,7 @@ private:
     QList <QTranslator*> _installed_translators;
     double _sound_level;
     int _word_message_time;
-    QUrl _thema_update_url_str;
+    QString _thema_remote_path;
 };
 
 #endif // SETTINGS_H

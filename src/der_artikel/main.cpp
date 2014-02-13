@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 
     QQmlContext* root_context = viewer.rootContext();
     Manager_C manager(*root_context);
-    ThemaUpdater_C thema_updater;
+    ThemaUpdater_C thema_updater(*manager.GetSettings());
 
     root_context->setContextProperty("manager", &manager);
     root_context->setContextProperty("themaUpdater", &thema_updater);

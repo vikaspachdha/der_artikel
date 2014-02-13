@@ -79,10 +79,10 @@ Item {
             width:parent.width-4
             anchors{centerIn: parent}
             onTextChanged: {
-                settings.thema_update_url = text;
+                settings.thema_remote_path = text;
             }
             Component.onCompleted: {
-                url_input.text = settings.thema_update_url
+                url_input.text = settings.thema_remote_path
             }
         }
     }
@@ -104,8 +104,8 @@ Item {
         target:themaUpdater
         onUpdateResponse: {
             switch(response_code) {
-            case ThemaUpdater.UPDATE_AVAILABLE:
-                showMessage(qsTr("Thema update"), qsTr("Thema update is available"),1200)
+            case ThemaUpdater.UPDATE_NOT_AVAILABLE:
+                showMessage(qsTr("Thema update"), qsTr("No thema update available"),1200)
                 break;
             }
         }

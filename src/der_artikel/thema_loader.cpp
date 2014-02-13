@@ -39,6 +39,7 @@ void ThemaLoader_C::run()
             emit ThemaLoaded(thema);
         }
     }
+    emit finishedLoading();
 }
 
 /*!

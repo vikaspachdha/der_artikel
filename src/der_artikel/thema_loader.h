@@ -22,7 +22,7 @@ public:
 
 signals:
     void ThemaLoaded(Thema_C* new_thema);
-
+    void finishedLoading();
 private:
 
     QString _root_dir;

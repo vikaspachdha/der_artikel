@@ -284,6 +284,7 @@ void Manager_C::quit()
 */
 void Manager_C::LoadDefaultThemas()
 {
+    // thema_loader shall be deleted automatically.
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
     connect(thema_loader, SIGNAL(ThemaLoaded(Thema_C*)), this, SLOT(OnNewThemaLoaded(Thema_C*)) );
     thema_loader->StartLoading();
