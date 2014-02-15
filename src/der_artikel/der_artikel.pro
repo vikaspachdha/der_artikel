@@ -46,7 +46,10 @@ SOURCES += main.cpp \
     conflict_dlg.cpp \
     image_provider.cpp \
     file_downloader.cpp \
-    thema_updater.cpp
+    thema_updater.cpp \
+    algo/thema_replace_operation.cpp \
+    algo/thema_add_operation.cpp \
+    algo/thema_delete_operation.cpp
 
 # Installation path
 # target.path =
@@ -84,7 +87,11 @@ HEADERS += \
     conflict_dlg.h \
     image_provider.h \
     file_downloader.h \
-    thema_updater.h
+    thema_updater.h \
+    algo/thema_replace_operation.h \
+    algo/thema_file_operation.h \
+    algo/thema_add_operation.h \
+    algo/thema_delete_operation.h
 
 FORMS += \
     thema_builder.ui \

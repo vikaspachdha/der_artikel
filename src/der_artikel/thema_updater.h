@@ -9,7 +9,8 @@
 #include "file_downloader.h"
 
 class Thema_C;
-class Settings_C;
+class Manager_C;
+class ThemaFileOperation_I;
 
 class ThemaUpdater_C : public QObject
 {
@@ -20,31 +21,12 @@ public:
     enum UpdateResponse_TP {
         UPDATE_AVAILABLE=1,
         UPDATE_NOT_AVAILABLE,
-        UPDATE_ERROR
-    };
-
-    enum FileType_TP {
-        IS_INDEX = 1,
-        IS_THEMA,
-        NONE
-    };
-
-    enum FileOperation_TP {
-        ADD = 1,
-        REPLACE,
-        REMOVE,
-    };
-
-    struct FileOperationData_TP {
-        public:
-            QString _local_file_path;
-            QUrl _remote_file_url;
-            FileOperation_TP _operation;
-            int _old_experience;
+        UPDATE_ERROR,
+        UPDATE_FINISHED
     };
 
 public:
-    explicit ThemaUpdater_C(Settings_C& settings, QObject *parent = 0);
+    explicit ThemaUpdater_C(Manager_C& manager, QObject *parent = 0);
 
 public:
     Q_INVOKABLE void checkUpdate();
@@ -65,11 +47,10 @@ private:
     void reset();
 
 private:
-    Settings_C& _settings;
+    Manager_C& _manager;
     FileDownloader_C _file_downloader;
-    FileType_TP _downloading_file_type;
     QHash<QString, QDateTime> _remote_file_data;
-    QVector<FileOperationData_TP> _file_operations;
+    QVector<ThemaFileOperation_I*> _file_operations;
 };
 
 #endif // THEMA_UPDATER_H

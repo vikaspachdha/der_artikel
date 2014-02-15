@@ -50,6 +50,7 @@ public:
 
 public:
     void AddThema(Thema_C* new_thema);
+    void clear();
     Thema_C* GetSelectedThema();
     void ClearSelection();
     SelectionState_TP SelectionState() const;
@@ -57,10 +58,11 @@ public:
 signals:
     void themaSelectionChanged();
 
-
 private slots:
     void OnThemaItemSelectionChanged(Thema_C::SelectionType_TP type);
 
+private:
+    void clearThemaList();
 
 private:
     QList<Thema_C*> _thema_list;

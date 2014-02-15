@@ -149,6 +149,8 @@ public:
 
     Q_INVOKABLE void quit();
 
+    void LoadDefaultThemas();
+
 signals:
     //! Emitted when current page is changed. \param old_page The page that is removed
     //! \param new_page The page that is set as the new page.
@@ -165,7 +167,6 @@ private slots:
     void onThemaSelectionChanged();
 
 private:
-    void LoadDefaultThemas();
     void InitPages();
 
 private:

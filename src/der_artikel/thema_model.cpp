@@ -18,9 +18,7 @@ ThemaModel_C::ThemaModel_C(QObject *parent):
 */
 ThemaModel_C::~ThemaModel_C()
 {
-    foreach(Thema_C* thema, _thema_list) {
-        delete thema;
-    }
+    clearThemaList();
 }
 
 /*!
@@ -179,6 +177,14 @@ void ThemaModel_C::AddThema(Thema_C *new_thema)
     endInsertRows();
 }
 
+void ThemaModel_C::clear()
+{
+    ClearSelection();
+    beginResetModel();
+    clearThemaList();
+    endResetModel();
+}
+
 /*!
  \brief
 
@@ -251,4 +257,12 @@ void ThemaModel_C::OnThemaItemSelectionChanged(Thema_C::SelectionType_TP type)
     QVector<int> roles;
     roles<<SELECTED;
     emit dataChanged(thema_index,thema_index,roles);
+}
+
+void ThemaModel_C::clearThemaList()
+{
+    foreach(Thema_C* thema, _thema_list) {
+        delete thema;
+    }
+    _thema_list.clear();
 }

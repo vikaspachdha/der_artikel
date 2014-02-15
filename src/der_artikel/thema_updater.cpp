@@ -1,17 +1,22 @@
 #include <QDateTime>
 #include <QStringList>
 #include <QFileInfo>
+#include <QDir>
 
 #include "thema_updater.h"
 
 #include "data/thema.h"
 #include "thema_loader.h"
+#include "manager.h"
 #include "settings.h"
+#include "common.h"
+#include "algo/thema_add_operation.h"
+#include "algo/thema_replace_operation.h"
+#include "algo/thema_delete_operation.h"
 
-ThemaUpdater_C::ThemaUpdater_C(Settings_C &settings, QObject *parent) :
+ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
     QObject(parent),
-    _settings(settings),
-    _downloading_file_type(NONE)
+    _manager(manager)
 {
     connect(&_file_downloader, SIGNAL(downloadFinished()), this, SLOT(onFileDownloadFinished()));
     connect(&_file_downloader, SIGNAL(downloadAborted()), this, SLOT(onFileDownloadAborted()));
@@ -20,9 +25,8 @@ ThemaUpdater_C::ThemaUpdater_C(Settings_C &settings, QObject *parent) :
 void ThemaUpdater_C::checkUpdate()
 {
     reset();
-    QUrl url = QUrl::fromUserInput(_settings.themaRemotePath() + "/index.csv");
-    if(url.isValid() && _downloading_file_type == NONE) {
-        _downloading_file_type = IS_INDEX;
+    QUrl url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/index.csv");
+    if(url.isValid()) {
         _file_downloader.startDownload(url);
     }
 }
@@ -30,21 +34,16 @@ void ThemaUpdater_C::checkUpdate()
 void ThemaUpdater_C::onFileDownloadFinished()
 {
     QByteArray file_data = _file_downloader.fileData();
-    if(_downloading_file_type == IS_INDEX) {
-        QHash<QString, QDateTime> parsed_data;
-        if(ParseIndexFile(file_data, parsed_data)) {
-            foreach (QString key, parsed_data.keys()) {
-                qDebug()<<"key - "<<parsed_data[key].toString();
-            }
-            if(parsed_data.keys().count()> 0) {
-                _remote_file_data = parsed_data;
-                buildLocalData();
-            }
+    QHash<QString, QDateTime> parsed_data;
+    if(ParseIndexFile(file_data, parsed_data)) {
+        foreach (QString key, parsed_data.keys()) {
+            qDebug()<<"key - "<<parsed_data[key].toString();
         }
-    } else {
-        // TODO Thema file.
+        if(parsed_data.keys().count()> 0) {
+            _remote_file_data = parsed_data;
+            buildLocalData();
+        }
     }
-    _downloading_file_type = NONE;
 }
 
 void ThemaUpdater_C::onFileDownloadAborted()
@@ -81,7 +80,11 @@ bool ThemaUpdater_C::executeOperations()
 {
     bool success = true;
     if(_file_operations.count() >0) {
-
+        foreach (ThemaFileOperation_I* operation, _file_operations) {
+            operation->execute();
+        }
+        _manager.LoadDefaultThemas();
+        emit updateResponse(UPDATE_FINISHED);
     } else {
         emit updateResponse(UPDATE_NOT_AVAILABLE);
     }
@@ -99,31 +102,30 @@ void ThemaUpdater_C::buildLocalData()
 
 void ThemaUpdater_C::reset()
 {
-    _downloading_file_type = NONE;
     _remote_file_data.clear();
     _file_operations.clear();
 }
 
-void ThemaUpdater_C::onNewThemaLoaded(Thema_C *new_thema)
+void ThemaUpdater_C::onNewThemaLoaded(Thema_C *thema)
 {
-    Q_ASSERT(new_thema);
-    new_thema->setParent(this);
-    QFileInfo thema_local_file_info(new_thema->filePath());
+    Q_ASSERT(thema);
+    thema->setParent(this);
+    QFileInfo thema_local_file_info(thema->filePath());
     if(_remote_file_data.contains(thema_local_file_info.fileName().toLower())) {
-        // Replace operation
-        FileOperationData_TP file_operation;
-        file_operation._operation = REPLACE;
-        file_operation._local_file_path = new_thema->filePath();
-        file_operation._old_experience = new_thema->ExperiencePoints();
-        file_operation._remote_file_url = QUrl::fromUserInput(_settings.themaRemotePath() + "/" + thema_local_file_info.fileName());
-        _file_operations.append(file_operation);
+        if(_remote_file_data[thema_local_file_info.fileName().toLower()] > thema->LastUpdated()) {
+            // Replace operation
+            QString local_file_path = thema->filePath();
+            QUrl remote_file_url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/" + thema_local_file_info.fileName());
+            ThemaFileOperation_I* operation = new ThemaReplaceOperation_C(local_file_path,
+                                                                          remote_file_url,
+                                                                          thema->ExperiencePoints());
+            _file_operations.append(operation);
+        }
         _remote_file_data.remove(thema_local_file_info.fileName().toLower());
     } else {
         // Remove operation
-        FileOperationData_TP file_operation;
-        file_operation._operation = REMOVE;
-        file_operation._local_file_path = new_thema->filePath();
-        _file_operations.append(file_operation);
+        ThemaFileOperation_I* operation = new ThemaDeleteOperation_C(thema->filePath());
+        _file_operations.append(operation);
     }
 }
 
@@ -131,10 +133,10 @@ void ThemaUpdater_C::onBuildLocalDataFinished()
 {
     foreach (QString key, _remote_file_data.keys()) {
         // Add operation
-        FileOperationData_TP file_operation;
-        file_operation._operation = ADD;
-        file_operation._remote_file_url = QUrl::fromUserInput(_settings.themaRemotePath() + "/" + key);
-        _file_operations.append(file_operation);
+        QString local_file_path = ARTIKEL::GetResourcePath("thema") + QDir::separator()+ key;
+        QUrl remote_file_url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/" + key);
+                ThemaFileOperation_I* operation = new ThemaAddOperation_C(local_file_path, remote_file_url);
+        _file_operations.append(operation);
     }
 
     executeOperations();

@@ -79,7 +79,6 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     connect(_thema_model,SIGNAL(themaSelectionChanged()), this, SLOT(onThemaSelectionChanged()));
 
     LoadDefaultThemas();
-    _current_result = new Result_C(this);
 }
 
 /*!
@@ -284,6 +283,11 @@ void Manager_C::quit()
 */
 void Manager_C::LoadDefaultThemas()
 {
+    _current_result = new Result_C(this);
+    if(_thema_model) {
+        _thema_model->clear();
+    }
+
     // thema_loader shall be deleted automatically.
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
     connect(thema_loader, SIGNAL(ThemaLoaded(Thema_C*)), this, SLOT(OnNewThemaLoaded(Thema_C*)) );
