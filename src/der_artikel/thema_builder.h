@@ -7,6 +7,7 @@
 
 #include <QWidget>
 #include <QHash>
+#include <QTimer>
 
 class Thema_C;
 
@@ -41,6 +42,7 @@ private slots:
     void OnNew();
     void OnLoad();
     void OnSave();
+    void OnSaveAs();
     void OnExport();
     void OnIcon();
     void OnImport();
@@ -56,8 +58,12 @@ private slots:
     void InsertUUmlaut();
     void InsertEszett();
 
+    void onEnableDateTimeChk(bool enabled);
+    void onUpdateTime();
+
 private:
     void UpdateItem(QListWidgetItem* item);
+    bool Save(QString save_file);
     bool Write(QIODevice* pDevice);
     bool Export(QIODevice* pDevice);
     bool Import(QIODevice* pDevice);
@@ -77,6 +83,7 @@ private:
     QHash<QString, Word_C*> _words_set;
     QHash<Word_C*, QListWidgetItem*> _word_item_hash;
     QListWidgetItem* _edit_item;
+    QTimer _date_time_timer;
 };
 #endif // ENABLE_THEMA_BUILDER
 

@@ -66,6 +66,14 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
                 data = thema->state();
                 break;
 
+            case LAST_PLAYED:
+                data = thema->lastPlayed();
+                break;
+
+            case LAST_UPDATED:
+                data = thema->LastUpdated();
+                break;
+
             case THEMA_OBJECT:
                 data = QVariant::fromValue<QObject*>(thema);
                 break;
@@ -107,60 +115,10 @@ QHash<int, QByteArray> ThemaModel_C::roleNames() const
     roleNames[EXPERIENCE] = "experience";
     roleNames[WORD_COUNT] = "word_count";
     roleNames[THEMA_STATE] = "thema_state";
+    roleNames[LAST_PLAYED] = "last_played";
+    roleNames[LAST_UPDATED] = "last_updated";
     roleNames[THEMA_OBJECT] = "thema_object";
     return roleNames;
-}
-
-/*!
- \brief
-
- \param index
- \return Qt::ItemFlags
-*/
-Qt::ItemFlags ThemaModel_C::flags(const QModelIndex &index) const
-{
-    Q_UNUSED(index)
-    return Qt::ItemIsEditable | Qt::ItemIsEnabled;
-}
-
-/*!
- \brief
-
- \param index
- \param value
- \param role
- \return bool
-*/
-bool ThemaModel_C::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-    bool success = false;
-    if(index.isValid()) {
-        Thema_C* thema = _thema_list.at(index.row());
-
-        if(thema) {
-            QVector<int> changedRoles;
-            bool selected = value.toBool();
-            switch(role) {
-
-            case SELECTED:
-                thema->setSelected(selected);
-                if(selected) {
-                    _selected_thema_list.append(thema);
-                } else {
-                    _selected_thema_list.removeAll(thema);
-                }
-                success = true;
-                changedRoles<<SELECTED;
-                emit dataChanged(index,index,changedRoles);
-                break;
-
-            default:
-                break;
-            }
-        }
-    }
-
-    return success;
 }
 
 /*!

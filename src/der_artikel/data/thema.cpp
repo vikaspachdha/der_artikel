@@ -76,7 +76,7 @@ bool Thema_C::Read(const QDomElement &element)
         if(!dom_last_updated.isNull()) {
             qint64 msecs = dom_last_updated.text().toLongLong(&ok);
             if(ok) {
-                _last_updated = QDateTime::fromMSecsSinceEpoch(msecs).toUTC();
+                _last_updated = QDateTime::fromMSecsSinceEpoch(msecs);
                 success = true;
             } else {
                 success = false;
@@ -93,7 +93,7 @@ bool Thema_C::Read(const QDomElement &element)
                     success = true;
                     if(_last_played.isValid()) {
                         int lapsed_days = _last_played.daysTo(QDateTime::currentDateTime());
-                        while( (lapsed_days-- > 0) ) {
+                        while( ((lapsed_days--) > 0) ) {
                             // Progressively deduct experience points.
                             switch (_state) {
                             case INERT:

@@ -98,5 +98,6 @@
         <file>resources/sounds/click.wav</file>
         <file>resources/new_file.png</file>
         <file>qml/der_artikel/Slider.qml</file>
+        <file>resources/save_as.png</file>
     </qresource>
 </RCC>

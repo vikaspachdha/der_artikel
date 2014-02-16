@@ -32,6 +32,8 @@ public:
         EXPERIENCE,
         WORD_COUNT,
         THEMA_STATE,
+        LAST_PLAYED,
+        LAST_UPDATED,
         THEMA_OBJECT
     };
 
@@ -45,8 +47,6 @@ public:
     QVariant data(const QModelIndex &index, int role) const;
     int rowCount(const QModelIndex &parent = QModelIndex()) const;
     QHash<int,QByteArray> roleNames() const;
-    Qt::ItemFlags flags(const QModelIndex &index) const;
-    bool setData(const QModelIndex &index, const QVariant &value, int role);
 
 public:
     void AddThema(Thema_C* new_thema);

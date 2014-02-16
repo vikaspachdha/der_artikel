@@ -7,9 +7,11 @@ Flipable {
     property alias title: thema_title.text
     property alias translation: thema_tr_text.text
     property alias author_name: author.text
+    property alias last_played_text: date.text
     property alias icon_url:thema_icon.source
     property int count:0
     property bool thema_selected: false
+    property int flip_timeout:5000
     property bool flipped: false
 
     front: thema_rect
@@ -32,8 +34,8 @@ Flipable {
             anchors.right: parent.right
             text:qsTr("Author :") + settings.i18n_empty_string
             color:color_palette.color_font_02
-            font.family:command_font.name
-            font.pixelSize: 16
+            font.family:custom_regular.name
+            font.pixelSize: 14
         }
         Text {
             id:author
@@ -43,11 +45,11 @@ Flipable {
             anchors.right: parent.right
             text:"-"
             color:color_palette.color_font_02
-            font.family:command_font.name
-            font.pixelSize: 16
+            font.family:custom_regular.name
+            font.pixelSize: 12
         }
         Text {
-            id:date_label
+            id:last_played_date_label
             anchors.top:author.bottom
             anchors.topMargin: 8
             anchors.left:parent.left
@@ -55,19 +57,18 @@ Flipable {
             anchors.right: parent.right
             text:qsTr("Last Played :") + settings.i18n_empty_string
             color:color_palette.color_font_02
-            font.family:command_font.name
-            font.pixelSize: 16
+            font.family:custom_regular.name
+            font.pixelSize: 14
         }
         Text {
             id:date
-            anchors.top: date_label.bottom
+            anchors.top: last_played_date_label.bottom
             anchors.left:parent.left
             anchors.leftMargin: 2
             anchors.right: parent.right
-            text:"10 . 12 . 2013"
             color:color_palette.color_font_02
-            font.family:command_font.name
-            font.pixelSize: 18
+            font.family:custom_regular.name
+            font.pixelSize: 12
         }
     }
 
@@ -97,8 +98,8 @@ Flipable {
             anchors.top: thema_icon.bottom
             anchors.topMargin: 2
             color:color_palette.color_font_02
-            font.family:command_font.name
-            font.pixelSize: 18
+            font.family:custom_regular.name
+            font.pixelSize: 12
         }
 
         Text {
@@ -111,8 +112,8 @@ Flipable {
             anchors.left: parent.left
             anchors.leftMargin: 4
             color:color_palette.color_font_02
-            font.family:command_font.name
-            font.pixelSize: 16
+            font.family:custom_regular.name
+            font.pixelSize: 12
         }
 
         Text {
@@ -128,8 +129,8 @@ Flipable {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             color:color_palette.color_font_02
-            font.family:command_font.name
-            font.pixelSize: 16
+            font.family:custom_regular.name
+            font.pixelSize: 12
         }
 
         Text {
@@ -145,8 +146,8 @@ Flipable {
             anchors.top: word_count_label.bottom
             anchors.topMargin: 0
             color:color_palette.color_font_02
-            font.family:command_font.name
-            font.pixelSize: 24
+            font.family:custom_regular.name
+            font.pixelSize: 12
         }
 
         MouseArea {
@@ -208,7 +209,7 @@ Flipable {
 
     Timer {
         id:flip_timer
-        interval: 3000
+        interval: flip_timeout
         onTriggered: {
             thema_item_root.flipped = false
         }

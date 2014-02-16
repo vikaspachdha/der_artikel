@@ -35,6 +35,7 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     connect(ui->_new_btn,SIGNAL(clicked()), this,SLOT(OnNew()) );
     connect(ui->_open_btn,SIGNAL(clicked()), this,SLOT(OnLoad()) );
     connect(ui->_save_btn,SIGNAL(clicked()), this,SLOT(OnSave()) );
+    connect(ui->_save_as_btn,SIGNAL(clicked()), this,SLOT(OnSaveAs()) );
     connect(ui->_icon_btn,SIGNAL(clicked()), this,SLOT(OnIcon()) );
     connect(ui->_export_data_btn,SIGNAL(clicked()), this,SLOT(OnExport()) );
     connect(ui->_import_data_btn,SIGNAL(clicked()), this,SLOT(OnImport()) );
@@ -49,6 +50,12 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     connect(ui->_o_umlaut_btn, SIGNAL(clicked()), SLOT(InsertOUmlaut()));
     connect(ui->_u_umlaut_btn, SIGNAL(clicked()), SLOT(InsertUUmlaut()));
     connect(ui->_eszett_btn, SIGNAL(clicked()), SLOT(InsertEszett()));
+
+    connect(ui->_enabe_update_date_chk,SIGNAL(toggled(bool)),this,SLOT(onEnableDateTimeChk(bool)));
+
+    _date_time_timer.setInterval(1000);
+    connect(&_date_time_timer,SIGNAL(timeout()),this,SLOT(onUpdateTime()));
+    _date_time_timer.start();
 
     // Shortcut for a & A umlaut chars
     QShortcut* a_umlaut_shortcut =  new QShortcut(this);
@@ -88,8 +95,11 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     // Disable buttons. Enable only when pre-conditions are met.
     ui->_add_btn->setEnabled(false);
     ui->_save_btn->setEnabled(false);
+    ui->_save_as_btn->setEnabled(false);
     ui->_export_data_btn->setEnabled(false);
     ui->_delete_btn->setEnabled(false);
+    ui->_update_date_time_edit->setEnabled(false);
+    ui->_update_date_time_edit->setDateTime(QDateTime::currentDateTime());
 }
 
 ThemaBuilder_C::~ThemaBuilder_C()
@@ -146,20 +156,23 @@ void ThemaBuilder_C::OnLoad()
 
 void ThemaBuilder_C::OnSave()
 {
+    QString save_file = _thema ? _thema->filePath():"";
+    if(save_file.isEmpty()) {
+        OnSaveAs();
+    } else {
+        Save(save_file);
+    }
+}
+
+void ThemaBuilder_C::OnSaveAs()
+{
     static QString last_save_path = QDir::homePath() + QDir::separator() + "untitled.AKL";
     QString save_file = QFileDialog::getSaveFileName(this,tr("Select file name"),
                                                      last_save_path,
                                                      tr("Thema files (*.AKL);; All files (*.*)"));
 
-    if(!save_file.isEmpty()) {
-        QFile file(save_file);
-        if (file.open(QFile::WriteOnly | QFile::Text)) {
-            if(Write(&file)) {
-                last_save_path = save_file;
-            }
-        } else {
-            qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
-        }
+    if(Save(save_file)) {
+        last_save_path = save_file;
     }
 }
 
@@ -211,6 +224,7 @@ void ThemaBuilder_C::OnWordTextChanged(QString new_text)
 void ThemaBuilder_C::OnThemaNameChanged(QString new_text)
 {
     ui->_save_btn->setEnabled(!new_text.isEmpty());
+    ui->_save_as_btn->setEnabled(!new_text.isEmpty());
 }
 
 void ThemaBuilder_C::OnItemDoubleClicked(QListWidgetItem *item)
@@ -309,6 +323,22 @@ void ThemaBuilder_C::InsertEszett()
     InsertSplText("ß");
 }
 
+void ThemaBuilder_C::onEnableDateTimeChk(bool enabled)
+{
+    ui->_update_date_time_edit->setEnabled(enabled);
+    if(enabled) {
+        _date_time_timer.stop();
+    } else {
+        ui->_update_date_time_edit->setDateTime(QDateTime::currentDateTime());
+        _date_time_timer.start();
+    }
+}
+
+void ThemaBuilder_C::onUpdateTime()
+{
+    ui->_update_date_time_edit->setDateTime(QDateTime::currentDateTime());
+}
+
 void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
 {
     if(item) {
@@ -323,6 +353,20 @@ void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
             item->setText(listItemText);
         }
     }
+}
+
+bool ThemaBuilder_C::Save(QString save_file)
+{
+    bool success = false;
+    if(!save_file.isEmpty()) {
+        QFile file(save_file);
+        if (file.open(QFile::WriteOnly | QFile::Text)) {
+            success = Write(&file);
+        } else {
+            qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
+        }
+    }
+    return success;
 }
 
 void ThemaBuilder_C::OnExport()
@@ -397,6 +441,7 @@ bool ThemaBuilder_C::Write(QIODevice* pDevice)
     _thema->_translation =  ui->_thema_tr_name_edit->text().trimmed();
     _thema->_author = ui->_author_name_edit->text().trimmed();
     _thema->_icon = *(ui->_icon_lbl->pixmap());
+    _thema->setLastUpdated(ui->_update_date_time_edit->dateTime());
     _thema->Write(root);
 
     domDocument.appendChild(root);
@@ -543,6 +588,12 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
         }
         foreach(Word_C* word, thema->_words) {
             AddWordToList(word);
+        }
+        QDateTime thema_update_time = _thema->LastUpdated();
+        if(thema_update_time.isValid()) {
+            ui->_update_time_stamp_lbl->setText(thema_update_time.toString("dd-MM-yyyy hh:mm:ss"));
+        } else {
+            ui->_update_time_stamp_lbl->setText("");
         }
         ui->_icon_lbl->setPixmap(_thema->_icon);
     }
