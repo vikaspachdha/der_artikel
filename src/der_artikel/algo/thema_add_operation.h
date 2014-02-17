@@ -9,6 +9,7 @@
 
 class ThemaAddOperation_C : public QObject, public ThemaFileOperation_I
 {
+    Q_OBJECT
 public:
     ThemaAddOperation_C(QString local_file_path, QUrl remote_file_url);
 

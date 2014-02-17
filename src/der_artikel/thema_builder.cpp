@@ -45,6 +45,7 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     connect(ui->_word_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(OnItemDoubleClicked(QListWidgetItem*)) );
     connect(ui->_word_list,SIGNAL(itemSelectionChanged()), this, SLOT(OnWordSelectionChanged()));
     connect(ui->_delete_btn,SIGNAL(clicked()), this, SLOT(OnDelete()) );
+    connect(ui->_index_btn,SIGNAL(clicked()),this,SLOT(OnIndex()));
 
     connect(ui->_a_umlaut_btn, SIGNAL(clicked()), SLOT(InsertAUmlaut()));
     connect(ui->_o_umlaut_btn, SIGNAL(clicked()), SLOT(InsertOUmlaut()));
@@ -288,6 +289,40 @@ void ThemaBuilder_C::OnDelete()
             }
         }
         UpdateUI();
+    }
+}
+
+void ThemaBuilder_C::OnIndex()
+{
+    static QString last_open_path = QDir::homePath();
+    QString file_path = QFileDialog::getExistingDirectory(this, tr("Open Thema Directory"),
+                                                          QDir::homePath(),
+                                                          QFileDialog::ShowDirsOnly
+                                                          | QFileDialog::DontResolveSymlinks);
+    if(!file_path.isEmpty()) {
+        last_open_path = file_path;
+        QDir root_thema_dir = file_path;
+        QStringList nameFilters;
+        nameFilters<<"*.AKL";
+        QFileInfoList thema_files= root_thema_dir.entryInfoList(nameFilters,QDir::Files | QDir::NoSymLinks|QDir::NoDotAndDotDot);
+        QFile index_file(file_path + QDir::separator() + "index.csv");
+        if(index_file.open(QIODevice::WriteOnly)) {
+            QTextStream write_stream(&index_file);
+            ThemaLoader_C thema_loader;
+            foreach(QFileInfo thema_file, thema_files) {
+                Thema_C* thema = thema_loader.LoadThema(thema_file.absoluteFilePath());
+                if(thema) {
+                    QDateTime update_stamp = thema->LastUpdated();
+                    QString update_stamp_str = update_stamp.toUTC().toString(Qt::ISODate);
+                    write_stream<<thema_file.fileName()<<";"<<update_stamp_str<<endl;
+                }
+            }
+            index_file.close();
+            QMessageBox::information(this,tr("Indexing complete"),tr("Indexing finished."),QMessageBox::Ok);
+        } else {
+            QMessageBox::information(this,tr("Error"),tr("Error writing index file : %1").arg(index_file.errorString()),QMessageBox::Ok);
+        }
+
     }
 }
 

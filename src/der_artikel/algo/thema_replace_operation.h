@@ -9,6 +9,7 @@
 
 class ThemaReplaceOperation_C : public QObject, public ThemaFileOperation_I
 {
+    Q_OBJECT
 public:
     ThemaReplaceOperation_C(QString local_file_path, QUrl remote_file_url,  int old_experience);
 

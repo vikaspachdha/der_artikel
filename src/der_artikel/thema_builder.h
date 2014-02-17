@@ -52,6 +52,7 @@ private slots:
     void OnItemDoubleClicked(QListWidgetItem *item);
     void OnWordSelectionChanged();
     void OnDelete();
+    void OnIndex();
 
     void InsertAUmlaut();
     void InsertOUmlaut();

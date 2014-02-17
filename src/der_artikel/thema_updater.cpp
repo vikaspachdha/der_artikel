@@ -65,7 +65,7 @@ bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, QDateTi
             // Parse file name and update time.
             if(file_params.count() > 1) {
                 QString file_name = file_params.at(0).toLower();
-                QDateTime update_date = QDateTime::fromString(file_params.at(1),Qt::ISODate);
+                QDateTime update_date = QDateTime::fromString(file_params.at(1),Qt::ISODate).toLocalTime();
                 if(update_date.isValid() && !file_name.isEmpty()) {
                     // Params are parsed, add to structure
                     parsed_data[file_name] = update_date;
