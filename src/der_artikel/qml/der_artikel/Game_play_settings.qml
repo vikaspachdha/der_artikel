@@ -78,6 +78,7 @@ Item {
             id:url_input
             width:parent.width-4
             anchors{centerIn: parent}
+            selectByMouse: true
             onTextChanged: {
                 settings.thema_remote_path = text;
             }

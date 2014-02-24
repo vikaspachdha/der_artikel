@@ -1,5 +1,6 @@
 #include <QFile>
 #include <QDataStream>
+#include <QDebug>
 #include <thema_loader.h>
 #include "thema_replace_operation.h"
 #include "data/thema.h"
@@ -33,7 +34,7 @@ void ThemaReplaceOperation_C::onFileDownloadFinished()
     QFile file(_local_file_path);
     if (file.open(QFile::WriteOnly)) {
         QDataStream out(&file);
-        out<<file_data;
+        out.writeRawData(file_data.data(),file_data.size());
         file.close();
         ThemaLoader_C thema_loader;
         Thema_C* thema = thema_loader.LoadThema(_local_file_path);

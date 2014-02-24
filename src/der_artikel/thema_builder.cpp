@@ -397,6 +397,7 @@ bool ThemaBuilder_C::Save(QString save_file)
         QFile file(save_file);
         if (file.open(QFile::WriteOnly | QFile::Text)) {
             success = Write(&file);
+            file.close();
         } else {
             qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
         }
