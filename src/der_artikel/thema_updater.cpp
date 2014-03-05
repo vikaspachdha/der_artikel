@@ -65,7 +65,10 @@ bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, QDateTi
             // Parse file name and update time.
             if(file_params.count() > 1) {
                 QString file_name = file_params.at(0).toLower();
-                QDateTime update_date = QDateTime::fromString(file_params.at(1),Qt::ISODate).toLocalTime();
+                QString update_time_str = file_params.at(1);
+                bool ok = false;
+                qint64 msecs = update_time_str.toLongLong(&ok);
+                QDateTime update_date = QDateTime::fromMSecsSinceEpoch(msecs);
                 if(update_date.isValid() && !file_name.isEmpty()) {
                     // Params are parsed, add to structure
                     parsed_data[file_name] = update_date;
@@ -112,6 +115,7 @@ void ThemaUpdater_C::onNewThemaLoaded(Thema_C *thema)
     thema->setParent(this);
     QFileInfo thema_local_file_info(thema->filePath());
     if(_remote_file_data.contains(thema_local_file_info.fileName().toLower())) {
+        qDebug()<<thema_local_file_info.fileName().toLower()<<" "<<_remote_file_data[thema_local_file_info.fileName().toLower()].toString(Qt::TextDate)<<" "<<thema->LastUpdated().toString(Qt::TextDate);
         if(_remote_file_data[thema_local_file_info.fileName().toLower()] > thema->LastUpdated()) {
             // Replace operation
             QString local_file_path = thema->filePath();

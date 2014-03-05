@@ -21,7 +21,7 @@ Settings_C::Settings_C(QObject *parent) :
     _word_message_time(1200)
 {
     updateLangauge();
-    _thema_remote_path = "www.vikaspachdha.com/der_artikel_data";
+    _thema_remote_path = "/Users/vikas/Dropbox/German/thema";
 }
 
 /*!

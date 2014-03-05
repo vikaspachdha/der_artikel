@@ -313,8 +313,7 @@ void ThemaBuilder_C::OnIndex()
                 Thema_C* thema = thema_loader.LoadThema(thema_file.absoluteFilePath());
                 if(thema) {
                     QDateTime update_stamp = thema->LastUpdated();
-                    QString update_stamp_str = update_stamp.toUTC().toString(Qt::ISODate);
-                    write_stream<<thema_file.fileName()<<";"<<update_stamp_str<<endl;
+                    write_stream<<thema_file.fileName()<<";"<<QString::number(update_stamp.toMSecsSinceEpoch())<<endl;
                 }
             }
             index_file.close();
