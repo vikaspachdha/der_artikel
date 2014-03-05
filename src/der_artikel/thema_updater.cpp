@@ -36,9 +36,9 @@ void ThemaUpdater_C::onFileDownloadFinished()
     QByteArray file_data = _file_downloader.fileData();
     QHash<QString, QDateTime> parsed_data;
     if(ParseIndexFile(file_data, parsed_data)) {
-        foreach (QString key, parsed_data.keys()) {
-            qDebug()<<"key - "<<parsed_data[key].toString();
-        }
+//        foreach (QString key, parsed_data.keys()) {
+//            qDebug()<<"key - "<<parsed_data[key].toString();
+//        }
         if(parsed_data.keys().count()> 0) {
             _remote_file_data = parsed_data;
             buildLocalData();
@@ -115,7 +115,7 @@ void ThemaUpdater_C::onNewThemaLoaded(Thema_C *thema)
     thema->setParent(this);
     QFileInfo thema_local_file_info(thema->filePath());
     if(_remote_file_data.contains(thema_local_file_info.fileName().toLower())) {
-        qDebug()<<thema_local_file_info.fileName().toLower()<<" "<<_remote_file_data[thema_local_file_info.fileName().toLower()].toString(Qt::TextDate)<<" "<<thema->LastUpdated().toString(Qt::TextDate);
+        //qDebug()<<thema_local_file_info.fileName().toLower()<<" "<<_remote_file_data[thema_local_file_info.fileName().toLower()].toString(Qt::TextDate)<<" "<<thema->LastUpdated().toString(Qt::TextDate);
         if(_remote_file_data[thema_local_file_info.fileName().toLower()] > thema->LastUpdated()) {
             // Replace operation
             QString local_file_path = thema->filePath();
