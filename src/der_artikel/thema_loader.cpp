@@ -50,63 +50,15 @@ void ThemaLoader_C::run()
 */
 Thema_C *ThemaLoader_C::LoadThema(QString file_path)
 {
-    Thema_C* thema = 0;
-    QFile thema_file(file_path);
-
-    if(thema_file.open(QFile::ReadOnly)) {
-        QDataStream data_stream(&thema_file);
-        QByteArray xml_data;
-        data_stream>>xml_data;
-        xml_data = qUncompress(xml_data);
-        QDomDocument thema_doc;
-        QString error_msg;
-        int error_line;
-        int error_col;
-        if(thema_doc.setContent(xml_data, &error_msg, &error_line, &error_col)) {
-            //parse the file and read the thema.
-            QDomElement root = thema_doc.firstChildElement("Root");
-            QDomAttr versionAttr = root.attributeNode("Version");
-            QString versionStr = versionAttr.value();
-
-            bool ok = false;
-            int version = versionStr.toInt(&ok);
-            if(ok) {
-                if(version <= APP_VERSION) {
-
-                    QDomNode domNode = root.firstChild();
-                    while (!domNode.isNull()) {
-                        if(domNode.nodeName().compare("Thema") == 0) {
-                            thema = new Thema_C();
-                            if(!thema->Read(domNode.toElement())) {
-                                delete thema;
-                                thema = 0;
-                                qDebug()<<"Invalid Thema.";
-                            } else {
-                                thema->SetFilePath(file_path);
-                            }
-                            if(_thema_parent) {
-                                thema->moveToThread(_thema_parent->thread());
-                            }
-                        }
-                        domNode = domNode.nextSibling();
-                    }
-
-                } else {
-                    qDebug()<<"Cannot parse thema file. This version is not supported : "<<version;
-                    QMessageBox::critical(0, tr("Invalid thema file version."), tr("Cannot parse thema file. This version is not supported : %1.").arg(version));
-                }
-            }
-        } else {
-            qDebug()<<"Invalid thema file. "<<error_msg<<" Line : "<<error_line<<" Col: "<<error_col;
-            QMessageBox::critical(0, tr("Invalid thema file."), tr("Cannot parse thema file. Check logs for futher details."));
+    Thema_C* thema = new Thema_C();
+    if(thema->Read(file_path)) {
+        if(_thema_parent) {
+            thema->moveToThread(_thema_parent->thread());
         }
-
     } else {
-        qDebug()<<thema_file.errorString();
+        delete thema;
+        thema = 0;
     }
-
-    thema_file.close();
-
     return thema;
 }
 

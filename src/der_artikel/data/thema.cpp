@@ -3,6 +3,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QBuffer>
+#include <QMessageBox>
 
 #include "version.h"
 #include "common.h"
@@ -48,7 +49,7 @@ void Thema_C::SetFilePath(QString file_path)
  \param element
  \return bool
 */
-bool Thema_C::Read(const QDomElement &element)
+bool Thema_C::Read(const QDomElement &element, bool defered)
 {
     bool success = false;
     ClearWords();
@@ -136,6 +137,62 @@ bool Thema_C::Read(const QDomElement &element)
 
     }
 
+
+    return success;
+}
+
+bool Thema_C::Read(QString thema_file_path, bool defered)
+{
+    bool success = true;
+    QFile thema_file(thema_file_path);
+    if(thema_file.open(QFile::ReadOnly)) {
+        QDataStream data_stream(&thema_file);
+        QByteArray xml_data;
+        data_stream>>xml_data;
+        xml_data = qUncompress(xml_data);
+        QDomDocument thema_doc;
+        QString error_msg;
+        int error_line;
+        int error_col;
+        if(thema_doc.setContent(xml_data, &error_msg, &error_line, &error_col)) {
+            //parse the file and read the thema.
+            QDomElement root = thema_doc.firstChildElement("Root");
+            QDomAttr versionAttr = root.attributeNode("Version");
+            QString versionStr = versionAttr.value();
+
+            bool ok = false;
+            int version = versionStr.toInt(&ok);
+            if(ok) {
+                if(version <= APP_VERSION) {
+
+                    QDomNode domNode = root.firstChild();
+                    while (!domNode.isNull()) {
+                        if(domNode.nodeName().compare("Thema") == 0) {
+                            if(!Read(domNode.toElement(),defered)) {
+                                success = false;
+                                qDebug()<<"Invalid Thema.";
+                            } else {
+                                SetFilePath(thema_file_path);
+                            }
+                        }
+                        domNode = domNode.nextSibling();
+                    }
+
+                } else {
+                    qDebug()<<"Cannot parse thema file. This version is not supported : "<<version;
+                    QMessageBox::critical(0, tr("Invalid thema file version."), tr("Cannot parse thema file. This version is not supported : %1.").arg(version));
+                }
+            }
+        } else {
+            qDebug()<<"Invalid thema file. "<<error_msg<<" Line : "<<error_line<<" Col: "<<error_col;
+            QMessageBox::critical(0, tr("Invalid thema file."), tr("Cannot parse thema file. Check logs for futher details."));
+        }
+
+    } else {
+        qDebug()<<thema_file.errorString();
+    }
+
+    thema_file.close();
 
     return success;
 }

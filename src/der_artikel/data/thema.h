@@ -83,11 +83,10 @@ public:
     virtual void ClearUserInput();
 
 public:
-    bool Read(const QDomElement& element);
+    bool Read(QString thema_file_path, bool defered = true);
     bool Write(QDomElement& element);
     void Save(QString file_path="");
     void ClearWords();
-
 
 signals:
     void selectionChanged(Thema_C::SelectionType_TP);
@@ -95,6 +94,7 @@ signals:
     void stateChanged();
 
 private:
+    bool Read(const QDomElement& element, bool defered=true);
     bool Write(QIODevice* pDevice);
     void UpdateThemaState();
     QByteArray IconData() const;
