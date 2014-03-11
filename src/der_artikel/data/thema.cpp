@@ -16,7 +16,6 @@
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
     _translation(""),
-    _defered_read(false),
     _experience_points(0),
     _selected(false),
     _state(RUSTY)
@@ -124,12 +123,16 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
             QDomNode word_node = words_root_node.firstChild();
 
             while(!word_node.isNull()) {
-                Word_C* word = new Word_C(this);
-                if(!word->Read(word_node.toElement())) {
-                    delete word;
-                    qDebug()<<"Invalid Word in thema.";
+                if(defered) {
+                    _words.append(0);
                 } else {
-                    _words.append(word);
+                    Word_C* word = new Word_C(this);
+                    if(!word->Read(word_node.toElement())) {
+                        delete word;
+                        qDebug()<<"Invalid Word in thema.";
+                    } else {
+                        _words.append(word);
+                    }
                 }
                 word_node = word_node.nextSibling();
             }
@@ -143,6 +146,11 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
 
 bool Thema_C::Read(QString thema_file_path, bool defered)
 {
+    if(thema_file_path.isEmpty()) {
+        thema_file_path = _file_path;
+    }
+    ResetThema();
+
     bool success = true;
     QFile thema_file(thema_file_path);
     if(thema_file.open(QFile::ReadOnly)) {
@@ -380,6 +388,20 @@ void Thema_C::UpdateIcon(QByteArray data)
         QDataStream data_stream(&buffer);
         data_stream>>_icon;
     }
+}
+
+void Thema_C::ResetThema()
+{
+    _text = "";
+    _translation = "";
+    _experience_points = 0;
+    _selected = false;
+    _state = RUSTY;
+    _icon =  QPixmap("qrc:/res/resources/thema_generic.png");
+    _last_played = QDateTime();
+    _last_updated = QDateTime();
+    _file_path = "";
+    ClearWords();
 }
 
 /*!

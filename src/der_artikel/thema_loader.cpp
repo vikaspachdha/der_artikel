@@ -48,10 +48,10 @@ void ThemaLoader_C::run()
  \param file_path
  \return Thema_C
 */
-Thema_C *ThemaLoader_C::LoadThema(QString file_path)
+Thema_C *ThemaLoader_C::LoadThema(QString file_path, bool defered)
 {
     Thema_C* thema = new Thema_C();
-    if(thema->Read(file_path)) {
+    if(thema->Read(file_path,defered)) {
         if(_thema_parent) {
             thema->moveToThread(_thema_parent->thread());
         }

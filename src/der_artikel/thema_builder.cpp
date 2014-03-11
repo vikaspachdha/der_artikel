@@ -144,7 +144,7 @@ void ThemaBuilder_C::OnLoad()
                                                      tr("Thema files (*.AKL);; All files (*.*)"));
     if(!file_path.isEmpty()) {
         ThemaLoader_C loader;
-        Thema_C* new_thema = loader.LoadThema(file_path);
+        Thema_C* new_thema = loader.LoadThema(file_path,false);
         if(new_thema) {
             Reset();
             _thema = new_thema;

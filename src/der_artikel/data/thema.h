@@ -99,6 +99,7 @@ private:
     void UpdateThemaState();
     QByteArray IconData() const;
     void UpdateIcon(QByteArray data);
+    void ResetThema();
 
 private:
     QString _text;
@@ -106,7 +107,6 @@ private:
     QString _author;
     QString _file_path;
     QList<Word_C*> _words;
-    bool _defered_read;
     QDateTime _last_played;
     QDateTime _last_updated;
     int _experience_points;

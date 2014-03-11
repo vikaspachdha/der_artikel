@@ -36,6 +36,7 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
+    thema->Read("",false);
     Q_ASSERT(thema);
     if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
         // Add words to page.
@@ -74,6 +75,7 @@ void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
     Q_ASSERT(thema);
     thema->ClearUserInput();
+    thema->ClearWords();
 
     QQuickItem* title_item = _page_manager.titleItem(_page_id);
     if(title_item) {

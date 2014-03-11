@@ -17,7 +17,7 @@ protected:
     virtual void run();
 
 public:
-    Thema_C* LoadThema(QString file_path);
+    Thema_C* LoadThema(QString file_path, bool defered = true);
     void StartLoading();
 
 signals:
