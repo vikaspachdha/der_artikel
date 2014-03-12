@@ -26,6 +26,7 @@
 #include <QQuickItem>
 #include <QQmlContext>
 #include <QMessageBox>
+#include <QTimer>
 #include <QDebug>
 
 // Interface for this file
@@ -149,10 +150,24 @@ void Manager_C::setGameLevel(Manager_C::GameLevel game_level)
  \brief
 
 */
-void Manager_C::showMessage()
+void Manager_C::showMessage(QString title, QString message, int duration, MessageType type)
 {
-    QVariant returnedVal;
-    QMetaObject::invokeMethod(_root_item,"showMessage",Q_RETURN_ARG(QVariant,returnedVal));
+    Q_ASSERT(_settings);
+    QMetaObject::invokeMethod(_root_item,"showMessage",Q_ARG(QVariant,title),Q_ARG(QVariant,message),Q_ARG(QVariant,duration),Q_ARG(QVariant,type));
+    QTimer::singleShot(_settings->messageAnimTime(),&_message_loop,SLOT(quit()));
+    _message_loop.exec();
+}
+
+/*!
+ \brief
+
+*/
+void Manager_C::closeMessage()
+{
+    Q_ASSERT(_settings);
+    QMetaObject::invokeMethod(_root_item,"closeMessage");
+    QTimer::singleShot(_settings->messageAnimTime(),&_message_loop,SLOT(quit()));
+    _message_loop.exec();
 }
 
 /*!

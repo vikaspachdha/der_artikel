@@ -8,7 +8,7 @@
 #include "algo/moderate_result_algo.h"
 #include "algo/strict_result_algo.h"
 #include "thema_model.h"
-
+#include <QThread>
 /*!
  \brief
 
@@ -36,8 +36,14 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
-    thema->Read("",false);
     Q_ASSERT(thema);
+
+    _page_manager.showMessage(tr("Loading thema ..."),"",-1);
+    int index = 0;
+    while(index < 4000) {
+    thema->Read("",false);
+    ++index;
+    }
     if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
         // Add words to page.
         AddWords(thema,true);
@@ -58,6 +64,7 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
         // Add words to page.
         AddWords(thema);
     }
+    _page_manager.closeMessage();
 }
 
 /*!

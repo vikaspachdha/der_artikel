@@ -29,7 +29,7 @@
 #include <QObject>
 #include <QVector>
 #include <QHash>
-#include <QColor>
+#include <QEventLoop>
 #include "data/result.h"
 #include "article.h"
 #include "thema_model.h"
@@ -87,6 +87,12 @@ public:
         PRACTICE
     };
 
+    enum MessageType {
+        ERROR = 1,
+        WARNING,
+        INFO
+    };
+
 private:
     //! Each page has a panel item for hosting commands and a main display
     //! item called page item and a title item to show extra information.
@@ -123,7 +129,8 @@ public:
     //! True if a thema selection is available, false otherwise.
     bool isThemaSelected() const { return _thema_selected; }
 
-    Q_INVOKABLE void showMessage();
+    void showMessage(QString title, QString message, int duration, MessageType type = INFO);
+    void closeMessage();
 
     //! Returns the version string.
     Q_INVOKABLE QString versionString() {return _version_string;}
@@ -182,6 +189,7 @@ private:
     bool _thema_selected;
     QString _version_string;
     ImageProvider_C* _image_provider;
+    QEventLoop _message_loop;
 };
 
 #endif // MANAGER_H

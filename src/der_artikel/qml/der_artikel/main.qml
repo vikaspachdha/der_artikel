@@ -1,5 +1,4 @@
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
 import com.vystosi.qmlcomponents 1.0
 
 Image {
@@ -81,40 +80,23 @@ Image {
         return WordItem;
     }
 
-    DropShadow {
-        anchors.fill: msg_bar
-        horizontalOffset: 4
-        verticalOffset: 8
-        radius: 0
-        spread: 0.3
-        samples: 16
-        color: "#66000000"
-        source: msg_bar
-    }
-
-    Blanket {
-        id:blanket
-        anchors.fill: parent
-    }
-
     Message_bar {
         id: msg_bar
-        height: 72
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottomMargin:8
-
+        anchors.fill: parent
         onMsgCompleted: {
             rootItem.enabled = true
-            blanket.show = false;
         }
     }
 
     function showMessage(title,msg,duration,msg_type)
     {
         rootItem.enabled = false
-        blanket.show = true;
-        msg_bar.showMessage(title,msg,duration,msg_type);// = true
+        msg_bar.showMessage(title,msg,duration,msg_type);
+    }
+
+    function closeMessage()
+    {
+        msg_bar.closeMessage()
     }
 
     Component.onCompleted: {

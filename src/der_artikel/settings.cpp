@@ -8,7 +8,7 @@
 
 static const int MIN_WORD_MSG_TIME = 500; /*!< TODO */
 static const int MAX_WORD_MSG_TIME = 5000; /*!< TODO */
-
+static const int MSG_ANIM_TIME = 400; /*!< TODO */
 /*!
  \brief
 
@@ -156,6 +156,11 @@ int Settings_C::minWordMsgTime() const
 int Settings_C::maxWordMsgTime() const
 {
     return MAX_WORD_MSG_TIME;
+}
+
+int Settings_C::messageAnimTime() const
+{
+    return MSG_ANIM_TIME;
 }
 
 /*!
