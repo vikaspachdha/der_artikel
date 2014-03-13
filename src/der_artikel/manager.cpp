@@ -154,7 +154,7 @@ void Manager_C::showMessage(QString title, QString message, int duration, Messag
 {
     Q_ASSERT(_settings);
     QMetaObject::invokeMethod(_root_item,"showMessage",Q_ARG(QVariant,title),Q_ARG(QVariant,message),Q_ARG(QVariant,duration),Q_ARG(QVariant,type));
-    QTimer::singleShot(_settings->messageAnimTime(),&_message_loop,SLOT(quit()));
+    QTimer::singleShot(_settings->messageAnimTime() + 200,&_message_loop,SLOT(quit()));
     _message_loop.exec();
 }
 
