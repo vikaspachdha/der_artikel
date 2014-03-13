@@ -176,3 +176,19 @@ void Settings_C::setThemaRemotePath(QString url_str)
     }
 }
 
+/*!
+ \brief Returns true if graphical effects are
+        to be used in QML. Windows seems to have problem
+        with OpenGl.
+
+ \return False in windows, true otherwise
+*/
+bool Settings_C::enableEffects() const
+{
+#ifdef NO_GRAPHICAL_EFFECTS
+    return false;
+#else
+    return true;
+#endif
+}
+

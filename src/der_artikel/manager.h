@@ -88,9 +88,9 @@ public:
     };
 
     enum MessageType {
-        ERROR = 1,
-        WARNING,
-        INFO
+        ERROR_MSG = 1,
+        WARNING_MSG,
+        INFO_MSG
     };
 
 private:
@@ -129,7 +129,7 @@ public:
     //! True if a thema selection is available, false otherwise.
     bool isThemaSelected() const { return _thema_selected; }
 
-    void showMessage(QString title, QString message, int duration, MessageType type = INFO);
+    void showMessage(QString title, QString message, int duration, MessageType type = INFO_MSG);
     void closeMessage();
 
     //! Returns the version string.

@@ -35,6 +35,7 @@ Flipable {
 
     DropShadow {
         anchors.fill: background
+        visible: settings.enable_effects
         horizontalOffset: flipable.flipped ? -4 : 4
         verticalOffset: 4
         radius: 0

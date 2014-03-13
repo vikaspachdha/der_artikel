@@ -3,6 +3,9 @@ QT += xml widgets network
 
 DEFINES += ENABLE_THEMA_BUILDER
 
+win32:DEFINES += NO_GRAPHICAL_EFFECTS
+
+
 # Add more folders to ship with the application, here
 folder_01.source = thema
 folder_01.target = ./

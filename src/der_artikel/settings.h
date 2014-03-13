@@ -19,6 +19,7 @@ class Settings_C : public QObject
     Q_PROPERTY(int max_word_msg_time READ maxWordMsgTime CONSTANT)
     Q_PROPERTY(int message_anim_time READ messageAnimTime CONSTANT)
     Q_PROPERTY(QString thema_remote_path READ themaRemotePath WRITE setThemaRemotePath NOTIFY themaRemotePathChanged)
+    Q_PROPERTY(bool enable_effects READ enableEffects CONSTANT)
     Q_ENUMS(Language_TP)
 
 public:
@@ -53,6 +54,8 @@ public:
 
     QString themaRemotePath() const { return _thema_remote_path; }
     void setThemaRemotePath(QString url_str);
+
+    bool enableEffects() const;
 
 signals:
     void LanguageChanged();

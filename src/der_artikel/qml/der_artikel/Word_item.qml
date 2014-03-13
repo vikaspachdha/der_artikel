@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import QtGraphicalEffects 1.0
+//import QtGraphicalEffects 1.0
 import com.vystosi.qmlcomponents 1.0
 
 Item {
@@ -41,12 +41,12 @@ Item {
         source: "qrc:/res/resources/paper_texture_2_right.png"
     }
 
-    ColorOverlay {
-        id:overlay
-        anchors.fill: root
-        source: root
-        color: getArticleColor(word == null ? Article.INVALID :word.user_article)
-    }
+//    ColorOverlay {
+//        id:overlay
+//        anchors.fill: root
+//        source: root
+//        color: getArticleColor(word == null ? Article.INVALID :word.user_article)
+//    }
     // Child elements
     Text {
         id: label
