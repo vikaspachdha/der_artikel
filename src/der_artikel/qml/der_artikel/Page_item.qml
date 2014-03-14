@@ -6,6 +6,12 @@ Item {
     height: 80
     property alias label_text:item_label.text
     property alias page_icon:icon.source
+    Rectangle {
+        anchors.fill:icon
+        color:color_palette.color_btn_01
+        radius:8
+    }
+
     Image {
         id: icon
         width:64

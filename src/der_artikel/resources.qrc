@@ -108,5 +108,7 @@
         <file>resources/paper_texture_right_der.png</file>
         <file>resources/paper_texture_right_die.png</file>
         <file>resources/paper_texture_right.png</file>
+        <file>qml/der_artikel/Color_palette_orange.qml</file>
+        <file>qml/der_artikel/Color_palette.qml</file>
     </qresource>
 </RCC>

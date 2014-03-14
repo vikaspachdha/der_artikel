@@ -21,8 +21,17 @@ Flickable {
             width:parent.width
             text_anchors.horizontalCenter: cp_blue_btn.horizontalCenter
             isDown: color_palette === cp_blue
-            buttonText: "Blue"
+            buttonText: qsTr("Deep blue") + settings.i18n_empty_string
             onActivated: color_palette = cp_blue
+        }
+
+        Button {
+            id:cp_orange_btn
+            width:parent.width
+            text_anchors.horizontalCenter: cp_orange_btn.horizontalCenter
+            isDown: color_palette === cp_orange
+            buttonText: qsTr("Tangy Orange") + settings.i18n_empty_string
+            onActivated: color_palette = cp_orange
         }
 
         Button {
@@ -30,7 +39,7 @@ Flickable {
             width:parent.width
             text_anchors.horizontalCenter: cp_night_btn.horizontalCenter
             isDown: color_palette === cp_night
-            buttonText: "Night mode"
+            buttonText: qsTr("Dark night") + settings.i18n_empty_string
             onActivated: color_palette = cp_night
         }
 
