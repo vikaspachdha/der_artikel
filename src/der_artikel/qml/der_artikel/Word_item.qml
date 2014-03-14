@@ -21,7 +21,18 @@ Item {
         id: left_image
         height: text_area.height
         width:sourceSize.width
-        source: "qrc:/res/resources/paper_texture_2_left.png"
+        source: {
+            if(word == null) {
+                return "qrc:/res/resources/paper_texture_left.png";
+            } else {
+                switch(word.user_article) {
+                case Article.DER:return "qrc:/res/resources/paper_texture_left_der.png";
+                case Article.DIE:return "qrc:/res/resources/paper_texture_left_die.png";
+                case Article.DAS:return "qrc:/res/resources/paper_texture_left_das.png";
+                default:return "qrc:/res/resources/paper_texture_left.png";
+                }
+            }
+        }
     }
 
     Image {
@@ -29,7 +40,18 @@ Item {
         width:label.width
         height:label.height
         anchors.left: left_image.right
-        source: "qrc:/res/resources/paper_texture_2_middle.png"
+        source: {
+            if(word == null) {
+                return "qrc:/res/resources/paper_texture_middle.png";
+            } else {
+                switch(word.user_article) {
+                case Article.DER:return "qrc:/res/resources/paper_texture_middle_der.png";
+                case Article.DIE:return "qrc:/res/resources/paper_texture_middle_die.png";
+                case Article.DAS:return "qrc:/res/resources/paper_texture_middle_das.png";
+                default:return "qrc:/res/resources/paper_texture_middle.png";
+                }
+            }
+        }
         fillMode: Image.TileHorizontally
     }
 
@@ -38,16 +60,20 @@ Item {
         height: text_area.height
         width:sourceSize.width
         anchors.left: text_area.right
-        source: "qrc:/res/resources/paper_texture_2_right.png"
+        source: {
+            if(word == null) {
+                return "qrc:/res/resources/paper_texture_right.png";
+            } else {
+                switch(word.user_article) {
+                case Article.DER:return "qrc:/res/resources/paper_texture_right_der.png";
+                case Article.DIE:return "qrc:/res/resources/paper_texture_right_die.png";
+                case Article.DAS:return "qrc:/res/resources/paper_texture_right_das.png";
+                default:return "qrc:/res/resources/paper_texture_right.png";
+                }
+            }
+        }
     }
 
-//    ColorOverlay {
-//        id:overlay
-//        anchors.fill: root
-//        source: root
-//        color: getArticleColor(word == null ? Article.INVALID :word.user_article)
-//    }
-    // Child elements
     Text {
         id: label
         anchors.left: text_area.left
@@ -62,18 +88,7 @@ Item {
                 showMessage(wordText,description_text,settings.word_msg_time)
             } else {
                 wordClicked()
-                //overlay.color = getArticleColor(words_page.selected_article)
             }
         }
     }
-
-    function getArticleColor(article) {
-        switch(article) {
-            case Article.DER:return colorOpacity(color_palette.color_der,0.4);
-            case Article.DIE:return colorOpacity(color_palette.color_die,0.4);
-            case Article.DAS:return colorOpacity(color_palette.color_das,0.4);
-            default:return "#00000000";
-        }
-    }
-
 }

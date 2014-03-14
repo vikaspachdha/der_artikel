@@ -6,9 +6,6 @@
         <file>resources/background_texture.png</file>
         <file>resources/alt_background_texture.png</file>
         <file>resources/home.png</file>
-        <file>resources/paper_texture_2_left.png</file>
-        <file>resources/paper_texture_2_middle.png</file>
-        <file>resources/paper_texture_2_right.png</file>
         <file>resources/info.png</file>
         <file>resources/thema_generic.png</file>
         <file>resources/start.png</file>
@@ -99,5 +96,17 @@
         <file>resources/new_file.png</file>
         <file>qml/der_artikel/Slider.qml</file>
         <file>resources/save_as.png</file>
+        <file>resources/paper_texture_left_das.png</file>
+        <file>resources/paper_texture_left_der.png</file>
+        <file>resources/paper_texture_left_die.png</file>
+        <file>resources/paper_texture_left.png</file>
+        <file>resources/paper_texture_middle_das.png</file>
+        <file>resources/paper_texture_middle_der.png</file>
+        <file>resources/paper_texture_middle_die.png</file>
+        <file>resources/paper_texture_middle.png</file>
+        <file>resources/paper_texture_right_das.png</file>
+        <file>resources/paper_texture_right_der.png</file>
+        <file>resources/paper_texture_right_die.png</file>
+        <file>resources/paper_texture_right.png</file>
     </qresource>
 </RCC>
