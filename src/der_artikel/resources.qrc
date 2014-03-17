@@ -110,5 +110,6 @@
         <file>resources/paper_texture_right.png</file>
         <file>qml/der_artikel/Color_palette_orange.qml</file>
         <file>qml/der_artikel/Color_palette.qml</file>
+        <file>qml/der_artikel/Noun_Item.qml</file>
     </qresource>
 </RCC>
