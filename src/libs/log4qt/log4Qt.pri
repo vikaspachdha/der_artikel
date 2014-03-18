@@ -12,11 +12,7 @@ CONFIG += shared
 
 DEFINES += LOG4QT_LIBRARY
 
-INCLUDEPATH += ./ \
-$$PWD/log4qt
 
-DEPENDPATH += ./ \
-$$PWD/log4qt
 
 
 HEADERS += \
