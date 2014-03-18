@@ -23,25 +23,41 @@ Page {
         }
     }
 
+    Custom_label {
+        id: header_label
+        text: qsTr("Correct       Incorrect") + settings.i18n_empty_string
+        font_color:color_palette.color_font_02
+        gradient: Gradient {
+            GradientStop {position:0.0;color:color_palette.color_btn_02}
+            GradientStop {position:0.1;color:color_palette.color_btn_01}
+            GradientStop {position:0.9;color:color_palette.color_btn_01}
+            GradientStop {position:1.0;color:color_palette.color_btn_02}
+        }
+        radius:4
+        anchors {
+            top: title_label.bottom
+            topMargin: 2
+            left: parent.left
+            right: parent.right
+        }
+    }
+
     ListView {
         id: list_view
 
-        anchors.top: title_label.bottom
+        anchors.top: header_label.bottom
         anchors.topMargin: 2
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        spacing:2
+        spacing:4
         clip:true
         model: currentResult.incorrectWordsModel
         delegate: Result_item {
             height: 24
             right_text: articleText(article)+" " + word_text
-            left_text: articleText(user_article) + " " + word_text
-            right_text_color: getArticleColor(article)
-            Component.onCompleted: {
-                left_text_color= getArticleColor(user_article)
-            }
+            left_text: word_text
+            correct_article: article
         }
     }
 
