@@ -133,7 +133,7 @@ public:
     void closeMessage();
 
     //! Returns the version string.
-    Q_INVOKABLE QString versionString() {return _version_string;}
+    Q_INVOKABLE QString versionString();
 
     //! Returns the Image provider instance. Dynamic images are provided
     //! by this image provider e.g. Thema icons.
@@ -187,7 +187,6 @@ private:
     ThemaModel_C* _thema_model;
     GameLevel _game_level;
     bool _thema_selected;
-    QString _version_string;
     ImageProvider_C* _image_provider;
     QEventLoop _message_loop;
 };

@@ -1,35 +1,17 @@
 cache()
-QT += xml widgets network
 
 DEFINES += ENABLE_THEMA_BUILDER
 
 win32:DEFINES += NO_GRAPHICAL_EFFECTS
 
+QT += xml widgets network
 
-# Add more folders to ship with the application, here
-folder_01.source = thema
-folder_01.target = ./
-DEPLOYMENTFOLDERS = folder_01
-
-folder_02.source = languages
-folder_02.target = ./
-DEPLOYMENTFOLDERS += folder_02
-
-# Additional import path used to resolve QML modules in Creator's code model
-QML_IMPORT_PATH =
-
-INCLUDEPATH += ./ \
-$$PWD/../libs/log4qt
-
-DEPENDPATH += ./ \
-$$PWD/../libs/log4qt
-
-include($$PWD/../libs/log4qt/log4qt.pri)
-
-# If your application uses the Qt Mobility libraries, uncomment the following
-# lines and add the respective components to the MOBILITY variable.
-# CONFIG += mobility
-# MOBILITY +=
+MOC_DIR      = moc
+RCC_DIR      = resources
+OBJECTS_DIR  = obj
+TARGET = der_artikel
+TEMPLATE = app
+DESTDIR  = $${OUT_PWD}
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
@@ -62,12 +44,9 @@ SOURCES += main.cpp \
     algo/thema_add_operation.cpp \
     algo/thema_delete_operation.cpp
 
-# Installation path
-# target.path =
-
 # Please do not modify the following two lines. Required for deployment.
 include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
-qtcAddDeployment()
+
 
 HEADERS += \
     manager.h \
@@ -123,3 +102,21 @@ TRANSLATIONS += ./der_artikel_de.ts \
 OTHER_FILES += ./der_artikel_de.ts \
     ./der_artikel_en.ts \
     ./der_artikel_hin.ts
+
+# Add more folders to ship with the application, here
+folder_01.source = thema
+folder_01.target =
+DEPLOYMENTFOLDERS += folder_01
+
+folder_02.source = languages
+folder_02.target =
+DEPLOYMENTFOLDERS += folder_02
+qtcAddDeployment()
+
+win32: LIBS += -L$${DESTDIR} -llog4Qt
+else:mac: LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4Qt
+else:unix: LIBS += -L$${DESTDIR} -llog4Qt
+
+INCLUDEPATH += $$PWD/../libs/log4qt
+DEPENDPATH += $$PWD/../libs/log4qt
+

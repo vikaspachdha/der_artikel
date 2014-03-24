@@ -46,6 +46,7 @@
 #include "pages/settings_page.h"
 #include "pages/thema_page.h"
 
+#include "log4qt/logger.h"
 
 
 /*!
@@ -64,14 +65,8 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _game_level(EASY),
     _thema_selected(false),
     _image_provider(new ImageProvider_C)
-{
-    int version = APP_VERSION;
-    while(version >= 10) {
-        _version_string.prepend("."+QString::number(version%10));
-        version /= 10;
-    }
-    _version_string.prepend(QString::number(version));
-
+{    
+    Log4Qt::Logger::logger("mainLogger")->debug("Manager_C::Construtor");
     _settings = new Settings_C(this);
 
     InitPages();
@@ -88,6 +83,7 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
 */
 Manager_C::~Manager_C()
 {
+    Log4Qt::Logger::logger("mainLogger")->debug("Manager_C::Destructor");
     delete _current_result;
     delete _thema_model;
 }
@@ -168,6 +164,15 @@ void Manager_C::closeMessage()
     QMetaObject::invokeMethod(_root_item,"closeMessage");
     QTimer::singleShot(_settings->messageAnimTime(),&_message_loop,SLOT(quit()));
     _message_loop.exec();
+}
+
+/*!
+ \brief
+
+*/
+QString Manager_C::versionString()
+{
+    return qApp->applicationVersion();
 }
 
 /*!

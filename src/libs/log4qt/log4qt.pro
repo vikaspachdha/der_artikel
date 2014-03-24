@@ -5,15 +5,17 @@
 #-------------------------------------------------
 
 QT       += core
-
-TARGET = log4Qt
+MOC_DIR      = moc
+RCC_DIR      = resources
+OBJECTS_DIR  = obj
+TARGET = log4qt
 TEMPLATE = lib
+mac:DESTDIR  = $${OUT_PWD}/../../der_artikel/der_artikel.app/Contents/MacOS
+else:win32:DESTDIR  = $${OUT_PWD}/../../der_artikel/
+else::unix:DESTDIR  = $${OUT_PWD}/../../der_artikel/
 CONFIG += shared
 
 DEFINES += LOG4QT_LIBRARY
-
-
-
 
 HEADERS += \
     $$PWD/log4qt/appender.h \

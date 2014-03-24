@@ -1,6 +1,12 @@
 #include <QApplication>
 #include <QQmlContext>
 #include <QtQml>
+#include <iostream>
+
+#include "log4qt/ttcclayout.h"
+#include "log4qt/logmanager.h"
+#include "log4qt/fileappender.h"
+#include "log4qt/logger.h"
 
 #include "qtquick2applicationviewer.h"
 #include "manager.h"
@@ -14,10 +20,47 @@
 #include "pages/settings_page.h"
 #include "common.h"
 #include "thema_updater.h"
+#include "version.h"
 
 #ifdef ENABLE_THEMA_BUILDER
 #include "thema_builder.h"
 #endif
+
+
+void setupVersion()
+{
+    // Calculate version string.
+    int version = APP_VERSION;
+    QString version_string;
+    while(version >= 10) {
+        version_string.prepend("."+QString::number(version%10));
+        version /= 10;
+    }
+    version_string.prepend(QString::number(version));
+    qApp->setApplicationVersion(version_string);
+}
+
+void setUpLogging(QObject* parent=0)
+{
+    Log4Qt::LogManager::rootLogger();
+    Log4Qt::TTCCLayout *p_layout = new Log4Qt::TTCCLayout(Log4Qt::TTCCLayout::ISO8601,parent);
+    p_layout->setCategoryPrefixing(false);
+    p_layout->setThreadPrinting(true);
+    p_layout->setHeader("der_artikel log file : Version : " + qApp->applicationVersion());
+
+    p_layout->activateOptions();
+    // Create an appender
+    Log4Qt::FileAppender *p_appender = new Log4Qt::FileAppender(p_layout,"der_artikel.log",parent);
+    p_appender->activateOptions();
+    // Set appender on root logger
+    Log4Qt::Logger::rootLogger()->addAppender(p_appender);
+
+#ifdef QT_DEBUG
+    Log4Qt::LogManager::setThreshold(Log4Qt::Level::ALL_INT);
+#else
+    Log4Qt::LogManager::setThreshold(Log4Qt::Level::INFO_INT);
+#endif
+}
 
 /*!
  \brief
@@ -30,6 +73,11 @@ int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
 
+    setupVersion();
+
+    // Setup log files.
+    setUpLogging();
+
     qmlRegisterType<QAbstractItemModel>();
     qmlRegisterUncreatableType<Manager_C>("com.vystosi.qmlcomponents", 1, 0, "Manager","");
     qmlRegisterUncreatableType<Result_C>("com.vystosi.qmlcomponents", 1, 0, "Result","");
@@ -40,8 +88,6 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Settings_C>("com.vystosi.qmlcomponents", 1, 0, "Settings","");
     qmlRegisterUncreatableType<SettingsPage_C>("com.vystosi.qmlcomponents", 1, 0, "SettingsPage","");
     qmlRegisterUncreatableType<ThemaUpdater_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaUpdater","");
-
-    //qmlRegisterUncreatableType<WordsPage_C>("com.vystosi.qmlcomponents", 1, 0, "WordsPage","");
 
 #ifdef ENABLE_THEMA_BUILDER
     ThemaBuilder_C thema_builder;
