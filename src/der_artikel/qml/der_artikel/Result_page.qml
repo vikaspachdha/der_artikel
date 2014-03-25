@@ -25,7 +25,7 @@ Page {
 
     Custom_label {
         id: header_label
-        text: qsTr("Correct       Incorrect") + settings.i18n_empty_string
+        text: qsTr("Incorrect       Correct") + settings.i18n_empty_string
         font_color:color_palette.color_font_02
         gradient: Gradient {
             GradientStop {position:0.0;color:color_palette.color_btn_02}
@@ -68,14 +68,4 @@ Page {
         mistakes_label.text = currentResult.mistake_string
         unplayed_label.text = currentResult.unplayed_string
     }
-
-    function getArticleColor(article) {
-        switch(article) {
-            case Article.DER:return color_palette.color_der;
-            case Article.DIE:return color_palette.color_die;
-            case Article.DAS:return color_palette.color_das;
-            default:return "#00000000";
-        }
-    }
-
 }
