@@ -46,7 +46,7 @@
 #include "pages/settings_page.h"
 #include "pages/thema_page.h"
 
-#include "log4qt/logger.h"
+#include "log_defines.h"
 
 
 /*!
@@ -66,7 +66,7 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _thema_selected(false),
     _image_provider(new ImageProvider_C)
 {    
-    Log4Qt::Logger::logger("mainLogger")->debug("Manager_C::Construtor");
+    LOG_DEBUG("Manager_C::Construtor")
     _settings = new Settings_C(this);
 
     InitPages();
@@ -83,7 +83,7 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
 */
 Manager_C::~Manager_C()
 {
-    Log4Qt::Logger::logger("mainLogger")->debug("Manager_C::Destructor");
+    LOG_DEBUG("Manager_C::Destructor");
     delete _current_result;
     delete _thema_model;
 }
@@ -97,6 +97,7 @@ Manager_C::~Manager_C()
  */
 void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
 {
+    LOG_DEBUG(QString("Manager_C::setCurrentPage : %1").arg(new_page))
     if(_current_page != new_page) {
         PageId_TP old_page = _current_page;
 
@@ -105,10 +106,12 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
         Page_I* new_page_instance =_page_hash[new_page];
 
         if(old_page_instance && !old_page_instance->canLeave()) {
+            LOG_INFO(QString("Can not leave page %1").arg(old_page))
             continue_shift = false;
         }
 
-        if(new_page_instance && !new_page_instance->canEnter()) {
+        if(continue_shift && new_page_instance && !new_page_instance->canEnter()) {
+            LOG_INFO(QString("Can not enter page %1").arg(new_page))
             continue_shift = false;
         }
 
@@ -117,11 +120,15 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
             _current_page = new_page;
 
             if(old_page_instance) {
+                LOG_INFO(QString("Leaving page %1").arg(old_page))
                 old_page_instance->leave(_current_page);
+                LOG_INFO(QString("Left page %1").arg(old_page))
             }
 
             if(new_page_instance) {
+                LOG_INFO(QString("Entering page %1").arg(new_page))
                 new_page_instance->enter(old_page);
+                LOG_INFO(QString("Entered page %1").arg(new_page))
             }
 
             emit currentPageChanged(old_page,new_page);
@@ -186,6 +193,7 @@ void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
     Q_ASSERT(_thema_model);
     new_thema->setParent(this);
     _thema_model->AddThema(new_thema);
+    Q_ASSERT(_image_provider);
     _image_provider->AddImage(new_thema->GetText(),new_thema->GetIcon());
 }
 
@@ -195,6 +203,8 @@ void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
 */
 void Manager_C::onThemaSelectionChanged()
 {
+    Q_ASSERT(_thema_model);
+    LOG_DEBUG("Manager_C::onThemaSelectionChanged")
     _thema_selected = _thema_model->GetSelectedThema() ? true : false;
     emit themaSelectionStateChanged();
 }
@@ -208,6 +218,7 @@ void Manager_C::onThemaSelectionChanged()
 void Manager_C::setPageItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 {
     if(page_id != INVALID_PAGE && item) {
+        LOG_DEBUG(QString("Setting QML page item for page %1").arg(page_id))
         _page_items_hash[page_id]._page_item = item;
     }
 }
@@ -221,8 +232,12 @@ void Manager_C::setPageItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 QQuickItem *Manager_C::pageItem(Manager_C::PageId_TP page_id)
 {
     QQuickItem *item = 0;
-    if(_page_items_hash.contains(page_id)) {
-        item = _page_items_hash[page_id]._page_item;
+    if(page_id != INVALID_PAGE) {
+        if(_page_items_hash.contains(page_id)) {
+            item = _page_items_hash[page_id]._page_item;
+        } else {
+            LOG_WARN(QString("Qml page item not avaiable for Page Id %1").arg(page_id))
+        }
     }
     return item;
 }
@@ -236,6 +251,7 @@ QQuickItem *Manager_C::pageItem(Manager_C::PageId_TP page_id)
 void Manager_C::setPanelItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 {
     if(page_id != INVALID_PAGE && item) {
+        LOG_DEBUG(QString("Setting QML panel item for page %1").arg(page_id))
         _page_items_hash[page_id]._panel_item = item;
     }
 }
@@ -249,8 +265,12 @@ void Manager_C::setPanelItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 QQuickItem *Manager_C::panelItem(Manager_C::PageId_TP page_id)
 {
     QQuickItem *item = 0;
-    if(_page_items_hash.contains(page_id)) {
-        item = _page_items_hash[page_id]._panel_item;
+    if(page_id != INVALID_PAGE) {
+        if(_page_items_hash.contains(page_id)) {
+            item = _page_items_hash[page_id]._panel_item;
+        } else {
+            LOG_WARN(QString("Qml panel item not avaiable for Page Id %1").arg(page_id))
+        }
     }
     return item;
 }
@@ -264,6 +284,7 @@ QQuickItem *Manager_C::panelItem(Manager_C::PageId_TP page_id)
 void Manager_C::setTitleItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 {
     if(page_id != INVALID_PAGE && item) {
+        LOG_DEBUG(QString("Setting QML title item for page %1").arg(page_id))
         _page_items_hash[page_id]._title_item = item;
     }
 }
@@ -277,8 +298,12 @@ void Manager_C::setTitleItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
 {
     QQuickItem *item = 0;
-    if(_page_items_hash.contains(page_id)) {
+    if(page_id != INVALID_PAGE ) {
+        if(_page_items_hash.contains(page_id)) {
         item = _page_items_hash[page_id]._title_item;
+        } else {
+            LOG_WARN(QString("Qml title item not avaiable for Page Id %1").arg(page_id))
+        }
     }
     return item;
 }
@@ -294,6 +319,7 @@ void Manager_C::quit()
                                      tr("Do you realy want to quit"),
                                      QMessageBox::Yes,QMessageBox::No);
     if(res == QMessageBox::Yes) {
+        LOG_INFO("Application quit called")
         QApplication::quit();
     }
 }
@@ -303,10 +329,10 @@ void Manager_C::quit()
 */
 void Manager_C::LoadDefaultThemas()
 {
+    LOG_DEBUG("Manager_C::LoadDefaultThemas()")
     _current_result = new Result_C(this);
-    if(_thema_model) {
-        _thema_model->clear();
-    }
+    Q_ASSERT(_thema_model);
+    _thema_model->clear();
 
     // thema_loader shall be deleted automatically.
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
@@ -320,6 +346,7 @@ void Manager_C::LoadDefaultThemas()
 */
 void Manager_C::InitPages()
 {
+    LOG_DEBUG("Manager_C::InitPages()")
     _page_hash[HELP_PAGE] = new HelpPage_C(*this, _root_context,this);
     _page_hash[WORDS_PAGE] = new WordsPage_C(*this, _root_context,this);
     _page_hash[STATS_PAGE] = new StatsPage_C(*this,_root_context,this);

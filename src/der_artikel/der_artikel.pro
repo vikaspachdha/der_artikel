@@ -81,7 +81,8 @@ HEADERS += \
     algo/thema_replace_operation.h \
     algo/thema_file_operation.h \
     algo/thema_add_operation.h \
-    algo/thema_delete_operation.h
+    algo/thema_delete_operation.h \
+    log_defines.h
 
 FORMS += \
     thema_builder.ui \
