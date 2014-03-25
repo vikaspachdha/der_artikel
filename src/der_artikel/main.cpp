@@ -7,6 +7,7 @@
 #include "log4qt/logmanager.h"
 #include "log4qt/fileappender.h"
 #include "log4qt/logger.h"
+#include "log_defines.h"
 
 #include "qtquick2applicationviewer.h"
 #include "manager.h"
@@ -77,6 +78,7 @@ int main(int argc, char *argv[])
 
     // Setup log files.
     setUpLogging();
+    LOG_INFO("Application start")
 
     qmlRegisterType<QAbstractItemModel>();
     qmlRegisterUncreatableType<Manager_C>("com.vystosi.qmlcomponents", 1, 0, "Manager","");
@@ -116,5 +118,7 @@ int main(int argc, char *argv[])
     viewer.setMinimumSize(QSize(480,400));
     viewer.showExpanded();
 
-    return app.exec();
+    int return_code = app.exec();
+    LOG_INFO("Application end")
+    return return_code;
 }
