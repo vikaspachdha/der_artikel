@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 
     // Setup log files.
     setUpLogging();
-    LOG_INFO("Application start")
+    LOG_INFO("Application start");
 
     qmlRegisterType<QAbstractItemModel>();
     qmlRegisterUncreatableType<Manager_C>("com.vystosi.qmlcomponents", 1, 0, "Manager","");
@@ -119,6 +119,6 @@ int main(int argc, char *argv[])
     viewer.showExpanded();
 
     int return_code = app.exec();
-    LOG_INFO("Application end")
+    LOG_INFO("Application end");
     return return_code;
 }

@@ -19,8 +19,8 @@ class Thema_C : public QObject, public Thema_I
 
     Q_PROPERTY(bool selected READ Selected NOTIFY selectionChanged)
     Q_PROPERTY(int experience READ ExperiencePoints NOTIFY experiencePointsChanged)
-    Q_PROPERTY(QString name READ GetText CONSTANT)
-    Q_PROPERTY(QString tr_name READ GetTrText CONSTANT)
+    Q_PROPERTY(QString name READ name CONSTANT)
+    Q_PROPERTY(QString tr_name READ trName CONSTANT)
     Q_PROPERTY(unsigned int word_count READ GetWordCount CONSTANT)
     Q_PROPERTY(QDateTime last_played_date READ lastPlayed CONSTANT)
     Q_PROPERTY(State_TP state READ state NOTIFY stateChanged)
@@ -47,9 +47,9 @@ public:
 
 public:
 
-    QString GetText() const { return _text; }
+    QString name() const { return _text; }
 
-    QString GetTrText() const { return _translation; }
+    QString trName() const { return _translation; }
 
     QString Author() const { return _author; }
 

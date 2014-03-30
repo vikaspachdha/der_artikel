@@ -1,5 +1,5 @@
 #include "image_provider.h"
-
+#include "log_defines.h"
 /*!
  \brief
 
@@ -17,6 +17,7 @@ ImageProvider_C::ImageProvider_C() :
 */
 void ImageProvider_C::AddImage(QString id, QPixmap pixmap)
 {
+    LOG_INFO("Image provider :: Image added for id - "+id);
     _images[id] = pixmap;
 }
 
@@ -32,5 +33,6 @@ QPixmap ImageProvider_C::requestPixmap(const QString &id, QSize *size, const QSi
 {
     Q_UNUSED(size);
     Q_UNUSED(requestedSize);
+    LOG_INFO("Image provider :: Image request for id - "+id);
     return _images[id];
 }

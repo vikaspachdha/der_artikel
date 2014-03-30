@@ -1,5 +1,5 @@
 #include "article.h"
-
+#include "log_defines.h"
 /*!
  \brief
 
@@ -35,6 +35,7 @@ QString Article_C::ArtikelText(Article_C::Artikel artikel)
 
     default:
         text = "";
+        LOG_DEBUG("ArtikelText::INVALID");
         break;
 
     }

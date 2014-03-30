@@ -21,7 +21,7 @@ Settings_C::Settings_C(QObject *parent) :
     _sound_level(0.1),
     _word_message_time(1200)
 {
-    LOG_DEBUG("Settings_C::constructor")
+    LOG_DEBUG("Settings_C::constructor");
     updateLangauge();
     _thema_remote_path = "/Users/vikas/Dropbox/German/thema";
 #ifdef NO_GRAPHICAL_EFFECTS
@@ -39,7 +39,7 @@ Settings_C::Settings_C(QObject *parent) :
 void Settings_C::SetLanguage(Settings_C::Language_TP language)
 {
     if(_current_language != language) {
-        LOG_INFO(QString("Language id changed to %1").arg(language))
+        LOG_INFO(QString("Language id changed to %1").arg(language));
         _current_language = language;
         updateLangauge();
         emit LanguageChanged();
@@ -179,7 +179,7 @@ int Settings_C::messageAnimTime() const
 void Settings_C::setThemaRemotePath(QString url_str)
 {
     if(url_str != _thema_remote_path) {
-        LOG_INFO(QString("Remote thema folder path changed to %1").arg(url_str))
+        LOG_INFO(QString("Remote thema folder path changed to %1").arg(url_str));
         _thema_remote_path = url_str;
         emit themaRemotePathChanged();
     }

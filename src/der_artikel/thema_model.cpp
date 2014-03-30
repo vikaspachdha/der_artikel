@@ -39,11 +39,11 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
             switch(role) {
 
             case DISPLAY_NAME:
-                data = thema->GetText();
+                data = thema->name();
                 break;
 
             case TR_NAME:
-                data = thema->GetTrText();
+                data = thema->trName();
                 break;
 
             case AUTHOR:

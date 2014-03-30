@@ -614,8 +614,8 @@ void ThemaBuilder_C::UpdateUI()
 void ThemaBuilder_C::PopulateUI(Thema_C *thema)
 {
     if(thema) {
-        ui->_thema_name_edit->setText(thema->GetText());
-        ui->_thema_tr_name_edit->setText(thema->GetTrText());
+        ui->_thema_name_edit->setText(thema->name());
+        ui->_thema_tr_name_edit->setText(thema->trName());
         if(thema->Author().isEmpty()) {
             ui->_author_name_edit->setText(UserName());
         } else {
