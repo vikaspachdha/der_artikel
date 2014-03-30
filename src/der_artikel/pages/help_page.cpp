@@ -1,5 +1,6 @@
 #include "help_page.h"
 #include <QQmlContext>
+#include "log_defines.h"
 
 /*!
  \brief
@@ -91,6 +92,7 @@ QString HelpPage_C::subPage() const
 void HelpPage_C::setSubPageType(const SubPage_TP &sub_page_type)
 {
     if(_sub_page_type != sub_page_type) {
+        LOG_INFO(QString("Help page :: Settings sub page %1").arg(sub_page_type));
         _sub_page_type = sub_page_type;
         emit subPageChanged();
     }

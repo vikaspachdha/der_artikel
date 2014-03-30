@@ -73,7 +73,7 @@ void setUpLogging(QObject* parent=0)
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-
+    app.thread()->setObjectName("mainThread");
     setupVersion();
 
     // Setup log files.

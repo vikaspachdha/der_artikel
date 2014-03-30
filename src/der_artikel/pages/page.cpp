@@ -1,6 +1,6 @@
 #include "page.h"
 #include "manager.h"
-
+#include "log_defines.h"
 
 /********************************************************************************/
 /** @brief Constructor\n
@@ -15,11 +15,12 @@
  \param page_manager
  \param parent
 */
-Page_C::Page_C(Manager_C::PageId_TP pageId, Manager_C &page_manager, QObject *parent) :
+Page_C::Page_C(Manager_C::PageId_TP page_id, Manager_C &page_manager, QObject *parent) :
     QObject(parent),
-    _page_id(pageId),
+    _page_id(page_id),
     _page_manager(page_manager)
 {
+    LOG_DEBUG(QString("Page_C(PageId_TP %1)").arg(page_id));
 }
 
 /********************************************************************************/

@@ -22,7 +22,7 @@ class Page_C : public QObject, public Page_I
     Q_OBJECT
 
 public:
-    explicit Page_C(Manager_C::PageId_TP pageId, Manager_C& page_manager, QObject *parent = 0);
+    explicit Page_C(Manager_C::PageId_TP page_id, Manager_C& page_manager, QObject *parent = 0);
 
 public:
     virtual Manager_C::PageId_TP pageId() const;

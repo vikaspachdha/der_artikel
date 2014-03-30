@@ -1,5 +1,6 @@
 #include "word_model.h"
 #include "data/word.h"
+#include "log_defines.h"
 
 /*!
  \brief
@@ -80,6 +81,7 @@ QHash<int, QByteArray> WordModel_C::roleNames() const
 */
 void WordModel_C::UpdateWords(QList<const Word_C *> words)
 {
+    LOG_INFO("Word model :: Updating words.");
     beginResetModel();
     _words.clear();
     _words = words;

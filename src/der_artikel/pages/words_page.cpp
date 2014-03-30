@@ -8,7 +8,8 @@
 #include "algo/moderate_result_algo.h"
 #include "algo/strict_result_algo.h"
 #include "thema_model.h"
-#include <QThread>
+#include "log_defines.h"
+
 /*!
  \brief
 
@@ -53,6 +54,7 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 
         // Calculate play time
         int play_time = _result_algo->playTime(*thema);
+        LOG_INFO(QString("Word page :: Play time set to %1").arg(play_time));
         QQuickItem* title_item = _page_manager.titleItem(_page_id);
         if(title_item) {
             title_item->setProperty("play_time",play_time);
@@ -98,6 +100,7 @@ void WordsPage_C::setInfoMode(bool info_mode)
     if(_info_mode != info_mode) {
         _info_mode = info_mode;
         if(_info_mode) {
+            LOG_INFO("Word page :: Info mode set");
             SetSelectedArticle(Article_C::NA);
         }
         emit infoModeChanged();
@@ -113,6 +116,7 @@ void WordsPage_C::SetSelectedArticle(Article_C::Artikel article)
 {
     if(_selected_article != article) {
         _selected_article = article;
+        LOG_INFO(QString("Word page :: User artikel changed to %1").arg(_selected_article));
         if(_selected_article != Article_C::NA) {
             setInfoMode(false);
         }
@@ -130,6 +134,7 @@ void WordsPage_C::OnWordClicked()
     Q_ASSERT(word_item);
     Word_C* word = _item_word_hash[word_item];
     if(word) {
+        LOG_INFO(QString("Word page :: Word clicked %1").arg(word->GetWordText()));
         word->SetUserArtikel(_selected_article);
     }
 }
@@ -143,6 +148,7 @@ void WordsPage_C::OnWordClicked()
 void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
 {
     QList<Word_C*> words = thema->GetWords();
+    LOG_INFO("Word page :: Adding words");
     srand(QDateTime::currentMSecsSinceEpoch());
     while (words.count() > 0) {
         int index = rand()%words.count();
@@ -166,6 +172,7 @@ void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
 QObject *WordsPage_C::AddWord(Word_C& word)
 {
     QVariant returned_value;
+    LOG_INFO(QString("Word page :: Adding word %1").arg(word.GetWordText()));
     QMetaObject::invokeMethod(pageItem(), "addWord",
                               Q_RETURN_ARG(QVariant, returned_value),
                               Q_ARG(QVariant, QVariant::fromValue<QObject*>(&word)),
@@ -181,6 +188,7 @@ QObject *WordsPage_C::AddWord(Word_C& word)
 */
 void WordsPage_C::ClearWordItems()
 {
+    LOG_INFO("Word page :: Clearing word items.");
     foreach(QObject* word_item, _item_word_hash.keys()) {
         delete word_item;
     }
@@ -193,6 +201,7 @@ void WordsPage_C::ClearWordItems()
 */
 void WordsPage_C::CreateResultAlgo()
 {
+    LOG_INFO("Word page :: Creating result algo.");
     if(_result_algo) {
         delete _result_algo;
         _result_algo = 0;
@@ -220,6 +229,7 @@ void WordsPage_C::CalculateResult()
 {
     Thema_C* current_thema = _page_manager.GetThemaModel()->GetSelectedThema();
     if(current_thema) {
+        LOG_INFO(QString("Word page :: Calculating result for").arg(current_thema->name()));
         _result_algo->Calculate(*current_thema,*(_page_manager.GetCurrentResult()));
         current_thema->setLastPlayed(QDateTime::currentDateTimeUtc());
         current_thema->Save();
