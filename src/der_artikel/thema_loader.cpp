@@ -9,6 +9,7 @@
 #include "common.h"
 #include "version.h"
 #include "data/thema.h"
+#include "log_defines.h"
 
 /*!
  \brief
@@ -28,6 +29,7 @@ ThemaLoader_C::ThemaLoader_C(QObject *thema_parent, QObject *parent) : QObject(p
 */
 void ThemaLoader_C::run()
 {
+    LOG_DEBUG("ThemaLoader_C::run");
     QDir root_thema_dir = ARTIKEL::GetResourcePath("thema");
     QStringList nameFilters;
     nameFilters<<"*.AKL";
@@ -52,10 +54,12 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path, bool defered)
 {
     Thema_C* thema = new Thema_C();
     if(thema->Read(file_path,defered)) {
+        LOG_INFO(QString("Thema loader :: Loaded thema %1").arg(file_path));
         if(_thema_parent) {
             thema->moveToThread(_thema_parent->thread());
         }
     } else {
+        LOG_WARN(QString("Thema loader :: Loading failed thema %1").arg(file_path));
         delete thema;
         thema = 0;
     }
@@ -68,5 +72,6 @@ Thema_C *ThemaLoader_C::LoadThema(QString file_path, bool defered)
 */
 void ThemaLoader_C::StartLoading()
 {
+    LOG_INFO(QString("Thema loader :: Starting loading"));
     QThreadPool::globalInstance()->start(this);
 }

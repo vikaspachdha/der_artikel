@@ -1,5 +1,6 @@
-#include "thema_model.h"
 #include <QPixmap>
+#include "thema_model.h"
+#include "log_defines.h"
 
 /*!
  \brief
@@ -129,6 +130,7 @@ QHash<int, QByteArray> ThemaModel_C::roleNames() const
 void ThemaModel_C::AddThema(Thema_C *new_thema)
 {
     Q_ASSERT(new_thema);
+    LOG_INFO(QString("Thema model :: Added new thema %1").arg(new_thema->name()));
     beginInsertRows(QModelIndex(),_thema_list.count(),_thema_list.count());
     _thema_list.append(new_thema);
     connect(new_thema, SIGNAL(selectionChanged(Thema_C::SelectionType_TP)),this,SLOT(OnThemaItemSelectionChanged(Thema_C::SelectionType_TP)));
@@ -137,6 +139,7 @@ void ThemaModel_C::AddThema(Thema_C *new_thema)
 
 void ThemaModel_C::clear()
 {
+    LOG_INFO("Thema model :: Cleared thema model");
     ClearSelection();
     beginResetModel();
     clearThemaList();
@@ -163,6 +166,7 @@ Thema_C* ThemaModel_C::GetSelectedThema()
 */
 void ThemaModel_C::ClearSelection()
 {
+    LOG_INFO("Thema model :: Cleared selection.");
     foreach (Thema_C* thema, _selected_thema_list) {
        thema->setSelected(false);
     }
@@ -206,8 +210,10 @@ void ThemaModel_C::OnThemaItemSelectionChanged(Thema_C::SelectionType_TP type)
         ClearSelection();
     }
     if(thema->Selected()) {
+        LOG_INFO(QString("Thema model :: Thema %1 added to selection list.").arg(thema->name()));
         _selected_thema_list.append(thema);
     } else {
+        LOG_INFO(QString("Thema model :: Thema %1 removed from selection list.").arg(thema->name()));
         _selected_thema_list.removeAll(thema);
     }
     emit themaSelectionChanged();
@@ -219,6 +225,7 @@ void ThemaModel_C::OnThemaItemSelectionChanged(Thema_C::SelectionType_TP type)
 
 void ThemaModel_C::clearThemaList()
 {
+    LOG_INFO("Removing all themas");
     foreach(Thema_C* thema, _thema_list) {
         delete thema;
     }

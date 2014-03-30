@@ -15,6 +15,7 @@
 #include "version.h"
 #include "thema_loader.h"
 #include "conflict_dlg.h"
+#include "log_defines.h"
 
 
 #ifdef ENABLE_THEMA_BUILDER
@@ -133,6 +134,7 @@ void ThemaBuilder_C::OnDlgButtonClicked(QAbstractButton *btn)
 void ThemaBuilder_C::OnNew()
 {
     Reset();
+    LOG_INFO("Thema builder :: New thema.");
     _thema = new Thema_C();
 }
 
@@ -146,6 +148,7 @@ void ThemaBuilder_C::OnLoad()
         ThemaLoader_C loader;
         Thema_C* new_thema = loader.LoadThema(file_path,false);
         if(new_thema) {
+            LOG_INFO("Thema builder :: New thema loaded.");
             Reset();
             _thema = new_thema;
             PopulateUI(_thema);
@@ -397,8 +400,9 @@ bool ThemaBuilder_C::Save(QString save_file)
         if (file.open(QFile::WriteOnly | QFile::Text)) {
             success = Write(&file);
             file.close();
+            LOG_INFO(QString("Thema builder :: Saved file to %1") .arg(save_file));
         } else {
-            qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
+            LOG_WARN(QString("Thema builder :: Cannot save file %1:\n%2.") .arg(save_file).arg(file.errorString()));
         }
     }
     return success;
@@ -414,11 +418,13 @@ void ThemaBuilder_C::OnExport()
         QFile file(save_file);
         if (file.open(QFile::WriteOnly | QFile::Text)) {
             if(Export(&file)) {
+                LOG_INFO(QString("Thema builder :: Exported file to %1") .arg(save_file));
                 last_save_path = save_file;
             } else {
                 QMessageBox::critical(this,tr("Export failed"), tr("Invalid file or permissions"));
             }
         } else {
+            LOG_WARN(QString("Thema builder :: Cannot export file %1:\n%2.") .arg(save_file).arg(file.errorString()));
             qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
         }
     }
@@ -435,6 +441,7 @@ void ThemaBuilder_C::OnIcon()
         if(p.isNull()) {
             QMessageBox::warning(this,tr("Invalid Image"), tr("Invalid image file"));
         } else {
+            LOG_INFO(QString("Thema builder :: New icon file : %1").arg(file_path));
             p = p.scaled(64,64);
             ui->_icon_lbl->setPixmap(p);
         }
@@ -457,7 +464,7 @@ void ThemaBuilder_C::OnImport()
                 QMessageBox::critical(this,tr("Import failed"), tr("Invalid file or format"));
             }
         } else {
-            qDebug()<<QString("cannot Read file %1:\n%2.") .arg(file_path) .arg(file.errorString());
+            LOG_ERROR(QString("Thema builder :: Cannot Import file %1:\n%2.") .arg(file_path) .arg(file.errorString()));
         }
     }
 }
@@ -520,7 +527,7 @@ bool ThemaBuilder_C::Import(QIODevice *pDevice)
                 if(ok && (article_code >= Article_C::DER) && (article_code< Article_C::INVALID)) {
                     article = (Article_C::Artikel)article_code;
                 } else {
-                    qDebug()<<"Invalid article code, Line # "<<line_count;
+                    LOG_DEBUG(QString("ThemaBuilder_C::Import Invalid article code, Line %1").arg(line_count));
                     continue;
                 }
                 Word_C* new_word = new Word_C();
@@ -559,6 +566,7 @@ bool ThemaBuilder_C::AddWordToThema(Word_C *new_word)
     if(new_word) {
         if(_words_set.contains(new_word->_text)) {
             Word_C* old_word = _words_set[new_word->_text];
+            LOG_WARN(QString("Thema builder :: Duplicate word %1").arg(new_word->GetWordText()));
             ConflictDlg_C conflict_dlg(*old_word, *new_word, this);
             if(conflict_dlg.exec() == QDialog::Accepted) {
                 QListWidgetItem* list_item = _word_item_hash[old_word];
@@ -583,6 +591,7 @@ bool ThemaBuilder_C::AddWordToThema(Word_C *new_word)
 
 void ThemaBuilder_C::Reset()
 {
+    LOG_DEBUG("ThemaBuilder_C::Reset");
     if(_thema) {
         delete _thema;
         _thema = 0;
@@ -614,6 +623,7 @@ void ThemaBuilder_C::UpdateUI()
 void ThemaBuilder_C::PopulateUI(Thema_C *thema)
 {
     if(thema) {
+        LOG_DEBUG("ThemaBuilder_C::PopulateUI");
         ui->_thema_name_edit->setText(thema->name());
         ui->_thema_tr_name_edit->setText(thema->trName());
         if(thema->Author().isEmpty()) {
