@@ -1,6 +1,6 @@
 #include "conflict_dlg.h"
 #include "ui_conflict_dlg.h"
-#include "data/word.h"
+#include "word.h"
 #include "article.h"
 
 /*!

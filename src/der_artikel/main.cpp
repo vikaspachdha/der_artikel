@@ -23,11 +23,6 @@
 #include "thema_updater.h"
 #include "version.h"
 
-#ifdef ENABLE_THEMA_BUILDER
-#include "thema_builder.h"
-#endif
-
-
 void setupVersion()
 {
     // Calculate version string.
@@ -90,11 +85,6 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Settings_C>("com.vystosi.qmlcomponents", 1, 0, "Settings","");
     qmlRegisterUncreatableType<SettingsPage_C>("com.vystosi.qmlcomponents", 1, 0, "SettingsPage","");
     qmlRegisterUncreatableType<ThemaUpdater_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaUpdater","");
-
-#ifdef ENABLE_THEMA_BUILDER
-    ThemaBuilder_C thema_builder;
-    thema_builder.show();
-#endif
 
     QtQuick2ApplicationViewer viewer;
     app.setWindowIcon(QIcon("qrc:/res/resources/app.png"));

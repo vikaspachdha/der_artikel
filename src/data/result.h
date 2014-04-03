@@ -4,7 +4,7 @@
 #include <QDateTime>
 #include <QList>
 #include <QVariantList>
-#include "data/word.h"
+#include "word.h"
 #include "word_model.h"
 
 class QDomElement;

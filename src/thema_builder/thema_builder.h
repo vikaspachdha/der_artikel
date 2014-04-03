@@ -1,10 +1,6 @@
 #ifndef THEMA_BUILDER_H
 #define THEMA_BUILDER_H
 
-
-
-#ifdef ENABLE_THEMA_BUILDER
-
 #include <QWidget>
 #include <QHash>
 #include <QTimer>
@@ -86,6 +82,5 @@ private:
     QListWidgetItem* _edit_item;
     QTimer _date_time_timer;
 };
-#endif // ENABLE_THEMA_BUILDER
 
 #endif // THEMA_BUILDER_H

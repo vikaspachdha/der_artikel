@@ -1,8 +1,7 @@
 
 TEMPLATE = subdirs
-DESTDIR = build
 SUBDIRS = libs/log4qt \
-    der_artikel
+    der_artikel \
+    thema_builder
 
 CONFIG += ordered
-

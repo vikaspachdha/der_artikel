@@ -10,15 +10,13 @@
 #include <QMessageBox>
 #include <QDebug>
 
-#include "data/thema.h"
+#include "thema.h"
 #include "common.h"
 #include "version.h"
 #include "thema_loader.h"
 #include "conflict_dlg.h"
 #include "log_defines.h"
 
-
-#ifdef ENABLE_THEMA_BUILDER
 
 ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     QWidget(parent),
@@ -691,5 +689,3 @@ QString ThemaBuilder_C::UserName()
     }
     return user_name;
 }
-
-#endif

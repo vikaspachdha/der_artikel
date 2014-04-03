@@ -13,21 +13,14 @@ TARGET = der_artikel
 TEMPLATE = app
 DESTDIR  = $${OUT_PWD}
 
-# The .cpp file which was generated for your project. Feel free to hack it.
+include($$PWD/../data/data.pri)
+
 SOURCES += main.cpp \
     manager.cpp \
-    data/word.cpp \
-    data/thema.cpp \
-    thema_builder.cpp \
-    common.cpp \
-    thema_loader.cpp \
     algo/strict_result_algo.cpp \
-    data/result.cpp \
     thema_model.cpp \
-    article.cpp \
     algo/easy_result_algo.cpp \
     algo/moderate_result_algo.cpp \
-    word_model.cpp \
     pages/home_page.cpp \
     pages/page.cpp \
     pages/settings_page.cpp \
@@ -36,7 +29,6 @@ SOURCES += main.cpp \
     pages/stats_page.cpp \
     settings.cpp \
     pages/thema_page.cpp \
-    conflict_dlg.cpp \
     image_provider.cpp \
     file_downloader.cpp \
     thema_updater.cpp \
@@ -50,21 +42,11 @@ include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
 
 HEADERS += \
     manager.h \
-    data/word.h \
-    common.h \
-    data/thema.h \
-    thema_builder.h \
-    thema_loader.h \
-    version.h \
     algo/strict_result_algo.h \
     algo/result_algo.h \
-    data/result.h \
-    data/thema_interface.h \
     thema_model.h \
-    article.h \
     algo/easy_result_algo.h \
     algo/moderate_result_algo.h \
-    word_model.h \
     pages/home_page.h \
     pages/page_i.h \
     pages/page.h \
@@ -74,19 +56,13 @@ HEADERS += \
     pages/stats_page.h \
     settings.h \
     pages/thema_page.h \
-    conflict_dlg.h \
     image_provider.h \
     file_downloader.h \
     thema_updater.h \
     algo/thema_replace_operation.h \
     algo/thema_file_operation.h \
     algo/thema_add_operation.h \
-    algo/thema_delete_operation.h \
-    log_defines.h
-
-FORMS += \
-    thema_builder.ui \
-    conflict_dlg.ui
+    algo/thema_delete_operation.h
 
 RESOURCES += \
     resources.qrc
@@ -114,10 +90,23 @@ folder_02.target =
 DEPLOYMENTFOLDERS += folder_02
 qtcAddDeployment()
 
-win32: LIBS += -L$${DESTDIR} -llog4Qt
-else:mac: LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4Qt
-else:unix: LIBS += -L$${DESTDIR} -llog4Qt
+mac {
+    LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4Qt
+} else {
+    LIBS += -L$$DESTDIR -llog4Qt
+}
 
 INCLUDEPATH += $$PWD/../libs/log4qt
-DEPENDPATH += $$PWD/../libs/log4qt
+DEPENDPATH += $${PWD}/../libs/log4qt
+
+# Copy files to build dir
+SOURCE_PATH = $${DESTDIR}/../libs/log4qt/*.dylib
+TARGET_PATH = $$DESTDIR
+win32{
+    SOURCE_PATH ~= s,/,\\,g
+    TARGET_PATH ~= s,/,\\,g
+}else:mac{
+    TARGET_PATH = $${TARGET_PATH}/$${TARGET}.app/Contents/MacOS
+}
+QMAKE_PRE_LINK += $$QMAKE_COPY $$quote($$SOURCE_PATH) $$quote($$TARGET_PATH) $$escape_expand(\\n\\t)
 

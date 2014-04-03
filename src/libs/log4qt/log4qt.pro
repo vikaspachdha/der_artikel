@@ -10,9 +10,9 @@ RCC_DIR      = resources
 OBJECTS_DIR  = obj
 TARGET = log4qt
 TEMPLATE = lib
-mac:DESTDIR  = $${OUT_PWD}/../../der_artikel/der_artikel.app/Contents/MacOS
-else:win32:DESTDIR  = $${OUT_PWD}/../../der_artikel/
-else::unix:DESTDIR  = $${OUT_PWD}/../../der_artikel/
+#mac:DESTDIR  = $${OUT_PWD}/../../der_artikel/der_artikel.app/Contents/MacOS
+#else:win32:DESTDIR  = $${OUT_PWD}/../../der_artikel/
+#else::unix:DESTDIR  = $${OUT_PWD}/../../der_artikel/
 CONFIG += shared
 
 DEFINES += LOG4QT_LIBRARY
@@ -58,7 +58,8 @@ HEADERS += \
     $$PWD/log4qt/varia/levelmatchfilter.h \
     $$PWD/log4qt/varia/levelrangefilter.h \
     $$PWD/log4qt/varia/listappender.h \
-    $$PWD/log4qt/varia/stringmatchfilter.h
+    $$PWD/log4qt/varia/stringmatchfilter.h \
+    $$PWD/log_defines.h
 
 SOURCES += \
     $$PWD/log4qt/appenderskeleton.cpp \
