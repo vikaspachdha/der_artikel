@@ -11,7 +11,8 @@ RCC_DIR      = resources
 OBJECTS_DIR  = obj
 TARGET = der_artikel
 TEMPLATE = app
-DESTDIR  = $${OUT_PWD}
+CONFIG(debug,debug|release):DESTDIR=$${OUT_PWD}/bin_debug
+CONFIG(release,debug|release):DESTDIR=$${OUT_PWD}/bin_release
 
 include($$PWD/../data/data.pri)
 
@@ -100,7 +101,9 @@ INCLUDEPATH += $$PWD/../libs/log4qt
 DEPENDPATH += $${PWD}/../libs/log4qt
 
 # Copy files to build dir
-SOURCE_PATH = $${DESTDIR}/../libs/log4qt/log4qt.*
+SOURCE_PATH = $${DESTDIR}/../../libs/log4qt
+CONFIG(debug,debug|release):SOURCE_PATH = $${SOURCE_PATH}/bin_debug/*log4qt.*
+CONFIG(release,debug|release):SOURCE_PATH = $${SOURCE_PATH}/bin_release/*log4qt.*
 TARGET_PATH = $$DESTDIR
 win32{
     SOURCE_PATH ~= s,/,\\,g

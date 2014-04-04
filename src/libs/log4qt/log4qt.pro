@@ -10,7 +10,8 @@ RCC_DIR      = resources
 OBJECTS_DIR  = obj
 TARGET = log4qt
 TEMPLATE = lib
-DESTDIR  = $$OUT_PWD
+CONFIG(debug,debug|release):DESTDIR=$${OUT_PWD}/bin_debug
+CONFIG(release,debug|release):DESTDIR=$${OUT_PWD}/bin_release
 CONFIG += shared
 
 DEFINES += LOG4QT_LIBRARY
