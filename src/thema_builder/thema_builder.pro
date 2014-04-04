@@ -28,7 +28,7 @@ RESOURCES += \
     resources.qrc
 
 mac {
-    LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4Qt
+    LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4qt
 } else {
     LIBS += -L$$DESTDIR -llog4Qt
 }
@@ -37,7 +37,7 @@ INCLUDEPATH += $$PWD/../libs/log4qt
 DEPENDPATH += $${PWD}/../libs/log4qt
 
 # Copy files to build dir
-SOURCE_PATH = $${DESTDIR}/../libs/log4qt/*.dylib
+SOURCE_PATH = $${DESTDIR}/../libs/log4qt/log4qt.*
 TARGET_PATH = $$DESTDIR
 win32{
     SOURCE_PATH ~= s,/,\\,g

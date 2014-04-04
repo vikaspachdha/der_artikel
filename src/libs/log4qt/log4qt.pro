@@ -10,9 +10,7 @@ RCC_DIR      = resources
 OBJECTS_DIR  = obj
 TARGET = log4qt
 TEMPLATE = lib
-#mac:DESTDIR  = $${OUT_PWD}/../../der_artikel/der_artikel.app/Contents/MacOS
-#else:win32:DESTDIR  = $${OUT_PWD}/../../der_artikel/
-#else::unix:DESTDIR  = $${OUT_PWD}/../../der_artikel/
+DESTDIR  = $$OUT_PWD
 CONFIG += shared
 
 DEFINES += LOG4QT_LIBRARY
