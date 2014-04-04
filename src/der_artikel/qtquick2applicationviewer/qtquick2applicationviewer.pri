@@ -118,9 +118,9 @@ android-no-sdk {
             source = $$MAINPROFILEPWD/$$eval($${deploymentfolder}.source)
             source = $$replace(source, \\\\, /)
             macx {
-                target = $$OUT_PWD/$${TARGET}.app/Contents/Resources/$$eval($${deploymentfolder}.target)
+		target = $${DESTDIR}/$${TARGET}.app/Contents/Resources/$$eval($${deploymentfolder}.target)
             } else {
-                target = $$OUT_PWD/$$eval($${deploymentfolder}.target)
+		target = $${DESTDIR}/$$eval($${deploymentfolder}.target)
             }
             target = $$replace(target, \\\\, /)
             sourcePathSegments = $$split(source, /)
