@@ -229,7 +229,7 @@ void WordsPage_C::CalculateResult()
 {
     Thema_C* current_thema = _page_manager.GetThemaModel()->GetSelectedThema();
     if(current_thema) {
-        LOG_INFO(QString("Word page :: Calculating result for").arg(current_thema->name()));
+        LOG_INFO(QString("Word page :: Calculating result for %1").arg(current_thema->name()));
         _result_algo->Calculate(*current_thema,*(_page_manager.GetCurrentResult()));
         current_thema->setLastPlayed(QDateTime::currentDateTimeUtc());
         current_thema->Save();

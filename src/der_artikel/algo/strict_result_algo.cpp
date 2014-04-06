@@ -41,9 +41,9 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
     double score = (double)(correct_count - (incorrect_words.count()/2.0) - (unplayed_count/4.0))/count;
 
-    result.UpdateResult(score,correct_count, unplayed_count, incorrect_words);
+    result.updateResult(score,correct_count, unplayed_count, incorrect_words);
 
-    Result_C::GRADE grade = result.Grade();
+    Result_C::GRADE grade = result.grade();
     int exp_change = 0;
     if(grade >= Result_C::GRADE_AP) {
         exp_change = 100;

@@ -1,14 +1,43 @@
+//******************************************************************************
+/*! \file result.cpp Implementation of \ref Result_C
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \copyright Copyright (C) 2014 Vikas Pachdha, Mohita Gandotra.
+ * Contact: http://www.vikaspachdha.com
+ *
+ * This file is part of the application der_artikel.
+ *
+ *  \copyright GNU Lesser General Public License Usage
+ * This file may be used under the terms of the GNU Lesser
+ * General Public License version 2.1 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.LGPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU Lesser General Public License version 2.1 requirements
+ * will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ *
+ *  \copyright GNU General Public License Usage
+ * Alternatively, this file may be used under the terms of the GNU
+ * General Public License version 3.0 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.GPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU General Public License version 3.0 requirements will be
+ * met: http://www.gnu.org/copyleft/gpl.html.
+ *
+ ******************************************************************************/
 #include "result.h"
 #include <QLocale>
 #include <QDomElement>
 #include "data/word.h"
 #include "word_model.h"
 
-/*!
- \brief
-
- \param parent
-*/
+//******************************************************************************
+/*! \brief Constructor.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] parent : Parent object instance.
+ ******************************************************************************/
 Result_C::Result_C(QObject *parent):
     QObject(parent),
     _score(0.0),
@@ -24,51 +53,65 @@ Result_C::Result_C(QObject *parent):
     _incorrect_words_model = new WordModel_C(this);
 }
 
-/*!
- \brief
-
- \return unsigned int
-*/
-unsigned int Result_C::CorrectWordCount() const
+//******************************************************************************
+/*! \brief Returns count of words marked correct.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return unsigned int : Count of words marked correct.
+ ******************************************************************************/
+unsigned int Result_C::correctWordCount() const
 {
     return _correct_word_count;
 }
 
-/*!
- \brief
-
- \return double
-*/
-double Result_C::Score() const
+//******************************************************************************
+/*! \brief Returs the score achieved.
+ *
+ *  \details Value is between 0 and 1 being maximum.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return double : Score achieved.
+ ******************************************************************************/
+double Result_C::score() const
 {
     return _score;
 }
 
-/*!
- \brief
-
- \return unsigned int
-*/
-unsigned int Result_C::MistakesCount() const
+//******************************************************************************
+/*! \brief Returns count of words marked incorrect.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return unsigned int : Count of words marked incorrect.
+ ******************************************************************************/
+unsigned int Result_C::mistakesCount() const
 {
     return _mistakes_count;
 }
 
-/*!
- \brief
-
- \return double
-*/
-double Result_C::UnplayedCount() const
+//******************************************************************************
+/*! \brief Returns count of words left unplayed.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return unsigned int : Count of words left unplayed.
+ ******************************************************************************/
+unsigned int Result_C::unplayedCount() const
 {
     return _unplayed_count;
 }
 
-/*!
- \brief
-
- \param change
-*/
+//******************************************************************************
+/*! \brief Sets the experience points change.
+ *
+ *  \details Experience change can be negative to deduct experience points.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] change : Magnitude of experience change.
+ ******************************************************************************/
 void Result_C::setExperienceChange(int change)
 {
     if(change != _experience_change) {
@@ -77,11 +120,12 @@ void Result_C::setExperienceChange(int change)
     }
 }
 
-/*!
- \brief
-
-*/
-void Result_C::Clear()
+//******************************************************************************
+/*! \brief Clears the data and reset it to default state.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void Result_C::clear()
 {
     _score=0.0;
     _correct_word_count=0;
@@ -95,15 +139,19 @@ void Result_C::Clear()
     _unplayed_string="";
 }
 
-/*!
- \brief
-
- \param score
- \param correct_word_count
- \param unplayed_count
- \param incorrect_words
-*/
-void Result_C::UpdateResult(double score, unsigned int correct_word_count, unsigned int unplayed_count, QList<const Word_C*>incorrect_words)
+//******************************************************************************
+/*! \brief Updates the result parameters.
+ *
+ *  \details String data is also updated.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] score : Score of the gameplay value is between 0 and 1, i being maximum.
+ *  \param[in] correct_word_count : Number of correct words.
+ *  \param[in] unplayed_count : Number of unplayed words.
+ *  \param[in] incorrect_words : Number of incorrect words.
+ ******************************************************************************/
+void Result_C::updateResult(double score, unsigned int correct_word_count, unsigned int unplayed_count, QList<const Word_C*>incorrect_words)
 {
     if(score <0.0) {
         score = 0.0;
@@ -132,17 +180,25 @@ void Result_C::UpdateResult(double score, unsigned int correct_word_count, unsig
         _grade = GRADE_E;
     }
 
-    UpdateStringData();
+    updateStringData();
     emit resultUpdated();
 }
 
-/*!
- \brief
-
- \param element
- \return bool
-*/
-bool Result_C::Read(const QDomElement &element)
+//******************************************************************************
+/*! \brief Reads the result data from a xml node.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] element : Rote xml node to read data from.
+ *
+ *  \return bool : Returns whether read was a success.
+ *  \retval success status.
+ *                      <ul>
+ *                         <li> False = Failure
+ *                         <li> True = Success
+ *                      </ul>
+ ******************************************************************************/
+bool Result_C::read(const QDomElement &element)
 {
     bool success = false;
 
@@ -216,20 +272,28 @@ bool Result_C::Read(const QDomElement &element)
         }
 
         if(success) {
-            UpdateStringData();
+            updateStringData();
         }
 
     }
     return success;
 }
 
-/*!
- \brief
-
- \param element
- \return bool
-*/
-bool Result_C::Write(QDomElement &element)
+//******************************************************************************
+/*! \brief Writes the result data to xml node.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] element : Rote xml node to write data under.
+ *
+ *  \return bool : Returns whether write was a success.
+ *  \retval success status.
+ *                      <ul>
+ *                         <li> False = Failure
+ *                         <li> True = Success
+ *                      </ul>
+ ******************************************************************************/
+bool Result_C::write(QDomElement &element)
 {
     bool success = false;
 
@@ -273,11 +337,12 @@ bool Result_C::Write(QDomElement &element)
     return success;
 }
 
-/*!
- \brief
-
-*/
-void Result_C::UpdateStringData()
+//******************************************************************************
+/*! \brief Helper method to update string data as per the current result data.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void Result_C::updateStringData()
 {
     QLocale locale;
     double score = _score*100;

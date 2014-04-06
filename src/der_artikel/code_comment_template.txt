@@ -1,5 +1,8 @@
+
+File header
+
 //******************************************************************************
-/*! \file article.h Declaration of \ref Article_C
+/*! \file file.h Declaration/Implementation of \ref SomeClass
  *
  *  \author Vikas Pachdha
  *
@@ -26,43 +29,44 @@
  *
  ******************************************************************************/
 
-#ifndef ARTICLE_H
-#define ARTICLE_H
-
-#include <QObject>
+Class Header
 
 //******************************************************************************
-/*! \brief Defines German article.
+/*! \brief Short class description.
+ *
+ *  \details Detailed description
  *
  *  \author Vikas Pachdha
+ *
+ *  \todo something pending.
+ *  \bug some bug
+ *
+ *  \see \ref Some class
  ******************************************************************************/
-class Article_C : public QObject
-{
-    Q_OBJECT
-    Q_ENUMS(Artikel)
-    Q_DISABLE_COPY(Article_C)
-public:
-    //******************************************************************************
-    /*! \brief Enumeration defining German article.
-     *
-     *  \author Vikas Pachdha
-     *
-     *  \see \ref Article_C::ArtikelText
-     ******************************************************************************/
-    enum Artikel
-    {
-        DER = 1,
-        DIE,
-        DAS,
-        NA,
-        INVALID
-    };
 
-private:
-    explicit Article_C(QObject *parent = 0);
 
-public:
-    static QString ArtikelText(Article_C::Artikel artikel);
-};
 
-#endif // ARTICLE_H
+Method Header
+
+//******************************************************************************
+/*! \brief Short method description.
+ *
+ *  \details Detailed description
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] param1 : Some value passed.
+ *  \param[out] parent2 : Updates some value.
+ *
+ *  \return type : What is returns
+ *  \retval status Some program status.
+ *                      <ul>
+ *                         <li> 0 = Failure
+ *                         <li> 1 = Success
+ *                      </ul>
+ *
+ *  \todo something pending.
+ *  \bug some bug
+ *
+ *  \see \ref Some class
+ ******************************************************************************/

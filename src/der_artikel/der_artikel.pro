@@ -80,7 +80,8 @@ TRANSLATIONS += ./der_artikel_de.ts \
 
 OTHER_FILES += ./der_artikel_de.ts \
     ./der_artikel_en.ts \
-    ./der_artikel_hin.ts
+    ./der_artikel_hin.ts \
+    code_comment_template.txt
 
 # Add more folders to ship with the application, here
 folder_01.source = thema
