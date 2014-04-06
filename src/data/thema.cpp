@@ -3,7 +3,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QBuffer>
-#include <QMessageBox>
+//#include <QMessageBox>
 
 #include "version.h"
 #include "common.h"
@@ -188,12 +188,12 @@ bool Thema_C::Read(QString thema_file_path, bool defered)
 
                 } else {
                     qDebug()<<"Cannot parse thema file. This version is not supported : "<<version;
-                    QMessageBox::critical(0, tr("Invalid thema file version."), tr("Cannot parse thema file. This version is not supported : %1.").arg(version));
+                    //QMessageBox::critical(0, tr("Invalid thema file version."), tr("Cannot parse thema file. This version is not supported : %1.").arg(version));
                 }
             }
         } else {
             qDebug()<<"Invalid thema file. "<<error_msg<<" Line : "<<error_line<<" Col: "<<error_col;
-            QMessageBox::critical(0, tr("Invalid thema file."), tr("Cannot parse thema file. Check logs for futher details."));
+            //QMessageBox::critical(0, tr("Invalid thema file."), tr("Cannot parse thema file. Check logs for futher details."));
         }
 
     } else {

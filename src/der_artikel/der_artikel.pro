@@ -4,7 +4,7 @@ DEFINES += ENABLE_THEMA_BUILDER
 
 win32:DEFINES += NO_GRAPHICAL_EFFECTS
 
-QT += xml widgets network
+QT += gui qml quick xml network
 
 MOC_DIR      = moc
 RCC_DIR      = resources
@@ -15,6 +15,8 @@ CONFIG(debug,debug|release):DESTDIR=$${OUT_PWD}/bin_debug
 CONFIG(release,debug|release):DESTDIR=$${OUT_PWD}/bin_release
 
 include($$PWD/../data/data.pri)
+# Please do not modify the following two lines. Required for deployment.
+include($$PWD/../qmake_utils/qmake_utils.pri)
 
 SOURCES += main.cpp \
     manager.cpp \
@@ -37,8 +39,7 @@ SOURCES += main.cpp \
     algo/thema_add_operation.cpp \
     algo/thema_delete_operation.cpp
 
-# Please do not modify the following two lines. Required for deployment.
-include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
+
 
 
 HEADERS += \
@@ -89,7 +90,7 @@ DEPLOYMENTFOLDERS += folder_01
 folder_02.source = languages
 folder_02.target =
 DEPLOYMENTFOLDERS += folder_02
-qtcAddDeployment()
+doDeployment()
 
 mac {
     LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4qt

@@ -22,10 +22,10 @@
 ** met: http://www.gnu.org/copyleft/gpl.html.
 **
 ****************************************************************************/
-#include <QApplication>
+#include <QGuiApplication>
 #include <QQuickItem>
 #include <QQmlContext>
-#include <QMessageBox>
+//#include <QMessageBox>
 #include <QTimer>
 #include <QDebug>
 
@@ -322,14 +322,14 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
  */
 void Manager_C::quit()
 {
-    QMessageBox::StandardButton res  =
-            QMessageBox::information(0,tr("Quit"),
-                                     tr("Do you realy want to quit"),
-                                     QMessageBox::Yes,QMessageBox::No);
-    if(res == QMessageBox::Yes) {
+//    QMessageBox::StandardButton res  =
+//            QMessageBox::information(0,tr("Quit"),
+//                                     tr("Do you realy want to quit"),
+//                                     QMessageBox::Yes,QMessageBox::No);
+    //if(res == QMessageBox::Yes) {
         LOG_INFO("Quitting Application");
-        QApplication::quit();
-    }
+        QGuiApplication::quit();
+    //}
 }
 
 /*!

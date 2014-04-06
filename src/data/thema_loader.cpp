@@ -3,7 +3,7 @@
 #include <QDomDocument>
 #include <QDir>
 #include <QFile>
-#include <QMessageBox>
+//#include <QMessageBox>
 #include <QThreadPool>
 #include <QDebug>
 #include "common.h"

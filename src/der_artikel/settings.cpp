@@ -1,7 +1,7 @@
 #include "settings.h"
 #include <QLocale>
 #include <QTranslator>
-#include <QApplication>
+#include <QGuiApplication>
 #include <QDir>
 #include <QDebug>
 #include "common.h"
@@ -68,7 +68,7 @@ void Settings_C::updateLangauge()
     }
 
     foreach (QTranslator* translator, _installed_translators) {
-        QApplication::removeTranslator(translator);
+        QGuiApplication::removeTranslator(translator);
         delete translator;
     }
     _installed_translators.clear();
@@ -82,7 +82,7 @@ void Settings_C::updateLangauge()
         if(file.baseName().endsWith(language_code,Qt::CaseInsensitive)) {
             QTranslator* translator = new QTranslator;
             if(translator->load(file.absoluteFilePath())) {
-                QApplication::installTranslator(translator);
+                QGuiApplication::installTranslator(translator);
                 _installed_translators<<translator;
             }
         }

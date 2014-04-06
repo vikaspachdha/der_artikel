@@ -1,14 +1,14 @@
 import QtQuick 2.0
 import com.vystosi.qmlcomponents 1.0
+import QtQuick.Window 2.1
 
-Image {
-    id: rootItem;
+Window{
     width: 480
     height: 400
+
     property QtObject color_palette : cp_night
 
-    source: color_palette.root_background
-    fillMode: Image.Tile
+    visible: true
 
     Color_palette_blue {
         id:cp_blue
@@ -32,63 +32,74 @@ Image {
         source: "qrc:/res/resources/fonts/custom_command.ttf"
     }
 
-    Title_frame{
-        id: title_frame
-        anchors{
-            top: parent.top
-            left:parent.left
-            leftMargin:8
-            right:parent.right
-            rightMargin: 8
-        }
-    }
-
-    Panel_frame {
-        id: panel_frame
-        anchors{
-            top: title_frame.bottom
-            topMargin: 6
-            left:parent.left
-            bottom:command_frame.top
-            bottomMargin: 6
-        }
-    }
-
-    Command_frame {
-        id:command_frame
-        width:100
-        height:80
-        anchors{
-            left:parent.left
-            leftMargin: 8
-            bottom:parent.bottom
-            bottomMargin: 6
-        }
-    }
-
-    Content_frame
-    {
-        id: content_frame
-        anchors.top: title_frame.bottom
-        anchors.bottom: rootItem.bottom
-        anchors.left: parent.left
-        anchors.leftMargin: 112
-        anchors.right: rootItem.right
-        anchors.rightMargin: 4
-    }
-
-
-    function addWord(itemText, desc)
-    {
-        var WordItem = content_frame.word_page.addWord(itemText, desc)
-        return WordItem;
-    }
-
-    Message_bar {
-        id: msg_bar
+    Image {
+        id: rootItem;
         anchors.fill: parent
-        onMsgCompleted: {
-            rootItem.enabled = true
+        source: color_palette.root_background
+        fillMode: Image.Tile
+
+        Title_frame{
+            id: title_frame
+            anchors{
+                top: parent.top
+                left:parent.left
+                leftMargin:8
+                right:parent.right
+                rightMargin: 8
+            }
+        }
+
+        Panel_frame {
+            id: panel_frame
+            anchors{
+                top: title_frame.bottom
+                topMargin: 6
+                left:parent.left
+                bottom:command_frame.top
+                bottomMargin: 6
+            }
+        }
+
+        Command_frame {
+            id:command_frame
+            width:100
+            height:80
+            anchors{
+                left:parent.left
+                leftMargin: 8
+                bottom:parent.bottom
+                bottomMargin: 6
+            }
+        }
+
+        Content_frame
+        {
+            id: content_frame
+            anchors.top: title_frame.bottom
+            anchors.bottom: rootItem.bottom
+            anchors.left: parent.left
+            anchors.leftMargin: 112
+            anchors.right: rootItem.right
+            anchors.rightMargin: 4
+        }
+
+        Message_bar {
+            id: msg_bar
+            anchors.fill: parent
+            onMsgCompleted: {
+                rootItem.enabled = true
+            }
+        }
+
+    }
+
+    Component.onCompleted: {
+        manager.current_page = Manager.HOME_PAGE
+
+        // self destroying statrtup screen
+        var startup_component = Qt.createComponent("Startup_screen.qml");
+        if(startup_component.status === Component.Ready) {
+            startup_component.createObject(rootItem);
         }
     }
 
@@ -102,15 +113,10 @@ Image {
     {
         msg_bar.closeMessage()
     }
-
-    Component.onCompleted: {
-        manager.current_page = Manager.HOME_PAGE
-
-        // self destroying statrtup screen
-        var startup_component = Qt.createComponent("Startup_screen.qml");
-        if(startup_component.status === Component.Ready) {
-            startup_component.createObject(rootItem);
-        }
+    function addWord(itemText, desc)
+    {
+        var WordItem = content_frame.word_page.addWord(itemText, desc)
+        return WordItem;
     }
 
     function articleText(article) {
@@ -143,4 +149,5 @@ Image {
         return new_color
     }
 }
+
 

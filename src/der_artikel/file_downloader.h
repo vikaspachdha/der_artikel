@@ -2,7 +2,6 @@
 #define FILE_DOWNLOADER_H
 
 #include <QObject>
-#include <QWidget>
 #include <QNetworkAccessManager>
 #include <QDataStream>
 #include <QTextStream>

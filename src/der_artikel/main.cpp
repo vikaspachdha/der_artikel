@@ -1,7 +1,11 @@
-#include <QApplication>
+#include <QGuiApplication>
 #include <QQmlContext>
+#include <QQmlComponent>
 #include <QtQml>
+#include <QQuickItem>
 #include <iostream>
+#include <QQmlApplicationEngine>
+#include <QIcon>
 
 #include "log4qt/ttcclayout.h"
 #include "log4qt/logmanager.h"
@@ -9,7 +13,7 @@
 #include "log4qt/logger.h"
 #include "log_defines.h"
 
-#include "qtquick2applicationviewer.h"
+//#include "qtquick2applicationviewer.h"
 #include "manager.h"
 #include "image_provider.h"
 #include "data/result.h"
@@ -67,7 +71,7 @@ void setUpLogging(QObject* parent=0)
 */
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    QGuiApplication app(argc, argv);
     app.thread()->setObjectName("mainThread");
     setupVersion();
 
@@ -86,10 +90,10 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<SettingsPage_C>("com.vystosi.qmlcomponents", 1, 0, "SettingsPage","");
     qmlRegisterUncreatableType<ThemaUpdater_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaUpdater","");
 
-    QtQuick2ApplicationViewer viewer;
-    app.setWindowIcon(QIcon("qrc:/res/resources/app.png"));
+    QQmlApplicationEngine appEngine;
+    QQmlContext* root_context = appEngine.rootContext();
+    //app.setWindowIcon(QIcon("qrc:/res/resources/app.png"));
 
-    QQmlContext* root_context = viewer.rootContext();
     Manager_C manager(*root_context);
     ThemaUpdater_C thema_updater(manager);
 
@@ -100,13 +104,9 @@ int main(int argc, char *argv[])
     root_context->setContextProperty("settings", manager.GetSettings());
     root_context->engine()->addImageProvider("rootImageProvider",manager.GetImageProvider());
 
-    viewer.setSource(QUrl("qrc:/res/qml/der_artikel/main.qml"));
-
-    QQuickItem* root_item = viewer.rootObject();
+    QQmlComponent component(&appEngine,QUrl("qrc:/res/qml/der_artikel/main.qml"),&app);
+    QQuickItem *root_item = qobject_cast<QQuickItem *>(component.create());
     manager.SetRootItem(root_item);
-
-    viewer.setMinimumSize(QSize(480,400));
-    viewer.showExpanded();
 
     int return_code = app.exec();
     LOG_INFO("Application end");
