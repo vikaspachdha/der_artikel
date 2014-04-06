@@ -147,7 +147,7 @@ void WordsPage_C::OnWordClicked()
 */
 void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
 {
-    QList<Word_C*> words = thema->GetWords();
+    QList<Word_C*> words = thema->words();
     LOG_INFO("Word page :: Adding words");
     srand(QDateTime::currentMSecsSinceEpoch());
     while (words.count() > 0) {

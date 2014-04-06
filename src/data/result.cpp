@@ -189,7 +189,7 @@ void Result_C::updateResult(double score, unsigned int correct_word_count, unsig
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] element : Rote xml node to read data from.
+ *  \param[in] element : Xml node to read data from.
  *
  *  \return bool : Returns whether read was a success.
  *  \retval success status.
@@ -284,7 +284,7 @@ bool Result_C::read(const QDomElement &element)
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] element : Rote xml node to write data under.
+ *  \param[in] element : Xml node to write data under.
  *
  *  \return bool : Returns whether write was a success.
  *  \retval success status.

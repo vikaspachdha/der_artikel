@@ -60,7 +60,7 @@ class Manager_C : public QObject
     Q_ENUMS(GameLevel)
 
     Q_PROPERTY(PageId_TP current_page READ getCurrentPage WRITE setCurrentPage NOTIFY currentPageChanged)
-    Q_PROPERTY(QAbstractItemModel* thema_model READ GetThemaModel CONSTANT)
+    Q_PROPERTY(ThemaModel_C* thema_model READ GetThemaModel CONSTANT)
     Q_PROPERTY(GameLevel game_level READ gameLevel WRITE setGameLevel NOTIFY gameLevelChanged)
     Q_PROPERTY(bool thema_selected READ isThemaSelected NOTIFY themaSelectionStateChanged)
     Q_PROPERTY(QString version_string READ versionString CONSTANT)

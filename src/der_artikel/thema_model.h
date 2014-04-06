@@ -52,14 +52,14 @@ public:
     void AddThema(Thema_C* new_thema);
     void clear();
     Thema_C* GetSelectedThema();
-    void ClearSelection();
+    Q_INVOKABLE void clearSelection();
     SelectionState_TP SelectionState() const;
 
 signals:
     void themaSelectionChanged();
 
 private slots:
-    void OnThemaItemSelectionChanged(Thema_C::SelectionType_TP type);
+    void OnThemaItemSelectionChanged();
 
 private:
     void clearThemaList();

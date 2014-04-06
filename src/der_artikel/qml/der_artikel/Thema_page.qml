@@ -11,7 +11,7 @@ Page {
         anchors.bottomMargin: 4
         anchors.topMargin: 4
         anchors.fill: parent
-        model: manager.thema_model
+        model: themaModel
         cellHeight: 110
         cellWidth: 110
         delegate: Thema_item {
@@ -28,11 +28,12 @@ Page {
                 if(flipped) {
                     flipped = !flipped
                 }else {
-                    thema_object.setSelected(!selected)
+                    themaModel.clearSelection()
+                    thema_object.selected = !thema_object.selected
                 }
             }
             onThemaLongClicked: {
-                thema_object.setSelected(true,Thema.MULTI_SELECTION)
+                thema_object.selected = true;
             }
         }
     }

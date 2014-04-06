@@ -52,15 +52,15 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
                 break;
 
             case SELECTED:
-                data = thema->Selected();
+                data = thema->selected();
                 break;
 
             case EXPERIENCE:
-                data = thema->ExperiencePoints();
+                data = thema->experiencePoints();
                 break;
 
             case WORD_COUNT:
-                data = thema->GetWordCount();
+                data = thema->wordCount();
                 break;
 
             case THEMA_STATE:
@@ -72,7 +72,7 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
                 break;
 
             case LAST_UPDATED:
-                data = thema->LastUpdated();
+                data = thema->lastUpdated();
                 break;
 
             case THEMA_OBJECT:
@@ -133,14 +133,14 @@ void ThemaModel_C::AddThema(Thema_C *new_thema)
     LOG_INFO(QString("Thema model :: Added new thema %1").arg(new_thema->name()));
     beginInsertRows(QModelIndex(),_thema_list.count(),_thema_list.count());
     _thema_list.append(new_thema);
-    connect(new_thema, SIGNAL(selectionChanged(Thema_C::SelectionType_TP)),this,SLOT(OnThemaItemSelectionChanged(Thema_C::SelectionType_TP)));
+    connect(new_thema, SIGNAL(selectionChanged()),this,SLOT(OnThemaItemSelectionChanged()));
     endInsertRows();
 }
 
 void ThemaModel_C::clear()
 {
     LOG_INFO("Thema model :: Cleared thema model");
-    ClearSelection();
+    clearSelection();
     beginResetModel();
     clearThemaList();
     endResetModel();
@@ -164,7 +164,7 @@ Thema_C* ThemaModel_C::GetSelectedThema()
  \brief
 
 */
-void ThemaModel_C::ClearSelection()
+void ThemaModel_C::clearSelection()
 {
     LOG_INFO("Thema model :: Cleared selection.");
     foreach (Thema_C* thema, _selected_thema_list) {
@@ -202,21 +202,21 @@ ThemaModel_C::SelectionState_TP ThemaModel_C::SelectionState() const
 
  \param type
 */
-void ThemaModel_C::OnThemaItemSelectionChanged(Thema_C::SelectionType_TP type)
+void ThemaModel_C::OnThemaItemSelectionChanged()
 {
     Thema_C* thema = qobject_cast<Thema_C*>(sender());
     Q_ASSERT(thema);
-    if(type == Thema_C::SINGLE_SELECTION) {
-        ClearSelection();
-    }
-    if(thema->Selected()) {
+
+    if(thema->selected()) {
         LOG_INFO(QString("Thema model :: Thema %1 added to selection list.").arg(thema->name()));
         _selected_thema_list.append(thema);
     } else {
         LOG_INFO(QString("Thema model :: Thema %1 removed from selection list.").arg(thema->name()));
         _selected_thema_list.removeAll(thema);
     }
+
     emit themaSelectionChanged();
+
     QModelIndex thema_index = index(_thema_list.indexOf(thema));
     QVector<int> roles;
     roles<<SELECTED;

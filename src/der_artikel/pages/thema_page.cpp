@@ -21,7 +21,7 @@ ThemaPage_C::ThemaPage_C(Manager_C &page_manager, QObject *parent) :
 void ThemaPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
-    _page_manager.GetThemaModel()->ClearSelection();
+    _page_manager.GetThemaModel()->clearSelection();
 }
 
 /*!

@@ -1,18 +1,46 @@
-#include "thema.h"
-#include <QDebug>
+//******************************************************************************
+/*! \file thema.cpp Implementation of \ref Thema_C
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \copyright Copyright (C) 2014 Vikas Pachdha, Mohita Gandotra.
+ * Contact: http://www.vikaspachdha.com
+ *
+ * This file is part of the application der_artikel.
+ *
+ *  \copyright GNU Lesser General Public License Usage
+ * This file may be used under the terms of the GNU Lesser
+ * General Public License version 2.1 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.LGPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU Lesser General Public License version 2.1 requirements
+ * will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ *
+ *  \copyright GNU General Public License Usage
+ * Alternatively, this file may be used under the terms of the GNU
+ * General Public License version 3.0 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.GPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU General Public License version 3.0 requirements will be
+ * met: http://www.gnu.org/copyleft/gpl.html.
+ *
+ ******************************************************************************/
 #include <QFileInfo>
 #include <QDir>
 #include <QBuffer>
-//#include <QMessageBox>
 
+#include "thema.h"
 #include "version.h"
 #include "common.h"
+#include "log_defines.h"
 
-/*!
- \brief
-
- \param parent
-*/
+//******************************************************************************
+/*! \brief Constructor.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] parent : Parent object instance.
+ ******************************************************************************/
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
     _translation(""),
@@ -23,31 +51,34 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
     _icon =  QPixmap("qrc:/res/resources/thema_generic.png");
 }
 
-/*!
- \brief
-
-*/
+//******************************************************************************
+/*! \brief Destructor.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 Thema_C::~Thema_C()
 {
     ClearWords();
 }
 
-/*!
- \brief
-
- \param file_path
-*/
-void Thema_C::SetFilePath(QString file_path)
-{
-    _file_path = file_path;
-}
-
-/*!
- \brief
-
- \param element
- \return bool
-*/
+//******************************************************************************
+/*! \brief Reads the thema data from a xml node.
+ *
+ *  \details Defer reading of words if only thema info is required. Read words
+ *  only if required.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] element : Xml node to read data from.
+ *  \param[in] defered : Defers reading words. Defer to save memory.
+ *
+ *  \return bool : Returns whether read was a success.
+ *  \retval success status.
+ *                      <ul>
+ *                         <li> False = Failure
+ *                         <li> True = Success
+ *                      </ul>
+ ******************************************************************************/
 bool Thema_C::Read(const QDomElement &element, bool defered)
 {
     bool success = false;
@@ -129,7 +160,7 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
                     Word_C* word = new Word_C(this);
                     if(!word->Read(word_node.toElement())) {
                         delete word;
-                        qDebug()<<"Invalid Word in thema.";
+                        LOG_WARN(QString("Invalid Word in thema %1.").arg(_text));
                     } else {
                         _words.append(word);
                     }
@@ -144,6 +175,24 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
     return success;
 }
 
+//******************************************************************************
+/*! \brief Reads the thema data from a file.
+ *
+ *  \details Defer reading of words if only thema info is required. Read words
+ *  only if required.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] thema_file_path : File path to read data from.
+ *  \param[in] defered : Defers reading words. Defer to save memory.
+ *
+ *  \return bool : Returns whether read was a success.
+ *  \retval success status.
+ *                      <ul>
+ *                         <li> False = Failure
+ *                         <li> True = Success
+ *                      </ul>
+ ******************************************************************************/
 bool Thema_C::Read(QString thema_file_path, bool defered)
 {
     if(thema_file_path.isEmpty()) {
@@ -178,40 +227,56 @@ bool Thema_C::Read(QString thema_file_path, bool defered)
                         if(domNode.nodeName().compare("Thema") == 0) {
                             if(!Read(domNode.toElement(),defered)) {
                                 success = false;
-                                qDebug()<<"Invalid Thema.";
+                                LOG_ERROR(QString("Invalid Thema. Path:%1").arg(thema_file_path));
                             } else {
-                                SetFilePath(thema_file_path);
+                                _file_path = thema_file_path;
                             }
                         }
                         domNode = domNode.nextSibling();
                     }
 
                 } else {
-                    qDebug()<<"Cannot parse thema file. This version is not supported : "<<version;
-                    //QMessageBox::critical(0, tr("Invalid thema file version."), tr("Cannot parse thema file. This version is not supported : %1.").arg(version));
+                    LOG_ERROR(QString("Cannot parse thema file. Version %1 not supported. Path:%2").
+                              arg(version).
+                              arg(thema_file_path));
+                    success = false;
                 }
             }
         } else {
-            qDebug()<<"Invalid thema file. "<<error_msg<<" Line : "<<error_line<<" Col: "<<error_col;
-            //QMessageBox::critical(0, tr("Invalid thema file."), tr("Cannot parse thema file. Check logs for futher details."));
+            LOG_ERROR(QString("Invalid thema file. %1 Line:%2,  Col:%3,  Path:%4").
+                      arg(error_msg).
+                      arg(error_line).
+                      arg(error_col).
+                      arg(thema_file_path));
+            success = false;
         }
 
     } else {
-        qDebug()<<thema_file.errorString();
+        LOG_ERROR(QString("Cannot read thema file.%1. Path:%2").
+                  arg(thema_file.errorString()).
+                  arg(thema_file_path));
+        success = false;
     }
 
     thema_file.close();
-
     return success;
 }
 
 
-/*!
- \brief
-
- \param element
- \return bool
-*/
+//******************************************************************************
+/*! \brief Writes the thema data to xml node.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] element : Xml node to write data under.
+ *
+ *  \return bool : Returns whether write was a success.
+ *  \retval success status.
+ *                      <ul>
+ *                         <li> False = Failure
+ *                         <li> True = Success
+ *                      </ul>
+ ******************************************************************************/
 bool Thema_C::Write(QDomElement &element)
 {
     bool success = false;
@@ -282,11 +347,15 @@ bool Thema_C::Write(QDomElement &element)
     return success;
 }
 
-/*!
- \brief
-
- \param file_path
-*/
+//******************************************************************************
+/*! \brief Saves thema data to a file.
+ *
+ *  \details The resultant file is a compressed text data in xml format.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] file_path : Absolute path to resultant file.
+ ******************************************************************************/
 void Thema_C::Save(QString file_path)
 {
     QString save_file = file_path.isEmpty() ? _file_path : file_path;
@@ -298,49 +367,62 @@ void Thema_C::Save(QString file_path)
                 _file_path = save_file;
             }
         } else {
-            qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
+            LOG_ERROR(QString("Cannot write thema file.%1. Path:%2").
+                      arg(save_file).
+                      arg(save_file));
         }
     }
 }
 
-/*!
- \brief
-
-*/
+//******************************************************************************
+/*! \brief Clears the loaded words.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Thema_C::ClearWords()
 {
+    LOG_INFO(QString("Words unloaded. Thema:%1").arg(_text));
     foreach(Word_C* word, _words) {
         delete word;
     }
     _words.clear();
 }
 
-/*!
- \brief
-
- \param pDevice
- \return bool
-*/
+//******************************************************************************
+/*! \brief Helper method to write the thema data.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] pDevice : Some value passed.
+ *
+ *  \return bool : True if file is written to device.
+ ******************************************************************************/
 bool Thema_C::Write(QIODevice* pDevice)
 {
-    QDomDocument domDocument("DerArtikel");
+    bool success = true;
+    if(pDevice) {
+        QDomDocument domDocument("DerArtikel");
 
-    QDataStream out(pDevice);
-    QDomElement root = domDocument.createElement("Root");
-    root.setAttribute("Version", QString::number(APP_VERSION));
+        QDataStream out(pDevice);
+        QDomElement root = domDocument.createElement("Root");
+        root.setAttribute("Version", QString::number(APP_VERSION));
 
-    Write(root);
+        Write(root);
 
-    domDocument.appendChild(root);
-    QByteArray xml_data = domDocument.toByteArray(4);
-    out<<qCompress(xml_data,ARTIKEL::COMPRESSION_LEVEL);
+        domDocument.appendChild(root);
+        QByteArray xml_data = domDocument.toByteArray(4);
+        out<<qCompress(xml_data,ARTIKEL::COMPRESSION_LEVEL);
+    } else {
+        success = false;
+    }
     return true;
 }
 
-/*!
- \brief
-
-*/
+//******************************************************************************
+/*! \brief Updates the thema state according to the current experience.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Thema_C::UpdateThemaState()
 {
     State_TP state;
@@ -360,11 +442,15 @@ void Thema_C::UpdateThemaState()
     }
 }
 
-/*!
- \brief
-
- \return QByteArray
-*/
+//******************************************************************************
+/*! \brief Returns binary data of icon of the thema.
+ *
+ *  \details Icon information is saved in thema file.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return QByteArray : Icon data
+ ******************************************************************************/
 QByteArray Thema_C::IconData() const
 {
     QByteArray data;
@@ -375,11 +461,13 @@ QByteArray Thema_C::IconData() const
     return data;
 }
 
-/*!
- \brief
-
- \param data
-*/
+//******************************************************************************
+/*! \brief Updates thema icon from binary data.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return data : Icon data
+ ******************************************************************************/
 void Thema_C::UpdateIcon(QByteArray data)
 {
     if(data.size() > 0) {
@@ -390,6 +478,11 @@ void Thema_C::UpdateIcon(QByteArray data)
     }
 }
 
+//******************************************************************************
+/*! \brief Resets the to default state and flushes all data..
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Thema_C::ResetThema()
 {
     _text = "";
@@ -404,11 +497,13 @@ void Thema_C::ResetThema()
     ClearWords();
 }
 
-/*!
- \brief
-
- \param points
-*/
+//******************************************************************************
+/*! \brief Adds experience points to thema.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] points : Experience points. Negative value deducts the experience points
+ ******************************************************************************/
 void Thema_C::AddExperiencePoints(int points)
 {
     _experience_points += points;
@@ -422,20 +517,23 @@ void Thema_C::AddExperiencePoints(int points)
     }
 }
 
-/*!
- \brief
-
- \param points
-*/
+//******************************************************************************
+/*! \brief Deducts experience points to thema.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] points : Experience points. Negative value adds the experience points
+ ******************************************************************************/
 void Thema_C::DeductExperiencePoints(int points)
 {
     AddExperiencePoints(-points);
 }
 
-/*!
- \brief
-
-*/
+//******************************************************************************
+/*! \brief Clears user modified article data.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Thema_C::ClearUserInput()
 {
     foreach(Word_C* word, _words) {
@@ -443,52 +541,67 @@ void Thema_C::ClearUserInput()
     }
 }
 
-/*!
- \brief
-
- \param last_played
-*/
+//******************************************************************************
+/*! \brief Sets last played date and time.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] Last_played : New value for last played date and time.
+ ******************************************************************************/
 void Thema_C::setLastPlayed(const QDateTime &Last_played)
 {
     _last_played = Last_played;
 }
 
+//******************************************************************************
+/*! \brief Sets last updated date and time.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] last_updated : New value for last updated date and time.
+ ******************************************************************************/
 void Thema_C::setLastUpdated(const QDateTime &last_updated)
 {
     _last_updated = last_updated;
 }
 
-/*!
- \brief
-
- \param selected
- \param type
-*/
-void Thema_C::setSelected(bool selected, SelectionType_TP type)
+//******************************************************************************
+/*! \brief Sets selection state of thema.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] selected : True to set selected, false otherwide.
+ ******************************************************************************/
+void Thema_C::setSelected(bool selected)
 {
     if(_selected != selected) {
         _selected = selected;
-        emit selectionChanged(type);
+        emit selectionChanged();
     }
 }
 
-/*!
- \brief
-
- \return unsigned int
-*/
-unsigned int Thema_C::GetWordCount() const
+//******************************************************************************
+/*! \brief Returns count of words for this thema.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return unsigned int : Numbers of words
+ ******************************************************************************/
+unsigned int Thema_C::wordCount() const
 {
     return (uint)_words.count();
 }
 
-/*!
- \brief
-
- \param index
- \return const Word_C
-*/
-const Word_C *Thema_C::GetWord(int index) const
+//******************************************************************************
+/*! \brief Returns word at the given index.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] index : Index of the word.
+ *
+ *  \return Word_C* : Word's instance
+ ******************************************************************************/
+const Word_C *Thema_C::word(int index) const
 {
     Word_C* word = 0;
     if(index > -1 && index < _words.count()) {

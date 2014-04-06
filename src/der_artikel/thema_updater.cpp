@@ -122,13 +122,13 @@ void ThemaUpdater_C::onNewThemaLoaded(Thema_C *thema)
     thema->setParent(this);
     QFileInfo thema_local_file_info(thema->filePath());
     if(_remote_file_data.contains(thema_local_file_info.fileName().toLower())) {
-        if(_remote_file_data[thema_local_file_info.fileName().toLower()] > thema->LastUpdated()) {
+        if(_remote_file_data[thema_local_file_info.fileName().toLower()] > thema->lastUpdated()) {
             // Replace operation
             QString local_file_path = thema->filePath();
             QUrl remote_file_url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/" + thema_local_file_info.fileName());
             ThemaFileOperation_I* operation = new ThemaReplaceOperation_C(local_file_path,
                                                                           remote_file_url,
-                                                                          thema->ExperiencePoints());
+                                                                          thema->experiencePoints());
             _file_operations.append(operation);
             LOG_INFO(QString("Thema updater :: Added replace operation %1:%2").arg(local_file_path).arg(remote_file_url.toString()));
         }

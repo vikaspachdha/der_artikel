@@ -313,7 +313,7 @@ void ThemaBuilder_C::OnIndex()
             foreach(QFileInfo thema_file, thema_files) {
                 Thema_C* thema = thema_loader.LoadThema(thema_file.absoluteFilePath());
                 if(thema) {
-                    QDateTime update_stamp = thema->LastUpdated();
+                    QDateTime update_stamp = thema->lastUpdated();
                     write_stream<<thema_file.fileName()<<";"<<QString::number(update_stamp.toMSecsSinceEpoch())<<endl;
                 }
             }
@@ -632,7 +632,7 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
         foreach(Word_C* word, thema->_words) {
             AddWordToList(word);
         }
-        QDateTime thema_update_time = _thema->LastUpdated();
+        QDateTime thema_update_time = _thema->lastUpdated();
         if(thema_update_time.isValid()) {
             ui->_update_time_stamp_lbl->setText(thema_update_time.toString("dd-MM-yyyy hh:mm:ss"));
         } else {

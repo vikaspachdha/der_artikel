@@ -20,13 +20,13 @@ ModerateResultAlgo_C::ModerateResultAlgo_C():ResultAlgo_I()
 */
 void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 {
-    unsigned int count = thema.GetWordCount();
+    unsigned int count = thema.wordCount();
     unsigned int correct_count = 0;
     QList<const Word_C*>incorrect_words;
     unsigned int unplayed_count = 0;
 
     for(unsigned int index = 0; index < count; ++index) {
-        const Word_C* word = thema.GetWord(index);
+        const Word_C* word = thema.word(index);
         if(word->GetUserArtikel() == Article_C::INVALID || word->GetUserArtikel() == Article_C::NA) {
             ++unplayed_count;
         } else {
@@ -72,6 +72,6 @@ void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 */
 int ModerateResultAlgo_C::playTime(Thema_I &thema)
 {
-    return thema.GetWordCount() * 3;
+    return thema.wordCount() * 3;
 }
 
