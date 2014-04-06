@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine appEngine;
     QQmlContext* root_context = appEngine.rootContext();
-    //app.setWindowIcon(QIcon("qrc:/res/resources/app.png"));
+    //
 
     Manager_C manager(*root_context);
     ThemaUpdater_C thema_updater(manager);

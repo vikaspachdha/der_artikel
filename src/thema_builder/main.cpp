@@ -1,5 +1,6 @@
 #include <QApplication>
 #include <QThread>
+#include <QIcon>
 
 #include "log4qt/ttcclayout.h"
 #include "log4qt/logmanager.h"
@@ -64,6 +65,9 @@ int main(int argc, char *argv[])
     setUpLogging();
     LOG_INFO("Application start");
 
+    app.setWindowIcon(QIcon("qrc:/res/resources/app.png"));
+    app.setApplicationName("thema_builder");
+    app.setApplicationDisplayName("Thema builder");
 
     ThemaBuilder_C thema_builder;
     thema_builder.show();
