@@ -144,7 +144,7 @@ void ThemaBuilder_C::OnLoad()
                                                      tr("Thema files (*.AKL);; All files (*.*)"));
     if(!file_path.isEmpty()) {
         ThemaLoader_C loader;
-        Thema_C* new_thema = loader.LoadThema(file_path,false);
+        Thema_C* new_thema = loader.loadThema(file_path,false);
         if(new_thema) {
             LOG_INFO("Thema builder :: New thema loaded.");
             Reset();
@@ -237,10 +237,10 @@ void ThemaBuilder_C::OnItemDoubleClicked(QListWidgetItem *item)
         if(word) {
             _edit_item = item;
 
-            ui->_word_edit->setText(word->GetWordText());
-            ui->_desc_edit->setText(word->GetDescription());
+            ui->_word_edit->setText(word->wordText());
+            ui->_desc_edit->setText(word->description());
 
-            switch(word->GetArtikel()) {
+            switch(word->artikel()) {
             case Article_C::DAS:
                 ui->_das_radio->setChecked(true);
                 break;
@@ -283,7 +283,7 @@ void ThemaBuilder_C::OnDelete()
                 if(word) {
                     _thema->_words.removeAt(_thema->_words.indexOf(word));
                     _word_item_hash.remove(word);
-                    _words_set.remove(word->GetWordText());
+                    _words_set.remove(word->wordText());
                     delete word;
                     delete item;
                 }
@@ -311,7 +311,7 @@ void ThemaBuilder_C::OnIndex()
             QTextStream write_stream(&index_file);
             ThemaLoader_C thema_loader;
             foreach(QFileInfo thema_file, thema_files) {
-                Thema_C* thema = thema_loader.LoadThema(thema_file.absoluteFilePath());
+                Thema_C* thema = thema_loader.loadThema(thema_file.absoluteFilePath());
                 if(thema) {
                     QDateTime update_stamp = thema->lastUpdated();
                     write_stream<<thema_file.fileName()<<";"<<QString::number(update_stamp.toMSecsSinceEpoch())<<endl;
@@ -564,7 +564,7 @@ bool ThemaBuilder_C::AddWordToThema(Word_C *new_word)
     if(new_word) {
         if(_words_set.contains(new_word->_text)) {
             Word_C* old_word = _words_set[new_word->_text];
-            LOG_WARN(QString("Thema builder :: Duplicate word %1").arg(new_word->GetWordText()));
+            LOG_WARN(QString("Thema builder :: Duplicate word %1").arg(new_word->wordText()));
             ConflictDlg_C conflict_dlg(*old_word, *new_word, this);
             if(conflict_dlg.exec() == QDialog::Accepted) {
                 QListWidgetItem* list_item = _word_item_hash[old_word];

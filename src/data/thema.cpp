@@ -158,7 +158,7 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
                     _words.append(0);
                 } else {
                     Word_C* word = new Word_C(this);
-                    if(!word->Read(word_node.toElement())) {
+                    if(!word->read(word_node.toElement())) {
                         delete word;
                         LOG_WARN(QString("Invalid Word in thema %1.").arg(_text));
                     } else {
@@ -332,7 +332,7 @@ bool Thema_C::Write(QDomElement &element)
             while(iter != _words.end()) {
                 Word_C* word = *iter;
                 if(word) {
-                    word->Write(dom_words_root);
+                    word->write(dom_words_root);
                 }
                 ++iter;
             }
@@ -537,7 +537,7 @@ void Thema_C::DeductExperiencePoints(int points)
 void Thema_C::ClearUserInput()
 {
     foreach(Word_C* word, _words) {
-        word->SetUserArtikel(Article_C::INVALID);
+        word->setUserArtikel(Article_C::INVALID);
     }
 }
 

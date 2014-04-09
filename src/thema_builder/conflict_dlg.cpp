@@ -15,21 +15,21 @@ ConflictDlg_C::ConflictDlg_C(Word_C &old_word, Word_C &new_word, QWidget *parent
     ui(new Ui::ConflictDlg_C)
 {
     ui->setupUi(this);
-    QString warning_text = QString("Word \"%1\" already exists.").arg(new_word.GetWordText());
+    QString warning_text = QString("Word \"%1\" already exists.").arg(new_word.wordText());
     bool isSame = true;
-    if(old_word.GetArtikel() != new_word.GetArtikel()) {
+    if(old_word.artikel() != new_word.artikel()) {
         warning_text.append(QString("\n\nOld article is \"%1\" and new article is \"%2\".")
-                .arg(Article_C::ArtikelText(old_word.GetArtikel()))
-                .arg(Article_C::ArtikelText(new_word.GetArtikel())) );
+                .arg(Article_C::ArtikelText(old_word.artikel()))
+                .arg(Article_C::ArtikelText(new_word.artikel())) );
         isSame = false;
     } else {
         ui->_update_article_chk->setVisible(false);
     }
 
-    if(old_word.GetDescription() != new_word.GetDescription()) {
+    if(old_word.description() != new_word.description()) {
         warning_text.append(QString("\n\nOld description is \"%1\" and new description is \"%2\".")
-                .arg(old_word.GetDescription())
-                .arg(new_word.GetDescription()) );
+                .arg(old_word.description())
+                .arg(new_word.description()) );
         isSame = false;
     } else {
         ui->_update_translation_chk->setVisible(false);

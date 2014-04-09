@@ -34,7 +34,7 @@ public:
 private slots:
     void onFileDownloadFinished();
     void onFileDownloadAborted();
-    void onNewThemaLoaded(Thema_C *new_thema);
+    void onNewthemaLoaded(Thema_C *new_thema);
     void onBuildLocalDataFinished();
 
 signals:

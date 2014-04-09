@@ -134,8 +134,8 @@ void WordsPage_C::OnWordClicked()
     Q_ASSERT(word_item);
     Word_C* word = _item_word_hash[word_item];
     if(word) {
-        LOG_INFO(QString("Word page :: Word clicked %1").arg(word->GetWordText()));
-        word->SetUserArtikel(_selected_article);
+        LOG_INFO(QString("Word page :: Word clicked %1").arg(word->wordText()));
+        word->setUserArtikel(_selected_article);
     }
 }
 
@@ -154,7 +154,7 @@ void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
         int index = rand()%words.count();
         Word_C* word = words.takeAt(index);
         if(practice_mode) {
-            word->SetUserArtikel(word->GetArtikel());
+            word->setUserArtikel(word->artikel());
         }
         QObject* word_item = AddWord(*word);
         Q_ASSERT(word_item);
@@ -172,12 +172,12 @@ void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
 QObject *WordsPage_C::AddWord(Word_C& word)
 {
     QVariant returned_value;
-    LOG_INFO(QString("Word page :: Adding word %1").arg(word.GetWordText()));
+    LOG_INFO(QString("Word page :: Adding word %1").arg(word.wordText()));
     QMetaObject::invokeMethod(pageItem(), "addWord",
                               Q_RETURN_ARG(QVariant, returned_value),
                               Q_ARG(QVariant, QVariant::fromValue<QObject*>(&word)),
-                              Q_ARG(QVariant, word.GetWordText()),
-                              Q_ARG(QVariant, word.GetDescription()));
+                              Q_ARG(QVariant, word.wordText()),
+                              Q_ARG(QVariant, word.description()));
     QObject* word_item = returned_value.value<QObject*>();
     return word_item;
 }

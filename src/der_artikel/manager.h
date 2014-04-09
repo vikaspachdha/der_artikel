@@ -173,7 +173,7 @@ signals:
     void themaSelectionStateChanged();
 
 private slots:
-    void OnNewThemaLoaded(Thema_C* new_thema);
+    void OnNewthemaLoaded(Thema_C* new_thema);
     void onThemaSelectionChanged();
 
 private:

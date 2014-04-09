@@ -104,9 +104,9 @@ void ThemaUpdater_C::buildLocalData()
     // thema_loader shall be deleted automatically.
     LOG_INFO("Thema updater :: building local data");
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
-    connect(thema_loader, SIGNAL(ThemaLoaded(Thema_C*)), this, SLOT(onNewThemaLoaded(Thema_C*)) );
+    connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), this, SLOT(onNewthemaLoaded(Thema_C*)) );
     connect(thema_loader,SIGNAL(finishedLoading()),this, SLOT(onBuildLocalDataFinished()) );
-    thema_loader->StartLoading();
+    thema_loader->startLoading();
 }
 
 void ThemaUpdater_C::reset()
@@ -116,7 +116,7 @@ void ThemaUpdater_C::reset()
     _file_operations.clear();
 }
 
-void ThemaUpdater_C::onNewThemaLoaded(Thema_C *thema)
+void ThemaUpdater_C::onNewthemaLoaded(Thema_C *thema)
 {
     Q_ASSERT(thema);
     thema->setParent(this);

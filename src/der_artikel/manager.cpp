@@ -191,7 +191,7 @@ QString Manager_C::versionString()
  *
  * \param new_thema
  */
-void Manager_C::OnNewThemaLoaded(Thema_C *new_thema)
+void Manager_C::OnNewthemaLoaded(Thema_C *new_thema)
 {
     Q_ASSERT(new_thema);
     Q_ASSERT(_thema_model);
@@ -347,8 +347,8 @@ void Manager_C::LoadDefaultThemas()
 
     // thema_loader shall be deleted automatically.
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
-    connect(thema_loader, SIGNAL(ThemaLoaded(Thema_C*)), this, SLOT(OnNewThemaLoaded(Thema_C*)) );
-    thema_loader->StartLoading();
+    connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), this, SLOT(OnNewthemaLoaded(Thema_C*)) );
+    thema_loader->startLoading();
 }
 
 /*!

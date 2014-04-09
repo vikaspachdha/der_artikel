@@ -37,7 +37,7 @@ void ThemaReplaceOperation_C::onFileDownloadFinished()
         out.writeRawData(file_data.data(),file_data.size());
         file.close();
         ThemaLoader_C thema_loader;
-        Thema_C* thema = thema_loader.LoadThema(_local_file_path);
+        Thema_C* thema = thema_loader.loadThema(_local_file_path);
         if(thema) {
             // reset the old experience points
             thema->AddExperiencePoints(_old_experience);

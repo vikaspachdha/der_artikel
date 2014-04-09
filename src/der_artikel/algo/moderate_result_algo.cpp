@@ -27,10 +27,10 @@ void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
     for(unsigned int index = 0; index < count; ++index) {
         const Word_C* word = thema.word(index);
-        if(word->GetUserArtikel() == Article_C::INVALID || word->GetUserArtikel() == Article_C::NA) {
+        if(word->userArtikel() == Article_C::INVALID || word->userArtikel() == Article_C::NA) {
             ++unplayed_count;
         } else {
-            if(word->GetArtikel() == word->GetUserArtikel()) {
+            if(word->artikel() == word->userArtikel()) {
                 ++correct_count;
             } else {
                 incorrect_words<<word;
