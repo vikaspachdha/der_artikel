@@ -160,7 +160,7 @@ void Result_C::updateResult(double score, unsigned int correct_word_count, unsig
     _correct_word_count= correct_word_count;
     _mistakes_count= incorrect_words.count();
     _unplayed_count= unplayed_count;
-    _incorrect_words_model->UpdateWords(incorrect_words);
+    _incorrect_words_model->updateWords(incorrect_words);
 
     double percentage_score = _score *100.0;
 

@@ -29,23 +29,29 @@
 #include "data/word.h"
 #include "log_defines.h"
 
-/*!
- \brief
-
- \param parent
-*/
+//******************************************************************************
+/*! \brief Constructor
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] parent : Parent object instance.
+ ******************************************************************************/
 WordModel_C::WordModel_C(QObject *parent) :
     QAbstractListModel(parent)
 {
 }
 
-/*!
- \brief
-
- \param index
- \param role
- \return QVariant
-*/
+//******************************************************************************
+/*! \brief Returns the data stored under the given role for the item referred
+ *  to by the index.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] index : Index of the item refered.
+ *  \param[in] role : Role id to be accessed.
+ *
+ *  \return QVariant : Data associated with the role.
+ ******************************************************************************/
 QVariant WordModel_C::data(const QModelIndex &index, int role) const
 {
     QVariant data;
@@ -75,23 +81,28 @@ QVariant WordModel_C::data(const QModelIndex &index, int role) const
     return data;
 }
 
-/*!
- \brief
-
- \param parent
- \return int
-*/
+//******************************************************************************
+/*! \brief Returns the number of rows under the given parent.
+ *
+ *  \details For this model it returns number of words.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return int : Number of words managed by model.
+ ******************************************************************************/
 int WordModel_C::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent)
     return _words.count();
 }
 
-/*!
- \brief
-
- \return QHash<int, QByteArray>
-*/
+//******************************************************************************
+/*! \brief Returns the model's role names.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return QHash<int, QByteArray> : Hash of role id's and role names.
+ ******************************************************************************/
 QHash<int, QByteArray> WordModel_C::roleNames() const
 {
     QHash<int,QByteArray> roleNames;
@@ -101,12 +112,14 @@ QHash<int, QByteArray> WordModel_C::roleNames() const
     return roleNames;
 }
 
-/*!
- \brief
-
- \param words
-*/
-void WordModel_C::UpdateWords(QList<const Word_C *> words)
+//******************************************************************************
+/*! \brief Updates word's list.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] words : List of words that shall be available through the model instance.
+ ******************************************************************************/
+void WordModel_C::updateWords(QList<const Word_C *> words)
 {
     LOG_INFO("Word model :: Updating words.");
     beginResetModel();

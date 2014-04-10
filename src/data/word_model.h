@@ -33,16 +33,10 @@ class Word_C;
 
 
 //******************************************************************************
-/*! \brief Short class description.
- *
- *  \details Detailed description
+/*! \brief Data model of words. \ref Word_C "words" are updated using
+ *  WordModel_C::updateWords "updateWords".
  *
  *  \author Vikas Pachdha
- *
- *  \todo something pending.
- *  \bug some bug
- *
- *  \see \ref Some class
  ******************************************************************************/
 class WordModel_C : public QAbstractListModel
 {
@@ -51,16 +45,9 @@ class WordModel_C : public QAbstractListModel
 public:
 
     //******************************************************************************
-    /*! \brief Short class description.
-     *
-     *  \details Detailed description
+    /*! \brief Data roles to access \ref Word_C "word" data.
      *
      *  \author Vikas Pachdha
-     *
-     *  \todo something pending.
-     *  \bug some bug
-     *
-     *  \see \ref Some class
      ******************************************************************************/
     enum ROLES_TP {
         WORD_TEXT = Qt::UserRole,
@@ -77,13 +64,10 @@ public:
     QHash<int,QByteArray> roleNames() const;
 
 public:
-    void UpdateWords(QList<const Word_C *> words);
-
-signals:
+    void updateWords(QList<const Word_C *> words);
 
 private:
     QList<const Word_C*> _words;
-
 };
 
 #endif // WORD_MODEL_H
