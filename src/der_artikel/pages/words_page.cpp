@@ -81,7 +81,7 @@ void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
 
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
     Q_ASSERT(thema);
-    thema->ClearUserInput();
+    thema->clearUserInput();
     thema->ClearWords();
 
     QQuickItem* title_item = _page_manager.titleItem(_page_id);

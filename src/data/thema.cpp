@@ -120,7 +120,7 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
                 ok= false;
                 int experience = dom_experience.text().toInt(&ok);
                 if(ok) {
-                    AddExperiencePoints(experience);
+                    addExperiencePoints(experience);
                     success = true;
                     if(_last_played.isValid()) {
                         int lapsed_days = _last_played.daysTo(QDateTime::currentDateTime());
@@ -128,16 +128,16 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
                             // Progressively deduct experience points.
                             switch (_state) {
                             case INERT:
-                                DeductExperiencePoints(2);
+                                deductExperiencePoints(2);
                                 break;
                             case GOLD:
-                                DeductExperiencePoints(5);
+                                deductExperiencePoints(5);
                                 break;
                             case SILVER:
-                                DeductExperiencePoints(10);
+                                deductExperiencePoints(10);
                                 break;
                             default:
-                                DeductExperiencePoints(20);
+                                deductExperiencePoints(20);
                                 break;
                             }
                         }
@@ -504,7 +504,7 @@ void Thema_C::ResetThema()
  *
  *  \param[in] points : Experience points. Negative value deducts the experience points
  ******************************************************************************/
-void Thema_C::AddExperiencePoints(int points)
+void Thema_C::addExperiencePoints(int points)
 {
     _experience_points += points;
     if(_experience_points < 0) {
@@ -524,9 +524,9 @@ void Thema_C::AddExperiencePoints(int points)
  *
  *  \param[in] points : Experience points. Negative value adds the experience points
  ******************************************************************************/
-void Thema_C::DeductExperiencePoints(int points)
+void Thema_C::deductExperiencePoints(int points)
 {
-    AddExperiencePoints(-points);
+    addExperiencePoints(-points);
 }
 
 //******************************************************************************
@@ -534,7 +534,7 @@ void Thema_C::DeductExperiencePoints(int points)
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
-void Thema_C::ClearUserInput()
+void Thema_C::clearUserInput()
 {
     foreach(Word_C* word, _words) {
         word->setUserArtikel(Article_C::INVALID);

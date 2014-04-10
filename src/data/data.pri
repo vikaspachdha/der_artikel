@@ -10,7 +10,8 @@ HEADERS += $$PWD/result.h \
     $$PWD/version.h \
     $$PWD/common.h \
     $$PWD/word_model.h \
-    $$PWD/thema_loader.h
+    $$PWD/thema_loader.h \
+    $$PWD/thema_model.h
 
 SOURCES += $$PWD/result.cpp \
     $$PWD/thema.cpp \
@@ -18,6 +19,7 @@ SOURCES += $$PWD/result.cpp \
     $$PWD/article.cpp \
     $$PWD/common.cpp \
     $$PWD/word_model.cpp \
-    $$PWD/thema_loader.cpp
+    $$PWD/thema_loader.cpp \
+    $$PWD/thema_model.cpp
 
 

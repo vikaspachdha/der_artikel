@@ -58,7 +58,7 @@ void EasyResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
     } else if(grade >= Result_C::GRADE_D) {
         exp_change = 5;
     }
-    thema.AddExperiencePoints(exp_change);
+    thema.addExperiencePoints(exp_change);
     result.setExperienceChange(exp_change);
 }
 

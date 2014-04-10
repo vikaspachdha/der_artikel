@@ -18,53 +18,49 @@ include($$PWD/../data/data.pri)
 # Please do not modify the following two lines. Required for deployment.
 include($$PWD/../qmake_utils/qmake_utils.pri)
 
-SOURCES += main.cpp \
-    manager.cpp \
-    algo/strict_result_algo.cpp \
-    thema_model.cpp \
+SOURCES += \
     algo/easy_result_algo.cpp \
     algo/moderate_result_algo.cpp \
+    algo/strict_result_algo.cpp \
+    algo/thema_add_operation.cpp \
+    algo/thema_delete_operation.cpp \
+    algo/thema_replace_operation.cpp \
+    file_downloader.cpp \
+    image_provider.cpp \
+    manager.cpp \
+    pages/help_page.cpp \
     pages/home_page.cpp \
     pages/page.cpp \
     pages/settings_page.cpp \
-    pages/help_page.cpp \
-    pages/words_page.cpp \
     pages/stats_page.cpp \
-    settings.cpp \
     pages/thema_page.cpp \
-    image_provider.cpp \
-    file_downloader.cpp \
+    pages/words_page.cpp \
+    settings.cpp \
     thema_updater.cpp \
-    algo/thema_replace_operation.cpp \
-    algo/thema_add_operation.cpp \
-    algo/thema_delete_operation.cpp
-
-
-
+    main.cpp
 
 HEADERS += \
-    manager.h \
-    algo/strict_result_algo.h \
-    algo/result_algo.h \
-    thema_model.h \
     algo/easy_result_algo.h \
     algo/moderate_result_algo.h \
-    pages/home_page.h \
-    pages/page_i.h \
-    pages/page.h \
-    pages/settings_page.h \
-    pages/help_page.h \
-    pages/words_page.h \
-    pages/stats_page.h \
-    settings.h \
-    pages/thema_page.h \
-    image_provider.h \
-    file_downloader.h \
-    thema_updater.h \
-    algo/thema_replace_operation.h \
-    algo/thema_file_operation.h \
+    algo/result_algo.h \
+    algo/strict_result_algo.h \
     algo/thema_add_operation.h \
-    algo/thema_delete_operation.h
+    algo/thema_delete_operation.h \
+    algo/thema_file_operation.h \
+    algo/thema_replace_operation.h \
+    file_downloader.h \
+    image_provider.h \
+    pages/help_page.h \
+    pages/home_page.h \
+    pages/page.h \
+    pages/page_i.h \
+    pages/settings_page.h \
+    pages/stats_page.h \
+    pages/thema_page.h \
+    pages/words_page.h \
+    settings.h \
+    thema_updater.h \
+    manager.h
 
 RESOURCES += \
     resources.qrc

@@ -60,7 +60,7 @@ void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
     } else {
         exp_change = -20;
     }
-    thema.AddExperiencePoints(exp_change);
+    thema.addExperiencePoints(exp_change);
     result.setExperienceChange(exp_change);
 }
 

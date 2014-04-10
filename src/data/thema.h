@@ -124,9 +124,9 @@ public:
 public:
     virtual unsigned int wordCount() const;
     virtual const Word_C* word(int index) const;
-    virtual void AddExperiencePoints(int points);
-    virtual void DeductExperiencePoints(int points);
-    virtual void ClearUserInput();
+    virtual void addExperiencePoints(int points);
+    virtual void deductExperiencePoints(int points);
+    virtual void clearUserInput();
 
 public:
     bool Read(QString thema_file_path, bool defered = true);
