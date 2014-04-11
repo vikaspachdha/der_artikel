@@ -57,8 +57,7 @@ HEADERS += \
     $$PWD/log4qt/varia/levelmatchfilter.h \
     $$PWD/log4qt/varia/levelrangefilter.h \
     $$PWD/log4qt/varia/listappender.h \
-    $$PWD/log4qt/varia/stringmatchfilter.h \
-    $$PWD/log_defines.h
+    $$PWD/log4qt/varia/stringmatchfilter.h
 
 SOURCES += \
     $$PWD/log4qt/appenderskeleton.cpp \

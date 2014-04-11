@@ -99,7 +99,7 @@ namespace Log4Qt
 		/*!
 		 * Returns the value of the reference counter.
 		 */
-        int referenceCount() const;
+		int referenceCount() const;
 
 		/*!
 		 * Decrements the reference count of the object. If the reference count
@@ -183,10 +183,14 @@ namespace Log4Qt
 	{}
 
     inline int LogObject::referenceCount() const
-    {	return mReferenceCount.load();	}
+ #if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+     {	return mReferenceCount;	}
+ #else
+     {	return mReferenceCount.loadAcquire();	}
+ #endif
 
-	inline void LogObject::release()
-#if QT_VERSION < QT_VERSION_CHECK(4, 4, 0)
+    inline void LogObject::release()
+  #if QT_VERSION < QT_VERSION_CHECK(4, 4, 0)
 	{	if ((q_atomic_decrement(&mReferenceCount) == 0) && !parent())
 				delete(this);	}
 #else

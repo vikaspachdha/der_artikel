@@ -60,7 +60,7 @@ namespace Log4Qt
 	
 	
     LOG4QT_GLOBAL_STATIC(ThreadError, thread_error)
-    
+
     
     
 	/**************************************************************************
@@ -111,7 +111,11 @@ namespace Log4Qt
 				mMessage = QString::fromLatin1(pMessage);
 				break;
 			case CODECFORTR:
-                mMessage = QTextCodec::codecForMib(106)->toUnicode(pMessage);
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+				mMessage = QTextCodec::codecForTr()->toUnicode(pMessage);
+#else
+                mMessage = QString::fromUtf8(pMessage);
+#endif
 				break;
 			case UNICODEUTF8:
 				mMessage = QString::fromUtf8(pMessage);
@@ -129,9 +133,13 @@ namespace Log4Qt
 	
 	QString LogError::translatedMessage() const
 	{
+#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+        return QCoreApplication::translate(mContext.toLatin1(), mMessage.toUtf8().data(), 0, QCoreApplication::UnicodeUTF8);
+#else
         return QCoreApplication::translate(mContext.toLatin1(), mMessage.toUtf8().data(), 0);
+#endif
 	}
-
+	
 	
 	LogError LogError::lastError()
 	{
