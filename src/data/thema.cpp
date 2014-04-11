@@ -415,7 +415,7 @@ bool Thema_C::Write(QIODevice* pDevice)
     } else {
         success = false;
     }
-    return true;
+    return success;
 }
 
 //******************************************************************************
