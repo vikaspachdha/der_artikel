@@ -25,33 +25,36 @@
  * met: http://www.gnu.org/copyleft/gpl.html.
  *
  ******************************************************************************/
-
 #ifndef MANAGER_H
 #define MANAGER_H
 
+// System includes
+#include <QEventLoop>
+#include <QHash>
 #include <QObject>
 #include <QVector>
-#include <QHash>
-#include <QEventLoop>
+
+// Framework & Lib includes
+#include "data/article.h"
 #include "data/result.h"
-#include "article.h"
 #include "thema_model.h"
 
-class QQuickItem;
+// Forward declarations
 class ImageProvider_C;
+class Page_I;
+class QQmlContext;
+class QQuickItem;
+class ResultAlgo_I;
+class Settings_C;
 class Thema_C;
 class Word_C;
-class ResultAlgo_I;
-class QQuickItem;
-class QQmlContext;
-class Settings_C;
-class Page_I;
 
-/*!
- * \brief Main manager class responsible for workflow and pivot for exposing data models to UI.
+//******************************************************************************
+/*! \brief Main manager class responsible for workflow and pivot for exposing
+ *  data models to UI.
  *
- */
-
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 class Manager_C : public QObject
 {
     Q_OBJECT
@@ -90,9 +93,10 @@ public:
         PRACTICE
     };
 
+    //! Message types.
     enum MessageType {
-        ERROR_MSG = 1,
-        WARNING_MSG,
+        WARNING_MSG = 1,
+        ERROR_MSG,
         INFO_MSG
     };
 
@@ -115,7 +119,7 @@ public:
 
 public:
     //! Sets the root qml Item. i.e the main item.
-    void SetRootItem(QQuickItem* root_Item) { _root_item = root_Item; }
+    void SetRootItem(QObject* root_Item);
 
     void setCurrentPage(PageId_TP new_page);
     //! Returns the id of the current page visible.
@@ -131,9 +135,6 @@ public:
 
     //! True if a thema selection is available, false otherwise.
     bool isThemaSelected() const { return _thema_selected; }
-
-    void showMessage(QString title, QString message, int duration, MessageType type = INFO_MSG);
-    void closeMessage();
 
     //! Returns the version string.
     Q_INVOKABLE QString versionString();
@@ -161,6 +162,10 @@ public:
 
     void LoadDefaultThemas();
 
+private slots:
+    void OnNewthemaLoaded(Thema_C* new_thema);
+    void onThemaSelectionChanged();
+
 signals:
     //! Emitted when current page is changed. \param old_page The page that is removed
     //! \param new_page The page that is set as the new page.
@@ -172,25 +177,33 @@ signals:
     //! Emitted when thema selection state is changed.
     void themaSelectionStateChanged();
 
-private slots:
-    void OnNewthemaLoaded(Thema_C* new_thema);
-    void onThemaSelectionChanged();
-
 private:
     void InitPages();
 
 private:
+    //! Application settings
     Settings_C* _settings;
+    //! Root qml context to share data with QML.
     QQmlContext& _root_context;
-    QQuickItem* _root_item;
+    //! Root QML item.
+    QObject* _root_item;
+    //! Hash of \ref PageId_TP and page's QML items.
     QHash<PageId_TP, PageItems_TP> _page_items_hash;
+    //! Hash of \ref PageId_TP and page's instance.
     QHash<PageId_TP, Page_I*> _page_hash;
+    //! Current active page instance.
     PageId_TP _current_page;
+    //! Last result from gameplay.
     Result_C* _current_result;
+    //! Model of noun thema's
     ThemaModel_C* _thema_model;
+    //! Game level selected.
     GameLevel _game_level;
+    //! True if any thema is selected by the user.
     bool _thema_selected;
+    //! Application image provider
     ImageProvider_C* _image_provider;
+    //! Event loop for message bar.
     QEventLoop _message_loop;
 };
 

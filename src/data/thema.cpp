@@ -32,7 +32,7 @@
 #include "thema.h"
 #include "version.h"
 #include "common.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 //******************************************************************************
 /*! \brief Constructor.

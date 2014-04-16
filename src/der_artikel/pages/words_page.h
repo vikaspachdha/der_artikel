@@ -4,9 +4,10 @@
 #include <QColor>
 #include <QHash>
 #include "page.h"
-#include "article.h"
+#include "data/article.h"
 
 class Word_C;
+class Settings_C;
 
 class WordsPage_C : public Page_C
 {
@@ -15,7 +16,7 @@ class WordsPage_C : public Page_C
     Q_PROPERTY(Article_C::Artikel selected_article READ GetSelectedArticle WRITE SetSelectedArticle NOTIFY selectedArticleChanged)
 
 public:
-    explicit WordsPage_C(Manager_C& page_manager, QQmlContext& root_context, QObject *parent = 0);
+    explicit WordsPage_C(Manager_C& page_manager, QQmlContext& root_context, Settings_C& settings, QObject *parent = 0);
 
 public:
     virtual void enter(Manager_C::PageId_TP prev_page_id);
@@ -44,6 +45,7 @@ private:
 
 private:
     QQmlContext& _root_context;
+    Settings_C& _settings;
     bool _info_mode;
     QHash<QObject*, Word_C*> _item_word_hash;
     Article_C::Artikel _selected_article;

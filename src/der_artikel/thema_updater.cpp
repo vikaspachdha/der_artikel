@@ -6,14 +6,14 @@
 #include "thema_updater.h"
 
 #include "data/thema.h"
-#include "thema_loader.h"
+#include "data/thema_loader.h"
 #include "manager.h"
 #include "settings.h"
-#include "common.h"
+#include "data/common.h"
 #include "algo/thema_add_operation.h"
 #include "algo/thema_replace_operation.h"
 #include "algo/thema_delete_operation.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
     QObject(parent),

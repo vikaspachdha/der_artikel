@@ -27,7 +27,7 @@
  ******************************************************************************/
 #include "word_model.h"
 #include "data/word.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 //******************************************************************************
 /*! \brief Constructor

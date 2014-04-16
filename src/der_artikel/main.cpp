@@ -11,7 +11,7 @@
 #include "log4qt/logmanager.h"
 #include "log4qt/fileappender.h"
 #include "log4qt/logger.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 //#include "qtquick2applicationviewer.h"
 #include "manager.h"
@@ -20,12 +20,13 @@
 #include "data/thema.h"
 #include "thema_model.h"
 #include "settings.h"
+#include "message_bar.h"
 #include "pages/help_page.h"
 #include "pages/words_page.h"
 #include "pages/settings_page.h"
-#include "common.h"
+#include "data/common.h"
 #include "thema_updater.h"
-#include "version.h"
+#include "data/version.h"
 
 void setupVersion()
 {
@@ -89,6 +90,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Settings_C>("com.vystosi.qmlcomponents", 1, 0, "Settings","");
     qmlRegisterUncreatableType<SettingsPage_C>("com.vystosi.qmlcomponents", 1, 0, "SettingsPage","");
     qmlRegisterUncreatableType<ThemaUpdater_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaUpdater","");
+    qmlRegisterUncreatableType<MessageBar_C>("com.vystosi.qmlcomponents", 1, 0, "MessageBar","");
 
     QQmlApplicationEngine appEngine;
     QQmlContext* root_context = appEngine.rootContext();
@@ -102,10 +104,11 @@ int main(int argc, char *argv[])
     root_context->setContextProperty("currentResult", manager.GetCurrentResult());
     root_context->setContextProperty("themaModel", manager.GetThemaModel());
     root_context->setContextProperty("settings", manager.GetSettings());
+    root_context->setContextProperty("messageBarInstance",&MessageBar_C::instance());
     root_context->engine()->addImageProvider("rootImageProvider",manager.GetImageProvider());
 
     QQmlComponent component(&appEngine,QUrl("qrc:/res/qml/der_artikel/main.qml"),&app);
-    QQuickItem *root_item = qobject_cast<QQuickItem *>(component.create());
+    QObject* root_item = component.create();
     manager.SetRootItem(root_item);
 
     int return_code = app.exec();

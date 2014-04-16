@@ -1,5 +1,5 @@
 //******************************************************************************
-/*! \file manager.h Implementation of \ref Manager_C
+/*! \file manager.cpp Implementation of \ref Manager_C
  *
  *  \author Vikas Pachdha
  *
@@ -25,39 +25,41 @@
  * met: http://www.gnu.org/copyleft/gpl.html.
  *
  ******************************************************************************/
-#include <QGuiApplication>
-#include <QQuickItem>
-#include <QQmlContext>
-//#include <QMessageBox>
-#include <QTimer>
+// System includes
 #include <QDebug>
+#include <QGuiApplication>
+#include <QQmlContext>
+#include <QQuickItem>
+#include <QTimer>
 
 // Interface for this file
 #include "manager.h"
 
+// Framework and lib includes
+#include "data/result.h"
 #include "data/thema.h"
-#include "thema_loader.h"
+#include "data/thema_loader.h"
+#include "data/version.h"
+#include "log4qt/log_defines.h"
+
+// Project includes
+#include "image_provider.h"
+#include "message_bar.h"
+#include "pages/help_page.h"
+#include "pages/settings_page.h"
+#include "pages/stats_page.h"
+#include "pages/thema_page.h"
+#include "pages/words_page.h"
 #include "settings.h"
 
-#include "data/result.h"
-#include "version.h"
-#include "image_provider.h"
-
-#include "pages/help_page.h"
-#include "pages/words_page.h"
-#include "pages/stats_page.h"
-#include "pages/settings_page.h"
-#include "pages/thema_page.h"
-
-#include "log_defines.h"
-
-
-/*!
- * \brief Construtor
+//******************************************************************************
+/*! \brief Construtor.
  *
- * \param ref_root_context The root qml context.
- * \param parent Parent object instance
- */
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] ref_root_context : The root qml context.
+ *  \param[in] parent : Parent object instance.
+ ******************************************************************************/
 Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     QObject(parent),
     _settings(0),
@@ -80,10 +82,11 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     LoadDefaultThemas();
 }
 
-/*!
- \brief Destructor
-
-*/
+//******************************************************************************
+/*! \brief Destructor
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 Manager_C::~Manager_C()
 {
     LOG_DEBUG("Manager_C::Destructor");
@@ -91,13 +94,32 @@ Manager_C::~Manager_C()
     delete _thema_model;
 }
 
-/*!
- * \brief Changes the current page displayed on the ui. Call this method to change the page.
- * The page will only be changed if the conditions are met for the last page to leave and
- * new page to enter.
+//******************************************************************************
+/*! \brief Sets root QML item.
  *
- * \param new_page The id of the new page to show.
- */
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] root_Item The root QML item.
+ ******************************************************************************/
+void Manager_C::SetRootItem(QObject *root_Item)
+{
+    _root_item = root_Item;
+    QVariant msg_bar_object;
+    QQuickItem* msg_bar_item;
+    QMetaObject::invokeMethod(_root_item,"getMessageBar",Q_RETURN_ARG(QVariant,msg_bar_object));
+    msg_bar_item = msg_bar_object.value<QQuickItem*>();
+    MessageBar_C::instance().init(msg_bar_item,_settings);
+}
+
+//******************************************************************************
+/*! \brief Changes the current page displayed on the ui. Call this method to change the page.
+ *  The page will only be changed if the conditions are met for the last page to leave and
+ *  new page to enter.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] new_page The id of the new page to show.
+ ******************************************************************************/
 void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
 {
     LOG_DEBUG(QString("Manager_C::setCurrentPage : %1").arg(new_page));
@@ -139,11 +161,13 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
     }
 }
 
-/*!
- * \brief Sets the game level.
+//******************************************************************************
+/*! \brief Sets the game level.
  *
- * \param game_level The new game level.
- */
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] game_level The new game level.
+ ******************************************************************************/
 void Manager_C::setGameLevel(Manager_C::GameLevel game_level)
 {
     if(_game_level != game_level) {
@@ -153,44 +177,27 @@ void Manager_C::setGameLevel(Manager_C::GameLevel game_level)
     }
 }
 
-/*!
- \brief
-
-*/
-void Manager_C::showMessage(QString title, QString message, int duration, MessageType type)
-{
-    Q_ASSERT(_settings);
-    QMetaObject::invokeMethod(_root_item,"showMessage",Q_ARG(QVariant,title),Q_ARG(QVariant,message),Q_ARG(QVariant,duration),Q_ARG(QVariant,type));
-    QTimer::singleShot(_settings->messageAnimTime() + 200,&_message_loop,SLOT(quit()));
-    _message_loop.exec();
-}
-
-/*!
- \brief
-
-*/
-void Manager_C::closeMessage()
-{
-    Q_ASSERT(_settings);
-    QMetaObject::invokeMethod(_root_item,"closeMessage");
-    QTimer::singleShot(_settings->messageAnimTime(),&_message_loop,SLOT(quit()));
-    _message_loop.exec();
-}
-
-/*!
- \brief
-
-*/
+//******************************************************************************
+/*! \brief Return the version string.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return QString : Version string.
+ ******************************************************************************/
 QString Manager_C::versionString()
 {
     return qApp->applicationVersion();
 }
 
-/*!
- * \brief Called when a new thema is loaded. \todo Move it to Thema model.
+//******************************************************************************
+/*! \brief Called when a new thema is loaded.
  *
- * \param new_thema
- */
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] new_thema : The new loaded thema.
+ *
+ *  \todo Move it to Thema model.
+ ******************************************************************************/
 void Manager_C::OnNewthemaLoaded(Thema_C *new_thema)
 {
     Q_ASSERT(new_thema);
@@ -202,10 +209,11 @@ void Manager_C::OnNewthemaLoaded(Thema_C *new_thema)
     _image_provider->AddImage(new_thema->name(),new_thema->GetIcon());
 }
 
-/*!
- \brief Called when thema selection is changed
-
-*/
+//******************************************************************************
+/*! \brief Called when thema selection is changed.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Manager_C::onThemaSelectionChanged()
 {
     Q_ASSERT(_thema_model);
@@ -220,12 +228,17 @@ void Manager_C::onThemaSelectionChanged()
     emit themaSelectionStateChanged();
 }
 
-/*!
- * \brief This method is called by the qml to set the Page QML item for the correspoding page.
+//******************************************************************************
+/*! \brief This method is called by the qml to set the Page QML item for the
+ *  correspoding page.
  *
- * \param page_id The id of the page to which the item belongs.
- * \param item The page item.
- */
+ *  \details Detailed description
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] page_id : The id of the page to which the item belongs.
+ *  \param[in] item : The page item.
+ ******************************************************************************/
 void Manager_C::setPageItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 {
     if(page_id != INVALID_PAGE && item) {
@@ -234,12 +247,15 @@ void Manager_C::setPageItem(Manager_C::PageId_TP page_id, QQuickItem *item)
     }
 }
 
-/*!
- * \brief Returns the page item of the page.
+//******************************************************************************
+/*! \brief Returns the page item of the page.
  *
- * \param page_id The id of the page.
- * \return QQuickItem The page item of the page.
- */
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] page_id : The id of the page.
+ *
+ *  \return QQuickItem* : The page item of the page.
+ ******************************************************************************/
 QQuickItem *Manager_C::pageItem(Manager_C::PageId_TP page_id)
 {
     QQuickItem *item = 0;
@@ -253,12 +269,15 @@ QQuickItem *Manager_C::pageItem(Manager_C::PageId_TP page_id)
     return item;
 }
 
-/*!
- * \brief This method is called by the qml to set the Panel QML item for the correspoding page.
+//******************************************************************************
+/*! \brief This method is called by the qml to set the Panel QML item for the
+ *  correspoding page.
  *
- * \param page_id The id of the page to which the item belongs.
- * \param item The panel item of the page.
- */
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] page_id The id of the page to which the item belongs.
+ *  \param[in] item The panel item of the page.
+ ******************************************************************************/
 void Manager_C::setPanelItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 {
     if(page_id != INVALID_PAGE && item) {
@@ -267,12 +286,17 @@ void Manager_C::setPanelItem(Manager_C::PageId_TP page_id, QQuickItem *item)
     }
 }
 
-/*!
- * \brief Returns the panel item of the page.
+//******************************************************************************
+/*! \brief Returns the panel item of the page.
  *
- * \param page_id The id of the page.
- * \return QQuickItem The panel item of the page.
- */
+ *  \details Detailed description
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] page_id : The id of the page.
+ *
+ *  \return QQuickItem* : The panel item of the page.
+ ******************************************************************************/
 QQuickItem *Manager_C::panelItem(Manager_C::PageId_TP page_id)
 {
     QQuickItem *item = 0;
@@ -286,12 +310,15 @@ QQuickItem *Manager_C::panelItem(Manager_C::PageId_TP page_id)
     return item;
 }
 
-/*!
- \brief This method is called by the qml to set the title QML item for the correspoding page.
-
- \param page_id The id of the page to which the item belongs.
- \param item The panel item of the page.
-*/
+//******************************************************************************
+/*! \brief This method is called by the qml to set the title QML item for the
+ *  correspoding page.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] page_id : The id of the page to which the item belongs.
+ *  \param[in] item : The panel item of the page.
+ ******************************************************************************/
 void Manager_C::setTitleItem(Manager_C::PageId_TP page_id, QQuickItem *item)
 {
     if(page_id != INVALID_PAGE && item) {
@@ -300,12 +327,15 @@ void Manager_C::setTitleItem(Manager_C::PageId_TP page_id, QQuickItem *item)
     }
 }
 
-/*!
- * \brief Returns the title item of the page.
+//******************************************************************************
+/*! \brief Returns the title item of the page.
  *
- * \param page_id The id of the page.
- * \return QQuickItem The title item of the page.
- */
+ *  \author Vikas Pachdha
+ *
+ * \param[in] page_id : The id of the page.
+ *
+ * \return QQuickItem* : The title item of the page.
+ ******************************************************************************/
 QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
 {
     QQuickItem *item = 0;
@@ -319,25 +349,24 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
     return item;
 }
 
-/*!
- * \brief Quits the application
+//******************************************************************************
+/*! \brief Quits the application.
  *
- */
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Manager_C::quit()
 {
-//    QMessageBox::StandardButton res  =
-//            QMessageBox::information(0,tr("Quit"),
-//                                     tr("Do you realy want to quit"),
-//                                     QMessageBox::Yes,QMessageBox::No);
-    //if(res == QMessageBox::Yes) {
-        LOG_INFO("Quitting Application");
+    LOG_INFO("Quitting Application");
+    if( MessageBar_C::showMsg(tr("Do you realy want to quit ?"),"") == MessageBar_C::ACCEPTED) {
         QGuiApplication::quit();
-    //}
+    }
 }
 
-/*!
- \brief Start loading the default thema's. The thema present in the system.
-*/
+//******************************************************************************
+/*! \brief Start loading the default thema's. The thema present in the system.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Manager_C::LoadDefaultThemas()
 {
     LOG_INFO("Manager :: Loading Thema files");
@@ -351,15 +380,16 @@ void Manager_C::LoadDefaultThemas()
     thema_loader->startLoading();
 }
 
-/*!
- \brief Initializes the Pages. Dependencies are injected.
-*
-*/
+//******************************************************************************
+/*! \brief Initializes the Pages. Dependencies are injected.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Manager_C::InitPages()
 {
     LOG_DEBUG("Manager_C::InitPages()");
     _page_hash[HELP_PAGE] = new HelpPage_C(*this, _root_context,this);
-    _page_hash[WORDS_PAGE] = new WordsPage_C(*this, _root_context,this);
+    _page_hash[WORDS_PAGE] = new WordsPage_C(*this, _root_context,*_settings,this);
     _page_hash[STATS_PAGE] = new StatsPage_C(*this,_root_context,this);
     _page_hash[SETTINGS_PAGE] = new SettingsPage_C(*this,_root_context,this);
     _page_hash[THEMA_PAGE] = new ThemaPage_C(*this,this);

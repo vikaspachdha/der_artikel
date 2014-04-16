@@ -18,6 +18,8 @@ include($$PWD/../data/data.pri)
 # Please do not modify the following two lines. Required for deployment.
 include($$PWD/../qmake_utils/qmake_utils.pri)
 
+INCLUDEPATH += $${PWD}/../libs/log4qt
+
 SOURCES += \
     algo/easy_result_algo.cpp \
     algo/moderate_result_algo.cpp \
@@ -37,7 +39,8 @@ SOURCES += \
     pages/words_page.cpp \
     settings.cpp \
     thema_updater.cpp \
-    main.cpp
+    main.cpp \
+    message_bar.cpp
 
 HEADERS += \
     algo/easy_result_algo.h \
@@ -60,7 +63,8 @@ HEADERS += \
     pages/words_page.h \
     settings.h \
     thema_updater.h \
-    manager.h
+    manager.h \
+    message_bar.h
 
 RESOURCES += \
     resources.qrc
@@ -94,9 +98,6 @@ mac {
 } else {
     LIBS += -L$$DESTDIR -llog4Qt
 }
-
-INCLUDEPATH += $$PWD/../libs/log4qt
-DEPENDPATH += $${PWD}/../libs/log4qt
 
 # Copy files to build dir
 SOURCE_PATH = $${DESTDIR}/../../libs/log4qt

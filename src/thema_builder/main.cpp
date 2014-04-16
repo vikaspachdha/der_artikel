@@ -6,9 +6,9 @@
 #include "log4qt/logmanager.h"
 #include "log4qt/fileappender.h"
 #include "log4qt/logger.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
-#include "version.h"
+#include "data/version.h"
 #include "data/result.h"
 #include "data/thema.h"
 

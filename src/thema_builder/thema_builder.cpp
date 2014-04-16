@@ -10,12 +10,12 @@
 #include <QMessageBox>
 #include <QDebug>
 
-#include "thema.h"
-#include "common.h"
-#include "version.h"
-#include "thema_loader.h"
+#include "data/thema.h"
+#include "data/common.h"
+#include "data/version.h"
+#include "data/thema_loader.h"
 #include "conflict_dlg.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 
 ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :

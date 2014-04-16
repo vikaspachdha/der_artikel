@@ -7,8 +7,10 @@
 #include "algo/easy_result_algo.h"
 #include "algo/moderate_result_algo.h"
 #include "algo/strict_result_algo.h"
+#include "message_bar.h"
 #include "thema_model.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
+#include "settings.h"
 
 /*!
  \brief
@@ -17,9 +19,10 @@
  \param root_context
  \param parent
 */
-WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, QObject *parent):
+WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, Settings_C& settings, QObject *parent):
     Page_C(Manager_C::WORDS_PAGE,page_manager, parent),
     _root_context(root_context),
+    _settings(settings),
     _info_mode(false),
     _selected_article(Article_C::INVALID),
     _result_algo(0)
@@ -39,7 +42,7 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
     Q_ASSERT(thema);
 
-    _page_manager.showMessage(tr("Loading thema ..."),"",-1);
+    MessageBar_C::showMsgAsync(tr("Loading thema ..."),"");
 
     thema->Read("",false);
 
@@ -64,7 +67,7 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
         // Add words to page.
         AddWords(thema);
     }
-    _page_manager.closeMessage();
+    MessageBar_C::closeMsg();
 }
 
 /*!
@@ -133,9 +136,14 @@ void WordsPage_C::OnWordClicked()
     QObject* word_item = sender();
     Q_ASSERT(word_item);
     Word_C* word = _item_word_hash[word_item];
+
     if(word) {
         LOG_INFO(QString("Word page :: Word clicked %1").arg(word->wordText()));
-        word->setUserArtikel(_selected_article);
+        if(_info_mode) {
+            MessageBar_C::showMsg(word->wordText(),word->description(),_settings.wordMsgTime());
+        } else {
+            word->setUserArtikel(_selected_article);
+        }
     }
 }
 

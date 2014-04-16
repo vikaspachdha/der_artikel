@@ -1,5 +1,4 @@
-INCLUDEPATH += $$PWD \
-$$PWD/..
+INCLUDEPATH += $$PWD/..
 DEPENDPATH += $$PWD
 
 HEADERS += $$PWD/result.h \

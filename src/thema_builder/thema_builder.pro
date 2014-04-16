@@ -35,7 +35,6 @@ mac {
 }
 
 INCLUDEPATH += $${PWD}/../libs/log4qt
-DEPENDPATH += $${PWD}/../libs/log4qt
 
 # Copy files to build dir
 SOURCE_PATH = $${DESTDIR}/../../libs/log4qt

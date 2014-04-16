@@ -103,9 +103,13 @@ Window{
         }
     }
 
+    function getMessageBar()
+    {
+        return msg_bar;
+    }
+
     function showMessage(title,msg,duration,msg_type)
     {
-        rootItem.enabled = false
         msg_bar.showMessage(title,msg,duration,msg_type);
     }
 

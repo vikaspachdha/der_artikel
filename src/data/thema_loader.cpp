@@ -38,7 +38,7 @@
 // Project includes
 #include "common.h"
 #include "data/thema.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 #include "version.h"
 
 

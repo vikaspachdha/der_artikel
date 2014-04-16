@@ -1,7 +1,7 @@
 #include "conflict_dlg.h"
 #include "ui_conflict_dlg.h"
-#include "word.h"
-#include "article.h"
+#include "data/word.h"
+#include "data/article.h"
 
 /*!
  \brief

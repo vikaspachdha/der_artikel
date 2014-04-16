@@ -1,6 +1,6 @@
 #include <QPixmap>
 #include "thema_model.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 /*!
  \brief

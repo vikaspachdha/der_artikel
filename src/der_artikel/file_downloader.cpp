@@ -1,7 +1,7 @@
 #include <QNetworkRequest>
 #include <QDebug>
 #include "file_downloader.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 FileDownloader_C::FileDownloader_C(QObject *parent) :
     QObject(parent),

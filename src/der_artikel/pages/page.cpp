@@ -1,6 +1,6 @@
 #include "page.h"
 #include "manager.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 /********************************************************************************/
 /** @brief Constructor\n

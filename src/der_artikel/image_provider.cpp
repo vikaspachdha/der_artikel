@@ -1,5 +1,5 @@
 #include "image_provider.h"
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 /*!
  \brief
 

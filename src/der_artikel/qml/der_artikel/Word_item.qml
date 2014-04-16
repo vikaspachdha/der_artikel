@@ -1,5 +1,4 @@
 import QtQuick 2.0
-//import QtGraphicalEffects 1.0
 import com.vystosi.qmlcomponents 1.0
 
 Item {
@@ -24,11 +23,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: {
-            if(info_mode) {
-                showMessage(wordText,description_text,settings.word_msg_time)
-            } else {
-                wordClicked()
-            }
+            wordClicked()
         }
     }
 }

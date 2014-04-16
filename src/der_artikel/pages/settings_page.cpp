@@ -1,6 +1,6 @@
 #include "settings_page.h"
 #include <QQmlContext>
-#include "log_defines.h"
+#include "log4qt/log_defines.h"
 
 /*!
  \brief

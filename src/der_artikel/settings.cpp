@@ -4,8 +4,8 @@
 #include <QGuiApplication>
 #include <QDir>
 #include <QDebug>
-#include "common.h"
-#include "log_defines.h"
+#include "data/common.h"
+#include "log4qt/log_defines.h"
 
 static const int MIN_WORD_MSG_TIME = 500; /*!< TODO */
 static const int MAX_WORD_MSG_TIME = 5000; /*!< TODO */

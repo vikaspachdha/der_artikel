@@ -1,7 +1,7 @@
 #include <QFile>
 #include <QDataStream>
 #include <QDebug>
-#include <thema_loader.h>
+#include "data/thema_loader.h"
 #include "thema_replace_operation.h"
 #include "data/thema.h"
 

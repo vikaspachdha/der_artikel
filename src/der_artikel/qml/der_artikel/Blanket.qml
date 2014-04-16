@@ -12,6 +12,11 @@ Item {
         }
     }
 
+    MouseArea {
+        anchors.fill: parent
+        visible: show
+    }
+
    onShowChanged: {
        if(show === true) {
            rect.opacity = 0.7
