@@ -8,11 +8,10 @@ Window{
     minimumHeight:480
     minimumWidth: 640
 
-    //flags: Qt.FramelessWindowHint | Qt.Window
     property QtObject color_palette : cp_night
 
     visible: true
-
+    title:"Der Artikel - " + Qt.application.version
     Color_palette_blue {
         id:cp_blue
     }

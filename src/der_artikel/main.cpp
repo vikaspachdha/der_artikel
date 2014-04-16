@@ -32,12 +32,13 @@ void setupVersion()
 {
     // Calculate version string.
     int version = APP_VERSION;
+    QString version_string_num = QString("%1").arg(version,3,10,QChar('0'));
     QString version_string;
-    while(version >= 10) {
-        version_string.prepend("."+QString::number(version%10));
-        version /= 10;
-    }
-    version_string.prepend(QString::number(version));
+    int index = 0;
+    do {
+        version_string.append(version_string_num[index++] + ".");
+    }while(index < version_string_num.size());
+    version_string = version_string.left(version_string.size()-1);
     qApp->setApplicationVersion(version_string);
 }
 
