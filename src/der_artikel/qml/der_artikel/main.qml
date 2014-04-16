@@ -3,9 +3,12 @@ import com.vystosi.qmlcomponents 1.0
 import QtQuick.Window 2.1
 
 Window{
-    width: 480
-    height: 400
+    width: 640
+    height: 480
+    minimumHeight:480
+    minimumWidth: 640
 
+    //flags: Qt.FramelessWindowHint | Qt.Window
     property QtObject color_palette : cp_night
 
     visible: true
