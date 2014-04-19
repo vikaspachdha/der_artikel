@@ -99,7 +99,7 @@ public:
 
 private:
     //! Event loop for message bar.
-    QEventLoop _message_loop;
+    QEventLoop* _message_loop;
 
     //! Message bar QML item
     QQuickItem* _msg_bar;

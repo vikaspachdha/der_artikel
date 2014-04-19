@@ -88,9 +88,6 @@ Window{
         Message_bar {
             id: msg_bar
             anchors.fill: parent
-            onMsgCompleted: {
-                rootItem.enabled = true
-            }
         }
 
     }

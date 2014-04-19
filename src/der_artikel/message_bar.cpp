@@ -47,6 +47,7 @@
 MessageBar_C::MessageBar_C(QObject *parent) :
     QObject(parent)
 {
+    _message_loop = new QEventLoop(this);
 }
 
 //******************************************************************************
@@ -118,7 +119,9 @@ MessageBar_C::RetrunType_TP MessageBar_C::showMsg(QString title, QString msg, QS
                                   Q_ARG(QVariant,type),
                                   Q_ARG(QVariant,accept_str.isEmpty() ? QVariant() : accept_str),
                                   Q_ARG(QVariant,reject_str.isEmpty() ? QVariant() : reject_str));
-        msg_bar_instance._message_loop.exec();
+        if(!msg_bar_instance._message_loop->isRunning()) {
+            msg_bar_instance._message_loop->exec();
+        }
     } else {
         LOG_ERROR("Message bar uninitialized usage");
     }
@@ -181,8 +184,10 @@ void MessageBar_C::showMsgAsync(QString title, QString msg, MessageBar_C::MsgTyp
                                   Q_ARG(QVariant,null),
                                   Q_ARG(QVariant,null));
         // Let the message bar show for some time.
-        QTimer::singleShot(msg_bar_instance._settings->messageAnimTime() + 200,&msg_bar_instance._message_loop,SLOT(quit()));
-        msg_bar_instance._message_loop.exec();
+        QTimer::singleShot(msg_bar_instance._settings->messageAnimTime() + 200,msg_bar_instance._message_loop,SLOT(quit()));
+        if(!msg_bar_instance._message_loop->isRunning()) {
+            msg_bar_instance._message_loop->exec();
+        }
     } else {
         LOG_ERROR("Message bar uninitialized usage");
     }
@@ -201,7 +206,7 @@ void MessageBar_C::closeMsg()
     } else {
         LOG_ERROR("Message bar uninitialized usage");
     }
-    if(msg_bar_instance._message_loop.isRunning()) {
-        msg_bar_instance._message_loop.quit();
+    if(msg_bar_instance._message_loop->isRunning()) {
+        msg_bar_instance._message_loop->quit();
     }
 }
