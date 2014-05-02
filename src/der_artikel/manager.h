@@ -165,6 +165,7 @@ public:
 private slots:
     void OnNewthemaLoaded(Thema_C* new_thema);
     void onThemaSelectionChanged();
+    void quitPrivate();
 
 signals:
     //! Emitted when current page is changed. \param old_page The page that is removed

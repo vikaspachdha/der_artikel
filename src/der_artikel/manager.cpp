@@ -356,6 +356,17 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
  ******************************************************************************/
 void Manager_C::quit()
 {
+    // https://bugreports.qt-project.org/browse/QTBUG-38729
+    QTimer::singleShot(0,this,SLOT(quitPrivate()));
+}
+
+//******************************************************************************
+/*! \brief Slot to Quit application.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void Manager_C::quitPrivate()
+{
     LOG_INFO("Quitting Application");
     if( MessageBar_C::showMsg(tr("Do you realy want to quit ?"),"") == MessageBar_C::ACCEPTED) {
         QGuiApplication::quit();
