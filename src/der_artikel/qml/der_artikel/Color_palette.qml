@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.1
 
 QtObject {
     property string color_bg_01: "#FF6A00"

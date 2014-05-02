@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 
 Item {
@@ -160,8 +160,7 @@ Item {
         rootItem.message_txt=msg
         rootItem.type = msg_type==null ? MessageBar.INFO : msg_type
 
-        blanket.show = true
-        msg_bar.state = "show_message"
+
 
         if(duration == null) {
             close_timer.interval = msg_animation.duration + 1200
@@ -192,12 +191,14 @@ Item {
             }
         }
 
+        blanket.showBlanket = true
+        msg_bar.state = "show_message"
     }
 
     function closeMessage()
     {
         hiding = true;
         msg_bar.state = "hide_message"
-        blanket.show = false
+        blanket.showBlanket = false
     }
 }

@@ -1,7 +1,7 @@
-import QtQuick 2.0
+import QtQuick 2.1
 
 Item {
-    property bool show: false
+    property bool showBlanket: false
     Rectangle {
         id:rect
         anchors.fill: parent
@@ -14,11 +14,11 @@ Item {
 
     MouseArea {
         anchors.fill: parent
-        visible: show
+        visible: showBlanket
     }
 
-   onShowChanged: {
-       if(show === true) {
+   onShowBlanketChanged: {
+       if(showBlanket === true) {
            rect.opacity = 0.7
        } else {
            rect.opacity = 0

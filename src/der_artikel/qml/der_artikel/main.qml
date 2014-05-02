@@ -1,8 +1,9 @@
-import QtQuick 2.0
+import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 import QtQuick.Window 2.1
 
 Window{
+    id:main
     width: 640
     height: 480
     minimumHeight:480

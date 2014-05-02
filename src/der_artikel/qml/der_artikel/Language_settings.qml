@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 
 Flickable {
