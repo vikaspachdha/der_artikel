@@ -58,7 +58,7 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
  ******************************************************************************/
 Thema_C::~Thema_C()
 {
-    ClearWords();
+    clearWords();
 }
 
 //******************************************************************************
@@ -82,7 +82,7 @@ Thema_C::~Thema_C()
 bool Thema_C::Read(const QDomElement &element, bool defered)
 {
     bool success = false;
-    ClearWords();
+    clearWords();
     if(!element.isNull()) {
         _text = element.firstChildElement("ThemaText").text();
         success = !_text.isEmpty();
@@ -379,7 +379,7 @@ void Thema_C::Save(QString file_path)
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
-void Thema_C::ClearWords()
+void Thema_C::clearWords()
 {
     LOG_INFO(QString("Words unloaded. Thema:%1").arg(_text));
     foreach(Word_C* word, _words) {
@@ -485,16 +485,15 @@ void Thema_C::UpdateIcon(QByteArray data)
  ******************************************************************************/
 void Thema_C::ResetThema()
 {
+    clearWords();
     _text = "";
     _translation = "";
     _experience_points = 0;
-    _selected = false;
     _state = RUSTY;
     _icon =  QPixmap("qrc:/res/resources/thema_generic.png");
     _last_played = QDateTime();
     _last_updated = QDateTime();
     _file_path = "";
-    ClearWords();
 }
 
 //******************************************************************************

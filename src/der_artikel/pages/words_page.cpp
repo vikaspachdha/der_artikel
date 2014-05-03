@@ -85,7 +85,7 @@ void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
     Q_ASSERT(thema);
     thema->clearUserInput();
-    thema->ClearWords();
+    thema->clearWords();
 
     QQuickItem* title_item = _page_manager.titleItem(_page_id);
     if(title_item) {
@@ -180,7 +180,7 @@ void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
 QObject *WordsPage_C::AddWord(Word_C& word)
 {
     QVariant returned_value;
-    LOG_INFO(QString("Word page :: Adding word %1").arg(word.wordText()));
+    LOG_DEBUG(QString("Word page :: Adding word %1").arg(word.wordText()));
     QMetaObject::invokeMethod(pageItem(), "addWord",
                               Q_RETURN_ARG(QVariant, returned_value),
                               Q_ARG(QVariant, QVariant::fromValue<QObject*>(&word)),
