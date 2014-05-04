@@ -1,24 +1,60 @@
+//******************************************************************************
+/*! \file words_page.cpp Implementation of \ref SomeClass
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \copyright Copyright (C) 2014 Vikas Pachdha, Mohita Gandotra.
+ * Contact: http://www.vikaspachdha.com
+ *
+ * This file is part of the application der_artikel.
+ *
+ *  \copyright GNU Lesser General Public License Usage
+ * This file may be used under the terms of the GNU Lesser
+ * General Public License version 2.1 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.LGPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU Lesser General Public License version 2.1 requirements
+ * will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ *
+ *  \copyright GNU General Public License Usage
+ * Alternatively, this file may be used under the terms of the GNU
+ * General Public License version 3.0 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.GPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU General Public License version 3.0 requirements will be
+ * met: http://www.gnu.org/copyleft/gpl.html.
+ *
+ ******************************************************************************/
+
+// System includes
+#include <QQmlContext>
+#include <QQuickItem>
+
+// Interface for this file
 #include "words_page.h"
 
-#include <QQuickItem>
-#include <QQmlContext>
+// Framework and lib includes
+#include "log4qt/log_defines.h"
 
+// Project includes
 #include "algo/result_algo.h"
 #include "algo/easy_result_algo.h"
 #include "algo/moderate_result_algo.h"
 #include "algo/strict_result_algo.h"
 #include "message_bar.h"
-#include "thema_model.h"
-#include "log4qt/log_defines.h"
 #include "settings.h"
+#include "thema_model.h"
 
-/*!
- \brief
-
- \param page_manager
- \param root_context
- \param parent
-*/
+//******************************************************************************
+/*! \brief Constructor
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] page_manager : \ref CPageManager_C instance.
+ *  \param[in] root_context : QML root context instance.
+ *  \param[in] settings : Application's \ref Settings_C  instance.
+ *  \param[in] parent : Parent instance.
+ ******************************************************************************/
 WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, Settings_C& settings, QObject *parent):
     Page_C(Manager_C::WORDS_PAGE,page_manager, parent),
     _root_context(root_context),
@@ -28,14 +64,16 @@ WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, Set
     _result_algo(0)
 {
     _root_context.setContextProperty("words_page",this);
-    SetSelectedArticle(Article_C::DER);
+    setSelectedArticle(Article_C::DER);
 }
 
-/*!
- \brief
-
- \param prev_page_id
-*/
+//******************************************************************************
+/*! \brief Called when page enters. Selected thema is loaded and words are added.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] prev_page_id : Previous page id.
+ ******************************************************************************/
 void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
@@ -48,11 +86,11 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 
     if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
         // Add words to page.
-        AddWords(thema,true);
+        addWords(thema,true);
         setInfoMode(true);
     } else {
         setInfoMode(false);
-        CreateResultAlgo();
+        createResultAlgo();
         Q_ASSERT(_result_algo);
 
         // Calculate play time
@@ -65,22 +103,27 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
         }
 
         // Add words to page.
-        AddWords(thema);
+        addWords(thema);
     }
     MessageBar_C::closeMsg();
 }
 
-/*!
- \brief
-
- \param next_page_id
-*/
+//******************************************************************************
+/*! \brief Called when page leaves.
+ *
+ *  \details If next page is Manager_C::RESULT_PAGE, result is calculated. word
+ *  page's timer is stopped and user input is flushed.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] next_page_id : Next page id.
+ ******************************************************************************/
 void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
 {
     if(next_page_id==Manager_C::RESULT_PAGE) {
-        CalculateResult();
+        calculateResult();
     }
-    ClearWordItems();
+    clearWordItems();
 
     Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
     Q_ASSERT(thema);
@@ -93,29 +136,33 @@ void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
     }
 }
 
-/*!
- \brief
-
- \param info_mode
-*/
+//******************************************************************************
+/*! \brief Sets info mode state.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] info_mode : True to switch info mode on, false otherwise.
+ ******************************************************************************/
 void WordsPage_C::setInfoMode(bool info_mode)
 {
     if(_info_mode != info_mode) {
         _info_mode = info_mode;
         if(_info_mode) {
             LOG_INFO("Word page :: Info mode set");
-            SetSelectedArticle(Article_C::NA);
+            setSelectedArticle(Article_C::NA);
         }
         emit infoModeChanged();
     }
 }
 
-/*!
- \brief
-
- \param article
-*/
-void WordsPage_C::SetSelectedArticle(Article_C::Artikel article)
+//******************************************************************************
+/*! \brief Sets the selected article.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] article : Selected article.
+ ******************************************************************************/
+void WordsPage_C::setSelectedArticle(Article_C::Artikel article)
 {
     if(_selected_article != article) {
         _selected_article = article;
@@ -127,10 +174,13 @@ void WordsPage_C::SetSelectedArticle(Article_C::Artikel article)
     }
 }
 
-/*!
- \brief
-
-*/
+//******************************************************************************
+/*! \brief Called when word item on word's page is clicked.
+ *
+ *  \details User input is registered for the corresponding \ref Word_c instance.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void WordsPage_C::OnWordClicked()
 {
     QObject* word_item = sender();
@@ -147,13 +197,18 @@ void WordsPage_C::OnWordClicked()
     }
 }
 
-/*!
- \brief
-
- \param thema
- \param practice_mode
-*/
-void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
+//******************************************************************************
+/*! \brief Helper method to add words to QML.
+ *
+ *  \details In case of Manager_C::PRACTICE mode all words are assigned correct articles.
+ *  \ref Word_C and its QML association is also updated.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] thema : Selected thema.
+ *  \param[in] practice_mode : True if practice mode is applicable.
+ ******************************************************************************/
+void WordsPage_C::addWords(const Thema_C* thema, bool practice_mode)
 {
     QList<Word_C*> words = thema->words();
     LOG_INFO("Word page :: Adding words");
@@ -164,20 +219,23 @@ void WordsPage_C::AddWords(const Thema_C* thema, bool practice_mode)
         if(practice_mode) {
             word->setUserArtikel(word->artikel());
         }
-        QObject* word_item = AddWord(*word);
+        QObject* word_item = addWord(*word);
         Q_ASSERT(word_item);
         _item_word_hash[word_item] = word;
         connect(word_item, SIGNAL(wordClicked()), this, SLOT(OnWordClicked()) );
     }
 }
 
-/*!
- \brief
-
- \param word
- \return QObject
-*/
-QObject *WordsPage_C::AddWord(Word_C& word)
+//******************************************************************************
+/*! \brief Helper method to add a word to QML.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] word : Word instance to add to QML.
+ *
+ *  \return QObject* : Created QML item in word's page.
+ ******************************************************************************/
+QObject *WordsPage_C::addWord(Word_C& word)
 {
     QVariant returned_value;
     LOG_DEBUG(QString("Word page :: Adding word %1").arg(word.wordText()));
@@ -190,11 +248,12 @@ QObject *WordsPage_C::AddWord(Word_C& word)
     return word_item;
 }
 
-/*!
- \brief
-
-*/
-void WordsPage_C::ClearWordItems()
+//******************************************************************************
+/*! \brief Helper method to clear QML word items.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void WordsPage_C::clearWordItems()
 {
     LOG_INFO("Word page :: Clearing word items.");
     foreach(QObject* word_item, _item_word_hash.keys()) {
@@ -203,11 +262,13 @@ void WordsPage_C::ClearWordItems()
     _item_word_hash.clear();
 }
 
-/*!
- \brief
-
-*/
-void WordsPage_C::CreateResultAlgo()
+//******************************************************************************
+/*! \brief Helper method to create the result algo as per the selected difficulty
+ *  level in thema page.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void WordsPage_C::createResultAlgo()
 {
     LOG_INFO("Word page :: Creating result algo.");
     if(_result_algo) {
@@ -229,11 +290,12 @@ void WordsPage_C::CreateResultAlgo()
     }
 }
 
-/*!
- \brief
-
-*/
-void WordsPage_C::CalculateResult()
+//******************************************************************************
+/*! \brief Helper method to calculate the result after the game finishes.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void WordsPage_C::calculateResult()
 {
     Thema_C* current_thema = _page_manager.GetThemaModel()->GetSelectedThema();
     if(current_thema) {

@@ -1,5 +1,5 @@
 //******************************************************************************
-/*! \file strict_result_algo.h Implementation of \ref StrictResultAlgo_C
+/*! \file strict_result_algo.cpp Implementation of \ref StrictResultAlgo_C
  *
  *  \author Vikas Pachdha
  *
