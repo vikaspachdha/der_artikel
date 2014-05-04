@@ -1,20 +1,57 @@
-#include "settings.h"
+//******************************************************************************
+/*! \file settings.cpp Implementation of \ref Settings_C
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \copyright Copyright (C) 2014 Vikas Pachdha, Mohita Gandotra.
+ * Contact: http://www.vikaspachdha.com
+ *
+ * This file is part of the application der_artikel.
+ *
+ *  \copyright GNU Lesser General Public License Usage
+ * This file may be used under the terms of the GNU Lesser
+ * General Public License version 2.1 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.LGPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU Lesser General Public License version 2.1 requirements
+ * will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ *
+ *  \copyright GNU General Public License Usage
+ * Alternatively, this file may be used under the terms of the GNU
+ * General Public License version 3.0 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.GPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU General Public License version 3.0 requirements will be
+ * met: http://www.gnu.org/copyleft/gpl.html.
+ *
+ ******************************************************************************/
+// System includes
+#include <QDebug>
+#include <QDir>
+#include <QGuiApplication>
 #include <QLocale>
 #include <QTranslator>
-#include <QGuiApplication>
-#include <QDir>
-#include <QDebug>
+
+// Interface for this file
+#include "settings.h"
+
+// Framework and lib includes
 #include "data/common.h"
 #include "log4qt/log_defines.h"
 
-static const int MIN_WORD_MSG_TIME = 500; /*!< TODO */
-static const int MAX_WORD_MSG_TIME = 5000; /*!< TODO */
-static const int MSG_ANIM_TIME = 400; /*!< TODO */
-/*!
- \brief
 
- \param parent
-*/
+static const int MIN_WORD_MSG_TIME = 500; /*! Minimum time for info mode in word's page*/
+static const int MAX_WORD_MSG_TIME = 5000; /*! Maximum time for info mode in word's page */
+static const int MSG_ANIM_TIME = 400; /*! Message bar default animation time */
+
+
+//******************************************************************************
+/*! \brief Constructor.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] parent : Parent object instance.
+ ******************************************************************************/
 Settings_C::Settings_C(QObject *parent) :
     QObject(parent),
     _current_language(ENGLISH),
@@ -31,25 +68,31 @@ Settings_C::Settings_C(QObject *parent) :
 #endif
 }
 
-/*!
- \brief
-
- \param language
-*/
-void Settings_C::SetLanguage(Settings_C::Language_TP language)
+//******************************************************************************
+/*! \brief Sets the language used for UI.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] language : New language selected.
+ *
+ *  \see \ref Settings_C::Language_TP
+ ******************************************************************************/
+void Settings_C::setLanguage(Settings_C::Language_TP language)
 {
     if(_current_language != language) {
         LOG_INFO(QString("Language id changed to %1").arg(language));
         _current_language = language;
         updateLangauge();
-        emit LanguageChanged();
+        emit languageChanged();
     }
 }
 
-/*!
- \brief
-
-*/
+//******************************************************************************
+/*! \brief Called when language is changed.Loads new translations as per the
+ *  selected language.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Settings_C::updateLangauge()
 {
     QString language_code = "en";
@@ -90,11 +133,15 @@ void Settings_C::updateLangauge()
 
 }
 
-/*!
- \brief
-
- \param sound_level
-*/
+//******************************************************************************
+/*! \brief Sets sound level.
+ *
+ *  \details Value range between 0 to 1, 0 being minimum and 1 being maximum.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] sound_level : New sound level.
+ ******************************************************************************/
 void Settings_C::setSoundLevel(double sound_level)
 {
     if(qAbs(sound_level-_sound_level) > 0.001 ) {
@@ -103,21 +150,29 @@ void Settings_C::setSoundLevel(double sound_level)
     }
 }
 
-/*!
- \brief
-
- \return QString
-*/
+//******************************************************************************
+/*! \brief Returns word message time string.
+ *
+ *  \details The string is used in UI.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return QString : Word message time string.
+ ******************************************************************************/
 QString Settings_C::wordMsgTimeStr() const
 {
     return QString::number(_word_message_time);
 }
 
-/*!
- \brief
-
- \param new_time_str
-*/
+//******************************************************************************
+/*! \brief Sets word message time string.
+ *
+ *  \details The string is used in UI.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] new_time : New word message time in msecs.
+ ******************************************************************************/
 void Settings_C::setWordMsgTimeStr(QString new_time_str)
 {
     bool ok = false;
@@ -127,11 +182,13 @@ void Settings_C::setWordMsgTimeStr(QString new_time_str)
     }
 }
 
-/*!
- \brief
-
- \param new_time
-*/
+//******************************************************************************
+/*! \brief Sets word message time. Overrides default value.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] new_time : New word message time in msecs.
+ ******************************************************************************/
 void Settings_C::setWordMsgTime(int new_time)
 {
     if(new_time < 500) {
@@ -146,36 +203,49 @@ void Settings_C::setWordMsgTime(int new_time)
     }
 }
 
-/*!
- \brief
-
- \return int
-*/
+//******************************************************************************
+/*! \brief Minimimum time that can be set for info mode in word's page.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return type : Minimum word message time in msecs.
+ ******************************************************************************/
 int Settings_C::minWordMsgTime() const
 {
     return MIN_WORD_MSG_TIME;
 }
 
-/*!
- \brief
-
- \return int
-*/
+//******************************************************************************
+/*! \brief Maximimum time that can be set for info mode in word's page.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return type : Maximum word message time in msecs.
+ ******************************************************************************/
 int Settings_C::maxWordMsgTime() const
 {
     return MAX_WORD_MSG_TIME;
 }
 
+//******************************************************************************
+/*! \brief Message animation time.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return int : Animation time for message bar in msecs.
+ ******************************************************************************/
 int Settings_C::messageAnimTime() const
 {
     return MSG_ANIM_TIME;
 }
 
-/*!
- \brief
-
- \param url_str
-*/
+//******************************************************************************
+/*! \brief Sets remote thema file's folder.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] url_str : Remote folder path.
+ ******************************************************************************/
 void Settings_C::setThemaRemotePath(QString url_str)
 {
     if(url_str != _thema_remote_path) {
@@ -185,13 +255,14 @@ void Settings_C::setThemaRemotePath(QString url_str)
     }
 }
 
-/*!
- \brief Returns true if graphical effects are
-        to be used in QML. Windows seems to have problem
-        with OpenGl.
-
- \return False in windows, true otherwise
-*/
+//******************************************************************************
+/*! \brief Returns true if graphical effects are to be used in QML. Windows seems
+ *  to have problem with OpenGl.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return bool : Returns true if graphical effects are to be used, false otherwise.
+ ******************************************************************************/
 bool Settings_C::enableEffects() const
 {
 #ifdef NO_GRAPHICAL_EFFECTS

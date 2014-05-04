@@ -29,7 +29,15 @@ File header
  *
  ******************************************************************************/
 
-Class Header
+Include section
+// System includes
+
+// Interface for this file
+
+// Framework and lib includes
+
+// Project includes
+
 
 //******************************************************************************
 /*! \brief Short class description.
