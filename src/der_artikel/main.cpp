@@ -1,33 +1,70 @@
+//******************************************************************************
+/*! \file main.cpp Application entry point
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \copyright Copyright (C) 2014 Vikas Pachdha, Mohita Gandotra.
+ * Contact: http://www.vikaspachdha.com
+ *
+ * This file is part of the application der_artikel.
+ *
+ *  \copyright GNU Lesser General Public License Usage
+ * This file may be used under the terms of the GNU Lesser
+ * General Public License version 2.1 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.LGPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU Lesser General Public License version 2.1 requirements
+ * will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ *
+ *  \copyright GNU General Public License Usage
+ * Alternatively, this file may be used under the terms of the GNU
+ * General Public License version 3.0 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.GPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU General Public License version 3.0 requirements will be
+ * met: http://www.gnu.org/copyleft/gpl.html.
+ *
+ ******************************************************************************/
+
+// System includes
 #include <QGuiApplication>
-#include <QQmlContext>
-#include <QQmlComponent>
-#include <QtQml>
-#include <QQuickItem>
-#include <iostream>
-#include <QQmlApplicationEngine>
 #include <QIcon>
+#include <QQmlApplicationEngine>
+#include <QQmlComponent>
+#include <QQmlContext>
+#include <QQuickItem>
+#include <QtQml>
+#include <iostream>
 
-#include "log4qt/ttcclayout.h"
-#include "log4qt/logmanager.h"
+// Framework and lib includes
 #include "log4qt/fileappender.h"
-#include "log4qt/logger.h"
 #include "log4qt/log_defines.h"
+#include "log4qt/logger.h"
+#include "log4qt/logmanager.h"
+#include "log4qt/ttcclayout.h"
 
-//#include "qtquick2applicationviewer.h"
-#include "manager.h"
-#include "image_provider.h"
+// Project includes
+#include "data/common.h"
 #include "data/result.h"
 #include "data/thema.h"
-#include "thema_model.h"
-#include "settings.h"
+#include "data/version.h"
+#include "image_provider.h"
+#include "manager.h"
 #include "message_bar.h"
 #include "pages/help_page.h"
-#include "pages/words_page.h"
 #include "pages/settings_page.h"
-#include "data/common.h"
+#include "pages/words_page.h"
+#include "settings.h"
+#include "thema_model.h"
 #include "thema_updater.h"
-#include "data/version.h"
 
+
+
+//******************************************************************************
+/*! \brief Application version setup.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void setupVersion()
 {
     // Calculate version string.
@@ -42,6 +79,16 @@ void setupVersion()
     qApp->setApplicationVersion(version_string);
 }
 
+
+//******************************************************************************
+/*! \brief Logging objects and file setup.
+ *
+ *  \details Logging level is set to ALL for debug mode.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] parent : Parent instance for logging objects.
+ ******************************************************************************/
 void setUpLogging(QObject* parent=0)
 {
     Log4Qt::LogManager::rootLogger();
@@ -64,13 +111,16 @@ void setUpLogging(QObject* parent=0)
 #endif
 }
 
-/*!
- \brief
-
- \param argc
- \param argv[]
- \return int
-*/
+//******************************************************************************
+/*! \brief Main function. Application entry point
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] argc : Count of arguments.
+ *  \param[in] argv : Argument values.
+ *
+ *  \return int : Application return code.
+ ******************************************************************************/
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);

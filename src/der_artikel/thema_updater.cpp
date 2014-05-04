@@ -1,20 +1,61 @@
-#include <QDateTime>
-#include <QStringList>
-#include <QFileInfo>
-#include <QDir>
+//******************************************************************************
+/*! \file thema_updater.cpp Implementation of \ref ThemaUpdater_C
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \copyright Copyright (C) 2014 Vikas Pachdha, Mohita Gandotra.
+ * Contact: http://www.vikaspachdha.com
+ *
+ * This file is part of the application der_artikel.
+ *
+ *  \copyright GNU Lesser General Public License Usage
+ * This file may be used under the terms of the GNU Lesser
+ * General Public License version 2.1 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.LGPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU Lesser General Public License version 2.1 requirements
+ * will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+ *
+ *  \copyright GNU General Public License Usage
+ * Alternatively, this file may be used under the terms of the GNU
+ * General Public License version 3.0 as published by the Free Software
+ * Foundation and appearing in the file LICENSE.GPL included in the
+ * packaging of this file.  Please review the following information to
+ * ensure the GNU General Public License version 3.0 requirements will be
+ * met: http://www.gnu.org/copyleft/gpl.html.
+ *
+ ******************************************************************************/
 
+// System includes
+#include <QDateTime>
+#include <QDir>
+#include <QFileInfo>
+#include <QStringList>
+
+// Interface for this file
 #include "thema_updater.h"
 
+// Framework and lib includes
+#include "data/common.h"
 #include "data/thema.h"
 #include "data/thema_loader.h"
+#include "log4qt/log_defines.h"
+
+// Project includes
 #include "manager.h"
 #include "settings.h"
-#include "data/common.h"
 #include "algo/thema_add_operation.h"
 #include "algo/thema_replace_operation.h"
 #include "algo/thema_delete_operation.h"
-#include "log4qt/log_defines.h"
 
+//******************************************************************************
+/*! \brief Constructor
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] manager : \ref Manager_C class reference.
+ *  \param[out] parent : Parent instance
+ ******************************************************************************/
 ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
     QObject(parent),
     _manager(manager)
@@ -23,6 +64,11 @@ ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
     connect(&_file_downloader, SIGNAL(downloadAborted()), this, SLOT(onFileDownloadAborted()));
 }
 
+//******************************************************************************
+/*! \brief Initiates checking if thema files update is available or not.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void ThemaUpdater_C::checkUpdate()
 {
     reset();
@@ -35,6 +81,11 @@ void ThemaUpdater_C::checkUpdate()
     }
 }
 
+//******************************************************************************
+/*! \brief Called when index file download finishes.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void ThemaUpdater_C::onFileDownloadFinished()
 {
     QByteArray file_data = _file_downloader.fileData();
@@ -47,12 +98,27 @@ void ThemaUpdater_C::onFileDownloadFinished()
     }
 }
 
+//******************************************************************************
+/*! \brief Called when file download is aborted.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void ThemaUpdater_C::onFileDownloadAborted()
 {
     LOG_WARN("Thema updater :: File download aborted.");
     emit updateResponse(UPDATE_ERROR);
 }
 
+//******************************************************************************
+/*! \brief Parses the index file downloaded from the remote server.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] file_data : File data downloaded from remote server.
+ *  \param[out] parsed_data : Parsed data.
+ *
+ *  \return bool : True if parsing succeeds, false otherwise.
+ ******************************************************************************/
 bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, QDateTime> &parsed_data)
 {
     bool success = false;
@@ -82,6 +148,11 @@ bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, QDateTi
     return success;
 }
 
+//******************************************************************************
+/*! \brief Ececutes the operations.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 bool ThemaUpdater_C::executeOperations()
 {
     bool success = true;
@@ -99,6 +170,11 @@ bool ThemaUpdater_C::executeOperations()
     return success;
 }
 
+//******************************************************************************
+/*! \brief Initiates local thema file's data.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void ThemaUpdater_C::buildLocalData()
 {
     // thema_loader shall be deleted automatically.
@@ -109,6 +185,11 @@ void ThemaUpdater_C::buildLocalData()
     thema_loader->startLoading();
 }
 
+//******************************************************************************
+/*! \brief Resets the operations and local data.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void ThemaUpdater_C::reset()
 {
     LOG_INFO("Thema updater :: Resetting");
@@ -116,6 +197,16 @@ void ThemaUpdater_C::reset()
     _file_operations.clear();
 }
 
+//******************************************************************************
+/*! \brief Called when a new thema is loaded from the local file system.
+ *
+ *  \details Operations are created with the help of time stamp and operations
+ *  are created.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] thema : Thema instance.
+ ******************************************************************************/
 void ThemaUpdater_C::onNewthemaLoaded(Thema_C *thema)
 {
     Q_ASSERT(thema);
@@ -141,6 +232,11 @@ void ThemaUpdater_C::onNewthemaLoaded(Thema_C *thema)
     }
 }
 
+//******************************************************************************
+/*! \brief Called when local data build is completed. Operations execution is initiated.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void ThemaUpdater_C::onBuildLocalDataFinished()
 {
     foreach (QString key, _remote_file_data.keys()) {

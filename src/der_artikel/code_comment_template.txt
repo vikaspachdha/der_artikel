@@ -38,7 +38,9 @@ Include section
 
 // Project includes
 
+// Forward declaration
 
+Class Header
 //******************************************************************************
 /*! \brief Short class description.
  *
