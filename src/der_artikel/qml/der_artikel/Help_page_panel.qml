@@ -32,6 +32,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: gen_btn.horizontalCenter
             buttonText: qsTr("General") + settings.i18n_empty_string
+            isDown:help_page_instance.sub_page_type === HelpPage.GENERAL
             onActivated: help_page_instance.sub_page_type = HelpPage.GENERAL
         }
 
@@ -40,6 +41,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: rules_btn.horizontalCenter
             buttonText: qsTr("Rules") + settings.i18n_empty_string
+            isDown:help_page_instance.sub_page_type === HelpPage.RULES
             onActivated: help_page_instance.sub_page_type = HelpPage.RULES
         }
 
@@ -48,6 +50,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: score_btn.horizontalCenter
             buttonText: qsTr("Scoring") + settings.i18n_empty_string
+            isDown:help_page_instance.sub_page_type === HelpPage.SCORING
             onActivated: help_page_instance.sub_page_type = HelpPage.SCORING
         }
 
@@ -56,6 +59,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: other_btn.horizontalCenter
             buttonText: qsTr("Contact") + settings.i18n_empty_string
+            isDown:help_page_instance.sub_page_type === HelpPage.OTHERS
             onActivated: help_page_instance.sub_page_type = HelpPage.OTHERS
         }
 
