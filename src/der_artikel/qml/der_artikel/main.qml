@@ -9,7 +9,7 @@ Window{
     minimumHeight:480
     minimumWidth: 640
 
-    property QtObject color_palette : cp_night
+    property QtObject color_palette : cp_blue
 
     visible: true
     title:"Der Artikel - " + Qt.application.version
