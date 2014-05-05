@@ -43,7 +43,6 @@ class QTranslator;
  *
  *  \author Vikas Pachdha
  *
- *  \todo Settings serializing is pending.
  *  \todo Create template settings like silent, custom and loud.
  *  \todo Sound levels not working.
  ******************************************************************************/
@@ -74,6 +73,7 @@ public:
 
 public:
     explicit Settings_C(QObject *parent = 0);
+    ~Settings_C();
 
 public:
 
@@ -103,6 +103,9 @@ public:
 
     bool enableEffects() const;
 
+    void saveSettings();
+    void loadSettings();
+
 signals:
     void languageChanged();
     void soundLevelChanged();
@@ -113,6 +116,7 @@ private:
     void updateLangauge();
     //! Retuns empty string. Hack used to language change in QML
     QString GetEmptyString() { return ""; }
+
 
 private:
     //! Selected language.

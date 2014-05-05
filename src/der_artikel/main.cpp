@@ -77,6 +77,9 @@ void setupVersion()
     }while(index < version_string_num.size());
     version_string = version_string.left(version_string.size()-1);
     qApp->setApplicationVersion(version_string);
+    qApp->setOrganizationName("vystosi");
+    qApp->setOrganizationDomain("vystosi.com");
+    qApp->setApplicationName("der_artikel");
 }
 
 

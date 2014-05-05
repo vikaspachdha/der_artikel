@@ -30,6 +30,7 @@
 #include <QDir>
 #include <QGuiApplication>
 #include <QLocale>
+#include <QSettings>
 #include <QTranslator>
 
 // Interface for this file
@@ -58,6 +59,8 @@ Settings_C::Settings_C(QObject *parent) :
     _sound_level(0.1),
     _word_message_time(1200)
 {
+    QSettings::setDefaultFormat(QSettings::IniFormat);
+    loadSettings();
     LOG_DEBUG("Settings_C::constructor");
     updateLangauge();
     _thema_remote_path = "/Users/vikas/Dropbox/German/thema";
@@ -66,6 +69,11 @@ Settings_C::Settings_C(QObject *parent) :
 #else
     LOG_INFO("Graphical effects enabled");
 #endif
+}
+
+Settings_C::~Settings_C()
+{
+    saveSettings();
 }
 
 //******************************************************************************
@@ -131,6 +139,38 @@ void Settings_C::updateLangauge()
         }
     }
 
+}
+
+//******************************************************************************
+/*! \brief Saves user settings to INI file.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void Settings_C::saveSettings()
+{
+    QSettings settings;
+    settings.beginGroup("appSettings");
+    settings.setValue("language",_current_language);
+    settings.setValue("soundLevel",_sound_level);
+    settings.setValue("wordMessageTime",_word_message_time);
+    settings.setValue("remotePath",_thema_remote_path);
+    settings.endGroup();
+}
+
+//******************************************************************************
+/*! \brief Loads user settings from INI file.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void Settings_C::loadSettings()
+{
+    QSettings settings;
+    settings.beginGroup("appSettings");
+    _current_language = (Language_TP)settings.value("language",ENGLISH).toInt();
+    _sound_level = settings.value("soundLevel",0.1).toDouble();
+    _word_message_time = settings.value("wordMessageTime",1200).toInt();
+    _thema_remote_path = settings.value("remotePath","www.vystosi.com/der_artikel/themas").toString();
+    settings.endGroup();
 }
 
 //******************************************************************************
