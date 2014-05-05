@@ -14,7 +14,8 @@ Title_bar {
         anchors.bottom:parent.bottom
         anchors.leftMargin: 2
         width:height
-        fillMode: Image.Stretch
+        fillMode: Image.PreserveAspectFit
+        smooth:true
         transform: Rotation {
             id: rotation
             origin.x: coin.width/2
