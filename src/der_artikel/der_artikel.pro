@@ -4,7 +4,7 @@ DEFINES += ENABLE_THEMA_BUILDER
 
 win32:DEFINES += NO_GRAPHICAL_EFFECTS
 
-QT += gui qml quick xml network
+QT += gui qml quick xml network multimedia
 
 MOC_DIR      = moc
 RCC_DIR      = resources

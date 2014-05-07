@@ -111,5 +111,7 @@
         <file>qml/der_artikel/Color_palette_orange.qml</file>
         <file>qml/der_artikel/Color_palette.qml</file>
         <file>qml/der_artikel/Noun_Item.qml</file>
+        <file>resources/sounds/coin.wav</file>
+        <file>resources/sounds/page_flip.wav</file>
     </qresource>
 </RCC>

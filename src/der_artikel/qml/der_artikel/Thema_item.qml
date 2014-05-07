@@ -1,6 +1,6 @@
 import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
-
+import QtMultimedia 5.1
 
 Flipable {
     id: thema_item_root
@@ -150,13 +150,20 @@ Flipable {
             font.pixelSize: 12
         }
 
+        SoundEffect {
+            id:coinSnd
+            source:"qrc:/res/resources/sounds/coin.wav"
+        }
+
         MouseArea {
             anchors.fill: thema_rect
             onClicked: {
                 thema_item_root.themaClicked()
+                coinSnd.play()
             }
             onPressAndHold: {
                 thema_item_root.themaLongClicked()
+                coinSnd.play()
             }
         }
 

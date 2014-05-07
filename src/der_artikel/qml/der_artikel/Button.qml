@@ -1,5 +1,5 @@
 import QtQuick 2.1
-
+import QtMultimedia 5.1
 Rectangle {
     id:btn_root
 
@@ -40,11 +40,17 @@ Rectangle {
         font.pixelSize: 16
     }
 
+    SoundEffect {
+        id:clickSnd
+        source:"qrc:/res/resources/sounds/click.wav"
+    }
+
     MouseArea {
         id: mousearea1
         anchors.fill: parent
         onClicked: {
             btn_root.activated()
+            clickSnd.play()
         }
     }
 }

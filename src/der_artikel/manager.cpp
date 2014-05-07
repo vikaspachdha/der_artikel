@@ -31,7 +31,7 @@
 #include <QQmlContext>
 #include <QQuickItem>
 #include <QTimer>
-
+#include <QSound>
 // Interface for this file
 #include "manager.h"
 
@@ -157,6 +157,9 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
             }
 
             emit currentPageChanged(old_page,new_page);
+            if(old_page != INVALID_PAGE) {
+                QSound::play(":/res/resources/sounds/page_flip.wav");
+            }
         }
     }
 }
