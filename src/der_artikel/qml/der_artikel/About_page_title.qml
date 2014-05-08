@@ -20,7 +20,7 @@ Title_bar {
         anchors.left: icon.right
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        font.family: custom_regular.name
+        font.family: title_font.name
         color:color_palette.color_font_01
         font.pixelSize: 42
         horizontalAlignment: Text.AlignHCenter

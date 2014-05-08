@@ -13,7 +13,7 @@ Title_bar {
             topMargin: 6
         }
         color: color_palette.color_font_01
-        font.family: custom_regular.name
+        font.family: title_font.name
         font.pixelSize: 16
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
@@ -30,7 +30,7 @@ Title_bar {
             topMargin: 6
         }
         color: color_palette.color_font_01
-        font.family: custom_regular.name
+        font.family: title_font.name
         font.pixelSize: 14
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
@@ -47,7 +47,7 @@ Title_bar {
             leftMargin: 6
         }
         color: color_palette.color_font_01
-        font.family: custom_regular.name
+        font.family: title_font.name
         font.pixelSize: 16
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
@@ -65,7 +65,7 @@ Title_bar {
             rightMargin:6
         }
         color: color_palette.color_font_01
-        font.family: custom_regular.name
+        font.family: title_font.name
         font.pixelSize: 14
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
@@ -89,7 +89,7 @@ Title_bar {
             rightMargin:6
         }
         color: color_palette.color_font_01
-        font.family: custom_regular.name
+        font.family: title_font.name
         font.pixelSize: 14
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft

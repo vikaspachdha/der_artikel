@@ -26,13 +26,20 @@ Window{
     }
 
     FontLoader {
-        id: custom_regular
+        id: title_font
         source: "qrc:/res/resources/fonts/custom_regular.ttf"
     }
 
     FontLoader {
+        id: custom_regular
+        //source: "qrc:/res/resources/fonts/custom_regular.ttf"
+        name: "Verdana"
+    }
+
+    FontLoader {
         id: command_font
-        source: "qrc:/res/resources/fonts/custom_command.ttf"
+        //source: "qrc:/res/resources/fonts/custom_command.ttf"
+        name:"Georgia"
     }
 
     Image {

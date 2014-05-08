@@ -9,7 +9,7 @@ Title_bar {
         text: help_page_instance.title
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        font.family: custom_regular.name
+        font.family: title_font.name
         color:color_palette.color_font_01
         font.pixelSize: 42
     }

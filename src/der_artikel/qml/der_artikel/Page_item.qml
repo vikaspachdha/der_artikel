@@ -33,7 +33,7 @@ Item {
         smooth:true
         color:color_palette.color_font_01
         font.family: command_font.name
-        font.pixelSize: 18
+        font.pixelSize: 14
     }
 
     MouseArea {

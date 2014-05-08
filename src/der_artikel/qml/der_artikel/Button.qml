@@ -37,7 +37,7 @@ Rectangle {
         text: qsTr("Button") + settings.i18n_empty_string
         color:color_palette.color_font_02
         font.family: command_font.name
-        font.pixelSize: 16
+        font.pixelSize: 14
     }
 
     SoundEffect {
