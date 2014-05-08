@@ -131,7 +131,7 @@ public:
 public:
     bool Read(QString thema_file_path, bool defered = true);
     bool Write(QDomElement& element);
-    void Save(QString file_path="");
+    bool Save(QString file_path="");
     void clearWords();
 
 signals:

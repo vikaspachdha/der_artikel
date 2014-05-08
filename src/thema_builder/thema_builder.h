@@ -61,7 +61,6 @@ private slots:
 private:
     void UpdateItem(QListWidgetItem* item);
     bool Save(QString save_file);
-    bool Write(QIODevice* pDevice);
     bool Export(QIODevice* pDevice);
     bool Import(QIODevice* pDevice);
     bool AddWordToList(Word_C *new_word);

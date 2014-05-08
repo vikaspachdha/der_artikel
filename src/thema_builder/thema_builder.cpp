@@ -392,16 +392,19 @@ void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
 
 bool ThemaBuilder_C::Save(QString save_file)
 {
-    bool success = false;
-    if(!save_file.isEmpty()) {
-        QFile file(save_file);
-        if (file.open(QFile::WriteOnly | QFile::Text)) {
-            success = Write(&file);
-            file.close();
-            LOG_INFO(QString("Thema builder :: Saved file to %1") .arg(save_file));
-        } else {
-            LOG_WARN(QString("Thema builder :: Cannot save file %1:\n%2.") .arg(save_file).arg(file.errorString()));
-        }
+    Q_ASSERT(_thema);
+
+    _thema->_text = ui->_thema_name_edit->text().trimmed();
+    _thema->_translation =  ui->_thema_tr_name_edit->text().trimmed();
+    _thema->_author = ui->_author_name_edit->text().trimmed();
+    _thema->_icon = *(ui->_icon_lbl->pixmap());
+    _thema->setLastUpdated(ui->_update_date_time_edit->dateTime());
+
+    bool success = _thema->Save(save_file);
+    if (success) {
+        LOG_INFO(QString("Thema builder :: Saved file to %1") .arg(save_file));
+    } else {
+        LOG_WARN(QString("Thema builder :: Cannot save file %1.") .arg(save_file));
     }
     return success;
 }
@@ -465,29 +468,6 @@ void ThemaBuilder_C::OnImport()
             LOG_ERROR(QString("Thema builder :: Cannot Import file %1:\n%2.") .arg(file_path) .arg(file.errorString()));
         }
     }
-}
-
-bool ThemaBuilder_C::Write(QIODevice* pDevice)
-{
-    Q_ASSERT(_thema);
-
-    QDomDocument domDocument("DerArtikel");
-
-    QDataStream out(pDevice);
-    QDomElement root = domDocument.createElement("Root");
-    root.setAttribute("Version", QString::number(APP_VERSION));
-
-    _thema->_text = ui->_thema_name_edit->text().trimmed();
-    _thema->_translation =  ui->_thema_tr_name_edit->text().trimmed();
-    _thema->_author = ui->_author_name_edit->text().trimmed();
-    _thema->_icon = *(ui->_icon_lbl->pixmap());
-    _thema->setLastUpdated(ui->_update_date_time_edit->dateTime());
-    _thema->Write(root);
-
-    domDocument.appendChild(root);
-    QByteArray xml_data = domDocument.toByteArray(4);
-    out<<qCompress(xml_data,ARTIKEL::COMPRESSION_LEVEL);
-    return true;
 }
 
 bool ThemaBuilder_C::Export(QIODevice *pDevice)

@@ -204,14 +204,14 @@ bool Thema_C::Read(QString thema_file_path, bool defered)
     QFile thema_file(thema_file_path);
     if(thema_file.open(QFile::ReadOnly)) {
         QDataStream data_stream(&thema_file);
-        QByteArray xml_data;
-        data_stream>>xml_data;
-        xml_data = qUncompress(xml_data);
+        QByteArray compressed_xml;
+        data_stream>>compressed_xml;
+        QByteArray uncompressed_xml = qUncompress(compressed_xml);
         QDomDocument thema_doc;
         QString error_msg;
         int error_line;
         int error_col;
-        if(thema_doc.setContent(xml_data, &error_msg, &error_line, &error_col)) {
+        if(thema_doc.setContent(uncompressed_xml, &error_msg, &error_line, &error_col)) {
             //parse the file and read the thema.
             QDomElement root = thema_doc.firstChildElement("Root");
             QDomAttr versionAttr = root.attributeNode("Version");
@@ -355,16 +355,21 @@ bool Thema_C::Write(QDomElement &element)
  *  \author Vikas Pachdha
  *
  *  \param[in] file_path : Absolute path to resultant file.
+ *
+ *  \return bool : True if file is written to the file path.
  ******************************************************************************/
-void Thema_C::Save(QString file_path)
+bool Thema_C::Save(QString file_path)
 {
+    bool success = false;
     QString save_file = file_path.isEmpty() ? _file_path : file_path;
 
     if(!save_file.isEmpty()) {
         QFile file(save_file);
-        if (file.open(QFile::WriteOnly | QFile::Text)) {
+        if (file.open(QFile::WriteOnly)) {
             if(Write(&file)) {
                 _file_path = save_file;
+                file.close();
+                success = true;
             }
         } else {
             LOG_ERROR(QString("Cannot write thema file.%1. Path:%2").
@@ -372,6 +377,7 @@ void Thema_C::Save(QString file_path)
                       arg(save_file));
         }
     }
+    return success;
 }
 
 //******************************************************************************
