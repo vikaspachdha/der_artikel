@@ -69,6 +69,10 @@ HEADERS += \
 RESOURCES += \
     resources.qrc
 
+win32{
+  RC_FILE = der_artikel.rc
+}
+
 # Lupdate cosiders files added under SOURCES variable only.
 hack_for_qml_lupdate {
     SOURCES += qml/der_artikel/*.qml
