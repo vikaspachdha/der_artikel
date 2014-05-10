@@ -24,7 +24,7 @@ Item {
         anchors.right: parent.right
         anchors.left: parent.left
         color:color_palette.color_font_01
-        font.family: command_font.name
+        font.family: regular_font.name
         font.pixelSize: 14
         horizontalAlignment: Text.AlignHCenter
         smooth:true
@@ -35,6 +35,7 @@ Item {
         anchors.fill: parent
         onClicked: {
             root_item.commandActivated()
+            clickSnd.play()
         }
     }
 }

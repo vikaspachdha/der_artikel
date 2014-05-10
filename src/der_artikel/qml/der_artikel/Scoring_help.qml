@@ -119,7 +119,7 @@ Flickable {
 
         textFormat: Text.RichText
         wrapMode: Text.WordWrap
-        font.family: custom_regular.name
+        font.family: regular_font.name
         color:color_palette.color_font_01
         font.pixelSize: 16
     }

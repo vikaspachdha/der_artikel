@@ -58,7 +58,7 @@ Item {
                 top: msg_bar.top
                 right: msg_bar.right
             }
-            font.family: custom_regular.name
+            font.family: regular_font.name
             color:color_palette.color_font_02
             font.pixelSize: 20
             horizontalAlignment: Text.AlignHCenter
@@ -76,7 +76,7 @@ Item {
             }
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment:  Text.AlignVCenter
-            font.family: custom_regular.name
+            font.family: regular_font.name
             color:color_palette.color_font_02
             font.pixelSize: 16
             elide:Text.ElideRight

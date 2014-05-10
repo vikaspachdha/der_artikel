@@ -6,9 +6,9 @@ Item {
     // Properties definition
     property alias wordText: noun_item.text
     property string description_text:""
-    //property alias wordPixelSz: label.font.pixelSize
     property bool info_mode: words_page.info_mode
     property QtObject word
+
     // Signals
     signal wordClicked
 
@@ -24,6 +24,11 @@ Item {
         anchors.fill: parent
         onClicked: {
             wordClicked()
+            switch(word.user_article) {
+                case Article.DER:derSnd.play();break;
+                case Article.DIE:dieSnd.play();break;
+                case Article.DAS:dasSnd.play();break;
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 import QtQuick.Window 2.1
+import QtMultimedia 5.1
 
 Window{
     id:main
@@ -31,15 +32,33 @@ Window{
     }
 
     FontLoader {
-        id: custom_regular
-        //source: "qrc:/res/resources/fonts/custom_regular.ttf"
-        name: "Verdana"
+        id: regular_font
+        name: "Georgia"
     }
 
-    FontLoader {
-        id: command_font
-        //source: "qrc:/res/resources/fonts/custom_command.ttf"
-        name:"Georgia"
+    SoundEffect {
+        id:coinSnd
+        source:"qrc:/res/resources/sounds/coin.wav"
+    }
+
+    SoundEffect {
+        id:clickSnd
+        source:"qrc:/res/resources/sounds/click.wav"
+    }
+
+    SoundEffect {
+        id:derSnd
+        source:"qrc:/res/resources/sounds/der.wav"
+    }
+
+    SoundEffect {
+        id:dieSnd
+        source:"qrc:/res/resources/sounds/die.wav"
+    }
+
+    SoundEffect {
+        id:dasSnd
+        source:"qrc:/res/resources/sounds/das.wav"
     }
 
     Image {

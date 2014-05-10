@@ -27,7 +27,7 @@ Page {
                 text:qsTr("Version\n") + manager.version_string + settings.i18n_empty_string
 
                 wrapMode: Text.WordWrap
-                font.family: custom_regular.name
+                font.family: regular_font.name
                 color:color_palette.color_font_01
                 font.pixelSize: 18
                 horizontalAlignment: Text.AlignHCenter
@@ -44,7 +44,7 @@ WARRANTY OF ANY KIND, INCLUDING THE WARRANTY OF DESIGN, MERCHANTABILITY AND \
 FITNESS FOR A PARTICULAR PURPOSE."
 
                 wrapMode: Text.WordWrap
-                font.family: custom_regular.name
+                font.family: regular_font.name
                 color:color_palette.color_font_01
                 font.pixelSize: 14
             }
@@ -63,7 +63,7 @@ Mohita Gandotra"
 
                 wrapMode: Text.WordWrap
                 textFormat: Text.StyledText
-                font.family: custom_regular.name
+                font.family: regular_font.name
                 color:color_palette.color_font_01
                 font.pixelSize: 14
                 horizontalAlignment: Text.AlignHCenter

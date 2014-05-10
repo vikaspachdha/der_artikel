@@ -1,52 +1,14 @@
 <RCC>
     <qresource prefix="/res">
-        <file>resources/open.png</file>
-        <file>resources/save.png</file>
-        <file>resources/delete.png</file>
-        <file>resources/background_texture.png</file>
-        <file>resources/alt_background_texture.png</file>
-        <file>resources/home.png</file>
-        <file>resources/info.png</file>
-        <file>resources/thema_generic.png</file>
-        <file>resources/start.png</file>
-        <file>resources/start_disabled.png</file>
-        <file>resources/command_active.png</file>
-        <file>resources/command_disabled.png</file>
-        <file>resources/command.png</file>
-        <file>resources/home_disabled.png</file>
-        <file>resources/quit.png</file>
-        <file>resources/quit_disabled.png</file>
-        <file>resources/fonts/custom_command.ttf</file>
-        <file>resources/fonts/custom_regular.ttf</file>
-        <file>resources/50_cent_gold.png</file>
-        <file>resources/50_cent_inert.png</file>
-        <file>resources/50_cent_rusty.png</file>
-        <file>resources/50_cent_silver.png</file>
-        <file>resources/home_active.png</file>
-        <file>resources/quit_active.png</file>
-        <file>resources/start_active.png</file>
-        <file>resources/error.png</file>
-        <file>resources/warning.png</file>
-        <file>resources/app.png</file>
-        <file>resources/export.png</file>
-        <file>resources/import.png</file>
-        <file>resources/help.png</file>
-        <file>resources/information.png</file>
-        <file>resources/settings.png</file>
-        <file>resources/about.png</file>
-        <file>resources/result.png</file>
-        <file>resources/stats.png</file>
-        <file>resources/thema.png</file>
-        <file>resources/finish_active.png</file>
-        <file>resources/finish_disabled.png</file>
-        <file>resources/finish.png</file>
+        <file>qml/der_artikel/About_page.qml</file>
         <file>qml/der_artikel/About_page_panel.qml</file>
         <file>qml/der_artikel/About_page_title.qml</file>
-        <file>qml/der_artikel/About_page.qml</file>
         <file>qml/der_artikel/Blanket.qml</file>
         <file>qml/der_artikel/Button.qml</file>
+        <file>qml/der_artikel/Color_palette.qml</file>
         <file>qml/der_artikel/Color_palette_blue.qml</file>
         <file>qml/der_artikel/Color_palette_night.qml</file>
+        <file>qml/der_artikel/Color_palette_orange.qml</file>
         <file>qml/der_artikel/Color_theme_settings.qml</file>
         <file>qml/der_artikel/Command_frame.qml</file>
         <file>qml/der_artikel/Command_item.qml</file>
@@ -54,64 +16,104 @@
         <file>qml/der_artikel/Custom_label.qml</file>
         <file>qml/der_artikel/Game_play_settings.qml</file>
         <file>qml/der_artikel/General_help.qml</file>
+        <file>qml/der_artikel/Help_page.qml</file>
         <file>qml/der_artikel/Help_page_panel.qml</file>
         <file>qml/der_artikel/Help_page_title.qml</file>
-        <file>qml/der_artikel/Help_page.qml</file>
+        <file>qml/der_artikel/Home_page.qml</file>
         <file>qml/der_artikel/Home_page_panel.qml</file>
         <file>qml/der_artikel/Home_page_title.qml</file>
-        <file>qml/der_artikel/Home_page.qml</file>
         <file>qml/der_artikel/Label.qml</file>
         <file>qml/der_artikel/Language_settings.qml</file>
         <file>qml/der_artikel/main.qml</file>
         <file>qml/der_artikel/Message_bar.qml</file>
+        <file>qml/der_artikel/Noun_Item.qml</file>
         <file>qml/der_artikel/Others_help.qml</file>
+        <file>qml/der_artikel/Page.qml</file>
         <file>qml/der_artikel/Page_item.qml</file>
         <file>qml/der_artikel/Page_panel.qml</file>
-        <file>qml/der_artikel/Page.qml</file>
         <file>qml/der_artikel/Panel_frame.qml</file>
         <file>qml/der_artikel/Result_item.qml</file>
+        <file>qml/der_artikel/Result_page.qml</file>
         <file>qml/der_artikel/Result_page_panel.qml</file>
         <file>qml/der_artikel/Result_page_title.qml</file>
-        <file>qml/der_artikel/Result_page.qml</file>
         <file>qml/der_artikel/Rules_help.qml</file>
         <file>qml/der_artikel/Scoring_help.qml</file>
+        <file>qml/der_artikel/Settings_page.qml</file>
         <file>qml/der_artikel/Settings_page_panel.qml</file>
         <file>qml/der_artikel/Settings_page_title.qml</file>
-        <file>qml/der_artikel/Settings_page.qml</file>
+        <file>qml/der_artikel/Slider.qml</file>
         <file>qml/der_artikel/Startup_screen.qml</file>
+        <file>qml/der_artikel/Stats_page.qml</file>
         <file>qml/der_artikel/Stats_page_panel.qml</file>
         <file>qml/der_artikel/Stats_page_title.qml</file>
-        <file>qml/der_artikel/Stats_page.qml</file>
         <file>qml/der_artikel/Thema_item.qml</file>
+        <file>qml/der_artikel/Thema_page.qml</file>
         <file>qml/der_artikel/Thema_page_panel.qml</file>
         <file>qml/der_artikel/Thema_page_title.qml</file>
-        <file>qml/der_artikel/Thema_page.qml</file>
         <file>qml/der_artikel/Title_bar.qml</file>
         <file>qml/der_artikel/Title_frame.qml</file>
         <file>qml/der_artikel/Word_item.qml</file>
+        <file>qml/der_artikel/Words_page.qml</file>
         <file>qml/der_artikel/Words_page_panel.qml</file>
         <file>qml/der_artikel/Words_page_title.qml</file>
-        <file>qml/der_artikel/Words_page.qml</file>
-        <file>resources/sounds/click.wav</file>
+        <file>resources/50_cent_gold.png</file>
+        <file>resources/50_cent_inert.png</file>
+        <file>resources/50_cent_rusty.png</file>
+        <file>resources/50_cent_silver.png</file>
+        <file>resources/about.png</file>
+        <file>resources/alt_background_texture.png</file>
+        <file>resources/app.png</file>
+        <file>resources/background_texture.png</file>
+        <file>resources/command.png</file>
+        <file>resources/command_active.png</file>
+        <file>resources/command_disabled.png</file>
+        <file>resources/delete.png</file>
+        <file>resources/error.png</file>
+        <file>resources/export.png</file>
+        <file>resources/finish.png</file>
+        <file>resources/finish_active.png</file>
+        <file>resources/finish_disabled.png</file>
+        <file>resources/fonts/custom_regular.ttf</file>
+        <file>resources/help.png</file>
+        <file>resources/home.png</file>
+        <file>resources/home_active.png</file>
+        <file>resources/home_disabled.png</file>
+        <file>resources/import.png</file>
+        <file>resources/info.png</file>
+        <file>resources/information.png</file>
         <file>resources/new_file.png</file>
-        <file>qml/der_artikel/Slider.qml</file>
-        <file>resources/save_as.png</file>
+        <file>resources/paper_texture_left.png</file>
         <file>resources/paper_texture_left_das.png</file>
         <file>resources/paper_texture_left_der.png</file>
         <file>resources/paper_texture_left_die.png</file>
-        <file>resources/paper_texture_left.png</file>
+        <file>resources/paper_texture_middle.png</file>
         <file>resources/paper_texture_middle_das.png</file>
         <file>resources/paper_texture_middle_der.png</file>
         <file>resources/paper_texture_middle_die.png</file>
-        <file>resources/paper_texture_middle.png</file>
+        <file>resources/paper_texture_right.png</file>
         <file>resources/paper_texture_right_das.png</file>
         <file>resources/paper_texture_right_der.png</file>
         <file>resources/paper_texture_right_die.png</file>
-        <file>resources/paper_texture_right.png</file>
-        <file>qml/der_artikel/Color_palette_orange.qml</file>
-        <file>qml/der_artikel/Color_palette.qml</file>
-        <file>qml/der_artikel/Noun_Item.qml</file>
+        <file>resources/quit.png</file>
+        <file>resources/quit_active.png</file>
+        <file>resources/quit_disabled.png</file>
+        <file>resources/result.png</file>
+        <file>resources/save.png</file>
+        <file>resources/save_as.png</file>
+        <file>resources/settings.png</file>
+        <file>resources/sounds/click.wav</file>
         <file>resources/sounds/coin.wav</file>
+        <file>resources/sounds/das.wav</file>
+        <file>resources/sounds/der.wav</file>
+        <file>resources/sounds/die.wav</file>
         <file>resources/sounds/page_flip.wav</file>
+        <file>resources/start.png</file>
+        <file>resources/start_active.png</file>
+        <file>resources/start_disabled.png</file>
+        <file>resources/stats.png</file>
+        <file>resources/thema.png</file>
+        <file>resources/thema_generic.png</file>
+        <file>resources/warning.png</file>
+        <file>resources/open.png</file>
     </qresource>
 </RCC>

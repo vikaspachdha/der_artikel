@@ -34,7 +34,7 @@ Flipable {
             anchors.right: parent.right
             text:qsTr("Author :") + settings.i18n_empty_string
             color:color_palette.color_font_02
-            font.family:custom_regular.name
+            font.family:regular_font.name
             font.pixelSize: 14
         }
         Text {
@@ -45,7 +45,7 @@ Flipable {
             anchors.right: parent.right
             text:"-"
             color:color_palette.color_font_02
-            font.family:custom_regular.name
+            font.family:regular_font.name
             font.pixelSize: 12
         }
         Text {
@@ -57,7 +57,7 @@ Flipable {
             anchors.right: parent.right
             text:qsTr("Last Played :") + settings.i18n_empty_string
             color:color_palette.color_font_02
-            font.family:custom_regular.name
+            font.family:regular_font.name
             font.pixelSize: 14
         }
         Text {
@@ -67,7 +67,7 @@ Flipable {
             anchors.leftMargin: 2
             anchors.right: parent.right
             color:color_palette.color_font_02
-            font.family:custom_regular.name
+            font.family:regular_font.name
             font.pixelSize: 12
         }
     }
@@ -98,7 +98,7 @@ Flipable {
             anchors.top: thema_icon.bottom
             anchors.topMargin: 2
             color:color_palette.color_font_02
-            font.family:custom_regular.name
+            font.family:regular_font.name
             font.pixelSize: 12
         }
 
@@ -112,7 +112,7 @@ Flipable {
             anchors.left: parent.left
             anchors.leftMargin: 4
             color:color_palette.color_font_02
-            font.family:custom_regular.name
+            font.family:regular_font.name
             font.pixelSize: 12
         }
 
@@ -129,7 +129,7 @@ Flipable {
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
             color:color_palette.color_font_02
-            font.family:custom_regular.name
+            font.family:regular_font.name
             font.pixelSize: 12
         }
 
@@ -146,13 +146,8 @@ Flipable {
             anchors.top: word_count_label.bottom
             anchors.topMargin: 0
             color:color_palette.color_font_02
-            font.family:custom_regular.name
+            font.family:regular_font.name
             font.pixelSize: 12
-        }
-
-        SoundEffect {
-            id:coinSnd
-            source:"qrc:/res/resources/sounds/coin.wav"
         }
 
         MouseArea {

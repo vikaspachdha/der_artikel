@@ -16,6 +16,6 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         horizontalAlignment: Text.AlignHCenter
-        font.family: command_font.name
+        font.family: regular_font.name
     }
 }

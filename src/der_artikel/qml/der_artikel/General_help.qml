@@ -16,7 +16,7 @@ Incorrect articles and unplayed words may result into points deduction depending
 on the gave level selected."
 
         wrapMode: Text.WordWrap
-        font.family: custom_regular.name
+        font.family: regular_font.name
         color:color_palette.color_font_01
         font.pixelSize: 16
     }

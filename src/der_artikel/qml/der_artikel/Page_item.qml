@@ -32,7 +32,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         smooth:true
         color:color_palette.color_font_01
-        font.family: command_font.name
+        font.family: regular_font.name
         font.pixelSize: 14
     }
 

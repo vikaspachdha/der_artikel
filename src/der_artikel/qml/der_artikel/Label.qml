@@ -23,7 +23,7 @@ Item {
         id: label
         x:2
         anchors.verticalCenter: parent.verticalCenter
-        font.family: command_font.name
+        font.family: regular_font.name
         color:color_palette.color_font_01
         font.pixelSize: 16
     }

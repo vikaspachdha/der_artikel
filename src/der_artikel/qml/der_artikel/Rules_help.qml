@@ -80,7 +80,7 @@ and the magnitude of points deduction shall depend on the current state of thema
 you did not earn score for the thema for consective 3 days then 12 points shall be deducted."
 
         wrapMode: Text.WordWrap
-        font.family: custom_regular.name
+        font.family: regular_font.name
         color:color_palette.color_font_01
         font.pixelSize: 16
         textFormat: Text.RichText

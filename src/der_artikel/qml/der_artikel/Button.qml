@@ -36,21 +36,16 @@ Rectangle {
         anchors.verticalCenter: parent.verticalCenter
         text: qsTr("Button") + settings.i18n_empty_string
         color:color_palette.color_font_02
-        font.family: command_font.name
+        font.family: regular_font.name
         font.pixelSize: 14
-    }
-
-    SoundEffect {
-        id:clickSnd
-        source:"qrc:/res/resources/sounds/click.wav"
     }
 
     MouseArea {
         id: mousearea1
         anchors.fill: parent
         onClicked: {
-            btn_root.activated()
             clickSnd.play()
+            btn_root.activated()
         }
     }
 }
