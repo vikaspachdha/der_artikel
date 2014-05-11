@@ -19,16 +19,7 @@ Rectangle {
         GradientStop {position: 1;color: color_palette.color_btn_01}
     }
 
-    border.width: mousearea1.pressed | isDown ? 1:0
-
-    Rectangle {
-        height: 6
-        width: height
-        radius: 3
-        anchors{left:parent.left;top:parent.top;margins: 4}
-        visible: isDown
-        color:color_palette.color_font_02
-    }
+    border.width: mousearea1.pressed | isDown ? 2:0
 
     Text {
         id: label
