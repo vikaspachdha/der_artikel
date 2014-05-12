@@ -13,7 +13,7 @@ article button makes the corresponding article as selected article and clciking 
 assigns the selected article to the clicked word. \n\nChange in word's background \
 color confirms article assignment. The user must assign articles to all the words. \
 Incorrect articles and unplayed words may result into points deduction depending \
-on the gave level selected."
+on the game level selected."
 
         wrapMode: Text.WordWrap
         font.family: regular_font.name
