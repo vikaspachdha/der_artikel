@@ -19,7 +19,7 @@ Page {
             model:6
             delegate: Noun_Item {
                 x:6
-                y: (index*32) + 6
+                y: index*(height + 6)
                 text: {
                     switch(index) {
                     case 0:return qsTr("Thema count : ") + thema_count + settings.i18n_empty_string

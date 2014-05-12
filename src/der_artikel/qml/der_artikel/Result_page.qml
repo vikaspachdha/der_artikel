@@ -54,7 +54,7 @@ Page {
         clip:true
         model: currentResult.incorrectWordsModel
         delegate: Result_item {
-            height: 24
+            //height: 24
             right_text: articleText(article)+" " + word_text
             left_text: word_text
             correct_article: article
