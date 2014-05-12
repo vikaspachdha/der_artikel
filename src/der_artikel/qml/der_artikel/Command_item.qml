@@ -25,7 +25,7 @@ Item {
         anchors.left: parent.left
         color:color_palette.color_font_01
         font.family: regular_font.name
-        font.pixelSize: 14
+        font.pixelSize: commandTextSize
         horizontalAlignment: Text.AlignHCenter
         smooth:true
     }

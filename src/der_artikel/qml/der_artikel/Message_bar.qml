@@ -60,7 +60,7 @@ Item {
             }
             font.family: regular_font.name
             color:color_palette.color_font_02
-            font.pixelSize: 20
+            font.pixelSize: heading1Size
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment:  Text.AlignVCenter
         }
@@ -78,7 +78,7 @@ Item {
             verticalAlignment:  Text.AlignVCenter
             font.family: regular_font.name
             color:color_palette.color_font_02
-            font.pixelSize: 16
+            font.pixelSize: normalTextSize
             elide:Text.ElideRight
             maximumLineCount: 2
             wrapMode: Text.WordWrap

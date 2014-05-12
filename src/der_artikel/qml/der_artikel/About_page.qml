@@ -29,7 +29,8 @@ Page {
                 wrapMode: Text.WordWrap
                 font.family: regular_font.name
                 color:color_palette.color_font_01
-                font.pixelSize: 18
+                font.pixelSize: normalTextSize
+                font.italic: true
                 horizontalAlignment: Text.AlignHCenter
             }
 
@@ -46,7 +47,7 @@ FITNESS FOR A PARTICULAR PURPOSE."
                 wrapMode: Text.WordWrap
                 font.family: regular_font.name
                 color:color_palette.color_font_01
-                font.pixelSize: 14
+                font.pixelSize: normalTextSize
             }
 
             Text {
@@ -65,7 +66,7 @@ Mohita Gandotra"
                 textFormat: Text.StyledText
                 font.family: regular_font.name
                 color:color_palette.color_font_01
-                font.pixelSize: 14
+                font.pixelSize: normalTextSize
                 horizontalAlignment: Text.AlignHCenter
             }
         }

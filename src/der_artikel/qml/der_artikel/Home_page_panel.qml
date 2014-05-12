@@ -24,7 +24,7 @@ Page_panel
         anchors.leftMargin: 4
         anchors.right: parent.right
         anchors.rightMargin: 4
-        spacing: 4
+        spacing: 6
 
         Button {
             id:rate_btn

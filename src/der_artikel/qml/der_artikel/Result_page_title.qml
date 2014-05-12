@@ -14,7 +14,7 @@ Title_bar {
         }
         color: color_palette.color_font_01
         font.family: title_font.name
-        font.pixelSize: 16
+        font.pixelSize: heading1Size
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignVCenter
@@ -31,7 +31,7 @@ Title_bar {
         }
         color: color_palette.color_font_01
         font.family: title_font.name
-        font.pixelSize: 14
+        font.pixelSize: heading2Size
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignVCenter
@@ -48,7 +48,7 @@ Title_bar {
         }
         color: color_palette.color_font_01
         font.family: title_font.name
-        font.pixelSize: 16
+        font.pixelSize: heading1Size
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignTop
@@ -66,7 +66,7 @@ Title_bar {
         }
         color: color_palette.color_font_01
         font.family: title_font.name
-        font.pixelSize: 14
+        font.pixelSize: heading2Size
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignTop
@@ -90,7 +90,7 @@ Title_bar {
         }
         color: color_palette.color_font_01
         font.family: title_font.name
-        font.pixelSize: 14
+        font.pixelSize: heading2Size
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignTop

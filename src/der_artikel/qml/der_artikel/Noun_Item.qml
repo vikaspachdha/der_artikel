@@ -55,6 +55,6 @@ Item {
         id: label
         anchors.left: text_area.left
         font.family: regular_font.name
-        font.pixelSize: 22
+        font.pixelSize: nounTextSize
     }
 }

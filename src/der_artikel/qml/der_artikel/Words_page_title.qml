@@ -39,7 +39,7 @@ Title_bar {
         text: themaModel.selected_thema ? themaModel.selected_thema.name + "\n" + themaModel.selected_thema.tr_name : ""
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: 20
+        font.pixelSize: heading1Size
     }
 
     Text {
@@ -53,7 +53,7 @@ Title_bar {
         text: qsTr("Remaining time") + settings.i18n_empty_string
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: 20
+        font.pixelSize: heading1Size
     }
 
     Text {
@@ -67,7 +67,7 @@ Title_bar {
         text:manager.game_level === Manager.PRACTICE?"∞":timer_text_str
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: 20
+        font.pixelSize: heading1Size
     }
 
     onPlay_timeChanged: {

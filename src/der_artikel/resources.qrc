@@ -115,5 +115,6 @@
         <file>resources/thema_generic.png</file>
         <file>resources/warning.png</file>
         <file>resources/open.png</file>
+        <file>resources/fonts/hindi.ttf</file>
     </qresource>
 </RCC>

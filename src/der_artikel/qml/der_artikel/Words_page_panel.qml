@@ -16,7 +16,7 @@ Page_panel {
     }
 
     Column {
-        id: game_level_col
+        id: article_col
         anchors.top: level_lbl.bottom
         anchors.topMargin: 6
         anchors.left: parent.left
@@ -24,7 +24,7 @@ Page_panel {
         anchors.right: parent.right
         anchors.rightMargin: 4
         enabled: manager.game_level !== Manager.PRACTICE
-        spacing: 4
+        spacing: 6
 
         Button {
             id:der_btn

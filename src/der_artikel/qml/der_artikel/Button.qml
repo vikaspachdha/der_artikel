@@ -28,7 +28,7 @@ Rectangle {
         text: qsTr("Button") + settings.i18n_empty_string
         color:color_palette.color_font_02
         font.family: regular_font.name
-        font.pixelSize: 14
+        font.pixelSize: commandTextSize
     }
 
     MouseArea {

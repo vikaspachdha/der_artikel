@@ -12,7 +12,7 @@ Rectangle {
     Text {
         y:2
         id: label_text
-        font.pixelSize: 18
+        font.pixelSize: normalTextSize
         anchors.left: parent.left
         anchors.right: parent.right
         horizontalAlignment: Text.AlignHCenter

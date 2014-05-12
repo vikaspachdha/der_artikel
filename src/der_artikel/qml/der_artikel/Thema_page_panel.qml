@@ -14,6 +14,7 @@ Page_panel
         text_anchors.horizontalCenter: level_lbl.horizontalCenter
         lblText: qsTr("Game Level") + settings.i18n_empty_string
     }
+
     Column {
         id: game_level_col
         anchors.top: level_lbl.bottom
@@ -22,7 +23,7 @@ Page_panel
         anchors.leftMargin: 4
         anchors.right: parent.right
         anchors.rightMargin: 4
-        spacing: 4
+        spacing: 6
 
 
         Button {

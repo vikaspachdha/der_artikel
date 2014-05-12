@@ -82,7 +82,7 @@ you did not earn score for the thema for consective 3 days then 12 points shall 
         wrapMode: Text.WordWrap
         font.family: regular_font.name
         color:color_palette.color_font_01
-        font.pixelSize: 16
+        font.pixelSize: normalTextSize
         textFormat: Text.RichText
     }
     contentHeight: content_text.contentHeight

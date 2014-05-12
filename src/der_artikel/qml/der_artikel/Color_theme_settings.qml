@@ -14,7 +14,7 @@ Flickable {
         anchors.leftMargin: 4
         anchors.right: parent.right
         anchors.rightMargin: 4
-        spacing: 4
+        spacing: 6
 
         Button {
             id:cp_blue_btn

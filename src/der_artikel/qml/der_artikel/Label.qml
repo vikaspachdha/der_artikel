@@ -25,6 +25,6 @@ Item {
         anchors.verticalCenter: parent.verticalCenter
         font.family: regular_font.name
         color:color_palette.color_font_01
-        font.pixelSize: 16
+        font.pixelSize: normalTextSize
     }
 }

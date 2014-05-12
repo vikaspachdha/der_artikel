@@ -9,11 +9,22 @@ Window{
     height: 480
     minimumHeight:480
     minimumWidth: 640
-
-    property QtObject color_palette : cp_blue
-
     visible: true
     title:"Der Artikel - " + Qt.application.version
+
+    property QtObject color_palette : cp_blue
+    property QtObject regular_font : settings.language === Settings.HINDI ? hindi_font : western_font
+
+    // Text sizes
+    property int heading1Size:16
+    property int heading2Size:14
+    property int commandTextSize : 14
+    property int subCommandTextSize : 12
+    property int normalTextSize : 14
+    property int nounTextSize: 18
+
+
+    // Color palettes
     Color_palette_blue {
         id:cp_blue
     }
@@ -26,16 +37,23 @@ Window{
         id:cp_orange
     }
 
+    // Fonts
     FontLoader {
         id: title_font
         source: "qrc:/res/resources/fonts/custom_regular.ttf"
     }
 
     FontLoader {
-        id: regular_font
-        name: "Georgia"
+        id: western_font
+        name: "Verdana"
     }
 
+    FontLoader {
+        id: hindi_font
+        source: "qrc:/res/resources/fonts/hindi.ttf"
+    }
+
+    // Sounds
     SoundEffect {
         id:coinSnd
         source:"qrc:/res/resources/sounds/coin.wav"
@@ -61,6 +79,7 @@ Window{
         source:"qrc:/res/resources/sounds/das.wav"
     }
 
+    // Children
     Image {
         id: rootItem;
         anchors.fill: parent
