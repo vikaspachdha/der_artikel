@@ -36,65 +36,91 @@
 <context>
     <name>Button</name>
     <message>
-        <location filename="qml/der_artikel/Button.qml" line="37"/>
+        <location filename="qml/der_artikel/Button.qml" line="28"/>
         <source>Button</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Color_theme_settings</name>
+    <message>
+        <location filename="qml/der_artikel/Color_theme_settings.qml" line="24"/>
+        <source>Deep blue</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Color_theme_settings.qml" line="33"/>
+        <source>Tangy Orange</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Color_theme_settings.qml" line="42"/>
+        <source>Dark night</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Command_frame</name>
     <message>
-        <location filename="qml/der_artikel/Command_frame.qml" line="56"/>
+        <location filename="qml/der_artikel/Command_frame.qml" line="57"/>
         <source>Home</source>
         <translation>मुख पृष्ठ</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Command_frame.qml" line="68"/>
+        <location filename="qml/der_artikel/Command_frame.qml" line="69"/>
         <source>Quit</source>
         <translation>बाहर िनकले</translation>
     </message>
 </context>
 <context>
+    <name>Game_play_settings</name>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="12"/>
+        <source>Word info Time (in msecs)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="67"/>
+        <source>Thema update url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="97"/>
+        <source>Update thema</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="109"/>
+        <source>Thema update</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="109"/>
+        <source>No thema update available</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HelpPage_C</name>
     <message>
-        <location filename="pages/help_page.cpp" line="22"/>
+        <location filename="pages/help_page.cpp" line="81"/>
         <source>General</source>
         <translation>सामान्य</translation>
     </message>
     <message>
-        <location filename="pages/help_page.cpp" line="25"/>
+        <location filename="pages/help_page.cpp" line="84"/>
         <source>Rules</source>
         <translation>नियम</translation>
     </message>
     <message>
-        <location filename="pages/help_page.cpp" line="28"/>
+        <location filename="pages/help_page.cpp" line="87"/>
         <source>Scoring</source>
         <translation>अंक</translation>
     </message>
     <message>
-        <location filename="pages/help_page.cpp" line="31"/>
+        <location filename="pages/help_page.cpp" line="90"/>
         <source>Contact</source>
         <translation>संपर्क</translation>
-    </message>
-    <message>
-        <location filename="pages/help_page.cpp" line="45"/>
-        <source>General_help.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/help_page.cpp" line="48"/>
-        <source>Rules_help.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/help_page.cpp" line="51"/>
-        <source>Scoring_help.qml</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="pages/help_page.cpp" line="54"/>
-        <source>Others_help.qml</source>
-        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -110,17 +136,17 @@
         <translation type="unfinished">सामान्य</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Help_page_panel.qml" line="42"/>
+        <location filename="qml/der_artikel/Help_page_panel.qml" line="43"/>
         <source>Rules</source>
         <translation type="unfinished">नियम</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Help_page_panel.qml" line="50"/>
+        <location filename="qml/der_artikel/Help_page_panel.qml" line="52"/>
         <source>Scoring</source>
         <translation type="unfinished">अंक</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Help_page_panel.qml" line="58"/>
+        <location filename="qml/der_artikel/Help_page_panel.qml" line="61"/>
         <source>Contact</source>
         <translation type="unfinished">संपर्क</translation>
     </message>
@@ -151,77 +177,85 @@
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="254"/>
-        <source>Quit</source>
-        <translation type="unfinished">बाहर िनकले</translation>
+        <location filename="manager.cpp" line="374"/>
+        <source>Do you realy want to quit ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>MessageBar_C</name>
+    <message>
+        <location filename="message_bar.h" line="87"/>
+        <source>Ok</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="255"/>
-        <source>Do you realy want to quit</source>
+        <location filename="message_bar.h" line="88"/>
+        <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>Result_C</name>
     <message>
-        <location filename="data/result.cpp" line="14"/>
-        <location filename="data/result.cpp" line="58"/>
+        <location filename="../data/result.cpp" line="48"/>
+        <location filename="../data/result.cpp" line="136"/>
         <source>No game data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="16"/>
-        <location filename="data/result.cpp" line="60"/>
+        <location filename="../data/result.cpp" line="50"/>
+        <location filename="../data/result.cpp" line="138"/>
         <source>Result</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="226"/>
+        <location filename="../data/result.cpp" line="349"/>
         <source>Score : %1 %</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="227"/>
+        <location filename="../data/result.cpp" line="350"/>
         <source>Mistakes : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="228"/>
+        <location filename="../data/result.cpp" line="351"/>
         <source>Unplayed : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="231"/>
+        <location filename="../data/result.cpp" line="354"/>
         <source>Execelent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="233"/>
+        <location filename="../data/result.cpp" line="356"/>
         <source>Very good</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="235"/>
+        <location filename="../data/result.cpp" line="358"/>
         <source>Good</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="237"/>
+        <location filename="../data/result.cpp" line="360"/>
         <source>Satisfactory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="239"/>
+        <location filename="../data/result.cpp" line="362"/>
         <source>Sufficient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="241"/>
+        <location filename="../data/result.cpp" line="364"/>
         <source>Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="data/result.cpp" line="244"/>
+        <location filename="../data/result.cpp" line="367"/>
         <source>Result : </source>
         <translation type="unfinished"></translation>
     </message>
@@ -236,6 +270,11 @@
     <message>
         <location filename="qml/der_artikel/Result_page.qml" line="10"/>
         <source>No Mistakes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Result_page.qml" line="28"/>
+        <source>Incorrect       Correct</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -273,22 +312,22 @@
 <context>
     <name>SettingsPage_C</name>
     <message>
-        <location filename="pages/settings_page.cpp" line="22"/>
+        <location filename="pages/settings_page.cpp" line="81"/>
         <source>Language settings</source>
         <translation>भाषा विकल्प</translation>
     </message>
     <message>
-        <location filename="pages/settings_page.cpp" line="25"/>
+        <location filename="pages/settings_page.cpp" line="84"/>
         <source>Sound settings</source>
         <translation>ध्वनि विकल्प</translation>
     </message>
     <message>
-        <location filename="pages/settings_page.cpp" line="28"/>
+        <location filename="pages/settings_page.cpp" line="87"/>
         <source>Color theme settings</source>
         <translation>रंग विकल्प</translation>
     </message>
     <message>
-        <location filename="pages/settings_page.cpp" line="31"/>
+        <location filename="pages/settings_page.cpp" line="90"/>
         <source>Game Play Settings</source>
         <translation>खेल खेलने के विकल्प</translation>
     </message>
@@ -306,19 +345,29 @@
         <translation>भाषा</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Settings_page_panel.qml" line="44"/>
+        <location filename="qml/der_artikel/Settings_page_panel.qml" line="45"/>
         <source>Sound</source>
         <translation>ध्वनि</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Settings_page_panel.qml" line="53"/>
+        <location filename="qml/der_artikel/Settings_page_panel.qml" line="46"/>
+        <source>Sorry</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Settings_page_panel.qml" line="46"/>
+        <source>This feature is not available</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Settings_page_panel.qml" line="54"/>
         <source>Color theme</source>
         <translation>रंग</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Settings_page_panel.qml" line="62"/>
-        <source>Game play</source>
-        <translation>खेल</translation>
+        <location filename="qml/der_artikel/Settings_page_panel.qml" line="63"/>
+        <source>Game</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -332,7 +381,7 @@
 <context>
     <name>StatsPage_C</name>
     <message>
-        <location filename="pages/stats_page.cpp" line="20"/>
+        <location filename="pages/stats_page.cpp" line="69"/>
         <source>None</source>
         <translation type="unfinished"></translation>
     </message>
@@ -340,33 +389,37 @@
 <context>
     <name>Stats_page</name>
     <message>
+        <location filename="qml/der_artikel/Stats_page.qml" line="25"/>
+        <source>Thema count : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Stats_page.qml" line="26"/>
+        <source>Best Thema : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="27"/>
-        <source>Thema count</source>
+        <source>Inert themas : </source>
+        <oldsource>Thema count</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="28"/>
-        <source>Best Thema</source>
+        <source>Golden themas : </source>
+        <oldsource>Best Thema</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="29"/>
-        <source>Inert themas</source>
+        <source>Silver themas : </source>
+        <oldsource>Inert themas</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="30"/>
-        <source>Golden themas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="31"/>
-        <source>Silver themas</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="32"/>
-        <source>Rusty themas</source>
+        <source>Rusty themas : </source>
+        <oldsource>Golden themas</oldsource>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -402,271 +455,19 @@
     </message>
 </context>
 <context>
-    <name>ThemaBuilder_C</name>
-    <message>
-        <location filename="thema_builder.ui" line="20"/>
-        <source>Thema builder</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="26"/>
-        <source>Enter thema name...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="39"/>
-        <source>Add new word</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="53"/>
-        <source>Die</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="60"/>
-        <source>Der</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="67"/>
-        <source>Das</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="74"/>
-        <source>NA</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="97"/>
-        <source>Insert ä - shortcut is &lt;b&gt;Alt + a&lt;/b&gt; or &lt;b&gt;Alt + Shift + a&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="100"/>
-        <source>ä</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="124"/>
-        <source>Insert ß</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="127"/>
-        <source>ß</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="134"/>
-        <source>Word</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="152"/>
-        <source>Insert ö - shortcut is &lt;b&gt;Alt + o&lt;/b&gt; or &lt;b&gt;Alt + Shift + o&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="155"/>
-        <source>ö</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="173"/>
-        <source>Insert ü - shortcut is &lt;b&gt;Alt + o&lt;/b&gt; or &lt;b&gt;Alt + Shift + o&lt;/b&gt; </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="176"/>
-        <source>ü</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="183"/>
-        <source>Enter word...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="203"/>
-        <source>Description</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="210"/>
-        <source>Translation or description of the text</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="217"/>
-        <source>Add word to thema.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="220"/>
-        <location filename="thema_builder.cpp" line="507"/>
-        <source>Add</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="266"/>
-        <source>Open thema file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="292"/>
-        <source>Save thema.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="328"/>
-        <source>Import csv</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="331"/>
-        <location filename="thema_builder.ui" line="351"/>
-        <source>...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="348"/>
-        <source>Export csv</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="406"/>
-        <source>Thema translated name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="426"/>
-        <source>Enter translation or description...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="439"/>
-        <source>Thema name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="462"/>
-        <source>Word&apos;s list :-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="469"/>
-        <source>Delete selected words.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="515"/>
-        <source>Author</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.ui" line="522"/>
-        <source>Enther author&apos;s name...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="122"/>
-        <location filename="thema_builder.cpp" line="305"/>
-        <location filename="thema_builder.cpp" line="324"/>
-        <source>Select file name</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="124"/>
-        <location filename="thema_builder.cpp" line="307"/>
-        <source>Thema files (*.AKL);; All files (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="326"/>
-        <location filename="thema_builder.cpp" line="346"/>
-        <source>CSV files (*.csv);; All files (*.*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="333"/>
-        <source>Export failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="333"/>
-        <source>Invalid file or permissions</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="344"/>
-        <source>Select file to import</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="354"/>
-        <source>Import failed</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="354"/>
-        <source>Invalid file or format</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="455"/>
-        <source>Duplicate</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="455"/>
-        <source>%1 already exists. Duplicate words are not allowed.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_builder.cpp" line="512"/>
-        <source>Update</source>
-        <translation type="unfinished">अपडेट</translation>
-    </message>
-</context>
-<context>
-    <name>ThemaLoader_C</name>
-    <message>
-        <location filename="thema_loader.cpp" line="75"/>
-        <source>Invalid thema file version.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_loader.cpp" line="75"/>
-        <source>Cannot parse thema file. This version is not supported : %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_loader.cpp" line="80"/>
-        <source>Invalid thema file.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="thema_loader.cpp" line="80"/>
-        <source>Cannot parse thema file. Check logs for futher details.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>Thema_item</name>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="33"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="35"/>
         <source>Author :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="56"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="58"/>
         <source>Last Played :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="121"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="122"/>
         <source>Words</source>
         <translation type="unfinished"></translation>
     </message>
@@ -679,22 +480,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_panel.qml" line="33"/>
+        <location filename="qml/der_artikel/Thema_page_panel.qml" line="34"/>
         <source>Easy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_panel.qml" line="42"/>
+        <location filename="qml/der_artikel/Thema_page_panel.qml" line="43"/>
         <source>Moderate</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_panel.qml" line="51"/>
+        <location filename="qml/der_artikel/Thema_page_panel.qml" line="52"/>
         <source>Expert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_panel.qml" line="64"/>
+        <location filename="qml/der_artikel/Thema_page_panel.qml" line="61"/>
+        <source>Practice</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Thema_page_panel.qml" line="74"/>
         <source>Play</source>
         <translation type="unfinished"></translation>
     </message>
@@ -702,43 +508,51 @@
 <context>
     <name>Thema_page_title</name>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="51"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="52"/>
         <source>Multi Mode - Coming soon</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="53"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="54"/>
         <source>Select Thema</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="75"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="76"/>
         <source>Experience : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="95"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="96"/>
         <source>State - </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="98"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="99"/>
         <source>Inert</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="101"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="102"/>
         <source>Gold</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="104"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="105"/>
         <source>Silver</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="107"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="108"/>
         <source>Rusty</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WordsPage_C</name>
+    <message>
+        <location filename="pages/words_page.cpp" line="83"/>
+        <source>Loading thema ...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -750,27 +564,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="33"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="35"/>
         <source>Der</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="45"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="47"/>
         <source>Die</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="57"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="59"/>
         <source>Das</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="69"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="70"/>
         <source>Info</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="85"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="87"/>
         <source>Finish</source>
         <translation type="unfinished"></translation>
     </message>
@@ -778,7 +592,7 @@
 <context>
     <name>Words_page_title</name>
     <message>
-        <location filename="qml/der_artikel/Words_page_title.qml" line="52"/>
+        <location filename="qml/der_artikel/Words_page_title.qml" line="53"/>
         <source>Remaining time</source>
         <translation type="unfinished"></translation>
     </message>

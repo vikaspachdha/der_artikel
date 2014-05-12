@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="en_US" sourcelanguage="en_US">
+<TS version="2.1" language="de_DE">
 <context>
     <name>About_page</name>
     <message>
         <location filename="qml/der_artikel/About_page.qml" line="27"/>
         <source>Version
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Version\n</translation>
     </message>
 </context>
 <context>
@@ -15,22 +15,22 @@
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="17"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation>Optinonen</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="34"/>
         <source>Update</source>
-        <translation type="unfinished"></translation>
+        <translation>Update</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
         <source>Latest version</source>
-        <translation type="unfinished"></translation>
+        <translation>Neueste Version</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
         <source>No update is available</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Update verfügbar ist</translation>
     </message>
 </context>
 <context>
@@ -64,12 +64,12 @@
     <message>
         <location filename="qml/der_artikel/Command_frame.qml" line="57"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>Heim</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Command_frame.qml" line="69"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>beenden</translation>
     </message>
 </context>
 <context>
@@ -77,27 +77,27 @@
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="12"/>
         <source>Word info Time (in msecs)</source>
-        <translation type="unfinished"></translation>
+        <translation>Wort info zeit (in mseks)</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="67"/>
         <source>Thema update url</source>
-        <translation type="unfinished"></translation>
+        <translation>Thema update Internetadresse</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="97"/>
         <source>Update thema</source>
-        <translation type="unfinished"></translation>
+        <translation>Update thema</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="109"/>
         <source>Thema update</source>
-        <translation type="unfinished"></translation>
+        <translation>Thema update</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="109"/>
         <source>No thema update available</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Update verfügbar ist</translation>
     </message>
 </context>
 <context>
@@ -105,22 +105,22 @@
     <message>
         <location filename="pages/help_page.cpp" line="81"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>allgemein</translation>
     </message>
     <message>
         <location filename="pages/help_page.cpp" line="84"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation>Regeln</translation>
     </message>
     <message>
         <location filename="pages/help_page.cpp" line="87"/>
         <source>Scoring</source>
-        <translation type="unfinished"></translation>
+        <translation>Punktgewinne</translation>
     </message>
     <message>
         <location filename="pages/help_page.cpp" line="90"/>
         <source>Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontakt</translation>
     </message>
 </context>
 <context>
@@ -128,27 +128,27 @@
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="17"/>
         <source>Topics</source>
-        <translation type="unfinished"></translation>
+        <translation>Themen</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="34"/>
         <source>General</source>
-        <translation type="unfinished"></translation>
+        <translation>allgemein</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="43"/>
         <source>Rules</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="52"/>
         <source>Scoring</source>
-        <translation type="unfinished"></translation>
+        <translation>Punktgewinne</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="61"/>
         <source>Contact</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontakt</translation>
     </message>
 </context>
 <context>
@@ -156,7 +156,7 @@
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="16"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="33"/>
@@ -166,12 +166,12 @@
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
         <source>Sorry</source>
-        <translation type="unfinished"></translation>
+        <translation>Entschuldigung</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
         <source>This feature is not available</source>
-        <translation type="unfinished"></translation>
+        <translation>Diese Funktion ist nicht verfügbar</translation>
     </message>
 </context>
 <context>
@@ -179,7 +179,7 @@
     <message>
         <location filename="manager.cpp" line="374"/>
         <source>Do you realy want to quit ?</source>
-        <translation type="unfinished"></translation>
+        <translation>wollen Sie wirklich zu beenden?</translation>
     </message>
 </context>
 <context>
@@ -283,7 +283,7 @@
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="16"/>
         <source>Options</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Version\n</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="33"/>
@@ -401,25 +401,21 @@
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="27"/>
         <source>Inert themas : </source>
-        <oldsource>Thema count</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="28"/>
         <source>Golden themas : </source>
-        <oldsource>Best Thema</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="29"/>
         <source>Silver themas : </source>
-        <oldsource>Inert themas</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="30"/>
         <source>Rusty themas : </source>
-        <oldsource>Golden themas</oldsource>
         <translation type="unfinished"></translation>
     </message>
 </context>
