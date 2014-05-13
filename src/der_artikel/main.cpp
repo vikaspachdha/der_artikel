@@ -164,6 +164,7 @@ int main(int argc, char *argv[])
     QQmlComponent component(&appEngine,QUrl("qrc:/res/qml/der_artikel/main.qml"),&app);
     QObject* root_item = component.create();
     manager.SetRootItem(root_item);
+    qDebug()<<component.errors();
 
     int return_code = app.exec();
     LOG_INFO("Application end");

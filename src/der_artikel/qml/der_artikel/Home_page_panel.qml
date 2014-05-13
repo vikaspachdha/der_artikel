@@ -31,7 +31,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: rate_btn.horizontalCenter
             buttonText: qsTr("Rate App") + settings.i18n_empty_string
-            onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available"),1200)
+            onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available."),1200)
         }
     }
 

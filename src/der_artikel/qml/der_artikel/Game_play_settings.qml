@@ -106,7 +106,7 @@ Item {
         onUpdateResponse: {
             switch(response_code) {
             case ThemaUpdater.UPDATE_NOT_AVAILABLE:
-                showMessage(qsTr("Thema update"), qsTr("No thema update available"),1200)
+                showMessage(qsTr("Thema update"), qsTr("No thema update available."),1200)
                 break;
             }
         }

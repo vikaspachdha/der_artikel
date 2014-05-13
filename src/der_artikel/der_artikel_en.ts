@@ -29,7 +29,7 @@
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
-        <source>No update is available</source>
+        <source>No update is available.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -94,11 +94,6 @@
         <source>Thema update</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="109"/>
-        <source>No thema update available</source>
-        <translation type="unfinished"></translation>
-    </message>
 </context>
 <context>
     <name>HelpPage_C</name>
@@ -152,6 +147,39 @@
     </message>
 </context>
 <context>
+    <name>HomePage</name>
+    <message>
+        <location filename="qml/der_artikel/Home_page.qml" line="9"/>
+        <source>Thema</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Home_page.qml" line="10"/>
+        <source>Result</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Home_page.qml" line="11"/>
+        <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Home_page.qml" line="12"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Home_page.qml" line="13"/>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Home_page.qml" line="14"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Home_page_panel</name>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="16"/>
@@ -170,7 +198,7 @@
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
-        <source>This feature is not available</source>
+        <source>This feature is not available.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -178,7 +206,8 @@
     <name>Manager_C</name>
     <message>
         <location filename="manager.cpp" line="374"/>
-        <source>Do you realy want to quit ?</source>
+        <source>Do you realy want to quit?</source>
+        <oldsource>Do you realy want to quit ?</oldsource>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -226,7 +255,7 @@
     </message>
     <message>
         <location filename="../data/result.cpp" line="354"/>
-        <source>Execelent</source>
+        <source>Excellent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -442,7 +471,7 @@
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page_panel.qml" line="35"/>
-        <source>This feature is not available</source>
+        <source>This feature is not available.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

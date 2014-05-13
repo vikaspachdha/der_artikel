@@ -371,7 +371,7 @@ void Manager_C::quit()
 void Manager_C::quitPrivate()
 {
     LOG_INFO("Quitting Application");
-    if( MessageBar_C::showMsg(tr("Do you realy want to quit ?"),"") == MessageBar_C::ACCEPTED) {
+    if( MessageBar_C::showMsg(tr("Do you realy want to quit?"),"") == MessageBar_C::ACCEPTED) {
         QGuiApplication::quit();
     }
 }

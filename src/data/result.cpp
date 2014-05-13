@@ -351,7 +351,7 @@ void Result_C::updateStringData()
     _unplayed_string = tr("Unplayed : %1").arg(_unplayed_count);
 
     if(_grade >= GRADE_AP) {
-        _grade_string = tr("Execelent");
+        _grade_string = tr("Excellent");
     } else if(_grade >= GRADE_A) {
         _grade_string = tr("Very good");
     } else if (_grade >= GRADE_BP) {

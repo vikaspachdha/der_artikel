@@ -32,7 +32,7 @@ Page_panel
             width:parent.width
             text_anchors.horizontalCenter: replay_btn.horizontalCenter
             buttonText: qsTr("Update") + settings.i18n_empty_string
-            onActivated: showMessage(qsTr("Latest version"), qsTr("No update is available"),1200)
+            onActivated: showMessage(qsTr("Latest version"), qsTr("No update is available."),1200)
         }
     }
 }
