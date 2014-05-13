@@ -7,7 +7,7 @@
         <location filename="qml/der_artikel/About_page.qml" line="27"/>
         <source>Version
 </source>
-        <translation>संस्करण\n</translation>
+        <translation>संस्करण</translation>
     </message>
 </context>
 <context>
@@ -30,7 +30,7 @@
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
         <source>No update is available.</source>
-        <translation type="unfinished"></translation>
+        <translation>कोई नवीनीकरण उपलब्ध नहीं है.</translation>
     </message>
 </context>
 <context>
@@ -38,7 +38,7 @@
     <message>
         <location filename="qml/der_artikel/Button.qml" line="28"/>
         <source>Button</source>
-        <translation type="unfinished"></translation>
+        <translation>बटन</translation>
     </message>
 </context>
 <context>
@@ -46,17 +46,17 @@
     <message>
         <location filename="qml/der_artikel/Color_theme_settings.qml" line="24"/>
         <source>Deep blue</source>
-        <translation type="unfinished"></translation>
+        <translation>गहरा नीला</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Color_theme_settings.qml" line="33"/>
         <source>Tangy Orange</source>
-        <translation type="unfinished"></translation>
+        <translation>चमकीला नारंगी</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Color_theme_settings.qml" line="42"/>
         <source>Dark night</source>
-        <translation type="unfinished"></translation>
+        <translation>रात्रि अंदाज़</translation>
     </message>
 </context>
 <context>
@@ -77,22 +77,22 @@
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="12"/>
         <source>Word info Time (in msecs)</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्द सूचना का समय.(मिली सेकंड)</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="67"/>
         <source>Thema update url</source>
-        <translation type="unfinished"></translation>
+        <translation>अपडेट का url</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="97"/>
         <source>Update thema</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दकोश अपडेट</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="109"/>
         <source>Thema update</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दकोश अपडेट</translation>
     </message>
 </context>
 <context>
@@ -128,22 +128,22 @@
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="34"/>
         <source>General</source>
-        <translation type="unfinished">सामान्य</translation>
+        <translation>सामान्य</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="43"/>
         <source>Rules</source>
-        <translation type="unfinished">नियम</translation>
+        <translation>नियम</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="52"/>
         <source>Scoring</source>
-        <translation type="unfinished">अंक</translation>
+        <translation>अंक</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="61"/>
         <source>Contact</source>
-        <translation type="unfinished">संपर्क</translation>
+        <translation>संपर्क</translation>
     </message>
 </context>
 <context>
@@ -151,32 +151,32 @@
     <message>
         <location filename="qml/der_artikel/Home_page.qml" line="9"/>
         <source>Thema</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दकोश</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page.qml" line="10"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>परिणाम</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page.qml" line="11"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>आंकड़े</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page.qml" line="12"/>
         <source>Help</source>
-        <translation type="unfinished"></translation>
+        <translation>सहायता</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page.qml" line="13"/>
         <source>Settings</source>
-        <translation type="unfinished">विकल्प</translation>
+        <translation>सेटिंग्स</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page.qml" line="14"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>About</translation>
     </message>
 </context>
 <context>
@@ -191,22 +191,22 @@
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="16"/>
         <source>Home</source>
-        <translation type="unfinished">मुख पृष्ठ</translation>
+        <translation>मुख पृष्ठ</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="33"/>
         <source>Rate App</source>
-        <translation type="unfinished"></translation>
+        <translation>रेटिंग</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
         <source>Sorry</source>
-        <translation type="unfinished"></translation>
+        <translation>खेद</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
         <source>This feature is not available.</source>
-        <translation type="unfinished"></translation>
+        <translation>यह विकल्प उपलब्ध नहीं है.</translation>
     </message>
 </context>
 <context>
@@ -215,7 +215,7 @@
         <location filename="manager.cpp" line="374"/>
         <source>Do you realy want to quit?</source>
         <oldsource>Do you realy want to quit ?</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>क्या आप वास्तव में बंद करना चाहते हैं?</translation>
     </message>
 </context>
 <context>
@@ -223,12 +223,12 @@
     <message>
         <location filename="message_bar.h" line="87"/>
         <source>Ok</source>
-        <translation type="unfinished"></translation>
+        <translation>हां</translation>
     </message>
     <message>
         <location filename="message_bar.h" line="88"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>नहीं</translation>
     </message>
 </context>
 <context>
@@ -237,63 +237,63 @@
         <location filename="../data/result.cpp" line="48"/>
         <location filename="../data/result.cpp" line="136"/>
         <source>No game data.</source>
-        <translation type="unfinished"></translation>
+        <translation>कोई डेटा उपलब्ध नहीं है|</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="50"/>
         <location filename="../data/result.cpp" line="138"/>
         <source>Result</source>
-        <translation type="unfinished"></translation>
+        <translation>परिणाम</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="349"/>
         <source>Score : %1 %</source>
-        <translation type="unfinished"></translation>
+        <translation>अंक : %1 %</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="350"/>
         <source>Mistakes : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>गलतियाँ : %1</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="351"/>
         <source>Unplayed : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>छोड़े गए %1</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="354"/>
         <source>Excellent</source>
-        <translation type="unfinished"></translation>
+        <translation>अत्युत्तम</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="356"/>
         <source>Very good</source>
-        <translation type="unfinished"></translation>
+        <translation>बहुत अच्छा</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="358"/>
         <source>Good</source>
-        <translation type="unfinished"></translation>
+        <translation>अच्छा</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="360"/>
         <source>Satisfactory</source>
-        <translation type="unfinished"></translation>
+        <translation>संतोषजनक</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="362"/>
         <source>Sufficient</source>
-        <translation type="unfinished"></translation>
+        <translation>पर्याप्त</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="364"/>
         <source>Failed</source>
-        <translation type="unfinished"></translation>
+        <translation>असफल</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="367"/>
         <source>Result : </source>
-        <translation type="unfinished"></translation>
+        <translation>परिणाम : </translation>
     </message>
 </context>
 <context>
@@ -301,17 +301,17 @@
     <message>
         <location filename="qml/der_artikel/Result_page.qml" line="10"/>
         <source>Mistakes</source>
-        <translation type="unfinished"></translation>
+        <translation>गलतियाँ</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page.qml" line="10"/>
         <source>No Mistakes</source>
-        <translation type="unfinished"></translation>
+        <translation>कोई गलती नहीं है</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page.qml" line="28"/>
         <source>Incorrect       Correct</source>
-        <translation type="unfinished"></translation>
+        <translation>गलत       सही</translation>
     </message>
 </context>
 <context>
@@ -319,17 +319,17 @@
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="16"/>
         <source>Options</source>
-        <translation type="unfinished">विकल्प</translation>
+        <translation>विकल्प</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="33"/>
         <source>Replay</source>
-        <translation type="unfinished"></translation>
+        <translation>दुबारा</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="41"/>
         <source>Stats</source>
-        <translation type="unfinished"></translation>
+        <translation>आंकड़े</translation>
     </message>
 </context>
 <context>
@@ -337,12 +337,12 @@
     <message>
         <location filename="qml/der_artikel/Result_page_title.qml" line="79"/>
         <source>Lost experience : </source>
-        <translation type="unfinished"></translation>
+        <translation>घटाए अंक : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page_title.qml" line="81"/>
         <source>Gained experience : </source>
-        <translation type="unfinished"></translation>
+        <translation>अंकों की बढ़त : </translation>
     </message>
 </context>
 <context>
@@ -388,12 +388,12 @@
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="46"/>
         <source>Sorry</source>
-        <translation type="unfinished"></translation>
+        <translation>खेद</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="46"/>
         <source>This feature is not available</source>
-        <translation type="unfinished"></translation>
+        <translation>यह विकल्प उपलब्ध नहीं है</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="54"/>
@@ -403,7 +403,7 @@
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="63"/>
         <source>Game</source>
-        <translation type="unfinished"></translation>
+        <translation>खेल</translation>
     </message>
 </context>
 <context>
@@ -419,7 +419,7 @@
     <message>
         <location filename="pages/stats_page.cpp" line="69"/>
         <source>None</source>
-        <translation type="unfinished"></translation>
+        <translation>नहीं है</translation>
     </message>
 </context>
 <context>
@@ -427,36 +427,36 @@
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="25"/>
         <source>Thema count : </source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दकोश संख्या : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="26"/>
         <source>Best Thema : </source>
-        <translation type="unfinished"></translation>
+        <translation>सर्वश्रेष्ठ शब्दकोश : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="27"/>
         <source>Inert themas : </source>
         <oldsource>Thema count</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>स्थिर शब्दकोश : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="28"/>
         <source>Golden themas : </source>
         <oldsource>Best Thema</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>स्वर्ण शब्दकोश : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="29"/>
         <source>Silver themas : </source>
         <oldsource>Inert themas</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>रजत शब्दकोश : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="30"/>
         <source>Rusty themas : </source>
         <oldsource>Golden themas</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>जंग शब्दकोश : </translation>
     </message>
 </context>
 <context>
@@ -464,22 +464,22 @@
     <message>
         <location filename="qml/der_artikel/Stats_page_panel.qml" line="17"/>
         <source>Lets Brag!</source>
-        <translation type="unfinished"></translation>
+        <translation>शेख़ी मारो!</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page_panel.qml" line="34"/>
         <source>Share</source>
-        <translation type="unfinished"></translation>
+        <translation>शेयर</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page_panel.qml" line="35"/>
         <source>Sorry</source>
-        <translation type="unfinished"></translation>
+        <translation>खेद</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page_panel.qml" line="35"/>
         <source>This feature is not available.</source>
-        <translation type="unfinished"></translation>
+        <translation>यह विकल्प उपलब्ध नहीं है.</translation>
     </message>
 </context>
 <context>
@@ -487,7 +487,7 @@
     <message>
         <location filename="qml/der_artikel/Stats_page_title.qml" line="8"/>
         <source>Statistics</source>
-        <translation type="unfinished"></translation>
+        <translation>आंकड़े</translation>
     </message>
 </context>
 <context>
@@ -495,17 +495,17 @@
     <message>
         <location filename="qml/der_artikel/Thema_item.qml" line="35"/>
         <source>Author :</source>
-        <translation type="unfinished"></translation>
+        <translation>लेखक : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_item.qml" line="58"/>
         <source>Last Played :</source>
-        <translation type="unfinished"></translation>
+        <translation>पिछली बार खेला : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_item.qml" line="122"/>
         <source>Words</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्द</translation>
     </message>
 </context>
 <context>
@@ -513,32 +513,32 @@
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="15"/>
         <source>Game Level</source>
-        <translation type="unfinished"></translation>
+        <translation>खेल स्तर</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="34"/>
         <source>Easy</source>
-        <translation type="unfinished"></translation>
+        <translation>आसान</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="43"/>
         <source>Moderate</source>
-        <translation type="unfinished"></translation>
+        <translation>मध्यम</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="52"/>
         <source>Expert</source>
-        <translation type="unfinished"></translation>
+        <translation>माहिर</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="61"/>
         <source>Practice</source>
-        <translation type="unfinished"></translation>
+        <translation>अभ्यास</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="74"/>
         <source>Play</source>
-        <translation type="unfinished"></translation>
+        <translation>खेलें</translation>
     </message>
 </context>
 <context>
@@ -546,42 +546,42 @@
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="52"/>
         <source>Multi Mode - Coming soon</source>
-        <translation type="unfinished"></translation>
+        <translation>बहु मोड - जल्द ही आ रहा है</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="54"/>
         <source>Select Thema</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दकोश का चयन करें</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="76"/>
         <source>Experience : </source>
-        <translation type="unfinished"></translation>
+        <translation>अनुभव : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="96"/>
         <source>State - </source>
-        <translation type="unfinished"></translation>
+        <translation>दशा</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="99"/>
         <source>Inert</source>
-        <translation type="unfinished"></translation>
+        <translation>स्थिर</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="102"/>
         <source>Gold</source>
-        <translation type="unfinished"></translation>
+        <translation>स्वर्ण</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="105"/>
         <source>Silver</source>
-        <translation type="unfinished"></translation>
+        <translation>रजत</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="108"/>
         <source>Rusty</source>
-        <translation type="unfinished"></translation>
+        <translation>जंग</translation>
     </message>
 </context>
 <context>
@@ -589,7 +589,7 @@
     <message>
         <location filename="pages/words_page.cpp" line="83"/>
         <source>Loading thema ...</source>
-        <translation type="unfinished"></translation>
+        <translation>शब्दकोश लोड हो रहा है...</translation>
     </message>
 </context>
 <context>
@@ -597,32 +597,32 @@
     <message>
         <location filename="qml/der_artikel/Words_page_panel.qml" line="15"/>
         <source>Article</source>
-        <translation type="unfinished"></translation>
+        <translation>लेख</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Words_page_panel.qml" line="35"/>
         <source>Der</source>
-        <translation type="unfinished"></translation>
+        <translation>Der</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Words_page_panel.qml" line="47"/>
         <source>Die</source>
-        <translation type="unfinished"></translation>
+        <translation>Die</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Words_page_panel.qml" line="59"/>
         <source>Das</source>
-        <translation type="unfinished"></translation>
+        <translation>Das</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Words_page_panel.qml" line="70"/>
         <source>Info</source>
-        <translation type="unfinished"></translation>
+        <translation>जानकारी</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Words_page_panel.qml" line="87"/>
         <source>Finish</source>
-        <translation type="unfinished"></translation>
+        <translation>समाप्ति</translation>
     </message>
 </context>
 <context>
@@ -630,7 +630,7 @@
     <message>
         <location filename="qml/der_artikel/Words_page_title.qml" line="53"/>
         <source>Remaining time</source>
-        <translation type="unfinished"></translation>
+        <translation>शेष समय</translation>
     </message>
 </context>
 </TS>
