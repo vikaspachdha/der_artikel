@@ -309,6 +309,8 @@ void ThemaBuilder_C::OnIndex()
         QFile index_file(file_path + QDir::separator() + "index.csv");
         if(index_file.open(QIODevice::WriteOnly)) {
             QTextStream write_stream(&index_file);
+            write_stream.setCodec("UTF-8");
+            write_stream<<ARTIKEL::INDEX_FILE_TOKEN;
             ThemaLoader_C thema_loader;
             foreach(QFileInfo thema_file, thema_files) {
                 Thema_C* thema = thema_loader.loadThema(thema_file.absoluteFilePath());

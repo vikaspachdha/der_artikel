@@ -62,7 +62,9 @@ void FileDownloader_C::startDownload(QUrl url)
         LOG_INFO("File downloader :: Starting file download URL - " + url.toString());
         stopDownload();
         _file_data.clear();
-        _network_reply = _network_manager.get(QNetworkRequest(url));
+        QNetworkRequest fileRequest(url);
+        fileRequest.setHeader(QNetworkRequest::UserAgentHeader,"Mozilla Firefox");
+        _network_reply = _network_manager.get(fileRequest);
         connect(_network_reply,SIGNAL(downloadProgress(qint64, qint64)), this, SLOT(onDownloadProgress(qint64, qint64)));
         connect(_network_reply,SIGNAL(error(QNetworkReply::NetworkError)), this, SLOT(onError(QNetworkReply::NetworkError)));
         connect(_network_reply,SIGNAL(finished()), this, SLOT(onFinished()));
@@ -96,10 +98,15 @@ void FileDownloader_C::stopDownload()
  ******************************************************************************/
 void FileDownloader_C::onDownloadProgress(qint64 bytes_recieved, qint64 total_bytes)
 {
+    double progress = 0;
+    if(total_bytes !=0) {
+        progress = double(bytes_recieved)/total_bytes;
+    }
+
     LOG_INFO(QString("File downloader :: Download progress %1 bytes %2").
              arg(bytes_recieved).
-             arg((bytes_recieved)/total_bytes));
-    emit downloadProgress(double(bytes_recieved)/total_bytes);
+             arg(progress));
+    emit downloadProgress(progress);
 }
 
 //******************************************************************************

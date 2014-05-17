@@ -52,14 +52,17 @@ class ThemaUpdater_C : public QObject
 {
     Q_OBJECT
     Q_ENUMS(UpdateResponse_TP)
+
 public:
 
     //! Update response codes
     enum UpdateResponse_TP {
-        UPDATE_AVAILABLE=1, //! Update is available.
+        UPDATE_STARTED = 1, //! Update process started.
+        UPDATE_AVAILABLE, //! Update is available.
         UPDATE_NOT_AVAILABLE, //! Update is not available.
         UPDATE_ERROR, //! Error encountered while updating.
-        UPDATE_FINISHED //! Update finished.
+        UPDATE_FINISHED, //! Update finished.
+        UPDATE_ABORTED //! Update process is aborted.
     };
 
 public:
@@ -69,14 +72,19 @@ public:
     Q_INVOKABLE void checkUpdate();
 
 private slots:
-    void onFileDownloadFinished();
+    void onIndexFileDownloadFinished();
     void onFileDownloadAborted();
     void onNewthemaLoaded(Thema_C *new_thema);
     void onBuildLocalDataFinished();
+    void onThemaLoadProgress(double progress);
 
 signals:
     //! Emitted when a update response is received.
     void updateResponse(UpdateResponse_TP response_code);
+
+    //! Emitted to notify progress. String provides the information of update stage
+    //! and value is progess that ranges between 0 to 1 where 1 is 100 %.
+    void updateProgress(QString info, double progress);
 
 private:
     bool ParseIndexFile(QByteArray file_data, QHash<QString, QDateTime>& parsed_data);
@@ -93,6 +101,8 @@ private:
     QHash<QString, QDateTime> _remote_file_data;
     //! File operations.
     QVector<ThemaFileOperation_I*> _file_operations;
+    //! Update progress.
+    double _progress;
 };
 
 #endif // THEMA_UPDATER_H

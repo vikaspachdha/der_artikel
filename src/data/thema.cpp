@@ -409,7 +409,6 @@ bool Thema_C::Write(QIODevice* pDevice)
     if(pDevice) {
         QDomDocument domDocument("DerArtikel");
 
-        QDataStream out(pDevice);
         QDomElement root = domDocument.createElement("Root");
         root.setAttribute("Version", QString::number(APP_VERSION));
 
@@ -417,7 +416,8 @@ bool Thema_C::Write(QIODevice* pDevice)
 
         domDocument.appendChild(root);
         QByteArray xml_data = domDocument.toByteArray(4);
-        out<<qCompress(xml_data,ARTIKEL::COMPRESSION_LEVEL);
+        QByteArray comressed_data = qCompress(xml_data,ARTIKEL::COMPRESSION_LEVEL);
+        success = pDevice->write(comressed_data,comressed_data.length()) == -1 ? false :true;
     } else {
         success = false;
     }

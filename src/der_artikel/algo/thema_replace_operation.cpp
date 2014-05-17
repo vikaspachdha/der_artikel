@@ -91,8 +91,8 @@ void ThemaReplaceOperation_C::onFileDownloadFinished()
     int exit_code = -1;
     QFile file(_local_file_path);
     if (file.open(QFile::WriteOnly)) {
-        QDataStream out(&file);
-        out.writeRawData(file_data.data(),file_data.size());
+        file.write(file_data.data(),file_data.size());
+        file.flush();
         file.close();
         ThemaLoader_C thema_loader;
         Thema_C* thema = thema_loader.loadThema(_local_file_path);

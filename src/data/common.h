@@ -33,6 +33,9 @@
 namespace ARTIKEL
 {
     static const int COMPRESSION_LEVEL = 5;
+
+    static const char* INDEX_FILE_TOKEN = "der_artikel_thema_index";
+
     QString GetResourcePath(const QString &path);
 }
 #endif // COMMON_H

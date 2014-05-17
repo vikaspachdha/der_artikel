@@ -37,6 +37,7 @@
 #include <iostream>
 
 // Framework and lib includes
+#include "log4qt/consoleappender.h"
 #include "log4qt/fileappender.h"
 #include "log4qt/log_defines.h"
 #include "log4qt/logger.h"
@@ -108,6 +109,9 @@ void setUpLogging(QObject* parent=0)
     Log4Qt::Logger::rootLogger()->addAppender(p_appender);
 
 #ifdef QT_DEBUG
+    Log4Qt::ConsoleAppender* console_appender = new Log4Qt::ConsoleAppender(p_layout,Log4Qt::ConsoleAppender::STDOUT_TARGET,parent);
+    console_appender->activateOptions();
+    Log4Qt::Logger::rootLogger()->addAppender(console_appender);
     Log4Qt::LogManager::setThreshold(Log4Qt::Level::ALL_INT);
 #else
     Log4Qt::LogManager::setThreshold(Log4Qt::Level::INFO_INT);

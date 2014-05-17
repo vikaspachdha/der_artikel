@@ -110,5 +110,9 @@ Item {
                 break;
             }
         }
+
+        onUpdateProgress: {
+            console.log(info + " : "+progress*100)
+        }
     }
 }

@@ -58,9 +58,10 @@
  ******************************************************************************/
 ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
     QObject(parent),
-    _manager(manager)
+    _manager(manager),
+    _progress(0.0)
 {
-    connect(&_file_downloader, SIGNAL(downloadFinished()), this, SLOT(onFileDownloadFinished()));
+    connect(&_file_downloader, SIGNAL(downloadFinished()), this, SLOT(onIndexFileDownloadFinished()));
     connect(&_file_downloader, SIGNAL(downloadAborted()), this, SLOT(onFileDownloadAborted()));
 }
 
@@ -71,6 +72,9 @@ ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
  ******************************************************************************/
 void ThemaUpdater_C::checkUpdate()
 {
+    _progress = 0.0;
+    emit updateProgress(tr("Checking for thema update."), _progress);
+    emit updateResponse(UPDATE_STARTED);
     reset();
     QUrl url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/index.csv");
     if(url.isValid()) {
@@ -78,6 +82,8 @@ void ThemaUpdater_C::checkUpdate()
         _file_downloader.startDownload(url);
     } else {
         LOG_INFO(QString("Thema updater :: Cannot start update from %1. Invalid url").arg(url.toString()));
+        emit updateProgress(tr("Invalid url"), _progress);
+        emit updateResponse(UPDATE_ERROR);
     }
 }
 
@@ -86,8 +92,10 @@ void ThemaUpdater_C::checkUpdate()
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
-void ThemaUpdater_C::onFileDownloadFinished()
+void ThemaUpdater_C::onIndexFileDownloadFinished()
 {
+    _progress = 0.05;
+    emit updateProgress(tr("Parsing server data."), _progress);
     QByteArray file_data = _file_downloader.fileData();
     QHash<QString, QDateTime> parsed_data;
     if(ParseIndexFile(file_data, parsed_data)) {
@@ -95,6 +103,9 @@ void ThemaUpdater_C::onFileDownloadFinished()
             _remote_file_data = parsed_data;
             buildLocalData();
         }
+    } else {
+        emit updateProgress(tr("Parsing error. Aborting update."), _progress);
+        emit updateResponse(UPDATE_ERROR);
     }
 }
 
@@ -106,7 +117,8 @@ void ThemaUpdater_C::onFileDownloadFinished()
 void ThemaUpdater_C::onFileDownloadAborted()
 {
     LOG_WARN("Thema updater :: File download aborted.");
-    emit updateResponse(UPDATE_ERROR);
+    emit updateProgress(tr("Network issue. Aborting update."), _progress);
+    emit updateResponse(UPDATE_ABORTED);
 }
 
 //******************************************************************************
@@ -126,24 +138,32 @@ bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, QDateTi
     if(!data.isEmpty()) {
         // Split text into lines
         QStringList lines = data.split(QRegExp("[\r\n]"),QString::SkipEmptyParts);
-        // Parse each line
-        foreach(QString line, lines) {
-            success = true;
-            QStringList file_params = line.split(";");
-            // Parse file name and update time.
-            if(file_params.count() > 1) {
-                QString file_name = file_params.at(0).toLower();
-                QString update_time_str = file_params.at(1);
-                bool ok = false;
-                qint64 msecs = update_time_str.toLongLong(&ok);
-                QDateTime update_date = QDateTime::fromMSecsSinceEpoch(msecs);
-                if(update_date.isValid() && !file_name.isEmpty()) {
-                    // Params are parsed, add to structure
-                    LOG_INFO(QString("Thema updater :: Parsed index file entry %1:%2").arg(file_name).arg(update_date.toString()));
-                    parsed_data[file_name] = update_date;
+        if( lines.takeFirst().compare(QString(ARTIKEL::INDEX_FILE_TOKEN)) == 0 ) {
+
+            // Parse each line
+            foreach(QString line, lines) {
+                success = true;
+                QStringList file_params = line.split(";");
+                // Parse file name and update time.
+                if(file_params.count() > 1) {
+                    QString file_name = file_params.at(0);
+                    QString update_time_str = file_params.at(1);
+                    bool ok = false;
+                    qint64 msecs = update_time_str.toLongLong(&ok);
+                    QDateTime update_date = QDateTime::fromMSecsSinceEpoch(msecs);
+                    if(update_date.isValid() && !file_name.isEmpty()) {
+                        // Params are parsed, add to structure
+                        LOG_INFO(QString("Thema updater :: Parsed index file entry %1:%2").arg(file_name).arg(update_date.toString()));
+                        parsed_data[file_name] = update_date;
+                    }
                 }
             }
+
+        } else {
+            LOG_ERROR("Thema updater :: Invalid Index file.");
+            success = false;
         }
+
     }
     return success;
 }
@@ -156,15 +176,22 @@ bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, QDateTi
 bool ThemaUpdater_C::executeOperations()
 {
     bool success = true;
+    double factor = 0.7 / _file_operations.count();
     if(_file_operations.count() >0) {
         LOG_INFO("Thema updater :: Executing operations.");
         foreach (ThemaFileOperation_I* operation, _file_operations) {
             operation->execute();
+            _progress += factor;
+            updateProgress(tr("Downloading thema files."),_progress);
         }
-        _manager.LoadDefaultThemas();
+        _progress = 1.0;
+        updateProgress(tr("Update finished."),_progress);
         emit updateResponse(UPDATE_FINISHED);
+        _manager.LoadDefaultThemas();
     } else {
         LOG_WARN("Thema updater :: No operations to execute.");
+        _progress = 1.0;
+        updateProgress(tr("No update is available."),_progress);
         emit updateResponse(UPDATE_NOT_AVAILABLE);
     }
     return success;
@@ -177,11 +204,14 @@ bool ThemaUpdater_C::executeOperations()
  ******************************************************************************/
 void ThemaUpdater_C::buildLocalData()
 {
+    _progress = 0.1;
+    emit updateProgress(tr("Comparing current thema's."), _progress);
     // thema_loader shall be deleted automatically.
     LOG_INFO("Thema updater :: building local data");
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
     connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), this, SLOT(onNewthemaLoaded(Thema_C*)) );
     connect(thema_loader,SIGNAL(finishedLoading()),this, SLOT(onBuildLocalDataFinished()) );
+    connect(thema_loader,SIGNAL(updateProgress(double)),this, SLOT(onThemaLoadProgress(double)));
     thema_loader->startLoading();
 }
 
@@ -248,5 +278,17 @@ void ThemaUpdater_C::onBuildLocalDataFinished()
         LOG_INFO(QString("Thema updater :: Added add operation %1").arg(remote_file_url.toString()));
     }
 
+    _progress = 0.30;
+    emit updateProgress(tr("Comparing current thema's."), _progress);
     executeOperations();
+}
+
+//******************************************************************************
+/*! \brief  Called to notify the thema loading progress.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void ThemaUpdater_C::onThemaLoadProgress(double progress)
+{
+    emit updateProgress(tr("Comparing current thema's."), _progress + (progress*0.20));
 }

@@ -84,8 +84,8 @@ void ThemaAddOperation_C::onFileDownloadFinished()
     int exit_code = -1;
     QFile file(_local_file_path);
     if (file.open(QFile::WriteOnly)) {
-        QDataStream out(&file);
-        out<<file_data;
+        file.write(file_data, file_data.length());
+        file.flush();
         file.close();
         exit_code = 0;
     }
