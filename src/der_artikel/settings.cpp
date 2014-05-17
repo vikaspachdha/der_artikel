@@ -63,7 +63,7 @@ Settings_C::Settings_C(QObject *parent) :
     loadSettings();
     LOG_DEBUG("Settings_C::constructor");
     updateLangauge();
-    _thema_remote_path = "/Users/vikas/Dropbox/German/thema";
+    _thema_remote_path = "vystosi.com/der_artikel/thema";
 #ifdef NO_GRAPHICAL_EFFECTS
     LOG_INFO("No graphical effects");
 #else
