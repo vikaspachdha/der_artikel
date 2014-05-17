@@ -71,11 +71,15 @@ void ThemaLoader_C::run()
     QStringList nameFilters;
     nameFilters<<"*.AKL";
     QFileInfoList thema_files= root_thema_dir.entryInfoList(nameFilters,QDir::Files | QDir::NoSymLinks|QDir::NoDotAndDotDot);
-
+    int file_count = thema_files.count();
+    int files_loaded_count = 0;
+    emit updateProgress(0.0);
     foreach(QFileInfo thema_file, thema_files) {
         Thema_C* thema = loadThema(thema_file.absoluteFilePath());
         if(thema) {
             emit themaLoaded(thema);
+            ++files_loaded_count;
+            emit updateProgress( (double)files_loaded_count/file_count );
         }
     }
     emit finishedLoading();

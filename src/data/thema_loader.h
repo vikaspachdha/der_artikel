@@ -67,6 +67,10 @@ signals:
 
     //! Emitted when asynchronously thema loading finishes.
     void finishedLoading();
+
+    //! emitted to notify progess on asynchronous load.
+    void updateProgress(double);
+
 private:
 
     //! Stores absolute path to default thema directory.
