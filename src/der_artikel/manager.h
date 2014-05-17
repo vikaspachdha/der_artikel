@@ -133,8 +133,7 @@ public:
     GameLevel gameLevel() const { return _game_level; }
     void setGameLevel(GameLevel game_level);
 
-    //! True if a thema selection is available, false otherwise.
-    bool isThemaSelected() const { return _thema_selected; }
+    bool isThemaSelected() const;
 
     //! Returns the version string.
     Q_INVOKABLE QString versionString();
@@ -200,8 +199,6 @@ private:
     ThemaModel_C* _thema_model;
     //! Game level selected.
     GameLevel _game_level;
-    //! True if any thema is selected by the user.
-    bool _thema_selected;
     //! Application image provider
     ImageProvider_C* _image_provider;
     //! Event loop for message bar.

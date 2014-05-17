@@ -29,6 +29,8 @@ Page_panel
         Button {
             id:replay_btn
             width:parent.width
+            // score < 0 means no result is produced so far.
+            visible: manager.thema_selected && (currentResult.score > -1)
             text_anchors.horizontalCenter: replay_btn.horizontalCenter
             buttonText: qsTr("Replay") + settings.i18n_empty_string
             onActivated: manager.current_page = Manager.WORDS_PAGE

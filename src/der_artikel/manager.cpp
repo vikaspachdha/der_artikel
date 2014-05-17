@@ -68,7 +68,6 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _current_page(INVALID_PAGE),
     _current_result(0),
     _game_level(EASY),
-    _thema_selected(false),
     _image_provider(new ImageProvider_C)
 {    
     LOG_DEBUG("Manager_C::Construtor");
@@ -181,6 +180,18 @@ void Manager_C::setGameLevel(Manager_C::GameLevel game_level)
 }
 
 //******************************************************************************
+/*! \brief Returns selected state of thema.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return bool : True if a thema selection is available, false otherwise.
+ ******************************************************************************/
+bool Manager_C::isThemaSelected() const
+{
+    return _thema_model->GetSelectedThema() ? true: false;
+}
+
+//******************************************************************************
 /*! \brief Return the version string.
  *
  *  \author Vikas Pachdha
@@ -222,10 +233,8 @@ void Manager_C::onThemaSelectionChanged()
     Q_ASSERT(_thema_model);
     Thema_C* selected_thema = _thema_model->GetSelectedThema();
     if(selected_thema) {
-        _thema_selected = true;
         LOG_INFO(QString("Manager :: Thema selection changed to %1").arg(selected_thema->name()));
     } else {
-        _thema_selected = false;
         LOG_INFO(QString("Manager :: Thema selection changed to none"));
     }
     emit themaSelectionStateChanged();
