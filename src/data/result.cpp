@@ -27,7 +27,6 @@
  ******************************************************************************/
 
 // System includes
-#include <QDebug>
 #include <QEvent>
 #include <QLocale>
 #include <QDomElement>

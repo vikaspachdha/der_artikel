@@ -27,13 +27,17 @@
  ******************************************************************************/
 #ifndef RESULT_H
 #define RESULT_H
-#include <QObject>
+
+// System includes
 #include <QDateTime>
 #include <QList>
 #include <QVariantList>
+
+// Project includes
 #include "word.h"
 #include "word_model.h"
 
+// Forward declarations.
 class QDomElement;
 class Word_C;
 
