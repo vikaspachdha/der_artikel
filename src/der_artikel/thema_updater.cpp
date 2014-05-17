@@ -73,8 +73,8 @@ ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
 void ThemaUpdater_C::checkUpdate()
 {
     _progress = 0.0;
-    emit updateProgress(tr("Checking for thema update."), _progress);
     emit updateResponse(UPDATE_STARTED);
+    emit updateProgress(tr("Checking for thema update."), _progress);
     reset();
     QUrl url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/index.csv");
     if(url.isValid()) {
@@ -82,6 +82,7 @@ void ThemaUpdater_C::checkUpdate()
         _file_downloader.startDownload(url);
     } else {
         LOG_INFO(QString("Thema updater :: Cannot start update from %1. Invalid url").arg(url.toString()));
+        _progress = 1.0;
         emit updateProgress(tr("Invalid url"), _progress);
         emit updateResponse(UPDATE_ERROR);
     }
@@ -104,6 +105,7 @@ void ThemaUpdater_C::onIndexFileDownloadFinished()
             buildLocalData();
         }
     } else {
+        _progress = 1.0;
         emit updateProgress(tr("Parsing error. Aborting update."), _progress);
         emit updateResponse(UPDATE_ERROR);
     }
@@ -117,6 +119,7 @@ void ThemaUpdater_C::onIndexFileDownloadFinished()
 void ThemaUpdater_C::onFileDownloadAborted()
 {
     LOG_WARN("Thema updater :: File download aborted.");
+    _progress = 1.0;
     emit updateProgress(tr("Network issue. Aborting update."), _progress);
     emit updateResponse(UPDATE_ABORTED);
 }

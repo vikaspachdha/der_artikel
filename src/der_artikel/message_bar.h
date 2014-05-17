@@ -83,19 +83,19 @@ public:
 
     Q_INVOKABLE void setAccepted(bool accepted);
 
-    static RetrunType_TP showMsg(QString title, QString msg,
+    Q_INVOKABLE static RetrunType_TP showMsg(QString title, QString msg,
                                      QString accept_str = tr("Ok"),
                                      QString reject_str = tr("Cancel"),
                                      MsgType_TP type = INFO);
 
-    static void showMsg(QString title, QString msg,
+    Q_INVOKABLE static void showMsg(QString title, QString msg,
                             int duration,
                             MsgType_TP type = INFO);
 
-    static void showMsgAsync(QString title, QString msg,
+    Q_INVOKABLE static void showMsgAsync(QString title, QString msg,
                                  MsgType_TP type = INFO);
 
-    static void closeMsg();
+    Q_INVOKABLE static void closeMsg();
 
 private:
     //! Event loop for message bar.

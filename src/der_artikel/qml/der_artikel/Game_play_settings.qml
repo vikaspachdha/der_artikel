@@ -101,18 +101,37 @@ Item {
         }
     }
 
+    Timer {
+        id:msg_close_timer
+        interval: 1500
+        repeat: false
+        onTriggered: {
+            messageBarInstance.closeMsg()
+        }
+    }
+
     Connections {
         target:themaUpdater
         onUpdateResponse: {
+
             switch(response_code) {
-            case ThemaUpdater.UPDATE_NOT_AVAILABLE:
-                showMessage(qsTr("Thema update"), qsTr("No thema update available."),1200)
-                break;
+
+                case ThemaUpdater.UPDATE_STARTED:
+                    messageBarInstance.showMsgAsync(qsTr("Updating thema"),"");
+                    break;
+
+                case ThemaUpdater.UPDATE_NOT_AVAILABLE:
+                case ThemaUpdater.UPDATE_ERROR:
+                case ThemaUpdater.UPDATE_ABORTED:
+                case ThemaUpdater.UPDATE_FINISHED:
+                    msg_close_timer.start();
+                    break;
             }
         }
 
         onUpdateProgress: {
-            console.log(info + " : "+progress*100)
+            msg_bar.message_txt = info;
+            msg_bar.setProgress(progress)
         }
     }
 }

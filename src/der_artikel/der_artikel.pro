@@ -85,7 +85,8 @@ TRANSLATIONS += ./der_artikel_de.ts \
 OTHER_FILES += ./der_artikel_de.ts \
     ./der_artikel_en.ts \
     ./der_artikel_hin.ts \
-    code_comment_template.txt
+    code_comment_template.txt \
+    qml/der_artikel/utils.js
 
 # Add more folders to ship with the application, here
 folder_01.source = thema

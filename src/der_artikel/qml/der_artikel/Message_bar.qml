@@ -1,5 +1,6 @@
 import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
+import "utils.js" as UTILS
 
 Item {
     id:rootItem
@@ -30,6 +31,17 @@ Item {
             GradientStop {position: 0  ;color: color_palette.color_btn_02}
             GradientStop {position: 0.5;color: color_palette.color_btn_01}
             GradientStop {position: 1;color: color_palette.color_btn_01}
+        }
+
+        Rectangle {
+            id: progress_rect
+            anchors{left: parent.left;top:parent.top;bottom:parent.bottom}
+            width:0
+            radius: msg_bar.radius
+            color:UTILS.colorOpacity(color_palette.color_bg_02,0.5)
+            Behavior on width {
+                NumberAnimation { duration: hiding ? 0 : 300 }
+            }
         }
 
         Image {
@@ -138,8 +150,9 @@ Item {
                 easing.type: Easing.OutCubic
             }
             onRunningChanged: {
-                if(hiding) {
+                if(hiding && !running) {
                     rootItem.msgCompleted()
+                    progress_rect.width = 0;
                 }
             }
         }
@@ -152,6 +165,11 @@ Item {
             closeMessage()
             hiding = false;
         }
+    }
+
+    function setProgress(progress)
+    {
+        progress_rect.width = msg_bar.width*progress;
     }
 
     function showMessage(title,msg,duration,msg_type,accept_str,reject_str)

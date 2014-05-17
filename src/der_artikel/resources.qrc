@@ -116,5 +116,6 @@
         <file>resources/warning.png</file>
         <file>resources/open.png</file>
         <file>resources/fonts/hindi.ttf</file>
+        <file>qml/der_artikel/utils.js</file>
     </qresource>
 </RCC>
