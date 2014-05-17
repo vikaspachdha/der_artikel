@@ -227,64 +227,62 @@
 <context>
     <name>Result_C</name>
     <message>
-        <location filename="../data/result.cpp" line="48"/>
-        <location filename="../data/result.cpp" line="136"/>
+        <location filename="../data/result.cpp" line="103"/>
         <source>No game data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="50"/>
-        <location filename="../data/result.cpp" line="138"/>
+        <location filename="../data/result.cpp" line="72"/>
         <source>Result</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="349"/>
+        <location filename="../data/result.cpp" line="104"/>
         <source>Score : %1 %</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="350"/>
+        <location filename="../data/result.cpp" line="118"/>
         <source>Mistakes : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="351"/>
+        <location filename="../data/result.cpp" line="132"/>
         <source>Unplayed : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="354"/>
+        <location filename="../data/result.cpp" line="75"/>
         <source>Excellent</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="356"/>
+        <location filename="../data/result.cpp" line="77"/>
         <source>Very good</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="358"/>
+        <location filename="../data/result.cpp" line="79"/>
         <source>Good</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="360"/>
+        <location filename="../data/result.cpp" line="81"/>
         <source>Satisfactory</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="362"/>
+        <location filename="../data/result.cpp" line="83"/>
         <source>Sufficient</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="364"/>
+        <location filename="../data/result.cpp" line="85"/>
         <source>Failed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="367"/>
+        <location filename="../data/result.cpp" line="69"/>
         <source>Result : </source>
         <translation type="unfinished"></translation>
     </message>
@@ -480,6 +478,56 @@
     <message>
         <location filename="qml/der_artikel/Stats_page_title.qml" line="8"/>
         <source>Statistics</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ThemaUpdater_C</name>
+    <message>
+        <location filename="thema_updater.cpp" line="76"/>
+        <source>Checking for thema update.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_updater.cpp" line="85"/>
+        <source>Invalid url</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_updater.cpp" line="98"/>
+        <source>Parsing server data.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_updater.cpp" line="107"/>
+        <source>Parsing error. Aborting update.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_updater.cpp" line="120"/>
+        <source>Network issue. Aborting update.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_updater.cpp" line="185"/>
+        <source>Downloading thema files.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_updater.cpp" line="188"/>
+        <source>Update finished.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_updater.cpp" line="194"/>
+        <source>No update is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="thema_updater.cpp" line="208"/>
+        <location filename="thema_updater.cpp" line="282"/>
+        <location filename="thema_updater.cpp" line="293"/>
+        <source>Comparing current thema&apos;s.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

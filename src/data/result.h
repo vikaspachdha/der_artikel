@@ -48,7 +48,7 @@ class Word_C;
 class Result_C : public QObject
 {
     Q_OBJECT
-
+    Q_ENUMS(GRADE_TP)
     Q_PROPERTY(double score READ score NOTIFY resultUpdated)
     Q_PROPERTY(unsigned int mistakes_count READ mistakesCount NOTIFY resultUpdated)
     Q_PROPERTY(unsigned int unplayed_count READ unplayedCount NOTIFY resultUpdated)
@@ -76,7 +76,7 @@ public:
      *
      *  \author Vikas Pachdha
      ******************************************************************************/
-    enum GRADE {
+    enum GRADE_TP {
         GRADE_E=1,  // < 50
         GRADE_D,    // 50 - 60
         GRADE_C,    // 60 - 70
@@ -89,36 +89,30 @@ public:
 public:
     explicit Result_C(QObject* parent=0);
 
-signals:
-    void resultUpdated();
-    void experienceChanged();
-
 public:
 
-    double score() const;
-    //! Returns score string for display purpose.
-    QString scoreString() const {return _score_string; }
+    //! Returns grade achieved.
+    GRADE_TP grade() const { return _grade; }
+    QString gradeString() const;
 
-    unsigned int mistakesCount() const;
-    //! Returns unplayed words string for display purpose.
-    QString mistakeString() const {return _mistake_string; }
+    //! Returns the score achieved.
+    double score() const { return _score; }
+    QString scoreString() const;
 
-    unsigned int unplayedCount() const;
+    //! Returns count of words marked correct.
+    unsigned int correctWordCount() const { return _correct_word_count; }
+
+    //! Returns count of words marked incorrect.
+    unsigned int mistakesCount() const {return _mistakes_count; }
+    QString mistakeString() const;
+
+    //! Returns count of words left unplayed.
+    unsigned int unplayedCount() const { return _unplayed_count; }
+    QString unplayedString() const;
 
     //! Returns experience change string for display purpose.
     int experienceChange() const { return _experience_change; }
     void setExperienceChange(int change);
-
-    //! Returns grade achieved as string for display purpose..
-    QString gradeString() const {return _grade_string; }
-
-    //! Returns unplayed words string for display purpose.
-    QString unplayedString() const {return _unplayed_string; }
-
-    unsigned int correctWordCount() const;
-
-    //! Returns grade achieved.
-    GRADE grade() const { return _grade; }
 
     //! Returns incorrect word model.
     QAbstractItemModel* GetIncorrectWordModel() { return _incorrect_words_model; }
@@ -129,21 +123,28 @@ public:
     bool read(const QDomElement& element);
     bool write(QDomElement& element);
 
-private:
-    void updateStringData();
+signals:
+    //! Emitted when result data is updated.
+    void resultUpdated();
+    //! Emitted when experience value is changed.
+    void experienceChanged();
 
 private:
+    //! Score value in last thema played.
     double _score;
-    GRADE _grade;
+    //! Grade scored in last thema played.
+    GRADE_TP _grade;
+    //! Count of words with correct article assignments in last thema plauyed.
     unsigned int _correct_word_count;
+    //! Count of words with incorrect article assignments in last thema plauyed.
     unsigned int _mistakes_count;
+    //! Count of words left unplayed in last thema plauyed.
     unsigned int _unplayed_count;
+    //! Last value of experience change
     int _experience_change;
-    QString _score_string;
-    QString _mistake_string;
-    QString _grade_string;
-    QString _unplayed_string;
+    //! Time stamp of last result.
     QDateTime _result_date_time;
+    //! Incorrect words.
     WordModel_C* _incorrect_words_model;
 };
 

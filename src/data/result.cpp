@@ -25,9 +25,17 @@
  * met: http://www.gnu.org/copyleft/gpl.html.
  *
  ******************************************************************************/
-#include "result.h"
+
+// System includes
+#include <QDebug>
+#include <QEvent>
 #include <QLocale>
 #include <QDomElement>
+
+// Interface for this file
+#include "result.h"
+
+// Project includes
 #include "data/word.h"
 #include "word_model.h"
 
@@ -40,67 +48,89 @@
  ******************************************************************************/
 Result_C::Result_C(QObject *parent):
     QObject(parent),
-    _score(0.0),
+    _score(-1.0),
     _correct_word_count(0),
     _mistakes_count(0),
     _unplayed_count(0),
-    _experience_change(0),
-    _score_string(tr("No game data.")),
-    _mistake_string(""),
-    _grade_string(tr("Result")),
-    _unplayed_string("")
+    _experience_change(0)
 {
     _incorrect_words_model = new WordModel_C(this);
 }
 
 //******************************************************************************
-/*! \brief Returns count of words marked correct.
+/*! \brief  Returns grade achieved as string for display purpose.
  *
  *  \author Vikas Pachdha
  *
- *  \return unsigned int : Count of words marked correct.
+ *  \return QString : Grade achieved as string for display purpose.
  ******************************************************************************/
-unsigned int Result_C::correctWordCount() const
+QString Result_C::gradeString() const
 {
-    return _correct_word_count;
+    QString grade_string = tr("Result : ");
+    // _score < 0 means no result is produced so far.
+    if (_score < 0) {
+        grade_string = tr("Result");
+    } else {
+        if(_grade >= GRADE_AP) {
+            grade_string.append(tr("Excellent"));
+        } else if(_grade >= GRADE_A) {
+            grade_string.append(tr("Very good"));
+        } else if (_grade >= GRADE_BP) {
+            grade_string.append(tr("Good"));
+        } else if (_grade >= GRADE_C) {
+            grade_string.append(tr("Satisfactory"));
+        } else if(_grade >= GRADE_D){
+            grade_string.append(tr("Sufficient"));
+        } else {
+            grade_string.append(tr("Failed"));
+        }
+    }
+
+    return grade_string;
 }
 
 //******************************************************************************
-/*! \brief Returs the score achieved.
- *
- *  \details Value is between 0 and 1 being maximum.
+/*! \brief  Returns score string for display purpose.
  *
  *  \author Vikas Pachdha
  *
- *  \return double : Score achieved.
+ *  \return QString : Score string for display purpose.
  ******************************************************************************/
-double Result_C::score() const
+QString Result_C::scoreString() const
 {
-    return _score;
+    QLocale locale;
+    // _score < 0 means no result is produced so far.
+    QString score_string = _score < 0 ? tr("No game data.")
+                            : tr("Score : %1 %").arg(locale.toString(_score*100,'f',2));
+    return score_string;
 }
 
 //******************************************************************************
-/*! \brief Returns count of words marked incorrect.
+/*! \brief  Returns mistakes count as string for display purpose.
  *
  *  \author Vikas Pachdha
  *
- *  \return unsigned int : Count of words marked incorrect.
+ *  \return QString : Mistakes count as string for display purpose.
  ******************************************************************************/
-unsigned int Result_C::mistakesCount() const
+QString Result_C::mistakeString() const
 {
-    return _mistakes_count;
+    // _score < 0 means no result is produced so far.
+    QString  mistake_string = _score < 0 ? "" : tr("Mistakes : %1").arg(_mistakes_count);
+    return mistake_string;
 }
 
 //******************************************************************************
-/*! \brief Returns count of words left unplayed.
+/*! \brief  Returns unplayed words string for display purpose.
  *
  *  \author Vikas Pachdha
  *
- *  \return unsigned int : Count of words left unplayed.
+ *  \return QString : Unplayed words string for display purpose.
  ******************************************************************************/
-unsigned int Result_C::unplayedCount() const
+QString Result_C::unplayedString() const
 {
-    return _unplayed_count;
+    // _score < 0 means no result is produced so far.
+    QString unplayed_string = _score < 0 ? "" : tr("Unplayed : %1").arg(_unplayed_count);
+    return unplayed_string;
 }
 
 //******************************************************************************
@@ -127,16 +157,12 @@ void Result_C::setExperienceChange(int change)
  ******************************************************************************/
 void Result_C::clear()
 {
-    _score=0.0;
+    _score=-1.0;
     _correct_word_count=0;
     _mistakes_count=0;
     _unplayed_count=0;
     _experience_change = 0;
-
-    _score_string = tr("No game data.");
-    _mistake_string = "";
-    _grade_string = tr("Result");
-    _unplayed_string="";
+    emit resultUpdated();
 }
 
 //******************************************************************************
@@ -180,7 +206,6 @@ void Result_C::updateResult(double score, unsigned int correct_word_count, unsig
         _grade = GRADE_E;
     }
 
-    updateStringData();
     emit resultUpdated();
 }
 
@@ -271,10 +296,6 @@ bool Result_C::read(const QDomElement &element)
             }
         }
 
-        if(success) {
-            updateStringData();
-        }
-
     }
     return success;
 }
@@ -336,36 +357,5 @@ bool Result_C::write(QDomElement &element)
 
     return success;
 }
-
-//******************************************************************************
-/*! \brief Helper method to update string data as per the current result data.
- *
- *  \author Vikas Pachdha
- ******************************************************************************/
-void Result_C::updateStringData()
-{
-    QLocale locale;
-    double score = _score*100;
-    _score_string = tr("Score : %1 %").arg(locale.toString(score,'f',2));
-    _mistake_string = tr("Mistakes : %1").arg(_mistakes_count);
-    _unplayed_string = tr("Unplayed : %1").arg(_unplayed_count);
-
-    if(_grade >= GRADE_AP) {
-        _grade_string = tr("Excellent");
-    } else if(_grade >= GRADE_A) {
-        _grade_string = tr("Very good");
-    } else if (_grade >= GRADE_BP) {
-        _grade_string = tr("Good");
-    } else if (_grade >= GRADE_C) {
-        _grade_string = tr("Satisfactory");
-    } else if(_grade >= GRADE_D){
-        _grade_string = tr("Sufficient");
-    } else {
-        _grade_string = tr("Failed");
-    }
-
-    _grade_string.prepend(tr("Result : "));
-}
-
 
 

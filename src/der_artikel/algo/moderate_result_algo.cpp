@@ -77,7 +77,7 @@ void ModerateResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
 
     result.updateResult(score,correct_count, unplayed_count, incorrect_words);
 
-    Result_C::GRADE grade = result.grade();
+    Result_C::GRADE_TP grade = result.grade();
     int exp_change = 0;
     if(grade >= Result_C::GRADE_AP) {
         exp_change = 80;

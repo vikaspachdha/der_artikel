@@ -5,7 +5,7 @@ Title_bar {
     page_id: Manager.RESULT_PAGE
     Text {
         id: heading_1
-        text:currentResult.grade_string
+        text:currentResult.grade_string + settings.i18n_empty_string
         anchors {
             top:parent.top
             left:parent.left
@@ -22,7 +22,7 @@ Title_bar {
 
     Text {
         id: heading_1_right
-        text:currentResult.unplayed_string
+        text:currentResult.unplayed_string + settings.i18n_empty_string
         anchors {
             top:parent.top
             right:parent.right
@@ -39,7 +39,7 @@ Title_bar {
 
     Text {
         id: heading_2
-        text:currentResult.score_string
+        text:currentResult.score_string + settings.i18n_empty_string
         anchors {
             top:heading_1.bottom
             topMargin: 6
@@ -56,7 +56,7 @@ Title_bar {
 
     Text {
         id: heading_2_right
-        text: currentResult.mistake_string
+        text: currentResult.mistake_string + settings.i18n_empty_string
 
         anchors {
             top:heading_1_right.bottom
