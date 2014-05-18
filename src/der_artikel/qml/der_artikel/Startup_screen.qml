@@ -8,13 +8,12 @@ Item {
     property int startup_time: 3000
 
     Behavior on anchors.margins {
-        SequentialAnimation {
-            NumberAnimation {
-                duration:300;
-            }
+        NumberAnimation {
+            duration:300;
             onRunningChanged: {
                 if(!running) {
                     startup_screen.visible = false
+                    manager.loadDefaultThemas();
                     startup_screen.destroy()
                 }
             }
@@ -22,10 +21,8 @@ Item {
     }
 
     Behavior on anchors.bottomMargin {
-        SequentialAnimation {
-            NumberAnimation {
-                duration:300;
-            }
+        NumberAnimation {
+            duration:300;
         }
     }
 

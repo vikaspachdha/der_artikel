@@ -101,15 +101,6 @@ Item {
         }
     }
 
-    Timer {
-        id:msg_close_timer
-        interval: 1500
-        repeat: false
-        onTriggered: {
-            messageBarInstance.closeMsg()
-        }
-    }
-
     Connections {
         target:themaUpdater
         onUpdateResponse: {
@@ -124,7 +115,7 @@ Item {
                 case ThemaUpdater.UPDATE_ERROR:
                 case ThemaUpdater.UPDATE_ABORTED:
                 case ThemaUpdater.UPDATE_FINISHED:
-                    msg_close_timer.start();
+                    messageBarInstance.closeMsg()
                     break;
             }
         }

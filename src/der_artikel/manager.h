@@ -159,10 +159,11 @@ public:
 
     Q_INVOKABLE void quit();
 
-    void loadDefaultThemas();
+    Q_INVOKABLE void loadDefaultThemas();
 
 private slots:
     void onNewthemaLoaded(Thema_C* new_thema);
+    void onthemaLoadingProgress(double progress);
     void onThemaSelectionChanged();
     void quitPrivate();
 

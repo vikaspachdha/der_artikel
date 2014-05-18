@@ -34,6 +34,7 @@
 
 // Forward declarations
 class QQuickItem;
+class QTimer;
 class Settings_C;
 
 //******************************************************************************
@@ -76,7 +77,6 @@ private:
     explicit MessageBar_C(QObject *parent = 0);
 
 public:
-
     static MessageBar_C& instance();
 
     void init(QQuickItem* msg_bar, Settings_C *settings);
@@ -92,14 +92,22 @@ public:
                             int duration,
                             MsgType_TP type = INFO);
 
-    Q_INVOKABLE static void showMsgAsync(QString title, QString msg,
+    Q_INVOKABLE static void showMsgAsync(QString title, QString msg, int min_duration = -1,
                                  MsgType_TP type = INFO);
 
-    Q_INVOKABLE static void closeMsg();
+    Q_INVOKABLE static void setMessage(QString msg);
+
+    Q_INVOKABLE static void setProgress(double progress);
+
+public slots:
+    static void closeMsg();
 
 private:
     //! Event loop for message bar.
     QEventLoop* _message_loop;
+
+    //! Event loop for message bar.
+    QEventLoop* _close_loop;
 
     //! Message bar QML item
     QQuickItem* _msg_bar;
@@ -109,6 +117,8 @@ private:
 
     //! Accepted state.
     bool _accepted;
+
+    QTimer* _min_duration_timer;
 };
 
 #endif // MESSAGE_BAR_H

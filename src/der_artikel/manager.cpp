@@ -77,8 +77,6 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
 
     _thema_model = new ThemaModel_C(this);
     connect(_thema_model,SIGNAL(themaSelectionChanged()), this, SLOT(onThemaSelectionChanged()));
-
-    loadDefaultThemas();
 }
 
 //******************************************************************************
@@ -221,6 +219,19 @@ void Manager_C::onNewthemaLoaded(Thema_C *new_thema)
     _thema_model->AddThema(new_thema);
     Q_ASSERT(_image_provider);
     _image_provider->addImage(new_thema->name(),new_thema->GetIcon());
+}
+
+/******************************************************************************
+/*! \brief Called to notify them loading progress. Message bar is updates accordingly.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] progress : Progress value.
+ ******************************************************************************/
+void Manager_C::onthemaLoadingProgress(double progress)
+{
+    MessageBar_C::setProgress(progress);
+    MessageBar_C::setMessage(QString("%1 %").arg(qRound(progress * 100)));
 }
 
 //******************************************************************************
@@ -400,6 +411,9 @@ void Manager_C::loadDefaultThemas()
     // thema_loader shall be deleted automatically.
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
     connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), this, SLOT(onNewthemaLoaded(Thema_C*)) );
+    connect(thema_loader,SIGNAL(finishedLoading()),&MessageBar_C::instance(),SLOT(closeMsg()));
+    connect(thema_loader,SIGNAL(updateProgress(double)),SLOT(onthemaLoadingProgress(double)));
+    MessageBar_C::showMsgAsync(tr("Loading installed themas."),"",2000);
     thema_loader->startLoading();
 }
 

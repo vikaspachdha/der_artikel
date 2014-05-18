@@ -42,12 +42,15 @@
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] parent Parent object instance.
+ *  \param[in] parent : Parent object instance.
  ******************************************************************************/
 MessageBar_C::MessageBar_C(QObject *parent) :
     QObject(parent)
 {
     _message_loop = new QEventLoop(this);
+    _close_loop = new QEventLoop(this);
+    _min_duration_timer = new QTimer(this);
+    _min_duration_timer->setSingleShot(true);
 }
 
 //******************************************************************************
@@ -55,7 +58,7 @@ MessageBar_C::MessageBar_C(QObject *parent) :
  *
  *  \author Vikas Pachdha
  *
- *  \return MessageBar_C& The message bar instance.
+ *  \return MessageBar_C& : The message bar instance.
  ******************************************************************************/
 MessageBar_C& MessageBar_C::instance()
 {
@@ -68,8 +71,8 @@ MessageBar_C& MessageBar_C::instance()
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] msg_bar The message bar QML item.
- *  \param[in] settings The settings instance.
+ *  \param[in] msg_bar : The message bar QML item.
+ *  \param[in] settings : The settings instance.
  ******************************************************************************/
 void MessageBar_C::init(QQuickItem *msg_bar, Settings_C* settings)
 {
@@ -82,7 +85,7 @@ void MessageBar_C::init(QQuickItem *msg_bar, Settings_C* settings)
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] accepted True to set accepted, false otherwise.
+ *  \param[in] accepted : True to set accepted, false otherwise.
  ******************************************************************************/
 void MessageBar_C::setAccepted(bool accepted)
 {
@@ -98,11 +101,11 @@ void MessageBar_C::setAccepted(bool accepted)
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] title The message headline.
- *  \param[in] msg The message detail text.
- *  \param[in] accept_str The accept button text. Default is "ok".
- *  \param[in] reject_str The reject button text. Default is "Cancel".
- *  \param[in] type Type of message bar.
+ *  \param[in] title : The message headline.
+ *  \param[in] msg : The message detail text.
+ *  \param[in] accept_str : The accept button text. Default is "ok".
+ *  \param[in] reject_str : The reject button text. Default is "Cancel".
+ *  \param[in] type : Type of message bar.
  *
  *  \return MessageBar_C::RetrunType_TP Accepted state.
  *
@@ -134,10 +137,10 @@ MessageBar_C::RetrunType_TP MessageBar_C::showMsg(QString title, QString msg, QS
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] title The message headline.
- *  \param[in] msg The message detail text.
- *  \param[in] duration The message bar closes after duration msecs.
- *  \param[in] type Type of message bar.
+ *  \param[in] title : The message headline.
+ *  \param[in] msg : The message detail text.
+ *  \param[in] duration : The message bar closes after duration msecs.
+ *  \param[in] type : Type of message bar.
  *
  *  \see \ref MessageBar_C::MsgType_TP
  ******************************************************************************/
@@ -165,13 +168,14 @@ void MessageBar_C::showMsg(QString title, QString msg, int duration, MessageBar_
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] title The message headline.
- *  \param[in] msg The message detail text.
- *  \param[in] type Type of message bar.
+ *  \param[in] title : The message headline.
+ *  \param[in] msg : The message detail text.
+ *  \param[in] min_duration : The minimum duration for which message is visible.
+ *  \param[in] type : Type of message bar.
  *
  *  \see \ref MessageBar_C::MsgType_TP
  ******************************************************************************/
-void MessageBar_C::showMsgAsync(QString title, QString msg, MessageBar_C::MsgType_TP type)
+void MessageBar_C::showMsgAsync(QString title, QString msg, int min_duration, MessageBar_C::MsgType_TP type)
 {
     MessageBar_C& msg_bar_instance = instance();
     if(msg_bar_instance._msg_bar) {
@@ -183,30 +187,83 @@ void MessageBar_C::showMsgAsync(QString title, QString msg, MessageBar_C::MsgTyp
                                   Q_ARG(QVariant,type),
                                   Q_ARG(QVariant,null),
                                   Q_ARG(QVariant,null));
+
         // Let the message bar show for some time.
         QTimer::singleShot(msg_bar_instance._settings->messageAnimTime() + 200,msg_bar_instance._message_loop,SLOT(quit()));
         if(!msg_bar_instance._message_loop->isRunning()) {
             msg_bar_instance._message_loop->exec();
         }
+
+        if(min_duration > 0) {
+            msg_bar_instance._min_duration_timer->stop();
+            msg_bar_instance._min_duration_timer->setInterval(min_duration);
+            msg_bar_instance._min_duration_timer->start();
+        }
+
     } else {
         LOG_ERROR("Message bar uninitialized usage");
     }
 }
 
 //******************************************************************************
-/*! \brief Closes the message bar.
+/*! \brief Updates the message string on message bar.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] msg : The message detail text.
+ ******************************************************************************/
+void MessageBar_C::setMessage(QString msg)
+{
+    MessageBar_C& msg_bar_instance = instance();
+    if(msg_bar_instance._msg_bar) {
+        msg_bar_instance._msg_bar->setProperty("message_txt",msg);
+    } else {
+        LOG_ERROR("Message bar uninitialized usage");
+    }
+}
+
+//******************************************************************************
+/*! \brief Updates the progress bar value on message bar.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] progress : Progress value. Should be between 0 and 1 where 1 is 100%.
+ ******************************************************************************/
+void MessageBar_C::setProgress(double progress)
+{
+    MessageBar_C& msg_bar_instance = instance();
+    if(msg_bar_instance._msg_bar) {
+        QMetaObject::invokeMethod(msg_bar_instance._msg_bar,"setProgress",Q_ARG(QVariant,progress));
+    } else {
+        LOG_ERROR("Message bar uninitialized usage");
+    }
+}
+
+//******************************************************************************
+/*! \brief Closes the message bar. Method returns only when message bar is closed.
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
 void MessageBar_C::closeMsg()
 {
     MessageBar_C& msg_bar_instance = instance();
-    if(msg_bar_instance._msg_bar) {
-        QMetaObject::invokeMethod(msg_bar_instance._msg_bar,"closeMessage");
+    if(msg_bar_instance._min_duration_timer->isActive()) {
+        QTimer::singleShot(msg_bar_instance._min_duration_timer->remainingTime(),&instance(),SLOT(closeMsg()));
     } else {
-        LOG_ERROR("Message bar uninitialized usage");
-    }
-    if(msg_bar_instance._message_loop->isRunning()) {
-        msg_bar_instance._message_loop->quit();
+        if(msg_bar_instance._msg_bar) {
+            QMetaObject::invokeMethod(msg_bar_instance._msg_bar,"closeMessage");
+        } else {
+            LOG_ERROR("Message bar uninitialized usage");
+        }
+
+        // Let the message bar show for some time.
+        QTimer::singleShot(msg_bar_instance._settings->messageAnimTime() + 500,msg_bar_instance._close_loop,SLOT(quit()));
+        if(!msg_bar_instance._close_loop->isRunning()) {
+            msg_bar_instance._close_loop->exec();
+        }
+
+        if(msg_bar_instance._message_loop->isRunning()) {
+            msg_bar_instance._message_loop->quit();
+        }
     }
 }
