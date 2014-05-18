@@ -52,7 +52,7 @@ EasyResultAlgo_C::EasyResultAlgo_C():ResultAlgo_I()
  *  \param[in] thema : Thema instance.
  *  \param[out] result : Resut instance.
  ******************************************************************************/
-void EasyResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
+void EasyResultAlgo_C::calculate(Thema_I& thema, Result_C& result)
 {
     unsigned int count = thema.wordCount();
     unsigned int correct_count = 0;

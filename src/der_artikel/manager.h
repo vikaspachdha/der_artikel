@@ -62,8 +62,8 @@ class Manager_C : public QObject
     Q_ENUMS(PageId_TP)
     Q_ENUMS(GameLevel)
 
-    Q_PROPERTY(PageId_TP current_page READ getCurrentPage WRITE setCurrentPage NOTIFY currentPageChanged)
-    Q_PROPERTY(ThemaModel_C* thema_model READ GetThemaModel CONSTANT)
+    Q_PROPERTY(PageId_TP current_page READ currentPage WRITE setCurrentPage NOTIFY currentPageChanged)
+    Q_PROPERTY(ThemaModel_C* thema_model READ themaModel CONSTANT)
     Q_PROPERTY(GameLevel game_level READ gameLevel WRITE setGameLevel NOTIFY gameLevelChanged)
     Q_PROPERTY(bool thema_selected READ isThemaSelected NOTIFY themaSelectionStateChanged)
     Q_PROPERTY(QString version_string READ versionString CONSTANT)
@@ -123,11 +123,11 @@ public:
 
     void setCurrentPage(PageId_TP new_page);
     //! Returns the id of the current page visible.
-    PageId_TP getCurrentPage() const { return _current_page; }
+    PageId_TP currentPage() const { return _current_page; }
 
     //! Returns the current result instance. The instance stores the result data
     //! of the las game played and the instance is updated as soon as user finished a game.
-    Result_C* GetCurrentResult() { return _current_result; }
+    Result_C* currentResult() { return _current_result; }
 
     //! Returns the current game level selected.
     GameLevel gameLevel() const { return _game_level; }
@@ -140,13 +140,13 @@ public:
 
     //! Returns the Image provider instance. Dynamic images are provided
     //! by this image provider e.g. Thema icons.
-    ImageProvider_C* GetImageProvider() { return _image_provider; }
+    ImageProvider_C* imageProvider() { return _image_provider; }
 
 public:
-    ThemaModel_C* GetThemaModel() {return _thema_model; }
+    ThemaModel_C* themaModel() {return _thema_model; }
 
     //! Returns the \ref Settings_C instance. All the serializable settings are maintained by the returned instance.
-    Settings_C* GetSettings() const { return _settings; }
+    Settings_C* appSettings() const { return _settings; }
 
     Q_INVOKABLE void setPageItem(PageId_TP page_id, QQuickItem* item);
     QQuickItem* pageItem(PageId_TP page_id);
@@ -159,10 +159,10 @@ public:
 
     Q_INVOKABLE void quit();
 
-    void LoadDefaultThemas();
+    void loadDefaultThemas();
 
 private slots:
-    void OnNewthemaLoaded(Thema_C* new_thema);
+    void onNewthemaLoaded(Thema_C* new_thema);
     void onThemaSelectionChanged();
     void quitPrivate();
 
@@ -178,7 +178,7 @@ signals:
     void themaSelectionStateChanged();
 
 private:
-    void InitPages();
+    void initPages();
 
 private:
     //! Application settings

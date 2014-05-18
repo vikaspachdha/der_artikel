@@ -159,11 +159,11 @@ int main(int argc, char *argv[])
 
     root_context->setContextProperty("manager", &manager);
     root_context->setContextProperty("themaUpdater", &thema_updater);
-    root_context->setContextProperty("currentResult", manager.GetCurrentResult());
-    root_context->setContextProperty("themaModel", manager.GetThemaModel());
-    root_context->setContextProperty("settings", manager.GetSettings());
+    root_context->setContextProperty("currentResult", manager.currentResult());
+    root_context->setContextProperty("themaModel", manager.themaModel());
+    root_context->setContextProperty("settings", manager.appSettings());
     root_context->setContextProperty("messageBarInstance",&MessageBar_C::instance());
-    root_context->engine()->addImageProvider("rootImageProvider",manager.GetImageProvider());
+    root_context->engine()->addImageProvider("rootImageProvider",manager.imageProvider());
 
     QQmlComponent component(&appEngine,QUrl("qrc:/res/qml/der_artikel/main.qml"),&app);
     QObject* root_item = component.create();

@@ -77,7 +77,7 @@ WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, Set
 void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
-    Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
+    Thema_C* thema = _page_manager.themaModel()->GetSelectedThema();
     Q_ASSERT(thema);
 
     MessageBar_C::showMsgAsync(tr("Loading thema ..."),"");
@@ -125,7 +125,7 @@ void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
     }
     clearWordItems();
 
-    Thema_C* thema = _page_manager.GetThemaModel()->GetSelectedThema();
+    Thema_C* thema = _page_manager.themaModel()->GetSelectedThema();
     Q_ASSERT(thema);
     thema->clearUserInput();
     thema->clearWords();
@@ -297,10 +297,10 @@ void WordsPage_C::createResultAlgo()
  ******************************************************************************/
 void WordsPage_C::calculateResult()
 {
-    Thema_C* current_thema = _page_manager.GetThemaModel()->GetSelectedThema();
+    Thema_C* current_thema = _page_manager.themaModel()->GetSelectedThema();
     if(current_thema) {
         LOG_INFO(QString("Word page :: Calculating result for %1").arg(current_thema->name()));
-        _result_algo->Calculate(*current_thema,*(_page_manager.GetCurrentResult()));
+        _result_algo->calculate(*current_thema,*(_page_manager.currentResult()));
         current_thema->setLastPlayed(QDateTime::currentDateTimeUtc());
         current_thema->Save();
     }

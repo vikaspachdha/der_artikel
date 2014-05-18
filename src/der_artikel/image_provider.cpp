@@ -50,7 +50,7 @@ ImageProvider_C::ImageProvider_C() :
  *
  *  \param[in] id : Id of the image.
  ******************************************************************************/
-void ImageProvider_C::AddImage(QString id, QPixmap pixmap)
+void ImageProvider_C::addImage(QString id, QPixmap pixmap)
 {
     LOG_INFO("Image provider :: Image added for id - "+id);
     _images[id] = pixmap;

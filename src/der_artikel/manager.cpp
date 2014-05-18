@@ -73,12 +73,12 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     LOG_DEBUG("Manager_C::Construtor");
     _settings = new Settings_C(this);
 
-    InitPages();
+    initPages();
 
     _thema_model = new ThemaModel_C(this);
     connect(_thema_model,SIGNAL(themaSelectionChanged()), this, SLOT(onThemaSelectionChanged()));
 
-    LoadDefaultThemas();
+    loadDefaultThemas();
 }
 
 //******************************************************************************
@@ -212,7 +212,7 @@ QString Manager_C::versionString()
  *
  *  \todo Move it to Thema model.
  ******************************************************************************/
-void Manager_C::OnNewthemaLoaded(Thema_C *new_thema)
+void Manager_C::onNewthemaLoaded(Thema_C *new_thema)
 {
     Q_ASSERT(new_thema);
     Q_ASSERT(_thema_model);
@@ -220,7 +220,7 @@ void Manager_C::OnNewthemaLoaded(Thema_C *new_thema)
     new_thema->setParent(this);
     _thema_model->AddThema(new_thema);
     Q_ASSERT(_image_provider);
-    _image_provider->AddImage(new_thema->name(),new_thema->GetIcon());
+    _image_provider->addImage(new_thema->name(),new_thema->GetIcon());
 }
 
 //******************************************************************************
@@ -390,7 +390,7 @@ void Manager_C::quitPrivate()
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
-void Manager_C::LoadDefaultThemas()
+void Manager_C::loadDefaultThemas()
 {
     LOG_INFO("Manager :: Loading Thema files");
     _current_result = new Result_C(this);
@@ -399,7 +399,7 @@ void Manager_C::LoadDefaultThemas()
 
     // thema_loader shall be deleted automatically.
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
-    connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), this, SLOT(OnNewthemaLoaded(Thema_C*)) );
+    connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), this, SLOT(onNewthemaLoaded(Thema_C*)) );
     thema_loader->startLoading();
 }
 
@@ -408,7 +408,7 @@ void Manager_C::LoadDefaultThemas()
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
-void Manager_C::InitPages()
+void Manager_C::initPages()
 {
     LOG_DEBUG("Manager_C::InitPages()");
     _page_hash[HELP_PAGE] = new HelpPage_C(*this, _root_context,this);

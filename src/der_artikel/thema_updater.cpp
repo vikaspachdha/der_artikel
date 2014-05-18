@@ -76,7 +76,7 @@ void ThemaUpdater_C::checkUpdate()
     emit updateResponse(UPDATE_STARTED);
     emit updateProgress(tr("Checking for thema update."), _progress);
     reset();
-    QUrl url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/index.csv");
+    QUrl url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/index.csv");
     if(url.isValid()) {
         LOG_INFO(QString("Thema updater :: Starting update from %1").arg(url.toString()));
         _file_downloader.startDownload(url);
@@ -190,7 +190,7 @@ bool ThemaUpdater_C::executeOperations()
         _progress = 1.0;
         updateProgress(tr("Update finished."),_progress);
         emit updateResponse(UPDATE_FINISHED);
-        _manager.LoadDefaultThemas();
+        _manager.loadDefaultThemas();
     } else {
         LOG_WARN("Thema updater :: No operations to execute.");
         _progress = 1.0;
@@ -249,7 +249,7 @@ void ThemaUpdater_C::onNewthemaLoaded(Thema_C *thema)
         if(_remote_file_data[thema_local_file_info.fileName().toLower()] > thema->lastUpdated()) {
             // Replace operation
             QString local_file_path = thema->filePath();
-            QUrl remote_file_url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/" + thema_local_file_info.fileName());
+            QUrl remote_file_url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/" + thema_local_file_info.fileName());
             ThemaFileOperation_I* operation = new ThemaReplaceOperation_C(local_file_path,
                                                                           remote_file_url,
                                                                           thema->experiencePoints());
@@ -275,7 +275,7 @@ void ThemaUpdater_C::onBuildLocalDataFinished()
     foreach (QString key, _remote_file_data.keys()) {
         // Add operation
         QString local_file_path = ARTIKEL::GetResourcePath("thema") + QDir::separator()+ key;
-        QUrl remote_file_url = QUrl::fromUserInput(_manager.GetSettings()->themaRemotePath() + "/" + key);
+        QUrl remote_file_url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/" + key);
                 ThemaFileOperation_I* operation = new ThemaAddOperation_C(local_file_path, remote_file_url.toString());
         _file_operations.append(operation);
         LOG_INFO(QString("Thema updater :: Added add operation %1").arg(remote_file_url.toString()));

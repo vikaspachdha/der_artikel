@@ -48,7 +48,7 @@ public:
     virtual ~ResultAlgo_I() {}
 
 public:
-    virtual void Calculate(Thema_I& thema, Result_C& result) = 0;
+    virtual void calculate(Thema_I& thema, Result_C& result) = 0;
     virtual int playTime(Thema_I& thema) = 0;
 };
 

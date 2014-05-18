@@ -58,7 +58,7 @@ StatsPage_C::StatsPage_C(Manager_C &page_manager, QQmlContext &root_context, QOb
 void StatsPage_C::enter(Manager_C::PageId_TP prev_page_id)
 {
     Q_UNUSED(prev_page_id)
-    ThemaModel_C* thema_model = _page_manager.GetThemaModel();
+    ThemaModel_C* thema_model = _page_manager.themaModel();
     Q_ASSERT(thema_model);
     int thema_count = thema_model->rowCount();
     int rusty_thema_count = 0;

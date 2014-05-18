@@ -52,7 +52,7 @@ StrictResultAlgo_C::StrictResultAlgo_C():ResultAlgo_I()
  *  \param[in] thema : Thema instance.
  *  \param[out] result : Resut instance.
  ******************************************************************************/
-void StrictResultAlgo_C::Calculate(Thema_I& thema, Result_C& result)
+void StrictResultAlgo_C::calculate(Thema_I& thema, Result_C& result)
 {
     unsigned int count = thema.wordCount();
     unsigned int correct_count = 0;

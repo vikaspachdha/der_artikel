@@ -44,7 +44,7 @@ public:
     explicit ImageProvider_C();
 
 public:
-    void AddImage(QString id, QPixmap pixmap);
+    void addImage(QString id, QPixmap pixmap);
 
 public:
     virtual QPixmap	requestPixmap(const QString & id, QSize * size, const QSize & requestedSize);

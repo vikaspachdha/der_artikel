@@ -50,7 +50,7 @@ class Settings_C : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Language_TP language READ language WRITE setLanguage NOTIFY languageChanged)
-    Q_PROPERTY(QString i18n_empty_string READ GetEmptyString NOTIFY languageChanged)
+    Q_PROPERTY(QString i18n_empty_string READ i18EmptyString NOTIFY languageChanged)
     Q_PROPERTY(double sound_level READ soundLevel WRITE setSoundLevel NOTIFY soundLevelChanged)
     Q_PROPERTY(QString word_msg_time_str READ wordMsgTimeStr WRITE setWordMsgTimeStr NOTIFY wordMsgTimeChanged)
     Q_PROPERTY(int word_msg_time READ wordMsgTime WRITE setWordMsgTime NOTIFY wordMsgTimeChanged)
@@ -114,8 +114,8 @@ signals:
 
 private:
     void updateLangauge();
-    //! Retuns empty string. Hack used to language change in QML
-    QString GetEmptyString() { return ""; }
+    //! Returns empty string. Hack used to language change in QML
+    QString i18EmptyString() { return ""; }
 
 
 private:

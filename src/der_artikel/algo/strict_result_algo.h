@@ -46,7 +46,7 @@ public:
     StrictResultAlgo_C();
 
 public:
-    virtual void Calculate(Thema_I& thema, Result_C& result);
+    virtual void calculate(Thema_I& thema, Result_C& result);
     virtual int playTime(Thema_I& thema);
 };
 
