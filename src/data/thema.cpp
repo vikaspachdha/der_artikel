@@ -203,9 +203,7 @@ bool Thema_C::Read(QString thema_file_path, bool defered)
     bool success = true;
     QFile thema_file(thema_file_path);
     if(thema_file.open(QFile::ReadOnly)) {
-        QDataStream data_stream(&thema_file);
-        QByteArray compressed_xml;
-        data_stream>>compressed_xml;
+        QByteArray compressed_xml = thema_file.readAll();
         QByteArray uncompressed_xml = qUncompress(compressed_xml);
         QDomDocument thema_doc;
         QString error_msg;
@@ -421,6 +419,13 @@ bool Thema_C::Write(QIODevice* pDevice)
     } else {
         success = false;
     }
+
+    if(success) {
+        LOG_INFO(QString("Thema saved. Thema:%1").arg(_text));
+    } else {
+        LOG_INFO(QString("Thema saved failer. Thema:%1").arg(_text));
+    }
+
     return success;
 }
 

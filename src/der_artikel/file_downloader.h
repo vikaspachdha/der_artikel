@@ -29,7 +29,6 @@
 #define FILE_DOWNLOADER_H
 
 // System includes
-#include <QDataStream>
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QObject>
