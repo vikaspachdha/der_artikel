@@ -78,9 +78,9 @@ void ThemaLoader_C::run()
         Thema_C* thema = loadThema(thema_file.absoluteFilePath());
         if(thema) {
             emit themaLoaded(thema);
-            ++files_loaded_count;
-            emit updateProgress( (double)files_loaded_count/file_count );
         }
+        ++files_loaded_count;
+        emit updateProgress( (double)files_loaded_count/file_count );
     }
     emit finishedLoading();
 }
