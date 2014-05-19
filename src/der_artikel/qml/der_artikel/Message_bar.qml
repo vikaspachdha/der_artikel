@@ -100,8 +100,8 @@ Item {
 
         Rectangle {
             id: btnFrame
-            height: 32
-            radius: 16
+            height: accept_btn.height + 4
+            radius: height/2
             color: color_palette.color_bg_01
             anchors {
                 left: icon.right
