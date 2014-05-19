@@ -72,6 +72,7 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
 {    
     LOG_DEBUG("Manager_C::Construtor");
     _settings = new Settings_C(this);
+    _current_result = new Result_C(this);
 
     initPages();
 
@@ -404,7 +405,6 @@ void Manager_C::quitPrivate()
 void Manager_C::loadDefaultThemas()
 {
     LOG_INFO("Manager :: Loading Thema files");
-    _current_result = new Result_C(this);
     Q_ASSERT(_thema_model);
     _thema_model->clear();
 
