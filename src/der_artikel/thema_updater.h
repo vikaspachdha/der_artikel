@@ -65,6 +65,13 @@ public:
         UPDATE_ABORTED //! Update process is aborted.
     };
 
+    //! Remote file info strcture. Describes remote thema file information.
+    struct RemoteFileInfo
+    {
+        QString _file_name;
+        QDateTime _update_date;
+    };
+
 public:
     explicit ThemaUpdater_C(Manager_C& manager, QObject *parent = 0);
 
@@ -87,7 +94,7 @@ signals:
     void updateProgress(QString info, double progress);
 
 private:
-    bool ParseIndexFile(QByteArray file_data, QHash<QString, QDateTime>& parsed_data);
+    bool ParseIndexFile(QByteArray file_data, QHash<QString, RemoteFileInfo> &parsed_data);
     bool executeOperations();
     void buildLocalData();
     void reset();
@@ -97,8 +104,8 @@ private:
     Manager_C& _manager;
     //! File downloader instance.
     FileDownloader_C _file_downloader;
-    //! Remote file data.
-    QHash<QString, QDateTime> _remote_file_data;
+    //! Remote file parsed data.
+    QHash<QString, RemoteFileInfo> _remote_file_data;
     //! File operations.
     QVector<ThemaFileOperation_I*> _file_operations;
     //! Update progress.

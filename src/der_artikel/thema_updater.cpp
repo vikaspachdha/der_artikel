@@ -98,7 +98,7 @@ void ThemaUpdater_C::onIndexFileDownloadFinished()
     _progress = 0.05;
     emit updateProgress(tr("Parsing server data."), _progress);
     QByteArray file_data = _file_downloader.fileData();
-    QHash<QString, QDateTime> parsed_data;
+    QHash<QString, RemoteFileInfo> parsed_data;
     if(ParseIndexFile(file_data, parsed_data)) {
         if(parsed_data.keys().count()> 0) {
             _remote_file_data = parsed_data;
@@ -134,7 +134,7 @@ void ThemaUpdater_C::onFileDownloadAborted()
  *
  *  \return bool : True if parsing succeeds, false otherwise.
  ******************************************************************************/
-bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, QDateTime> &parsed_data)
+bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, RemoteFileInfo> &parsed_data)
 {
     bool success = false;
     QString data = QString::fromLatin1(file_data);
@@ -149,15 +149,20 @@ bool ThemaUpdater_C::ParseIndexFile(QByteArray file_data, QHash<QString, QDateTi
                 QStringList file_params = line.split(";");
                 // Parse file name and update time.
                 if(file_params.count() > 1) {
-                    QString file_name = file_params.at(0);
+                    QString file_id = file_params.at(0).toLower();
                     QString update_time_str = file_params.at(1);
                     bool ok = false;
                     qint64 msecs = update_time_str.toLongLong(&ok);
                     QDateTime update_date = QDateTime::fromMSecsSinceEpoch(msecs);
-                    if(update_date.isValid() && !file_name.isEmpty()) {
+                    if(update_date.isValid() && !file_id.isEmpty()) {
                         // Params are parsed, add to structure
-                        LOG_INFO(QString("Thema updater :: Parsed index file entry %1:%2").arg(file_name).arg(update_date.toString()));
-                        parsed_data[file_name] = update_date;
+                        RemoteFileInfo remote_file_info;
+                        remote_file_info._file_name = file_params.at(0);
+                        remote_file_info._update_date = update_date;
+                        parsed_data[file_id] = remote_file_info;
+                        LOG_INFO(QString("Thema updater :: Parsed index file entry %1:%2")
+                                 .arg(remote_file_info._file_name)
+                                 .arg(update_date.toString()));
                     }
                 }
             }
@@ -233,8 +238,7 @@ void ThemaUpdater_C::reset()
 //******************************************************************************
 /*! \brief Called when a new thema is loaded from the local file system.
  *
- *  \details Operations are created with the help of time stamp and operations
- *  are created.
+ *  \details Operations are created with the help of time stamp.
  *
  *  \author Vikas Pachdha
  *
@@ -243,10 +247,10 @@ void ThemaUpdater_C::reset()
 void ThemaUpdater_C::onNewthemaLoaded(Thema_C *thema)
 {
     Q_ASSERT(thema);
-    thema->setParent(this);
+
     QFileInfo thema_local_file_info(thema->filePath());
     if(_remote_file_data.contains(thema_local_file_info.fileName().toLower())) {
-        if(_remote_file_data[thema_local_file_info.fileName().toLower()] > thema->lastUpdated()) {
+        if(_remote_file_data[thema_local_file_info.fileName().toLower()]._update_date > thema->lastUpdated()) {
             // Replace operation
             QString local_file_path = thema->filePath();
             QUrl remote_file_url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/" + thema_local_file_info.fileName());
@@ -263,6 +267,9 @@ void ThemaUpdater_C::onNewthemaLoaded(Thema_C *thema)
         _file_operations.append(operation);
         LOG_INFO(QString("Thema updater :: Added remove operation %1").arg(thema->filePath()));
     }
+
+    // Require data is process. Thema instance is no longer required.
+    delete thema;
 }
 
 //******************************************************************************
@@ -274,8 +281,8 @@ void ThemaUpdater_C::onBuildLocalDataFinished()
 {
     foreach (QString key, _remote_file_data.keys()) {
         // Add operation
-        QString local_file_path = ARTIKEL::GetResourcePath("thema") + QDir::separator()+ key;
-        QUrl remote_file_url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/" + key);
+        QString local_file_path = ARTIKEL::GetResourcePath("thema") + QDir::separator()+ _remote_file_data[key]._file_name;
+        QUrl remote_file_url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/" + _remote_file_data[key]._file_name);
                 ThemaFileOperation_I* operation = new ThemaAddOperation_C(local_file_path, remote_file_url.toString());
         _file_operations.append(operation);
         LOG_INFO(QString("Thema updater :: Added add operation %1").arg(remote_file_url.toString()));
