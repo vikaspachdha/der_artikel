@@ -40,9 +40,11 @@ Item {
             radius: msg_bar.radius
             color:UTILS.colorOpacity(color_palette.color_bg_02,0.5)
             Behavior on width {
-                NumberAnimation { duration: hiding ? 0 : 300 }
+                id: widthBehavior
+                NumberAnimation { duration: 300;}
             }
         }
+
 
         Image {
             id: icon
@@ -152,7 +154,9 @@ Item {
             onRunningChanged: {
                 if(hiding && !running) {
                     rootItem.msgCompleted()
+                    widthBehavior.enabled = false;
                     progress_rect.width = 0;
+                    widthBehavior.enabled = true;
                 }
             }
         }

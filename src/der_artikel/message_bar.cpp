@@ -251,13 +251,18 @@ void MessageBar_C::closeMsg()
         QTimer::singleShot(msg_bar_instance._min_duration_timer->remainingTime(),&instance(),SLOT(closeMsg()));
     } else {
         if(msg_bar_instance._msg_bar) {
+            // Let the message bar show for some time.
+            QTimer::singleShot(500,msg_bar_instance._close_loop,SLOT(quit()));
+            if(!msg_bar_instance._close_loop->isRunning()) {
+                msg_bar_instance._close_loop->exec();
+            }
             QMetaObject::invokeMethod(msg_bar_instance._msg_bar,"closeMessage");
         } else {
             LOG_ERROR("Message bar uninitialized usage");
         }
 
-        // Let the message bar show for some time.
-        QTimer::singleShot(msg_bar_instance._settings->messageAnimTime() + 500,msg_bar_instance._close_loop,SLOT(quit()));
+        // Don't return until message bar is hidden.
+        QTimer::singleShot(msg_bar_instance._settings->messageAnimTime() + 100,msg_bar_instance._close_loop,SLOT(quit()));
         if(!msg_bar_instance._close_loop->isRunning()) {
             msg_bar_instance._close_loop->exec();
         }
