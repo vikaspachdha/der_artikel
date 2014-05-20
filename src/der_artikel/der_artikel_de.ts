@@ -91,14 +91,9 @@
         <translation>Update thema</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="109"/>
-        <source>Thema update</source>
-        <translation>Thema update</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="109"/>
-        <source>No thema update available.</source>
-        <translation>Kein Update verfügbar ist.</translation>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="111"/>
+        <source>Updating thema</source>
+        <translation>Aktualisierung thema</translation>
     </message>
 </context>
 <context>
@@ -186,33 +181,6 @@
     </message>
 </context>
 <context>
-    <name>Home_page</name>
-    <message>
-        <source>Thema</source>
-        <translation type="vanished">Thema</translation>
-    </message>
-    <message>
-        <source>Result</source>
-        <translation type="vanished">Ergebnis</translation>
-    </message>
-    <message>
-        <source>Statistics</source>
-        <translation type="vanished">Statistiken</translation>
-    </message>
-    <message>
-        <source>Help</source>
-        <translation type="vanished">Helfen</translation>
-    </message>
-    <message>
-        <source>Settings</source>
-        <translation type="vanished">Einstellungen</translation>
-    </message>
-    <message>
-        <source>About</source>
-        <translation type="vanished">About</translation>
-    </message>
-</context>
-<context>
     <name>Home_page_panel</name>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="16"/>
@@ -238,9 +206,14 @@
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="374"/>
+        <location filename="manager.cpp" line="395"/>
         <source>Do you realy want to quit?</source>
         <translation>wollen Sie wirklich zu beenden?</translation>
+    </message>
+    <message>
+        <location filename="manager.cpp" line="416"/>
+        <source>Loading installed themas.</source>
+        <translation>Lädt installiert Themen.</translation>
     </message>
 </context>
 <context>
@@ -259,62 +232,62 @@
 <context>
     <name>Result_C</name>
     <message>
-        <location filename="../data/result.cpp" line="103"/>
+        <location filename="../data/result.cpp" line="102"/>
         <source>No game data.</source>
         <translation>Kein Daten.</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="72"/>
+        <location filename="../data/result.cpp" line="71"/>
         <source>Result</source>
         <translation>Ergebnis</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="104"/>
+        <location filename="../data/result.cpp" line="103"/>
         <source>Score : %1 %</source>
         <translation>Spielergebnis. %1 %</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="118"/>
+        <location filename="../data/result.cpp" line="117"/>
         <source>Mistakes : %1</source>
         <translation>Fehler : %1</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="132"/>
+        <location filename="../data/result.cpp" line="131"/>
         <source>Unplayed : %1</source>
         <translation>nicht gespielt : %1</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="75"/>
+        <location filename="../data/result.cpp" line="74"/>
         <source>Excellent</source>
         <translation>ausgezeichnet</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="77"/>
+        <location filename="../data/result.cpp" line="76"/>
         <source>Very good</source>
         <translation>sehr gut</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="79"/>
+        <location filename="../data/result.cpp" line="78"/>
         <source>Good</source>
         <translation>gut</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="81"/>
+        <location filename="../data/result.cpp" line="80"/>
         <source>Satisfactory</source>
         <translation>befriedigend</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="83"/>
+        <location filename="../data/result.cpp" line="82"/>
         <source>Sufficient</source>
         <translation>ausreichend</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="85"/>
+        <location filename="../data/result.cpp" line="84"/>
         <source>Failed</source>
         <translation>ungenügend</translation>
     </message>
     <message>
-        <location filename="../data/result.cpp" line="69"/>
+        <location filename="../data/result.cpp" line="68"/>
         <source>Result : </source>
         <translation>Ergebnis : </translation>
     </message>
@@ -345,12 +318,12 @@
         <translation>Optionen</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Result_page_panel.qml" line="33"/>
+        <location filename="qml/der_artikel/Result_page_panel.qml" line="35"/>
         <source>Replay</source>
         <translation>wiederholen</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Result_page_panel.qml" line="41"/>
+        <location filename="qml/der_artikel/Result_page_panel.qml" line="43"/>
         <source>Stats</source>
         <translation>Statistiken</translation>
     </message>
@@ -512,51 +485,51 @@
 <context>
     <name>ThemaUpdater_C</name>
     <message>
-        <location filename="thema_updater.cpp" line="76"/>
+        <location filename="thema_updater.cpp" line="77"/>
         <source>Checking for thema update.</source>
-        <translation type="unfinished"></translation>
+        <translation>Prüfung auf dem Thema Update.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="85"/>
+        <location filename="thema_updater.cpp" line="86"/>
         <source>Invalid url</source>
-        <translation type="unfinished"></translation>
+        <translation>ungültige URL</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="98"/>
+        <location filename="thema_updater.cpp" line="99"/>
         <source>Parsing server data.</source>
-        <translation type="unfinished"></translation>
+        <translation>Analysieren von Serverdaten.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="107"/>
+        <location filename="thema_updater.cpp" line="109"/>
         <source>Parsing error. Aborting update.</source>
-        <translation type="unfinished"></translation>
+        <translation>Parsing-Fehler. Abbrechend Update.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="120"/>
+        <location filename="thema_updater.cpp" line="123"/>
         <source>Network issue. Aborting update.</source>
-        <translation type="unfinished"></translation>
+        <translation>Netzwerkproblem. Abbrechend Update.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="185"/>
+        <location filename="thema_updater.cpp" line="193"/>
         <source>Downloading thema files.</source>
-        <translation type="unfinished"></translation>
+        <translation>Herunterladen das Thema-Dateien.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="188"/>
+        <location filename="thema_updater.cpp" line="196"/>
         <source>Update finished.</source>
-        <translation type="unfinished"></translation>
+        <translation>Update fertiggestellt.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="194"/>
+        <location filename="thema_updater.cpp" line="202"/>
         <source>No update is available.</source>
-        <translation type="unfinished">Kein Update verfügbar ist.</translation>
+        <translation>Kein Update verfügbar ist.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="208"/>
-        <location filename="thema_updater.cpp" line="282"/>
-        <location filename="thema_updater.cpp" line="293"/>
+        <location filename="thema_updater.cpp" line="216"/>
+        <location filename="thema_updater.cpp" line="292"/>
+        <location filename="thema_updater.cpp" line="303"/>
         <source>Comparing current thema&apos;s.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vergleicht man aktuelle Themen.</translation>
     </message>
 </context>
 <context>
@@ -575,6 +548,14 @@
         <location filename="qml/der_artikel/Thema_item.qml" line="122"/>
         <source>Words</source>
         <translation>Wörter</translation>
+    </message>
+</context>
+<context>
+    <name>Thema_page</name>
+    <message>
+        <location filename="qml/der_artikel/Thema_page.qml" line="21"/>
+        <source> hrs</source>
+        <translation>hrs</translation>
     </message>
 </context>
 <context>
