@@ -222,7 +222,7 @@ void Manager_C::onNewthemaLoaded(Thema_C *new_thema)
     _image_provider->addImage(new_thema->name(),new_thema->GetIcon());
 }
 
-/******************************************************************************
+//******************************************************************************
 /*! \brief Called to notify them loading progress. Message bar is updates accordingly.
  *
  *  \author Vikas Pachdha
