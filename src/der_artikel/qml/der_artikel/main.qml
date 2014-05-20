@@ -13,7 +13,6 @@ Window{
     title:"Der Artikel - " + Qt.application.version
 
     property QtObject color_palette : cp_blue
-    property QtObject regular_font : settings.language === Settings.HINDI ? hindi_font : western_font
 
     // Text sizes
     property int heading1Size:16
@@ -44,13 +43,8 @@ Window{
     }
 
     FontLoader {
-        id: western_font
-        name: "Verdana"
-    }
-
-    FontLoader {
-        id: hindi_font
-        source: "qrc:/res/resources/fonts/hindi.ttf"
+        id: regular_font
+        source: "qrc:/res/resources/fonts/akshar.ttf"
     }
 
     // Sounds

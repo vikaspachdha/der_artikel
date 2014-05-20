@@ -115,7 +115,7 @@
         <file>resources/thema_generic.png</file>
         <file>resources/warning.png</file>
         <file>resources/open.png</file>
-        <file>resources/fonts/hindi.ttf</file>
         <file>qml/der_artikel/utils.js</file>
+        <file>resources/fonts/akshar.ttf</file>
     </qresource>
 </RCC>
