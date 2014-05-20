@@ -119,7 +119,7 @@ Flipable {
         Text {
             id: word_count_label
             height: 13
-            text: qsTr("Words")
+            text: qsTr("Words") +settings.i18n_empty_string
             anchors.right: parent.right
             anchors.rightMargin: 4
             anchors.left: thema_icon.right
