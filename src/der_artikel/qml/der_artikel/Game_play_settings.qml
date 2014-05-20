@@ -9,7 +9,7 @@ Item {
         anchors.leftMargin: 8
         anchors.top:parent.top
         anchors.topMargin: 8
-        lblText:qsTr("Word info Time (in msecs)")
+        lblText:qsTr("Word info Time (in msecs)") + settings.i18n_empty_string
     }
     Rectangle {
         id:msg_time_input_rect
@@ -64,7 +64,7 @@ Item {
         anchors.leftMargin: 8
         anchors.top:msgTimeSlider.bottom
         anchors.topMargin: 20
-        lblText:qsTr("Thema update url")
+        lblText:qsTr("Thema update url") + settings.i18n_empty_string
     }
 
     Rectangle {
@@ -94,7 +94,7 @@ Item {
         anchors.leftMargin: 8
         anchors.top:url_input_rect.bottom
         anchors.topMargin: 20
-        buttonText:qsTr("Update thema")
+        buttonText:qsTr("Update thema") +settings.i18n_empty_string
         onActivated: {
                 themaUpdater.checkUpdate(url_input.text);
 

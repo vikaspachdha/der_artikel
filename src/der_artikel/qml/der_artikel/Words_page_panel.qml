@@ -12,7 +12,7 @@ Page_panel {
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_anchors.horizontalCenter: level_lbl.horizontalCenter
-        lblText: qsTr("Article")
+        lblText: qsTr("Article") + settings.i18n_empty_string
     }
 
     Column {

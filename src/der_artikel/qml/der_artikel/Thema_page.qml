@@ -18,7 +18,7 @@ Page {
             title:display_name
             translation: tr_name
             author_name: author
-            last_played_text:Qt.formatDateTime(last_played,"dd.MM.yy")+ "\n" + Qt.formatDateTime(last_played,"hh:mm") + " hrs"
+            last_played_text:Qt.formatDateTime(last_played,"dd.MM.yy - hh:mm")+ qsTr(" hrs") +settings.i18n_empty_string
             icon_url: "image://rootImageProvider/"+display_name
             count:word_count
             width:grid_view.cellWidth-4
