@@ -54,7 +54,8 @@ Item {
     Text {
         id: label
         anchors.left: text_area.left
-        font.family: regular_font.name
+        anchors.verticalCenter: text_area.verticalCenter
+        font.family: "Georgia"
         font.pixelSize: nounTextSize
     }
 }

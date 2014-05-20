@@ -18,9 +18,9 @@ Window{
     property int heading1Size:16
     property int heading2Size:14
     property int commandTextSize : 14
-    property int subCommandTextSize : 12
+    property int subCommandTextSize : 11
     property int normalTextSize : 14
-    property int nounTextSize: 18
+    property int nounTextSize: 24
 
 
     // Color palettes
