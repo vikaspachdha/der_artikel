@@ -27,6 +27,7 @@ Page {
         id: header_label
         text: qsTr("Incorrect       Correct") + settings.i18n_empty_string
         font_color:color_palette.color_font_02
+        visible:list_view.count > 0
         gradient: Gradient {
             GradientStop {position:0.0;color:color_palette.color_btn_02}
             GradientStop {position:0.1;color:color_palette.color_btn_01}
