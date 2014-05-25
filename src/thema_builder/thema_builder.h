@@ -58,6 +58,8 @@ private slots:
     void onEnableDateTimeChk(bool enabled);
     void onUpdateTime();
 
+    void showPrivateDataControls(bool show);
+
 private:
     void UpdateItem(QListWidgetItem* item);
     bool Save(QString save_file);

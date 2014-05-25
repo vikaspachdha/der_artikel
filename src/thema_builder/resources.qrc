@@ -1,18 +1,19 @@
 <RCC>
     <qresource prefix="/res">
-	<file>resources/app.png</file>
-	<file>resources/delete.png</file>
-	<file>resources/error.png</file>
-	<file>resources/export.png</file>
-	<file>resources/import.png</file>
-	<file>resources/new_file.png</file>
-	<file>resources/open.png</file>
-	<file>resources/quit.png</file>
-	<file>resources/quit_active.png</file>
-	<file>resources/quit_disabled.png</file>
-	<file>resources/save.png</file>
-	<file>resources/save_as.png</file>
-	<file>resources/thema_generic.png</file>
-	<file>resources/warning.png</file>
+        <file>resources/app.png</file>
+        <file>resources/delete.png</file>
+        <file>resources/error.png</file>
+        <file>resources/export.png</file>
+        <file>resources/import.png</file>
+        <file>resources/new_file.png</file>
+        <file>resources/open.png</file>
+        <file>resources/quit.png</file>
+        <file>resources/quit_active.png</file>
+        <file>resources/quit_disabled.png</file>
+        <file>resources/save.png</file>
+        <file>resources/save_as.png</file>
+        <file>resources/thema_generic.png</file>
+        <file>resources/warning.png</file>
+        <file>resources/robber.png</file>
     </qresource>
 </RCC>

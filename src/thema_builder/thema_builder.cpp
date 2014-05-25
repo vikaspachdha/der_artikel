@@ -9,6 +9,7 @@
 #include <QKeyEvent>
 #include <QMessageBox>
 #include <QDebug>
+#include <QIntValidator>
 
 #include "data/thema.h"
 #include "data/common.h"
@@ -24,12 +25,18 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     _edit_item(0)
 {
     ui->setupUi(this);
+    QIntValidator* points_validator = new QIntValidator(ui->_points_edit);
+    points_validator->setBottom(0);
+    ui->_points_edit->setValidator(points_validator);
+
+    showPrivateDataControls(false);
 
     ui->_author_name_edit->setText(UserName());
 
     _thema = new Thema_C();
 
     // Connections
+    connect(ui->_private_data_btn,SIGNAL(toggled(bool)),SLOT(showPrivateDataControls(bool)));
     connect(ui->_btn_box, SIGNAL(clicked(QAbstractButton*)), this, SLOT(OnDlgButtonClicked(QAbstractButton*)) );
     connect(ui->_new_btn,SIGNAL(clicked()), this,SLOT(OnNew()) );
     connect(ui->_open_btn,SIGNAL(clicked()), this,SLOT(OnLoad()) );
@@ -376,6 +383,14 @@ void ThemaBuilder_C::onUpdateTime()
     ui->_update_date_time_edit->setDateTime(QDateTime::currentDateTime());
 }
 
+void ThemaBuilder_C::showPrivateDataControls(bool show)
+{
+    ui->_points_edit->setVisible(show);
+    ui->_last_played_date_time_edit->setVisible(show);
+    ui->_last_played_lbl->setVisible(show);
+    ui->_points_lbl->setVisible(show);
+}
+
 void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
 {
     if(item) {
@@ -401,6 +416,12 @@ bool ThemaBuilder_C::Save(QString save_file)
     _thema->_author = ui->_author_name_edit->text().trimmed();
     _thema->_icon = *(ui->_icon_lbl->pixmap());
     _thema->setLastUpdated(ui->_update_date_time_edit->dateTime());
+
+    if(ui->_private_data_btn->isChecked()) {
+        _thema->setLastPlayed(ui->_last_played_date_time_edit->dateTime());
+        _thema->deductExperiencePoints(_thema->experiencePoints());
+        _thema->addExperiencePoints(ui->_points_edit->text().toInt());
+    }
 
     bool success = _thema->Save(save_file);
     if (success) {
@@ -620,6 +641,10 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
         } else {
             ui->_update_time_stamp_lbl->setText("");
         }
+
+        ui->_last_played_date_time_edit->setDateTime(_thema->lastPlayed());
+        ui->_points_edit->setText(QString::number(_thema->experiencePoints()));
+
         ui->_icon_lbl->setPixmap(_thema->_icon);
     }
 }

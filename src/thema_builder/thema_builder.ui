@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>525</width>
+    <width>548</width>
     <height>597</height>
    </rect>
   </property>
@@ -35,7 +35,72 @@
    <property name="spacing">
     <number>4</number>
    </property>
-   <item row="8" column="0" colspan="6">
+   <item row="14" column="0" colspan="6">
+    <spacer name="verticalSpacer_4">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_9">
+     <property name="text">
+      <string>File update stamp</string>
+     </property>
+    </widget>
+   </item>
+   <item row="16" column="3" colspan="3">
+    <widget class="QDialogButtonBox" name="_btn_box">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <widget class="QPushButton" name="_icon_btn">
+     <property name="text">
+      <string>Thema icon</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1" colspan="2">
+    <widget class="QLineEdit" name="_thema_name_edit">
+     <property name="placeholderText">
+      <string>Enter thema name...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1" colspan="2">
+    <widget class="QLineEdit" name="_author_name_edit">
+     <property name="placeholderText">
+      <string>Enther author's name...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QLineEdit" name="_thema_tr_name_edit">
+     <property name="placeholderText">
+      <string>Enter translation or description...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLabel" name="_update_time_stamp_lbl">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="0" colspan="6">
     <widget class="QGroupBox" name="groupBox">
      <property name="minimumSize">
       <size>
@@ -450,261 +515,33 @@
         </property>
        </spacer>
       </item>
+      <item>
+       <widget class="QToolButton" name="_private_data_btn">
+        <property name="toolTip">
+         <string>Export csv</string>
+        </property>
+        <property name="text">
+         <string>...</string>
+        </property>
+        <property name="icon">
+         <iconset resource="resources.qrc">
+          <normaloff>:/res/resources/robber.png</normaloff>:/res/resources/robber.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>32</width>
+          <height>32</height>
+         </size>
+        </property>
+        <property name="checkable">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>
-   <item row="5" column="1">
-    <widget class="QDateTimeEdit" name="_update_date_time_edit">
-     <property name="displayFormat">
-      <string>dd/MM/yy H:mm:ss</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2">
-    <widget class="QCheckBox" name="_enabe_update_date_chk">
-     <property name="text">
-      <string>Edit</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="3">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>Word Count :</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Author</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0" colspan="3">
-    <widget class="QLabel" name="label_4">
-     <property name="text">
-      <string>Word's list :-</string>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="0" colspan="5">
-    <widget class="QListWidget" name="_word_list">
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::ExtendedSelection</enum>
-     </property>
-     <property name="uniformItemSizes">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="11" column="5">
-    <widget class="QToolButton" name="_delete_btn">
-     <property name="toolTip">
-      <string>Delete selected words.</string>
-     </property>
-     <property name="icon">
-      <iconset resource="resources.qrc">
-       <normaloff>:/res/resources/delete.png</normaloff>:/res/resources/delete.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>32</width>
-       <height>32</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0" colspan="6">
-    <spacer name="verticalSpacer_3">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>0</width>
-       <height>4</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="3">
-    <widget class="QPushButton" name="_icon_btn">
-     <property name="text">
-      <string>Thema icon</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0" colspan="3">
-    <spacer name="verticalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Thema name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_7">
-     <property name="text">
-      <string>Update Date &amp; time</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Thema translated name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="label_9">
-     <property name="text">
-      <string>File update stamp</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLabel" name="_update_time_stamp_lbl">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="0" colspan="6">
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="2" column="4" rowspan="3" colspan="2">
-    <widget class="QLabel" name="_icon_lbl">
-     <property name="minimumSize">
-      <size>
-       <width>66</width>
-       <height>66</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>64</width>
-       <height>64</height>
-      </size>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::Box</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <property name="lineWidth">
-      <number>1</number>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap resource="resources.qrc">:/res/resources/thema_generic.png</pixmap>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="_thema_name_edit">
-     <property name="placeholderText">
-      <string>Enter thema name...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="2">
-    <widget class="QLineEdit" name="_thema_tr_name_edit">
-     <property name="placeholderText">
-      <string>Enter translation or description...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" colspan="2">
-    <widget class="QLineEdit" name="_author_name_edit">
-     <property name="placeholderText">
-      <string>Enther author's name...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="4">
-    <widget class="QLabel" name="_word_count_lbl">
-     <property name="maximumSize">
-      <size>
-       <width>24</width>
-       <height>16777215</height>
-      </size>
-     </property>
-     <property name="text">
-      <string>0</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="3" colspan="3">
-    <widget class="QDialogButtonBox" name="_btn_box">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="0" colspan="2">
+   <item row="16" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
       <string>Index files</string>
@@ -748,8 +585,8 @@
      </layout>
     </widget>
    </item>
-   <item row="12" column="0" colspan="6">
-    <spacer name="verticalSpacer_4">
+   <item row="11" column="0" colspan="6">
+    <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -763,6 +600,236 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="9" column="0" colspan="6">
+    <widget class="Line" name="line_2">
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="4" rowspan="3" colspan="2">
+    <widget class="QLabel" name="_icon_lbl">
+     <property name="minimumSize">
+      <size>
+       <width>66</width>
+       <height>66</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>64</width>
+       <height>64</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Box</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <property name="lineWidth">
+      <number>1</number>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="resources.qrc">:/res/resources/thema_generic.png</pixmap>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="4">
+    <widget class="QLabel" name="_word_count_lbl">
+     <property name="maximumSize">
+      <size>
+       <width>24</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>0</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0" colspan="3">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Word's list :-</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="3">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Word Count :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Author</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="2">
+    <widget class="QCheckBox" name="_enabe_update_date_chk">
+     <property name="text">
+      <string>Edit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QDateTimeEdit" name="_update_date_time_edit">
+     <property name="displayFormat">
+      <string>dd/MM/yy H:mm:ss</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0" colspan="6">
+    <widget class="Line" name="line">
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0" colspan="5">
+    <widget class="QListWidget" name="_word_list">
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::ExtendedSelection</enum>
+     </property>
+     <property name="uniformItemSizes">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="5">
+    <widget class="QToolButton" name="_delete_btn">
+     <property name="toolTip">
+      <string>Delete selected words.</string>
+     </property>
+     <property name="icon">
+      <iconset resource="resources.qrc">
+       <normaloff>:/res/resources/delete.png</normaloff>:/res/resources/delete.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="3">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Thema translated name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Update Date &amp; time</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Thema name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" colspan="6">
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>4</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="_last_played_lbl">
+     <property name="text">
+      <string>Last played Date &amp; time</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QDateTimeEdit" name="_last_played_date_time_edit">
+     <property name="displayFormat">
+      <string>dd/MM/yy H:mm:ss</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QLabel" name="_points_lbl">
+     <property name="text">
+      <string>Points</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="3">
+    <widget class="QLineEdit" name="_points_edit"/>
    </item>
   </layout>
  </widget>
