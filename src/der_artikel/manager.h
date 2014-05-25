@@ -164,8 +164,10 @@ public:
 private slots:
     void onNewthemaLoaded(Thema_C* new_thema);
     void onthemaLoadingProgress(double progress);
+    void onFinishedLoading();
     void onThemaSelectionChanged();
     void quitPrivate();
+    void on24HrTimer();
 
 signals:
     //! Emitted when current page is changed. \param old_page The page that is removed
@@ -204,6 +206,12 @@ private:
     ImageProvider_C* _image_provider;
     //! Event loop for message bar.
     QEventLoop _message_loop;
+    //! Points deduction when user does not play it for 24hrs.
+    QHash<Thema_C*, int> _points_deduction;
+    //! Timer to reload thema files to update deductions.
+    QTimer* _reload_timer;
+    //! Flog to reload thema files.
+    bool _reload_themas;
 };
 
 #endif // MANAGER_H
