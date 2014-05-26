@@ -98,7 +98,7 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
         QDomElement dom_date_time = element.firstChildElement("LastPlayed");
         if(!dom_date_time.isNull()) {
             qint64 msecs = dom_date_time.text().toLongLong(&ok);
-            if(ok) {
+            if(ok && msecs > 0) {
                 _last_played = QDateTime::fromMSecsSinceEpoch(msecs);
             }
         }
@@ -292,12 +292,11 @@ bool Thema_C::Write(QDomElement &element)
             dom_experience.appendChild(text_experience);
             dom_thema.appendChild(dom_experience);
 
-            if(_last_played.isValid()) {
-                QDomElement dom_last_played = domDocument.createElement("LastPlayed");
-                QDomText text_last_played = domDocument.createTextNode(QString::number(_last_played.toMSecsSinceEpoch()));
-                dom_last_played.appendChild(text_last_played);
-                dom_thema.appendChild(dom_last_played);
-            }
+            QDomElement dom_last_played = domDocument.createElement("LastPlayed");
+            QString msecs_str = QString::number(_last_played.isValid() ? _last_played.toMSecsSinceEpoch() : -1);
+            QDomText text_last_played = domDocument.createTextNode(msecs_str);
+            dom_last_played.appendChild(text_last_played);
+            dom_thema.appendChild(dom_last_played);
 
             QDomElement dom_last_updated = domDocument.createElement("LastUpdated");
             QDomText text_last_updated = domDocument.createTextNode(QString::number(_last_updated.toMSecsSinceEpoch()));

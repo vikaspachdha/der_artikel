@@ -58,7 +58,7 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     connect(ui->_u_umlaut_btn, SIGNAL(clicked()), SLOT(InsertUUmlaut()));
     connect(ui->_eszett_btn, SIGNAL(clicked()), SLOT(InsertEszett()));
 
-    connect(ui->_enabe_update_date_chk,SIGNAL(toggled(bool)),this,SLOT(onEnableDateTimeChk(bool)));
+    connect(ui->_enable_update_date_chk,SIGNAL(toggled(bool)),this,SLOT(onEnableDateTimeChk(bool)));
 
     _date_time_timer.setInterval(1000);
     connect(&_date_time_timer,SIGNAL(timeout()),this,SLOT(onUpdateTime()));
@@ -389,6 +389,10 @@ void ThemaBuilder_C::showPrivateDataControls(bool show)
     ui->_last_played_date_time_edit->setVisible(show);
     ui->_last_played_lbl->setVisible(show);
     ui->_points_lbl->setVisible(show);
+    ui->_last_played_clear_chk->setVisible(show);
+    if(!show) {
+        ui->_last_played_clear_chk->setChecked(false);
+    }
 }
 
 void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
@@ -418,9 +422,11 @@ bool ThemaBuilder_C::Save(QString save_file)
     _thema->setLastUpdated(ui->_update_date_time_edit->dateTime());
 
     if(ui->_private_data_btn->isChecked()) {
-        _thema->setLastPlayed(ui->_last_played_date_time_edit->dateTime());
-        _thema->deductExperiencePoints(_thema->experiencePoints());
-        _thema->addExperiencePoints(ui->_points_edit->text().toInt());
+        _thema->_last_played = ui->_last_played_clear_chk->isChecked() ?
+                    QDateTime() : ui->_last_played_date_time_edit->dateTime();
+        _thema->_experience_points = ui->_points_edit->text().toInt();
+    } else {
+        _thema->_last_played = QDateTime();
     }
 
     bool success = _thema->Save(save_file);

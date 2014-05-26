@@ -689,7 +689,7 @@
     </widget>
    </item>
    <item row="5" column="2">
-    <widget class="QCheckBox" name="_enabe_update_date_chk">
+    <widget class="QCheckBox" name="_enable_update_date_chk">
      <property name="text">
       <string>Edit</string>
      </property>
@@ -821,14 +821,24 @@
      </property>
     </widget>
    </item>
-   <item row="6" column="2">
+   <item row="6" column="3">
     <widget class="QLabel" name="_points_lbl">
      <property name="text">
-      <string>Points</string>
+      <string>Experience</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
      </property>
     </widget>
    </item>
-   <item row="6" column="3">
+   <item row="6" column="2">
+    <widget class="QCheckBox" name="_last_played_clear_chk">
+     <property name="text">
+      <string>clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="4" colspan="2">
     <widget class="QLineEdit" name="_points_edit"/>
    </item>
   </layout>
