@@ -10,6 +10,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QIntValidator>
+#include <QSettings>
 
 #include "data/thema.h"
 #include "data/common.h"
@@ -25,6 +26,9 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     _edit_item(0)
 {
     ui->setupUi(this);
+
+    QSettings::setDefaultFormat(QSettings::IniFormat);
+
     QIntValidator* points_validator = new QIntValidator(ui->_points_edit);
     points_validator->setBottom(0);
     ui->_points_edit->setValidator(points_validator);
@@ -175,13 +179,14 @@ void ThemaBuilder_C::OnSave()
 
 void ThemaBuilder_C::OnSaveAs()
 {
-    static QString last_save_path = QDir::homePath() + QDir::separator() + "untitled.AKL";
+    static QString last_save_path = lastPath(SAVE_PATH) + QDir::separator() + "untitled.AKL";
     QString save_file = QFileDialog::getSaveFileName(this,tr("Select file name"),
                                                      last_save_path,
                                                      tr("Thema files (*.AKL);; All files (*.*)"));
 
     if(Save(save_file)) {
         last_save_path = save_file;
+        saveLastPath(SAVE_PATH, last_save_path);
     }
 }
 
@@ -302,13 +307,14 @@ void ThemaBuilder_C::OnDelete()
 
 void ThemaBuilder_C::OnIndex()
 {
-    static QString last_open_path = QDir::homePath();
+    static QString last_open_path = lastPath(INDEX_PATH);
     QString file_path = QFileDialog::getExistingDirectory(this, tr("Open Thema Directory"),
                                                           QDir::homePath(),
                                                           QFileDialog::ShowDirsOnly
                                                           | QFileDialog::DontResolveSymlinks);
     if(!file_path.isEmpty()) {
         last_open_path = file_path;
+        saveLastPath(INDEX_PATH,last_open_path);
         QDir root_thema_dir = file_path;
         QStringList nameFilters;
         nameFilters<<"*.AKL";
@@ -440,7 +446,7 @@ bool ThemaBuilder_C::Save(QString save_file)
 
 void ThemaBuilder_C::OnExport()
 {
-    static QString last_save_path = QDir::homePath() + QDir::separator() + "untitled.csv";
+    static QString last_save_path = lastPath(EXPORT_PATH) + QDir::separator() + "untitled.csv";
     QString save_file = QFileDialog::getSaveFileName(this,tr("Select file name"),
                                                      last_save_path,
                                                      tr("CSV files (*.csv);; All files (*.*)"));
@@ -450,6 +456,7 @@ void ThemaBuilder_C::OnExport()
             if(Export(&file)) {
                 LOG_INFO(QString("Thema builder :: Exported file to %1") .arg(save_file));
                 last_save_path = save_file;
+                saveLastPath(EXPORT_PATH, last_save_path);
             } else {
                 QMessageBox::critical(this,tr("Export failed"), tr("Invalid file or permissions"));
             }
@@ -462,7 +469,7 @@ void ThemaBuilder_C::OnExport()
 
 void ThemaBuilder_C::OnIcon()
 {
-    static QString last_open_path = QDir::homePath();
+    static QString last_open_path = lastPath(ICON_PATH);
     QString file_path = QFileDialog::getOpenFileName(this,tr("Select a png file"),
                                                      last_open_path,
                                                      tr("Png files (*.png);; All files (*.*)"));
@@ -474,13 +481,15 @@ void ThemaBuilder_C::OnIcon()
             LOG_INFO(QString("Thema builder :: New icon file : %1").arg(file_path));
             p = p.scaled(64,64);
             ui->_icon_lbl->setPixmap(p);
+            last_open_path = file_path;
+            saveLastPath(ICON_PATH,last_open_path);
         }
     }
 }
 
 void ThemaBuilder_C::OnImport()
 {
-    static QString last_open_path = QDir::homePath();
+    static QString last_open_path = lastPath(IMPORT_PATH);
     QString file_path = QFileDialog::getOpenFileName(this,tr("Select file to import"),
                                                      last_open_path,
                                                      tr("CSV files (*.csv);; All files (*.*)"));
@@ -490,6 +499,7 @@ void ThemaBuilder_C::OnImport()
         if (file.open(QFile::ReadOnly | QFile::Text)) {
             if(Import(&file)) {
                 last_open_path = file_path;
+                saveLastPath(IMPORT_PATH,last_open_path);
             } else {
                 QMessageBox::critical(this,tr("Import failed"), tr("Invalid file or format"));
             }
@@ -701,4 +711,65 @@ QString ThemaBuilder_C::UserName()
         user_name = "Anonymous Andy";
     }
     return user_name;
+}
+
+QString ThemaBuilder_C::lastPath(ThemaBuilder_C::PathType_TP path_type)
+{
+    QString path;
+    QSettings settings;
+    settings.beginGroup("pathSettings");
+    switch(path_type)
+    {
+    case SAVE_PATH:
+        path = settings.value("SAVE_PATH",QDir::homePath()).toString();
+        break;
+    case LOAD_PATH:
+        path = settings.value("LOAD_PATH",QDir::homePath()).toString();
+        break;
+    case IMPORT_PATH:
+        path = settings.value("IMPORT_PATH",QDir::homePath()).toString();
+        break;
+    case EXPORT_PATH:
+        path = settings.value("EXPORT_PATH",QDir::homePath()).toString();
+        break;
+    case ICON_PATH:
+        path = settings.value("ICON_PATH",QDir::homePath()).toString();
+        break;
+    case INDEX_PATH:
+        path = settings.value("INDEX_PATH",QDir::homePath()).toString();
+        break;
+    default:
+        break;
+    }
+    return path;
+}
+
+void ThemaBuilder_C::saveLastPath(ThemaBuilder_C::PathType_TP path_type, QString new_path)
+{
+    QSettings settings;
+    settings.beginGroup("pathSettings");
+    switch(path_type)
+    {
+    case SAVE_PATH:
+        settings.setValue("SAVE_PATH",new_path);
+        break;
+    case LOAD_PATH:
+        settings.setValue("LOAD_PATH",new_path);
+        break;
+    case IMPORT_PATH:
+        settings.setValue("IMPORT_PATH",new_path);
+        break;
+    case EXPORT_PATH:
+        settings.setValue("EXPORT_PATH",new_path);
+        break;
+    case ICON_PATH:
+        settings.setValue("ICON_PATH",QDir::homePath());
+        break;
+    case INDEX_PATH:
+        settings.setValue("INDEX_PATH",QDir::homePath());
+        break;
+    default:
+        break;
+    }
+    settings.endGroup();
 }

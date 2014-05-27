@@ -66,8 +66,10 @@ int main(int argc, char *argv[])
     LOG_INFO("Application start");
 
     app.setWindowIcon(QIcon("qrc:/res/resources/app.png"));
-    app.setApplicationName("thema_builder");
-    app.setApplicationDisplayName("Thema builder");
+    QApplication::setOrganizationName("vystosi");
+    QApplication::setOrganizationDomain("vystosi.com");
+    QApplication::setApplicationName("thema_builder");
+    QApplication::setApplicationDisplayName("Thema builder");
 
     ThemaBuilder_C thema_builder;
     thema_builder.show();

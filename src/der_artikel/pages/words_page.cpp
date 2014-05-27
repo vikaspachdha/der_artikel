@@ -106,6 +106,41 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
         addWords(thema);
     }
     MessageBar_C::closeMsg();
+
+    // Deduct points for lost knowledge.
+    QDateTime last_played = thema->lastPlayed();
+    if(last_played.isValid()) {
+        int lapsed_days = last_played.daysTo(QDateTime::currentDateTime());
+        int points_deducted = 0;
+        while( ((lapsed_days--) > 0) ) {
+            // Progressively deduct experience points.
+            switch (thema->state()) {
+                case Thema_C::INERT:
+                    thema->deductExperiencePoints(2);
+                    points_deducted +=2;
+                    break;
+                case Thema_C::GOLD:
+                    thema->deductExperiencePoints(5);
+                    points_deducted +=5;
+                    break;
+                case Thema_C::SILVER:
+                    thema->deductExperiencePoints(10);
+                    points_deducted +=10;
+                    break;
+                default:
+                    thema->deductExperiencePoints(20);
+                    points_deducted +=20;
+                    break;
+            }
+        }
+
+        if(points_deducted > 0) {
+            MessageBar_C::showMsg(tr("Experience deduction"),
+            tr("%1 experience points are deducted.").arg(points_deducted),
+            tr("OK"),"");
+        }
+
+    }
 }
 
 //******************************************************************************

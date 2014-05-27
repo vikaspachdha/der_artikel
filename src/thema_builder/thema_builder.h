@@ -25,6 +25,15 @@ enum WordUIState {
     UPDATE_STATE
 };
 
+enum PathType_TP {
+    SAVE_PATH = 1,
+    LOAD_PATH,
+    IMPORT_PATH,
+    EXPORT_PATH,
+    ICON_PATH,
+    INDEX_PATH
+};
+
 public:
     explicit ThemaBuilder_C(QWidget *parent = 0);
     ~ThemaBuilder_C();
@@ -74,6 +83,8 @@ private:
     void InsertSplText(QString str);
     void SetUmlautUpperCase( bool upper_case);
     QString UserName();
+    QString lastPath(PathType_TP path_type);
+    void saveLastPath(PathType_TP path_type, QString path);
 
 private:
     Ui::ThemaBuilder_C *ui;

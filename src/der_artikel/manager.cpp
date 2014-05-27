@@ -68,8 +68,7 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _current_page(INVALID_PAGE),
     _current_result(0),
     _game_level(EASY),
-    _image_provider(new ImageProvider_C),
-    _reload_themas(false)
+    _image_provider(new ImageProvider_C)
 {    
     LOG_DEBUG("Manager_C::Construtor");
     _settings = new Settings_C(this);
@@ -79,12 +78,6 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
 
     _thema_model = new ThemaModel_C(this);
     connect(_thema_model,SIGNAL(themaSelectionChanged()), this, SLOT(onThemaSelectionChanged()));
-
-    // 24+ hrs timer.
-    _reload_timer = new QTimer(this);
-    _reload_timer->setInterval(86410000);
-    _reload_timer->start();
-    connect(_reload_timer,SIGNAL(timeout()),SLOT(on24HrTimer()));
 }
 
 //******************************************************************************
@@ -165,10 +158,6 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
             if(old_page != INVALID_PAGE) {
                 QSound::play(":/res/resources/sounds/page_flip.wav");
             }
-            if(_reload_themas && _reload_themas == Manager_C::HOME_PAGE) {
-                _reload_themas = false;
-                loadDefaultThemas();
-            }
         }
     }
 }
@@ -226,38 +215,6 @@ void Manager_C::onNewthemaLoaded(Thema_C *new_thema)
 {
     Q_ASSERT(new_thema);
     Q_ASSERT(_thema_model);
-
-    // Deduct points for lost knowledge.
-    QDateTime last_played = new_thema->lastPlayed();
-    if(last_played.isValid()) {
-        int lapsed_days = last_played.daysTo(QDateTime::currentDateTime());
-        int points_deducted = 0;
-        while( ((lapsed_days--) > 0) ) {
-            // Progressively deduct experience points.
-            switch (new_thema->state()) {
-            case Thema_C::INERT:
-                new_thema->deductExperiencePoints(2);
-                points_deducted +=2;
-                break;
-            case Thema_C::GOLD:
-                new_thema->deductExperiencePoints(5);
-                points_deducted +=5;
-                break;
-            case Thema_C::SILVER:
-                new_thema->deductExperiencePoints(10);
-                points_deducted +=10;
-                break;
-            default:
-                new_thema->deductExperiencePoints(20);
-                points_deducted +=20;
-                break;
-            }
-        }
-        if(points_deducted) {
-            _points_deduction[new_thema] = points_deducted;
-        }
-    }
-
     LOG_INFO(QString("Manager :: Thema %1 loaded").arg(new_thema->name()));
     new_thema->setParent(this);
     _thema_model->AddThema(new_thema);
@@ -272,29 +229,10 @@ void Manager_C::onNewthemaLoaded(Thema_C *new_thema)
  *
  *  \param[in] progress : Progress value.
  ******************************************************************************/
-void Manager_C::onthemaLoadingProgress(double progress)
+void Manager_C::onThemaLoadingProgress(double progress)
 {
     MessageBar_C::setProgress(progress);
     MessageBar_C::setMessage(QString("%1 %").arg(qRound(progress * 100)));
-}
-
-//******************************************************************************
-/*! \brief Called on thema loading finished. Closes message and display knowledge
- *  loss points if any.
- *
- *  \author Vikas Pachdha
- ******************************************************************************/
-void Manager_C::onFinishedLoading()
-{
-    MessageBar_C::closeMsg();
-
-    // TODO : QML dialog.
-    if(_points_deduction.count() > 0) {
-        foreach(Thema_C* thema, _points_deduction.keys()) {
-            LOG_INFO(QString("%1 Knowledge loss points deducted for thema %2")
-                     .arg(thema->name()).arg(_points_deduction[thema]));
-        }
-    }
 }
 
 //******************************************************************************
@@ -460,21 +398,6 @@ void Manager_C::quitPrivate()
 }
 
 //******************************************************************************
-/*! \brief Called when 24+ hrs are lapsed since app started. Themas are reloaded
- *  to adjust knowlde loss.
- *
- *  \author Vikas Pachdha
- ******************************************************************************/
-void Manager_C::on24HrTimer()
-{
-    if(_current_page == HOME_PAGE) {
-        loadDefaultThemas();
-    } else {
-        _reload_themas = true;
-    }
-}
-
-//******************************************************************************
 /*! \brief Start loading the default thema's. The thema present in the system.
  *
  *  \author Vikas Pachdha
@@ -484,13 +407,11 @@ void Manager_C::loadDefaultThemas()
     LOG_INFO("Manager :: Loading Thema files");
     Q_ASSERT(_thema_model);
     _thema_model->clear();
-    _points_deduction.clear();
-
     // thema_loader shall be deleted automatically.
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
     connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), SLOT(onNewthemaLoaded(Thema_C*)) );
-    connect(thema_loader,SIGNAL(finishedLoading()),SLOT(onFinishedLoading()));
-    connect(thema_loader,SIGNAL(updateProgress(double)),SLOT(onthemaLoadingProgress(double)));
+    connect(thema_loader,SIGNAL(finishedLoading()),&MessageBar_C::instance(),SLOT(closeMsg()));
+    connect(thema_loader,SIGNAL(updateProgress(double)),SLOT(onThemaLoadingProgress(double)));
     MessageBar_C::showMsgAsync(tr("Loading installed themas."),"",2000);
     thema_loader->startLoading();
 }
