@@ -61,6 +61,7 @@ public:
     explicit WordsPage_C(Manager_C& page_manager, QQmlContext& root_context, Settings_C& settings, QObject *parent = 0);
 
 public:
+    virtual bool canEnter() const;
     virtual void enter(Manager_C::PageId_TP prev_page_id);
     virtual void leave(Manager_C::PageId_TP next_page_id);
 
@@ -73,7 +74,8 @@ public:
     Article_C::Artikel getSelectedArticle() const { return _selected_article; }
 
 private slots:
-    void OnWordClicked();
+    void onWordClicked();
+    void calculateExperienceLoss();
 
 signals:
     //! Emitted when info mode is changed.

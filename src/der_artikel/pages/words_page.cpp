@@ -29,6 +29,7 @@
 // System includes
 #include <QQmlContext>
 #include <QQuickItem>
+#include <QTimer>
 
 // Interface for this file
 #include "words_page.h"
@@ -67,6 +68,26 @@ WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, Set
     setSelectedArticle(Article_C::DER);
 }
 
+/********************************************************************************/
+/*! \brief \ref To check preconditions for words page. Thema selection is checked
+ *  and thema is loaded.
+ *
+ *  \author Vikas Pachdha.
+ *
+ *  \return bool True if thema selection is there and it can be loaded, false otherwise.
+ *********************************************************************************/
+bool WordsPage_C::canEnter() const
+{
+    bool success = false;
+    Thema_C* thema = _page_manager.themaModel()->GetSelectedThema();
+    if(thema) {
+        MessageBar_C::showMsgAsync(tr("Loading thema ..."),"");
+        success = thema->Read("",false);
+    }
+    MessageBar_C::closeMsg();
+    return success;
+}
+
 //******************************************************************************
 /*! \brief Called when page enters. Selected thema is loaded and words are added.
  *
@@ -80,16 +101,16 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
     Thema_C* thema = _page_manager.themaModel()->GetSelectedThema();
     Q_ASSERT(thema);
 
-    MessageBar_C::showMsgAsync(tr("Loading thema ..."),"");
-
-    thema->Read("",false);
-
     if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
         // Add words to page.
         addWords(thema,true);
         setInfoMode(true);
     } else {
         setInfoMode(false);
+
+        // Add words to page.
+        addWords(thema);
+
         createResultAlgo();
         Q_ASSERT(_result_algo);
 
@@ -99,47 +120,10 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
         QQuickItem* title_item = _page_manager.titleItem(_page_id);
         if(title_item) {
             title_item->setProperty("play_time",play_time);
-            title_item->setProperty("timer_running",true);
         }
 
-        // Add words to page.
-        addWords(thema);
-    }
-    MessageBar_C::closeMsg();
-
-    // Deduct points for lost knowledge.
-    QDateTime last_played = thema->lastPlayed();
-    if(last_played.isValid()) {
-        int lapsed_days = last_played.daysTo(QDateTime::currentDateTime());
-        int points_deducted = 0;
-        while( ((lapsed_days--) > 0) ) {
-            // Progressively deduct experience points.
-            switch (thema->state()) {
-                case Thema_C::INERT:
-                    thema->deductExperiencePoints(2);
-                    points_deducted +=2;
-                    break;
-                case Thema_C::GOLD:
-                    thema->deductExperiencePoints(5);
-                    points_deducted +=5;
-                    break;
-                case Thema_C::SILVER:
-                    thema->deductExperiencePoints(10);
-                    points_deducted +=10;
-                    break;
-                default:
-                    thema->deductExperiencePoints(20);
-                    points_deducted +=20;
-                    break;
-            }
-        }
-
-        if(points_deducted > 0) {
-            MessageBar_C::showMsg(tr("Experience deduction"),
-            tr("%1 experience points are deducted.").arg(points_deducted),
-            tr("OK"),"");
-        }
-
+        // https://bugreports.qt-project.org/browse/QTBUG-38729
+        QTimer::singleShot(0,this,SLOT(calculateExperienceLoss()));
     }
 }
 
@@ -216,7 +200,7 @@ void WordsPage_C::setSelectedArticle(Article_C::Artikel article)
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
-void WordsPage_C::OnWordClicked()
+void WordsPage_C::onWordClicked()
 {
     QObject* word_item = sender();
     Q_ASSERT(word_item);
@@ -229,6 +213,60 @@ void WordsPage_C::OnWordClicked()
         } else {
             word->setUserArtikel(_selected_article);
         }
+    }
+}
+
+//******************************************************************************
+/*! \brief Called to check and deduct experience loss.
+ *
+ *  \details The play timer is started after notifying user about the points deductions if any.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void WordsPage_C::calculateExperienceLoss()
+{
+    Thema_C* thema = _page_manager.themaModel()->GetSelectedThema();
+    Q_ASSERT(thema);
+
+    // Deduct points for lost knowledge.
+    QDateTime last_played = thema->lastPlayed();
+    if(last_played.isValid()) {
+        int lapsed_days = last_played.daysTo(QDateTime::currentDateTime());
+        int points_deducted = 0;
+        while( ((lapsed_days--) > 0) ) {
+            // Progressively deduct experience points.
+            switch (thema->state()) {
+            case Thema_C::INERT:
+                thema->deductExperiencePoints(2);
+                points_deducted +=2;
+                break;
+            case Thema_C::GOLD:
+                thema->deductExperiencePoints(5);
+                points_deducted +=5;
+                break;
+            case Thema_C::SILVER:
+                thema->deductExperiencePoints(10);
+                points_deducted +=10;
+                break;
+            default:
+                thema->deductExperiencePoints(20);
+                points_deducted +=20;
+                break;
+            }
+        }
+
+        if(points_deducted > 0) {
+            MessageBar_C::showMsg(tr("Knowledge loss detected"),
+                                  tr("%1 experience points are deducted. Go to Help -> Rules for details.").arg(points_deducted),
+                                  "",tr("OK"));
+        }
+
+    }
+
+    // Start timer.
+    QQuickItem* title_item = _page_manager.titleItem(_page_id);
+    if(title_item) {
+        title_item->setProperty("timer_running",true);
     }
 }
 
@@ -257,7 +295,7 @@ void WordsPage_C::addWords(const Thema_C* thema, bool practice_mode)
         QObject* word_item = addWord(*word);
         Q_ASSERT(word_item);
         _item_word_hash[word_item] = word;
-        connect(word_item, SIGNAL(wordClicked()), this, SLOT(OnWordClicked()) );
+        connect(word_item, SIGNAL(wordClicked()), this, SLOT(onWordClicked()) );
     }
 }
 
@@ -311,17 +349,17 @@ void WordsPage_C::createResultAlgo()
         _result_algo = 0;
     }
     switch (_page_manager.gameLevel()) {
-        case Manager_C::EASY:
-            _result_algo = new EasyResultAlgo_C();
-            break;
-        case Manager_C::MODERATE:
-            _result_algo = new ModerateResultAlgo_C();
-            break;
-        case Manager_C::EXPERT:
-            _result_algo = new StrictResultAlgo_C();
-            break;
-        default:
-            break;
+    case Manager_C::EASY:
+        _result_algo = new EasyResultAlgo_C();
+        break;
+    case Manager_C::MODERATE:
+        _result_algo = new ModerateResultAlgo_C();
+        break;
+    case Manager_C::EXPERT:
+        _result_algo = new StrictResultAlgo_C();
+        break;
+    default:
+        break;
     }
 }
 

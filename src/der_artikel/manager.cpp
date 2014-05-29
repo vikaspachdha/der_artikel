@@ -148,15 +148,15 @@ void Manager_C::setCurrentPage(Manager_C::PageId_TP new_page)
                 LOG_INFO(QString("Manager :: Left page %1").arg(old_page));
             }
 
+            emit currentPageChanged(old_page,new_page);
+            if(old_page != INVALID_PAGE) {
+                QSound::play(":/res/resources/sounds/page_flip.wav");
+            }
+
             if(new_page_instance) {
                 LOG_INFO(QString("Manager :: Entering page %1").arg(new_page));
                 new_page_instance->enter(old_page);
                 LOG_INFO(QString("Manager :: Entered page %1").arg(new_page));
-            }
-
-            emit currentPageChanged(old_page,new_page);
-            if(old_page != INVALID_PAGE) {
-                QSound::play(":/res/resources/sounds/page_flip.wav");
             }
         }
     }
