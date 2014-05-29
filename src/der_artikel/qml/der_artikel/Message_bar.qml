@@ -66,7 +66,6 @@ Item {
 
         Text {
             id: msg_title
-            height: msg_bar.height * 0.40
             anchors {
                 left: icon.right
                 top: msg_bar.top
@@ -81,12 +80,12 @@ Item {
 
         Text {
             id: msg_text
-            height: msg_bar.height * 0.40
             anchors {
                 left: icon.right
                 top: msg_title.bottom
                 right: msg_bar.right
                 bottom: btnFrame.top
+                bottomMargin: 8
             }
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment:  Text.AlignVCenter
