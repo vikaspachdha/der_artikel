@@ -149,7 +149,7 @@ void ThemaBuilder_C::OnNew()
 
 void ThemaBuilder_C::OnLoad()
 {
-    static QString last_open_path = QDir::homePath();
+    static QString last_open_path = lastPath(LOAD_PATH);
     QString file_path = QFileDialog::getOpenFileName(this,tr("Select file name"),
                                                      last_open_path,
                                                      tr("Thema files (*.AKL);; All files (*.*)"));
@@ -162,6 +162,7 @@ void ThemaBuilder_C::OnLoad()
             _thema = new_thema;
             PopulateUI(_thema);
             last_open_path = file_path;
+            saveLastPath(LOAD_PATH,QFileInfo(last_open_path).absolutePath());
         }
     }
 
@@ -186,7 +187,7 @@ void ThemaBuilder_C::OnSaveAs()
 
     if(Save(save_file)) {
         last_save_path = save_file;
-        saveLastPath(SAVE_PATH, last_save_path);
+        saveLastPath(SAVE_PATH, QFileInfo(last_save_path).absolutePath());
     }
 }
 
@@ -309,7 +310,7 @@ void ThemaBuilder_C::OnIndex()
 {
     static QString last_open_path = lastPath(INDEX_PATH);
     QString file_path = QFileDialog::getExistingDirectory(this, tr("Open Thema Directory"),
-                                                          QDir::homePath(),
+                                                          last_open_path,
                                                           QFileDialog::ShowDirsOnly
                                                           | QFileDialog::DontResolveSymlinks);
     if(!file_path.isEmpty()) {
@@ -446,17 +447,17 @@ bool ThemaBuilder_C::Save(QString save_file)
 
 void ThemaBuilder_C::OnExport()
 {
-    static QString last_save_path = lastPath(EXPORT_PATH) + QDir::separator() + "untitled.csv";
+    static QString last_export_path = lastPath(EXPORT_PATH) + QDir::separator() + "untitled.csv";
     QString save_file = QFileDialog::getSaveFileName(this,tr("Select file name"),
-                                                     last_save_path,
+                                                     last_export_path,
                                                      tr("CSV files (*.csv);; All files (*.*)"));
     if(!save_file.isEmpty()) {
         QFile file(save_file);
         if (file.open(QFile::WriteOnly | QFile::Text)) {
             if(Export(&file)) {
                 LOG_INFO(QString("Thema builder :: Exported file to %1") .arg(save_file));
-                last_save_path = save_file;
-                saveLastPath(EXPORT_PATH, last_save_path);
+                last_export_path = save_file;
+                saveLastPath(EXPORT_PATH, QFileInfo(last_export_path).absolutePath());
             } else {
                 QMessageBox::critical(this,tr("Export failed"), tr("Invalid file or permissions"));
             }
@@ -469,9 +470,9 @@ void ThemaBuilder_C::OnExport()
 
 void ThemaBuilder_C::OnIcon()
 {
-    static QString last_open_path = lastPath(ICON_PATH);
+    static QString last_icon_path = lastPath(ICON_PATH);
     QString file_path = QFileDialog::getOpenFileName(this,tr("Select a png file"),
-                                                     last_open_path,
+                                                     last_icon_path,
                                                      tr("Png files (*.png);; All files (*.*)"));
     if(!file_path.isEmpty()) {
         QPixmap p(file_path);
@@ -481,8 +482,8 @@ void ThemaBuilder_C::OnIcon()
             LOG_INFO(QString("Thema builder :: New icon file : %1").arg(file_path));
             p = p.scaled(64,64);
             ui->_icon_lbl->setPixmap(p);
-            last_open_path = file_path;
-            saveLastPath(ICON_PATH,last_open_path);
+            last_icon_path = file_path;
+            saveLastPath(ICON_PATH,QFileInfo(last_icon_path).absolutePath());
         }
     }
 }
@@ -499,7 +500,7 @@ void ThemaBuilder_C::OnImport()
         if (file.open(QFile::ReadOnly | QFile::Text)) {
             if(Import(&file)) {
                 last_open_path = file_path;
-                saveLastPath(IMPORT_PATH,last_open_path);
+                saveLastPath(IMPORT_PATH,QFileInfo(last_open_path).absolutePath());
             } else {
                 QMessageBox::critical(this,tr("Import failed"), tr("Invalid file or format"));
             }
@@ -763,10 +764,10 @@ void ThemaBuilder_C::saveLastPath(ThemaBuilder_C::PathType_TP path_type, QString
         settings.setValue("EXPORT_PATH",new_path);
         break;
     case ICON_PATH:
-        settings.setValue("ICON_PATH",QDir::homePath());
+        settings.setValue("ICON_PATH",new_path);
         break;
     case INDEX_PATH:
-        settings.setValue("INDEX_PATH",QDir::homePath());
+        settings.setValue("INDEX_PATH",new_path);
         break;
     default:
         break;
