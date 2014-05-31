@@ -85,6 +85,7 @@ private:
     QString UserName();
     QString lastPath(PathType_TP path_type);
     void saveLastPath(PathType_TP path_type, QString path);
+    QString wordId(Word_C* word);
 
 private:
     Ui::ThemaBuilder_C *ui;

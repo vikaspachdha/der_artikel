@@ -211,9 +211,9 @@ void ThemaBuilder_C::OnAddClicked()
     if(_edit_item) {
         Word_C* edit_word = _edit_item->data(Qt::UserRole).value<Word_C*>();
         edit_word->_artikel = article;
-        _words_set.remove(edit_word->_text);
+        _words_set.remove(wordId(edit_word));
         edit_word->_text = text;
-         _words_set[edit_word->_text] = edit_word;
+         _words_set[wordId(edit_word)] = edit_word;
         edit_word->_description = desc;
         UpdateItem(_edit_item);
         SetWordUiState(ADD_STATE);
@@ -296,7 +296,7 @@ void ThemaBuilder_C::OnDelete()
                 if(word) {
                     _thema->_words.removeAt(_thema->_words.indexOf(word));
                     _word_item_hash.remove(word);
-                    _words_set.remove(word->wordText());
+                    _words_set.remove(wordId(word));
                     delete word;
                     delete item;
                 }
@@ -516,6 +516,7 @@ bool ThemaBuilder_C::Export(QIODevice *pDevice)
     bool success = false;
     if(pDevice) {
         QTextStream out(pDevice);
+        out.setCodec("UTF-8");
         foreach(Word_C* word, _thema->_words) {
             out<<word->_artikel<<";"<<word->_text<<";"<<word->_description<<"\n";
         }
@@ -531,6 +532,7 @@ bool ThemaBuilder_C::Import(QIODevice *pDevice)
     bool success = false;
     if(pDevice) {
         QTextStream stream(pDevice);
+        stream.setCodec("UTF-8");
         QString line;
         int line_count = 0;
         do {
@@ -582,8 +584,8 @@ bool ThemaBuilder_C::AddWordToThema(Word_C *new_word)
 {
     bool success = false;
     if(new_word) {
-        if(_words_set.contains(new_word->_text)) {
-            Word_C* old_word = _words_set[new_word->_text];
+        if(_words_set.contains(wordId(new_word))) {
+            Word_C* old_word = _words_set[wordId(new_word)];
             LOG_WARN(QString("Thema builder :: Duplicate word %1").arg(new_word->wordText()));
             ConflictDlg_C conflict_dlg(*old_word, *new_word, this);
             if(conflict_dlg.exec() == QDialog::Accepted) {
@@ -592,15 +594,19 @@ bool ThemaBuilder_C::AddWordToThema(Word_C *new_word)
                 if(conflict_dlg.updateArticle()) {
                     old_word->_artikel = new_word->_artikel;
                 }
-                if(conflict_dlg.updateTranslation()) {
+                if(conflict_dlg.updateDescription()) {
                     old_word->_description = new_word->_description;
+                }
+
+                if(!conflict_dlg.extraDescription().trimmed().isEmpty()) {
+                    old_word->_description.append(QString(", %1").arg(conflict_dlg.extraDescription().trimmed()));
                 }
                 UpdateItem(list_item);
             }
         } else {
             AddWordToList(new_word);
             _thema->_words.append(new_word);
-            _words_set[new_word->_text] = new_word;
+            _words_set[wordId(new_word)] = new_word;
             success = true;
         }
     }
@@ -773,4 +779,13 @@ void ThemaBuilder_C::saveLastPath(ThemaBuilder_C::PathType_TP path_type, QString
         break;
     }
     settings.endGroup();
+}
+
+QString ThemaBuilder_C::wordId(Word_C *word)
+{
+    QString id;
+    if(word) {
+        id = QString("%1").arg(word->_text);
+    }
+    return id;
 }

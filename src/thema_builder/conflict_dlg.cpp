@@ -33,6 +33,7 @@ ConflictDlg_C::ConflictDlg_C(Word_C &old_word, Word_C &new_word, QWidget *parent
         isSame = false;
     } else {
         ui->_update_translation_chk->setVisible(false);
+        ui->_extra_desc_txt->setVisible(false);
     }
 
     if(isSame) {
@@ -67,7 +68,12 @@ bool ConflictDlg_C::updateArticle() const
 
  \return bool
 */
-bool ConflictDlg_C::updateTranslation() const
+bool ConflictDlg_C::updateDescription() const
 {
     return ui->_update_translation_chk->isChecked();
+}
+
+QString ConflictDlg_C::extraDescription() const
+{
+    return ui->_extra_desc_txt->text();
 }

@@ -17,7 +17,8 @@ public:
 
 public:
     bool updateArticle() const;
-    bool updateTranslation() const;
+    bool updateDescription() const;
+    QString extraDescription() const;
 
 private:
     Ui::ConflictDlg_C *ui;
