@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ThemaBuilder_C</class>
- <widget class="QWidget" name="ThemaBuilder_C">
+ <class>ThemaBuilder_UIC</class>
+ <widget class="QWidget" name="ThemaBuilder_UIC">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
+    <width>554</width>
     <height>597</height>
    </rect>
   </property>
@@ -357,7 +357,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="resources.qrc">
+         <iconset resource="../der_artikel/resources.qrc">
           <normaloff>:/res/resources/new_file.png</normaloff>:/res/resources/new_file.png</iconset>
         </property>
         <property name="iconSize">
@@ -383,7 +383,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="resources.qrc">
+         <iconset resource="../der_artikel/resources.qrc">
           <normaloff>:/res/resources/open.png</normaloff>:/res/resources/open.png</iconset>
         </property>
         <property name="iconSize">
@@ -409,7 +409,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="resources.qrc">
+         <iconset resource="../der_artikel/resources.qrc">
           <normaloff>:/res/resources/save.png</normaloff>:/res/resources/save.png</iconset>
         </property>
         <property name="iconSize">
@@ -435,7 +435,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="resources.qrc">
+         <iconset resource="../der_artikel/resources.qrc">
           <normaloff>:/res/resources/save_as.png</normaloff>:/res/resources/save_as.png</iconset>
         </property>
         <property name="iconSize">
@@ -471,7 +471,7 @@
          <string>...</string>
         </property>
         <property name="icon">
-         <iconset resource="resources.qrc">
+         <iconset resource="../der_artikel/resources.qrc">
           <normaloff>:/res/resources/import.png</normaloff>:/res/resources/import.png</iconset>
         </property>
         <property name="iconSize">
@@ -491,7 +491,7 @@
          <string>...</string>
         </property>
         <property name="icon">
-         <iconset resource="resources.qrc">
+         <iconset resource="../der_artikel/resources.qrc">
           <normaloff>:/res/resources/export.png</normaloff>:/res/resources/export.png</iconset>
         </property>
         <property name="iconSize">
@@ -638,7 +638,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources.qrc">:/res/resources/thema_generic.png</pixmap>
+      <pixmap resource="../der_artikel/resources.qrc">:/res/resources/thema_generic.png</pixmap>
      </property>
     </widget>
    </item>
@@ -731,7 +731,7 @@
       <string>Delete selected words.</string>
      </property>
      <property name="icon">
-      <iconset resource="resources.qrc">
+      <iconset resource="../der_artikel/resources.qrc">
        <normaloff>:/res/resources/delete.png</normaloff>:/res/resources/delete.png</iconset>
      </property>
      <property name="iconSize">
@@ -863,6 +863,7 @@
   <tabstop>_btn_box</tabstop>
  </tabstops>
  <resources>
+  <include location="../der_artikel/resources.qrc"/>
   <include location="resources.qrc"/>
  </resources>
  <connections/>

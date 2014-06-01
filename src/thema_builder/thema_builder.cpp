@@ -22,7 +22,7 @@
 
 ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ThemaBuilder_C),
+    ui(new Ui::ThemaBuilder_UIC),
     _edit_item(0)
 {
     ui->setupUi(this);

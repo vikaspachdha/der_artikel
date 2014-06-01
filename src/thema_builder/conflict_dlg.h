@@ -4,7 +4,7 @@
 #include <QDialog>
 
 namespace Ui {
-class ConflictDlg_C;
+class ConflictDlg_UIC;
 }
 class Word_C;
 class ConflictDlg_C : public QDialog
@@ -20,8 +20,14 @@ public:
     bool updateDescription() const;
     QString extraDescription() const;
 
+protected:
+    void moveEvent(QMoveEvent *event);
+
+private slots:
+    void onOptionsChanged();
+
 private:
-    Ui::ConflictDlg_C *ui;
+    Ui::ConflictDlg_UIC *ui;
 };
 
 #endif // CONFLICT_DLG_H

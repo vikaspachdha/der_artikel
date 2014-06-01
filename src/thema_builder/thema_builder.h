@@ -8,7 +8,7 @@
 class Thema_C;
 
 namespace Ui {
-class ThemaBuilder_C;
+class ThemaBuilder_UIC;
 }
 class QIODevice;
 class QAbstractButton;
@@ -88,7 +88,7 @@ private:
     QString wordId(Word_C* word);
 
 private:
-    Ui::ThemaBuilder_C *ui;
+    Ui::ThemaBuilder_UIC *ui;
     Thema_C* _thema;
     QHash<QString, Word_C*> _words_set;
     QHash<Word_C*, QListWidgetItem*> _word_item_hash;

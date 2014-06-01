@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ConflictDlg_C</class>
- <widget class="QDialog" name="ConflictDlg_C">
+ <class>ConflictDlg_UIC</class>
+ <widget class="QDialog" name="ConflictDlg_UIC">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -29,29 +29,6 @@
    <property name="spacing">
     <number>4</number>
    </property>
-   <item row="1" column="2">
-    <widget class="QCheckBox" name="_update_article_chk">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Update article</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1" colspan="2">
-    <widget class="QDialogButtonBox" name="_btn_box">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
    <item row="4" column="1" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
@@ -68,13 +45,6 @@
      </property>
     </spacer>
    </item>
-   <item row="2" column="2">
-    <widget class="QCheckBox" name="_update_translation_chk">
-     <property name="text">
-      <string>Update translation</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="1" colspan="2">
     <widget class="QLabel" name="_msg_lbl">
      <property name="text">
@@ -85,7 +55,43 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0" rowspan="6">
+   <item row="1" column="2">
+    <widget class="QCheckBox" name="_update_article_chk">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Update article</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1" colspan="2">
+    <widget class="QDialogButtonBox" name="_btn_box">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <spacer name="horizontalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="0" column="0" rowspan="7">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="_icon_lbl">
@@ -105,30 +111,21 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="resources.qrc">:/res/resources/warning.png</pixmap>
+        <pixmap resource="../der_artikel/resources.qrc">:/res/resources/warning.png</pixmap>
        </property>
       </widget>
      </item>
     </layout>
    </item>
-   <item row="1" column="1">
-    <spacer name="horizontalSpacer_2">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+   <item row="2" column="2">
+    <widget class="QCheckBox" name="_update_translation_chk">
+     <property name="text">
+      <string>Update translation</string>
      </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="3" column="2">
-    <widget class="QLineEdit" name="_extra_desc_txt"/>
+    </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QLabel" name="label">
+    <widget class="QLabel" name="_extra_desc_lbl">
      <property name="text">
       <string>Add to translation :</string>
      </property>
@@ -137,16 +134,35 @@
      </property>
     </widget>
    </item>
+   <item row="3" column="2">
+    <widget class="QLineEdit" name="_extra_desc_txt"/>
+   </item>
+   <item row="5" column="1" colspan="2">
+    <widget class="QLabel" name="_discard_lbl">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:rgb(255, 140, 3)</string>
+     </property>
+     <property name="text">
+      <string>NOTE : New changes shall be discarded.</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <resources>
-  <include location="resources.qrc"/>
+  <include location="../der_artikel/resources.qrc"/>
  </resources>
  <connections>
   <connection>
    <sender>_btn_box</sender>
    <signal>accepted()</signal>
-   <receiver>ConflictDlg_C</receiver>
+   <receiver>ConflictDlg_UIC</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -162,7 +178,7 @@
   <connection>
    <sender>_btn_box</sender>
    <signal>rejected()</signal>
-   <receiver>ConflictDlg_C</receiver>
+   <receiver>ConflictDlg_UIC</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
