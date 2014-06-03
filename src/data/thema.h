@@ -165,5 +165,6 @@ private:
 
 private:
     friend class ThemaBuilder_C;
+    friend class ResultAlgo_T;
 };
 #endif // THEMA_H

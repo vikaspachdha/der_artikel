@@ -12,9 +12,17 @@ CONFIG   -= app_bundle
 
 TEMPLATE = app
 
+HEADERS += ../data/word.h \
+    ../data/thema.h \
+    ../data/article.h \
+    log4qt/log_defines.h
 
 SOURCES += \
-    easy_result_algo_t.cpp
+    ../data/word.cpp \
+    ../data/thema.cpp \
+    ../data/article.cpp \
+    result_algo_t.cpp
+
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 INCLUDEPATH += ./ \
