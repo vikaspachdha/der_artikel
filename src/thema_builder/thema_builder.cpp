@@ -436,7 +436,7 @@ bool ThemaBuilder_C::Save(QString save_file)
         _thema->_last_played = QDateTime();
     }
 
-    bool success = _thema->Save(save_file);
+    bool success = _thema->save(save_file);
     if (success) {
         LOG_INFO(QString("Thema builder :: Saved file to %1") .arg(save_file));
     } else {
@@ -650,10 +650,10 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
         LOG_DEBUG("ThemaBuilder_C::PopulateUI");
         ui->_thema_name_edit->setText(thema->name());
         ui->_thema_tr_name_edit->setText(thema->trName());
-        if(thema->Author().isEmpty()) {
+        if(thema->author().isEmpty()) {
             ui->_author_name_edit->setText(UserName());
         } else {
-            ui->_author_name_edit->setText(thema->Author());
+            ui->_author_name_edit->setText(thema->author());
         }
         foreach(Word_C* word, thema->_words) {
             AddWordToList(word);

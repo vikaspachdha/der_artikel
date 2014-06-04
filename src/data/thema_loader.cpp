@@ -101,7 +101,7 @@ void ThemaLoader_C::run()
 Thema_C *ThemaLoader_C::loadThema(QString file_path, bool defered)
 {
     Thema_C* thema = new Thema_C();
-    if(thema->Read(file_path,defered)) {
+    if(thema->read(file_path,defered)) {
         LOG_INFO(QString("Thema loader :: Loaded thema %1").arg(file_path));
         if(_thema_parent) {
             thema->moveToThread(_thema_parent->thread());

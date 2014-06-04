@@ -48,7 +48,7 @@ QVariant ThemaModel_C::data(const QModelIndex &index, int role) const
                 break;
 
             case AUTHOR:
-                data = thema->Author();
+                data = thema->author();
                 break;
 
             case SELECTED:

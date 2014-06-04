@@ -79,7 +79,7 @@ Thema_C::~Thema_C()
  *                         <li> True = Success
  *                      </ul>
  ******************************************************************************/
-bool Thema_C::Read(const QDomElement &element, bool defered)
+bool Thema_C::read(const QDomElement &element, bool defered)
 {
     bool success = false;
     clearWords();
@@ -91,7 +91,7 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
         _author = element.firstChildElement("Author").text();
 
         QByteArray icon_data = QByteArray::fromBase64(element.firstChildElement("Icon").text().toUtf8());
-        UpdateIcon(icon_data);
+        updateIcon(icon_data);
 
         bool ok = false;
 
@@ -173,12 +173,12 @@ bool Thema_C::Read(const QDomElement &element, bool defered)
  *                         <li> True = Success
  *                      </ul>
  ******************************************************************************/
-bool Thema_C::Read(QString thema_file_path, bool defered)
+bool Thema_C::read(QString thema_file_path, bool defered)
 {
     if(thema_file_path.isEmpty()) {
         thema_file_path = _file_path;
     }
-    ResetThema();
+    resetThema();
 
     bool success = true;
     QFile thema_file(thema_file_path);
@@ -203,7 +203,7 @@ bool Thema_C::Read(QString thema_file_path, bool defered)
                     QDomNode domNode = root.firstChild();
                     while (!domNode.isNull()) {
                         if(domNode.nodeName().compare("Thema") == 0) {
-                            if(!Read(domNode.toElement(),defered)) {
+                            if(!read(domNode.toElement(),defered)) {
                                 success = false;
                                 LOG_ERROR(QString("Invalid Thema. Path:%1").arg(thema_file_path));
                             } else {
@@ -255,7 +255,7 @@ bool Thema_C::Read(QString thema_file_path, bool defered)
  *                         <li> True = Success
  *                      </ul>
  ******************************************************************************/
-bool Thema_C::Write(QDomElement &element)
+bool Thema_C::write(QDomElement &element)
 {
     bool success = false;
 
@@ -281,7 +281,7 @@ bool Thema_C::Write(QDomElement &element)
             dom_thema.appendChild(dom_author);
 
             QDomElement dom_icon = domDocument.createElement("Icon");
-            QByteArray icon_arr = IconData().toBase64();
+            QByteArray icon_arr = iconData().toBase64();
             QString icon_data = QString::fromUtf8(icon_arr);
             QDomText icon_text = domDocument.createTextNode(icon_data);
             dom_icon.appendChild(icon_text);
@@ -335,7 +335,7 @@ bool Thema_C::Write(QDomElement &element)
  *
  *  \return bool : True if file is written to the file path.
  ******************************************************************************/
-bool Thema_C::Save(QString file_path)
+bool Thema_C::save(QString file_path)
 {
     bool success = false;
     QString save_file = file_path.isEmpty() ? _file_path : file_path;
@@ -343,7 +343,7 @@ bool Thema_C::Save(QString file_path)
     if(!save_file.isEmpty()) {
         QFile file(save_file);
         if (file.open(QFile::WriteOnly)) {
-            if(Write(&file)) {
+            if(write(&file)) {
                 _file_path = save_file;
                 file.close();
                 success = true;
@@ -380,7 +380,7 @@ void Thema_C::clearWords()
  *
  *  \return bool : True if file is written to device.
  ******************************************************************************/
-bool Thema_C::Write(QIODevice* pDevice)
+bool Thema_C::write(QIODevice* pDevice)
 {
     bool success = true;
     if(pDevice) {
@@ -389,7 +389,7 @@ bool Thema_C::Write(QIODevice* pDevice)
         QDomElement root = domDocument.createElement("Root");
         root.setAttribute("Version", QString::number(APP_VERSION));
 
-        Write(root);
+        write(root);
 
         domDocument.appendChild(root);
         QByteArray xml_data = domDocument.toByteArray(4);
@@ -413,7 +413,7 @@ bool Thema_C::Write(QIODevice* pDevice)
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
-void Thema_C::UpdateThemaState()
+void Thema_C::updateThemaState()
 {
     State_TP state;
     if(_experience_points > 499) {
@@ -441,7 +441,7 @@ void Thema_C::UpdateThemaState()
  *
  *  \return QByteArray : Icon data
  ******************************************************************************/
-QByteArray Thema_C::IconData() const
+QByteArray Thema_C::iconData() const
 {
     QByteArray data;
     QBuffer buffer(&data);
@@ -458,7 +458,7 @@ QByteArray Thema_C::IconData() const
  *
  *  \return data : Icon data
  ******************************************************************************/
-void Thema_C::UpdateIcon(QByteArray data)
+void Thema_C::updateIcon(QByteArray data)
 {
     if(data.size() > 0) {
         QBuffer buffer(&data);
@@ -473,7 +473,7 @@ void Thema_C::UpdateIcon(QByteArray data)
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
-void Thema_C::ResetThema()
+void Thema_C::resetThema()
 {
     clearWords();
     _text = "";
@@ -501,7 +501,7 @@ void Thema_C::addExperiencePoints(int points)
     }
 
     if(points !=0) {
-        UpdateThemaState();
+        updateThemaState();
         emit experiencePointsChanged();
     }
 }

@@ -219,7 +219,7 @@ void Manager_C::onNewthemaLoaded(Thema_C *new_thema)
     new_thema->setParent(this);
     _thema_model->AddThema(new_thema);
     Q_ASSERT(_image_provider);
-    _image_provider->addImage(new_thema->name(),new_thema->GetIcon());
+    _image_provider->addImage(new_thema->name(),new_thema->themaIcon());
 }
 
 //******************************************************************************

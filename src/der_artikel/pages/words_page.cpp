@@ -82,7 +82,7 @@ bool WordsPage_C::canEnter() const
     Thema_C* thema = _page_manager.themaModel()->GetSelectedThema();
     if(thema) {
         MessageBar_C::showMsgAsync(tr("Loading thema ..."),"");
-        success = thema->Read("",false);
+        success = thema->read("",false);
     }
     MessageBar_C::closeMsg();
     return success;
@@ -375,7 +375,7 @@ void WordsPage_C::calculateResult()
         LOG_INFO(QString("Word page :: Calculating result for %1").arg(current_thema->name()));
         _result_algo->calculate(*current_thema,*(_page_manager.currentResult()));
         current_thema->setLastPlayed(QDateTime::currentDateTimeUtc());
-        current_thema->Save();
+        current_thema->save();
     }
 }
 

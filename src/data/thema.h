@@ -90,7 +90,7 @@ public:
     QString trName() const { return _translation; }
 
     //! returns Author of the thema.
-    QString Author() const { return _author; }
+    QString author() const { return _author; }
 
     //! Returns complete file path of the thema.
     QString filePath() const { return _file_path; }
@@ -104,7 +104,7 @@ public:
     void setSelected(bool selected);
 
     //! Return thema icon.
-    const QPixmap& GetIcon() const { return _icon; }
+    const QPixmap& themaIcon() const { return _icon; }
 
     //! Return experience points.
     int experiencePoints() const { return _experience_points; }
@@ -129,9 +129,9 @@ public:
     virtual void clearUserInput();
 
 public:
-    bool Read(QString thema_file_path, bool defered = true);
-    bool Write(QDomElement& element);
-    bool Save(QString file_path="");
+    bool read(QString thema_file_path, bool defered = true);
+    bool write(QDomElement& element);
+    bool save(QString file_path="");
     void clearWords();
 
 signals:
@@ -143,12 +143,12 @@ signals:
     void stateChanged();
 
 private:
-    bool Read(const QDomElement& element, bool defered=true);
-    bool Write(QIODevice* pDevice);
-    void UpdateThemaState();
-    QByteArray IconData() const;
-    void UpdateIcon(QByteArray data);
-    void ResetThema();
+    bool read(const QDomElement& element, bool defered=true);
+    bool write(QIODevice* pDevice);
+    void updateThemaState();
+    QByteArray iconData() const;
+    void updateIcon(QByteArray data);
+    void resetThema();
 
 private:
     QString _text;

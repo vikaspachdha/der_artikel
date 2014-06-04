@@ -98,7 +98,7 @@ void ThemaReplaceOperation_C::onFileDownloadFinished()
         if(thema) {
             // reset the old experience points
             thema->addExperiencePoints(_old_experience);
-            thema->Save();
+            thema->save();
             delete thema;
             exit_code = 0;
         } else {
