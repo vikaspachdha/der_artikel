@@ -4,6 +4,7 @@
 
 #include "data/thema.h"
 #include "data/word.h"
+#include "data/result.h"
 #include "der_artikel/algo/easy_result_algo.h"
 
 static const uint WORD_SAMPLE_SIZE =100;
@@ -17,7 +18,10 @@ public:
 
 private Q_SLOTS:
     void initTestCase();
+    void init();
+    void testThema();
     void testEasyResultAlgo();
+    void cleanup();
     void cleanupTestCase();
 
 private:
@@ -40,6 +44,10 @@ void ResultAlgo_T::initTestCase()
     int argc = 0;
     QGuiApplication a(argc,0);
     _test_thema = new Thema_C;
+}
+
+void ResultAlgo_T::init()
+{
     qsrand(QTime::currentTime().msec());
     for(uint i = 0; i<WORD_SAMPLE_SIZE; ++i) {
         Word_C* word = new Word_C;
@@ -67,10 +75,26 @@ void ResultAlgo_T::initTestCase()
     }
 }
 
-void ResultAlgo_T::testEasyResultAlgo()
+void ResultAlgo_T::testThema()
 {
     QCOMPARE(_test_thema->wordCount(),WORD_SAMPLE_SIZE);
     QCOMPARE(_test_thema->wordCount(), uint(_unplayed_word_count + _correct_word_count + _incorrect_word_count));
+}
+
+void ResultAlgo_T::testEasyResultAlgo()
+{
+    EasyResultAlgo_C result_algo;
+    Result_C result;
+    result_algo.calculate(*_test_thema,result);
+    QVERIFY(qAbs(result.score()-double(_correct_word_count)/WORD_SAMPLE_SIZE) < 0.01);
+}
+
+void ResultAlgo_T::cleanup()
+{
+    _test_thema->clearWords();
+    _correct_word_count=0;
+    _incorrect_word_count=0;
+    _unplayed_word_count=0;
 }
 
 void ResultAlgo_T::cleanupTestCase()
