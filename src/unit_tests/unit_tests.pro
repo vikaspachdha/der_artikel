@@ -20,7 +20,10 @@ HEADERS += \
     ../data/result.h \
     ../der_artikel/algo/result_algo.h \
     ../der_artikel/algo/easy_result_algo.h \
-    log4qt/log_defines.h
+    ../der_artikel/algo/moderate_result_algo.h \
+    ../der_artikel/algo/strict_result_algo.h \
+    log4qt/log_defines.h \
+    result_algo_t.h
 
 SOURCES += \
     ../data/word.cpp \
@@ -29,7 +32,10 @@ SOURCES += \
     ../data/article.cpp \
     ../data/result.cpp \
     ../der_artikel/algo/easy_result_algo.cpp \
-    result_algo_t.cpp
+    ../der_artikel/algo/moderate_result_algo.cpp \
+    ../der_artikel/algo/strict_result_algo.cpp \
+    result_algo_t.cpp \
+    main.cpp
 
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
