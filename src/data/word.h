@@ -88,5 +88,6 @@ private:
 private:
     friend class ThemaBuilder_C;
     friend class ResultAlgo_T;
+    friend class FileOperationAlgo_T;
 };
 #endif // WORD_H
