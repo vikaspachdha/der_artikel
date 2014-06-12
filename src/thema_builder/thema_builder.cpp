@@ -3,7 +3,7 @@
 
 #include <QDomDocument>
 #include <QFileDialog>
-#include <QListWidgetItem>
+#include "word_list_item.h"
 #include <QFile>
 #include <QShortcut>
 #include <QKeyEvent>
@@ -414,6 +414,7 @@ void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
                 listItemText = QString("%1 %2").arg(Article_C::ArtikelText(word->_artikel)).arg(word->_text);
             }
             item->setText(listItemText);
+            item->setData(Qt::UserRole,word->_text);
         }
     }
 }
@@ -569,7 +570,7 @@ bool ThemaBuilder_C::AddWordToList(Word_C* new_word)
 {
     bool success = false;
     if(new_word) {
-        QListWidgetItem* list_item = new QListWidgetItem(ui->_word_list);
+        QListWidgetItem* list_item = new WordListItem_C(ui->_word_list);
         list_item->setData(Qt::UserRole,QVariant::fromValue<Word_C*>(new_word));
         UpdateItem(list_item);
         ui->_word_list->addItem(list_item);

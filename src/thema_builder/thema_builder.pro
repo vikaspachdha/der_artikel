@@ -15,11 +15,13 @@ include($$PWD/../data/data.pri)
 
 SOURCES += main.cpp \
     thema_builder.cpp \
-    conflict_dlg.cpp
+    conflict_dlg.cpp \
+    word_list_item.cpp
 
 HEADERS += \
     thema_builder.h \
-    conflict_dlg.h
+    conflict_dlg.h \
+    word_list_item.h
 
 FORMS += \
     thema_builder.ui \
