@@ -209,7 +209,7 @@ void ThemaBuilder_C::OnAddClicked()
     }
 
     if(_edit_item) {
-        Word_C* edit_word = _edit_item->data(Qt::UserRole).value<Word_C*>();
+        Word_C* edit_word = _edit_item->data(WordListItem_C::WORD_ROLE).value<Word_C*>();
         edit_word->_artikel = article;
         _words_set.remove(wordId(edit_word));
         edit_word->_text = text;
@@ -246,7 +246,7 @@ void ThemaBuilder_C::OnItemDoubleClicked(QListWidgetItem *item)
 {
     if(item)
     {
-        Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
+        Word_C* word = item->data(WordListItem_C::WORD_ROLE).value<Word_C*>();
         if(word) {
             _edit_item = item;
 
@@ -292,7 +292,7 @@ void ThemaBuilder_C::OnDelete()
                     SetWordUiState(ADD_STATE);
 
                 }
-                Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
+                Word_C* word = item->data(WordListItem_C::WORD_ROLE).value<Word_C*>();
                 if(word) {
                     _thema->_words.removeAt(_thema->_words.indexOf(word));
                     _word_item_hash.remove(word);
@@ -405,7 +405,7 @@ void ThemaBuilder_C::showPrivateDataControls(bool show)
 void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
 {
     if(item) {
-        Word_C* word = item->data(Qt::UserRole).value<Word_C*>();
+        Word_C* word = item->data(WordListItem_C::WORD_ROLE).value<Word_C*>();
         if(word) {
             QString listItemText;
             if(word->_artikel == Article_C::NA) {
@@ -414,7 +414,7 @@ void ThemaBuilder_C::UpdateItem(QListWidgetItem *item)
                 listItemText = QString("%1 %2").arg(Article_C::ArtikelText(word->_artikel)).arg(word->_text);
             }
             item->setText(listItemText);
-            item->setData(Qt::UserRole,word->_text);
+            item->setData(WordListItem_C::NOUN_ROLE,word->_text);
         }
     }
 }
@@ -571,7 +571,7 @@ bool ThemaBuilder_C::AddWordToList(Word_C* new_word)
     bool success = false;
     if(new_word) {
         QListWidgetItem* list_item = new WordListItem_C(ui->_word_list);
-        list_item->setData(Qt::UserRole,QVariant::fromValue<Word_C*>(new_word));
+        list_item->setData(WordListItem_C::WORD_ROLE,QVariant::fromValue<Word_C*>(new_word));
         UpdateItem(list_item);
         ui->_word_list->addItem(list_item);
         _word_item_hash[new_word] = list_item;

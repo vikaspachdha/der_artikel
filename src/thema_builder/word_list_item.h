@@ -6,6 +6,13 @@
 class WordListItem_C : public QListWidgetItem
 {
 public:
+    enum DataRoles_TP
+    {
+        WORD_ROLE = Qt::UserRole,
+        NOUN_ROLE
+    };
+
+public:
     explicit WordListItem_C(QListWidget * parent = 0, int type = Type);
 
 public:
