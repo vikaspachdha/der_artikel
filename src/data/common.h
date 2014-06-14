@@ -37,5 +37,7 @@ namespace ARTIKEL
     static const char* INDEX_FILE_TOKEN = "der_artikel_thema_index";
 
     QString GetResourcePath(const QString &path);
+
+    QString capitalize(const QString& str);
 }
 #endif // COMMON_H

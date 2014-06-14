@@ -82,6 +82,7 @@ private:
     void SetWordUiState(WordUIState new_state);
     void InsertSplText(QString str);
     void SetUmlautUpperCase( bool upper_case);
+    void deleteItem(QListWidgetItem* item);
     QString UserName();
     QString lastPath(PathType_TP path_type);
     void saveLastPath(PathType_TP path_type, QString path);

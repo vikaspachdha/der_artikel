@@ -73,4 +73,23 @@ QString GetResourcePath(const QString &path)
     return path;
 }
 
+//******************************************************************************
+/*! \brief To capitalize the first word of a string.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] str : Source string.
+ *
+ *  \return QString : String with first word capitalized.
+ ******************************************************************************/
+QString capitalize(const QString &str)
+{
+    QString tmp = str;
+    if(!tmp.isEmpty()) {
+        tmp = tmp.toLower();
+        tmp[0] = str[0].toUpper();
+    }
+    return tmp;
+}
+
 }

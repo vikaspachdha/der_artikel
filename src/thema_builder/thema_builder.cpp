@@ -193,8 +193,8 @@ void ThemaBuilder_C::OnSaveAs()
 
 void ThemaBuilder_C::OnAddClicked()
 {
-    QString text = ui->_word_edit->text().trimmed();
-    QString desc = ui->_desc_edit->text().trimmed();
+    QString text = ARTIKEL::capitalize(ui->_word_edit->text().trimmed());
+    QString desc = ARTIKEL::capitalize(ui->_desc_edit->text().trimmed());
 
     Q_ASSERT(!text.isEmpty());
     Q_ASSERT(_thema);
@@ -210,13 +210,27 @@ void ThemaBuilder_C::OnAddClicked()
 
     if(_edit_item) {
         Word_C* edit_word = _edit_item->data(WordListItem_C::WORD_ROLE).value<Word_C*>();
-        edit_word->_artikel = article;
-        _words_set.remove(wordId(edit_word));
-        edit_word->_text = text;
-         _words_set[wordId(edit_word)] = edit_word;
-        edit_word->_description = desc;
-        UpdateItem(_edit_item);
-        SetWordUiState(ADD_STATE);
+
+        Word_C* old_word = new Word_C();
+        old_word->_artikel = edit_word->_artikel;
+        old_word->_text = edit_word->_text;
+        old_word->_description = edit_word->_description;
+
+        deleteItem(_edit_item);
+
+        Word_C* new_word = new Word_C();
+        new_word->_artikel = article;
+        new_word->_text = text;
+        new_word->_description = desc;
+
+        if(AddWordToThema(new_word)) {
+            delete old_word;
+        } else {
+            delete new_word;
+            AddWordToThema(old_word);
+        }
+
+        //SetWordUiState(ADD_STATE);
     } else {
         Word_C* new_word = new Word_C();
         new_word->_artikel = article;
@@ -286,21 +300,7 @@ void ThemaBuilder_C::OnDelete()
     if(_thema) {
         QList<QListWidgetItem*> selected_items = ui->_word_list->selectedItems();
         foreach( QListWidgetItem* item, selected_items ) {
-            if(item)
-            {
-                if(_edit_item == item) {
-                    SetWordUiState(ADD_STATE);
-
-                }
-                Word_C* word = item->data(WordListItem_C::WORD_ROLE).value<Word_C*>();
-                if(word) {
-                    _thema->_words.removeAt(_thema->_words.indexOf(word));
-                    _word_item_hash.remove(word);
-                    _words_set.remove(wordId(word));
-                    delete word;
-                    delete item;
-                }
-            }
+            deleteItem(item);
         }
         UpdateUI();
     }
@@ -553,8 +553,8 @@ bool ThemaBuilder_C::Import(QIODevice *pDevice)
                 }
                 Word_C* new_word = new Word_C();
                 new_word->_artikel = article;
-                new_word->_text = word_data.at(1);
-                new_word->_description = word_data.at(2);
+                new_word->_text = ARTIKEL::capitalize(word_data.at(1));
+                new_word->_description = ARTIKEL::capitalize(word_data.at(2));
                 if(!AddWordToThema(new_word)) {
                     delete new_word;
                 }
@@ -705,6 +705,24 @@ void ThemaBuilder_C::SetUmlautUpperCase(bool upper_case)
         ui->_a_umlaut_btn->setText("ä");
         ui->_o_umlaut_btn->setText("ö");
         ui->_u_umlaut_btn->setText("ü");
+    }
+}
+
+void ThemaBuilder_C::deleteItem(QListWidgetItem *item)
+{
+    if(item)
+    {
+        if(_edit_item == item) {
+            SetWordUiState(ADD_STATE);
+        }
+        Word_C* word = item->data(WordListItem_C::WORD_ROLE).value<Word_C*>();
+        if(word) {
+            _thema->_words.removeAt(_thema->_words.indexOf(word));
+            _word_item_hash.remove(word);
+            _words_set.remove(wordId(word));
+            delete word;
+            delete item;
+        }
     }
 }
 
