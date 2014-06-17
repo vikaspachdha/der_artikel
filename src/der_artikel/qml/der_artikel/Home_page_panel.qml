@@ -35,4 +35,32 @@ Page_panel
         }
     }
 
+    Label {
+        id:word_count_text_lbl
+        anchors.left: parent.left
+        anchors.leftMargin: 2
+        anchors.right: parent.right
+        anchors.rightMargin: 2
+        anchors.verticalCenter: parent.verticalCenter
+        text_anchors.horizontalCenter: word_count_text_lbl.horizontalCenter
+        lblText: qsTr("Total words") + settings.i18n_empty_string
+    }
+
+    Label {
+        id:word_count_lbl
+        property int words_count: themaModel.total_word_count
+        anchors.top: word_count_text_lbl.bottom
+        anchors.topMargin: -10
+        anchors.left: parent.left
+        anchors.leftMargin: 2
+        anchors.right: parent.right
+        anchors.rightMargin: 2
+        text_anchors.horizontalCenter: word_count_lbl.horizontalCenter
+        textPxSize:heading1Size
+        lblText: words_count
+        Behavior on words_count {
+            NumberAnimation { duration: 1000 }
+        }
+    }
+
 }

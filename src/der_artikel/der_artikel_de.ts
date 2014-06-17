@@ -202,16 +202,21 @@
         <source>This feature is not available.</source>
         <translation>Diese Funktion ist nicht verfügbar.</translation>
     </message>
+    <message>
+        <location filename="qml/der_artikel/Home_page_panel.qml" line="46"/>
+        <source>Total words</source>
+        <translation type="unfinished">Gesamt Worte</translation>
+    </message>
 </context>
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="395"/>
+        <location filename="manager.cpp" line="403"/>
         <source>Do you realy want to quit?</source>
         <translation>wollen Sie wirklich zu beenden?</translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="416"/>
+        <location filename="manager.cpp" line="423"/>
         <source>Loading installed themas.</source>
         <translation>Lädt installiert Themen.</translation>
     </message>
@@ -637,9 +642,24 @@
 <context>
     <name>WordsPage_C</name>
     <message>
-        <location filename="pages/words_page.cpp" line="83"/>
+        <location filename="pages/words_page.cpp" line="84"/>
         <source>Loading thema ...</source>
         <translation>erladung Thema...</translation>
+    </message>
+    <message>
+        <location filename="pages/words_page.cpp" line="259"/>
+        <source>Knowledge loss detected</source>
+        <translation>Wissensverlust festgestellt wird</translation>
+    </message>
+    <message>
+        <location filename="pages/words_page.cpp" line="260"/>
+        <source>%1 experience points are deducted. Go to Help -&gt; Rules for details.</source>
+        <translation>%1 Erfahrungspunkte werden abgezogen. Gehen Sie zur Hilfe -&gt; Regeln.</translation>
+    </message>
+    <message>
+        <location filename="pages/words_page.cpp" line="261"/>
+        <source>OK</source>
+        <translation>OK</translation>
     </message>
 </context>
 <context>

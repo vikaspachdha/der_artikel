@@ -90,6 +90,16 @@ Manager_C::~Manager_C()
     LOG_DEBUG("Manager_C::Destructor");
     delete _current_result;
     delete _thema_model;
+    delete _settings;
+
+    foreach(PageId_TP page_id, _page_hash.keys()) {
+        Page_I* page = _page_hash[page_id];
+        if(page) {
+            delete page;
+        }
+    }
+    _page_hash.clear();
+    _page_items_hash.clear();
 }
 
 //******************************************************************************
@@ -208,8 +218,6 @@ QString Manager_C::versionString()
  *  \author Vikas Pachdha
  *
  *  \param[in] new_thema : The new loaded thema.
- *
- *  \todo Move it to Thema model.
  ******************************************************************************/
 void Manager_C::onNewthemaLoaded(Thema_C *new_thema)
 {

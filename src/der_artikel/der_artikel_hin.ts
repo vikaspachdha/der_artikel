@@ -201,17 +201,22 @@
         <source>This feature is not available.</source>
         <translation>यह विकल्प उपलब्ध नहीं है.</translation>
     </message>
+    <message>
+        <location filename="qml/der_artikel/Home_page_panel.qml" line="46"/>
+        <source>Total words</source>
+        <translation>कुल शब्द</translation>
+    </message>
 </context>
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="395"/>
+        <location filename="manager.cpp" line="403"/>
         <source>Do you realy want to quit?</source>
         <oldsource>Do you realy want to quit ?</oldsource>
         <translation>क्या आप वास्तव में बंद करना चाहते हैं?</translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="416"/>
+        <location filename="manager.cpp" line="423"/>
         <source>Loading installed themas.</source>
         <translation>उपलब्ध शब्दकोश लोड हो रहे हैं|</translation>
     </message>
@@ -641,9 +646,24 @@
 <context>
     <name>WordsPage_C</name>
     <message>
-        <location filename="pages/words_page.cpp" line="83"/>
+        <location filename="pages/words_page.cpp" line="84"/>
         <source>Loading thema ...</source>
         <translation>शब्दकोश लोड हो रहा है...</translation>
+    </message>
+    <message>
+        <location filename="pages/words_page.cpp" line="259"/>
+        <source>Knowledge loss detected</source>
+        <translation>ज्ञान का नुकसान हुआ है</translation>
+    </message>
+    <message>
+        <location filename="pages/words_page.cpp" line="260"/>
+        <source>%1 experience points are deducted. Go to Help -&gt; Rules for details.</source>
+        <translation>%1 अनुभव अंक की कटौती की जा रही है. जानकारी के लिए सहायता-&gt; नियम पर जाएँ|</translation>
+    </message>
+    <message>
+        <location filename="pages/words_page.cpp" line="261"/>
+        <source>OK</source>
+        <translation>हां</translation>
     </message>
 </context>
 <context>

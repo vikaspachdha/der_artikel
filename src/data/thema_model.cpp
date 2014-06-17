@@ -8,7 +8,8 @@
  \param parent
 */
 ThemaModel_C::ThemaModel_C(QObject *parent):
-    QAbstractListModel(parent)
+    QAbstractListModel(parent),
+    _total_word_count(0)
 {
 
 }
@@ -133,17 +134,22 @@ void ThemaModel_C::AddThema(Thema_C *new_thema)
     LOG_INFO(QString("Thema model :: Added new thema %1").arg(new_thema->name()));
     beginInsertRows(QModelIndex(),_thema_list.count(),_thema_list.count());
     _thema_list.append(new_thema);
-    connect(new_thema, SIGNAL(selectionChanged()),this,SLOT(OnThemaItemSelectionChanged()));
+    connect(new_thema, SIGNAL(selectionChanged()),this,SLOT(onThemaItemSelectionChanged()));
     endInsertRows();
+
+    _total_word_count += new_thema->wordCount();
+    emit totalWordCountChanged();
 }
 
 void ThemaModel_C::clear()
 {
     LOG_INFO("Thema model :: Cleared thema model");
+    _total_word_count = 0;
     clearSelection();
     beginResetModel();
     clearThemaList();
     endResetModel();
+    emit totalWordCountChanged();
 }
 
 /*!
@@ -202,7 +208,7 @@ ThemaModel_C::SelectionState_TP ThemaModel_C::SelectionState() const
 
  \param type
 */
-void ThemaModel_C::OnThemaItemSelectionChanged()
+void ThemaModel_C::onThemaItemSelectionChanged()
 {
     Thema_C* thema = qobject_cast<Thema_C*>(sender());
     Q_ASSERT(thema);

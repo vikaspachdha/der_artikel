@@ -14,6 +14,7 @@ class ThemaModel_C : public QAbstractListModel
     // Properties
     Q_PROPERTY(SelectionState_TP selection_state READ SelectionState NOTIFY themaSelectionChanged)
     Q_PROPERTY(Thema_C* selected_thema READ GetSelectedThema NOTIFY themaSelectionChanged)
+    Q_PROPERTY(int total_word_count READ totalWordCount NOTIFY totalWordCountChanged)
 
 // Data types
 public:
@@ -54,12 +55,15 @@ public:
     Thema_C* GetSelectedThema();
     Q_INVOKABLE void clearSelection();
     SelectionState_TP SelectionState() const;
+    //! Returns total number of words loaded into the system.
+    int totalWordCount() const { return _total_word_count; }
 
 signals:
     void themaSelectionChanged();
+    void totalWordCountChanged();
 
 private slots:
-    void OnThemaItemSelectionChanged();
+    void onThemaItemSelectionChanged();
 
 private:
     void clearThemaList();
@@ -67,6 +71,7 @@ private:
 private:
     QList<Thema_C*> _thema_list;
     QList<Thema_C*> _selected_thema_list;
+    int _total_word_count;
 };
 
 #endif // THEMA_MODEL_H
