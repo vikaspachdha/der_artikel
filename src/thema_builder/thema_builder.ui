@@ -35,284 +35,7 @@
    <property name="spacing">
     <number>4</number>
    </property>
-   <item row="14" column="0" colspan="6">
-    <spacer name="verticalSpacer_4">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeType">
-      <enum>QSizePolicy::Fixed</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="7" column="0">
-    <widget class="QLabel" name="label_9">
-     <property name="text">
-      <string>File update stamp</string>
-     </property>
-    </widget>
-   </item>
-   <item row="16" column="3" colspan="3">
-    <widget class="QDialogButtonBox" name="_btn_box">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="3">
-    <widget class="QPushButton" name="_icon_btn">
-     <property name="text">
-      <string>Thema icon</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1" colspan="2">
-    <widget class="QLineEdit" name="_thema_name_edit">
-     <property name="placeholderText">
-      <string>Enter thema name...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="1" colspan="2">
-    <widget class="QLineEdit" name="_author_name_edit">
-     <property name="placeholderText">
-      <string>Enther author's name...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1" colspan="2">
-    <widget class="QLineEdit" name="_thema_tr_name_edit">
-     <property name="placeholderText">
-      <string>Enter translation or description...</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QLabel" name="_update_time_stamp_lbl">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
-   <item row="10" column="0" colspan="6">
-    <widget class="QGroupBox" name="groupBox">
-     <property name="minimumSize">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="title">
-      <string>Add new word</string>
-     </property>
-     <layout class="QGridLayout" name="gridLayout_2">
-      <property name="leftMargin">
-       <number>4</number>
-      </property>
-      <property name="topMargin">
-       <number>4</number>
-      </property>
-      <property name="rightMargin">
-       <number>4</number>
-      </property>
-      <property name="bottomMargin">
-       <number>4</number>
-      </property>
-      <property name="spacing">
-       <number>4</number>
-      </property>
-      <item row="0" column="0" rowspan="5">
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <property name="spacing">
-         <number>4</number>
-        </property>
-        <property name="rightMargin">
-         <number>12</number>
-        </property>
-        <item>
-         <widget class="QRadioButton" name="_die_radio">
-          <property name="text">
-           <string>Die</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="_der_radio">
-          <property name="text">
-           <string>Der</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="_das_radio">
-          <property name="text">
-           <string>Das</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QRadioButton" name="_na_radio">
-          <property name="text">
-           <string>NA</string>
-          </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="1" column="2">
-       <widget class="QToolButton" name="_a_umlaut_btn">
-        <property name="minimumSize">
-         <size>
-          <width>28</width>
-          <height>28</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string>Insert ä - shortcut is &lt;b&gt;Alt + a&lt;/b&gt; or &lt;b&gt;Alt + Shift + a&lt;/b&gt; </string>
-        </property>
-        <property name="text">
-         <string>ä</string>
-        </property>
-        <property name="iconSize">
-         <size>
-          <width>16</width>
-          <height>16</height>
-         </size>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="5">
-       <widget class="QToolButton" name="_eszett_btn">
-        <property name="minimumSize">
-         <size>
-          <width>28</width>
-          <height>28</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string>Insert ß</string>
-        </property>
-        <property name="text">
-         <string>ß</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Word</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="3">
-       <widget class="QToolButton" name="_o_umlaut_btn">
-        <property name="minimumSize">
-         <size>
-          <width>28</width>
-          <height>28</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string>Insert ö - shortcut is &lt;b&gt;Alt + o&lt;/b&gt; or &lt;b&gt;Alt + Shift + o&lt;/b&gt; </string>
-        </property>
-        <property name="text">
-         <string>ö</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="4">
-       <widget class="QToolButton" name="_u_umlaut_btn">
-        <property name="minimumSize">
-         <size>
-          <width>28</width>
-          <height>28</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>10</pointsize>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string>Insert ü - shortcut is &lt;b&gt;Alt + o&lt;/b&gt; or &lt;b&gt;Alt + Shift + o&lt;/b&gt; </string>
-        </property>
-        <property name="text">
-         <string>ü</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2" colspan="5">
-       <widget class="QLineEdit" name="_word_edit">
-        <property name="placeholderText">
-         <string>Enter word...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="6">
-       <spacer name="horizontalSpacer_2">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Description</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2" colspan="5">
-       <widget class="QLineEdit" name="_desc_edit">
-        <property name="placeholderText">
-         <string>Translation or description of the text</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="7" rowspan="2">
-       <widget class="QPushButton" name="_add_btn">
-        <property name="toolTip">
-         <string>Add word to thema.</string>
-        </property>
-        <property name="text">
-         <string>Add</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="6">
+   <item row="0" column="0" colspan="7">
     <widget class="QFrame" name="frame">
      <property name="minimumSize">
       <size>
@@ -541,6 +264,23 @@
      </layout>
     </widget>
    </item>
+   <item row="5" column="2">
+    <widget class="QCheckBox" name="_enable_update_date_chk">
+     <property name="text">
+      <string>Edit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="5" colspan="2">
+    <widget class="QLineEdit" name="_points_edit"/>
+   </item>
+   <item row="6" column="0">
+    <widget class="QLabel" name="_last_played_lbl">
+     <property name="text">
+      <string>Last played Date &amp; time</string>
+     </property>
+    </widget>
+   </item>
    <item row="16" column="0" colspan="2">
     <widget class="QGroupBox" name="groupBox_2">
      <property name="title">
@@ -585,7 +325,281 @@
      </layout>
     </widget>
    </item>
-   <item row="11" column="0" colspan="6">
+   <item row="10" column="0" colspan="7">
+    <widget class="QGroupBox" name="groupBox">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Add new word</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout_2">
+      <property name="leftMargin">
+       <number>4</number>
+      </property>
+      <property name="topMargin">
+       <number>4</number>
+      </property>
+      <property name="rightMargin">
+       <number>4</number>
+      </property>
+      <property name="bottomMargin">
+       <number>4</number>
+      </property>
+      <property name="spacing">
+       <number>4</number>
+      </property>
+      <item row="0" column="0" rowspan="5">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <property name="spacing">
+         <number>4</number>
+        </property>
+        <property name="rightMargin">
+         <number>12</number>
+        </property>
+        <item>
+         <widget class="QRadioButton" name="_die_radio">
+          <property name="text">
+           <string>Die</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="_der_radio">
+          <property name="text">
+           <string>Der</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="_das_radio">
+          <property name="text">
+           <string>Das</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QRadioButton" name="_na_radio">
+          <property name="text">
+           <string>NA</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item row="1" column="2">
+       <widget class="QToolButton" name="_a_umlaut_btn">
+        <property name="minimumSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Insert ä - shortcut is &lt;b&gt;Alt + a&lt;/b&gt; or &lt;b&gt;Alt + Shift + a&lt;/b&gt; </string>
+        </property>
+        <property name="text">
+         <string>ä</string>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>16</width>
+          <height>16</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="5">
+       <widget class="QToolButton" name="_eszett_btn">
+        <property name="minimumSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Insert ß</string>
+        </property>
+        <property name="text">
+         <string>ß</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLabel" name="label_5">
+        <property name="text">
+         <string>Word</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="3">
+       <widget class="QToolButton" name="_o_umlaut_btn">
+        <property name="minimumSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Insert ö - shortcut is &lt;b&gt;Alt + o&lt;/b&gt; or &lt;b&gt;Alt + Shift + o&lt;/b&gt; </string>
+        </property>
+        <property name="text">
+         <string>ö</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="4">
+       <widget class="QToolButton" name="_u_umlaut_btn">
+        <property name="minimumSize">
+         <size>
+          <width>28</width>
+          <height>28</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="toolTip">
+         <string>Insert ü - shortcut is &lt;b&gt;Alt + o&lt;/b&gt; or &lt;b&gt;Alt + Shift + o&lt;/b&gt; </string>
+        </property>
+        <property name="text">
+         <string>ü</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2" colspan="5">
+       <widget class="QLineEdit" name="_word_edit">
+        <property name="placeholderText">
+         <string>Enter word...</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="6">
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="3" column="1">
+       <widget class="QLabel" name="label_6">
+        <property name="text">
+         <string>Description</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="2" colspan="5">
+       <widget class="QLineEdit" name="_desc_edit">
+        <property name="placeholderText">
+         <string>Translation or description of the text</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="7" rowspan="2">
+       <widget class="QPushButton" name="_add_btn">
+        <property name="toolTip">
+         <string>Add word to thema.</string>
+        </property>
+        <property name="text">
+         <string>Add</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QLabel" name="label_7">
+     <property name="text">
+      <string>Update Date &amp; time</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="2">
+    <widget class="QCheckBox" name="_last_played_clear_chk">
+     <property name="text">
+      <string>clear</string>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="0" colspan="3">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Word's list :-</string>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0" colspan="7">
+    <widget class="Line" name="line_2">
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QDateTimeEdit" name="_update_date_time_edit">
+     <property name="displayFormat">
+      <string>dd/MM/yy H:mm:ss</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="6">
+    <widget class="QToolButton" name="_delete_btn">
+     <property name="toolTip">
+      <string>Delete selected words.</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../der_artikel/resources.qrc">
+       <normaloff>:/res/resources/delete.png</normaloff>:/res/resources/delete.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QDateTimeEdit" name="_last_played_date_time_edit">
+     <property name="displayFormat">
+      <string>dd/MM/yy H:mm:ss</string>
+     </property>
+    </widget>
+   </item>
+   <item row="11" column="0" colspan="7">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -601,8 +615,105 @@
      </property>
     </spacer>
    </item>
-   <item row="9" column="0" colspan="6">
-    <widget class="Line" name="line_2">
+   <item row="2" column="0">
+    <widget class="QLabel" name="label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Thema name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="4">
+    <widget class="QLabel" name="_points_lbl">
+     <property name="text">
+      <string>Experience</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="0" colspan="3">
+    <spacer name="verticalSpacer_2">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="1" column="0" colspan="7">
+    <spacer name="verticalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>0</width>
+       <height>4</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Thema translated name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="13" column="0" colspan="6">
+    <widget class="QListWidget" name="_word_list">
+     <property name="alternatingRowColors">
+      <bool>true</bool>
+     </property>
+     <property name="selectionMode">
+      <enum>QAbstractItemView::ExtendedSelection</enum>
+     </property>
+     <property name="uniformItemSizes">
+      <bool>true</bool>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Author</string>
+     </property>
+    </widget>
+   </item>
+   <item row="15" column="0" colspan="7">
+    <widget class="Line" name="line">
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
@@ -611,7 +722,7 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="4" rowspan="3" colspan="2">
+   <item row="2" column="5" rowspan="3" colspan="2">
     <widget class="QLabel" name="_icon_lbl">
      <property name="minimumSize">
       <size>
@@ -643,6 +754,16 @@
     </widget>
    </item>
    <item row="12" column="4">
+    <widget class="QLabel" name="label_8">
+     <property name="text">
+      <string>Word Count :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="12" column="5">
     <widget class="QLabel" name="_word_count_lbl">
      <property name="maximumSize">
       <size>
@@ -658,95 +779,29 @@
      </property>
     </widget>
    </item>
-   <item row="12" column="0" colspan="3">
-    <widget class="QLabel" name="label_4">
+   <item row="16" column="4" colspan="3">
+    <widget class="QDialogButtonBox" name="_btn_box">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Close</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1" colspan="2">
+    <widget class="QLineEdit" name="_thema_tr_name_edit">
+     <property name="placeholderText">
+      <string>Enter translation or description...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="4">
+    <widget class="QPushButton" name="_icon_btn">
      <property name="text">
-      <string>Word's list :-</string>
+      <string>Thema icon</string>
      </property>
     </widget>
    </item>
-   <item row="12" column="3">
-    <widget class="QLabel" name="label_8">
-     <property name="text">
-      <string>Word Count :</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Author</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2">
-    <widget class="QCheckBox" name="_enable_update_date_chk">
-     <property name="text">
-      <string>Edit</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QDateTimeEdit" name="_update_date_time_edit">
-     <property name="displayFormat">
-      <string>dd/MM/yy H:mm:ss</string>
-     </property>
-    </widget>
-   </item>
-   <item row="15" column="0" colspan="6">
-    <widget class="Line" name="line">
-     <property name="frameShadow">
-      <enum>QFrame::Plain</enum>
-     </property>
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="0" colspan="5">
-    <widget class="QListWidget" name="_word_list">
-     <property name="alternatingRowColors">
-      <bool>true</bool>
-     </property>
-     <property name="selectionMode">
-      <enum>QAbstractItemView::ExtendedSelection</enum>
-     </property>
-     <property name="uniformItemSizes">
-      <bool>true</bool>
-     </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="13" column="5">
-    <widget class="QToolButton" name="_delete_btn">
-     <property name="toolTip">
-      <string>Delete selected words.</string>
-     </property>
-     <property name="icon">
-      <iconset resource="../der_artikel/resources.qrc">
-       <normaloff>:/res/resources/delete.png</normaloff>:/res/resources/delete.png</iconset>
-     </property>
-     <property name="iconSize">
-      <size>
-       <width>32</width>
-       <height>32</height>
-      </size>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0" colspan="3">
-    <spacer name="verticalSpacer_2">
+   <item row="14" column="0" colspan="7">
+    <spacer name="verticalSpacer_4">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
@@ -761,88 +816,56 @@
      </property>
     </spacer>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="text">
-      <string>Thema translated name</string>
+   <item row="4" column="1" colspan="2">
+    <widget class="QLineEdit" name="_author_name_edit">
+     <property name="placeholderText">
+      <string>Enther author's name...</string>
      </property>
     </widget>
    </item>
-   <item row="5" column="0">
-    <widget class="QLabel" name="label_7">
+   <item row="7" column="1">
+    <widget class="QLabel" name="_update_time_stamp_lbl">
      <property name="text">
-      <string>Update Date &amp; time</string>
+      <string/>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
+   <item row="7" column="0">
+    <widget class="QLabel" name="label_9">
      <property name="text">
-      <string>Thema name</string>
+      <string>File update stamp</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0" colspan="6">
-    <spacer name="verticalSpacer_3">
+   <item row="2" column="1" colspan="2">
+    <widget class="QLineEdit" name="_thema_name_edit">
+     <property name="placeholderText">
+      <string>Enter thema name...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="3">
+    <spacer name="horizontalSpacer_4">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="sizeType">
       <enum>QSizePolicy::Fixed</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
-       <width>0</width>
-       <height>4</height>
+       <width>32</width>
+       <height>20</height>
       </size>
      </property>
     </spacer>
    </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="_last_played_lbl">
+   <item row="4" column="4">
+    <widget class="QPushButton" name="_export_icon_btn">
      <property name="text">
-      <string>Last played Date &amp; time</string>
+      <string>Export Icon</string>
      </property>
     </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QDateTimeEdit" name="_last_played_date_time_edit">
-     <property name="displayFormat">
-      <string>dd/MM/yy H:mm:ss</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="3">
-    <widget class="QLabel" name="_points_lbl">
-     <property name="text">
-      <string>Experience</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="2">
-    <widget class="QCheckBox" name="_last_played_clear_chk">
-     <property name="text">
-      <string>clear</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="4" colspan="2">
-    <widget class="QLineEdit" name="_points_edit"/>
    </item>
   </layout>
  </widget>

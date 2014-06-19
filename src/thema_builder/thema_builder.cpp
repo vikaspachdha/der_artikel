@@ -56,6 +56,8 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     connect(ui->_word_list,SIGNAL(itemSelectionChanged()), this, SLOT(OnWordSelectionChanged()));
     connect(ui->_delete_btn,SIGNAL(clicked()), this, SLOT(OnDelete()) );
     connect(ui->_index_btn,SIGNAL(clicked()),this,SLOT(OnIndex()));
+    connect(ui->_export_icon_btn,SIGNAL(clicked()),this,SLOT(onExportIcon()));
+
 
     connect(ui->_a_umlaut_btn, SIGNAL(clicked()), SLOT(InsertAUmlaut()));
     connect(ui->_o_umlaut_btn, SIGNAL(clicked()), SLOT(InsertOUmlaut()));
@@ -208,6 +210,7 @@ void ThemaBuilder_C::OnAddClicked()
         article = Article_C::DAS;
     }
 
+    QListWidgetItem* new_item = 0;
     if(_edit_item) {
         Word_C* edit_word = _edit_item->data(WordListItem_C::WORD_ROLE).value<Word_C*>();
 
@@ -225,6 +228,7 @@ void ThemaBuilder_C::OnAddClicked()
 
         if(AddWordToThema(new_word)) {
             delete old_word;
+            new_item = _word_item_hash[new_word];
         } else {
             delete new_word;
             AddWordToThema(old_word);
@@ -238,11 +242,17 @@ void ThemaBuilder_C::OnAddClicked()
         new_word->_description = desc;
         if(!AddWordToThema(new_word)) {
             delete new_word;
+        } else {
+            new_item = _word_item_hash[new_word];
         }
     }
 
     ui->_word_edit->setText("");
     ui->_desc_edit->setText("");
+    if(new_item) {
+        new_item->setSelected(true);
+        ui->_word_list->scrollToItem(new_item);
+    }
 }
 
 void ThemaBuilder_C::OnWordTextChanged(QString new_text)
@@ -342,6 +352,22 @@ void ThemaBuilder_C::OnIndex()
     }
 }
 
+void ThemaBuilder_C::onExportIcon()
+{
+    static QString last_export_path = lastPath(ICON_EXPORT_PATH);
+    const QPixmap* icon = ui->_icon_lbl->pixmap();
+    if(icon && !icon->isNull()) {
+        QString save_file = QFileDialog::getSaveFileName(this,tr("Select file name"),
+                                                         last_export_path,
+                                                         tr("Png files (*.png);; All files (*.*)"));
+        if(!save_file.isEmpty()) {
+            last_export_path = save_file;
+            saveLastPath(ICON_EXPORT_PATH, last_export_path);
+            icon->save(save_file);
+        }
+    }
+}
+
 void ThemaBuilder_C::InsertAUmlaut()
 {
     if(QApplication::keyboardModifiers() & Qt::SHIFT) {
@@ -397,6 +423,7 @@ void ThemaBuilder_C::showPrivateDataControls(bool show)
     ui->_last_played_lbl->setVisible(show);
     ui->_points_lbl->setVisible(show);
     ui->_last_played_clear_chk->setVisible(show);
+    ui->_export_icon_btn->setVisible(show);
     if(!show) {
         ui->_last_played_clear_chk->setChecked(false);
     }
@@ -764,6 +791,9 @@ QString ThemaBuilder_C::lastPath(ThemaBuilder_C::PathType_TP path_type)
     case INDEX_PATH:
         path = settings.value("INDEX_PATH",QDir::homePath()).toString();
         break;
+    case ICON_EXPORT_PATH:
+        path = settings.value("ICON_EXPORT_PATH",QDir::homePath()).toString();
+        break;
     default:
         break;
     }
@@ -793,6 +823,9 @@ void ThemaBuilder_C::saveLastPath(ThemaBuilder_C::PathType_TP path_type, QString
         break;
     case INDEX_PATH:
         settings.setValue("INDEX_PATH",new_path);
+        break;
+    case ICON_EXPORT_PATH:
+        settings.setValue("ICON_EXPORT_PATH",new_path);
         break;
     default:
         break;

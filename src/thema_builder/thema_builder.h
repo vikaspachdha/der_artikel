@@ -31,7 +31,8 @@ enum PathType_TP {
     IMPORT_PATH,
     EXPORT_PATH,
     ICON_PATH,
-    INDEX_PATH
+    INDEX_PATH,
+    ICON_EXPORT_PATH
 };
 
 public:
@@ -58,6 +59,7 @@ private slots:
     void OnWordSelectionChanged();
     void OnDelete();
     void OnIndex();
+    void onExportIcon();
 
     void InsertAUmlaut();
     void InsertOUmlaut();
