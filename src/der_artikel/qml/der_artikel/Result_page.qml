@@ -5,17 +5,16 @@ Page {
     page_id:Manager.RESULT_PAGE
     id: rectangle1
 
-    Custom_label {
+    Label {
         id: title_label
         text: (list_view.count>0 ? qsTr("Mistakes") : qsTr("No Mistakes")) + settings.i18n_empty_string
-        font_color:color_palette.color_font_02
-        gradient: Gradient {
+        text_color:color_palette.color_font_02
+        background_gradient: Gradient {
             GradientStop {position:0.0;color:color_palette.color_btn_02}
             GradientStop {position:0.1;color:color_palette.color_btn_01}
             GradientStop {position:0.9;color:color_palette.color_btn_01}
             GradientStop {position:1.0;color:color_palette.color_btn_02}
         }
-        radius:4
         anchors {
             top: parent.top
             left: parent.left
@@ -23,22 +22,44 @@ Page {
         }
     }
 
-    Custom_label {
-        id: header_label
-        text: qsTr("Incorrect       Correct") + settings.i18n_empty_string
-        font_color:color_palette.color_font_02
+    Label {
+        id: header_label_incorrect
+        text: qsTr("Incorrect   ") + settings.i18n_empty_string
+        text_color:color_palette.color_font_02
         visible:list_view.count > 0
-        gradient: Gradient {
+        text_h_alignment:Text.AlignRight
+        background_gradient: Gradient {
             GradientStop {position:0.0;color:color_palette.color_btn_02}
             GradientStop {position:0.1;color:color_palette.color_btn_01}
             GradientStop {position:0.9;color:color_palette.color_btn_01}
             GradientStop {position:1.0;color:color_palette.color_btn_02}
         }
-        radius:4
         anchors {
             top: title_label.bottom
             topMargin: 2
             left: parent.left
+            right: parent.horizontalCenter
+            rightMargin: 4
+        }
+    }
+
+    Label {
+        id: header_label_correct
+        text: qsTr("    Correct") + settings.i18n_empty_string
+        text_color:color_palette.color_font_02
+        visible:list_view.count > 0
+        text_h_alignment:Text.AlignLeft
+        background_gradient: Gradient {
+            GradientStop {position:0.0;color:color_palette.color_btn_02}
+            GradientStop {position:0.1;color:color_palette.color_btn_01}
+            GradientStop {position:0.9;color:color_palette.color_btn_01}
+            GradientStop {position:1.0;color:color_palette.color_btn_02}
+        }
+        anchors {
+            top: title_label.bottom
+            topMargin: 2
+            left: parent.horizontalCenter
+            leftMargin: 4
             right: parent.right
         }
     }
@@ -46,7 +67,7 @@ Page {
     ListView {
         id: list_view
 
-        anchors.top: header_label.bottom
+        anchors.top: header_label_correct.bottom
         anchors.topMargin: 2
         anchors.right: parent.right
         anchors.left: parent.left

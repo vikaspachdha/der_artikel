@@ -13,7 +13,6 @@
         <file>qml/der_artikel/Command_frame.qml</file>
         <file>qml/der_artikel/Command_item.qml</file>
         <file>qml/der_artikel/Content_frame.qml</file>
-        <file>qml/der_artikel/Custom_label.qml</file>
         <file>qml/der_artikel/Game_play_settings.qml</file>
         <file>qml/der_artikel/General_help.qml</file>
         <file>qml/der_artikel/Help_page.qml</file>

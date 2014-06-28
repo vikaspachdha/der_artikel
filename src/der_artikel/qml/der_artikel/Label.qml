@@ -3,11 +3,12 @@ import QtQuick 2.1
 Item {
     id:lbl_root
 
-    property alias lblText:label.text
-    property alias textPxSize:label.font.pixelSize
+    property alias text:label.text
+    property alias text_px_size:label.font.pixelSize
     property alias text_h_alignment: label.horizontalAlignment
     property alias under_line:label.font.underline
     property alias background_color: background.color
+    property alias background_gradient : background.gradient
     property alias text_color: label.color
     width: 80
     height: 30
@@ -16,7 +17,8 @@ Item {
         id: background
         anchors.fill:parent
         radius: 4
-        color:"transparent"
+        // Settings complete transparent color hides gradient also.
+        color:"#01000000"
     }
 
     Text {

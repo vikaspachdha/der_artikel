@@ -4,7 +4,7 @@ Rectangle {
     id:btn_root
 
     property alias buttonText:label.text
-    property alias textPxSize:label.font.pixelSize
+    property alias text_px_size:label.font.pixelSize
     property bool isDown:false
     property alias text_h_alignment: label.horizontalAlignment
     signal activated();

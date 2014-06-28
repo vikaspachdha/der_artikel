@@ -12,7 +12,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_h_alignment: Text.AlignHCenter
-        lblText: qsTr("Game Level") + settings.i18n_empty_string
+        text: qsTr("Game Level") + settings.i18n_empty_string
     }
 
     Column {

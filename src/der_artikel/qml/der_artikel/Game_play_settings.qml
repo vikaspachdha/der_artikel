@@ -9,7 +9,7 @@ Item {
         anchors.leftMargin: 8
         anchors.top:parent.top
         anchors.topMargin: 8
-        lblText:qsTr("Word info Time (in msecs)") + settings.i18n_empty_string
+        text:qsTr("Word info Time (in msecs)") + settings.i18n_empty_string
     }
     Rectangle {
         id:msg_time_input_rect
@@ -64,7 +64,7 @@ Item {
         anchors.leftMargin: 8
         anchors.top:msgTimeSlider.bottom
         anchors.topMargin: 20
-        lblText:qsTr("Thema update url") + settings.i18n_empty_string
+        text:qsTr("Thema update url") + settings.i18n_empty_string
     }
 
     Rectangle {

@@ -13,7 +13,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_h_alignment: Text.AlignHCenter
-        lblText: qsTr("Home") + settings.i18n_empty_string
+        text: qsTr("Home") + settings.i18n_empty_string
     }
 
     Column {
@@ -43,7 +43,7 @@ Page_panel
         anchors.rightMargin: 2
         anchors.verticalCenter: parent.verticalCenter
         text_h_alignment: Text.AlignHCenter
-        lblText: qsTr("Total words") + settings.i18n_empty_string
+        text: qsTr("Total words") + settings.i18n_empty_string
     }
 
     Label {
@@ -55,8 +55,8 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_h_alignment: Text.AlignHCenter
-        textPxSize:heading1Size
-        lblText: words_count
+        text_px_size:heading1Size
+        text: words_count
         Behavior on words_count {
             NumberAnimation { duration: 1000 }
         }
