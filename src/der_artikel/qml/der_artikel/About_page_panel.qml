@@ -13,7 +13,7 @@ Page_panel
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: option_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         lblText: qsTr("Options") + settings.i18n_empty_string
     }
 
@@ -30,7 +30,7 @@ Page_panel
         Button {
             id:replay_btn
             width:parent.width
-            text_anchors.horizontalCenter: replay_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Update") + settings.i18n_empty_string
             onActivated: showMessage(qsTr("Latest version"), qsTr("No update is available."),1200)
         }

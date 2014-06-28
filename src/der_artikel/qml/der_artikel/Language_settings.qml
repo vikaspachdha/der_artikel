@@ -20,7 +20,7 @@ Flickable {
         Button {
             id:english_btn
             width:parent.width
-            text_anchors.horizontalCenter: english_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: settings.language === Settings.ENGLISH
             buttonText: "English"
             onActivated: settings.language = Settings.ENGLISH
@@ -29,7 +29,7 @@ Flickable {
         Button {
             id:german_btn
             width:parent.width
-            text_anchors.horizontalCenter: german_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: settings.language === Settings.GERMAN
             buttonText: "Deutsch"
             onActivated: settings.language = Settings.GERMAN
@@ -38,7 +38,7 @@ Flickable {
         Button {
             id:hindi_btn
             width:parent.width
-            text_anchors.horizontalCenter: hindi_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: settings.language === Settings.HINDI
             buttonText: "हिंदी"
             onActivated: settings.language = Settings.HINDI

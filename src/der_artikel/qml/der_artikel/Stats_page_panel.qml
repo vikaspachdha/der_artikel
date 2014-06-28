@@ -13,7 +13,7 @@ Page_panel
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: stats_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         lblText: qsTr("Lets Brag!") + settings.i18n_empty_string
     }
 
@@ -30,7 +30,7 @@ Page_panel
         Button {
             id:share_btn
             width:parent.width
-            text_anchors.horizontalCenter: share_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Share") + settings.i18n_empty_string
             onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available."),1200)
         }

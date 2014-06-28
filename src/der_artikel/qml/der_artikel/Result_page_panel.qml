@@ -12,7 +12,7 @@ Page_panel
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: result_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         lblText: qsTr("Options") + settings.i18n_empty_string
     }
 
@@ -31,7 +31,7 @@ Page_panel
             width:parent.width
             // score < 0 means no result is produced so far.
             visible: manager.thema_selected && (currentResult.score > -1)
-            text_anchors.horizontalCenter: replay_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Replay") + settings.i18n_empty_string
             onActivated: manager.current_page = Manager.WORDS_PAGE
         }
@@ -39,7 +39,7 @@ Page_panel
         Button {
             id:stats_btn
             width:parent.width
-            text_anchors.horizontalCenter: stats_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Stats") + settings.i18n_empty_string
             onActivated: manager.current_page = Manager.STATS_PAGE
         }

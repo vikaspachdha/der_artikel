@@ -117,7 +117,7 @@ Item {
                     verticalCenter: parent.verticalCenter
                     leftMargin: 16
                 }
-                text_anchors.horizontalCenter: accept_btn.horizontalCenter
+                text_h_alignment: Text.AlignHCenter
                 onActivated: messageBarInstance.setAccepted(true)
             }
 
@@ -128,7 +128,7 @@ Item {
                     rightMargin: 16
                     verticalCenter: parent.verticalCenter
                 }
-                text_anchors.horizontalCenter: reject_btn.horizontalCenter
+                text_h_alignment: Text.AlignHCenter
                 onActivated: messageBarInstance.setAccepted(false)
             }
         }

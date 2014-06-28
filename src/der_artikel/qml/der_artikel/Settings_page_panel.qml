@@ -13,7 +13,7 @@ Page_panel
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: options_lbl.horizontalCenter
+        text_h_alignment:Text.AlignHCenter
         lblText: qsTr("Options") + settings.i18n_empty_string
     }
 
@@ -30,7 +30,7 @@ Page_panel
         Button {
             id:language_btn
             width:parent.width
-            text_anchors.horizontalCenter: language_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.LANGUAGE
             buttonText: qsTr("Language") + settings.i18n_empty_string
             onActivated: settings_page_instance.sub_page_type = SettingsPage.LANGUAGE
@@ -40,7 +40,7 @@ Page_panel
             id:sound_btn
             visible:false
             width:parent.width
-            text_anchors.horizontalCenter: sound_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.SOUND
             buttonText: qsTr("Sound") + settings.i18n_empty_string
             onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available"),1200)
@@ -49,7 +49,7 @@ Page_panel
         Button {
             id:color_theme_btn
             width:parent.width
-            text_anchors.horizontalCenter: color_theme_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.COLOR_THEME
             buttonText: qsTr("Color theme") + settings.i18n_empty_string
             onActivated: settings_page_instance.sub_page_type = SettingsPage.COLOR_THEME
@@ -58,7 +58,7 @@ Page_panel
         Button {
             id:game_play_btn
             width:parent.width
-            text_anchors.horizontalCenter: game_play_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: settings_page_instance.sub_page_type === SettingsPage.GAME_PLAY
             buttonText: qsTr("Game") + settings.i18n_empty_string
             onActivated: settings_page_instance.sub_page_type = SettingsPage.GAME_PLAY

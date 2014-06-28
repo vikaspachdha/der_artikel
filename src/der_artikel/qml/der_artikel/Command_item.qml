@@ -18,17 +18,26 @@ Item {
         source: mouse_area.pressed ? "qrc:/res/resources/" + icon_name +"_active.png" : root_item.enabled ? "qrc:/res/resources/" + icon_name +".png" : "qrc:/res/resources/" + icon_name +"_disabled.png"
     }
 
-    Text {
-        id: item_label
+    Item {
+        id: lableParent
         anchors.top: icon.bottom
         anchors.right: parent.right
         anchors.left: parent.left
-        color:color_palette.color_font_01
-        font.family: regular_font.name
-        font.pixelSize: commandTextSize
-        horizontalAlignment: Text.AlignHCenter
-        smooth:true
+        anchors.bottom: parent.bottom
+        Text {
+            id: item_label
+            anchors.baseline: parent.verticalCenter
+            anchors.baselineOffset: 4
+            anchors.right: parent.right
+            anchors.left: parent.left
+            color:color_palette.color_font_01
+            font.family: regular_font.name
+            font.pixelSize: commandTextSize
+            horizontalAlignment: Text.AlignHCenter
+        }
     }
+
+
 
     MouseArea {
         id: mouse_area

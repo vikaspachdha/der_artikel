@@ -6,15 +6,16 @@ Rectangle {
     property alias font_size:label_text.font.pixelSize
     property alias font_color:label_text.color
     property alias text_horizontal_alignment: label_text.horizontalAlignment
-    property alias text_vertical_alignment: label_text.verticalAlignment
 
-    height: childrenRect.height+4
+    height: 30
+    color: "#fff"
     Text {
-        y:2
         id: label_text
         font.pixelSize: normalTextSize
         anchors.left: parent.left
         anchors.right: parent.right
+        anchors.baseline: parent.verticalCenter
+        anchors.baselineOffset: 4
         horizontalAlignment: Text.AlignHCenter
         font.family: regular_font.name
     }

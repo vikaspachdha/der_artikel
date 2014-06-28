@@ -5,24 +5,29 @@ Item {
 
     property alias lblText:label.text
     property alias textPxSize:label.font.pixelSize
-    property alias text_anchors: label.anchors
+    property alias text_h_alignment: label.horizontalAlignment
     property alias under_line:label.font.underline
     property alias background_color: background.color
     property alias text_color: label.color
-    width: label.width+12
-    height: label.height+8
+    width: 80
+    height: 30
 
     Rectangle {
         id: background
         anchors.fill:parent
         radius: 4
-        color:"transparent"
+        color:"#000"
     }
 
     Text {
         id: label
-        x:2
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.leftMargin: 2
+        anchors.rightMargin: 2
+        anchors.baseline: parent.verticalCenter
+        anchors.baselineOffset: (font.pixelSize/2) - 2
+        horizontalAlignment: Text.AlignHCenter
         font.family: regular_font.name
         color:color_palette.color_font_01
         font.pixelSize: normalTextSize

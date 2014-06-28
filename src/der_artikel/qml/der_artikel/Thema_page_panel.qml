@@ -11,7 +11,7 @@ Page_panel
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: level_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         lblText: qsTr("Game Level") + settings.i18n_empty_string
     }
 
@@ -29,7 +29,7 @@ Page_panel
         Button {
             id:easy_btn
             width:parent.width
-            text_anchors.horizontalCenter: easy_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: manager.game_level === Manager.EASY
             buttonText: qsTr("Easy") + settings.i18n_empty_string
             onActivated: manager.game_level = Manager.EASY
@@ -38,7 +38,7 @@ Page_panel
         Button {
             id:moderate_btn
             width:parent.width
-            text_anchors.horizontalCenter: moderate_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: manager.game_level === Manager.MODERATE
             buttonText: qsTr("Moderate") + settings.i18n_empty_string
             onActivated: manager.game_level = Manager.MODERATE
@@ -47,7 +47,7 @@ Page_panel
         Button {
             id:expert_btn
             width:parent.width
-            text_anchors.horizontalCenter: expert_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: manager.game_level === Manager.EXPERT
             buttonText: qsTr("Expert") + settings.i18n_empty_string
             onActivated: manager.game_level = Manager.EXPERT
@@ -56,7 +56,7 @@ Page_panel
         Button {
             id:practice_btn
             width:parent.width
-            text_anchors.horizontalCenter: practice_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: manager.game_level === Manager.PRACTICE
             buttonText: qsTr("Practice") + settings.i18n_empty_string
             onActivated: manager.game_level = Manager.PRACTICE

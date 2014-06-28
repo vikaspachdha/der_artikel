@@ -12,7 +12,7 @@ Page_panel
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: home_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         lblText: qsTr("Home") + settings.i18n_empty_string
     }
 
@@ -29,7 +29,7 @@ Page_panel
         Button {
             id:rate_btn
             width:parent.width
-            text_anchors.horizontalCenter: rate_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Rate App") + settings.i18n_empty_string
             onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available."),1200)
         }
@@ -42,7 +42,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         anchors.verticalCenter: parent.verticalCenter
-        text_anchors.horizontalCenter: word_count_text_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         lblText: qsTr("Total words") + settings.i18n_empty_string
     }
 
@@ -50,12 +50,11 @@ Page_panel
         id:word_count_lbl
         property int words_count: themaModel.total_word_count
         anchors.top: word_count_text_lbl.bottom
-        anchors.topMargin: -10
         anchors.left: parent.left
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: word_count_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         textPxSize:heading1Size
         lblText: words_count
         Behavior on words_count {

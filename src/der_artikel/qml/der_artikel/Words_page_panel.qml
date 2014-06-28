@@ -11,7 +11,7 @@ Page_panel {
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: level_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         lblText: qsTr("Article") + settings.i18n_empty_string
     }
 
@@ -29,7 +29,7 @@ Page_panel {
         Button {
             id:der_btn
             width:parent.width
-            text_anchors.horizontalCenter: der_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: words_page.selected_article === Article.DER
             visible: manager.game_level !== Manager.PRACTICE
             buttonText: qsTr("Der") + settings.i18n_empty_string
@@ -41,7 +41,7 @@ Page_panel {
         Button {
             id:die_btn
             width:parent.width
-            text_anchors.horizontalCenter: die_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: words_page.selected_article === Article.DIE
             visible: manager.game_level !== Manager.PRACTICE
             buttonText: qsTr("Die") + settings.i18n_empty_string
@@ -53,7 +53,7 @@ Page_panel {
         Button {
             id:das_btn
             width:parent.width
-            text_anchors.horizontalCenter: das_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: words_page.selected_article === Article.DAS
             visible: manager.game_level !== Manager.PRACTICE
             buttonText: qsTr("Das") + settings.i18n_empty_string
@@ -65,7 +65,7 @@ Page_panel {
         Button {
             id:info_mode_btn
             width:parent.width
-            text_anchors.horizontalCenter: info_mode_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             isDown: words_page.info_mode === true
             buttonText: qsTr("Info") + settings.i18n_empty_string
             onActivated: {

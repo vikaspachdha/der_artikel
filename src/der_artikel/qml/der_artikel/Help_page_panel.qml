@@ -13,7 +13,7 @@ Page_panel
         anchors.leftMargin: 2
         anchors.right: parent.right
         anchors.rightMargin: 2
-        text_anchors.horizontalCenter: help_lbl.horizontalCenter
+        text_h_alignment: Text.AlignHCenter
         lblText: qsTr("Topics") + settings.i18n_empty_string
     }
 
@@ -30,7 +30,7 @@ Page_panel
         Button {
             id:gen_btn
             width:parent.width
-            text_anchors.horizontalCenter: gen_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("General") + settings.i18n_empty_string
             isDown:help_page_instance.sub_page_type === HelpPage.GENERAL
             onActivated: help_page_instance.sub_page_type = HelpPage.GENERAL
@@ -39,7 +39,7 @@ Page_panel
         Button {
             id:rules_btn
             width:parent.width
-            text_anchors.horizontalCenter: rules_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Rules") + settings.i18n_empty_string
             isDown:help_page_instance.sub_page_type === HelpPage.RULES
             onActivated: help_page_instance.sub_page_type = HelpPage.RULES
@@ -48,7 +48,7 @@ Page_panel
         Button {
             id:score_btn
             width:parent.width
-            text_anchors.horizontalCenter: score_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Scoring") + settings.i18n_empty_string
             isDown:help_page_instance.sub_page_type === HelpPage.SCORING
             onActivated: help_page_instance.sub_page_type = HelpPage.SCORING
@@ -57,7 +57,7 @@ Page_panel
         Button {
             id:other_btn
             width:parent.width
-            text_anchors.horizontalCenter: other_btn.horizontalCenter
+            text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Contact") + settings.i18n_empty_string
             isDown:help_page_instance.sub_page_type === HelpPage.OTHERS
             onActivated: help_page_instance.sub_page_type = HelpPage.OTHERS
