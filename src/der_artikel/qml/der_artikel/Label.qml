@@ -16,7 +16,7 @@ Item {
         id: background
         anchors.fill:parent
         radius: 4
-        color:"#000"
+        color:"transparent"
     }
 
     Text {
