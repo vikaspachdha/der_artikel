@@ -36,7 +36,7 @@
 <context>
     <name>Button</name>
     <message>
-        <location filename="qml/der_artikel/Button.qml" line="28"/>
+        <location filename="qml/der_artikel/Button.qml" line="32"/>
         <source>Button</source>
         <translation type="unfinished"></translation>
     </message>
@@ -310,8 +310,13 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Result_page.qml" line="28"/>
-        <source>Incorrect       Correct</source>
+        <location filename="qml/der_artikel/Result_page.qml" line="27"/>
+        <source>Incorrect   </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Result_page.qml" line="48"/>
+        <source>    Correct</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

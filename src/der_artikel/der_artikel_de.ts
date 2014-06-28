@@ -37,7 +37,7 @@
 <context>
     <name>Button</name>
     <message>
-        <location filename="qml/der_artikel/Button.qml" line="28"/>
+        <location filename="qml/der_artikel/Button.qml" line="32"/>
         <source>Button</source>
         <translation>Taste</translation>
     </message>
@@ -205,7 +205,7 @@
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="46"/>
         <source>Total words</source>
-        <translation type="unfinished">Gesamt Worte</translation>
+        <translation>Gesamt Worte</translation>
     </message>
 </context>
 <context>
@@ -310,9 +310,18 @@
         <translation>keine Fehler</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Result_page.qml" line="28"/>
+        <location filename="qml/der_artikel/Result_page.qml" line="27"/>
+        <source>Incorrect   </source>
+        <translation>Falsch    </translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Result_page.qml" line="48"/>
+        <source>    Correct</source>
+        <translation>    Richtig</translation>
+    </message>
+    <message>
         <source>Incorrect       Correct</source>
-        <translation>Falsch      Richtig</translation>
+        <translation type="vanished">Falsch      Richtig</translation>
     </message>
 </context>
 <context>
