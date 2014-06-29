@@ -25,8 +25,13 @@
  * met: http://www.gnu.org/copyleft/gpl.html.
  *
  ******************************************************************************/
+// Interface for this file
 #include "word_model.h"
+
+// Project includes
 #include "data/word.h"
+
+// Framework and lib includes
 #include "log4qt/log_defines.h"
 
 //******************************************************************************

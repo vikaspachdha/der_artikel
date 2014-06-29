@@ -28,7 +28,10 @@
 #ifndef WORD_MODEL_H
 #define WORD_MODEL_H
 
+// System includes
 #include <QAbstractListModel>
+
+// Forward declaration
 class Word_C;
 
 
