@@ -61,6 +61,25 @@ void Word_C::setUserArtikel(Article_C::Artikel article)
 }
 
 //******************************************************************************
+/*! \brief Returns an copy of the instance. Ownership shall be maintained by the reciever.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] parent : Parent instance of returned object.
+ ******************************************************************************/
+Word_C *Word_C::copy(QObject *parent) const
+{
+    Word_C* copy_word = new Word_C(parent);
+
+    copy_word->_text = _text;
+    copy_word->_description = _description;
+    copy_word->_artikel = _artikel;
+    copy_word->_user_artikel = _user_artikel;
+
+    return copy_word;
+}
+
+//******************************************************************************
 /*! \brief Reads the word data from a file.
  *
  *  \author Vikas Pachdha

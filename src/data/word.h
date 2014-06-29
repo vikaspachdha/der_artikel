@@ -63,8 +63,10 @@ public:
     //! Returns the word text.
     QString wordText() const { return _text; }
 
-    //! Retusn the description text for the word.
+    //! Returns the description text for the word.
     QString description() const  { return _description; }
+
+    Word_C* copy(QObject* parent=0) const;
 
 public:
     bool read(const QDomElement& element);

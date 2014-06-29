@@ -119,10 +119,15 @@ QHash<int, QByteArray> WordModel_C::roleNames() const
  *
  *  \param[in] words : List of words that shall be available through the model instance.
  ******************************************************************************/
-void WordModel_C::updateWords(QList<const Word_C *> words)
+void WordModel_C::updateWords(QList<const Word_C *> words, bool delete_old)
 {
     LOG_INFO("Word model :: Updating words.");
     beginResetModel();
+    if(delete_old) {
+        foreach(const Word_C* word, _words) {
+            delete word;
+        }
+    }
     _words.clear();
     _words = words;
     endResetModel();

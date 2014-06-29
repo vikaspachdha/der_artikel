@@ -67,7 +67,7 @@ void EasyResultAlgo_C::calculate(Thema_I& thema, Result_C& result)
             if(word->artikel() == word->userArtikel()) {
                 ++correct_count;
             } else {
-                incorrect_words<<word;
+                incorrect_words<<word->copy();
             }
         }
 

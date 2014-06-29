@@ -64,7 +64,7 @@ public:
     QHash<int,QByteArray> roleNames() const;
 
 public:
-    void updateWords(QList<const Word_C *> words);
+    void updateWords(QList<const Word_C *> words, bool delete_old = false);
 
 private:
     QList<const Word_C*> _words;
