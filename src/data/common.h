@@ -36,6 +36,8 @@ namespace ARTIKEL
 
     static const char* INDEX_FILE_TOKEN = "der_artikel_thema_index";
 
+    static const QString ENCRYPTION_KEY = "587b14e9ef30e95b64dc5ec71230197a";
+
     QString GetResourcePath(const QString &path);
 
     QString capitalize(const QString& str);

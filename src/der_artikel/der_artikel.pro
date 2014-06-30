@@ -18,7 +18,8 @@ include($$PWD/../data/data.pri)
 # Please do not modify the following two lines. Required for deployment.
 include($$PWD/../qmake_utils/qmake_utils.pri)
 
-INCLUDEPATH += $${PWD}/../libs/log4qt
+INCLUDEPATH += $${PWD}/../libs/log4qt \
+    $${PWD}/../libs/tiny_aes
 
 SOURCES += \
     algo/easy_result_algo.cpp \
@@ -100,11 +101,13 @@ doDeployment()
 
 mac {
     LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4qt
+    LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -laes
 } else {
     LIBS += -L$$DESTDIR -llog4Qt
+    LIBS += -L$$DESTDIR -laes
 }
 
-# Copy files to build dir
+# Copy log4qt files to build dir
 SOURCE_PATH = $${DESTDIR}/../../libs/log4qt
 CONFIG(debug,debug|release):SOURCE_PATH = $${SOURCE_PATH}/bin_debug/*log4qt.*
 CONFIG(release,debug|release):SOURCE_PATH = $${SOURCE_PATH}/bin_release/*log4qt.*
@@ -117,3 +120,15 @@ win32{
 }
 QMAKE_PRE_LINK += $$QMAKE_COPY $$quote($$SOURCE_PATH) $$quote($$TARGET_PATH) $$escape_expand(\\n\\t)
 
+# Copy tiny aes files to build dir
+SOURCE_PATH = $${DESTDIR}/../../libs/tiny_aes
+CONFIG(debug,debug|release):SOURCE_PATH = $${SOURCE_PATH}/bin_debug/*aes.*
+CONFIG(release,debug|release):SOURCE_PATH = $${SOURCE_PATH}/bin_release/*aes.*
+TARGET_PATH = $$DESTDIR
+win32{
+    SOURCE_PATH ~= s,/,\\,g
+    TARGET_PATH ~= s,/,\\,g
+}else:mac{
+    TARGET_PATH = $${TARGET_PATH}/$${TARGET}.app/Contents/MacOS
+}
+QMAKE_PRE_LINK += $$QMAKE_COPY $$quote($$SOURCE_PATH) $$quote($$TARGET_PATH) $$escape_expand(\\n\\t)

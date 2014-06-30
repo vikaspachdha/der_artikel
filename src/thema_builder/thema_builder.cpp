@@ -51,7 +51,8 @@ ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     connect(ui->_import_data_btn,SIGNAL(clicked()), this,SLOT(OnImport()) );
     connect(ui->_add_btn,SIGNAL(clicked()), this,SLOT(OnAddClicked()) );
     connect(ui->_word_edit,SIGNAL(textChanged(QString)), this, SLOT(OnWordTextChanged(QString)));
-    connect(ui->_thema_name_edit,SIGNAL(textChanged(QString)), this, SLOT(OnThemaNameChanged(QString)));
+    connect(ui->_thema_name_edit,SIGNAL(textChanged(QString)), this, SLOT(updateSaveBtns()));
+    connect(ui->_thema_tr_name_edit,SIGNAL(textChanged(QString)), this, SLOT(updateSaveBtns()));
     connect(ui->_word_list,SIGNAL(itemDoubleClicked(QListWidgetItem*)),this,SLOT(OnItemDoubleClicked(QListWidgetItem*)) );
     connect(ui->_word_list,SIGNAL(itemSelectionChanged()), this, SLOT(OnWordSelectionChanged()));
     connect(ui->_delete_btn,SIGNAL(clicked()), this, SLOT(OnDelete()) );
@@ -258,12 +259,6 @@ void ThemaBuilder_C::OnAddClicked()
 void ThemaBuilder_C::OnWordTextChanged(QString new_text)
 {
     ui->_add_btn->setEnabled(!new_text.isEmpty());
-}
-
-void ThemaBuilder_C::OnThemaNameChanged(QString new_text)
-{
-    ui->_save_btn->setEnabled(!new_text.isEmpty());
-    ui->_save_as_btn->setEnabled(!new_text.isEmpty());
 }
 
 void ThemaBuilder_C::OnItemDoubleClicked(QListWidgetItem *item)
@@ -670,6 +665,16 @@ void ThemaBuilder_C::UpdateUI()
     } else {
         ui->_export_data_btn->setEnabled(false);
     }
+}
+
+void ThemaBuilder_C::updateSaveBtns()
+{
+    bool enable = true;
+    if(ui->_thema_name_edit->text().isEmpty() || ui->_thema_tr_name_edit->text().isEmpty()) {
+        enable = false;
+    }
+    ui->_save_as_btn->setEnabled(enable);
+    ui->_save_btn->setEnabled(enable);
 }
 
 void ThemaBuilder_C::PopulateUI(Thema_C *thema)

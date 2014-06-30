@@ -1,4 +1,8 @@
-INCLUDEPATH += $$PWD/..
+
+INCLUDEPATH += $$PWD/.. \
+    $$PWD/../libs/tiny_aes \
+    $$PWD/../libs/log4qt
+
 DEPENDPATH += $$PWD
 
 HEADERS += $$PWD/result.h \

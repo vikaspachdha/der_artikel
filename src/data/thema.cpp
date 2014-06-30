@@ -28,11 +28,16 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QBuffer>
+#include <QDebug>
 
 #include "thema.h"
 #include "version.h"
 #include "common.h"
 #include "log4qt/log_defines.h"
+
+#ifdef ENCRYPT_DATA
+#include "tinyaes.h"
+#endif
 
 //******************************************************************************
 /*! \brief Constructor.
@@ -183,13 +188,18 @@ bool Thema_C::read(QString thema_file_path, bool defered)
     bool success = true;
     QFile thema_file(thema_file_path);
     if(thema_file.open(QFile::ReadOnly)) {
-        QByteArray compressed_xml = thema_file.readAll();
-        QByteArray uncompressed_xml = qUncompress(compressed_xml);
+        QByteArray file_data = thema_file.readAll();
+        #ifdef ENCRYPT_DATA
+        TinyAES crypto;
+        QByteArray key = crypto.HexStringToByte(ARTIKEL::ENCRYPTION_KEY);
+        file_data = crypto.Decrypt(file_data, key);
+        #endif
+        file_data = qUncompress(file_data);
         QDomDocument thema_doc;
         QString error_msg;
         int error_line;
         int error_col;
-        if(thema_doc.setContent(uncompressed_xml, &error_msg, &error_line, &error_col)) {
+        if(thema_doc.setContent(file_data, &error_msg, &error_line, &error_col)) {
             //parse the file and read the thema.
             QDomElement root = thema_doc.firstChildElement("Root");
             QDomAttr versionAttr = root.attributeNode("Version");
@@ -389,12 +399,18 @@ bool Thema_C::write(QIODevice* pDevice)
         QDomElement root = domDocument.createElement("Root");
         root.setAttribute("Version", QString::number(APP_VERSION));
 
-        write(root);
+        if(write(root)) {
+            domDocument.appendChild(root);
+            QByteArray file_data = qCompress(domDocument.toByteArray(4),ARTIKEL::COMPRESSION_LEVEL);
 
-        domDocument.appendChild(root);
-        QByteArray xml_data = domDocument.toByteArray(4);
-        QByteArray comressed_data = qCompress(xml_data,ARTIKEL::COMPRESSION_LEVEL);
-        success = pDevice->write(comressed_data,comressed_data.length()) == -1 ? false :true;
+            #ifdef ENCRYPT_DATA
+            TinyAES crypto;
+            QByteArray key = crypto.HexStringToByte(ARTIKEL::ENCRYPTION_KEY);
+            file_data = crypto.Encrypt(file_data, key);
+            #endif
+
+            success = pDevice->write(file_data,file_data.length()) == -1 ? false :true;
+        }
     } else {
         success = false;
     }

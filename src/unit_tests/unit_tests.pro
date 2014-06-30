@@ -29,6 +29,7 @@ HEADERS += \
     ../der_artikel/algo/thema_delete_operation.h \
     ../der_artikel/algo/thema_replace_operation.h \
     ../der_artikel/file_downloader.h \
+    ../libs/tiny_aes/tinyaes.h \
     log4qt/log_defines.h \
     result_algo_t.h \
     file_operation_algo_t.h
@@ -48,6 +49,7 @@ SOURCES += \
     ../der_artikel/algo/thema_delete_operation.cpp \
     ../der_artikel/algo/thema_replace_operation.cpp \
     ../der_artikel/file_downloader.cpp \
+    ../libs/tiny_aes/tinyaes.cpp \
     result_algo_t.cpp \
     main.cpp \
     file_operation_algo_t.cpp
@@ -56,4 +58,5 @@ DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
 INCLUDEPATH += ./ \
     ../ \
-    ../der_artikel
+    ../der_artikel \
+    ../libs/tiny_aes

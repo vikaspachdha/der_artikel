@@ -54,7 +54,7 @@ private slots:
     void OnImport();
     void OnAddClicked();
     void OnWordTextChanged(QString new_text);
-    void OnThemaNameChanged(QString new_text);
+    void updateSaveBtns();
     void OnItemDoubleClicked(QListWidgetItem *item);
     void OnWordSelectionChanged();
     void OnDelete();
