@@ -191,7 +191,7 @@
     w(0xf8), w(0xf9), w(0xfa), w(0xfb), w(0xfc), w(0xfd), w(0xfe), w(0xff) }
 
 typedef unsigned char uint_8t;
-typedef unsigned long uint_32t;
+typedef unsigned int uint_32t;
 typedef uint_8t aes_result;
 
 static const uint_8t sbox[256]  =  sb_data(f1);

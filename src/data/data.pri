@@ -5,6 +5,8 @@ INCLUDEPATH += $$PWD/.. \
 
 DEPENDPATH += $$PWD
 
+DEFINES += ENCRYPT_DATA
+
 HEADERS += $$PWD/result.h \
     $$PWD/thema_interface.h \
     $$PWD/thema.h \
