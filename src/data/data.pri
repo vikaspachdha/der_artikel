@@ -5,7 +5,8 @@ INCLUDEPATH += $$PWD/.. \
 
 DEPENDPATH += $$PWD
 
-DEFINES += ENCRYPT_DATA
+#Enable the define to encrypt data files.
+#DEFINES += ENCRYPT_DATA
 
 HEADERS += $$PWD/result.h \
     $$PWD/thema_interface.h \
