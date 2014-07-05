@@ -31,7 +31,9 @@ Page_panel
             width:parent.width
             text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Rate App") + settings.i18n_empty_string
-            onActivated: showMessage(qsTr("Sorry"), qsTr("This feature is not available."),1200)
+            onActivated: {
+                Qt.openUrlExternally("https://www.facebook.com/der.artikel")
+            }
         }
     }
 
