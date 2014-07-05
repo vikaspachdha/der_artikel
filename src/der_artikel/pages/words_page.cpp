@@ -100,14 +100,13 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
     Q_UNUSED(prev_page_id)
     Thema_C* thema = _page_manager.themaModel()->GetSelectedThema();
     Q_ASSERT(thema);
+    setInfoMode(false);
 
     if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
         // Add words to page.
         addWords(thema,true);
-        setInfoMode(true);
+        setSelectedArticle(Article_C::NA);
     } else {
-        setInfoMode(false);
-
         // Add words to page.
         addWords(thema);
 
@@ -208,10 +207,19 @@ void WordsPage_C::onWordClicked()
 
     if(word) {
         LOG_INFO(QString("Word page :: Word clicked %1").arg(word->wordText()));
+        updateWordDescription(word);
         if(_info_mode) {
-            MessageBar_C::showMsg(word->wordText(),word->description(),_settings.wordMsgTime());
+            QString msg_title;
+            if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
+                msg_title = Article_C::ArtikelText(word->artikel()) + " "+word->wordText();
+            } else {
+                msg_title = word->wordText();
+            }
+            MessageBar_C::showMsg(msg_title,word->description(),_settings.wordMsgTime());
         } else {
-            word->setUserArtikel(_selected_article);
+            if(_selected_article != Article_C::NA) {
+                word->setUserArtikel(_selected_article);
+            }
         }
     }
 }
@@ -376,6 +384,24 @@ void WordsPage_C::calculateResult()
         _result_algo->calculate(*current_thema,*(_page_manager.currentResult()));
         current_thema->setLastPlayed(QDateTime::currentDateTimeUtc());
         current_thema->save();
+    }
+}
+
+//******************************************************************************
+/*! \brief Updates the word'd description.
+ *
+ *  \param[in] word : Source \ref Word_C instance.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void WordsPage_C::updateWordDescription(const Word_C *word)
+{
+    if(word) {
+        _current_word_description = QString("%1 : %2").arg(word->wordText()).arg(word->description());
+        if(_page_manager.gameLevel() == Manager_C::PRACTICE) {
+            _current_word_description.prepend(Article_C::ArtikelText(word->artikel()) + " ");
+        }
+        emit wordDescriptionChanged();
     }
 }
 

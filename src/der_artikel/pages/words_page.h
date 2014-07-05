@@ -56,7 +56,7 @@ class WordsPage_C : public Page_C
     Q_OBJECT
     Q_PROPERTY(bool info_mode READ infoMode WRITE setInfoMode NOTIFY infoModeChanged)
     Q_PROPERTY(Article_C::Artikel selected_article READ getSelectedArticle WRITE setSelectedArticle NOTIFY selectedArticleChanged)
-
+    Q_PROPERTY(QString word_description READ wordDescription NOTIFY wordDescriptionChanged)
 public:
     explicit WordsPage_C(Manager_C& page_manager, QQmlContext& root_context, Settings_C& settings, QObject *parent = 0);
 
@@ -71,7 +71,11 @@ public:
     void setInfoMode(bool info_mode);
 
     void setSelectedArticle(Article_C::Artikel article);
+    //! Returns selected artikel.
     Article_C::Artikel getSelectedArticle() const { return _selected_article; }
+
+    //! Returns last selected word's description.
+    QString wordDescription() const { return _current_word_description; }
 
 private slots:
     void onWordClicked();
@@ -82,6 +86,8 @@ signals:
     void infoModeChanged();
     //! Emitted when selected article is changed.
     void selectedArticleChanged();
+    //! Emitted when desription text changes.
+    void wordDescriptionChanged();
 
 private:
     void addWords(const Thema_C *thema, bool practice_mode=false);
@@ -89,6 +95,7 @@ private:
     void clearWordItems();
     void createResultAlgo();
     void calculateResult();
+    void updateWordDescription(const Word_C* word);
 
 private:
     //! Root QML context instance.
@@ -103,6 +110,8 @@ private:
     Article_C::Artikel _selected_article;
     //! Result algorithm instance.
     ResultAlgo_I* _result_algo;
+    //! Last selected word's description.
+    QString _current_word_description;
 };
 
 #endif // WORDS_PAGE_H

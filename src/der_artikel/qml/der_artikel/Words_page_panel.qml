@@ -23,7 +23,6 @@ Page_panel {
         anchors.leftMargin: 4
         anchors.right: parent.right
         anchors.rightMargin: 4
-        enabled: manager.game_level !== Manager.PRACTICE
         spacing: 6
 
         Button {
@@ -69,7 +68,11 @@ Page_panel {
             isDown: words_page.info_mode === true
             buttonText: qsTr("Info") + settings.i18n_empty_string
             onActivated: {
-                words_page.info_mode = true
+                if(manager.game_level === Manager.PRACTICE) {
+                    words_page.info_mode = !words_page.info_mode
+                } else {
+                    words_page.info_mode = true
+                }
             }
         }
 

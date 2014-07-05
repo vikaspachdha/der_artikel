@@ -43,6 +43,24 @@ Title_bar {
     }
 
     Text {
+        id: word_desc
+        anchors {
+            left:parent.left
+            leftMargin: 6
+            bottom:parent.bottom
+            bottomMargin: 6
+            right: timer_text.left
+            rightMargin: 6
+        }
+        text: words_page.word_description
+        font.family: title_font.name
+        color:color_palette.color_font_01
+        font.pixelSize: heading1Size
+        horizontalAlignment: Text.AlignHCenter
+        elide: Text.ElideRight
+    }
+
+    Text {
         id: timer_title
         anchors {
             right: parent.right
