@@ -45,7 +45,12 @@
  *  \param[in] parent : Parent object instance.
  ******************************************************************************/
 MessageBar_C::MessageBar_C(QObject *parent) :
-    QObject(parent)
+    QObject(parent),
+    _message_loop(0),
+    _close_loop(0),
+    _msg_bar(0),
+    _settings(0),
+    _min_duration_timer(0)
 {
     _message_loop = new QEventLoop(this);
     _close_loop = new QEventLoop(this);

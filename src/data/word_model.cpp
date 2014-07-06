@@ -47,6 +47,16 @@ WordModel_C::WordModel_C(QObject *parent) :
 }
 
 //******************************************************************************
+/*! \brief Destructor
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+WordModel_C::~WordModel_C()
+{
+    clearWords();
+}
+
+//******************************************************************************
 /*! \brief Returns the data stored under the given role for the item referred
  *  to by the index.
  *
@@ -124,16 +134,24 @@ QHash<int, QByteArray> WordModel_C::roleNames() const
  *
  *  \param[in] words : List of words that shall be available through the model instance.
  ******************************************************************************/
-void WordModel_C::updateWords(QList<const Word_C *> words, bool delete_old)
+void WordModel_C::updateWords(QList<const Word_C *> words)
 {
     LOG_INFO("Word model :: Updating words.");
     beginResetModel();
-    if(delete_old) {
-        foreach(const Word_C* word, _words) {
-            delete word;
-        }
-    }
-    _words.clear();
+    clearWords();
     _words = words;
     endResetModel();
+}
+
+//******************************************************************************
+/*! \brief Clears word's list.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void WordModel_C::clearWords()
+{
+    foreach(const Word_C* word, _words) {
+        delete word;
+    }
+    _words.clear();
 }

@@ -71,9 +71,14 @@ Settings_C::Settings_C(QObject *parent) :
 #endif
 }
 
+//******************************************************************************
+/*! \brief Destructor.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 Settings_C::~Settings_C()
 {
-    saveSettings();
+    clearTranslators();
 }
 
 //******************************************************************************
@@ -118,11 +123,7 @@ void Settings_C::updateLangauge()
         break;
     }
 
-    foreach (QTranslator* translator, _installed_translators) {
-        QGuiApplication::removeTranslator(translator);
-        delete translator;
-    }
-    _installed_translators.clear();
+    clearTranslators();
 
     QDir lang_dir = ARTIKEL::GetResourcePath("languages");
     QStringList nameFilters;
@@ -135,10 +136,26 @@ void Settings_C::updateLangauge()
             if(translator->load(file.absoluteFilePath())) {
                 QGuiApplication::installTranslator(translator);
                 _installed_translators<<translator;
+            } else {
+                delete translator;
             }
         }
     }
 
+}
+
+//******************************************************************************
+/*! \brief Deletes and clear the installed translators.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void Settings_C::clearTranslators()
+{
+    foreach (QTranslator* translator, _installed_translators) {
+        QGuiApplication::removeTranslator(translator);
+        delete translator;
+    }
+    _installed_translators.clear();
 }
 
 //******************************************************************************

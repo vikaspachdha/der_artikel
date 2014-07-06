@@ -59,6 +59,7 @@ class WordsPage_C : public Page_C
     Q_PROPERTY(QString word_description READ wordDescription NOTIFY wordDescriptionChanged)
 public:
     explicit WordsPage_C(Manager_C& page_manager, QQmlContext& root_context, Settings_C& settings, QObject *parent = 0);
+    ~WordsPage_C();
 
 public:
     virtual bool canEnter() const;

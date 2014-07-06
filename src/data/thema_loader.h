@@ -59,7 +59,7 @@ protected:
 
 public:
     Thema_C* loadThema(QString file_path, bool defered = true);
-    void startLoading();
+    void startLoading(bool auto_delete=true);
 
 signals:
     //! Emitted when a thema is loaded. Thema object ownership is with the receiver class.

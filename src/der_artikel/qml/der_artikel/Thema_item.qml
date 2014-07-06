@@ -22,7 +22,6 @@ Flipable {
     signal themaLongClicked()
 
     RectangularGlow {
-        id: effect
         anchors.fill: info_rect
         glowRadius: 8
         spread: 0.2

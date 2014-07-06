@@ -60,6 +60,7 @@ public:
 
 public:
     explicit WordModel_C(QObject *parent = 0);
+    ~WordModel_C();
 
 public:
     QVariant data(const QModelIndex &index, int role) const;
@@ -67,8 +68,9 @@ public:
     QHash<int,QByteArray> roleNames() const;
 
 public:
-    void updateWords(QList<const Word_C *> words, bool delete_old = false);
-
+    void updateWords(QList<const Word_C *> words);
+private:
+    void clearWords();
 private:
     QList<const Word_C*> _words;
 };

@@ -67,6 +67,7 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _root_item(0),
     _current_page(INVALID_PAGE),
     _current_result(0),
+    _thema_model(0),
     _game_level(EASY),
     _image_provider(new ImageProvider_C)
 {    
@@ -74,10 +75,10 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _settings = new Settings_C(this);
     _current_result = new Result_C(this);
 
-    initPages();
-
     _thema_model = new ThemaModel_C(this);
     connect(_thema_model,SIGNAL(themaSelectionChanged()), this, SLOT(onThemaSelectionChanged()));
+
+    initPages();
 }
 
 //******************************************************************************
@@ -89,8 +90,11 @@ Manager_C::~Manager_C()
 {
     LOG_DEBUG("Manager_C::Destructor");
     delete _current_result;
+    _current_result = 0;
     delete _thema_model;
+    _thema_model = 0;
     delete _settings;
+    _settings = 0;
 
     foreach(PageId_TP page_id, _page_hash.keys()) {
         Page_I* page = _page_hash[page_id];
@@ -113,7 +117,7 @@ void Manager_C::SetRootItem(QObject *root_Item)
 {
     _root_item = root_Item;
     QVariant msg_bar_object;
-    QQuickItem* msg_bar_item;
+    QQuickItem* msg_bar_item = 0;
     QMetaObject::invokeMethod(_root_item,"getMessageBar",Q_RETURN_ARG(QVariant,msg_bar_object));
     msg_bar_item = msg_bar_object.value<QQuickItem*>();
     MessageBar_C::instance().init(msg_bar_item,_settings);

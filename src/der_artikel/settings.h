@@ -117,6 +117,7 @@ private:
     //! Returns empty string. Hack used to language change in QML
     QString i18EmptyString() { return ""; }
 
+    void clearTranslators();
 
 private:
     //! Selected language.

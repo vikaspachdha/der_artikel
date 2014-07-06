@@ -68,6 +68,19 @@ WordsPage_C::WordsPage_C(Manager_C &page_manager, QQmlContext &root_context, Set
     setSelectedArticle(Article_C::DER);
 }
 
+//******************************************************************************
+/*! \brief Destructor
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+WordsPage_C::~WordsPage_C()
+{
+    if(_result_algo) {
+        delete _result_algo;
+        _result_algo = 0;
+    }
+}
+
 /********************************************************************************/
 /*! \brief \ref To check preconditions for words page. Thema selection is checked
  *  and thema is loaded.

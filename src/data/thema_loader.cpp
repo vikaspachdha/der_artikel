@@ -118,9 +118,13 @@ Thema_C *ThemaLoader_C::loadThema(QString file_path, bool defered)
 /*! \brief Call this method to start thema loading from default directory asynchronously.
  *
  *  \author Vikas Pachdha
+ *
+ *  \param[in] auto_delete : True to auto delete the instance after thema loading is
+ *  finished. Default is true
  ******************************************************************************/
-void ThemaLoader_C::startLoading()
+void ThemaLoader_C::startLoading(bool auto_delete)
 {
+    setAutoDelete(auto_delete);
     LOG_INFO(QString("Thema loader :: Starting loading"));
     QThreadPool::globalInstance()->start(this);
 }
