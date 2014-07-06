@@ -12,4 +12,6 @@ Color_palette {
 
     color_info: "#FFE97F"
     color_warn: "#701414"
+
+    selection_shadow: "#FF6A00"
 }

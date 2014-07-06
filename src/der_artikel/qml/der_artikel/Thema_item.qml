@@ -1,6 +1,7 @@
 import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 import QtMultimedia 5.1
+import QtGraphicalEffects 1.0
 
 Flipable {
     id: thema_item_root
@@ -19,6 +20,16 @@ Flipable {
 
     signal themaClicked()
     signal themaLongClicked()
+
+    RectangularGlow {
+        id: effect
+        anchors.fill: info_rect
+        glowRadius: 8
+        spread: 0.2
+        color: color_palette.selection_shadow
+        cornerRadius: info_rect.radius + glowRadius
+        visible: thema_item_root.thema_selected
+    }
 
     Rectangle {
         id: info_rect
@@ -188,15 +199,6 @@ Flipable {
         angle: 0    // the default angle
     }
 
-    Rectangle {
-        height: 6
-        width: height
-        radius: 3
-        anchors{left:parent.left;top:parent.top;margins: 4}
-        visible: thema_item_root.thema_selected
-        color:color_palette.color_font_02
-    }
-
     states: State {
         name: "back"
         PropertyChanges { target: rotation; angle: 180 }
@@ -206,8 +208,6 @@ Flipable {
     transitions: Transition {
         NumberAnimation { target: rotation; property: "angle"; duration: 200 }
     }
-
-
 
     Timer {
         id:flip_timer

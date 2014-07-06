@@ -11,5 +11,6 @@ Color_palette {
     color_font_02: "#303030"
 
     blanket_color: "#FFFFFF"
+    selection_shadow: "#65779B"
     root_background:"qrc:/res/resources/alt_background_texture.png"
 }

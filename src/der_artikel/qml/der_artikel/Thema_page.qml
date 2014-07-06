@@ -12,8 +12,8 @@ Page {
         anchors.topMargin: 4
         anchors.fill: parent
         model: themaModel
-        cellHeight: 110
-        cellWidth: 110
+        cellHeight: 120
+        cellWidth: 120
         delegate: Thema_item {
             title:display_name
             translation: tr_name
@@ -21,8 +21,8 @@ Page {
             last_played_text:Qt.formatDateTime(last_played,"dd.MM.yy - hh:mm")+ qsTr(" hrs") +settings.i18n_empty_string
             icon_url: "image://rootImageProvider/"+display_name
             count:word_count
-            width:grid_view.cellWidth-4
-            height:grid_view.cellHeight-4
+            width:grid_view.cellWidth-14
+            height:grid_view.cellHeight-14
             thema_selected: selected
             onThemaClicked: {
                 if(flipped) {
