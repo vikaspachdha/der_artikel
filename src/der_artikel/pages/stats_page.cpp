@@ -32,6 +32,10 @@
 // Interface for this file
 #include "stats_page.h"
 
+// Framework and lib includes
+#include "data/thema_model.h"
+
+
 
 //******************************************************************************
 /*! \brief Constructor

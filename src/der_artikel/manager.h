@@ -36,18 +36,19 @@
 
 // Framework & Lib includes
 #include "data/article.h"
-#include "data/result.h"
-#include "thema_model.h"
 
 // Forward declarations
 class ImageProvider_C;
 class Page_I;
 class QQmlContext;
 class QQuickItem;
+class Result_C;
 class ResultAlgo_I;
 class Settings_C;
 class Thema_C;
+class ThemaModel_C;
 class Word_C;
+
 
 //******************************************************************************
 /*! \brief Main manager class responsible for workflow and pivot for exposing

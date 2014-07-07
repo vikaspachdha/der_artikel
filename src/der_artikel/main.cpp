@@ -56,9 +56,10 @@
 #include "pages/settings_page.h"
 #include "pages/words_page.h"
 #include "settings.h"
-#include "thema_model.h"
 #include "thema_updater.h"
 
+// Framework and lib includes
+#include "data/thema_model.h"
 
 
 //******************************************************************************

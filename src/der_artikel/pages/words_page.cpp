@@ -44,7 +44,10 @@
 #include "algo/strict_result_algo.h"
 #include "message_bar.h"
 #include "settings.h"
-#include "thema_model.h"
+
+// Framework and lib includes
+#include "data/thema_model.h"
+
 
 //******************************************************************************
 /*! \brief Constructor

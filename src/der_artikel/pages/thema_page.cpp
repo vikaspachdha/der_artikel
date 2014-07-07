@@ -29,8 +29,9 @@
 // Interface for this file
 #include "thema_page.h"
 
-// Project includes
-#include "thema_model.h"
+// Framework and lib includes
+#include "data/thema_model.h"
+
 
 //******************************************************************************
 /*! \brief Constructor

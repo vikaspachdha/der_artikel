@@ -39,6 +39,7 @@
 #include "data/result.h"
 #include "data/thema.h"
 #include "data/thema_loader.h"
+#include "data/thema_model.h"
 #include "data/version.h"
 #include "log4qt/log_defines.h"
 
