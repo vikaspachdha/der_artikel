@@ -156,6 +156,7 @@ private:
     QString _author;
     QString _file_path;
     QList<Word_C*> _words;
+    uint _word_count;
     QDateTime _last_played;
     QDateTime _last_updated;
     int _experience_points;

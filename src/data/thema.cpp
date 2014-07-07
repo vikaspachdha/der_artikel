@@ -49,6 +49,7 @@
 Thema_C::Thema_C(QObject *parent): QObject(parent),
     _text(""),
     _translation(""),
+    _word_count(0),
     _experience_points(0),
     _selected(false),
     _state(RUSTY)
@@ -63,6 +64,7 @@ Thema_C::Thema_C(QObject *parent): QObject(parent),
  ******************************************************************************/
 Thema_C::~Thema_C()
 {
+    LOG_DEBUG(QString("Thema_C::Destructor - %1").arg(_text));
     clearWords();
 }
 
@@ -135,20 +137,20 @@ bool Thema_C::read(const QDomElement &element, bool defered)
 
         if(success) {
             QDomElement words_root_node = element.firstChildElement("Words");
-
             QDomNode word_node = words_root_node.firstChild();
 
             while(!word_node.isNull()) {
-                if(defered) {
-                    _words.append(0);
-                } else {
-                    Word_C* word = new Word_C(this);
-                    if(!word->read(word_node.toElement())) {
+                Word_C* word = new Word_C(this);
+                if(word->read(word_node.toElement())) {
+                    _word_count += 1;
+                    if(defered) {
                         delete word;
-                        LOG_WARN(QString("Invalid Word in thema %1.").arg(_text));
                     } else {
                         _words.append(word);
                     }
+                } else {
+                    delete word;
+                    LOG_WARN(QString("Invalid Word in thema %1.").arg(_text));
                 }
                 word_node = word_node.nextSibling();
             }
@@ -376,9 +378,12 @@ void Thema_C::clearWords()
 {
     LOG_INFO(QString("Words unloaded. Thema:%1").arg(_text));
     foreach(Word_C* word, _words) {
-        delete word;
+        if(word) {
+            delete word;
+        }
     }
     _words.clear();
+    _word_count = 0;
 }
 
 //******************************************************************************
@@ -492,6 +497,7 @@ void Thema_C::updateIcon(QByteArray data)
 void Thema_C::resetThema()
 {
     clearWords();
+    _word_count = 0;
     _text = "";
     _translation = "";
     _experience_points = 0;
@@ -594,7 +600,7 @@ void Thema_C::setSelected(bool selected)
  ******************************************************************************/
 unsigned int Thema_C::wordCount() const
 {
-    return (uint)_words.count();
+    return _word_count;
 }
 
 //******************************************************************************
