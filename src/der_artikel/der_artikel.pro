@@ -1,7 +1,5 @@
 cache()
 
-DEFINES += ENABLE_THEMA_BUILDER
-
 win32:DEFINES += NO_GRAPHICAL_EFFECTS
 
 QT += gui qml quick xml network multimedia
