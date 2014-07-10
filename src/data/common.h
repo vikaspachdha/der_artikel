@@ -34,7 +34,7 @@ namespace ARTIKEL
 {
     static const int COMPRESSION_LEVEL = 5;
 
-    static const char* INDEX_FILE_TOKEN = "der_artikel_thema_index";
+    static const char* const INDEX_FILE_TOKEN = "der_artikel_thema_index";
 
     static const QString ENCRYPTION_KEY = "587b14e9ef30e95b64dc5ec71230197a";
 
