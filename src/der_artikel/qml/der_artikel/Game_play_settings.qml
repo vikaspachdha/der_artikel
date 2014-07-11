@@ -96,8 +96,7 @@ Item {
         anchors.topMargin: 20
         buttonText:qsTr("Update thema") +settings.i18n_empty_string
         onActivated: {
-                themaUpdater.checkUpdate(url_input.text);
-
+            themaUpdater.checkUpdate(url_input.text);
         }
     }
 

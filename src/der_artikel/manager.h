@@ -134,17 +134,17 @@ public:
     GameLevel gameLevel() const { return _game_level; }
     void setGameLevel(GameLevel game_level);
 
-    bool isThemaSelected() const;
-
-    //! Returns the version string.
-    Q_INVOKABLE QString versionString();
-
     //! Returns the Image provider instance. Dynamic images are provided
     //! by this image provider e.g. Thema icons.
     ImageProvider_C* imageProvider() { return _image_provider; }
 
-public:
+    //! Returns thema model instance.
     ThemaModel_C* themaModel() {return _thema_model; }
+
+    bool isThemaSelected() const;
+
+    //! Returns the version string.
+    Q_INVOKABLE QString versionString();
 
     //! Returns the \ref Settings_C instance. All the serializable settings are maintained by the returned instance.
     Settings_C* appSettings() const { return _settings; }
