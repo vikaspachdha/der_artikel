@@ -10,7 +10,7 @@ Rectangle {
     signal activated();
 
 
-    width: 80
+    width: Math.max(80, label.contentWidth + 6)
     height: 30
     radius: 4
     gradient: Gradient {
@@ -24,9 +24,9 @@ Rectangle {
     Text {
         id: label
         anchors.left: parent.left
-        anchors.leftMargin: 2
+        anchors.leftMargin: 3
         anchors.right: parent.right
-        anchors.rightMargin: 2
+        anchors.rightMargin: 3
         anchors.baseline: parent.verticalCenter
         anchors.baselineOffset: (font.pixelSize/2) - 2
         text: qsTr("Button") + settings.i18n_empty_string
