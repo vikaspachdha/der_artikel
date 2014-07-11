@@ -32,7 +32,32 @@ Page_panel
             width:parent.width
             text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Update") + settings.i18n_empty_string
-            onActivated: showMessage(qsTr("Latest version"), qsTr("No update is available."),1200)
+            onActivated: {
+                appUpdater.checkUpdate();
+            }
+        }
+    }
+
+    Connections {
+        target:appUpdater
+        onUpdateResponse: {
+            switch(response_code) {
+                case AppUpdater.UPDATE_STARTED:
+                    messageBarInstance.showMsgAsync(qsTr("Checking app update..."),"");
+                    break;
+
+                case AppUpdater.UPDATE_NOT_AVAILABLE:
+                case AppUpdater.UPDATE_ERROR:
+                case AppUpdater.UPDATE_ABORTED:
+                case AppUpdater.UPDATE_FINISHED:
+                    messageBarInstance.closeMsg()
+                    break;
+            }
+        }
+
+        onUpdateProgress: {
+            msg_bar.message_txt = info;
+            msg_bar.setProgress(progress)
         }
     }
 }

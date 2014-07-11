@@ -39,7 +39,8 @@ SOURCES += \
     settings.cpp \
     thema_updater.cpp \
     main.cpp \
-    message_bar.cpp
+    message_bar.cpp \
+    app_updater.cpp
 
 HEADERS += \
     algo/easy_result_algo.h \
@@ -63,7 +64,8 @@ HEADERS += \
     settings.h \
     thema_updater.h \
     manager.h \
-    message_bar.h
+    message_bar.h \
+    app_updater.h
 
 RESOURCES += \
     resources.qrc

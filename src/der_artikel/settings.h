@@ -101,6 +101,9 @@ public:
     QString themaRemotePath() const { return _thema_remote_path; }
     void setThemaRemotePath(QString url_str);
 
+    //! Remote server path for updating app.
+    QString versionInfoPath() const { return "www.vystosi.com/version_info.xml"; }
+
     bool enableEffects() const;
 
     void saveSettings();
