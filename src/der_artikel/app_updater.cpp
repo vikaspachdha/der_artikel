@@ -161,7 +161,7 @@ bool AppUpdater_C::parseVersionFile(QByteArray file_data, QString& download_url)
                     bool ok = false;
                     int version = versionStr.toInt(&ok);
                     if(ok) {
-                        if(version >= APP_VERSION) {
+                        if(version > APP_VERSION) {
                             QDomElement download_url_element = platformElem.firstChildElement("url");
                             download_url = download_url_element.text();
                             LOG_DEBUG("App updater :: Latest version available, url: " + download_url);
