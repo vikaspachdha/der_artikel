@@ -82,6 +82,18 @@ void AppUpdater_C::checkUpdate()
 }
 
 //******************************************************************************
+/*! \brief Initiates update download if app update is available.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void AppUpdater_C::startUpdate()
+{
+   if(_download_url.isValid()) {
+       QDesktopServices::openUrl(_download_url);
+   }
+}
+
+//******************************************************************************
 /*! \brief Called when version file download finishes.
  *
  *  \author Vikas Pachdha
@@ -93,14 +105,15 @@ void AppUpdater_C::onVersionFileDownloadFinished()
     QByteArray file_data = _file_downloader.fileData();
     QString download_url;
     if(parseVersionFile(file_data, download_url)) {
+        LOG_INFO(QString("App updater :: app update found. Url : %1").arg(download_url));
         _progress = 1.0;
-        emit updateProgress(tr("Comparing current thema's."), _progress);
+        emit updateProgress(tr("Update available."), _progress);
         _download_url = QUrl::fromUserInput(download_url);
-        QDesktopServices::openUrl(_download_url);
+        emit updateResponse(UPDATE_AVAILABLE);
     } else {
         _progress = 1.0;
-        emit updateProgress(tr("Parsing error. Aborting update."), _progress);
-        emit updateResponse(UPDATE_ERROR);
+        emit updateProgress(tr("No App update available."), _progress);
+        emit updateResponse(UPDATE_NOT_AVAILABLE);
     }
 }
 
@@ -138,17 +151,26 @@ bool AppUpdater_C::parseVersionFile(QByteArray file_data, QString& download_url)
         int error_col;
         if(version_info_doc.setContent(data, &error_msg, &error_line, &error_col)) {
             QDomElement root = version_info_doc.firstChildElement("version_info");
-            QDomElement latestVersionElem = root.firstChildElement("latest_version");
-            QDomAttr versionAttr = latestVersionElem.attributeNode("id");
-            QString versionStr = versionAttr.value();
-
-            bool ok = false;
-            int version = versionStr.toInt(&ok);
-            if(ok) {
-                if(version > APP_VERSION) {
-                    success = true;
-                    download_url = "http://www.vystosi.com/#download";
+            QDomElement platformElem = root.firstChildElement("platform");
+            while(!platformElem.isNull()) {
+                QString platformId = platformElem.attributeNode("id").value();
+                LOG_DEBUG("App updater :: checking app update for platform : " + platformId);
+                if(platformId.compare(_manager.appSettings()->platformId(),Qt::CaseInsensitive) == 0)
+                {
+                    QString versionStr = platformElem.attributeNode("latest_version").value();
+                    bool ok = false;
+                    int version = versionStr.toInt(&ok);
+                    if(ok) {
+                        if(version >= APP_VERSION) {
+                            QDomElement download_url_element = platformElem.firstChildElement("url");
+                            download_url = download_url_element.text();
+                            LOG_DEBUG("App updater :: Latest version available, url: " + download_url);
+                            success = true;
+                        }
+                    }
+                    break;
                 }
+                platformElem = platformElem.nextSiblingElement();
             }
         } else {
             LOG_ERROR(QString("Invalid version file. %1 Line:%2,  Col:%3").

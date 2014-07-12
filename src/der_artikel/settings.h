@@ -104,6 +104,8 @@ public:
     //! Remote server path for updating app.
     QString versionInfoPath() const { return "www.vystosi.com/version_info.xml"; }
 
+    QString platformId() const;
+
     bool enableEffects() const;
 
     void saveSettings();

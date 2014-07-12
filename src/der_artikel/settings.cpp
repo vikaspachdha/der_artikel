@@ -28,6 +28,7 @@
 // System includes
 #include <QDebug>
 #include <QDir>
+#include <QSysInfo>
 #include <QGuiApplication>
 #include <QLocale>
 #include <QSettings>
@@ -310,6 +311,64 @@ void Settings_C::setThemaRemotePath(QString url_str)
         _thema_remote_path = url_str;
         emit themaRemotePathChanged();
     }
+}
+
+//******************************************************************************
+/*! \brief Returns the platform id.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return QString : The platform id.
+ ******************************************************************************/
+QString Settings_C::platformId() const
+{
+    QString id;
+
+#ifdef Q_OS_WIN32
+    id = "windows_32";
+#endif
+
+#ifdef Q_OS_WIN64
+    id = "windows_64";
+#endif
+
+#ifdef Q_OS_MAC64
+    if(QSysInfo::macVersion() == QSysInfo::MV_10_9) {
+        id = "osx_10.9";
+    } else if(QSysInfo::macVersion() == QSysInfo::MV_10_8) {
+        id = "osx_10.8";
+    } else if(QSysInfo::macVersion() == QSysInfo::MV_10_7) {
+        id = "osx_10.7";
+    }else if(QSysInfo::macVersion() == QSysInfo::MV_10_6) {
+        id = "osx_10.6";
+    }
+#endif
+
+#ifdef Q_OS_LINUX
+    #ifdef Q_PROCESSOR_X86_32
+        id = "linux_x86";
+    #endif
+    #ifdef Q_PROCESSOR_X86_64
+        id = "linux_x86_64";
+    #endif
+#endif
+
+#ifdef Q_OS_ANDROID
+    #ifdef Q_PROCESSOR_ARM_V5
+        id = "android_arm_5";
+    #endif
+    #ifdef Q_PROCESSOR_ARM_V6
+        id = "android_arm_6";
+    #endif
+    #ifdef Q_PROCESSOR_ARM_V7
+        id = "android_arm_7";
+    #endif
+    #ifdef Q_PROCESSOR_X86_32
+        id = "android_x86";
+    #endif
+#endif
+
+    return id;
 }
 
 //******************************************************************************

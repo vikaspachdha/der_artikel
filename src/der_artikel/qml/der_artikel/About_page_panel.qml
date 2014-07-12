@@ -43,14 +43,34 @@ Page_panel
         onUpdateResponse: {
             switch(response_code) {
                 case AppUpdater.UPDATE_STARTED:
-                    messageBarInstance.showMsgAsync(qsTr("Checking app update..."),"");
+                    messageBarInstance.showMsgAsync(qsTr("App update..."),"");
                     break;
 
                 case AppUpdater.UPDATE_NOT_AVAILABLE:
+                    messageBarInstance.closeMsg();
+                    messageBarInstance.showMsg(qsTr("No Update Available."),
+                                               qsTr("You are running latest version."),
+                                               "",
+                                               qsTr("Ok"));
+                    break;
                 case AppUpdater.UPDATE_ERROR:
                 case AppUpdater.UPDATE_ABORTED:
-                case AppUpdater.UPDATE_FINISHED:
+                    messageBarInstance.closeMsg();
+                    messageBarInstance.showMsg(qsTr("Update Error."),
+                                               qsTr("Please try later."),
+                                               "",
+                                               qsTr("Ok"));
+                    break;
+                case AppUpdater.UPDATE_AVAILABLE:
                     messageBarInstance.closeMsg()
+                    var response = messageBarInstance.showMsg(qsTr("Update available."),
+                                               qsTr("Do you want to download the latest version?"),
+                                               qsTr("Yes"),
+                                               qsTr("No"));
+                    if(response === MessageBar.ACCEPTED) {
+                        appUpdater.startUpdate();
+                    }
+
                     break;
             }
         }
@@ -60,4 +80,5 @@ Page_panel
             msg_bar.setProgress(progress)
         }
     }
+
 }

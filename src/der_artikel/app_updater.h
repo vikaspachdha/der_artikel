@@ -70,6 +70,7 @@ public:
 
 public:
     Q_INVOKABLE void checkUpdate();
+    Q_INVOKABLE void startUpdate();
 
 private slots:
     void onVersionFileDownloadFinished();
@@ -94,6 +95,7 @@ private:
     FileDownloader_C _file_downloader;
     //! Update progress.
     double _progress;
+    //! update download url.
     QUrl _download_url;
 };
 
