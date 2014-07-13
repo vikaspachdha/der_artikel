@@ -9,6 +9,7 @@ Item {
     property alias message_txt:msg_text.text
     property int type:0
     property bool hiding: false
+    property real progress: 0
     signal msgCompleted()
 
     Blanket {
@@ -36,7 +37,7 @@ Item {
         Rectangle {
             id: progress_rect
             anchors{left: parent.left;top:parent.top;bottom:parent.bottom}
-            width:0
+            width:msg_bar.width*rootItem.progress
             radius: msg_bar.radius
             color:UTILS.colorOpacity(color_palette.color_bg_02,0.5)
             Behavior on width {
@@ -154,7 +155,7 @@ Item {
                 if(hiding && !running) {
                     rootItem.msgCompleted()
                     widthBehavior.enabled = false;
-                    progress_rect.width = 0;
+                    rootItem.progress = 0;
                     widthBehavior.enabled = true;
                 }
             }
@@ -172,7 +173,7 @@ Item {
 
     function setProgress(progress)
     {
-        progress_rect.width = msg_bar.width*progress;
+        rootItem.progress=progress;
     }
 
     function showMessage(title,msg,duration,msg_type,accept_str,reject_str)
