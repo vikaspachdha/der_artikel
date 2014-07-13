@@ -36,6 +36,15 @@ Page_panel
                 appUpdater.checkUpdate();
             }
         }
+
+        Button {
+            id:update_thema_btn
+            width:parent.width
+            buttonText:qsTr("Update thema") +settings.i18n_empty_string
+            onActivated: {
+                themaUpdater.checkUpdate();
+            }
+        }
     }
 
     Connections {
@@ -71,6 +80,31 @@ Page_panel
                         appUpdater.startUpdate();
                     }
 
+                    break;
+            }
+        }
+
+        onUpdateProgress: {
+            msg_bar.message_txt = info;
+            msg_bar.setProgress(progress)
+        }
+    }
+
+    Connections {
+        target:themaUpdater
+        onUpdateResponse: {
+
+            switch(response_code) {
+
+                case ThemaUpdater.UPDATE_STARTED:
+                    messageBarInstance.showMsgAsync(qsTr("Updating thema"),"");
+                    break;
+
+                case ThemaUpdater.UPDATE_NOT_AVAILABLE:
+                case ThemaUpdater.UPDATE_ERROR:
+                case ThemaUpdater.UPDATE_ABORTED:
+                case ThemaUpdater.UPDATE_FINISHED:
+                    messageBarInstance.closeMsg()
                     break;
             }
         }
