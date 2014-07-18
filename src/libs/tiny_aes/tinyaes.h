@@ -54,6 +54,12 @@
 #include <QString>
 #include <QUuid>
 
+#if defined(TINYAES_LIBRARY)
+#  define TINYAES_LIBRARY_EXPORT Q_DECL_EXPORT
+#else
+#  define TINYAES_LIBRARY_EXPORT Q_DECL_IMPORT
+#endif
+
 #define N_ROW                   4
 #define N_COL                   4
 #define N_BLOCK   (N_ROW * N_COL)
@@ -205,7 +211,7 @@ static const uint_8t gfmul_b[256] = mm_data(fb);
 static const uint_8t gfmul_d[256] = mm_data(fd);
 static const uint_8t gfmul_e[256] = mm_data(fe);
 
-class TinyAES
+class TINYAES_LIBRARY_EXPORT TinyAES
 {
     public:
 

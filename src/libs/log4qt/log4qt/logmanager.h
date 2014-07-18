@@ -38,6 +38,7 @@
 #include <QtCore/QString>
 #include "log4qt/level.h"
 #include "log4qt/logger.h"
+#include "log4qt_global.h"
 
 
 /******************************************************************************
@@ -76,7 +77,7 @@ namespace Log4Qt
      * 
 	 * \note All the functions declared in this class are thread-safe.
 	 */
-	class LogManager
+    class LOG4QTSHARED_EXPORT LogManager
 	{
 	private:
 	    LogManager();

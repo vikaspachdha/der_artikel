@@ -31,6 +31,7 @@
  ******************************************************************************/
 
 #include "log4qt/appenderskeleton.h"
+#include "log4qt_global.h"
 
 
 /******************************************************************************
@@ -51,7 +52,7 @@ namespace Log4Qt
 	 * \note The ownership and lifetime of objects of this class are managed. 
 	 *       See \ref Ownership "Object ownership" for more details.
 	 */
-	class WriterAppender : public AppenderSkeleton
+    class LOG4QTSHARED_EXPORT WriterAppender : public AppenderSkeleton
 	{
 	    Q_OBJECT
 	

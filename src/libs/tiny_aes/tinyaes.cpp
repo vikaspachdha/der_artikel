@@ -84,22 +84,28 @@ QByteArray TinyAES::Encrypt(QByteArray p_input, QByteArray p_key, QByteArray p_i
     QByteArray input = AddPadding(p_input);
     int inputSize = input.size();
 
-    unsigned char key[keySize];
+    unsigned char *key = new unsigned char[keySize]();
     QByteArrayToUCharArray(p_key, key);
 
-    unsigned char iv[ivSize];
+    unsigned char *iv = new unsigned char[ivSize]();
     QByteArrayToUCharArray(p_iv, iv);
 
-    unsigned char decrypted[inputSize];
+    unsigned char *decrypted = new unsigned char[inputSize]();
     QByteArrayToUCharArray(input, decrypted);
 
-    unsigned char encrypted[inputSize]; // encrypted text
+    unsigned char *encrypted =  new unsigned char[inputSize](); // encrypted text
 
     aes_context context;
     aes_set_key(key, keySize * 8, &context);
     aes_cbc_encrypt(decrypted, encrypted, inputSize, iv, &context);
 
     QByteArray result = UCharArrayToQByteArray(encrypted, inputSize);
+
+    delete []key;
+    delete []iv;
+    delete []decrypted;
+    delete []encrypted;
+
     return result;
 }
 
@@ -115,22 +121,28 @@ QByteArray TinyAES::Decrypt(QByteArray p_input, QByteArray p_key, QByteArray p_i
     if (ivSize != 16)
         return QByteArray();
 
-    unsigned char key[keySize];
+    unsigned char *key = new unsigned char[keySize]();
     QByteArrayToUCharArray(p_key, key);
 
-    unsigned char iv[ivSize];
+    unsigned char *iv = new unsigned char[ivSize]();
     QByteArrayToUCharArray(p_iv, iv);
 
-    unsigned char encrypted[inputSize];
+    unsigned char *encrypted = new unsigned char[inputSize]();
     QByteArrayToUCharArray(p_input, encrypted);
 
-    unsigned char decrypted[inputSize]; // decrypted text
+    unsigned char *decrypted = new unsigned char[inputSize](); // decrypted text
 
     aes_context context;
     aes_set_key(key, keySize * 8, &context);
     aes_cbc_decrypt(encrypted, decrypted, inputSize, iv, &context);
 
     QByteArray result = RemovePadding(UCharArrayToQByteArray(decrypted, inputSize));
+
+    delete []key;
+    delete []iv;
+    delete []decrypted;
+    delete []encrypted;
+
     return result;
 }
 

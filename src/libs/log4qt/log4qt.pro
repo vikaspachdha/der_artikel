@@ -16,6 +16,8 @@ CONFIG += shared
 
 DEFINES += LOG4QT_LIBRARY
 
+INCLUDEPATH += ./
+
 HEADERS += \
     $$PWD/log4qt/appender.h \
     $$PWD/log4qt/appenderskeleton.h \
@@ -57,7 +59,8 @@ HEADERS += \
     $$PWD/log4qt/varia/levelmatchfilter.h \
     $$PWD/log4qt/varia/levelrangefilter.h \
     $$PWD/log4qt/varia/listappender.h \
-    $$PWD/log4qt/varia/stringmatchfilter.h
+    $$PWD/log4qt/varia/stringmatchfilter.h \
+    $$PWD/log4qt_global.h
 
 SOURCES += \
     $$PWD/log4qt/appenderskeleton.cpp \

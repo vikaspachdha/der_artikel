@@ -44,6 +44,7 @@
 #include "log4qt/helpers/classlogger.h"
 #include "log4qt/helpers/logobjectptr.h"
 #include "log4qt/level.h"
+#include "log4qt_global.h"
 
 #if QT_VERSION >= QT_VERSION_CHECK(4, 4, 0)
 #	ifndef Q_ATOMIC_POINTER_TEST_AND_SET_IS_ALWAYS_NATIVE
@@ -233,7 +234,7 @@ namespace Log4Qt
 	 *
 	 * \note All the functions declared in this class are thread-safe.
 	 */
-	class Logger : public QObject
+    class LOG4QTSHARED_EXPORT Logger : public QObject
 	{
 	    Q_OBJECT
 

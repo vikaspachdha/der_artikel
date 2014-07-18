@@ -35,6 +35,7 @@
 #include "log4qt/helpers/logobjectptr.h"
 
 #include "log4qt/logger.h"
+#include "log4qt_global.h"
 
 
 /******************************************************************************
@@ -59,7 +60,7 @@ namespace Log4Qt
 	 * \note The ownership and lifetime of objects of this class are managed.
 	 *       See \ref Ownership "Object ownership" for more details.
 	 */
-	class Appender : public LogObject
+    class LOG4QTSHARED_EXPORT Appender : public LogObject
 	{
 	    Q_OBJECT
 	    

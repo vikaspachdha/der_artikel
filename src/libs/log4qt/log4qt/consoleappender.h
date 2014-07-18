@@ -31,7 +31,7 @@
  ******************************************************************************/
 
 #include "log4qt/writerappender.h"
-
+#include "log4qt_global.h"
 
 /******************************************************************************
  * Declarations
@@ -51,7 +51,7 @@ namespace Log4Qt
 	 * \note The ownership and lifetime of objects of this class are managed. 
 	 *       See \ref Ownership "Object ownership" for more details.
 	 */
-	class ConsoleAppender : public WriterAppender
+    class LOG4QTSHARED_EXPORT ConsoleAppender : public WriterAppender
 	{
 	    Q_OBJECT
 	    

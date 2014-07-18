@@ -31,7 +31,7 @@
  ******************************************************************************/
 
 #include "log4qt/fileappender.h"
-
+#include "log4qt_global.h"
 
 /******************************************************************************
  * Declarations
@@ -49,7 +49,7 @@ namespace Log4Qt
 	 * \note The ownership and lifetime of objects of this class are managed. 
 	 *       See \ref Ownership "Object ownership" for more details.
 	 */
-	class RollingFileAppender : public FileAppender
+    class LOG4QTSHARED_EXPORT RollingFileAppender : public FileAppender
 	{
 	    Q_OBJECT
 	

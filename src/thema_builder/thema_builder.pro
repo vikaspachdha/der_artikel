@@ -34,11 +34,11 @@ mac {
     LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4qt
     LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -laes
 } else {
-    LIBS += -L$$DESTDIR -llog4Qt
-    LIBS += -L$$DESTDIR -laes
+    LIBS += -L$$DESTDIR -llog4qt -laes
 }
 
-INCLUDEPATH += $${PWD}/../libs/log4qt \
+INCLUDEPATH += ./ \
+    $${PWD}/../libs/log4qt \
     $${PWD}/../libs/tiny_aes
 
 # Copy log4Qt files to build dir

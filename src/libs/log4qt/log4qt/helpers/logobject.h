@@ -39,6 +39,7 @@
  ******************************************************************************/
 
 #include <QtCore/QObject>
+#include "log4qt_global.h"
 
 #include "log4qt/helpers/classlogger.h"
 #if QT_VERSION >= QT_VERSION_CHECK(4, 4, 0)
@@ -76,7 +77,7 @@ namespace Log4Qt
 	 * \sa \ref Ownership "Object ownership",
 	 *     LOG4QT_DECLARE_QCLASS_LOGGER
 	 */
-	class LogObject : public QObject
+    class LOG4QTSHARED_EXPORT LogObject : public QObject
 	{
 		Q_OBJECT
 

@@ -18,7 +18,8 @@ include($$PWD/../data/data.pri)
 # Please do not modify the following two lines. Required for deployment.
 include($$PWD/../qmake_utils/qmake_utils.pri)
 
-INCLUDEPATH += $${PWD}/../libs/log4qt \
+INCLUDEPATH += ./ \
+    $${PWD}/../libs/log4qt \
     $${PWD}/../libs/tiny_aes
 
 SOURCES += \
