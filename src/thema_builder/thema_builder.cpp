@@ -413,6 +413,9 @@ void ThemaBuilder_C::onUpdateTime()
 
 void ThemaBuilder_C::showPrivateDataControls(bool show)
 {
+    ui->_update_date_time_edit->setVisible(show);
+    ui->_enable_update_date_chk->setVisible(show);
+    ui->_update_lbl->setVisible(show);
     ui->_points_edit->setVisible(show);
     ui->_last_played_date_time_edit->setVisible(show);
     ui->_last_played_lbl->setVisible(show);
@@ -698,7 +701,12 @@ void ThemaBuilder_C::PopulateUI(Thema_C *thema)
             ui->_update_time_stamp_lbl->setText("");
         }
 
-        ui->_last_played_date_time_edit->setDateTime(_thema->lastPlayed());
+        if(_thema->lastPlayed().isValid()) {
+            ui->_last_played_time_stamp_lbl->setText(_thema->lastPlayed().toString("dd-MM-yyyy hh:mm:ss"));
+            ui->_last_played_date_time_edit->setDateTime(_thema->lastPlayed());
+        } else {
+            ui->_last_played_time_stamp_lbl->setText("NA");
+        }
         ui->_points_edit->setText(QString::number(_thema->experiencePoints()));
 
         ui->_icon_lbl->setPixmap(_thema->_icon);

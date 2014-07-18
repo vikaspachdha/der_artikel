@@ -123,6 +123,7 @@ void WordsPage_C::enter(Manager_C::PageId_TP prev_page_id)
         addWords(thema,true);
         setSelectedArticle(Article_C::NA);
     } else {
+        setSelectedArticle(Article_C::DER);
         // Add words to page.
         addWords(thema);
 

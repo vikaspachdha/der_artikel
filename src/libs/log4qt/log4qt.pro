@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core
+QT       -= gui
 MOC_DIR      = moc
 RCC_DIR      = resources
 OBJECTS_DIR  = obj

@@ -32,7 +32,87 @@ Page_panel
             width:parent.width
             text_h_alignment: Text.AlignHCenter
             buttonText: qsTr("Update") + settings.i18n_empty_string
-            onActivated: showMessage(qsTr("Latest version"), qsTr("No update is available."),1200)
+            onActivated: {
+                appUpdater.checkUpdate();
+            }
+        }
+
+        Button {
+            id:update_thema_btn
+            width:parent.width
+            buttonText:qsTr("Update thema") +settings.i18n_empty_string
+            onActivated: {
+                themaUpdater.checkUpdate();
+            }
         }
     }
+
+    Connections {
+        target:appUpdater
+        onUpdateResponse: {
+            switch(response_code) {
+                case AppUpdater.UPDATE_STARTED:
+                    messageBarInstance.showMsgAsync(qsTr("App update..."),"");
+                    break;
+
+                case AppUpdater.UPDATE_NOT_AVAILABLE:
+                    messageBarInstance.closeMsg();
+                    messageBarInstance.showMsg(qsTr("No Update Available."),
+                                               qsTr("You are running latest version."),
+                                               "",
+                                               qsTr("Ok"));
+                    break;
+                case AppUpdater.UPDATE_ERROR:
+                case AppUpdater.UPDATE_ABORTED:
+                    messageBarInstance.closeMsg();
+                    messageBarInstance.showMsg(qsTr("Update Error."),
+                                               qsTr("Please try later."),
+                                               "",
+                                               qsTr("Ok"));
+                    break;
+                case AppUpdater.UPDATE_AVAILABLE:
+                    messageBarInstance.closeMsg()
+                    var response = messageBarInstance.showMsg(qsTr("Update available."),
+                                               qsTr("Do you want to download the latest version?"),
+                                               qsTr("Yes"),
+                                               qsTr("No"));
+                    if(response === MessageBar.ACCEPTED) {
+                        appUpdater.startUpdate();
+                    }
+
+                    break;
+            }
+        }
+
+        onUpdateProgress: {
+            msg_bar.message_txt = info;
+            msg_bar.setProgress(progress)
+        }
+    }
+
+    Connections {
+        target:themaUpdater
+        onUpdateResponse: {
+
+            switch(response_code) {
+
+                case ThemaUpdater.UPDATE_STARTED:
+                    messageBarInstance.showMsgAsync(qsTr("Updating thema"),"");
+                    break;
+
+                case ThemaUpdater.UPDATE_NOT_AVAILABLE:
+                case ThemaUpdater.UPDATE_ERROR:
+                case ThemaUpdater.UPDATE_ABORTED:
+                case ThemaUpdater.UPDATE_FINISHED:
+                    messageBarInstance.closeMsg()
+                    break;
+            }
+        }
+
+        onUpdateProgress: {
+            msg_bar.message_txt = info;
+            msg_bar.setProgress(progress)
+        }
+    }
+
 }

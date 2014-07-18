@@ -100,7 +100,7 @@ namespace Log4Qt
 	private:
 	    mutable QReadWriteLock mObjectGuard;
 	    QHash<QString, Logger*> mLoggers;
-	    volatile bool mHandleQtMessages;
+        //volatile bool mHandleQtMessages;
 	    Level mThreshold;
 	    Logger *mpRootLogger;
 	};

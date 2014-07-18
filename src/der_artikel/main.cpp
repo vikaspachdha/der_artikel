@@ -57,6 +57,7 @@
 #include "pages/words_page.h"
 #include "settings.h"
 #include "thema_updater.h"
+#include "app_updater.h"
 
 // Framework and lib includes
 #include "data/thema_model.h"
@@ -149,6 +150,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Settings_C>("com.vystosi.qmlcomponents", 1, 0, "Settings","");
     qmlRegisterUncreatableType<SettingsPage_C>("com.vystosi.qmlcomponents", 1, 0, "SettingsPage","");
     qmlRegisterUncreatableType<ThemaUpdater_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaUpdater","");
+    qmlRegisterUncreatableType<AppUpdater_C>("com.vystosi.qmlcomponents", 1, 0, "AppUpdater","");
     qmlRegisterUncreatableType<MessageBar_C>("com.vystosi.qmlcomponents", 1, 0, "MessageBar","");
 
     QQmlApplicationEngine appEngine;
@@ -157,9 +159,11 @@ int main(int argc, char *argv[])
 
     Manager_C manager(*root_context);
     ThemaUpdater_C thema_updater(manager);
+    AppUpdater_C app_updater(manager);
 
     root_context->setContextProperty("manager", &manager);
     root_context->setContextProperty("themaUpdater", &thema_updater);
+    root_context->setContextProperty("appUpdater", &app_updater);
     root_context->setContextProperty("currentResult", manager.currentResult());
     root_context->setContextProperty("themaModel", manager.themaModel());
     root_context->setContextProperty("settings", manager.appSettings());

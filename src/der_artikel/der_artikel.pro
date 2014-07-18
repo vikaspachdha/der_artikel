@@ -1,7 +1,5 @@
 cache()
 
-DEFINES += ENABLE_THEMA_BUILDER
-
 win32:DEFINES += NO_GRAPHICAL_EFFECTS
 
 QT += gui qml quick xml network multimedia
@@ -42,7 +40,8 @@ SOURCES += \
     settings.cpp \
     thema_updater.cpp \
     main.cpp \
-    message_bar.cpp
+    message_bar.cpp \
+    app_updater.cpp
 
 HEADERS += \
     algo/easy_result_algo.h \
@@ -66,7 +65,8 @@ HEADERS += \
     settings.h \
     thema_updater.h \
     manager.h \
-    message_bar.h
+    message_bar.h \
+    app_updater.h
 
 RESOURCES += \
     resources.qrc

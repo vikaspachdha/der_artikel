@@ -9,6 +9,7 @@ Item {
         anchors.leftMargin: 8
         anchors.top:parent.top
         anchors.topMargin: 8
+        text_h_alignment: Text.AlignLeft
         text:qsTr("Word info Time (in msecs)") + settings.i18n_empty_string
     }
     Rectangle {
@@ -20,7 +21,7 @@ Item {
         color:color_palette.color_btn_01
         TextInput {
             id:msg_time_input
-            width:parent.width
+            width:parent.width - 4
             anchors{centerIn: parent}
             text:settings.word_msg_time_str
             validator: IntValidator{bottom:settings.min_word_msg_time;top:settings.max_word_msg_time}
@@ -64,6 +65,7 @@ Item {
         anchors.leftMargin: 8
         anchors.top:msgTimeSlider.bottom
         anchors.topMargin: 20
+        text_h_alignment: Text.AlignLeft
         text:qsTr("Thema update url") + settings.i18n_empty_string
     }
 
@@ -88,41 +90,4 @@ Item {
         }
     }
 
-    Button {
-        id:update_thema_btn
-        anchors.left: parent.left
-        anchors.leftMargin: 8
-        anchors.top:url_input_rect.bottom
-        anchors.topMargin: 20
-        buttonText:qsTr("Update thema") +settings.i18n_empty_string
-        onActivated: {
-                themaUpdater.checkUpdate(url_input.text);
-
-        }
-    }
-
-    Connections {
-        target:themaUpdater
-        onUpdateResponse: {
-
-            switch(response_code) {
-
-                case ThemaUpdater.UPDATE_STARTED:
-                    messageBarInstance.showMsgAsync(qsTr("Updating thema"),"");
-                    break;
-
-                case ThemaUpdater.UPDATE_NOT_AVAILABLE:
-                case ThemaUpdater.UPDATE_ERROR:
-                case ThemaUpdater.UPDATE_ABORTED:
-                case ThemaUpdater.UPDATE_FINISHED:
-                    messageBarInstance.closeMsg()
-                    break;
-            }
-        }
-
-        onUpdateProgress: {
-            msg_bar.message_txt = info;
-            msg_bar.setProgress(progress)
-        }
-    }
 }
