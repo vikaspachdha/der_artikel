@@ -9,17 +9,21 @@ Rectangle {
     property alias text_h_alignment: label.horizontalAlignment
     signal activated();
 
+    scale: mouse_area.pressed ? .95 :1
+    Behavior on scale {
+        NumberAnimation { duration: 100}
+    }
 
     width: Math.max(80, label.contentWidth + 6)
     height: 30
     radius: 4
     gradient: Gradient {
         GradientStop {position: 0  ;color: color_palette.color_btn_02}
-        GradientStop {position: 0.2;color: mousearea1.pressed || isDown ? color_palette.color_btn_01:color_palette.color_btn_02}
+        GradientStop {position: 0.2;color: mouse_area.pressed || isDown ? color_palette.color_btn_01:color_palette.color_btn_02}
         GradientStop {position: 1;color: color_palette.color_btn_01}
     }
 
-    border.width: mousearea1.pressed | isDown ? 2:0
+    border.width: isDown ? 2:0
 
     Text {
         id: label
@@ -36,7 +40,7 @@ Rectangle {
     }
 
     MouseArea {
-        id: mousearea1
+        id: mouse_area
         anchors.fill: parent
         onClicked: {
             clickSnd.play()
