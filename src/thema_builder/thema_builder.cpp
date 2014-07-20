@@ -650,11 +650,11 @@ void ThemaBuilder_C::Reset()
     _word_item_hash.clear();
     ui->_thema_name_edit->setText("");
     ui->_thema_tr_name_edit->setText("");
-    ui->_author_name_edit->setText("");
     ui->_word_edit->setText("");
     ui->_desc_edit->setText("");
     ui->_na_radio->setChecked(true);
     ui->_word_list->clear();
+    ui->_icon_lbl->setPixmap(QPixmap());
     SetWordUiState(ADD_STATE);
     UpdateUI();
 }
