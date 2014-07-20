@@ -30,7 +30,7 @@ Page_panel
             id:rate_btn
             width:parent.width
             text_h_alignment: Text.AlignHCenter
-            buttonText: qsTr("Rate App") + settings.i18n_empty_string
+            buttonText: qsTr("Facebook") + settings.i18n_empty_string
             onActivated: {
                 Qt.openUrlExternally("https://www.facebook.com/der.artikel")
             }

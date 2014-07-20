@@ -24,20 +24,109 @@
         <translation>Update</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
-        <source>Latest version</source>
-        <translation>Neueste Version</translation>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="43"/>
+        <source>Update thema</source>
+        <translation>Aktualisierung thema</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
-        <source>No update is available.</source>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="55"/>
+        <source>App update...</source>
+        <translation>App-Update...</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="60"/>
+        <source>No Update Available.</source>
         <translation>Kein Update verfügbar ist.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="61"/>
+        <source>You are running latest version.</source>
+        <translation>Sie führen die neueste Version.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="63"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="71"/>
+        <source>Ok</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="68"/>
+        <source>Update Error.</source>
+        <translation>Update Fehler.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="69"/>
+        <source>Please try later.</source>
+        <translation>Bitte versuchen Sie es später.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="75"/>
+        <source>Update available.</source>
+        <translation>Update verfügbar ist.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="76"/>
+        <source>Do you want to download the latest version?</source>
+        <translation>Möchten Sie die neueste Version herunterladen?</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="77"/>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="78"/>
+        <source>No</source>
+        <translation>Nein</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="100"/>
+        <source>Updating thema</source>
+        <translation>Aktualisierung thema</translation>
+    </message>
+</context>
+<context>
+    <name>AppUpdater_C</name>
+    <message>
+        <location filename="app_updater.cpp" line="71"/>
+        <source>Checking for app update.</source>
+        <translation>Prüfung auf dem Thema Update.</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="79"/>
+        <source>Invalid url</source>
+        <translation>ungültige URL</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="104"/>
+        <source>Checking for new releases.</source>
+        <translation>Die Überprüfung auf neue Versionen.</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="110"/>
+        <source>Update available.</source>
+        <translation>Update verfügbar ist.</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="115"/>
+        <source>No App update available.</source>
+        <translation>Kein Update verfügbar ist.</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="129"/>
+        <source>Network issue. Aborting update.</source>
+        <translation>Netzwerkproblem. Abbrechend Update.</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="193"/>
+        <source>Contacting server.</source>
+        <translation>Kontaktieren Server.</translation>
     </message>
 </context>
 <context>
     <name>Button</name>
     <message>
-        <location filename="qml/der_artikel/Button.qml" line="32"/>
+        <location filename="qml/der_artikel/Button.qml" line="36"/>
         <source>Button</source>
         <translation>Taste</translation>
     </message>
@@ -47,17 +136,17 @@
     <message>
         <location filename="qml/der_artikel/Color_theme_settings.qml" line="24"/>
         <source>Deep blue</source>
-        <translation>tiefes Blau</translation>
+        <translation>Tiefes Blau</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Color_theme_settings.qml" line="33"/>
         <source>Tangy Orange</source>
-        <translation>spritzige Orange</translation>
+        <translation>Spritzige Orange</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Color_theme_settings.qml" line="42"/>
         <source>Dark night</source>
-        <translation>dunkel Nacht</translation>
+        <translation>Dunkel Nacht</translation>
     </message>
 </context>
 <context>
@@ -70,30 +159,20 @@
     <message>
         <location filename="qml/der_artikel/Command_frame.qml" line="69"/>
         <source>Quit</source>
-        <translation>beenden</translation>
+        <translation>Beenden</translation>
     </message>
 </context>
 <context>
     <name>Game_play_settings</name>
     <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="12"/>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="13"/>
         <source>Word info Time (in msecs)</source>
         <translation>Wort info zeit (in mseks)</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="67"/>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="69"/>
         <source>Thema update url</source>
         <translation>Thema update Internetadresse</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="97"/>
-        <source>Update thema</source>
-        <translation>Update thema</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="111"/>
-        <source>Updating thema</source>
-        <translation>Aktualisierung thema</translation>
     </message>
 </context>
 <context>
@@ -101,7 +180,7 @@
     <message>
         <location filename="pages/help_page.cpp" line="81"/>
         <source>General</source>
-        <translation>allgemein</translation>
+        <translation>Allgemein</translation>
     </message>
     <message>
         <location filename="pages/help_page.cpp" line="84"/>
@@ -129,12 +208,12 @@
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="34"/>
         <source>General</source>
-        <translation>allgemein</translation>
+        <translation>Allgemein</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="43"/>
         <source>Rules</source>
-        <translation></translation>
+        <translation>Regeln</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Help_page_panel.qml" line="52"/>
@@ -189,21 +268,11 @@
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="33"/>
-        <source>Rate App</source>
-        <translation>Bewertung</translation>
+        <source>Facebook</source>
+        <translation type="unfinished">Facebook</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
-        <source>Sorry</source>
-        <translation>Entschuldigung</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
-        <source>This feature is not available.</source>
-        <translation>Diese Funktion ist nicht verfügbar.</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Home_page_panel.qml" line="46"/>
+        <location filename="qml/der_artikel/Home_page_panel.qml" line="48"/>
         <source>Total words</source>
         <translation>Gesamt Worte</translation>
     </message>
@@ -211,12 +280,12 @@
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="403"/>
+        <location filename="manager.cpp" line="408"/>
         <source>Do you realy want to quit?</source>
-        <translation>wollen Sie wirklich zu beenden?</translation>
+        <translation>Wollen Sie wirklich zu beenden?</translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="423"/>
+        <location filename="manager.cpp" line="428"/>
         <source>Loading installed themas.</source>
         <translation>Lädt installiert Themen.</translation>
     </message>
@@ -259,37 +328,37 @@
     <message>
         <location filename="../data/result.cpp" line="131"/>
         <source>Unplayed : %1</source>
-        <translation>nicht gespielt : %1</translation>
+        <translation>Nicht gespielt : %1</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="74"/>
         <source>Excellent</source>
-        <translation>ausgezeichnet</translation>
+        <translation>Ausgezeichnet</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="76"/>
         <source>Very good</source>
-        <translation>sehr gut</translation>
+        <translation>Sehr gut</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="78"/>
         <source>Good</source>
-        <translation>gut</translation>
+        <translation>Gut</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="80"/>
         <source>Satisfactory</source>
-        <translation>befriedigend</translation>
+        <translation>Befriedigend</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="82"/>
         <source>Sufficient</source>
-        <translation>ausreichend</translation>
+        <translation>Ausreichend</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="84"/>
         <source>Failed</source>
-        <translation>ungenügend</translation>
+        <translation>Ungenügend</translation>
     </message>
     <message>
         <location filename="../data/result.cpp" line="68"/>
@@ -307,7 +376,7 @@
     <message>
         <location filename="qml/der_artikel/Result_page.qml" line="10"/>
         <source>No Mistakes</source>
-        <translation>keine Fehler</translation>
+        <translation>Keine Fehler</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page.qml" line="27"/>
@@ -318,10 +387,6 @@
         <location filename="qml/der_artikel/Result_page.qml" line="48"/>
         <source>    Correct</source>
         <translation>    Richtig</translation>
-    </message>
-    <message>
-        <source>Incorrect       Correct</source>
-        <translation type="vanished">Falsch      Richtig</translation>
     </message>
 </context>
 <context>
@@ -334,7 +399,7 @@
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="35"/>
         <source>Replay</source>
-        <translation>wiederholen</translation>
+        <translation>Wiederholen</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page_panel.qml" line="43"/>
@@ -347,12 +412,12 @@
     <message>
         <location filename="qml/der_artikel/Result_page_title.qml" line="79"/>
         <source>Lost experience : </source>
-        <translation>verloren Punktzahl : </translation>
+        <translation>Verloren Punktzahl : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Result_page_title.qml" line="81"/>
         <source>Gained experience : </source>
-        <translation>gewonnen Punktzahl. : </translation>
+        <translation>Gewonnen Punktzahl. : </translation>
     </message>
 </context>
 <context>
@@ -398,7 +463,7 @@
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="46"/>
         <source>Sorry</source>
-        <translation>bedauern</translation>
+        <translation>Bedauern</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="46"/>
@@ -427,7 +492,7 @@
 <context>
     <name>StatsPage_C</name>
     <message>
-        <location filename="pages/stats_page.cpp" line="69"/>
+        <location filename="pages/stats_page.cpp" line="73"/>
         <source>None</source>
         <translation>Kein</translation>
     </message>
@@ -442,27 +507,27 @@
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="26"/>
         <source>Best Thema : </source>
-        <translation>besten thema : </translation>
+        <translation>Besten Thema : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="27"/>
         <source>Inert themas : </source>
-        <translation>inert Themen : </translation>
+        <translation>Inert Themen : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="28"/>
         <source>Golden themas : </source>
-        <translation>golden Themen : </translation>
+        <translation>Golden Themen : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="29"/>
         <source>Silver themas : </source>
-        <translation>silber Themen : </translation>
+        <translation>Silber Themen : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="30"/>
         <source>Rusty themas : </source>
-        <translation>rostig Themen : </translation>
+        <translation>Rostig Themen : </translation>
     </message>
 </context>
 <context>
@@ -480,7 +545,7 @@
     <message>
         <location filename="qml/der_artikel/Stats_page_panel.qml" line="35"/>
         <source>Sorry</source>
-        <translation>bedauern</translation>
+        <translation>Bedauern</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page_panel.qml" line="35"/>
@@ -506,7 +571,7 @@
     <message>
         <location filename="thema_updater.cpp" line="86"/>
         <source>Invalid url</source>
-        <translation>ungültige URL</translation>
+        <translation>Ungültige URL</translation>
     </message>
     <message>
         <location filename="thema_updater.cpp" line="99"/>
@@ -549,17 +614,17 @@
 <context>
     <name>Thema_item</name>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="35"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="45"/>
         <source>Author :</source>
         <translation>Autor : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="58"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="68"/>
         <source>Last Played :</source>
-        <translation>zuletzt gespielt : </translation>
+        <translation>Zuletzt gespielt : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="122"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="132"/>
         <source>Words</source>
         <translation>Wörter</translation>
     </message>
@@ -582,27 +647,27 @@
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="34"/>
         <source>Easy</source>
-        <translation>einfach</translation>
+        <translation>Einfach</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="43"/>
         <source>Moderate</source>
-        <translation>mäßig</translation>
+        <translation>Mäßig</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="52"/>
         <source>Expert</source>
-        <translation>fachkundig</translation>
+        <translation>Fachkundig</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="61"/>
         <source>Practice</source>
-        <translation>ausüben</translation>
+        <translation>Ausüben</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_panel.qml" line="74"/>
         <source>Play</source>
-        <translation>anfangen</translation>
+        <translation>Anfangen</translation>
     </message>
 </context>
 <context>
@@ -615,7 +680,7 @@
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="54"/>
         <source>Select Thema</source>
-        <translation>wählen Sie ein thema</translation>
+        <translation>Wählen Sie ein thema</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Thema_page_title.qml" line="76"/>
@@ -651,22 +716,22 @@
 <context>
     <name>WordsPage_C</name>
     <message>
-        <location filename="pages/words_page.cpp" line="84"/>
+        <location filename="pages/words_page.cpp" line="100"/>
         <source>Loading thema ...</source>
-        <translation>erladung Thema...</translation>
+        <translation>Verladen das Thema ...</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="259"/>
+        <location filename="pages/words_page.cpp" line="284"/>
         <source>Knowledge loss detected</source>
         <translation>Wissensverlust festgestellt wird</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="260"/>
+        <location filename="pages/words_page.cpp" line="285"/>
         <source>%1 experience points are deducted. Go to Help -&gt; Rules for details.</source>
         <translation>%1 Erfahrungspunkte werden abgezogen. Gehen Sie zur Hilfe -&gt; Regeln.</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="261"/>
+        <location filename="pages/words_page.cpp" line="286"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -679,37 +744,37 @@
         <translation>Artikel</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="35"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="34"/>
         <source>Der</source>
         <translation>Der</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="47"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="46"/>
         <source>Die</source>
         <translation>Die</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="59"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="58"/>
         <source>Das</source>
         <translation>Das</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="70"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="69"/>
         <source>Info</source>
         <translation>Info</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="87"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="90"/>
         <source>Finish</source>
-        <translation>abschließen</translation>
+        <translation>Abschließen</translation>
     </message>
 </context>
 <context>
     <name>Words_page_title</name>
     <message>
-        <location filename="qml/der_artikel/Words_page_title.qml" line="53"/>
+        <location filename="qml/der_artikel/Words_page_title.qml" line="71"/>
         <source>Remaining time</source>
-        <translation>verbleibend Zeit</translation>
+        <translation>Verbleibend Zeit</translation>
     </message>
 </context>
 </TS>

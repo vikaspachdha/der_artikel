@@ -23,20 +23,109 @@
         <translation>अपडेट</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
-        <source>Latest version</source>
-        <translation>नवीनतम संस्करण</translation>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="43"/>
+        <source>Update thema</source>
+        <translation>शब्दकोश अपडेट</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="35"/>
-        <source>No update is available.</source>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="55"/>
+        <source>App update...</source>
+        <translation>App अपडेट...</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="60"/>
+        <source>No Update Available.</source>
         <translation>कोई नवीनीकरण उपलब्ध नहीं है.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="61"/>
+        <source>You are running latest version.</source>
+        <translation>आप नवीनतम संस्करण चला रहे हैं|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="63"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="71"/>
+        <source>Ok</source>
+        <translation>हां</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="68"/>
+        <source>Update Error.</source>
+        <translation>अपडेट त्रुटि|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="69"/>
+        <source>Please try later.</source>
+        <translation>बाद में कोशिश करें|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="75"/>
+        <source>Update available.</source>
+        <translation>नवीनीकरण उपलब्ध है|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="76"/>
+        <source>Do you want to download the latest version?</source>
+        <translation>आप नवीनतम संस्करण को डाउनलोड करना चाहते हैं?</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="77"/>
+        <source>Yes</source>
+        <translation>हां</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="78"/>
+        <source>No</source>
+        <translation>नहीं</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="100"/>
+        <source>Updating thema</source>
+        <translation>शब्दकोश अपडेट किया जा रहा है.</translation>
+    </message>
+</context>
+<context>
+    <name>AppUpdater_C</name>
+    <message>
+        <location filename="app_updater.cpp" line="71"/>
+        <source>Checking for app update.</source>
+        <translation>App अपडेट के लिए जाँच हो रही है|</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="79"/>
+        <source>Invalid url</source>
+        <translation>अमान्य url</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="104"/>
+        <source>Checking for new releases.</source>
+        <translation>नई रिलीज के लिए जाँच हो रही है|</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="110"/>
+        <source>Update available.</source>
+        <translation>नवीनीकरण उपलब्ध है|</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="115"/>
+        <source>No App update available.</source>
+        <translation>कोई App नवीनीकरण उपलब्ध नहीं है.</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="129"/>
+        <source>Network issue. Aborting update.</source>
+        <translation>नेटवर्क समस्या| अपडेट विफल किया जा रहा है|</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="193"/>
+        <source>Contacting server.</source>
+        <translation>सर्वर से संपर्क किया जा रहा है|</translation>
     </message>
 </context>
 <context>
     <name>Button</name>
     <message>
-        <location filename="qml/der_artikel/Button.qml" line="32"/>
+        <location filename="qml/der_artikel/Button.qml" line="36"/>
         <source>Button</source>
         <translation>बटन</translation>
     </message>
@@ -69,30 +158,20 @@
     <message>
         <location filename="qml/der_artikel/Command_frame.qml" line="69"/>
         <source>Quit</source>
-        <translation>बाहर िनकले</translation>
+        <translation>बंद करें</translation>
     </message>
 </context>
 <context>
     <name>Game_play_settings</name>
     <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="12"/>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="13"/>
         <source>Word info Time (in msecs)</source>
         <translation>शब्द सूचना का समय.(मिली सेकंड)</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="67"/>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="69"/>
         <source>Thema update url</source>
-        <translation>अपडेट का url</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="97"/>
-        <source>Update thema</source>
-        <translation>शब्दकोश अपडेट</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Game_play_settings.qml" line="111"/>
-        <source>Updating thema</source>
-        <translation>शब्दकोश अपडेट किया जा रहा है.</translation>
+        <translation type="unfinished">अपडेट का url</translation>
     </message>
 </context>
 <context>
@@ -188,21 +267,11 @@
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="33"/>
-        <source>Rate App</source>
-        <translation>रेटिंग</translation>
+        <source>Facebook</source>
+        <translation>फेसबुक</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
-        <source>Sorry</source>
-        <translation>खेद</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Home_page_panel.qml" line="34"/>
-        <source>This feature is not available.</source>
-        <translation>यह विकल्प उपलब्ध नहीं है.</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Home_page_panel.qml" line="46"/>
+        <location filename="qml/der_artikel/Home_page_panel.qml" line="48"/>
         <source>Total words</source>
         <translation>कुल शब्द</translation>
     </message>
@@ -210,13 +279,13 @@
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="403"/>
+        <location filename="manager.cpp" line="408"/>
         <source>Do you realy want to quit?</source>
         <oldsource>Do you realy want to quit ?</oldsource>
         <translation>क्या आप वास्तव में बंद करना चाहते हैं?</translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="423"/>
+        <location filename="manager.cpp" line="428"/>
         <source>Loading installed themas.</source>
         <translation>उपलब्ध शब्दकोश लोड हो रहे हैं|</translation>
     </message>
@@ -318,10 +387,6 @@
         <location filename="qml/der_artikel/Result_page.qml" line="48"/>
         <source>    Correct</source>
         <translation>    सही</translation>
-    </message>
-    <message>
-        <source>Incorrect       Correct</source>
-        <translation type="vanished">गलत       सही</translation>
     </message>
 </context>
 <context>
@@ -427,7 +492,7 @@
 <context>
     <name>StatsPage_C</name>
     <message>
-        <location filename="pages/stats_page.cpp" line="69"/>
+        <location filename="pages/stats_page.cpp" line="73"/>
         <source>None</source>
         <translation>नहीं है</translation>
     </message>
@@ -553,17 +618,17 @@
 <context>
     <name>Thema_item</name>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="35"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="45"/>
         <source>Author :</source>
         <translation>लेखक : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="58"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="68"/>
         <source>Last Played :</source>
         <translation>पिछली बार खेला : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="122"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="132"/>
         <source>Words</source>
         <translation>शब्द</translation>
     </message>
@@ -655,22 +720,22 @@
 <context>
     <name>WordsPage_C</name>
     <message>
-        <location filename="pages/words_page.cpp" line="84"/>
+        <location filename="pages/words_page.cpp" line="100"/>
         <source>Loading thema ...</source>
         <translation>शब्दकोश लोड हो रहा है...</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="259"/>
+        <location filename="pages/words_page.cpp" line="284"/>
         <source>Knowledge loss detected</source>
         <translation>ज्ञान का नुकसान हुआ है</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="260"/>
+        <location filename="pages/words_page.cpp" line="285"/>
         <source>%1 experience points are deducted. Go to Help -&gt; Rules for details.</source>
         <translation>%1 अनुभव अंक की कटौती की जा रही है. जानकारी के लिए सहायता-&gt; नियम पर जाएँ|</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="261"/>
+        <location filename="pages/words_page.cpp" line="286"/>
         <source>OK</source>
         <translation>हां</translation>
     </message>
@@ -683,27 +748,27 @@
         <translation>लेख</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="35"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="34"/>
         <source>Der</source>
         <translation>Der</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="47"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="46"/>
         <source>Die</source>
         <translation>Die</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="59"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="58"/>
         <source>Das</source>
         <translation>Das</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="70"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="69"/>
         <source>Info</source>
         <translation>जानकारी</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Words_page_panel.qml" line="87"/>
+        <location filename="qml/der_artikel/Words_page_panel.qml" line="90"/>
         <source>Finish</source>
         <translation>समाप्ति</translation>
     </message>
@@ -711,7 +776,7 @@
 <context>
     <name>Words_page_title</name>
     <message>
-        <location filename="qml/der_artikel/Words_page_title.qml" line="53"/>
+        <location filename="qml/der_artikel/Words_page_title.qml" line="71"/>
         <source>Remaining time</source>
         <translation>शेष समय</translation>
     </message>
