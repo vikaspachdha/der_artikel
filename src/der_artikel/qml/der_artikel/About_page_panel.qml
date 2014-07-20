@@ -14,7 +14,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_h_alignment: Text.AlignHCenter
-        text: qsTr("Options") + settings.i18n_empty_string
+        text: qsTr("Update") + settings.i18n_empty_string
     }
 
     Column {
@@ -31,7 +31,7 @@ Page_panel
             id:replay_btn
             width:parent.width
             text_h_alignment: Text.AlignHCenter
-            buttonText: qsTr("Update") + settings.i18n_empty_string
+            buttonText: qsTr("App") + settings.i18n_empty_string
             onActivated: {
                 appUpdater.checkUpdate();
             }
@@ -40,7 +40,8 @@ Page_panel
         Button {
             id:update_thema_btn
             width:parent.width
-            buttonText:qsTr("Update thema") +settings.i18n_empty_string
+            buttonText:qsTr("Themas") +settings.i18n_empty_string
+            text_h_alignment: Text.AlignHCenter
             onActivated: {
                 themaUpdater.checkUpdate();
             }

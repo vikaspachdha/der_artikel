@@ -15,72 +15,73 @@
     <name>About_page_panel</name>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="17"/>
-        <source>Options</source>
-        <translation>Optionen</translation>
+        <source>Update</source>
+        <translation>Aktualisierung</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="34"/>
-        <source>Update</source>
-        <translation>Update</translation>
+        <source>App</source>
+        <translation>App</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="43"/>
-        <source>Update thema</source>
-        <translation>Aktualisierung thema</translation>
+        <source>Themas</source>
+        <oldsource>Update themas</oldsource>
+        <translation>Themen</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="55"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="56"/>
         <source>App update...</source>
         <translation>App-Update...</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="60"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="61"/>
         <source>No Update Available.</source>
         <translation>Kein Update verfügbar ist.</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="61"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="62"/>
         <source>You are running latest version.</source>
         <translation>Sie führen die neueste Version.</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="63"/>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="71"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="64"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="72"/>
         <source>Ok</source>
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="68"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="69"/>
         <source>Update Error.</source>
         <translation>Update Fehler.</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="69"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="70"/>
         <source>Please try later.</source>
         <translation>Bitte versuchen Sie es später.</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="75"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="76"/>
         <source>Update available.</source>
         <translation>Update verfügbar ist.</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="76"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="77"/>
         <source>Do you want to download the latest version?</source>
         <translation>Möchten Sie die neueste Version herunterladen?</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="77"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="78"/>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="78"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="79"/>
         <source>No</source>
         <translation>Nein</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="100"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="101"/>
         <source>Updating thema</source>
         <translation>Aktualisierung thema</translation>
     </message>
@@ -256,7 +257,7 @@
     <message>
         <location filename="qml/der_artikel/Home_page.qml" line="14"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation>Über</translation>
     </message>
 </context>
 <context>
@@ -269,7 +270,7 @@
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="33"/>
         <source>Facebook</source>
-        <translation type="unfinished">Facebook</translation>
+        <translation>Facebook</translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Home_page_panel.qml" line="48"/>

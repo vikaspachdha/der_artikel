@@ -14,74 +14,75 @@
     <name>About_page_panel</name>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="17"/>
-        <source>Options</source>
-        <translation>विकल्प</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="34"/>
         <source>Update</source>
         <translation>अपडेट</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="43"/>
-        <source>Update thema</source>
-        <translation>शब्दकोश अपडेट</translation>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="34"/>
+        <source>App</source>
+        <translation>App</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="55"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="43"/>
+        <source>Themas</source>
+        <oldsource>Update themas</oldsource>
+        <translation>शब्दकोश</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="56"/>
         <source>App update...</source>
         <translation>App अपडेट...</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="60"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="61"/>
         <source>No Update Available.</source>
         <translation>कोई नवीनीकरण उपलब्ध नहीं है.</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="61"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="62"/>
         <source>You are running latest version.</source>
         <translation>आप नवीनतम संस्करण चला रहे हैं|</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="63"/>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="71"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="64"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="72"/>
         <source>Ok</source>
-        <translation>हां</translation>
+        <translation>ठीक है</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="68"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="69"/>
         <source>Update Error.</source>
         <translation>अपडेट त्रुटि|</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="69"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="70"/>
         <source>Please try later.</source>
         <translation>बाद में कोशिश करें|</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="75"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="76"/>
         <source>Update available.</source>
         <translation>नवीनीकरण उपलब्ध है|</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="76"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="77"/>
         <source>Do you want to download the latest version?</source>
         <translation>आप नवीनतम संस्करण को डाउनलोड करना चाहते हैं?</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="77"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="78"/>
         <source>Yes</source>
         <translation>हां</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="78"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="79"/>
         <source>No</source>
         <translation>नहीं</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="100"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="101"/>
         <source>Updating thema</source>
-        <translation>शब्दकोश अपडेट किया जा रहा है.</translation>
+        <translation>शब्दकोश अपडेट किया जा रहा है</translation>
     </message>
 </context>
 <context>
@@ -171,7 +172,7 @@
     <message>
         <location filename="qml/der_artikel/Game_play_settings.qml" line="69"/>
         <source>Thema update url</source>
-        <translation type="unfinished">अपडेट का url</translation>
+        <translation>अपडेट का url</translation>
     </message>
 </context>
 <context>
@@ -255,7 +256,7 @@
     <message>
         <location filename="qml/der_artikel/Home_page.qml" line="14"/>
         <source>About</source>
-        <translation>About</translation>
+        <translation>जानकारी</translation>
     </message>
 </context>
 <context>
@@ -295,7 +296,7 @@
     <message>
         <location filename="message_bar.h" line="87"/>
         <source>Ok</source>
-        <translation>हां</translation>
+        <translation>ठीक है</translation>
     </message>
     <message>
         <location filename="message_bar.h" line="88"/>
@@ -737,7 +738,7 @@
     <message>
         <location filename="pages/words_page.cpp" line="286"/>
         <source>OK</source>
-        <translation>हां</translation>
+        <translation>ठीक है</translation>
     </message>
 </context>
 <context>
