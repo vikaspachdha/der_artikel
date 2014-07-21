@@ -6,8 +6,8 @@ Flickable {
     Text {
         id: content_text
         anchors.fill: parent
-        text:"For any other assistance or help please mail your queries to \nmail@vikaspachdha.com \
-\n\nVisit vikaspachdha.com for alternate contact"
+        text:qsTr("For any other assistance or help please mail your queries to \nmail@derartikel.com \
+\n\nVisit www.derartikel.com for developer's contact details.") + settings.i18n_empty_string
 
         wrapMode: Text.WordWrap
         font.family: regular_font.name

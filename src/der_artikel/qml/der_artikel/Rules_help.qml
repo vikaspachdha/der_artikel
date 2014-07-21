@@ -6,7 +6,7 @@ Flickable {
     Text {
         id: content_text
         anchors.fill: parent
-        text:"1.Time alllocation for a gameplay depends on the game level selected.\
+        text:qsTr("1.Time allocation for a gameplay depends on the game level selected.\
 <table border=\"1\">
 <tr>
 <td><b>Game level</b></td>
@@ -21,7 +21,7 @@ Flickable {
 <td>words-count x 3</td>
 </tr>
 <tr>
-<td>Strict</td>
+<td>Expert</td>
 <td>words-count x 2</td>
 </tr>
 </table> \
@@ -52,7 +52,7 @@ game level selected for gamplay.<br><br>5. Gaining points changes the state of t
 <td>INERT</td>
 </tr>
 </table> \
-<br><br>6. A thema shall lose points if experinece points gain does not occue within 24 hrs \
+<br><br>6. A thema shall lose points if experience points gain does not occur within 24 hrs \
 and the magnitude of points deduction shall depend on the current state of thema.\
 <table border=\"1\" bordercolor=\"white\">
 <tr>
@@ -77,7 +77,8 @@ and the magnitude of points deduction shall depend on the current state of thema
 </tr>
 </table> \
 <br>CAUTION: Points are deducted progressively. i.e if your experience points are 500 and \
-you did not earn score for the thema for consective 3 days then 12 points shall be deducted."
+you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.")
+        + settings.i18n_empty_string
 
         wrapMode: Text.WordWrap
         font.family: regular_font.name

@@ -6,7 +6,7 @@ Flickable {
     Text {
         id: content_text
         anchors.fill: parent
-        text:"Scoring:<table border=\"1\">
+        text:qsTr("Scoring:<table border=\"1\">
 <tr>
 <td><b>Game level</b></td>
 <td>Correct article</td>
@@ -26,7 +26,7 @@ Flickable {
 <td>0</td>
 </tr>
 <tr>
-<td>Strict</td>
+<td>Expert</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -71,7 +71,7 @@ Flickable {
 <td><b>Grade</b></td>
 <td>Easy</td>
 <td>Moderate</td>
-<td>Strict</td>
+<td>Expert</td>
 </tr>
 <tr>
 <td>A+</td>
@@ -115,7 +115,7 @@ Flickable {
 <td>-10</td>
 <td>-20</td>
 </tr>
-</table>"
+</table>") + settings.i18n_empty_string
 
         textFormat: Text.RichText
         wrapMode: Text.WordWrap

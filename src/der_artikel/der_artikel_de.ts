@@ -177,6 +177,25 @@
     </message>
 </context>
 <context>
+    <name>General_help</name>
+    <message>
+        <location filename="qml/der_artikel/General_help.qml" line="9"/>
+        <source>To play the game select a thema from thema page and click start. 
+words page shall open with the words displayed on right side and articles on left side.
+
+To gain points, user must assign correct articles to the nouns. Clicking on article button makes the corresponding article as active article and clicking on words afterwards assigns the selected article to the clicked word.
+
+Change in background color of word confirms article assignment. The user must assign articles to all the words. Incorrect articles and unplayed words may result into points deduction depending on the game level selected.</source>
+        <oldsource>To play the game select a thema from thema page and click start. 
+User shall land into words page with the words displayed on right side and articles on left side.
+
+To gain points, user must assign correct articles to the nouns. Clicking on article button makes the corresponding article as active article and clicking on words afterwards assigns the selected article to the clicked word.
+
+Change in background color of word confirms article assignment. The user must assign articles to all the words. Incorrect articles and unplayed words may result into points deduction depending on the game level selected.</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>HelpPage_C</name>
     <message>
         <location filename="pages/help_page.cpp" line="81"/>
@@ -305,6 +324,21 @@
     </message>
 </context>
 <context>
+    <name>Others_help</name>
+    <message>
+        <location filename="qml/der_artikel/Others_help.qml" line="9"/>
+        <source>For any other assistance or help please mail your queries to 
+mail@derartikel.com 
+
+Visit www.derartikel.com for developer&apos;s contact details.</source>
+        <oldsource>For any other assistance or help please mail your queries to 
+mail@vikaspachdha.com 
+
+Visit vikaspachdha.com for alternate contact</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Result_C</name>
     <message>
         <location filename="../data/result.cpp" line="102"/>
@@ -419,6 +453,356 @@
         <location filename="qml/der_artikel/Result_page_title.qml" line="81"/>
         <source>Gained experience : </source>
         <translation>Gewonnen Punktzahl. : </translation>
+    </message>
+</context>
+<context>
+    <name>Rules_help</name>
+    <message>
+        <location filename="qml/der_artikel/Rules_help.qml" line="9"/>
+        <source>1.Time allocation for a gameplay depends on the game level selected.&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;b&gt;Time (secs)&lt;/b&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Easy&lt;/td&gt;
+&lt;td&gt;words-count x 4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Moderate&lt;/td&gt;
+&lt;td&gt;words-count x 3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Expert&lt;/td&gt;
+&lt;td&gt;words-count x 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt; &lt;br&gt;&lt;br&gt;2. Correct article gains experience points.&lt;br&gt;&lt;br&gt;3. Incorrect article shall result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gamplay.&lt;br&gt;&lt;br&gt;4. Unplayed words may result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gamplay.&lt;br&gt;&lt;br&gt;5. Gaining points changes the state of the thema. &lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;Experience&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;100&lt;/td&gt;
+&lt;td&gt;RUSTY&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt;
+&lt;td&gt;SILVER&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt;
+&lt;td&gt;GOLD&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;500&lt;/td&gt;
+&lt;td&gt;INERT&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt; &lt;br&gt;&lt;br&gt;6. A thema shall lose points if experience points gain does not occur within 24 hrs and the magnitude of points deduction shall depend on the current state of thema.&lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;b&gt;Experience deduction&lt;/b&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RUSTY&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SILVER&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GOLD&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;INERT&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt; &lt;br&gt;CAUTION: Points are deducted progressively. i.e if your experience points are 500 and you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.</source>
+        <oldsource>1.Time allocation for a gameplay depends on the game level selected.&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;b&gt;Time (secs)&lt;/b&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Easy&lt;/td&gt;
+&lt;td&gt;words-count x 4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Moderate&lt;/td&gt;
+&lt;td&gt;words-count x 3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Expert&lt;/td&gt;
+&lt;td&gt;words-count x 2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt; &lt;br&gt;&lt;br&gt;2. Correct article gains experience points.&lt;br&gt;&lt;br&gt;3. Incorrect article shall result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gamplay.&lt;br&gt;&lt;br&gt;4. Unplayed words may result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gamplay.&lt;br&gt;&lt;br&gt;5. Gaining points changes the state of the thema. &lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;Experience&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;100&lt;/td&gt;
+&lt;td&gt;RUSTY&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt;
+&lt;td&gt;SILVER&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt;
+&lt;td&gt;GOLD&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;500&lt;/td&gt;
+&lt;td&gt;INERT&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt; &lt;br&gt;&lt;br&gt;6. A thema shall lose points if experience points gain does not occur within 24 hrs and the magnitude of points deduction shall depend on the current state of thema.&lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;b&gt;Experience deduction&lt;/b&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;RUSTY&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;SILVER&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;GOLD&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;INERT&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt; &lt;br&gt;CAUTION: Points are deducted progressively. i.e if your experience points are 500 and you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.</oldsource>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Scoring_help</name>
+    <message>
+        <location filename="qml/der_artikel/Scoring_help.qml" line="9"/>
+        <source>Scoring:&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;Correct article&lt;/td&gt;
+&lt;td&gt;Incorrect article&lt;/td&gt;
+&lt;td&gt;Unplayed word&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EASY&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;-0.5&lt;/td&gt;
+&lt;td&gt;-0.25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Moderate&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;-0.5&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Expert&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt; &lt;br&gt;&lt;br&gt;Grading:&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;SCORE&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;Grade&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;94.99&lt;/td&gt;
+&lt;td&gt;A+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;89.99&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;79.99&lt;/td&gt;
+&lt;td&gt;B+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;69.99&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;59.99&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;49.99&lt;/td&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;49.99&lt;/td&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;br&gt;Experience:&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;Grade&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;Easy&lt;/td&gt;
+&lt;td&gt;Moderate&lt;/td&gt;
+&lt;td&gt;Expert&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A+&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;B+&lt;/td&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;70&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;-10&lt;/td&gt;
+&lt;td&gt;-20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</source>
+        <oldsource>Scoring:&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;Correct article&lt;/td&gt;
+&lt;td&gt;Incorrect article&lt;/td&gt;
+&lt;td&gt;Unplayed word&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;EASY&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;-0.5&lt;/td&gt;
+&lt;td&gt;-0.25&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Moderate&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;-0.5&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Strict&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt; &lt;br&gt;&lt;br&gt;Grading:&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;SCORE&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;Grade&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;94.99&lt;/td&gt;
+&lt;td&gt;A+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;89.99&lt;/td&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;79.99&lt;/td&gt;
+&lt;td&gt;B+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;69.99&lt;/td&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;59.99&lt;/td&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;gt;49.99&lt;/td&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&amp;lt;49.99&lt;/td&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;&lt;br&gt;&lt;br&gt;Experience:&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;b&gt;Grade&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;Easy&lt;/td&gt;
+&lt;td&gt;Moderate&lt;/td&gt;
+&lt;td&gt;Strict&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A+&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;td&gt;100&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;A&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;td&gt;80&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;B+&lt;/td&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;td&gt;70&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;B&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;10&lt;/td&gt;
+&lt;td&gt;30&lt;/td&gt;
+&lt;td&gt;50&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;D&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;20&lt;/td&gt;
+&lt;td&gt;40&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;E&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;-10&lt;/td&gt;
+&lt;td&gt;-20&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</oldsource>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

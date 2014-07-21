@@ -7,7 +7,7 @@ Flickable {
         id: content_text
         anchors.fill: parent
         text:qsTr("To play the game select a thema from thema page and click start. \
-\nUser shall land into words page with the words displayed on right side and \
+\nwords page shall open with the words displayed on right side and \
 articles on left side.\n\nTo gain points, user must assign correct articles to the nouns. \
 Clicking on article button makes the corresponding article as active article and clicking \
 on words afterwards assigns the selected article to the clicked word.\n\nChange in \
