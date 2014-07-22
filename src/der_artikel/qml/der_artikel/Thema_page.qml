@@ -15,10 +15,11 @@ Page {
         cellHeight: 120
         cellWidth: 120
         delegate: Thema_item {
+            property string last_played_str: Qt.formatDateTime(last_played,"dd.MM.yy - hh:mm")
             title:display_name
             translation: tr_name
             author_name: author
-            last_played_text:Qt.formatDateTime(last_played,"dd.MM.yy - hh:mm")+ qsTr(" hrs") +settings.i18n_empty_string
+            last_played_text:(last_played_str === "" ? "...": last_played_str +qsTr(" hrs")) +settings.i18n_empty_string
             icon_url: "image://rootImageProvider/"+display_name
             count:word_count
             width:grid_view.cellWidth-14
