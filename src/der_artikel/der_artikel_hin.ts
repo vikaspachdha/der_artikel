@@ -191,12 +191,12 @@ User shall land into words page with the words displayed on right side and artic
 To gain points, user must assign correct articles to the nouns. Clicking on article button makes the corresponding article as active article and clicking on words afterwards assigns the selected article to the clicked word.
 
 Change in background color of word confirms article assignment. The user must assign articles to all the words. Incorrect articles and unplayed words may result into points deduction depending on the game level selected.</oldsource>
-        <translation type="unfinished">खेल खेलने के लिए THEMA पेज से एक THEMA का चयन करें और &apos;आरंभ&apos; पर क्लिक करें|  
-शब्दों का पेज खुल जाएगा और शब्दों को दाईं ओर प्रदर्शित किया जाएगा और बाईं ओर लेखों को प्रदर्शित किया जाएगा| 
+        <translation>खेल खेलने के लिए THEMA पेज से एक THEMA का चयन करें और &apos;आरंभ&apos; पर क्लिक करें|
+शब्दों का पेज खुल जाएगा और शब्दों को दाईं ओर प्रदर्शित किया जाएगा और बाईं ओर लेखों को प्रदर्शित किया जाएगा |
 
-अंक हासिल करने के लिए, आपको संज्ञाओं को सही जर्मन लेख आवंटित करना होगा|लेख बटन पर क्लिक करने से बटन पर दिया गया लेख सक्रिय हो जाता है उसके बाद संज्ञाओं पर क्लिक करने से लेख संज्ञा को आवंटित कर जाता है| 
+अंक हासिल करने के लिए, आपको संज्ञाओं को सही जर्मन लेख आवंटित करना होगा | लेख बटन पर क्लिक करने से बटन पर दिया गया लेख सक्रिय हो जाता है उसके बाद संज्ञाओं पर क्लिक करने से लेख संज्ञा को आवंटित कर दिया जाता है |
 
-शब्द के पृष्ठभूमि रंग में परिवर्तन लेख असाइनमेंट की पुष्टि करता है| उपयोगकर्ता को सभी शब्द लेख आवंटित करने होंगे| गलत लेख और नहीं खेले शब्दों के कारण अंक कटौती में की कटौती हो सकती है.| अंक कटौती चयनित खेल के स्तर पर निर्भर करता है|</translation>
+शब्द के पृष्ठभूमि रंग में परिवर्तन लेख असाइनमेंट की पुष्टि करता है| उपयोगकर्ता को सभी शब्दों को लेख आवंटित करने होंगे| गलत लेख और नहीं खेले गए शब्दों के कारण अंको में कटौती हो सकती है.| अंक कटौती चयनित खेल के स्तर पर निर्भर करता है |</translation>
     </message>
 </context>
 <context>
@@ -340,10 +340,10 @@ Visit www.derartikel.com for developer&apos;s contact details.</source>
 mail@vikaspachdha.com 
 
 Visit vikaspachdha.com for alternate contact</oldsource>
-        <translation type="unfinished">किसी भी अन्य सहायता या मदद के लिए अपने प्रश्न निम्नलिखित पते पर मेल करें| 
-mail@derartikel.com 
+        <translation>किसी भी अन्य सहायता या मदद के लिए अपने प्रश्न निम्नलिखित पते पर मेल करें |
+mail@derartikel.com
 
-डेवलपर के संपर्क विवरण के लिए www.derartikel.com जाएँ|</translation>
+डेवलपर के संपर्क विवरण के लिए www.derartikel.com जाए |</translation>
     </message>
 </context>
 <context>
@@ -929,7 +929,7 @@ mail@derartikel.com
 &lt;/tr&gt;
 &lt;/table&gt;&lt;br&gt;&lt;br&gt;अनुभव अंक:&lt;table border=&quot;1&quot;&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;b&gt;Grade&lt;/b&gt;&lt;/td&gt;
+&lt;td&gt;&lt;b&gt;ग्रेड&lt;/b&gt;&lt;/td&gt;
 &lt;td&gt;आसान&lt;/td&gt;
 &lt;td&gt;मध्यम&lt;/td&gt;
 &lt;td&gt;माहिर&lt;/td&gt;
@@ -1144,7 +1144,7 @@ mail@derartikel.com
     <message>
         <location filename="thema_updater.cpp" line="109"/>
         <source>Parsing error. Aborting update.</source>
-        <translation>विश्लेषण त्रुटि|अपडेट विफल किया जा रहा है|</translation>
+        <translation>विश्लेषण त्रुटि| अपडेट विफल किया जा रहा है|</translation>
     </message>
     <message>
         <location filename="thema_updater.cpp" line="123"/>
