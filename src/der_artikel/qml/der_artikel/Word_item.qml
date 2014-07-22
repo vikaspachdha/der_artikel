@@ -17,10 +17,15 @@ Item {
 
     Noun_Item {
         id:noun_item
+        scale: mouse_area.pressed ? .95 :1
+        Behavior on scale {
+            NumberAnimation { duration: 100}
+        }
         article: word == null ? Article.INVALID : word.user_article
     }
 
     MouseArea {
+        id:mouse_area
         anchors.fill: parent
         onClicked: {
             wordClicked()
