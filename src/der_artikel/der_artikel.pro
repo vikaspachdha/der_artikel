@@ -91,13 +91,9 @@ OTHER_FILES += ./der_artikel_de.ts \
     qml/der_artikel/utils.js
 
 # Add more folders to ship with the application, here
-folder_01.source = thema
+folder_01.source = languages
 folder_01.target =
 DEPLOYMENTFOLDERS += folder_01
-
-folder_02.source = languages
-folder_02.target =
-DEPLOYMENTFOLDERS += folder_02
 doDeployment()
 
 mac {

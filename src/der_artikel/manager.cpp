@@ -422,6 +422,7 @@ void Manager_C::loadDefaultThemas()
     _thema_model->clear();
     // thema_loader shall be deleted automatically.
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
+    thema_loader->setRootThemaDir(_settings->defaultThemaDirPath());
     connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), SLOT(onNewthemaLoaded(Thema_C*)) );
     connect(thema_loader,SIGNAL(finishedLoading()),&MessageBar_C::instance(),SLOT(closeMsg()));
     connect(thema_loader,SIGNAL(updateProgress(double)),SLOT(onThemaLoadingProgress(double)));

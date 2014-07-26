@@ -31,7 +31,6 @@ echo Copying compiled files...
 ###copy source
 cp $SOURCE_PATH/$APP_NAME.app/Contents/MacOS/$APP_NAME $APP_PATH
 cp $SOURCE_PATH/$APP_NAME.app/Contents/Resources/languages/*.qm $OUTPUT_PATH/$APP_NAME.app/Contents/Resources/languages
-cp $SOURCE_PATH/$APP_NAME.app/Contents/Resources/thema/*.AKL $OUTPUT_PATH/$APP_NAME.app/Contents/Resources/thema
 
 echo Copying qt frameworks...
 ### copy Frameworks

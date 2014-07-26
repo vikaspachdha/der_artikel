@@ -161,6 +161,11 @@ int main(int argc, char *argv[])
     ThemaUpdater_C thema_updater(manager);
     AppUpdater_C app_updater(manager);
 
+    // Copy the stock thema files.
+    if(manager.appSettings()->copyStockThema()) {
+        thema_updater.checkUpdate(":/res/resources/stock_themas");
+    }
+
     root_context->setContextProperty("manager", &manager);
     root_context->setContextProperty("themaUpdater", &thema_updater);
     root_context->setContextProperty("appUpdater", &app_updater);

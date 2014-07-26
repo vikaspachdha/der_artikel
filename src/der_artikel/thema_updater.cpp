@@ -69,14 +69,18 @@ ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
 /*! \brief Initiates checking if thema files update is available or not.
  *
  *  \author Vikas Pachdha
+ *
+ *  \param[in] remote_path : Remote path of the directory from where the thema
+ *  shall be updated. Default remote path shall be used in case of empty input.
  ******************************************************************************/
-void ThemaUpdater_C::checkUpdate()
+void ThemaUpdater_C::checkUpdate(QString remote_path)
 {
     _progress = 0.0;
     emit updateResponse(UPDATE_STARTED);
     emit updateProgress(tr("Checking for thema update."), _progress);
     reset();
-    QUrl url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/index.csv");
+    _remote_thema_root_path = remote_path.isEmpty() ? _manager.appSettings()->themaRemotePath() : remote_path;
+    QUrl url = QUrl::fromUserInput(_remote_thema_root_path + "/index.csv");
     if(url.isValid()) {
         LOG_INFO(QString("Thema updater :: Starting update from %1").arg(url.toString()));
         _file_downloader.startDownload(url);
@@ -217,6 +221,7 @@ void ThemaUpdater_C::buildLocalData()
     // thema_loader shall be deleted automatically.
     LOG_INFO("Thema updater :: building local data");
     ThemaLoader_C* thema_loader = new ThemaLoader_C(this);
+    thema_loader->setRootThemaDir(_manager.appSettings()->defaultThemaDirPath());
     connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), this, SLOT(onNewthemaLoaded(Thema_C*)) );
     connect(thema_loader,SIGNAL(finishedLoading()),this, SLOT(onBuildLocalDataFinished()) );
     connect(thema_loader,SIGNAL(updateProgress(double)),this, SLOT(onThemaLoadProgress(double)));
@@ -233,6 +238,7 @@ void ThemaUpdater_C::reset()
     LOG_INFO("Thema updater :: Resetting");
     _remote_file_data.clear();
     _file_operations.clear();
+    _remote_thema_root_path = "";
 }
 
 //******************************************************************************
@@ -253,7 +259,7 @@ void ThemaUpdater_C::onNewthemaLoaded(Thema_C *thema)
         if(_remote_file_data[thema_local_file_info.fileName().toLower()]._update_date > thema->lastUpdated()) {
             // Replace operation
             QString local_file_path = thema->filePath();
-            QUrl remote_file_url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/" + thema_local_file_info.fileName());
+            QUrl remote_file_url = QUrl::fromUserInput(_remote_thema_root_path + "/" + thema_local_file_info.fileName());
             ThemaFileOperation_I* operation = new ThemaReplaceOperation_C(local_file_path,
                                                                           remote_file_url,
                                                                           thema->experiencePoints());
@@ -281,8 +287,8 @@ void ThemaUpdater_C::onBuildLocalDataFinished()
 {
     foreach (QString key, _remote_file_data.keys()) {
         // Add operation
-        QString local_file_path = ARTIKEL::GetResourcePath("thema") + QDir::separator()+ _remote_file_data[key]._file_name;
-        QUrl remote_file_url = QUrl::fromUserInput(_manager.appSettings()->themaRemotePath() + "/" + _remote_file_data[key]._file_name);
+        QString local_file_path = _manager.appSettings()->defaultThemaDirPath() + QDir::separator()+ _remote_file_data[key]._file_name;
+        QUrl remote_file_url = QUrl::fromUserInput(_remote_thema_root_path + "/" + _remote_file_data[key]._file_name);
                 ThemaFileOperation_I* operation = new ThemaAddOperation_C(local_file_path, remote_file_url.toString());
         _file_operations.append(operation);
         LOG_INFO(QString("Thema updater :: Added add operation %1").arg(remote_file_url.toString()));

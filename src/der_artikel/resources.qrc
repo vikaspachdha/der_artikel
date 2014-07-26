@@ -116,5 +116,9 @@
         <file>resources/open.png</file>
         <file>qml/der_artikel/utils.js</file>
         <file>resources/fonts/akshar.ttf</file>
+        <file>resources/stock_themas/Body.AKL</file>
+        <file>resources/stock_themas/Family.AKL</file>
+        <file>resources/stock_themas/Stationery.AKL</file>
+        <file>resources/stock_themas/index.csv</file>
     </qresource>
 </RCC>

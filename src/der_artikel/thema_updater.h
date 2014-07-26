@@ -76,7 +76,7 @@ public:
     explicit ThemaUpdater_C(Manager_C& manager, QObject *parent = 0);
 
 public:
-    Q_INVOKABLE void checkUpdate();
+    Q_INVOKABLE void checkUpdate(QString remote_path = "");
 
 private slots:
     void onIndexFileDownloadFinished();
@@ -108,6 +108,8 @@ private:
     QHash<QString, RemoteFileInfo> _remote_file_data;
     //! File operations.
     QVector<ThemaFileOperation_I*> _file_operations;
+    //! Remote path to thema root folder.
+    QString _remote_thema_root_path;
     //! Update progress.
     double _progress;
 };

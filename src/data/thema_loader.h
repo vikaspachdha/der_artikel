@@ -58,6 +58,7 @@ protected:
     virtual void run();
 
 public:
+    void setRootThemaDir(QString root_thema_dir_path);
     Thema_C* loadThema(QString file_path, bool defered = true);
     void startLoading(bool auto_delete=true);
 

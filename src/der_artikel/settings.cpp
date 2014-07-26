@@ -28,10 +28,12 @@
 // System includes
 #include <QDebug>
 #include <QDir>
+#include <QFileInfo>
 #include <QSysInfo>
 #include <QGuiApplication>
 #include <QLocale>
 #include <QSettings>
+#include <QStandardPaths>
 #include <QTranslator>
 
 // Interface for this file
@@ -58,13 +60,30 @@ Settings_C::Settings_C(QObject *parent) :
     QObject(parent),
     _current_language(ENGLISH),
     _sound_level(0.1),
-    _word_message_time(1200)
+    _word_message_time(1200),
+    _copy_stock_themas(true)
 {
     QSettings::setDefaultFormat(QSettings::IniFormat);
     loadSettings();
     LOG_DEBUG("Settings_C::constructor");
     updateLangauge();
     _thema_remote_path = "vystosi.com/der_artikel/thema";
+
+    // Create default thema dir.
+    if(!QFileInfo::exists(defaultThemaDirPath())) {
+        QDir themaRootDir;
+        if(themaRootDir.mkpath(defaultThemaDirPath())) {
+            // Set flag up as directory was not existing.
+            _copy_stock_themas = true;
+        } else {
+            LOG_ERROR("Cannot create default thema folder : " + defaultThemaDirPath());
+        }
+    }
+
+#ifdef QT_DEBUG
+    _copy_stock_themas = true;
+#endif
+
 #ifdef NO_GRAPHICAL_EFFECTS
     LOG_INFO("No graphical effects");
 #else
@@ -80,6 +99,7 @@ Settings_C::Settings_C(QObject *parent) :
 Settings_C::~Settings_C()
 {
     clearTranslators();
+    saveSettings();
 }
 
 //******************************************************************************
@@ -172,6 +192,7 @@ void Settings_C::saveSettings()
     settings.setValue("soundLevel",_sound_level);
     settings.setValue("wordMessageTime",_word_message_time);
     settings.setValue("remotePath",_thema_remote_path);
+    settings.setValue("copyStockThema",false);
     settings.endGroup();
 }
 
@@ -188,6 +209,7 @@ void Settings_C::loadSettings()
     _sound_level = settings.value("soundLevel",0.1).toDouble();
     _word_message_time = settings.value("wordMessageTime",1200).toInt();
     _thema_remote_path = settings.value("remotePath","www.vystosi.com/der_artikel/themas").toString();
+    _copy_stock_themas = settings.value("copyStockThema",true).toBool();
     settings.endGroup();
 }
 
@@ -311,6 +333,11 @@ void Settings_C::setThemaRemotePath(QString url_str)
         _thema_remote_path = url_str;
         emit themaRemotePathChanged();
     }
+}
+
+QString Settings_C::defaultThemaDirPath() const
+{
+    return QStandardPaths::standardLocations(QStandardPaths::DataLocation).at(0) + "/themas";
 }
 
 //******************************************************************************

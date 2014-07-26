@@ -101,8 +101,14 @@ public:
     QString themaRemotePath() const { return _thema_remote_path; }
     void setThemaRemotePath(QString url_str);
 
+    //! Remote server path for updating thema files.
+    QString defaultThemaDirPath() const;
+
     //! Remote server path for updating app.
     QString versionInfoPath() const { return "www.vystosi.com/version_info.xml"; }
+
+    //! Copy stock thema flag.
+    bool copyStockThema() const { return _copy_stock_themas; }
 
     QString platformId() const;
 
@@ -135,6 +141,8 @@ private:
     int _word_message_time;
     //! Remote thema file's folder.
     QString _thema_remote_path;
+    //! Flag to copy stock thema files.
+    bool _copy_stock_themas;
 };
 
 #endif // SETTINGS_H

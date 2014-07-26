@@ -67,7 +67,7 @@ ThemaLoader_C::ThemaLoader_C(QObject *thema_parent, QObject *parent) : QObject(p
 void ThemaLoader_C::run()
 {
     LOG_DEBUG("ThemaLoader_C::run");
-    QDir root_thema_dir = ARTIKEL::GetResourcePath("thema");
+    QDir root_thema_dir(_root_dir);
     QStringList nameFilters;
     nameFilters<<"*.AKL";
     QFileInfoList thema_files= root_thema_dir.entryInfoList(nameFilters,QDir::Files | QDir::NoSymLinks|QDir::NoDotAndDotDot);
@@ -83,6 +83,22 @@ void ThemaLoader_C::run()
         emit updateProgress( (double)files_loaded_count/file_count );
     }
     emit finishedLoading();
+}
+
+//******************************************************************************
+/*! \brief Sets the root directory where all thema files are located and shall be
+ *  loaded after calling \ref ThemaLoader_C::startLoading.
+ *
+ *  \details Path is not checked for existence thus path must exist.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] root_thema_dir_path : Root directory path where all thema files are located
+ *
+ ******************************************************************************/
+void ThemaLoader_C::setRootThemaDir(QString root_thema_dir_path)
+{
+    _root_dir = root_thema_dir_path;
 }
 
 //******************************************************************************
