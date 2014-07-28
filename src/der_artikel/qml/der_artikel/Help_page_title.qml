@@ -6,7 +6,7 @@ Title_bar {
 
     Text {
         id: name
-        text: help_page_instance.title
+        text: help_page_instance.title + settings.i18n_empty_string
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         font.family: title_font.name
