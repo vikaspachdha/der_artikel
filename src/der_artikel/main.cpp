@@ -52,6 +52,7 @@
 #include "image_provider.h"
 #include "manager.h"
 #include "message_bar.h"
+#include "pages/about_page.h"
 #include "pages/help_page.h"
 #include "pages/settings_page.h"
 #include "pages/words_page.h"
@@ -146,6 +147,7 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<Article_C>("com.vystosi.qmlcomponents", 1, 0, "Article","");
     qmlRegisterUncreatableType<Thema_C>("com.vystosi.qmlcomponents", 1, 0, "Thema","");
     qmlRegisterUncreatableType<ThemaModel_C>("com.vystosi.qmlcomponents", 1, 0, "ThemaModel","");
+    qmlRegisterUncreatableType<AboutPage_C>("com.vystosi.qmlcomponents", 1, 0, "AboutPage","");
     qmlRegisterUncreatableType<HelpPage_C>("com.vystosi.qmlcomponents", 1, 0, "HelpPage","");
     qmlRegisterUncreatableType<Settings_C>("com.vystosi.qmlcomponents", 1, 0, "Settings","");
     qmlRegisterUncreatableType<SettingsPage_C>("com.vystosi.qmlcomponents", 1, 0, "SettingsPage","");

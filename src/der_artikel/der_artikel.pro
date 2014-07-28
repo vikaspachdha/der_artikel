@@ -41,7 +41,8 @@ SOURCES += \
     thema_updater.cpp \
     main.cpp \
     message_bar.cpp \
-    app_updater.cpp
+    app_updater.cpp \
+    pages/about_page.cpp
 
 HEADERS += \
     algo/easy_result_algo.h \
@@ -66,7 +67,8 @@ HEADERS += \
     thema_updater.h \
     manager.h \
     message_bar.h \
-    app_updater.h
+    app_updater.h \
+    pages/about_page.h
 
 RESOURCES += \
     resources.qrc
@@ -88,7 +90,9 @@ OTHER_FILES += ./der_artikel_de.ts \
     ./der_artikel_en.ts \
     ./der_artikel_hin.ts \
     code_comment_template.txt \
-    qml/der_artikel/utils.js
+    qml/der_artikel/utils.js \
+    qml/der_artikel/License.qml \
+    qml/der_artikel/About.qml
 
 # Add more folders to ship with the application, here
 folder_01.source = languages
@@ -100,8 +104,8 @@ mac {
     LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -llog4qt
     LIBS += -L$${DESTDIR}/$${TARGET}.app/Contents/MacOS -laes
 } else {
-    LIBS += -L$$DESTDIR -llog4Qt
-    LIBS += -L$$DESTDIR -laes
+    LIBS += -L$${DESTDIR} -llog4qt
+    LIBS += -L$${DESTDIR} -laes
 }
 
 # Copy log4qt files to build dir

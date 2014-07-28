@@ -116,9 +116,14 @@
         <file>resources/open.png</file>
         <file>qml/der_artikel/utils.js</file>
         <file>resources/fonts/akshar.ttf</file>
-        <file>resources/stock_themas/Body.AKL</file>
-        <file>resources/stock_themas/Family.AKL</file>
-        <file>resources/stock_themas/Stationery.AKL</file>
         <file>resources/stock_themas/index.csv</file>
+        <file>resources/stock_themas/animals.AKL</file>
+        <file>resources/stock_themas/birds.AKL</file>
+        <file>resources/stock_themas/body.AKL</file>
+        <file>resources/stock_themas/cloths.AKL</file>
+        <file>resources/stock_themas/countryside.AKL</file>
+        <file>qml/der_artikel/About.qml</file>
+        <file>qml/der_artikel/License.qml</file>
+        <file>resources/license.txt</file>
     </qresource>
 </RCC>

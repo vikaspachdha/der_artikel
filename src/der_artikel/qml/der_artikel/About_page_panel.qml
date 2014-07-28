@@ -6,9 +6,51 @@ Page_panel
     page_id:Manager.ABOUT_PAGE
 
     Label {
-        id: option_lbl
+        id: info_lbl
         anchors.top: parent.top
         anchors.topMargin: 2
+        anchors.left: parent.left
+        anchors.leftMargin: 2
+        anchors.right: parent.right
+        anchors.rightMargin: 2
+        text_h_alignment: Text.AlignHCenter
+        text: qsTr("Info") + settings.i18n_empty_string
+    }
+
+    Column {
+        id: about_level_col
+        anchors.top: info_lbl.bottom
+        anchors.topMargin: 6
+        anchors.left: parent.left
+        anchors.leftMargin: 4
+        anchors.right: parent.right
+        anchors.rightMargin: 4
+        spacing: 6
+
+        Button {
+            id:about_btn
+            width:parent.width
+            buttonText:qsTr("About") +settings.i18n_empty_string
+            text_h_alignment: Text.AlignHCenter
+            onActivated: {
+                about_page_instance.sub_page_type = AboutPage.ABOUT
+            }
+        }
+        Button {
+            id:license_btn
+            width:parent.width
+            buttonText:qsTr("License") +settings.i18n_empty_string
+            text_h_alignment: Text.AlignHCenter
+            onActivated: {
+                about_page_instance.sub_page_type = AboutPage.LICENSE
+            }
+        }
+    }
+
+    Label {
+        id: option_lbl
+        anchors.top: about_level_col.bottom
+        anchors.topMargin: 20
         anchors.left: parent.left
         anchors.leftMargin: 2
         anchors.right: parent.right
@@ -18,7 +60,7 @@ Page_panel
     }
 
     Column {
-        id: about_level_col
+        id: update_level_col
         anchors.top: option_lbl.bottom
         anchors.topMargin: 6
         anchors.left: parent.left
@@ -26,7 +68,6 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 4
         spacing: 6
-
         Button {
             id:replay_btn
             width:parent.width
@@ -46,6 +87,8 @@ Page_panel
                 themaUpdater.checkUpdate();
             }
         }
+
+
     }
 
     Connections {

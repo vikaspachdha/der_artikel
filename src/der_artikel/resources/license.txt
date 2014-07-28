@@ -1,0 +1,24 @@
+Der Artikel SOFTWARE LICENSE AGREEMENT
+
+This is a legal agreement between you (either an individual or an entity) and owners of "Der Artikel". By installing the enclosed software, you are agreeing to be bound by the terms of this Agreement.
+
+LICENSE
+1. GRANT OF LICENSE TO USE. Der Artikel that accompanies this license is referred to herein as "SOFTWARE.". The owner reserves all rights not expressly granted.
+
+2. UPDATES. Upon receipt of future updates of the SOFTWARE(an "UPDATE"), you may use or transfer the UPDATE only in conjunction with your then-existing SOFTWARE. The SOFTWARE and all UPDATES (including bug fixes and error corrections) shall be provided to you and are licensed as a single product, and the UPDATES may not be separated from the SOFTWARE.
+
+3. COPYRIGHT. The SOFTWARE must be treated like any other copyrighted material (e.g., a book or musical recording). You may not use or copy the SOFTWARE or any accompanying written materials for any purposes other than what is described in this Agreement.
+
+4. OTHER RESTRICTIONS. This is a free software and you may not rent, sell or lease the SOFTWARE or the data used in the software on a temporary or a permanent basis. You may not reverse-engineer, decompile, or disassemble the SOFTWARE. However the data used with the software may or may not be free.
+
+5. REDISTRIBUTABLE CODE. The SOFTWARE is open source and released under GPL and LGPL license. The copy of the LICENSE can be found under the installation directory. The source of the software can be accessed from https://github.com/vikaspachdha/der_artikel.git
+
+6. SOURCE CODE. You may re-distribute the source code in conformance with LGPL License terms. The copy of the LICENSE can be found under the installation directory.
+
+LIMITED WARRANTY
+
+NO WARRANTIES. The SOFTWARE and the data used in the software and any related documentation is provided "as is" without warranty of any kind, either express or implied, including, without limitation, the implied warranties or merchantability or fitness for a particular purpose. The entire risk arising out of use or performance of the SOFTWARE remains with you.
+
+NO LIABILITY FOR CONSEQUENTIAL DAMAGES. In no event shall Der Artikel, its owners or you be liable for any damages whatsoever (including, without limitation, damages for loss of business profits, business interruptions, loss of business information, or any other pecuniary loss) arising out of the use or inability to use Der Artikel, even if such party has been advised of the possibility of such damages.
+
+This agreement is protected by copyright laws and international treaty provisions. If you do not agree to the terms of the license agreement, you are not allowed to use this product or any part of it. Should you have any questions concerning this product, contact mail@derartikel.com
