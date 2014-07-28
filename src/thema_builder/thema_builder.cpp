@@ -769,9 +769,9 @@ void ThemaBuilder_C::deleteItem(QListWidgetItem *item)
 QString ThemaBuilder_C::UserName()
 {
     QString user_name;
-    user_name = getenv("USER");
+    user_name = qgetenv("USER");
     if(user_name.isEmpty()) {
-        user_name = getenv("USERNAME");
+        user_name = qgetenv("USERNAME");
     }
     if(user_name.isEmpty()) {
         user_name = "Anonymous Andy";
