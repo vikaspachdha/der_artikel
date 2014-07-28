@@ -28,10 +28,10 @@ Flickable {
 </p><p>2. Correct article gains experience points. \
 </p><p>3. Incorrect article shall \
 result into experience points deduction. Magnitude of the deduction shall depend on the \
-game level selected for gamplay. \
+game level selected for gameplay. \
 </p><p>4. Unplayed words may \
 result into experience points deduction. Magnitude of the deduction shall depend on the \
-game level selected for gamplay. \
+game level selected for gameplay. \
 </p><p>5. Gaining points changes the state of the thema. \
 <table border=\"1\"> \
 <tr> \
