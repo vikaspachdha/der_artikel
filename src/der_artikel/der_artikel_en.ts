@@ -2,11 +2,20 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en_US" sourcelanguage="en_US">
 <context>
-    <name>About_page</name>
+    <name>About</name>
     <message>
-        <location filename="qml/der_artikel/About_page.qml" line="27"/>
+        <location filename="qml/der_artikel/About.qml" line="18"/>
         <source>Version
 </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>AboutPage_C</name>
+    <message>
+        <location filename="pages/about_page.cpp" line="60"/>
+        <source>License file is unavailable.</source>
+        <oldsource>License file unvailable.</oldsource>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -14,73 +23,88 @@
     <name>About_page_panel</name>
     <message>
         <location filename="qml/der_artikel/About_page_panel.qml" line="17"/>
+        <source>Info</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="33"/>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="42"/>
+        <source>License</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="59"/>
         <source>Update</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="34"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="75"/>
         <source>App</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="43"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="84"/>
         <source>Themas</source>
         <oldsource>Update themas</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="56"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="99"/>
         <source>App update...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="61"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="104"/>
         <source>No Update Available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="62"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="105"/>
         <source>You are running latest version.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="64"/>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="72"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="107"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="115"/>
         <source>Ok</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="69"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="112"/>
         <source>Update Error.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="70"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="113"/>
         <source>Please try later.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="76"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="119"/>
         <source>Update available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="77"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="120"/>
         <source>Do you want to download the latest version?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="78"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="121"/>
         <source>Yes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="79"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="122"/>
         <source>No</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="101"/>
+        <location filename="qml/der_artikel/About_page_panel.qml" line="144"/>
         <source>Updating thema</source>
         <translation type="unfinished"></translation>
     </message>
@@ -299,13 +323,13 @@ Change in background color of word confirms article assignment. The user must as
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="408"/>
+        <location filename="manager.cpp" line="409"/>
         <source>Do you realy want to quit?</source>
         <oldsource>Do you realy want to quit ?</oldsource>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="428"/>
+        <location filename="manager.cpp" line="430"/>
         <source>Loading installed themas.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -459,8 +483,8 @@ Visit vikaspachdha.com for alternate contact</oldsource>
     <name>Rules_help</name>
     <message>
         <location filename="qml/der_artikel/Rules_help.qml" line="9"/>
-        <source>&lt;p&gt;1.Time allocation for a gameplay depends on the game level selected. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Time (secs)&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;words-count x 4&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;words-count x 3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;words-count x 2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;2. Correct article gains experience points. &lt;/p&gt;&lt;p&gt;3. Incorrect article shall result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gamplay. &lt;/p&gt;&lt;p&gt;4. Unplayed words may result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gamplay. &lt;/p&gt;&lt;p&gt;5. Gaining points changes the state of the thema. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Experience&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;100&lt;/td&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;500&lt;/td&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;6. A thema shall lose points if experience points gain does not occur within 24 hrs and the magnitude of points deduction shall depend on the current state of thema. &lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Experience deduction&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;td&gt;2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;CAUTION: Points are deducted progressively. i.e if your experience points are 500 and you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.&lt;/p&gt;</source>
-        <oldsource>&lt;p&gt;1.Time allocation for a gameplay depends on the game level selected. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Time (secs)&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;words-count x 4&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;words-count x 3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;words-count x 2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;2. Correct article gains experience points.&lt;br&gt;&lt;br&gt;3. Incorrect article shall result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gamplay.&lt;br&gt;&lt;br&gt;4. Unplayed words may result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gamplay.&lt;br&gt;&lt;br&gt;5. Gaining points changes the state of the thema. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Experience&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;100&lt;/td&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;500&lt;/td&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;6. A thema shall lose points if experience points gain does not occur within 24 hrs and the magnitude of points deduction shall depend on the current state of thema. &lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Experience deduction&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;td&gt;2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;CAUTION: Points are deducted progressively. i.e if your experience points are 500 and you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.&lt;/p&gt;</oldsource>
+        <source>&lt;p&gt;1.Time allocation for a gameplay depends on the game level selected. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Time (secs)&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;words-count x 4&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;words-count x 3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;words-count x 2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;2. Correct article gains experience points. &lt;/p&gt;&lt;p&gt;3. Incorrect article shall result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gameplay. &lt;/p&gt;&lt;p&gt;4. Unplayed words may result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gameplay. &lt;/p&gt;&lt;p&gt;5. Gaining points changes the state of the thema. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Experience&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;100&lt;/td&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;500&lt;/td&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;6. A thema shall lose points if experience points gain does not occur within 24 hrs and the magnitude of points deduction shall depend on the current state of thema. &lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Experience deduction&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;td&gt;2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;CAUTION: Points are deducted progressively. i.e if your experience points are 500 and you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.&lt;/p&gt;</source>
+        <oldsource>&lt;p&gt;1.Time allocation for a gameplay depends on the game level selected. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Time (secs)&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;words-count x 4&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;words-count x 3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;words-count x 2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;2. Correct article gains experience points.&lt;br&gt;&lt;br&gt;3. Incorrect article shall result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gameplay.&lt;br&gt;&lt;br&gt;4. Unplayed words may result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gameplay.&lt;br&gt;&lt;br&gt;5. Gaining points changes the state of the thema. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Experience&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;100&lt;/td&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;500&lt;/td&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;6. A thema shall lose points if experience points gain does not occur within 24 hrs and the magnitude of points deduction shall depend on the current state of thema. &lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Experience deduction&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;td&gt;2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;CAUTION: Points are deducted progressively. i.e if your experience points are 500 and you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.&lt;/p&gt;</oldsource>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -620,49 +644,49 @@ Visit vikaspachdha.com for alternate contact</oldsource>
 <context>
     <name>ThemaUpdater_C</name>
     <message>
-        <location filename="thema_updater.cpp" line="77"/>
+        <location filename="thema_updater.cpp" line="80"/>
         <source>Checking for thema update.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="86"/>
+        <location filename="thema_updater.cpp" line="90"/>
         <source>Invalid url</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="99"/>
+        <location filename="thema_updater.cpp" line="103"/>
         <source>Parsing server data.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="109"/>
+        <location filename="thema_updater.cpp" line="113"/>
         <source>Parsing error. Aborting update.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="123"/>
+        <location filename="thema_updater.cpp" line="127"/>
         <source>Network issue. Aborting update.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="193"/>
+        <location filename="thema_updater.cpp" line="197"/>
         <source>Downloading thema files.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="196"/>
+        <location filename="thema_updater.cpp" line="200"/>
         <source>Update finished.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="202"/>
+        <location filename="thema_updater.cpp" line="206"/>
         <source>No update is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="216"/>
-        <location filename="thema_updater.cpp" line="292"/>
-        <location filename="thema_updater.cpp" line="303"/>
+        <location filename="thema_updater.cpp" line="220"/>
+        <location filename="thema_updater.cpp" line="298"/>
+        <location filename="thema_updater.cpp" line="309"/>
         <source>Comparing current thema&apos;s.</source>
         <translation type="unfinished"></translation>
     </message>
