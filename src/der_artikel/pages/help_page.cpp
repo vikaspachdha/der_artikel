@@ -105,25 +105,25 @@ QString HelpPage_C::title() const
  ******************************************************************************/
 QString HelpPage_C::subPage() const
 {
-    QString title = "";
+    QString sub_page = "";
     switch(_sub_page_type) {
     case GENERAL:
-        title = "General_help.qml";
+        sub_page = "General_help.qml";
         break;
     case RULES:
-        title = "Rules_help.qml";
+        sub_page = "Rules_help.qml";
         break;
     case SCORING:
-        title = "Scoring_help.qml";
+        sub_page = "Scoring_help.qml";
         break;
     case OTHERS:
-        title = "Others_help.qml";
+        sub_page = "Others_help.qml";
         break;
     default:
         break;
     }
 
-    return title;
+    return sub_page;
 }
 
 //******************************************************************************
