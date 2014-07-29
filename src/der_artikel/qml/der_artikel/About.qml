@@ -45,7 +45,7 @@ entire risk arising out of use or performance of the SOFTWARE remains with you."
         Text {
             id: developer_text
             anchors.top: content_text.bottom
-            anchors.topMargin: 10
+            anchors.topMargin: 30
             anchors.left: parent.left
             anchors.right: parent.right
             text:"
@@ -60,7 +60,6 @@ entire risk arising out of use or performance of the SOFTWARE remains with you."
             font.family: regular_font.name
             color:color_palette.color_font_01
             font.pixelSize: normalTextSize
-            horizontalAlignment: Text.AlignHCenter
         }
     }
 
