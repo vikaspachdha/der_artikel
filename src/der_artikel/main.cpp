@@ -164,7 +164,7 @@ int main(int argc, char *argv[])
     AppUpdater_C app_updater(manager);
 
     // Copy the stock thema files.
-    if(manager.appSettings()->copyStockThema()) {
+    if(manager.appSettings()->isFirstRun()) {
         thema_updater.checkUpdate(":/res/resources/stock_themas");
     }
 

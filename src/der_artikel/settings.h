@@ -30,6 +30,7 @@
 
 // System includes
 #include <QObject>
+#include <QDateTime>
 #include <QHash>
 #include <QUrl>
 
@@ -58,6 +59,8 @@ class Settings_C : public QObject
     Q_PROPERTY(int max_word_msg_time READ maxWordMsgTime CONSTANT)
     Q_PROPERTY(int message_anim_time READ messageAnimTime CONSTANT)
     Q_PROPERTY(QString thema_remote_path READ themaRemotePath WRITE setThemaRemotePath NOTIFY themaRemotePathChanged)
+    Q_PROPERTY(bool thema_auto_update READ themaAutoUpdate WRITE setThemaAutoUpdate NOTIFY themaAutoUpdateChanged)
+    Q_PROPERTY(bool startup_thema_update READ startupThemaUpdate CONSTANT)
     Q_PROPERTY(bool enable_effects READ enableEffects CONSTANT)
     Q_ENUMS(Language_TP)
 
@@ -108,7 +111,13 @@ public:
     QString versionInfoPath() const { return "www.vystosi.com/version_info.xml"; }
 
     //! Copy stock thema flag.
-    bool copyStockThema() const { return _copy_stock_themas; }
+    bool isFirstRun() const { return _first_run; }
+
+    void setThemaAutoUpdate(bool auto_update);
+    //! Thema auto update flag.
+    bool themaAutoUpdate() const { return _thema_auto_update; }
+
+    bool startupThemaUpdate() const { return _startup_thema_update; }
 
     QString platformId() const;
 
@@ -122,6 +131,10 @@ signals:
     void soundLevelChanged();
     void wordMsgTimeChanged();
     void themaRemotePathChanged();
+    void themaAutoUpdateChanged();
+
+private slots:
+    void disableThemaAutoUpdate();
 
 private:
     void updateLangauge();
@@ -141,8 +154,14 @@ private:
     int _word_message_time;
     //! Remote thema file's folder.
     QString _thema_remote_path;
-    //! Flag to copy stock thema files.
-    bool _copy_stock_themas;
+    //! Flag for first run of application.
+    bool _first_run;
+    //! Auto update thema files.
+    bool _thema_auto_update;
+    //! Flag to check whether fortnightly thema update is done.
+    QDateTime _thema_auto_update_date;
+    //!
+    bool _startup_thema_update;
 };
 
 #endif // SETTINGS_H

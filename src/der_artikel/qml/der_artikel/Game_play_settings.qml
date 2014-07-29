@@ -90,4 +90,26 @@ Item {
         }
     }
 
+    Label {
+        id:auto_update_lbl
+        anchors.left: parent.left
+        anchors.leftMargin: 8
+        anchors.top:url_input_rect.bottom
+        anchors.topMargin: 20
+        text_h_alignment: Text.AlignLeft
+        text:qsTr("Update thema files automaticaly every fortnight.") + settings.i18n_empty_string
+    }
+
+    Button {
+        id:auto_update_btn
+        anchors{top:auto_update_lbl.bottom;left:parent.left;leftMargin: 8}
+        text_h_alignment: Text.AlignHCenter
+        isDown: settings.thema_auto_update === true
+        buttonText: qsTr("Auto update") + settings.i18n_empty_string
+        onActivated: {
+            settings.thema_auto_update = !settings.thema_auto_update
+        }
+
+    }
+
 }

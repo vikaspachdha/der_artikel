@@ -13,6 +13,9 @@ Item {
             onRunningChanged: {
                 if(!running) {
                     startup_screen.visible = false
+                    if(settings.startup_thema_update) {
+                        themaUpdater.checkUpdate()
+                    }
                     manager.loadDefaultThemas();
                     startup_screen.destroy()
                 }
