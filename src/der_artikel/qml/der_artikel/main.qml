@@ -21,6 +21,7 @@ Window{
     property int subCommandTextSize : 11
     property int normalTextSize : 14
     property int nounTextSize: 24
+    property var startup_screen
 
 
     // Color palettes
@@ -205,8 +206,11 @@ Window{
 
         // self destroying statrtup screen
         var startup_component = Qt.createComponent("Startup_screen.qml");
+        console.log(startup_component.status + startup_component.errorString())
         if(startup_component.status === Component.Ready) {
-            startup_component.createObject(rootItem);
+            console.log("createObject")
+            startup_screen = startup_component.createObject(rootItem);
+            console.log(startup_screen)
         }
     }
 
@@ -247,6 +251,11 @@ Window{
             break;
         }
         return text;
+    }
+
+    function removeStartupScreen()
+    {
+        startup_screen.hideStartup();
     }
 }
 

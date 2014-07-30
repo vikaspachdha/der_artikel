@@ -38,6 +38,7 @@
 #include "data/article.h"
 
 // Forward declarations
+class AppUpdater_C;
 class ImageProvider_C;
 class Page_I;
 class QQmlContext;
@@ -47,6 +48,7 @@ class ResultAlgo_I;
 class Settings_C;
 class Thema_C;
 class ThemaModel_C;
+class ThemaUpdater_C;
 class Word_C;
 
 
@@ -141,6 +143,12 @@ public:
     //! Returns thema model instance.
     ThemaModel_C* themaModel() {return _thema_model; }
 
+    //! Returns thema updater instance.
+    ThemaUpdater_C* themaUpdater() {return _thema_updater; }
+
+    //! Returns app updater instance.
+    AppUpdater_C* appUpdater() {return _app_updater; }
+
     bool isThemaSelected() const;
 
     //! Returns the version string.
@@ -157,6 +165,9 @@ public:
 
     Q_INVOKABLE void setTitleItem(PageId_TP page_id, QQuickItem* item);
     QQuickItem* titleItem(PageId_TP page_id);
+
+    Q_INVOKABLE void onStartup();
+    Q_INVOKABLE void onStartupCompleted();
 
     Q_INVOKABLE void quit();
 
@@ -181,6 +192,7 @@ signals:
 
 private:
     void initPages();
+    void finishStartup();
 
 private:
     //! Application settings
@@ -203,6 +215,12 @@ private:
     GameLevel _game_level;
     //! Application image provider
     ImageProvider_C* _image_provider;
+    //! Thema updater instance.
+    ThemaUpdater_C* _thema_updater;
+    //! App updater instance.
+    AppUpdater_C* _app_updater;
+    //!
+    bool _starting_up;
 };
 
 #endif // MANAGER_H

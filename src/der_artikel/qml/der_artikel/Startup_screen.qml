@@ -13,11 +13,8 @@ Item {
             onRunningChanged: {
                 if(!running) {
                     startup_screen.visible = false
-                    if(settings.startup_thema_update) {
-                        themaUpdater.checkUpdate()
-                    }
-                    manager.loadDefaultThemas();
-                    startup_screen.destroy()
+                    manager.onStartupCompleted();
+                    //startup_screen.destroy()
                 }
             }
         }
@@ -57,17 +54,17 @@ Item {
         font.pixelSize: 42
     }
 
-    Timer {
-        id: hide_timer
-        interval: startup_time
-        onTriggered: {
-            background_rect.radius=6
-            startup_screen.anchors.bottomMargin = startup_screen.parent.height - 76
-            startup_screen.anchors.margins = 4
-        }
+    Component.onCompleted: {
+        console.log("Startup screen created.")
+        manager.onStartup();
+    }
+    Component.onDestruction: {
+        console.log("Startup screen destroyed.")
     }
 
-    Component.onCompleted: {
-        hide_timer.start()
+    function hideStartup() {
+        background_rect.radius=6
+        startup_screen.anchors.bottomMargin = startup_screen.parent.height - 76
+        startup_screen.anchors.margins = 4
     }
 }

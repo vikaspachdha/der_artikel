@@ -44,6 +44,7 @@
 #include "log4qt/log_defines.h"
 
 // Project includes
+#include "app_updater.h"
 #include "image_provider.h"
 #include "message_bar.h"
 #include "pages/about_page.h"
@@ -53,6 +54,7 @@
 #include "pages/thema_page.h"
 #include "pages/words_page.h"
 #include "settings.h"
+#include "thema_updater.h"
 
 //******************************************************************************
 /*! \brief Construtor.
@@ -71,9 +73,14 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _current_result(0),
     _thema_model(0),
     _game_level(EASY),
-    _image_provider(new ImageProvider_C)
+    _image_provider(new ImageProvider_C),
+    _starting_up(false)
 {    
     LOG_DEBUG("Manager_C::Construtor");
+
+    _thema_updater = new ThemaUpdater_C(*this);
+    _app_updater = new AppUpdater_C(*this);
+
     _settings = new Settings_C(this);
     _current_result = new Result_C(this);
 
@@ -106,6 +113,9 @@ Manager_C::~Manager_C()
     }
     _page_hash.clear();
     _page_items_hash.clear();
+
+    delete _thema_updater;
+    delete _app_updater;
 }
 
 //******************************************************************************
@@ -387,6 +397,29 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
     return item;
 }
 
+void Manager_C::onStartup()
+{
+    LOG_INFO("Starting up");
+    Q_ASSERT(_settings);
+    Q_ASSERT(_thema_updater);
+    _starting_up = true;
+    // Copy the stock thema files.
+    if(_settings->isFirstRun()) {
+        //_thema_updater->checkUpdate(":/res/resources/stock_themas");
+    }
+
+    if(_settings->startupThemaUpdate()) {
+        //_thema_updater->checkUpdate();
+    }
+    loadDefaultThemas();
+}
+
+void Manager_C::onStartupCompleted()
+{
+    LOG_INFO("Startup completed");
+    _starting_up = false;
+}
+
 //******************************************************************************
 /*! \brief Quits the application.
  *
@@ -394,6 +427,7 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
  ******************************************************************************/
 void Manager_C::quit()
 {
+    qDebug()<<"test";
     // https://bugreports.qt-project.org/browse/QTBUG-38729
     QTimer::singleShot(0,this,SLOT(quitPrivate()));
 }
@@ -426,6 +460,9 @@ void Manager_C::loadDefaultThemas()
     thema_loader->setRootThemaDir(_settings->defaultThemaDirPath());
     connect(thema_loader, SIGNAL(themaLoaded(Thema_C*)), SLOT(onNewthemaLoaded(Thema_C*)) );
     connect(thema_loader,SIGNAL(finishedLoading()),&MessageBar_C::instance(),SLOT(closeMsg()));
+    if(_starting_up) {
+        connect(thema_loader,&ThemaLoader_C::finishedLoading,this,&Manager_C::finishStartup);
+    }
     connect(thema_loader,SIGNAL(updateProgress(double)),SLOT(onThemaLoadingProgress(double)));
     MessageBar_C::showMsgAsync(tr("Loading installed themas."),"",2000);
     thema_loader->startLoading();
@@ -445,5 +482,11 @@ void Manager_C::initPages()
     _page_hash[STATS_PAGE] = new StatsPage_C(*this,_root_context,this);
     _page_hash[SETTINGS_PAGE] = new SettingsPage_C(*this,_root_context,this);
     _page_hash[THEMA_PAGE] = new ThemaPage_C(*this,this);
+}
+
+void Manager_C::finishStartup()
+{
+    LOG_INFO("finishing Startup");
+    QMetaObject::invokeMethod(_root_item,"removeStartupScreen");
 }
 

@@ -160,17 +160,10 @@ int main(int argc, char *argv[])
     //
 
     Manager_C manager(*root_context);
-    ThemaUpdater_C thema_updater(manager);
-    AppUpdater_C app_updater(manager);
-
-    // Copy the stock thema files.
-    if(manager.appSettings()->isFirstRun()) {
-        thema_updater.checkUpdate(":/res/resources/stock_themas");
-    }
 
     root_context->setContextProperty("manager", &manager);
-    root_context->setContextProperty("themaUpdater", &thema_updater);
-    root_context->setContextProperty("appUpdater", &app_updater);
+    root_context->setContextProperty("themaUpdater", manager.themaUpdater());
+    root_context->setContextProperty("appUpdater", manager.appUpdater());
     root_context->setContextProperty("currentResult", manager.currentResult());
     root_context->setContextProperty("themaModel", manager.themaModel());
     root_context->setContextProperty("settings", manager.appSettings());
