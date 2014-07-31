@@ -73,13 +73,25 @@ void FileDownloader_C::startDownload(QUrl url)
 }
 
 //******************************************************************************
+/*! \brief Returns the downloading state.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return bool : True if download is in progress, false otherwise.
+ ******************************************************************************/
+bool FileDownloader_C::isDownloading() const
+{
+    return (_network_reply && !_network_reply->isFinished()) ? true : false;
+}
+
+//******************************************************************************
 /*! \brief Stops the on going file download.
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
 void FileDownloader_C::stopDownload()
 {
-    if(_network_reply && !_network_reply->isFinished()) {
+    if(isDownloading()) {
         LOG_INFO("File downloader :: Stopping file download");
         _network_reply->abort();
         _network_reply->deleteLater();

@@ -51,6 +51,7 @@ public:
 
 public:
     void startDownload(QUrl url);
+    bool isDownloading() const;
     void stopDownload();
 
 private slots:
