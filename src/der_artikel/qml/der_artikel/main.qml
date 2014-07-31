@@ -180,17 +180,14 @@ Window{
 
     Connections {
         target:themaUpdater
-        onUpdateResponse: {
+        onUpdateStateChanged: {
 
-            switch(response_code) {
+            switch(update_state) {
 
                 case ThemaUpdater.UPDATE_STARTED:
                     messageBarInstance.showMsgAsync(qsTr("Updating thema"),"");
                     break;
 
-                case ThemaUpdater.UPDATE_NOT_AVAILABLE:
-                case ThemaUpdater.UPDATE_ERROR:
-                case ThemaUpdater.UPDATE_ABORTED:
                 case ThemaUpdater.UPDATE_FINISHED:
                     messageBarInstance.closeMsg()
                     break;

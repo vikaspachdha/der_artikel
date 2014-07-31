@@ -51,18 +51,19 @@ class Thema_C;
 class ThemaUpdater_C : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(UpdateResponse_TP)
+    Q_ENUMS(ThemaUpdateState_TP)
 
 public:
 
     //! Update response codes
-    enum UpdateResponse_TP {
+    enum ThemaUpdateState_TP {
         UPDATE_STARTED = 1, //! Update process started.
         UPDATE_AVAILABLE, //! Update is available.
         UPDATE_NOT_AVAILABLE, //! Update is not available.
         UPDATE_ERROR, //! Error encountered while updating.
         UPDATE_FINISHED, //! Update finished.
-        UPDATE_ABORTED //! Update process is aborted.
+        UPDATE_ABORTED, //! Update process is aborted.
+        INVALID //! Update process is in invalid or virgin state.
     };
 
     //! Remote file info strcture. Describes remote thema file information.
@@ -78,6 +79,9 @@ public:
 public:
     Q_INVOKABLE void checkUpdate(QString remote_path = "");
 
+    ThemaUpdateState_TP updateState() const { return _state; }
+    bool isProcessComplete();
+
 private slots:
     void onIndexFileDownloadFinished();
     void onFileDownloadAborted();
@@ -86,8 +90,10 @@ private slots:
     void onThemaLoadProgress(double progress);
 
 signals:
-    //! Emitted when a update response is received.
-    void updateResponse(UpdateResponse_TP response_code);
+    //! Emitted when a update state is changed.
+    void updateStateChanged(ThemaUpdateState_TP update_state);
+    //! Emitted when thema update is finished.
+    void updateFinished();
 
     //! Emitted to notify progress. String provides the information of update stage
     //! and value is progess that ranges between 0 to 1 where 1 is 100 %.
@@ -95,6 +101,7 @@ signals:
 
 private:
     bool ParseIndexFile(QByteArray file_data, QHash<QString, RemoteFileInfo> &parsed_data);
+    void setUpdateState(ThemaUpdateState_TP new_state);
     bool executeOperations();
     void buildLocalData();
     void reset();
@@ -112,6 +119,8 @@ private:
     QString _remote_thema_root_path;
     //! Update progress.
     double _progress;
+    //! Current state of update.
+    ThemaUpdateState_TP _state;
 };
 
 #endif // THEMA_UPDATER_H

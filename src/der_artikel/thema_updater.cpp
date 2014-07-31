@@ -59,7 +59,8 @@
 ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
     QObject(parent),
     _manager(manager),
-    _progress(0.0)
+    _progress(0.0),
+    _state(INVALID)
 {
     connect(&_file_downloader, SIGNAL(downloadFinished()), this, SLOT(onIndexFileDownloadFinished()));
     connect(&_file_downloader, SIGNAL(downloadAborted()), this, SLOT(onFileDownloadAborted()));
@@ -76,7 +77,7 @@ ThemaUpdater_C::ThemaUpdater_C(Manager_C &manager, QObject *parent) :
 void ThemaUpdater_C::checkUpdate(QString remote_path)
 {
     _progress = 0.0;
-    emit updateResponse(UPDATE_STARTED);
+    setUpdateState(UPDATE_STARTED);
     emit updateProgress(tr("Checking for thema update."), _progress);
     reset();
     _remote_thema_root_path = remote_path.isEmpty() ? _manager.appSettings()->themaRemotePath() : remote_path;
@@ -88,8 +89,21 @@ void ThemaUpdater_C::checkUpdate(QString remote_path)
         LOG_INFO(QString("Thema updater :: Cannot start update from %1. Invalid url").arg(url.toString()));
         _progress = 1.0;
         emit updateProgress(tr("Invalid url"), _progress);
-        emit updateResponse(UPDATE_ERROR);
+        setUpdateState(UPDATE_ERROR);
+        setUpdateState(UPDATE_FINISHED);
     }
+}
+
+//******************************************************************************
+/*! \brief Returns true if thema update process is completed.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return bool : True if update is finished. False otherwise.
+ ******************************************************************************/
+bool ThemaUpdater_C::isProcessComplete()
+{
+    return _state == UPDATE_FINISHED ? true : false;
 }
 
 //******************************************************************************
@@ -111,7 +125,8 @@ void ThemaUpdater_C::onIndexFileDownloadFinished()
     } else {
         _progress = 1.0;
         emit updateProgress(tr("Parsing error. Aborting update."), _progress);
-        emit updateResponse(UPDATE_ERROR);
+        setUpdateState(UPDATE_ERROR);
+        setUpdateState(UPDATE_FINISHED);
     }
 }
 
@@ -125,7 +140,8 @@ void ThemaUpdater_C::onFileDownloadAborted()
     LOG_WARN("Thema updater :: File download aborted.");
     _progress = 1.0;
     emit updateProgress(tr("Network issue. Aborting update."), _progress);
-    emit updateResponse(UPDATE_ABORTED);
+    setUpdateState(UPDATE_ABORTED);
+    setUpdateState(UPDATE_FINISHED);
 }
 
 //******************************************************************************
@@ -198,13 +214,14 @@ bool ThemaUpdater_C::executeOperations()
         }
         _progress = 1.0;
         updateProgress(tr("Update finished."),_progress);
-        emit updateResponse(UPDATE_FINISHED);
+        setUpdateState(UPDATE_FINISHED);
         _manager.loadDefaultThemas();
     } else {
         LOG_WARN("Thema updater :: No operations to execute.");
         _progress = 1.0;
         updateProgress(tr("No update is available."),_progress);
-        emit updateResponse(UPDATE_NOT_AVAILABLE);
+        setUpdateState(UPDATE_NOT_AVAILABLE);
+        setUpdateState(UPDATE_FINISHED);
     }
     return success;
 }
@@ -307,4 +324,23 @@ void ThemaUpdater_C::onBuildLocalDataFinished()
 void ThemaUpdater_C::onThemaLoadProgress(double progress)
 {
     emit updateProgress(tr("Comparing current thema's."), _progress + (progress*0.20));
+}
+
+//******************************************************************************
+/*! \brief  Helper method to set update state.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] new_state : New state to set
+ ******************************************************************************/
+void ThemaUpdater_C::setUpdateState(ThemaUpdateState_TP new_state)
+{
+    if(_state != new_state) {
+        _state = new_state;
+        LOG_INFO(QString("Thema updater :: Update state changed : %1").arg(_state));
+        emit updateStateChanged(_state);
+        if(_state == UPDATE_FINISHED) {
+            emit updateFinished();
+        }
+    }
 }
