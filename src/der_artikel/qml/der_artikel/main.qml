@@ -135,8 +135,8 @@ Window{
 
     Connections {
         target:appUpdater
-        onUpdateResponse: {
-            switch(response_code) {
+        onUpdateStateChanged: {
+            switch(update_state) {
                 case AppUpdater.UPDATE_STARTED:
                     messageBarInstance.showMsgAsync(qsTr("App update..."),"");
                     break;
@@ -164,6 +164,8 @@ Window{
                                                qsTr("No"));
                     if(response === MessageBar.ACCEPTED) {
                         appUpdater.startUpdate();
+                    } else {
+                        appUpdater.abortUpdate();
                     }
 
                     break;

@@ -52,7 +52,8 @@
 AppUpdater_C::AppUpdater_C(Manager_C &manager, QObject *parent) :
     QObject(parent),
     _manager(manager),
-    _progress(0.0)
+    _progress(0.0),
+    _state(INVALID)
 {
     connect(&_file_downloader, SIGNAL(downloadFinished()), this, SLOT(onVersionFileDownloadFinished()));
     connect(&_file_downloader, SIGNAL(downloadAborted()), this, SLOT(onFileDownloadAborted()));
@@ -67,7 +68,7 @@ void AppUpdater_C::checkUpdate()
 {
     _progress = 0.0;
     _download_url = QUrl();
-    emit updateResponse(UPDATE_STARTED);
+    setUpdateState(UPDATE_STARTED);
     emit updateProgress(tr("Checking for app update."), _progress);
     QUrl url = QUrl::fromUserInput(_manager.appSettings()->versionInfoPath());
     if(url.isValid()) {
@@ -77,7 +78,8 @@ void AppUpdater_C::checkUpdate()
         LOG_INFO(QString("APP updater :: Cannot start update from %1. Invalid url").arg(url.toString()));
         _progress = 1.0;
         emit updateProgress(tr("Invalid url"), _progress);
-        emit updateResponse(UPDATE_ERROR);
+        setUpdateState(UPDATE_ERROR);
+        setUpdateState(UPDATE_FINISHED);
     }
 }
 
@@ -91,6 +93,32 @@ void AppUpdater_C::startUpdate()
    if(_download_url.isValid()) {
        QDesktopServices::openUrl(_download_url);
    }
+}
+
+//******************************************************************************
+/*! \brief Aborts app update.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void AppUpdater_C::abortUpdate()
+{
+    if(_file_downloader.isDownloading()) {
+        _file_downloader.stopDownload();
+    }
+    setUpdateState(UPDATE_ABORTED);
+    setUpdateState(UPDATE_FINISHED);
+}
+
+//******************************************************************************
+/*! \brief Returns true if app update process is completed.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return bool : True if update is finished. False otherwise.
+ ******************************************************************************/
+bool AppUpdater_C::isProcessComplete()
+{
+    return _state == UPDATE_FINISHED ? true : false;
 }
 
 //******************************************************************************
@@ -109,11 +137,12 @@ void AppUpdater_C::onVersionFileDownloadFinished()
         _progress = 1.0;
         emit updateProgress(tr("Update available."), _progress);
         _download_url = QUrl::fromUserInput(download_url);
-        emit updateResponse(UPDATE_AVAILABLE);
+        setUpdateState(UPDATE_AVAILABLE);
     } else {
         _progress = 1.0;
         emit updateProgress(tr("No App update available."), _progress);
-        emit updateResponse(UPDATE_NOT_AVAILABLE);
+        setUpdateState(UPDATE_NOT_AVAILABLE);
+        setUpdateState(UPDATE_FINISHED);
     }
 }
 
@@ -127,7 +156,8 @@ void AppUpdater_C::onFileDownloadAborted()
     LOG_WARN("App updater :: File download aborted.");
     _progress = 1.0;
     emit updateProgress(tr("Network issue. Aborting update."), _progress);
-    emit updateResponse(UPDATE_ABORTED);
+    setUpdateState(UPDATE_ABORTED);
+    setUpdateState(UPDATE_FINISHED);
 }
 
 //******************************************************************************
@@ -181,6 +211,25 @@ bool AppUpdater_C::parseVersionFile(QByteArray file_data, QString& download_url)
 
     }
     return success;
+}
+
+//******************************************************************************
+/*! \brief  Helper method to set update state.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] new_state : New state to set
+ ******************************************************************************/
+void AppUpdater_C::setUpdateState(AppUpdater_C::UpdateState_TP new_state)
+{
+    if(_state != new_state) {
+        _state = new_state;
+        LOG_INFO(QString("App updater :: Update state changed : %1").arg(_state));
+        emit updateStateChanged(_state);
+        if(_state == UPDATE_FINISHED) {
+            emit updateFinished();
+        }
+    }
 }
 
 //******************************************************************************

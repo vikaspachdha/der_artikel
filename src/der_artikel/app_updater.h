@@ -51,18 +51,19 @@ class Thema_C;
 class AppUpdater_C : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(UpdateResponse_TP)
+    Q_ENUMS(UpdateState_TP)
 
 public:
 
     //! Update response codes
-    enum UpdateResponse_TP {
+    enum UpdateState_TP {
         UPDATE_STARTED = 1, //! Update process started.
         UPDATE_AVAILABLE, //! Update is available.
         UPDATE_NOT_AVAILABLE, //! Update is not available.
         UPDATE_ERROR, //! Error encountered while updating.
         UPDATE_FINISHED, //! Update finished.
-        UPDATE_ABORTED //! Update process is aborted.
+        UPDATE_ABORTED, //! Update process is aborted.
+        INVALID //! Update process is in invalid or virgin state.
     };
 
 public:
@@ -71,6 +72,11 @@ public:
 public:
     Q_INVOKABLE void checkUpdate();
     Q_INVOKABLE void startUpdate();
+    Q_INVOKABLE void abortUpdate();
+
+    UpdateState_TP updateState() const { return _state; }
+
+    bool isProcessComplete();
 
 private slots:
     void onVersionFileDownloadFinished();
@@ -78,8 +84,10 @@ private slots:
     void onFileLoadProgress(double progress);
 
 signals:
-    //! Emitted when a update response is received.
-    void updateResponse(UpdateResponse_TP response_code);
+    //! Emitted when a update state is changed.
+    void updateStateChanged(UpdateState_TP update_state);
+    //! Emitted when a update is finished.
+    void updateFinished();
 
     //! Emitted to notify progress. String provides the information of update stage
     //! and value is progess that ranges between 0 to 1 where 1 is 100 %.
@@ -87,7 +95,7 @@ signals:
 
 private:
     bool parseVersionFile(QByteArray file_data, QString &download_url);
-
+    void setUpdateState(UpdateState_TP new_state);
 private:
     //! Manager instance reference.
     Manager_C& _manager;
@@ -97,6 +105,8 @@ private:
     double _progress;
     //! update download url.
     QUrl _download_url;
+    //! Current state of update.
+    UpdateState_TP _state;
 };
 
 #endif // APP_UPDATER_H
