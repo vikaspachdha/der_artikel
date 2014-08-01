@@ -160,7 +160,7 @@ private:
     bool _thema_auto_update;
     //! Flag to check whether fortnightly thema update is done.
     QDateTime _thema_auto_update_date;
-    //!
+    //! Flag to update thema files at startup.
     bool _startup_thema_update;
 };
 
