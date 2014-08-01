@@ -2,23 +2,22 @@
 #include "ui_thema_builder.h"
 
 #include <QDomDocument>
-#include <QFileDialog>
-#include "word_list_item.h"
 #include <QFile>
-#include <QShortcut>
+#include <QFileDialog>
+#include <QIntValidator>
 #include <QKeyEvent>
 #include <QMessageBox>
-#include <QDebug>
-#include <QIntValidator>
 #include <QSettings>
+#include <QShortcut>
+#include <QTextStream>
 
-#include "data/thema.h"
-#include "data/common.h"
-#include "data/version.h"
-#include "data/thema_loader.h"
 #include "conflict_dlg.h"
+#include "data/common.h"
+#include "data/thema.h"
+#include "data/thema_loader.h"
+#include "data/version.h"
 #include "log4qt/log_defines.h"
-
+#include "word_list_item.h"
 
 ThemaBuilder_C::ThemaBuilder_C(QWidget *parent) :
     QWidget(parent),
@@ -489,7 +488,6 @@ void ThemaBuilder_C::OnExport()
             }
         } else {
             LOG_WARN(QString("Thema builder :: Cannot export file %1:\n%2.") .arg(save_file).arg(file.errorString()));
-            qDebug()<<QString("cannot write file %1:\n%2.") .arg(save_file) .arg(file.errorString());
         }
     }
 }

@@ -26,7 +26,6 @@
  *
  ******************************************************************************/
 // System includes
-#include <QDebug>
 #include <QDir>
 #include <QDomDocument>
 #include <QFile>

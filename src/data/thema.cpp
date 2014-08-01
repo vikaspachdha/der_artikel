@@ -28,7 +28,6 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QBuffer>
-#include <QDebug>
 
 #include "thema.h"
 #include "version.h"

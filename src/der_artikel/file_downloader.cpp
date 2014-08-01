@@ -27,7 +27,6 @@
  ******************************************************************************/
 
 // System includes
-#include <QDebug>
 #include <QNetworkRequest>
 
 // Interface for this file
