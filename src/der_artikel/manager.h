@@ -70,7 +70,7 @@ class Manager_C : public QObject
     Q_PROPERTY(GameLevel game_level READ gameLevel WRITE setGameLevel NOTIFY gameLevelChanged)
     Q_PROPERTY(bool thema_selected READ isThemaSelected NOTIFY themaSelectionStateChanged)
     Q_PROPERTY(QString version_string READ versionString CONSTANT)
-
+    Q_PROPERTY(bool is_starting_up READ isStartingUp NOTIFY startupFinished)
 public:
 
     //! Pages id's. Every page has an unique id.
@@ -149,6 +149,9 @@ public:
     //! Returns app updater instance.
     AppUpdater_C* appUpdater() {return _app_updater; }
 
+    //! Returns true if app is starting up, false otherwise.
+    bool isStartingUp() const { return _starting_up; }
+
     bool isThemaSelected() const;
 
     //! Returns the version string.
@@ -171,9 +174,11 @@ public:
 
     Q_INVOKABLE void quit();
 
-    Q_INVOKABLE void loadDefaultThemas();
+    void loadDefaultThemas();
 
 private slots:
+    void onStockThemaUpdated();
+    void onthemaFilesUpdated();
     void onNewthemaLoaded(Thema_C* new_thema);
     void onThemaLoadingProgress(double progress);
     void onThemaSelectionChanged();
@@ -189,6 +194,8 @@ signals:
 
     //! Emitted when thema selection state is changed.
     void themaSelectionStateChanged();
+
+    void startupFinished();
 
 private:
     void initPages();
@@ -215,6 +222,8 @@ private:
     GameLevel _game_level;
     //! Application image provider
     ImageProvider_C* _image_provider;
+    //! Stock thema updater instance.
+    ThemaUpdater_C* _stock_thema_updater;
     //! Thema updater instance.
     ThemaUpdater_C* _thema_updater;
     //! App updater instance.

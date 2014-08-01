@@ -181,35 +181,35 @@ Window{
     Connections {
         target:themaUpdater
         onUpdateStateChanged: {
+            if(!manager.is_starting_up) {
+                switch(update_state) {
 
-            switch(update_state) {
+                    case ThemaUpdater.UPDATE_STARTED:
+                        messageBarInstance.showMsgAsync(qsTr("Updating thema"),"");
+                        break;
 
-                case ThemaUpdater.UPDATE_STARTED:
-                    messageBarInstance.showMsgAsync(qsTr("Updating thema"),"");
-                    break;
-
-                case ThemaUpdater.UPDATE_FINISHED:
-                    messageBarInstance.closeMsg()
-                    break;
+                    case ThemaUpdater.UPDATE_FINISHED:
+                        messageBarInstance.closeMsg()
+                        break;
+                }
             }
         }
 
         onUpdateProgress: {
-            msg_bar.message_txt = info;
-            msg_bar.setProgress(progress)
+            if(!manager.is_starting_up) {
+                msg_bar.message_txt = info;
+                msg_bar.setProgress(progress)
+            }
         }
     }
 
     Component.onCompleted: {
         manager.current_page = Manager.HOME_PAGE
 
-        // self destroying statrtup screen
+        // Destroyed when starup finishes.
         var startup_component = Qt.createComponent("Startup_screen.qml");
-        console.log(startup_component.status + startup_component.errorString())
         if(startup_component.status === Component.Ready) {
-            console.log("createObject")
             startup_screen = startup_component.createObject(rootItem);
-            console.log(startup_screen)
         }
     }
 

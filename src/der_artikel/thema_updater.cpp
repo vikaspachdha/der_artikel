@@ -215,7 +215,6 @@ bool ThemaUpdater_C::executeOperations()
         _progress = 1.0;
         updateProgress(tr("Update finished."),_progress);
         setUpdateState(UPDATE_FINISHED);
-        _manager.loadDefaultThemas();
     } else {
         LOG_WARN("Thema updater :: No operations to execute.");
         _progress = 1.0;

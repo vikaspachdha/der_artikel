@@ -14,7 +14,7 @@ Item {
                 if(!running) {
                     startup_screen.visible = false
                     manager.onStartupCompleted();
-                    //startup_screen.destroy()
+                    startup_screen.destroy()
                 }
             }
         }
@@ -55,11 +55,7 @@ Item {
     }
 
     Component.onCompleted: {
-        console.log("Startup screen created.")
         manager.onStartup();
-    }
-    Component.onDestruction: {
-        console.log("Startup screen destroyed.")
     }
 
     function hideStartup() {

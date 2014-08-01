@@ -26,7 +26,6 @@
  *
  ******************************************************************************/
 // System includes
-#include <QDebug>
 #include <QGuiApplication>
 #include <QQmlContext>
 #include <QQuickItem>
@@ -74,11 +73,13 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     _thema_model(0),
     _game_level(EASY),
     _image_provider(new ImageProvider_C),
+    _stock_thema_updater(0),
     _starting_up(false)
 {    
     LOG_DEBUG("Manager_C::Construtor");
 
     _thema_updater = new ThemaUpdater_C(*this);
+    connect(_thema_updater,SIGNAL(updateFinished()),this,SLOT(onthemaFilesUpdated()));
     _app_updater = new AppUpdater_C(*this);
 
     _settings = new Settings_C(this);
@@ -380,9 +381,9 @@ void Manager_C::setTitleItem(Manager_C::PageId_TP page_id, QQuickItem *item)
  *
  *  \author Vikas Pachdha
  *
- * \param[in] page_id : The id of the page.
+ *  \param[in] page_id : The id of the page.
  *
- * \return QQuickItem* : The title item of the page.
+ *  \return QQuickItem* : The title item of the page.
  ******************************************************************************/
 QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
 {
@@ -397,27 +398,41 @@ QQuickItem *Manager_C::titleItem(Manager_C::PageId_TP page_id)
     return item;
 }
 
+//******************************************************************************
+/*! \brief Called when system starts. The ui is loaded at this point. Do your
+ *  startup activities here.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Manager_C::onStartup()
 {
     LOG_INFO("Starting up");
     Q_ASSERT(_settings);
     Q_ASSERT(_thema_updater);
     _starting_up = true;
-    // Copy the stock thema files.
-    if(_settings->isFirstRun()) {
-        //_thema_updater->checkUpdate(":/res/resources/stock_themas");
-    }
 
-    if(_settings->startupThemaUpdate()) {
-        //_thema_updater->checkUpdate();
+
+    if(_settings->isFirstRun()) { // Copy the stock thema files.
+        _stock_thema_updater = new ThemaUpdater_C(*this,this);
+        connect(_stock_thema_updater,SIGNAL(updateFinished()),this,SLOT(onStockThemaUpdated()));
+        _stock_thema_updater->checkUpdate(":/res/resources/stock_themas");
+    } else if(_settings->startupThemaUpdate()) { // Update thema files from server.
+        _thema_updater->checkUpdate();
+    } else { // Load default themas.
+        loadDefaultThemas();
     }
-    loadDefaultThemas();
 }
 
+//******************************************************************************
+/*! \brief Called when system starup is finished.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Manager_C::onStartupCompleted()
 {
     LOG_INFO("Startup completed");
     _starting_up = false;
+    emit startupFinished();
 }
 
 //******************************************************************************
@@ -427,7 +442,6 @@ void Manager_C::onStartupCompleted()
  ******************************************************************************/
 void Manager_C::quit()
 {
-    qDebug()<<"test";
     // https://bugreports.qt-project.org/browse/QTBUG-38729
     QTimer::singleShot(0,this,SLOT(quitPrivate()));
 }
@@ -462,10 +476,39 @@ void Manager_C::loadDefaultThemas()
     connect(thema_loader,SIGNAL(finishedLoading()),&MessageBar_C::instance(),SLOT(closeMsg()));
     if(_starting_up) {
         connect(thema_loader,&ThemaLoader_C::finishedLoading,this,&Manager_C::finishStartup);
+    } else {
+        connect(thema_loader,SIGNAL(updateProgress(double)),SLOT(onThemaLoadingProgress(double)));
+        MessageBar_C::showMsgAsync(tr("Loading installed themas."),"",2000);
     }
-    connect(thema_loader,SIGNAL(updateProgress(double)),SLOT(onThemaLoadingProgress(double)));
-    MessageBar_C::showMsgAsync(tr("Loading installed themas."),"",2000);
     thema_loader->startLoading();
+}
+
+//******************************************************************************
+/*! \brief Called when stock thema update is finished.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void Manager_C::onStockThemaUpdated()
+{
+    Q_ASSERT(_settings);
+    LOG_INFO("Stock thema files updated.");
+    if(_settings->startupThemaUpdate()) {
+        LOG_INFO("Starting Auto thema update..");
+        _thema_updater->checkUpdate();
+    }
+    _stock_thema_updater->deleteLater();
+    _stock_thema_updater = 0;
+}
+
+//******************************************************************************
+/*! \brief Called when thema update is finished.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
+void Manager_C::onthemaFilesUpdated()
+{
+    // Load the thema files.
+    loadDefaultThemas();
 }
 
 //******************************************************************************
@@ -484,6 +527,11 @@ void Manager_C::initPages()
     _page_hash[THEMA_PAGE] = new ThemaPage_C(*this,this);
 }
 
+//******************************************************************************
+/*! \brief Finishes the start up process. Startup screen is removed.
+ *
+ *  \author Vikas Pachdha
+ ******************************************************************************/
 void Manager_C::finishStartup()
 {
     LOG_INFO("finishing Startup");
