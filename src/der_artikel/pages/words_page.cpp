@@ -253,9 +253,11 @@ void WordsPage_C::calculateExperienceLoss()
     Thema_C* thema = _page_manager.themaModel()->GetSelectedThema();
     Q_ASSERT(thema);
 
+    int org_experience_points = thema->experiencePoints();
+
     // Deduct points for lost knowledge.
     QDateTime last_played = thema->lastPlayed();
-    if(last_played.isValid()) {
+    if(last_played.isValid() && org_experience_points > 0) {
         int lapsed_days = last_played.daysTo(QDateTime::currentDateTime());
         int points_deducted = 0;
         while( ((lapsed_days--) > 0) ) {
@@ -278,6 +280,12 @@ void WordsPage_C::calculateExperienceLoss()
                 points_deducted +=20;
                 break;
             }
+
+            // Deduction is beyond current experience
+            if(points_deducted >= org_experience_points) {
+                points_deducted = org_experience_points;
+                break;
+            }
         }
 
         if(points_deducted > 0) {
@@ -285,7 +293,6 @@ void WordsPage_C::calculateExperienceLoss()
                                   tr("%1 experience points are deducted. Go to Help -> Rules for details.").arg(points_deducted),
                                   "",tr("OK"));
         }
-
     }
 
     // Start timer.
