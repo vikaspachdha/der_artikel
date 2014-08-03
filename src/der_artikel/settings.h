@@ -61,7 +61,6 @@ class Settings_C : public QObject
     Q_PROPERTY(QString thema_remote_path READ themaRemotePath WRITE setThemaRemotePath NOTIFY themaRemotePathChanged)
     Q_PROPERTY(bool thema_auto_update READ themaAutoUpdate WRITE setThemaAutoUpdate NOTIFY themaAutoUpdateChanged)
     Q_PROPERTY(bool startup_thema_update READ startupThemaUpdate CONSTANT)
-    Q_PROPERTY(bool enable_effects READ enableEffects CONSTANT)
     Q_ENUMS(Language_TP)
 
 public:
@@ -120,8 +119,6 @@ public:
     bool startupThemaUpdate() const { return _startup_thema_update; }
 
     QString platformId() const;
-
-    bool enableEffects() const;
 
     void saveSettings();
     void loadSettings();

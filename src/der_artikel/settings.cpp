@@ -100,12 +100,6 @@ Settings_C::Settings_C(QObject *parent) :
             _startup_thema_update = false;
         }
     }
-
-#ifdef NO_GRAPHICAL_EFFECTS
-    LOG_INFO("No graphical effects");
-#else
-    LOG_INFO("Graphical effects enabled");
-#endif
 }
 
 //******************************************************************************
@@ -464,22 +458,5 @@ QString Settings_C::platformId() const
 #endif
 
     return id;
-}
-
-//******************************************************************************
-/*! \brief Returns true if graphical effects are to be used in QML. Windows seems
- *  to have problem with OpenGl.
- *
- *  \author Vikas Pachdha
- *
- *  \return bool : Returns true if graphical effects are to be used, false otherwise.
- ******************************************************************************/
-bool Settings_C::enableEffects() const
-{
-#ifdef NO_GRAPHICAL_EFFECTS
-    return false;
-#else
-    return true;
-#endif
 }
 

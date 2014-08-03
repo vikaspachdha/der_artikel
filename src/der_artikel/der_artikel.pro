@@ -1,7 +1,5 @@
 cache()
 
-win32:DEFINES += NO_GRAPHICAL_EFFECTS
-
 QT += gui qml quick xml network multimedia
 
 MOC_DIR      = moc

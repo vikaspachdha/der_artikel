@@ -46,7 +46,6 @@ Item {
 
     DropShadow {
         anchors.fill: background_image
-        visible: settings.enable_effects
         horizontalOffset: 4
         verticalOffset: 4
         radius: 0
