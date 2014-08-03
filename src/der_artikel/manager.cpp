@@ -534,6 +534,7 @@ void Manager_C::initPages()
  ******************************************************************************/
 void Manager_C::finishStartup()
 {
+    setCurrentPage(HOME_PAGE);
     LOG_INFO("finishing Startup");
     QMetaObject::invokeMethod(_root_item,"removeStartupScreen");
 }

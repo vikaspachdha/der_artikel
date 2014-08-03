@@ -12,7 +12,6 @@
         <file>qml/der_artikel/Color_theme_settings.qml</file>
         <file>qml/der_artikel/Command_frame.qml</file>
         <file>qml/der_artikel/Command_item.qml</file>
-        <file>qml/der_artikel/Content_frame.qml</file>
         <file>qml/der_artikel/Game_play_settings.qml</file>
         <file>qml/der_artikel/General_help.qml</file>
         <file>qml/der_artikel/Help_page.qml</file>
@@ -30,7 +29,6 @@
         <file>qml/der_artikel/Page.qml</file>
         <file>qml/der_artikel/Page_item.qml</file>
         <file>qml/der_artikel/Page_panel.qml</file>
-        <file>qml/der_artikel/Panel_frame.qml</file>
         <file>qml/der_artikel/Result_item.qml</file>
         <file>qml/der_artikel/Result_page.qml</file>
         <file>qml/der_artikel/Result_page_panel.qml</file>
@@ -50,7 +48,6 @@
         <file>qml/der_artikel/Thema_page_panel.qml</file>
         <file>qml/der_artikel/Thema_page_title.qml</file>
         <file>qml/der_artikel/Title_bar.qml</file>
-        <file>qml/der_artikel/Title_frame.qml</file>
         <file>qml/der_artikel/Word_item.qml</file>
         <file>qml/der_artikel/Words_page.qml</file>
         <file>qml/der_artikel/Words_page_panel.qml</file>

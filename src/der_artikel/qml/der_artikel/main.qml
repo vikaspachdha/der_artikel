@@ -81,8 +81,9 @@ Window{
         source: color_palette.root_background
         fillMode: Image.Tile
 
-        Title_frame{
+        Item{
             id: title_frame
+            height: 76
             anchors{
                 top: parent.top
                 left:parent.left
@@ -92,32 +93,22 @@ Window{
             }
         }
 
-        Panel_frame {
+        Item {
             id: panel_frame
+            width:108
             anchors{
                 top: title_frame.bottom
                 topMargin: 6
                 left:parent.left
-                bottom:command_frame.top
-                bottomMargin: 6
-            }
-        }
-
-        Command_frame {
-            id:command_frame
-            width:100
-            height:80
-            anchors{
-                left:parent.left
-                leftMargin: 8
                 bottom:parent.bottom
-                bottomMargin: 6
+                bottomMargin: 92
             }
         }
 
-        Content_frame
+        Item
         {
             id: content_frame
+            clip:true
             anchors.top: title_frame.bottom
             anchors.bottom: rootItem.bottom
             anchors.left: parent.left
@@ -203,14 +194,57 @@ Window{
         }
     }
 
-    Component.onCompleted: {
-        manager.current_page = Manager.HOME_PAGE
-
-        // Destroyed when starup finishes.
-        var startup_component = Qt.createComponent("Startup_screen.qml");
-        if(startup_component.status === Component.Ready) {
-            startup_screen = startup_component.createObject(rootItem);
+    Connections{
+        target: manager
+        onCurrentPageChanged: {
+            switch(manager.current_page) {
+            case Manager.HOME_PAGE:
+                createDynamicObject("Home_page.qml", content_frame);
+                createDynamicObject("Home_page_panel.qml", panel_frame);
+                createDynamicObject("Home_page_title.qml", title_frame);
+                break;
+            case Manager.WORDS_PAGE:
+                createDynamicObject("Words_page.qml", content_frame);
+                createDynamicObject("Words_page_panel.qml", panel_frame);
+                createDynamicObject("Words_page_title.qml", title_frame);
+                break;
+            case Manager.THEMA_PAGE:
+                createDynamicObject("Thema_page.qml", content_frame);
+                createDynamicObject("Thema_page_panel.qml", panel_frame);
+                createDynamicObject("Thema_page_title.qml", title_frame);
+                break;
+            case Manager.RESULT_PAGE:
+                createDynamicObject("Result_page.qml", content_frame);
+                createDynamicObject("Result_page_panel.qml", panel_frame);
+                createDynamicObject("Result_page_title.qml", title_frame);
+                break;
+            case Manager.HELP_PAGE:
+                createDynamicObject("Help_page.qml", content_frame);
+                createDynamicObject("Help_page_panel.qml", panel_frame);
+                createDynamicObject("Help_page_title.qml", title_frame);
+                break;
+            case Manager.STATS_PAGE:
+                createDynamicObject("Stats_page.qml", content_frame);
+                createDynamicObject("Stats_page_panel.qml", panel_frame);
+                createDynamicObject("Stats_page_title.qml", title_frame);
+                break;
+            case Manager.SETTINGS_PAGE:
+                createDynamicObject("Settings_page.qml", content_frame);
+                createDynamicObject("Settings_page_panel.qml", panel_frame);
+                createDynamicObject("Settings_page_title.qml", title_frame);
+                break;
+            case Manager.ABOUT_PAGE:
+                createDynamicObject("About_page.qml", content_frame);
+                createDynamicObject("About_page_panel.qml", panel_frame);
+                createDynamicObject("About_page_title.qml", title_frame);
+                break;
+            }
         }
+    }
+
+    Component.onCompleted: {
+        // Destroyed when starup finishes.
+        startup_screen = createDynamicObject("Startup_screen.qml",rootItem);
     }
 
     function getMessageBar()
@@ -249,7 +283,21 @@ Window{
 
     function removeStartupScreen()
     {
+        createDynamicObject("Command_frame.qml",rootItem);
         startup_screen.hideStartup();
+    }
+
+    function createDynamicObject(qml,parent_object) {
+        var new_component = Qt.createComponent(qml,parent_object);
+        if (new_component.status === Component.Ready) {
+            var new_object = new_component.createObject(parent_object);
+            if (new_object == null) {
+                console.log("Error creating object from : ", qml);
+            }
+            return new_object;
+        } else if (new_component.status === Component.Error) {
+            console.log("Error loading component:", new_component.errorString());
+        }
     }
 }
 
