@@ -126,7 +126,7 @@ Manager_C::~Manager_C()
  *
  *  \param[in] root_Item The root QML item.
  ******************************************************************************/
-void Manager_C::SetRootItem(QObject *root_Item)
+void Manager_C::setRootItem(QObject *root_Item)
 {
     _root_item = root_Item;
     QVariant msg_bar_object;

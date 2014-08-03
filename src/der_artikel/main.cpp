@@ -155,27 +155,29 @@ int main(int argc, char *argv[])
     qmlRegisterUncreatableType<AppUpdater_C>("com.vystosi.qmlcomponents", 1, 0, "AppUpdater","");
     qmlRegisterUncreatableType<MessageBar_C>("com.vystosi.qmlcomponents", 1, 0, "MessageBar","");
 
-    QQmlApplicationEngine appEngine;
-    QQmlContext* root_context = appEngine.rootContext();
+    QQmlApplicationEngine* app_engine = new QQmlApplicationEngine;
+    QQmlContext* root_context = app_engine->rootContext();
     //
 
-    Manager_C manager(*root_context);
+    Manager_C* manager = new Manager_C(*root_context);
 
-    root_context->setContextProperty("manager", &manager);
-    root_context->setContextProperty("themaUpdater", manager.themaUpdater());
-    root_context->setContextProperty("appUpdater", manager.appUpdater());
-    root_context->setContextProperty("currentResult", manager.currentResult());
-    root_context->setContextProperty("themaModel", manager.themaModel());
-    root_context->setContextProperty("settings", manager.appSettings());
+    root_context->setContextProperty("manager", manager);
+    root_context->setContextProperty("themaUpdater", manager->themaUpdater());
+    root_context->setContextProperty("appUpdater", manager->appUpdater());
+    root_context->setContextProperty("currentResult", manager->currentResult());
+    root_context->setContextProperty("themaModel", manager->themaModel());
+    root_context->setContextProperty("settings", manager->appSettings());
     root_context->setContextProperty("messageBarInstance",&MessageBar_C::instance());
-    root_context->engine()->addImageProvider("rootImageProvider",manager.imageProvider());
+    root_context->engine()->addImageProvider("rootImageProvider",manager->imageProvider());
 
-    QQmlComponent component(&appEngine,QUrl("qrc:/res/qml/der_artikel/main.qml"),&app);
+    QQmlComponent component(app_engine,QUrl("qrc:/res/qml/der_artikel/main.qml"),&app);
     QObject* root_item = component.create();
-    manager.SetRootItem(root_item);
+    manager->setRootItem(root_item);
     qDebug()<<component.errors();
 
     int return_code = app.exec();
+    delete manager;
+    delete app_engine;
     LOG_INFO("Application end");
     return return_code;
 }

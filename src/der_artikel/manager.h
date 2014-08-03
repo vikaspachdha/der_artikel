@@ -122,7 +122,7 @@ public:
 
 public:
     //! Sets the root qml Item. i.e the main item.
-    void SetRootItem(QObject* root_Item);
+    void setRootItem(QObject* root_Item);
 
     void setCurrentPage(PageId_TP new_page);
     //! Returns the id of the current page visible.
