@@ -227,11 +227,6 @@ Window{
     {
         msg_bar.closeMessage()
     }
-    function addWord(itemText, desc)
-    {
-        var WordItem = content_frame.word_page.addWord(itemText, desc)
-        return WordItem;
-    }
 
     function articleText(article) {
         var text;

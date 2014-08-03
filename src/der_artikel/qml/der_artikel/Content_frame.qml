@@ -4,10 +4,6 @@ import com.vystosi.qmlcomponents 1.0
 Item {
     id: root_item
 
-    property Item current_page
-    property Item next_page
-
-    property alias word_page: words_page_item
     clip:true
 
     Home_page {
