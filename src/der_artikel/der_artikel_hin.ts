@@ -19,18 +19,6 @@
         <oldsource>License file unvailable.</oldsource>
         <translation>लाइसेंस फाइल उपलब्ध नहीं है|</translation>
     </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">जानकारी</translation>
-    </message>
-</context>
-<context>
-    <name>About_page</name>
-    <message>
-        <source>Version
-</source>
-        <translation type="vanished">संस्करण</translation>
-    </message>
 </context>
 <context>
     <name>About_page_panel</name>
@@ -65,97 +53,41 @@
         <oldsource>Update themas</oldsource>
         <translation>शब्दकोश</translation>
     </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="99"/>
-        <source>App update...</source>
-        <translation>App अपडेट...</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="104"/>
-        <source>No Update Available.</source>
-        <translation>कोई नवीनीकरण उपलब्ध नहीं है.</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="105"/>
-        <source>You are running latest version.</source>
-        <translation>आप नवीनतम संस्करण चला रहे हैं|</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="107"/>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="115"/>
-        <source>Ok</source>
-        <translation>ठीक है</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="112"/>
-        <source>Update Error.</source>
-        <translation>अपडेट त्रुटि|</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="113"/>
-        <source>Please try later.</source>
-        <translation>बाद में कोशिश करें|</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="119"/>
-        <source>Update available.</source>
-        <translation>नवीनीकरण उपलब्ध है|</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="120"/>
-        <source>Do you want to download the latest version?</source>
-        <translation>आप नवीनतम संस्करण को डाउनलोड करना चाहते हैं?</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="121"/>
-        <source>Yes</source>
-        <translation>हां</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="122"/>
-        <source>No</source>
-        <translation>नहीं</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="144"/>
-        <source>Updating thema</source>
-        <translation>शब्दकोश अपडेट किया जा रहा है</translation>
-    </message>
 </context>
 <context>
     <name>AppUpdater_C</name>
     <message>
-        <location filename="app_updater.cpp" line="71"/>
+        <location filename="app_updater.cpp" line="72"/>
         <source>Checking for app update.</source>
         <translation>App अपडेट के लिए जाँच हो रही है|</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="79"/>
+        <location filename="app_updater.cpp" line="80"/>
         <source>Invalid url</source>
         <translation>अमान्य url</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="104"/>
+        <location filename="app_updater.cpp" line="132"/>
         <source>Checking for new releases.</source>
         <translation>नई रिलीज के लिए जाँच हो रही है|</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="110"/>
+        <location filename="app_updater.cpp" line="138"/>
         <source>Update available.</source>
         <translation>नवीनीकरण उपलब्ध है|</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="115"/>
+        <location filename="app_updater.cpp" line="143"/>
         <source>No App update available.</source>
         <translation>कोई App नवीनीकरण उपलब्ध नहीं है.</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="129"/>
+        <location filename="app_updater.cpp" line="158"/>
         <source>Network issue. Aborting update.</source>
         <translation>नेटवर्क समस्या| अपडेट विफल किया जा रहा है|</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="193"/>
+        <location filename="app_updater.cpp" line="242"/>
         <source>Contacting server.</source>
         <translation>सर्वर से संपर्क किया जा रहा है|</translation>
     </message>
@@ -189,12 +121,12 @@
 <context>
     <name>Command_frame</name>
     <message>
-        <location filename="qml/der_artikel/Command_frame.qml" line="57"/>
+        <location filename="qml/der_artikel/Command_frame.qml" line="65"/>
         <source>Home</source>
         <translation>मुख पृष्ठ</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Command_frame.qml" line="69"/>
+        <location filename="qml/der_artikel/Command_frame.qml" line="77"/>
         <source>Quit</source>
         <translation>बंद करें</translation>
     </message>
@@ -210,6 +142,16 @@
         <location filename="qml/der_artikel/Game_play_settings.qml" line="69"/>
         <source>Thema update url</source>
         <translation>अपडेट का url</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="100"/>
+        <source>Update thema files automatically every fortnight.</source>
+        <translation>शब्दकोश हर 14 दिनों के बाद स्वतः अपडेट करें|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="108"/>
+        <source>Auto update</source>
+        <translation>स्वतः अपडेट</translation>
     </message>
 </context>
 <context>
@@ -341,13 +283,13 @@ Change in background color of word confirms article assignment. The user must as
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="409"/>
+        <location filename="manager.cpp" line="457"/>
         <source>Do you realy want to quit?</source>
         <oldsource>Do you realy want to quit ?</oldsource>
         <translation>क्या आप वास्तव में बंद करना चाहते हैं?</translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="430"/>
+        <location filename="manager.cpp" line="481"/>
         <source>Loading installed themas.</source>
         <translation>उपलब्ध शब्दकोश लोड हो रहे हैं|</translation>
     </message>
@@ -512,118 +454,6 @@ mail@derartikel.com
 <context>
     <name>Scoring_help</name>
     <message>
-        <source>Scoring:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Correct article&lt;/td&gt; &lt;td&gt;Incorrect article&lt;/td&gt; &lt;td&gt;Unplayed word&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;EASY&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;-0.5&lt;/td&gt; &lt;td&gt;-0.25&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;-0.5&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;br&gt;&lt;br&gt;Grading:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;SCORE&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Grade&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;94.99&lt;/td&gt; &lt;td&gt;A+&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;89.99&lt;/td&gt; &lt;td&gt;A&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;79.99&lt;/td&gt; &lt;td&gt;B+&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;69.99&lt;/td&gt; &lt;td&gt;B&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;59.99&lt;/td&gt; &lt;td&gt;C&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;49.99&lt;/td&gt; &lt;td&gt;D&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;49.99&lt;/td&gt; &lt;td&gt;E&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;br&gt;&lt;br&gt;Experience:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Grade&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;A+&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;td&gt;80&lt;/td&gt; &lt;td&gt;100&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;A&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;td&gt;60&lt;/td&gt; &lt;td&gt;80&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;B+&lt;/td&gt; &lt;td&gt;30&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;td&gt;70&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;B&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;td&gt;60&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;C&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;td&gt;30&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;D&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;E&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;td&gt;-10&lt;/td&gt; &lt;td&gt;-20&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt;</source>
-        <oldsource>Scoring:&lt;table border=&quot;1&quot;&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt;
-&lt;td&gt;Correct article&lt;/td&gt;
-&lt;td&gt;Incorrect article&lt;/td&gt;
-&lt;td&gt;Unplayed word&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;EASY&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;-0.5&lt;/td&gt;
-&lt;td&gt;-0.25&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Moderate&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;-0.5&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Expert&lt;/td&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt; &lt;br&gt;&lt;br&gt;Grading:&lt;table border=&quot;1&quot;&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;b&gt;SCORE&lt;/b&gt;&lt;/td&gt;
-&lt;td&gt;Grade&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;gt;94.99&lt;/td&gt;
-&lt;td&gt;A+&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;gt;89.99&lt;/td&gt;
-&lt;td&gt;A&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;gt;79.99&lt;/td&gt;
-&lt;td&gt;B+&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;gt;69.99&lt;/td&gt;
-&lt;td&gt;B&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;gt;59.99&lt;/td&gt;
-&lt;td&gt;C&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;gt;49.99&lt;/td&gt;
-&lt;td&gt;D&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&amp;lt;49.99&lt;/td&gt;
-&lt;td&gt;E&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;&lt;br&gt;&lt;br&gt;Experience:&lt;table border=&quot;1&quot;&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;b&gt;Grade&lt;/b&gt;&lt;/td&gt;
-&lt;td&gt;Easy&lt;/td&gt;
-&lt;td&gt;Moderate&lt;/td&gt;
-&lt;td&gt;Expert&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;A+&lt;/td&gt;
-&lt;td&gt;50&lt;/td&gt;
-&lt;td&gt;80&lt;/td&gt;
-&lt;td&gt;100&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;A&lt;/td&gt;
-&lt;td&gt;40&lt;/td&gt;
-&lt;td&gt;60&lt;/td&gt;
-&lt;td&gt;80&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;B+&lt;/td&gt;
-&lt;td&gt;30&lt;/td&gt;
-&lt;td&gt;50&lt;/td&gt;
-&lt;td&gt;70&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;B&lt;/td&gt;
-&lt;td&gt;20&lt;/td&gt;
-&lt;td&gt;40&lt;/td&gt;
-&lt;td&gt;60&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;C&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;30&lt;/td&gt;
-&lt;td&gt;50&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;D&lt;/td&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;20&lt;/td&gt;
-&lt;td&gt;40&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;E&lt;/td&gt;
-&lt;td&gt;0&lt;/td&gt;
-&lt;td&gt;-10&lt;/td&gt;
-&lt;td&gt;-20&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/table&gt;</oldsource>
-        <translation type="vanished">&lt;p&gt;अंक गणना:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;खेल का स्तर&lt;/b&gt;&lt;/td&gt;&lt;td&gt;सही लेख&lt;/td&gt;&lt;td&gt;गलत लेख&lt;/td&gt;&lt;td&gt;छोड़े गए शब्द&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;आसान&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;-0.5&lt;/td&gt;&lt;td&gt;-0.25&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;मध्यम&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;-0.5&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;माहिर&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;&lt;p&gt;ग्रेडिंग:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;अंक&lt;/b&gt;&lt;/td&gt;&lt;td&gt;ग्रेड&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;94.99&lt;/td&gt;&lt;td&gt;A+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;89.99&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;79.99&lt;/td&gt;&lt;td&gt;B+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;69.99&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;59.99&lt;/td&gt;&lt;td&gt;C&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;49.99&lt;/td&gt;&lt;td&gt;D&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;lt;49.99&lt;/td&gt;&lt;td&gt;E&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;&lt;p&gt;अनुभव अंक:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ग्रेड&lt;/b&gt;&lt;/td&gt;&lt;td&gt;आसान&lt;/td&gt;&lt;td&gt;मध्यम&lt;/td&gt;&lt;td&gt;माहिर&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A+&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B+&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;70&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;-10&lt;/td&gt;&lt;td&gt;-20&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
-    </message>
-    <message>
         <location filename="qml/der_artikel/Scoring_help.qml" line="10"/>
         <source>&lt;p&gt;Scoring:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Correct article&lt;/td&gt; &lt;td&gt;Incorrect article&lt;/td&gt; &lt;td&gt;Unplayed word&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;EASY&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;-0.5&lt;/td&gt; &lt;td&gt;-0.25&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;-0.5&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;Grading:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;SCORE&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Grade&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;94.99&lt;/td&gt; &lt;td&gt;A+&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;89.99&lt;/td&gt; &lt;td&gt;A&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;79.99&lt;/td&gt; &lt;td&gt;B+&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;69.99&lt;/td&gt; &lt;td&gt;B&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;59.99&lt;/td&gt; &lt;td&gt;C&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;49.99&lt;/td&gt; &lt;td&gt;D&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;49.99&lt;/td&gt; &lt;td&gt;E&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;Experience:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Grade&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;A+&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;td&gt;80&lt;/td&gt; &lt;td&gt;100&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;A&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;td&gt;60&lt;/td&gt; &lt;td&gt;80&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;B+&lt;/td&gt; &lt;td&gt;30&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;td&gt;70&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;B&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;td&gt;60&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;C&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;td&gt;30&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;D&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;E&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;td&gt;-10&lt;/td&gt; &lt;td&gt;-20&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;अंक गणना:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;खेल का स्तर&lt;/b&gt;&lt;/td&gt;&lt;td&gt;सही लेख&lt;/td&gt;&lt;td&gt;गलत लेख&lt;/td&gt;&lt;td&gt;छोड़े गए शब्द&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;आसान&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;-0.5&lt;/td&gt;&lt;td&gt;-0.25&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;मध्यम&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;-0.5&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;माहिर&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;&lt;p&gt;ग्रेडिंग:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;अंक&lt;/b&gt;&lt;/td&gt;&lt;td&gt;ग्रेड&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;94.99&lt;/td&gt;&lt;td&gt;A+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;89.99&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;79.99&lt;/td&gt;&lt;td&gt;B+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;69.99&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;59.99&lt;/td&gt;&lt;td&gt;C&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;49.99&lt;/td&gt;&lt;td&gt;D&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;lt;49.99&lt;/td&gt;&lt;td&gt;E&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;&lt;p&gt;अनुभव अंक:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ग्रेड&lt;/b&gt;&lt;/td&gt;&lt;td&gt;आसान&lt;/td&gt;&lt;td&gt;मध्यम&lt;/td&gt;&lt;td&gt;माहिर&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A+&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B+&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;70&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;-10&lt;/td&gt;&lt;td&gt;-20&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
@@ -650,6 +480,14 @@ mail@derartikel.com
         <location filename="pages/settings_page.cpp" line="90"/>
         <source>Game Play Settings</source>
         <translation>खेल खेलने के विकल्प</translation>
+    </message>
+</context>
+<context>
+    <name>Settings_C</name>
+    <message>
+        <location filename="settings.cpp" line="399"/>
+        <source>Do you really want to disable the thema update?</source>
+        <translation>क्या आप वास्तव में शब्दकोश स्वतः अपडेट बंद करना चाहते हैं?</translation>
     </message>
 </context>
 <context>
@@ -715,29 +553,34 @@ mail@derartikel.com
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="26"/>
+        <source>Total word count : </source>
+        <translation>कुल शब्द संख्या</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Stats_page.qml" line="27"/>
         <source>Best Thema : </source>
         <translation>सर्वश्रेष्ठ शब्दकोश : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="27"/>
+        <location filename="qml/der_artikel/Stats_page.qml" line="28"/>
         <source>Inert themas : </source>
         <oldsource>Thema count</oldsource>
         <translation>स्थिर शब्दकोश : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="28"/>
+        <location filename="qml/der_artikel/Stats_page.qml" line="29"/>
         <source>Golden themas : </source>
         <oldsource>Best Thema</oldsource>
         <translation>स्वर्ण शब्दकोश : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="29"/>
+        <location filename="qml/der_artikel/Stats_page.qml" line="30"/>
         <source>Silver themas : </source>
         <oldsource>Inert themas</oldsource>
         <translation>रजत शब्दकोश : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="30"/>
+        <location filename="qml/der_artikel/Stats_page.qml" line="31"/>
         <source>Rusty themas : </source>
         <oldsource>Golden themas</oldsource>
         <translation>जंग शब्दकोश : </translation>
@@ -777,49 +620,49 @@ mail@derartikel.com
 <context>
     <name>ThemaUpdater_C</name>
     <message>
-        <location filename="thema_updater.cpp" line="80"/>
+        <location filename="thema_updater.cpp" line="81"/>
         <source>Checking for thema update.</source>
         <translation>शब्दकोश अपडेट के लिए जाँच हो रही है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="90"/>
+        <location filename="thema_updater.cpp" line="91"/>
         <source>Invalid url</source>
         <translation>अमान्य url</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="103"/>
+        <location filename="thema_updater.cpp" line="117"/>
         <source>Parsing server data.</source>
         <translation>सर्वर डेटा का विश्लेषण किया जा रहा है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="113"/>
+        <location filename="thema_updater.cpp" line="127"/>
         <source>Parsing error. Aborting update.</source>
         <translation>विश्लेषण त्रुटि| अपडेट विफल किया जा रहा है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="127"/>
+        <location filename="thema_updater.cpp" line="142"/>
         <source>Network issue. Aborting update.</source>
         <translation>नेटवर्क समस्या| अपडेट विफल किया जा रहा है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="197"/>
+        <location filename="thema_updater.cpp" line="213"/>
         <source>Downloading thema files.</source>
         <translation>उपलब्ध शब्दकोश डाउनलोड हो रहे हैं|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="200"/>
+        <location filename="thema_updater.cpp" line="216"/>
         <source>Update finished.</source>
         <translation>अपडेट पूरा हो गया है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="206"/>
+        <location filename="thema_updater.cpp" line="221"/>
         <source>No update is available.</source>
         <translation>कोई नवीनीकरण उपलब्ध नहीं है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="220"/>
-        <location filename="thema_updater.cpp" line="298"/>
-        <location filename="thema_updater.cpp" line="309"/>
+        <location filename="thema_updater.cpp" line="236"/>
+        <location filename="thema_updater.cpp" line="314"/>
+        <location filename="thema_updater.cpp" line="325"/>
         <source>Comparing current thema&apos;s.</source>
         <translation>वर्तमान शब्दकोशों की तुलना की जा रही है|</translation>
     </message>
@@ -934,17 +777,17 @@ mail@derartikel.com
         <translation>शब्दकोश लोड हो रहा है...</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="284"/>
+        <location filename="pages/words_page.cpp" line="292"/>
         <source>Knowledge loss detected</source>
         <translation>ज्ञान का नुकसान हुआ है</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="285"/>
+        <location filename="pages/words_page.cpp" line="293"/>
         <source>%1 experience points are deducted. Go to Help -&gt; Rules for details.</source>
         <translation>%1 अनुभव अंक की कटौती की जा रही है. जानकारी के लिए सहायता-&gt; नियम पर जाएँ|</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="286"/>
+        <location filename="pages/words_page.cpp" line="294"/>
         <source>OK</source>
         <translation>ठीक है</translation>
     </message>
@@ -988,6 +831,65 @@ mail@derartikel.com
         <location filename="qml/der_artikel/Words_page_title.qml" line="71"/>
         <source>Remaining time</source>
         <translation>शेष समय</translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="132"/>
+        <source>App update...</source>
+        <translation>App अपडेट...</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="137"/>
+        <source>No Update Available.</source>
+        <translation>कोई नवीनीकरण उपलब्ध नहीं है.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="138"/>
+        <source>You are running latest version.</source>
+        <translation>आप नवीनतम संस्करण चला रहे हैं|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="140"/>
+        <location filename="qml/der_artikel/main.qml" line="148"/>
+        <source>Ok</source>
+        <translation>ठीक है</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="145"/>
+        <source>Update Error.</source>
+        <translation>अपडेट त्रुटि|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="146"/>
+        <source>Please try later.</source>
+        <translation>बाद में कोशिश करें|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="152"/>
+        <source>Update available.</source>
+        <translation>नवीनीकरण उपलब्ध है|</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="153"/>
+        <source>Do you want to download the latest version?</source>
+        <translation>आप नवीनतम संस्करण को डाउनलोड करना चाहते हैं?</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="154"/>
+        <source>Yes</source>
+        <translation>हां</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="155"/>
+        <source>No</source>
+        <translation>नहीं</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="179"/>
+        <source>Updating thema</source>
+        <translation>शब्दकोश अपडेट किया जा रहा है</translation>
     </message>
 </context>
 </TS>

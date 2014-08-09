@@ -124,7 +124,7 @@ Item {
         anchors.top:url_input_rect.bottom
         anchors.topMargin: 20
         text_h_alignment: Text.AlignLeft
-        text:qsTr("Update thema files automaticaly every fortnight.") + settings.i18n_empty_string
+        text:qsTr("Update thema files automatically every fortnight.") + settings.i18n_empty_string
     }
 
     Button {

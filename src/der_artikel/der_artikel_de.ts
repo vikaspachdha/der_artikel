@@ -19,19 +19,6 @@
         <oldsource>License file unvailable.</oldsource>
         <translation>Lizenzdatei ist nicht verfügbar.</translation>
     </message>
-    <message>
-        <source>About</source>
-        <translation type="obsolete">Über</translation>
-    </message>
-</context>
-<context>
-    <name>About_page</name>
-    <message>
-        <source>Version
-</source>
-        <translation type="vanished">Version
-</translation>
-    </message>
 </context>
 <context>
     <name>About_page_panel</name>
@@ -66,97 +53,41 @@
         <oldsource>Update themas</oldsource>
         <translation>Themen</translation>
     </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="99"/>
-        <source>App update...</source>
-        <translation>App-Update...</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="104"/>
-        <source>No Update Available.</source>
-        <translation>Kein Update verfügbar ist.</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="105"/>
-        <source>You are running latest version.</source>
-        <translation>Sie führen die neueste Version.</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="107"/>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="115"/>
-        <source>Ok</source>
-        <translation>OK</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="112"/>
-        <source>Update Error.</source>
-        <translation>Update Fehler.</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="113"/>
-        <source>Please try later.</source>
-        <translation>Bitte versuchen Sie es später.</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="119"/>
-        <source>Update available.</source>
-        <translation>Update verfügbar ist.</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="120"/>
-        <source>Do you want to download the latest version?</source>
-        <translation>Möchten Sie die neueste Version herunterladen?</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="121"/>
-        <source>Yes</source>
-        <translation>Ja</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="122"/>
-        <source>No</source>
-        <translation>Nein</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/About_page_panel.qml" line="144"/>
-        <source>Updating thema</source>
-        <translation>Aktualisierung thema</translation>
-    </message>
 </context>
 <context>
     <name>AppUpdater_C</name>
     <message>
-        <location filename="app_updater.cpp" line="71"/>
+        <location filename="app_updater.cpp" line="72"/>
         <source>Checking for app update.</source>
         <translation>Prüfung auf dem Thema Update.</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="79"/>
+        <location filename="app_updater.cpp" line="80"/>
         <source>Invalid url</source>
         <translation>ungültige URL</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="104"/>
+        <location filename="app_updater.cpp" line="132"/>
         <source>Checking for new releases.</source>
         <translation>Die Überprüfung auf neue Versionen.</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="110"/>
+        <location filename="app_updater.cpp" line="138"/>
         <source>Update available.</source>
         <translation>Update verfügbar ist.</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="115"/>
+        <location filename="app_updater.cpp" line="143"/>
         <source>No App update available.</source>
         <translation>Kein Update verfügbar ist.</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="129"/>
+        <location filename="app_updater.cpp" line="158"/>
         <source>Network issue. Aborting update.</source>
         <translation>Netzwerkproblem. Abbrechend Update.</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="193"/>
+        <location filename="app_updater.cpp" line="242"/>
         <source>Contacting server.</source>
         <translation>Kontaktieren Server.</translation>
     </message>
@@ -190,12 +121,12 @@
 <context>
     <name>Command_frame</name>
     <message>
-        <location filename="qml/der_artikel/Command_frame.qml" line="57"/>
+        <location filename="qml/der_artikel/Command_frame.qml" line="65"/>
         <source>Home</source>
         <translation>Heim</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Command_frame.qml" line="69"/>
+        <location filename="qml/der_artikel/Command_frame.qml" line="77"/>
         <source>Quit</source>
         <translation>Beenden</translation>
     </message>
@@ -211,6 +142,16 @@
         <location filename="qml/der_artikel/Game_play_settings.qml" line="69"/>
         <source>Thema update url</source>
         <translation>Thema update Internetadresse</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="100"/>
+        <source>Update thema files automatically every fortnight.</source>
+        <translation>Update-Dateien automatisch thema alle vierzehn Tage.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Game_play_settings.qml" line="108"/>
+        <source>Auto update</source>
+        <translation>Auto-Update</translation>
     </message>
 </context>
 <context>
@@ -342,12 +283,12 @@ Um Punkte zu gewinnen, muss der Benutzer auf die richtigen Artikel zu Nomen zuor
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="409"/>
+        <location filename="manager.cpp" line="457"/>
         <source>Do you realy want to quit?</source>
         <translation>Wollen Sie wirklich zu beenden?</translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="430"/>
+        <location filename="manager.cpp" line="481"/>
         <source>Loading installed themas.</source>
         <translation>Lädt installiert Themen.</translation>
     </message>
@@ -541,6 +482,14 @@ Besuchen www.derartikel.com für Kontaktinformationen von die Entwicklers.</tran
     </message>
 </context>
 <context>
+    <name>Settings_C</name>
+    <message>
+        <location filename="settings.cpp" line="399"/>
+        <source>Do you really want to disable the thema update?</source>
+        <translation>Wollen Sie wirklich, um das thema Update deaktivieren?</translation>
+    </message>
+</context>
+<context>
     <name>Settings_page_panel</name>
     <message>
         <location filename="qml/der_artikel/Settings_page_panel.qml" line="17"/>
@@ -603,26 +552,31 @@ Besuchen www.derartikel.com für Kontaktinformationen von die Entwicklers.</tran
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="26"/>
+        <source>Total word count : </source>
+        <translation>Gesamtwortzahl : </translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Stats_page.qml" line="27"/>
         <source>Best Thema : </source>
         <translation>Besten Thema : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="27"/>
+        <location filename="qml/der_artikel/Stats_page.qml" line="28"/>
         <source>Inert themas : </source>
         <translation>Inert Themen : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="28"/>
+        <location filename="qml/der_artikel/Stats_page.qml" line="29"/>
         <source>Golden themas : </source>
         <translation>Golden Themen : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="29"/>
+        <location filename="qml/der_artikel/Stats_page.qml" line="30"/>
         <source>Silver themas : </source>
         <translation>Silber Themen : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Stats_page.qml" line="30"/>
+        <location filename="qml/der_artikel/Stats_page.qml" line="31"/>
         <source>Rusty themas : </source>
         <translation>Rostig Themen : </translation>
     </message>
@@ -661,49 +615,49 @@ Besuchen www.derartikel.com für Kontaktinformationen von die Entwicklers.</tran
 <context>
     <name>ThemaUpdater_C</name>
     <message>
-        <location filename="thema_updater.cpp" line="80"/>
+        <location filename="thema_updater.cpp" line="81"/>
         <source>Checking for thema update.</source>
         <translation>Prüfung auf dem Thema Update.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="90"/>
+        <location filename="thema_updater.cpp" line="91"/>
         <source>Invalid url</source>
         <translation>Ungültige URL</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="103"/>
+        <location filename="thema_updater.cpp" line="117"/>
         <source>Parsing server data.</source>
         <translation>Analysieren von Serverdaten.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="113"/>
+        <location filename="thema_updater.cpp" line="127"/>
         <source>Parsing error. Aborting update.</source>
         <translation>Parsing-Fehler. Abbrechend Update.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="127"/>
+        <location filename="thema_updater.cpp" line="142"/>
         <source>Network issue. Aborting update.</source>
         <translation>Netzwerkproblem. Abbrechend Update.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="197"/>
+        <location filename="thema_updater.cpp" line="213"/>
         <source>Downloading thema files.</source>
         <translation>Herunterladen das Thema-Dateien.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="200"/>
+        <location filename="thema_updater.cpp" line="216"/>
         <source>Update finished.</source>
         <translation>Update fertiggestellt.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="206"/>
+        <location filename="thema_updater.cpp" line="221"/>
         <source>No update is available.</source>
         <translation>Kein Update verfügbar ist.</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="220"/>
-        <location filename="thema_updater.cpp" line="298"/>
-        <location filename="thema_updater.cpp" line="309"/>
+        <location filename="thema_updater.cpp" line="236"/>
+        <location filename="thema_updater.cpp" line="314"/>
+        <location filename="thema_updater.cpp" line="325"/>
         <source>Comparing current thema&apos;s.</source>
         <translation>Vergleicht man aktuelle Themen.</translation>
     </message>
@@ -818,17 +772,17 @@ Besuchen www.derartikel.com für Kontaktinformationen von die Entwicklers.</tran
         <translation>Verladen das Thema ...</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="284"/>
+        <location filename="pages/words_page.cpp" line="292"/>
         <source>Knowledge loss detected</source>
         <translation>Wissensverlust festgestellt wird</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="285"/>
+        <location filename="pages/words_page.cpp" line="293"/>
         <source>%1 experience points are deducted. Go to Help -&gt; Rules for details.</source>
         <translation>%1 Erfahrungspunkte werden abgezogen. Gehen Sie zur Hilfe -&gt; Regeln.</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="286"/>
+        <location filename="pages/words_page.cpp" line="294"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>
@@ -872,6 +826,65 @@ Besuchen www.derartikel.com für Kontaktinformationen von die Entwicklers.</tran
         <location filename="qml/der_artikel/Words_page_title.qml" line="71"/>
         <source>Remaining time</source>
         <translation>Verbleibend Zeit</translation>
+    </message>
+</context>
+<context>
+    <name>main</name>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="132"/>
+        <source>App update...</source>
+        <translation>App-Update...</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="137"/>
+        <source>No Update Available.</source>
+        <translation>Kein Update verfügbar ist.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="138"/>
+        <source>You are running latest version.</source>
+        <translation>Sie führen die neueste Version.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="140"/>
+        <location filename="qml/der_artikel/main.qml" line="148"/>
+        <source>Ok</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="145"/>
+        <source>Update Error.</source>
+        <translation>Update Fehler.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="146"/>
+        <source>Please try later.</source>
+        <translation>Bitte versuchen Sie es später.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="152"/>
+        <source>Update available.</source>
+        <translation>Update verfügbar ist.</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="153"/>
+        <source>Do you want to download the latest version?</source>
+        <translation>Möchten Sie die neueste Version herunterladen?</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="154"/>
+        <source>Yes</source>
+        <translation>Ja</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="155"/>
+        <source>No</source>
+        <translation>Nein</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/main.qml" line="179"/>
+        <source>Updating thema</source>
+        <translation>Aktualisierung thema</translation>
     </message>
 </context>
 </TS>

@@ -361,7 +361,7 @@ QObject *WordsPage_C::addWord(Word_C& word)
 void WordsPage_C::clearWordItems()
 {
     LOG_INFO("Word page :: Clearing word items.");
-    // Page is deleted after use, thus word items are deleted automaticaly.
+    // Page is deleted after use, thus word items are deleted automatically.
     _item_word_hash.clear();
 }
 
