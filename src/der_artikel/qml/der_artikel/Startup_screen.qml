@@ -32,7 +32,6 @@ Item {
     id: startup_screen
     anchors.fill: parent
     anchors.margins: 0
-    property int startup_time: 3000
 
     Behavior on anchors.margins {
         NumberAnimation {
@@ -71,7 +70,7 @@ Item {
     }
 
     Text {
-        id: name
+        id:header_text
         text: "Der Artikel"
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
@@ -80,11 +79,29 @@ Item {
         font.pixelSize: 42
     }
 
+    Text {
+        id: loading_text
+        text: qsTr("Loading...") + settings.i18n_empty_string
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: header_text.bottom
+        font.family: regular_font.name
+        color:color_palette.color_font_01
+        font.pixelSize: normalTextSize
+
+        SequentialAnimation {
+            running: true
+            loops: Animation.Infinite
+            PropertyAnimation { target:loading_text; property: "opacity"; from: 0.4; to: 1.0;duration: 800;}
+            PropertyAnimation { target:loading_text; property: "opacity"; from: 1.0; to: 0.4;duration: 800;}
+        }
+    }
+
     Component.onCompleted: {
         manager.onStartup();
     }
 
     function hideStartup() {
+        loading_text.visible = false
         background_rect.radius=6
         startup_screen.anchors.bottomMargin = startup_screen.parent.height - 76
         startup_screen.anchors.margins = 4
