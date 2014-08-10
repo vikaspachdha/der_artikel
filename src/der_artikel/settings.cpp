@@ -355,13 +355,25 @@ void Settings_C::setThemaRemotePath(QString url_str)
 }
 
 //******************************************************************************
+/*! \brief Returns local path to log file's folder.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \return QString : Local path to log file's folder.
+ ******************************************************************************/
+QString Settings_C::logsDirPath()
+{
+    return QStandardPaths::standardLocations(QStandardPaths::DataLocation).at(0) + "/logs";
+}
+
+//******************************************************************************
 /*! \brief Returns local path to thema file's folder.
  *
  *  \author Vikas Pachdha
  *
  *  \return QString : Local path to thema file's folder.
  ******************************************************************************/
-QString Settings_C::defaultThemaDirPath() const
+QString Settings_C::defaultThemaDirPath()
 {
     return QStandardPaths::standardLocations(QStandardPaths::DataLocation).at(0) + "/themas";
 }

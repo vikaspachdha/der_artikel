@@ -106,7 +106,7 @@ void setUpLogging(QObject* parent=0)
 
     p_layout->activateOptions();
     // Create an appender
-    Log4Qt::FileAppender *p_appender = new Log4Qt::FileAppender(p_layout,"der_artikel.log",parent);
+    Log4Qt::FileAppender *p_appender = new Log4Qt::FileAppender(p_layout, Settings_C::logsDirPath() + "/der_artikel.log",parent);
     p_appender->activateOptions();
     // Set appender on root logger
     Log4Qt::Logger::rootLogger()->addAppender(p_appender);
