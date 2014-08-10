@@ -137,6 +137,7 @@ int main(int argc, char *argv[])
     app.thread()->setObjectName("mainThread");
     setupVersion();
 
+    // Create log folder.
     if(!QFileInfo::exists(Settings_C::logsDirPath())) {
         QDir dir;
         dir.mkpath(Settings_C::logsDirPath());
