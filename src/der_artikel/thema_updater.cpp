@@ -113,20 +113,22 @@ bool ThemaUpdater_C::isProcessComplete()
  ******************************************************************************/
 void ThemaUpdater_C::onIndexFileDownloadFinished()
 {
-    _progress = 0.05;
-    emit updateProgress(tr("Parsing server data."), _progress);
-    QByteArray file_data = _file_downloader.fileData();
-    QHash<QString, RemoteFileInfo> parsed_data;
-    if(ParseIndexFile(file_data, parsed_data)) {
-        if(parsed_data.keys().count()> 0) {
-            _remote_file_data = parsed_data;
-            buildLocalData();
+    if(_state == UPDATE_STARTED) {
+        _progress = 0.05;
+        emit updateProgress(tr("Parsing server data."), _progress);
+        QByteArray file_data = _file_downloader.fileData();
+        QHash<QString, RemoteFileInfo> parsed_data;
+        if(ParseIndexFile(file_data, parsed_data)) {
+            if(parsed_data.keys().count()> 0) {
+                _remote_file_data = parsed_data;
+                buildLocalData();
+            }
+        } else {
+            _progress = 1.0;
+            emit updateProgress(tr("Parsing error. Aborting update."), _progress);
+            setUpdateState(UPDATE_ERROR);
+            setUpdateState(UPDATE_FINISHED);
         }
-    } else {
-        _progress = 1.0;
-        emit updateProgress(tr("Parsing error. Aborting update."), _progress);
-        setUpdateState(UPDATE_ERROR);
-        setUpdateState(UPDATE_FINISHED);
     }
 }
 
