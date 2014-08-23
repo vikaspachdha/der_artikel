@@ -48,6 +48,7 @@ cp -R $QT_LIB_PATH/QtXml.framework/Versions/5/QtXml $APP_PATH/../Frameworks
 #echo Copying qt plugins...
 ### copy Plugins - uncomment to copy from qt installation. As of now required plugins are added to template.
 #cp -R $QT_PLUGINS_PATH/platforms $APP_PATH
+#cp -R $QT_PLUGINS_PATH/audio $APP_PATH
 
 #echo Copying qml plugins...
 ### copy QML Plugins
@@ -135,6 +136,10 @@ install_name_tool $APP_PATH/platforms/libqcocoa.dylib -change $QT_LIB_PATH/QtCor
 install_name_tool $APP_PATH/platforms/libqcocoa.dylib -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
 install_name_tool $APP_PATH/platforms/libqcocoa.dylib -change $QT_LIB_PATH/QtPrintSupport.framework/Versions/5/QtPrintSupport @executable_path/../Frameworks/QtPrintSupport
 install_name_tool $APP_PATH/platforms/libqcocoa.dylib -change $QT_LIB_PATH/QtWidgets.framework/Versions/5/QtWidgets @executable_path/../Frameworks/QtWidgets
+install_name_tool $APP_PATH/audio/libqtaudio_coreaudio.dylib -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool $APP_PATH/audio/libqtaudio_coreaudio.dylib -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
+install_name_tool $APP_PATH/audio/libqtaudio_coreaudio.dylib -change $QT_LIB_PATH/QtMultimedia.framework/Versions/5/QtMultimedia @executable_path/../Frameworks/QtMultimedia
+install_name_tool $APP_PATH/audio/libqtaudio_coreaudio.dylib -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
 
 echo Fixing libs dependencies...
 ### Dependency fix - Plugins -> Frameworks
