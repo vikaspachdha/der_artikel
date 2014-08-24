@@ -64,13 +64,6 @@ Item {
         }
     }
 
-    Rectangle {
-        id: background_image
-        anchors.fill: parent
-        radius:6
-        color:color_palette.color_bg_01
-    }
-
     DropShadow {
         anchors.fill: background_image
         horizontalOffset: 4
@@ -81,6 +74,15 @@ Item {
         color: color_palette.shadow_color
         source: background_image
     }
+
+    Rectangle {
+        id: background_image
+        anchors.fill: parent
+        radius:6
+        color:color_palette.color_bg_01
+    }
+
+
 
     Component.onCompleted: {
         manager.setPanelItem(page_id,panel)
