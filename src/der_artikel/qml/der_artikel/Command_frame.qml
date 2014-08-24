@@ -62,13 +62,6 @@ Flipable {
         NumberAnimation { target: rotation; property: "angle"; duration: animation_duration }
     }
 
-    Rectangle {
-        id: background
-        anchors.fill: parent
-        radius:6
-        color:color_palette.color_bg_01
-    }
-
     DropShadow {
         anchors.fill: background
         horizontalOffset: flipable.flipped ? -4 : 4
@@ -82,6 +75,13 @@ Flipable {
         Behavior on horizontalOffset {
             NumberAnimation { duration: animation_duration }
         }
+    }
+
+    Rectangle {
+        id: background
+        anchors.fill: parent
+        radius:6
+        color:color_palette.color_bg_01
     }
 
     Command_item
