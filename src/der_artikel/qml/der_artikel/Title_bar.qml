@@ -26,11 +26,11 @@
  *
  ******************************************************************************/
 import QtQuick 2.1
-import QtGraphicalEffects 1.0
 
 Item {
     id: title
     property int page_id
+    property int shadow_offset:4
     y:-height-4
     height:72
     anchors{left:parent.left;right:parent.right}
@@ -63,15 +63,15 @@ Item {
         }
     }
 
-    DropShadow {
-        anchors.fill: background_image
-        horizontalOffset: 2
-        verticalOffset: 4
-        radius: 0
-        spread: 0.3
-        samples: 16
-        color: color_palette.shadow_color
-        source: background_image
+    Rectangle {
+        id: background_shadow
+        x:background_image.x + shadow_offset
+        y:background_image.y + shadow_offset
+        width:background_image.width
+        height:background_image.height
+        radius:6
+        color:color_palette.shadow_color
+        opacity:0.8
     }
 
     Rectangle {

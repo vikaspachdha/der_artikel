@@ -26,13 +26,13 @@
  *
  ******************************************************************************/
 import QtQuick 2.1
-import QtGraphicalEffects 1.0
 import com.vystosi.qmlcomponents 1.0
 
 Flipable {
     id: flipable
     width:100
     height:80
+    property int shadow_offset:4
     anchors{
         left:parent.left
         leftMargin: 8
@@ -62,17 +62,16 @@ Flipable {
         NumberAnimation { target: rotation; property: "angle"; duration: animation_duration }
     }
 
-    DropShadow {
-        anchors.fill: background
-        horizontalOffset: flipable.flipped ? -4 : 4
-        verticalOffset: 4
-        radius: 0
-        spread: 0.3
-        samples: 16
-        color: color_palette.shadow_color
-        source: background
-
-        Behavior on horizontalOffset {
+    Rectangle {
+        id: background_shadow
+        x:flipable.flipped ? background.x - shadow_offset : background.x + shadow_offset
+        y:background.y + shadow_offset
+        width:background.width
+        height:background.height
+        radius:6
+        color:color_palette.shadow_color
+        opacity:0.8
+        Behavior on x {
             NumberAnimation { duration: animation_duration }
         }
     }

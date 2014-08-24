@@ -26,7 +26,6 @@
  *
  ******************************************************************************/
 import QtQuick 2.1
-import QtGraphicalEffects 1.0
 
 Item {
     id: startup_screen
@@ -56,17 +55,6 @@ Item {
         id: background_rect
         anchors.fill: parent
         color:color_palette.color_bg_01
-    }
-
-    DropShadow {
-        anchors.fill: background_rect
-        horizontalOffset: 2
-        verticalOffset: 4
-        radius: 0
-        spread: 0.3
-        samples: 16
-        color: "#66000000"
-        source: background_rect
     }
 
     Text {

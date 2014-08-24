@@ -27,11 +27,11 @@
  ******************************************************************************/
 import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
-import QtGraphicalEffects 1.0
 
 Item {
     id:panel
     property int page_id
+    property int shadow_offset:4
     x:-width -12
     width:100
     anchors {top:parent.top;bottom:parent.bottom}
@@ -64,15 +64,15 @@ Item {
         }
     }
 
-    DropShadow {
-        anchors.fill: background_image
-        horizontalOffset: 4
-        verticalOffset: 4
-        radius: 0
-        spread: 0.3
-        samples: 16
-        color: color_palette.shadow_color
-        source: background_image
+    Rectangle {
+        id: background_shadow
+        x:background_image.x + shadow_offset
+        y:background_image.y + shadow_offset
+        width:background_image.width
+        height:background_image.height
+        radius:6
+        color:color_palette.shadow_color
+        opacity:0.8
     }
 
     Rectangle {
