@@ -10,7 +10,7 @@
  *  \parblock
  *  Der Artikel is a game developed to learn the German vocabulary. The main idea is to make the user
  *  learn the vocabulary in pairs as for human brain its easy to remembers things in pairs and associations. 
- *  The game uses paired-associate-learning by associating colors and sounds with the words.
+ *  The game uses paired-associate-learning by associating colors and sounds with the words. Visit <a href="http://www.derartikel.com">Home Page</a>.
  *  \endparblock
  *
  *
