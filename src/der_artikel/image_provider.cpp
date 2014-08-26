@@ -49,6 +49,7 @@ ImageProvider_C::ImageProvider_C() :
  *  \author Vikas Pachdha
  *
  *  \param[in] id : Id of the image.
+ *  \param[in] pixmap : Pixmap to store for the id.
  ******************************************************************************/
 void ImageProvider_C::addImage(QString id, QPixmap pixmap)
 {

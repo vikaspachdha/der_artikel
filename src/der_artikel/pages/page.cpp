@@ -41,7 +41,8 @@
  *
  *  \author Vikas Pachdha.
  *
- *  \param[in]  pageId Page id of the page.
+ *  \param[in]  page_id Page id of the page.
+ *  \param[in]  page_manager : \ref Manager_C instance.
  *  \param[in]  parent Parent instance for this instance of CImageArchivePage.
  *********************************************************************************/
 Page_C::Page_C(Manager_C::PageId_TP page_id, Manager_C &page_manager, QObject *parent) :
@@ -66,7 +67,7 @@ Manager_C::PageId_TP Page_C::pageId() const
 
 
 /********************************************************************************/
-/*! \brief \ref CPageManger calls this method to decide whether preconditions are
+/*! \brief \ref Manager_C calls this method to decide whether preconditions are
  *  met to enter this page. Override this method to define the preconditions for
  *  the corresponding page.
  *
@@ -80,7 +81,7 @@ bool Page_C::canEnter() const
 }
 
 /********************************************************************************/
-/*! \brief \ref CPageManger calls this method to just before entering the page.
+/*! \brief \ref Manager_C calls this method to just before entering the page.
  *  Override this method to write initialization code for the corresponding page.
  *
  *  \author Vikas Pachdha.
@@ -92,7 +93,7 @@ void Page_C::enter(Manager_C::PageId_TP prev_page_id)
 }
 
 /********************************************************************************/
-/*! \brief \ref CPageManger calls this method to decide whether conditions are
+/*! \brief \ref Manager_C calls this method to decide whether conditions are
  *  met to leave this page. Override this method to define the conditions for
  *  the corresponding page.
  *
@@ -106,7 +107,7 @@ bool Page_C::canLeave() const
 }
 
 /********************************************************************************/
-/** \brief \ref CPageManger calls this method to just after leaving the page.
+/** \brief \ref Manager_C calls this method to just after leaving the page.
  *  Override this method to write clean up code for the corresponding page.
  *
  *  \author Vikas Pachdha.

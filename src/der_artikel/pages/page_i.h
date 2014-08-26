@@ -40,7 +40,7 @@
 //******************************************************************************
 /*! \brief Interface class for a Page entity.
  *
- *  \details \ref CPageManager manages the pages using this interface.
+ *  \details \ref Manager_C manages the pages using this interface.
  *
  *  \author Vikas Pachdha
  ******************************************************************************/
@@ -64,7 +64,7 @@ public:
     virtual Manager_C::PageId_TP pageId() const = 0;
 
     //******************************************************************************
-    /*! \brief \ref CPageManger calls this method to decide whether preconditions are
+    /*! \brief \ref Manager_C calls this method to decide whether preconditions are
      *  met to enter this page.
      *
      *  \details Implement this method to define the preconditions for the corresponding page.
@@ -76,7 +76,7 @@ public:
     virtual bool canEnter() const = 0;
 
     //******************************************************************************
-    /*! \brief \ref CPageManger calls this method to just before entering the page.
+    /*! \brief \ref Manager_C calls this method to just before entering the page.
      *
      *  \details Implement this method to write initialization code for the corresponding page.
      *
@@ -85,7 +85,7 @@ public:
     virtual void enter(Manager_C::PageId_TP prev_page_id) = 0;
 
     //******************************************************************************
-    /*! \brief \ref CPageManger calls this method to decide whether conditions are
+    /*! \brief \ref Manager_C calls this method to decide whether conditions are
      *  met to leave this page.
      *
      *  \details Implement this method to define the conditions for the corresponding page.
@@ -97,7 +97,7 @@ public:
     virtual bool canLeave() const = 0;
 
     //******************************************************************************
-    /*! \brief \ref CPageManger calls this method to just after leaving the page.
+    /*! \brief \ref Manager_C calls this method to just after leaving the page.
      *
      *  \details Implement this method to write clean up code for the corresponding page.
      *

@@ -1,5 +1,5 @@
 //******************************************************************************
-/*! \file file.h Declaration/Implementation of \ref SomeClass
+/*! \file thema_file_operation.h Declaration/Implementation of \ref ThemaFileOperation_I
  *
  *  \author Vikas Pachdha
  *

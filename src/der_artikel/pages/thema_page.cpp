@@ -38,7 +38,7 @@
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] page_manager : \ref CPageManager_C instance.
+ *  \param[in] page_manager : \ref Manager_C instance.
  *  \param[in] parent : Parent instance.
  ******************************************************************************/
 ThemaPage_C::ThemaPage_C(Manager_C &page_manager, QObject *parent) :

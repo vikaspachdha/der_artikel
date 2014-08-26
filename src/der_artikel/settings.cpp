@@ -270,7 +270,7 @@ QString Settings_C::wordMsgTimeStr() const
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] new_time : New word message time in msecs.
+ *  \param[in] new_time_str : New word message time in msecs.
  ******************************************************************************/
 void Settings_C::setWordMsgTimeStr(QString new_time_str)
 {

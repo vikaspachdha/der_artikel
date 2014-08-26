@@ -35,7 +35,7 @@
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] page_manager : \ref CPageManager_C instance.
+ *  \param[in] page_manager : \ref Manager_C instance.
  *  \param[in] root_context : QML root context instance.
  *  \param[in] parent : Parent instance.
  ******************************************************************************/

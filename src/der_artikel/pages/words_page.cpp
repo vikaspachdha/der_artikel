@@ -1,5 +1,5 @@
 //******************************************************************************
-/*! \file words_page.cpp Implementation of \ref SomeClass
+/*! \file words_page.cpp Implementation of \ref WordsPage_C
  *
  *  \author Vikas Pachdha
  *
@@ -54,7 +54,7 @@
  *
  *  \author Vikas Pachdha
  *
- *  \param[in] page_manager : \ref CPageManager_C instance.
+ *  \param[in] page_manager : \ref Manager_C instance.
  *  \param[in] root_context : QML root context instance.
  *  \param[in] settings : Application's \ref Settings_C  instance.
  *  \param[in] parent : Parent instance.
@@ -85,7 +85,7 @@ WordsPage_C::~WordsPage_C()
 }
 
 /********************************************************************************/
-/*! \brief \ref To check preconditions for words page. Thema selection is checked
+/*! \brief To check preconditions for words page. Thema selection is checked
  *  and thema is loaded.
  *
  *  \author Vikas Pachdha.
