@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <array name="qt_sources">
+        <item>https://download.qt-project.org/ministro/android/qt5/qt-5.3</item>
+    </array>
+
+    <!-- The following is handled automatically by the deployment tool. It should
+         not be edited manually. -->
+
+    <array name="bundled_libs">
+    	<item>log4qt</item>
+    	<item>aes</item>
+    </array>
+
+     <array name="qt_libs">
+        <item>gnustl_shared</item>
+        <item>Qt5Core</item>
+        <item>Qt5Network</item>
+        <item>Qt5Qml</item>
+        <item>Qt5Gui</item>
+        <item>Qt5Quick</item>
+        <item>Qt5QuickParticles</item>
+        <item>Qt5Multimedia</item>
+        <item>Qt5MultimediaQuick_p</item>
+        <item>Qt5Xml</item>
+     </array>
+
+    <array name="bundled_in_lib">
+        <item>libplugins_bearer_libqgenericbearer.so:plugins/bearer/libqgenericbearer.so</item>
+        <item>libplugins_qmltooling_libqmldbg_qtquick2.so:plugins/qmltooling/libqmldbg_qtquick2.so</item>
+        <item>libplugins_qmltooling_libqmldbg_tcp.so:plugins/qmltooling/libqmldbg_tcp.so</item>
+        <item>libplugins_platforms_android_libqtforandroid.so:plugins/platforms/android/libqtforandroid.so</item>
+        <item>libplugins_platforms_libqeglfs.so:plugins/platforms/libqeglfs.so</item>
+        <item>libplugins_platforms_libqminimal.so:plugins/platforms/libqminimal.so</item>
+        <item>libplugins_platforms_libqminimalegl.so:plugins/platforms/libqminimalegl.so</item>
+        <item>libplugins_platforms_libqoffscreen.so:plugins/platforms/libqoffscreen.so</item>
+        <item>libplugins_generic_libqevdevkeyboardplugin.so:plugins/generic/libqevdevkeyboardplugin.so</item>
+        <item>libplugins_generic_libqevdevmouseplugin.so:plugins/generic/libqevdevmouseplugin.so</item>
+        <item>libplugins_generic_libqevdevtabletplugin.so:plugins/generic/libqevdevtabletplugin.so</item>
+        <item>libplugins_generic_libqevdevtouchplugin.so:plugins/generic/libqevdevtouchplugin.so</item>
+        <item>libplugins_imageformats_libqdds.so:plugins/imageformats/libqdds.so</item>
+        <item>libqml_Qt_labs_folderlistmodel_libqmlfolderlistmodelplugin.so:qml/Qt/labs/folderlistmodel/libqmlfolderlistmodelplugin.so</item>
+        <item>libqml_Qt_labs_settings_libqmlsettingsplugin.so:qml/Qt/labs/settings/libqmlsettingsplugin.so</item>
+        <item>libqml_QtMultimedia_libdeclarative_multimedia.so:qml/QtMultimedia/libdeclarative_multimedia.so</item>
+        <item>libqml_QtQml_Models.2_libmodelsplugin.so:qml/QtQml/Models.2/libmodelsplugin.so</item>
+        <item>libqml_QtQuick_Controls_libqtquickcontrolsplugin.so:qml/QtQuick/Controls/libqtquickcontrolsplugin.so</item>
+        <item>libqml_QtQuick_Dialogs_libdialogplugin.so:qml/QtQuick/Dialogs/libdialogplugin.so</item>
+        <item>libqml_QtQuick_Dialogs_Private_libdialogsprivateplugin.so:qml/QtQuick/Dialogs/Private/libdialogsprivateplugin.so</item>
+        <item>libqml_QtQuick_Layouts_libqquicklayoutsplugin.so:qml/QtQuick/Layouts/libqquicklayoutsplugin.so</item>
+        <item>libqml_QtQuick_Particles.2_libparticlesplugin.so:qml/QtQuick/Particles.2/libparticlesplugin.so</item>
+        <item>libqml_QtQuick_Window.2_libwindowplugin.so:qml/QtQuick/Window.2/libwindowplugin.so</item>
+        <item>libqml_QtQuick.2_libqtquick2plugin.so:qml/QtQuick.2/libqtquick2plugin.so</item>
+        <item>libplugins_accessible_libqtaccessiblequick.so:plugins/accessible/libqtaccessiblequick.so</item>
+        <item>libplugins_mediaservice_libqtmedia_android.so:plugins/mediaservice/libqtmedia_android.so</item>
+        <item>libplugins_audio_libqtaudio_opensles.so:plugins/audio/libqtaudio_opensles.so</item>
+        <item>libplugins_video_videonode_libqtsgvideonode_android.so:plugins/video/videonode/libqtsgvideonode_android.so</item>
+        <item>libplugins_playlistformats_libqtmultimedia_m3u.so:plugins/playlistformats/libqtmultimedia_m3u.so</item>
+    </array>
+
+    <array name="bundled_in_assets">
+        <item>--Added-by-androiddeployqt--/qml/Enginio/plugins.qmltypes:qml/Enginio/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/Enginio/qmldir:qml/Enginio/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/Qt/labs/folderlistmodel/plugins.qmltypes:qml/Qt/labs/folderlistmodel/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/Qt/labs/folderlistmodel/qmldir:qml/Qt/labs/folderlistmodel/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/Qt/labs/settings/plugins.qmltypes:qml/Qt/labs/settings/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/Qt/labs/settings/qmldir:qml/Qt/labs/settings/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/Qt/WebSockets/plugins.qmltypes:qml/Qt/WebSockets/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/Qt/WebSockets/qmldir:qml/Qt/WebSockets/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtBluetooth/plugins.qmltypes:qml/QtBluetooth/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/QtBluetooth/qmldir:qml/QtBluetooth/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/Blend.qml:qml/QtGraphicalEffects/Blend.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/BrightnessContrast.qml:qml/QtGraphicalEffects/BrightnessContrast.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/Colorize.qml:qml/QtGraphicalEffects/Colorize.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/ColorOverlay.qml:qml/QtGraphicalEffects/ColorOverlay.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/ConicalGradient.qml:qml/QtGraphicalEffects/ConicalGradient.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/Desaturate.qml:qml/QtGraphicalEffects/Desaturate.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/DirectionalBlur.qml:qml/QtGraphicalEffects/DirectionalBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/Displace.qml:qml/QtGraphicalEffects/Displace.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/DropShadow.qml:qml/QtGraphicalEffects/DropShadow.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/FastBlur.qml:qml/QtGraphicalEffects/FastBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/GammaAdjust.qml:qml/QtGraphicalEffects/GammaAdjust.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/GaussianBlur.qml:qml/QtGraphicalEffects/GaussianBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/Glow.qml:qml/QtGraphicalEffects/Glow.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/HueSaturation.qml:qml/QtGraphicalEffects/HueSaturation.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/InnerShadow.qml:qml/QtGraphicalEffects/InnerShadow.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/LevelAdjust.qml:qml/QtGraphicalEffects/LevelAdjust.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/LinearGradient.qml:qml/QtGraphicalEffects/LinearGradient.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/MaskedBlur.qml:qml/QtGraphicalEffects/MaskedBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/OpacityMask.qml:qml/QtGraphicalEffects/OpacityMask.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/private/FastGlow.qml:qml/QtGraphicalEffects/private/FastGlow.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/private/FastInnerShadow.qml:qml/QtGraphicalEffects/private/FastInnerShadow.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/private/FastMaskedBlur.qml:qml/QtGraphicalEffects/private/FastMaskedBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/private/GaussianDirectionalBlur.qml:qml/QtGraphicalEffects/private/GaussianDirectionalBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/private/GaussianGlow.qml:qml/QtGraphicalEffects/private/GaussianGlow.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/private/GaussianInnerShadow.qml:qml/QtGraphicalEffects/private/GaussianInnerShadow.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/private/GaussianMaskedBlur.qml:qml/QtGraphicalEffects/private/GaussianMaskedBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/private/SourceProxy.qml:qml/QtGraphicalEffects/private/SourceProxy.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/qmldir:qml/QtGraphicalEffects/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/RadialBlur.qml:qml/QtGraphicalEffects/RadialBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/RadialGradient.qml:qml/QtGraphicalEffects/RadialGradient.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/RectangularGlow.qml:qml/QtGraphicalEffects/RectangularGlow.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/RecursiveBlur.qml:qml/QtGraphicalEffects/RecursiveBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/ThresholdMask.qml:qml/QtGraphicalEffects/ThresholdMask.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/ZoomBlur.qml:qml/QtGraphicalEffects/ZoomBlur.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtMultimedia/plugins.qmltypes:qml/QtMultimedia/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/QtMultimedia/qmldir:qml/QtMultimedia/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtMultimedia/Video.qml:qml/QtMultimedia/Video.qml</item>
+        <item>--Added-by-androiddeployqt--/qml/QtNfc/plugins.qmltypes:qml/QtNfc/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/QtNfc/qmldir:qml/QtNfc/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtPositioning/plugins.qmltypes:qml/QtPositioning/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/QtPositioning/qmldir:qml/QtPositioning/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtQml/Models.2/qmldir:qml/QtQml/Models.2/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtQuick/Window.2/plugins.qmltypes:qml/QtQuick/Window.2/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/QtQuick/Window.2/qmldir:qml/QtQuick/Window.2/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtQuick.2/plugins.qmltypes:qml/QtQuick.2/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/QtQuick.2/qmldir:qml/QtQuick.2/qmldir</item>
+        <item>--Added-by-androiddeployqt--/qml/QtSensors/plugins.qmltypes:qml/QtSensors/plugins.qmltypes</item>
+        <item>--Added-by-androiddeployqt--/qml/QtSensors/qmldir:qml/QtSensors/qmldir</item>
+        <item>languages/der_artikel_de.qm:languages/der_artikel_de.qm</item>
+        <item>languages/der_artikel_en.qm:languages/der_artikel_en.qm</item>
+        <item>languages/der_artikel_hin.qm:languages/der_artikel_hin.qm</item>
+    </array>
+
+</resources>

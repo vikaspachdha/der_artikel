@@ -113,7 +113,9 @@ OTHER_FILES += ./der_artikel_de.ts \
     ./der_artikel_en.ts \
     ./der_artikel_hin.ts \
     code_comment_template.txt \
-    qml/der_artikel/utils.js
+    qml/der_artikel/utils.js \
+    android/AndroidManifest.xml \
+    android/res/values/libs.xml
 
 # Add more folders to ship with the application, here
 folder_01.source = languages
@@ -129,6 +131,8 @@ mac {
     LIBS += -L$${DESTDIR} -laes
 }
 
+
+
 # Copy log4qt files to build dir
 SOURCE_PATH = $${DESTDIR}/../../libs/log4qt
 CONFIG(debug,debug|release):SOURCE_PATH = $${SOURCE_PATH}/bin_debug/*log4qt.*
@@ -142,6 +146,7 @@ win32{
 }
 QMAKE_PRE_LINK += $$QMAKE_COPY $$quote($$SOURCE_PATH) $$quote($$TARGET_PATH) $$escape_expand(\\n\\t)
 
+
 # Copy tiny aes files to build dir
 SOURCE_PATH = $${DESTDIR}/../../libs/tiny_aes
 CONFIG(debug,debug|release):SOURCE_PATH = $${SOURCE_PATH}/bin_debug/*aes.*
@@ -154,3 +159,6 @@ win32{
     TARGET_PATH = $${TARGET_PATH}/$${TARGET}.app/Contents/MacOS
 }
 QMAKE_PRE_LINK += $$QMAKE_COPY $$quote($$SOURCE_PATH) $$quote($$TARGET_PATH) $$escape_expand(\\n\\t)
+
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
