@@ -69,6 +69,8 @@ QString GetResourcePath(const QString &path)
         return pathInInstallDir;
 #elif defined(Q_OS_ANDROID_NO_SDK)
     return QLatin1String("/data/user/qt/") + path;
+#elif defined(Q_OS_ANDROID)
+    return QLatin1String("assets:/") + path;
 #endif
     return path;
 }
