@@ -83,6 +83,6 @@ Item {
         anchors.left: text_area.left
         anchors.verticalCenter: text_area.verticalCenter
         font.family: "Georgia"
-        font.pixelSize: nounTextSize
+        font.pixelSize: settings.noun_text_size
     }
 }

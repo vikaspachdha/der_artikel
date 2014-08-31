@@ -66,7 +66,7 @@ Title_bar {
         text: themaModel.selected_thema ? themaModel.selected_thema.name + "\n" + themaModel.selected_thema.tr_name : ""
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: heading1Size
+        font.pixelSize: settings.heading_1_size
     }
 
     Text {
@@ -82,7 +82,7 @@ Title_bar {
         text: words_page.word_description
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: heading1Size
+        font.pixelSize: settings.heading_1_size
         horizontalAlignment: Text.AlignHCenter
         elide: Text.ElideRight
     }
@@ -98,7 +98,7 @@ Title_bar {
         text: qsTr("Remaining time") + settings.i18n_empty_string
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: heading1Size
+        font.pixelSize: settings.heading_1_size
     }
 
     Text {
@@ -112,7 +112,7 @@ Title_bar {
         text:manager.game_level === Manager.PRACTICE?"∞":timer_text_str
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: heading1Size
+        font.pixelSize: settings.heading_1_size
     }
 
     onPlay_timeChanged: {

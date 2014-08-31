@@ -61,6 +61,20 @@ class Settings_C : public QObject
     Q_PROPERTY(QString thema_remote_path READ themaRemotePath WRITE setThemaRemotePath NOTIFY themaRemotePathChanged)
     Q_PROPERTY(bool thema_auto_update READ themaAutoUpdate WRITE setThemaAutoUpdate NOTIFY themaAutoUpdateChanged)
     Q_PROPERTY(bool startup_thema_update READ startupThemaUpdate CONSTANT)
+
+    Q_PROPERTY(int title_text_size READ titleTextSize  CONSTANT)
+    Q_PROPERTY(int heading_1_size READ heading1Size  CONSTANT)
+    Q_PROPERTY(int heading_2_size READ heading2Size CONSTANT)
+    Q_PROPERTY(int cmd_text_size READ cmdTextSize CONSTANT)
+    Q_PROPERTY(int sub_cmd_text_size READ subCmdTextSize CONSTANT)
+    Q_PROPERTY(int normal_text_size READ normalTextSize CONSTANT)
+    Q_PROPERTY(int noun_text_size READ nounTextSize CONSTANT)
+    Q_PROPERTY(qreal page_item_width READ pageItemWidth CONSTANT)
+    Q_PROPERTY(qreal page_item_height READ pageItemHeight CONSTANT)
+    Q_PROPERTY(qreal thema_item_width READ themaItemWidth CONSTANT)
+    Q_PROPERTY(qreal thema_item_height READ themaItemHeight CONSTANT)
+    Q_PROPERTY(qreal panel_frame_width READ panelFrameWidth CONSTANT)
+    Q_PROPERTY(qreal title_frame_height READ titleFrameHeight CONSTANT)
     Q_ENUMS(Language_TP)
 
 public:
@@ -121,6 +135,20 @@ public:
 
     QString platformId() const;
 
+    int titleTextSize() const { return _title_text_size; }
+    int heading1Size() const { return _heading_1_size; }
+    int heading2Size() const { return _heading_2_size; }
+    int cmdTextSize() const { return _cmd_text_size; }
+    int subCmdTextSize() const { return _sub_cmd_text_size; }
+    int normalTextSize() const { return _normal_text_size; }
+    int nounTextSize() const { return _noun_text_size; }
+    qreal pageItemWidth() const { return _page_item_width; }
+    qreal pageItemHeight() const { return _page_item_height; }
+    qreal themaItemWidth() const { return _thema_item_width; }
+    qreal themaItemHeight() const { return _thema_item_height; }
+    qreal panelFrameWidth() const { return _panel_frame_width; }
+    qreal titleFrameHeight() const { return _title_frame_height; }
+
     void saveSettings();
     void loadSettings();
 
@@ -141,6 +169,8 @@ private:
 
     void clearTranslators();
 
+    void setupDimesions();
+
 private:
     //! Selected language.
     Language_TP _current_language;
@@ -160,6 +190,21 @@ private:
     QDateTime _thema_auto_update_date;
     //! Flag to update thema files at startup.
     bool _startup_thema_update;
+    bool _mobile_platforms;
+
+    int _title_text_size;
+    int _heading_1_size;
+    int _heading_2_size;
+    int _cmd_text_size;
+    int _sub_cmd_text_size;
+    int _normal_text_size;
+    int _noun_text_size;
+    qreal _page_item_width;
+    qreal _page_item_height;
+    qreal _thema_item_width;
+    qreal _thema_item_height;
+    qreal _panel_frame_width;
+    qreal _title_frame_height;
 };
 
 #endif // SETTINGS_H

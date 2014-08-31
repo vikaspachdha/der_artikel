@@ -72,7 +72,7 @@ Flipable {
             text:qsTr("Author :") + settings.i18n_empty_string
             color:color_palette.color_font_02
             font.family:regular_font.name
-            font.pixelSize: commandTextSize
+            font.pixelSize: settings.cmd_text_size
         }
         Text {
             id:author
@@ -83,7 +83,7 @@ Flipable {
             text:"-"
             color:color_palette.color_font_02
             font.family:regular_font.name
-            font.pixelSize: subCommandTextSize
+            font.pixelSize: settings.sub_cmd_text_size
         }
         Text {
             id:last_played_date_label
@@ -95,7 +95,7 @@ Flipable {
             text:qsTr("Last Played :") + settings.i18n_empty_string
             color:color_palette.color_font_02
             font.family:regular_font.name
-            font.pixelSize: commandTextSize
+            font.pixelSize: settings.cmd_text_size
         }
         Text {
             id:date
@@ -105,7 +105,7 @@ Flipable {
             anchors.right: parent.right
             color:color_palette.color_font_02
             font.family:regular_font.name
-            font.pixelSize: subCommandTextSize
+            font.pixelSize: settings.sub_cmd_text_size
         }
     }
 
@@ -136,7 +136,7 @@ Flipable {
             anchors.topMargin: 2
             color:color_palette.color_font_02
             font.family:regular_font.name
-            font.pixelSize: subCommandTextSize
+            font.pixelSize: settings.sub_cmd_text_size
         }
 
         Text {
@@ -150,7 +150,7 @@ Flipable {
             anchors.leftMargin: 4
             color:color_palette.color_font_02
             font.family:regular_font.name
-            font.pixelSize: subCommandTextSize
+            font.pixelSize: settings.sub_cmd_text_size
         }
 
         Text {
@@ -167,7 +167,7 @@ Flipable {
             horizontalAlignment: Text.AlignHCenter
             color:color_palette.color_font_02
             font.family:regular_font.name
-            font.pixelSize: subCommandTextSize
+            font.pixelSize: settings.sub_cmd_text_size
         }
 
         Text {
@@ -184,7 +184,7 @@ Flipable {
             anchors.topMargin: 0
             color:color_palette.color_font_02
             font.family:regular_font.name
-            font.pixelSize: subCommandTextSize
+            font.pixelSize: settings.sub_cmd_text_size
         }
 
         MouseArea {

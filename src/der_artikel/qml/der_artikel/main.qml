@@ -42,12 +42,6 @@ Window{
     property QtObject color_palette : cp_blue
 
     // Text sizes
-    property int heading1Size:16
-    property int heading2Size:14
-    property int commandTextSize : 14
-    property int subCommandTextSize : 11
-    property int normalTextSize : 14
-    property int nounTextSize: 24
     property var startup_screen
 
 
@@ -110,7 +104,7 @@ Window{
 
         Item{
             id: title_frame
-            height: 76
+            height: settings.title_frame_height
             anchors{
                 top: parent.top
                 left:parent.left
@@ -122,13 +116,25 @@ Window{
 
         Item {
             id: panel_frame
-            width:108
+            width:settings.panel_frame_width
             anchors{
                 top: title_frame.bottom
                 topMargin: 6
                 left:parent.left
+                bottom:cmd_frame.top
+                bottomMargin: 6
+            }
+        }
+
+        Command_frame {
+            id: cmd_frame
+            width:settings.panel_frame_width
+            height: width * 0.80
+            anchors{
+                left:parent.left
+                leftMargin: 8
                 bottom:parent.bottom
-                bottomMargin: 92
+                bottomMargin: 6
             }
         }
 
@@ -139,7 +145,7 @@ Window{
             anchors.top: title_frame.bottom
             anchors.bottom: rootItem.bottom
             anchors.left: parent.left
-            anchors.leftMargin: 112
+            anchors.leftMargin: settings.panel_frame_width + 20
             anchors.right: rootItem.right
             anchors.rightMargin: 4
         }
@@ -310,7 +316,7 @@ Window{
 
     function removeStartupScreen()
     {
-        createDynamicObject("Command_frame.qml",rootItem);
+        //createDynamicObject("Command_frame.qml",rootItem);
         startup_screen.hideStartup();
     }
 

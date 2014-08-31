@@ -42,7 +42,7 @@ Rectangle {
     }
 
     width: Math.max(80, label.contentWidth + 6)
-    height: 30
+    height: Math.max(30,label.contentHeight + 6)
     radius: 4
     gradient: Gradient {
         GradientStop {position: 0  ;color: color_palette.color_btn_02}
@@ -63,7 +63,7 @@ Rectangle {
         text: qsTr("Button") + settings.i18n_empty_string
         color:color_palette.color_font_02
         font.family: regular_font.name
-        font.pixelSize: commandTextSize
+        font.pixelSize: settings.cmd_text_size
     }
 
     MouseArea {

@@ -59,6 +59,6 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         font.family: regular_font.name
         color:color_palette.color_font_01
-        font.pixelSize: normalTextSize
+        font.pixelSize: settings.normal_text_size
     }
 }

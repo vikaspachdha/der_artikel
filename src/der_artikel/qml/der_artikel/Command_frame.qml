@@ -30,15 +30,7 @@ import com.vystosi.qmlcomponents 1.0
 
 Flipable {
     id: flipable
-    width:100
-    height:80
     property int shadow_offset:4
-    anchors{
-        left:parent.left
-        leftMargin: 8
-        bottom:parent.bottom
-        bottomMargin: 6
-    }
 
     front: home_cmd
     back: quit_cmd

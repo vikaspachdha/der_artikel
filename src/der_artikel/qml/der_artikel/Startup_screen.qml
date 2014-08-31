@@ -64,7 +64,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: 42
+        font.pixelSize: settings.title_text_size
     }
 
     Text {
@@ -74,7 +74,7 @@ Item {
         anchors.top: header_text.bottom
         font.family: regular_font.name
         color:color_palette.color_font_01
-        font.pixelSize: normalTextSize
+        font.pixelSize: settings.normal_text_size
 
         SequentialAnimation {
             running: true

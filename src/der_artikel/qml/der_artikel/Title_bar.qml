@@ -32,7 +32,7 @@ Item {
     property int page_id
     property int shadow_offset:4
     y:-height-4
-    height:72
+    height:settings.title_frame_height - 6
     anchors{left:parent.left;right:parent.right}
     Behavior on y {
         SequentialAnimation {

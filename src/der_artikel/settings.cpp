@@ -66,11 +66,22 @@ Settings_C::Settings_C(QObject *parent) :
     _word_message_time(1200),
     _first_run(true),
     _thema_auto_update(true),
-    _startup_thema_update(false)
+    _startup_thema_update(false),
+    _mobile_platforms(false)
 {
+    LOG_DEBUG("Settings_C::constructor");
+    LOG_INFO(QString("Platform : %1").arg(platformId()));
+
+    if(platformId().contains("android") || platformId().contains("ios")) {
+        _mobile_platforms = true;
+    }
+
+    // Setup UI demensions as per the platform.
+    setupDimesions();
+
     QSettings::setDefaultFormat(QSettings::IniFormat);
     loadSettings();
-    LOG_DEBUG("Settings_C::constructor");
+
     updateLangauge();
     _thema_remote_path = "vystosi.com/der_artikel/thema";
 
@@ -188,6 +199,45 @@ void Settings_C::clearTranslators()
         delete translator;
     }
     _installed_translators.clear();
+}
+
+void Settings_C::setupDimesions()
+{
+    if(_mobile_platforms) {
+        // Frames
+        _page_item_width =  128;
+        _page_item_height = 158;
+        _thema_item_width = 180;
+        _thema_item_height = 180;
+        _panel_frame_width= 160;
+        _title_frame_height= 106;
+
+        // Font sizes
+        _title_text_size = 56;
+        _heading_1_size=28;
+        _heading_2_size=24;
+        _cmd_text_size = 22;
+        _sub_cmd_text_size = 16;
+        _normal_text_size = 22;
+        _noun_text_size = 36;
+    } else {
+        // Frames
+        _page_item_width = 74;
+        _page_item_height = 94;
+        _thema_item_width = 104;
+        _thema_item_height = 104;
+        _panel_frame_width= 100;
+        _title_frame_height= 76;
+
+        // Font sizes
+        _title_text_size = 42;
+        _heading_1_size=16;
+        _heading_2_size=14;
+        _cmd_text_size = 14;
+        _sub_cmd_text_size = 11;
+        _normal_text_size = 14;
+        _noun_text_size = 24;
+    }
 }
 
 //******************************************************************************
@@ -469,6 +519,11 @@ QString Settings_C::platformId() const
     #endif
 #endif
 
-    return id;
+#ifdef Q_OS_IOS
+    id = "ios";
+#endif
+
+        return id;
 }
+
 

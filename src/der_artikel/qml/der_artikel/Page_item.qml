@@ -29,8 +29,6 @@ import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 Item {
     id: root_item
-    width: 80
-    height: 80
     property alias label_text:item_label.text
     property alias page_icon:icon.source
     Rectangle {
@@ -41,7 +39,7 @@ Item {
 
     Image {
         id: icon
-        width:64
+        width:parent.width
         height: width
         anchors.top: parent.top
         anchors.horizontalCenter: parent.horizontalCenter
@@ -60,7 +58,7 @@ Item {
         smooth:true
         color:color_palette.color_font_01
         font.family: regular_font.name
-        font.pixelSize: commandTextSize
+        font.pixelSize: settings.cmd_text_size
     }
 
     MouseArea {

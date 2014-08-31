@@ -45,7 +45,7 @@ depending on the game level selected.")  + settings.i18n_empty_string
         wrapMode: Text.WordWrap
         font.family: regular_font.name
         color:color_palette.color_font_01
-        font.pixelSize: normalTextSize
+        font.pixelSize: settings.normal_text_size
     }
     contentHeight: content_text.contentHeight
 }

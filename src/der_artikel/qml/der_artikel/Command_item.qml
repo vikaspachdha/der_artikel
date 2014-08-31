@@ -59,7 +59,7 @@ Item {
             anchors.left: parent.left
             color:color_palette.color_font_01
             font.family: regular_font.name
-            font.pixelSize: commandTextSize
+            font.pixelSize: settings.cmd_text_size
             horizontalAlignment: Text.AlignHCenter
         }
     }

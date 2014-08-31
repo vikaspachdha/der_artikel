@@ -33,7 +33,7 @@ Item {
     property int page_id
     property int shadow_offset:4
     x:-width -12
-    width:100
+    width:parent.width
     anchors {top:parent.top;bottom:parent.bottom}
     Behavior on x {
         SequentialAnimation {

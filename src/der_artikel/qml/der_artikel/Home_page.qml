@@ -42,12 +42,14 @@ Page {
     }
 
     GridView {
-        id: grid1
+        id: pageItemGrid
         anchors.fill: parent
         model:page_model
-        cellWidth:84
-        cellHeight:94
+        cellWidth:settings.page_item_width + 12
+        cellHeight:settings.page_item_height + 12
         delegate: Page_item {
+            width:settings.page_item_width
+            height:settings.page_item_height
             label_text:qsTranslate("HomePage",title) + settings.i18n_empty_string
             page_icon: icon_src
         }

@@ -39,9 +39,11 @@ Page {
         anchors.topMargin: 4
         anchors.fill: parent
         model: themaModel
-        cellHeight: 120
-        cellWidth: 120
+        cellHeight: settings.thema_item_width + 14
+        cellWidth: settings.thema_item_height + 14
         delegate: Thema_item {
+            height: settings.thema_item_width
+            width: settings.thema_item_height
             property string last_played_str: Qt.formatDateTime(last_played,"dd.MM.yy - hh:mm")
             title:display_name
             translation: tr_name
@@ -49,8 +51,6 @@ Page {
             last_played_text:(last_played_str === "" ? "...": last_played_str +qsTr(" hrs")) +settings.i18n_empty_string
             icon_url: "image://rootImageProvider/"+display_name
             count:word_count
-            width:grid_view.cellWidth-14
-            height:grid_view.cellHeight-14
             thema_selected: selected
             onThemaClicked: {
                 if(flipped) {

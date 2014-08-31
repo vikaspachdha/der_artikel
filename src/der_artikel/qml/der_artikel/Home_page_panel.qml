@@ -84,7 +84,7 @@ Page_panel
         anchors.right: parent.right
         anchors.rightMargin: 2
         text_h_alignment: Text.AlignHCenter
-        text_px_size:heading1Size
+        text_px_size:settings.heading_1_size
         text: words_count
         Behavior on words_count {
             NumberAnimation { duration: 1000 }
