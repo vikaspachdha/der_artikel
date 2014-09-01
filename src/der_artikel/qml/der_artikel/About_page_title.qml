@@ -49,7 +49,7 @@ Title_bar {
         anchors.verticalCenter: parent.verticalCenter
         font.family: title_font.name
         color:color_palette.color_font_01
-        font.pixelSize: 42
+        font.pixelSize: settings.title_text_size
         horizontalAlignment: Text.AlignHCenter
     }
 }

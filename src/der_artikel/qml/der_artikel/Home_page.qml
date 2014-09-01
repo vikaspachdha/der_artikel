@@ -45,8 +45,8 @@ Page {
         id: pageItemGrid
         anchors.fill: parent
         model:page_model
-        cellWidth:settings.page_item_width + 12
-        cellHeight:settings.page_item_height + 12
+        cellWidth:settings.page_item_width + 8
+        cellHeight:settings.page_item_height + 8
         delegate: Page_item {
             width:settings.page_item_width
             height:settings.page_item_height

@@ -29,8 +29,8 @@ import QtQuick 2.1
 
 Item {
     id: root_item
-    width: 52
-    height: 52
+    width: settings.cmd_width
+    height: settings.cmd_height
     property alias cmd_text:item_label.text
     property string icon_name:"command"
 
@@ -39,32 +39,24 @@ Item {
     Image {
         id: icon
         height: width
-        width:32
+        width:settings.cmd_width * 0.60
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         source: mouse_area.pressed ? "qrc:/res/resources/" + icon_name +"_active.png" : root_item.enabled ? "qrc:/res/resources/" + icon_name +".png" : "qrc:/res/resources/" + icon_name +"_disabled.png"
     }
 
-    Item {
-        id: lableParent
+    Text {
+        id: item_label
         anchors.top: icon.bottom
         anchors.right: parent.right
-        anchors.left: parent.left
         anchors.bottom: parent.bottom
-        Text {
-            id: item_label
-            anchors.baseline: parent.verticalCenter
-            anchors.baselineOffset: 4
-            anchors.right: parent.right
-            anchors.left: parent.left
-            color:color_palette.color_font_01
-            font.family: regular_font.name
-            font.pixelSize: settings.cmd_text_size
-            horizontalAlignment: Text.AlignHCenter
-        }
+        anchors.left: parent.left
+        horizontalAlignment: Text.AlignHCenter
+        smooth:true
+        color:color_palette.color_font_01
+        font.family: regular_font.name
+        font.pixelSize: settings.cmd_text_size
     }
-
-
 
     MouseArea {
         id: mouse_area

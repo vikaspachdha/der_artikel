@@ -207,8 +207,11 @@ void Settings_C::setupDimesions()
         // Frames
         _page_item_width =  128;
         _page_item_height = 158;
-        _thema_item_width = 180;
-        _thema_item_height = 180;
+        _thema_item_width = 160;
+        _thema_item_height = 160;
+        _cmd_width = 82;
+        _cmd_height = 82;
+        _msg_bar_height = 130;
         _panel_frame_width= 160;
         _title_frame_height= 106;
 
@@ -226,6 +229,9 @@ void Settings_C::setupDimesions()
         _page_item_height = 94;
         _thema_item_width = 104;
         _thema_item_height = 104;
+        _cmd_width = 52;
+        _cmd_height = 52;
+        _msg_bar_height = 90;
         _panel_frame_width= 100;
         _title_frame_height= 76;
 

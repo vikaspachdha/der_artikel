@@ -54,7 +54,7 @@ Item {
         anchors.topMargin: -height/2
 
         radius:4
-        height: 90
+        height: settings.msg_bar_height
         gradient: Gradient {
             GradientStop {position: 0  ;color: color_palette.color_btn_02}
             GradientStop {position: 0.5;color: color_palette.color_btn_01}

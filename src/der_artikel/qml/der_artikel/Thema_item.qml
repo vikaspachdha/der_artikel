@@ -117,8 +117,8 @@ Flipable {
         anchors.fill: parent
         Image {
             id: thema_icon
-            width: 64
-            height: 64
+            width: parent.width *0.60
+            height: width
             anchors.left: parent.left
             anchors.leftMargin: 4
             anchors.top: parent.top

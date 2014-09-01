@@ -31,6 +31,12 @@ Item {
     id: root_item
     property alias label_text:item_label.text
     property alias page_icon:icon.source
+
+    scale: mouse_area.pressed ? .95 :1
+    Behavior on scale {
+        NumberAnimation { duration: 100}
+    }
+
     Rectangle {
         anchors.fill:icon
         color:color_palette.color_btn_01
@@ -45,6 +51,7 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
         fillMode: Image.PreserveAspectFit
         source: "qrc:/res/resources/default_thema.png"
+
     }
 
     Text {

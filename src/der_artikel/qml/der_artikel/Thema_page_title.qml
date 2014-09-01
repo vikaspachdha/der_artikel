@@ -91,7 +91,7 @@ Title_bar {
         visible: themaModel.selection_state === ThemaModel.SINGLE_SELECTION ? false:true
         color: color_palette.color_font_01
         font.family: title_font.name
-        font.pixelSize: 16
+        font.pixelSize: settings.heading_1_size
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignVCenter
@@ -109,7 +109,7 @@ Title_bar {
         }
         color: color_palette.color_font_01
         font.family: title_font.name
-        font.pixelSize: 16
+        font.pixelSize: settings.heading_1_size
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignVCenter
@@ -149,7 +149,7 @@ Title_bar {
         }
         color: color_palette.color_font_01
         font.family: title_font.name
-        font.pixelSize: 18
+        font.pixelSize: settings.heading_2_size
         fontSizeMode: Text.Fit
         horizontalAlignment: Text.AlignLeft
         verticalAlignment:  Text.AlignTop

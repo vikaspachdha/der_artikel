@@ -73,6 +73,9 @@ class Settings_C : public QObject
     Q_PROPERTY(qreal page_item_height READ pageItemHeight CONSTANT)
     Q_PROPERTY(qreal thema_item_width READ themaItemWidth CONSTANT)
     Q_PROPERTY(qreal thema_item_height READ themaItemHeight CONSTANT)
+    Q_PROPERTY(qreal cmd_width READ cmdWidth CONSTANT)
+    Q_PROPERTY(qreal cmd_height READ cmdHeight CONSTANT)
+    Q_PROPERTY(qreal msg_bar_height READ msgBarHeight CONSTANT)
     Q_PROPERTY(qreal panel_frame_width READ panelFrameWidth CONSTANT)
     Q_PROPERTY(qreal title_frame_height READ titleFrameHeight CONSTANT)
     Q_ENUMS(Language_TP)
@@ -146,6 +149,9 @@ public:
     qreal pageItemHeight() const { return _page_item_height; }
     qreal themaItemWidth() const { return _thema_item_width; }
     qreal themaItemHeight() const { return _thema_item_height; }
+    qreal cmdWidth() const { return _cmd_width; }
+    qreal cmdHeight() const { return _cmd_height; }
+    qreal msgBarHeight() const { return _msg_bar_height; }
     qreal panelFrameWidth() const { return _panel_frame_width; }
     qreal titleFrameHeight() const { return _title_frame_height; }
 
@@ -203,6 +209,9 @@ private:
     qreal _page_item_height;
     qreal _thema_item_width;
     qreal _thema_item_height;
+    qreal _cmd_width;
+    qreal _cmd_height;
+    qreal _msg_bar_height;
     qreal _panel_frame_width;
     qreal _title_frame_height;
 };
