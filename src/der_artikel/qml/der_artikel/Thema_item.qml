@@ -201,8 +201,8 @@ Flipable {
 
         Image {
             id: info_icon
-            width: 24
-            height: 24
+            width: parent.width *0.25
+            height: width
             anchors.bottom: thema_icon.bottom
             anchors.bottomMargin: 0
             anchors.right: parent.right
