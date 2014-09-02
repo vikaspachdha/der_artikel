@@ -101,6 +101,7 @@ Window{
         anchors.fill: parent
         source: color_palette.root_background
         fillMode: Image.Tile
+        focus:true
 
         Item{
             id: title_frame
@@ -148,6 +149,14 @@ Window{
             anchors.leftMargin: settings.panel_frame_width + 20
             anchors.right: rootItem.right
             anchors.rightMargin: 4
+        }
+
+        Keys.onReleased: {
+            if (event.key === Qt.Key_Back) {
+                // Avoid closing the app in android. Instead go to home page.
+                event.accepted = true
+                manager.current_page = Manager.HOME_PAGE
+            }
         }
 
     }
