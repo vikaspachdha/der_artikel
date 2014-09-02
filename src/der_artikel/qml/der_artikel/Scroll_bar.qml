@@ -1,5 +1,5 @@
 //******************************************************************************
-/*! \file 
+/*! \file
  *
  *  \author Vikas Pachdha
  *
@@ -28,42 +28,29 @@
 import QtQuick 2.1
 
 Item {
-    anchors.fill: parent
+    id: scrollBar
 
-    Flickable {
-        id:license_view
+    property real position
+    property real pageSize
+    property int orientation : Qt.Vertical
+
+    // Groove
+    Rectangle {
+        id: background
         anchors.fill: parent
-        anchors.margins: 4
-        contentHeight: content_text.contentHeight
-        Text {
-            id: content_text
-            anchors.fill: parent
-            text:about_page_instance.license_text
-
-            wrapMode: Text.WordWrap
-            font.family: regular_font.name
-            color:color_palette.color_font_01
-            font.pixelSize: settings.normal_text_size
-        }
+        radius: orientation == Qt.Vertical ? (width/2 - 1) : (height/2 - 1)
+        color: color_palette.color_btn_01
+        opacity: 0.3
     }
 
-    Scroll_bar {
-        id: scroll_bar
-        width: 12;
-        anchors {
-            top:license_view.top
-            topMargin: 6
-            bottom:license_view.bottom
-            bottomMargin: 6
-            right: license_view.right
-        }
-        orientation: Qt.Vertical
-        position: license_view.visibleArea.yPosition
-        pageSize: license_view.visibleArea.heightRatio
-
-        opacity: license_view.movingVertically ? 0.7 : 0
-        Behavior on opacity {
-            NumberAnimation { properties: "opacity"; duration: 500 }
-        }
+    // Bar
+    Rectangle {
+        x: orientation == Qt.Vertical ? 1 : (scrollBar.position * (scrollBar.width-2) + 1)
+        y: orientation == Qt.Vertical ? (scrollBar.position * (scrollBar.height-2) + 1) : 1
+        width: orientation == Qt.Vertical ? (parent.width-2) : (scrollBar.pageSize * (scrollBar.width-2))
+        height: orientation == Qt.Vertical ? (scrollBar.pageSize * (scrollBar.height-2)) : (parent.height-2)
+        radius: orientation == Qt.Vertical ? (width/2 - 1) : (height/2 - 1)
+        color: color_palette.shadow_color
+        opacity: 0.7
     }
 }
