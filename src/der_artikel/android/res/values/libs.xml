@@ -4,9 +4,6 @@
         <item>https://download.qt-project.org/ministro/android/qt5/qt-5.3</item>
     </array>
 
-    <!-- The following is handled automatically by the deployment tool. It should
-         not be edited manually. -->
-
     <array name="bundled_libs">
     	<item>log4qt</item>
     	<item>aes</item>
@@ -38,8 +35,6 @@
         <item>libplugins_generic_libqevdevmouseplugin.so:plugins/generic/libqevdevmouseplugin.so</item>
         <item>libplugins_generic_libqevdevtabletplugin.so:plugins/generic/libqevdevtabletplugin.so</item>
         <item>libplugins_generic_libqevdevtouchplugin.so:plugins/generic/libqevdevtouchplugin.so</item>
-        <item>libplugins_imageformats_libqdds.so:plugins/imageformats/libqdds.so</item>
-        <item>libqml_Qt_labs_folderlistmodel_libqmlfolderlistmodelplugin.so:qml/Qt/labs/folderlistmodel/libqmlfolderlistmodelplugin.so</item>
         <item>libqml_Qt_labs_settings_libqmlsettingsplugin.so:qml/Qt/labs/settings/libqmlsettingsplugin.so</item>
         <item>libqml_QtMultimedia_libdeclarative_multimedia.so:qml/QtMultimedia/libdeclarative_multimedia.so</item>
         <item>libqml_QtQml_Models.2_libmodelsplugin.so:qml/QtQml/Models.2/libmodelsplugin.so</item>
@@ -50,7 +45,6 @@
         <item>libqml_QtQuick_Particles.2_libparticlesplugin.so:qml/QtQuick/Particles.2/libparticlesplugin.so</item>
         <item>libqml_QtQuick_Window.2_libwindowplugin.so:qml/QtQuick/Window.2/libwindowplugin.so</item>
         <item>libqml_QtQuick.2_libqtquick2plugin.so:qml/QtQuick.2/libqtquick2plugin.so</item>
-        <item>libplugins_accessible_libqtaccessiblequick.so:plugins/accessible/libqtaccessiblequick.so</item>
         <item>libplugins_mediaservice_libqtmedia_android.so:plugins/mediaservice/libqtmedia_android.so</item>
         <item>libplugins_audio_libqtaudio_opensles.so:plugins/audio/libqtaudio_opensles.so</item>
         <item>libplugins_video_videonode_libqtsgvideonode_android.so:plugins/video/videonode/libqtsgvideonode_android.so</item>
@@ -58,16 +52,8 @@
     </array>
 
     <array name="bundled_in_assets">
-        <item>--Added-by-androiddeployqt--/qml/Enginio/plugins.qmltypes:qml/Enginio/plugins.qmltypes</item>
-        <item>--Added-by-androiddeployqt--/qml/Enginio/qmldir:qml/Enginio/qmldir</item>
-        <item>--Added-by-androiddeployqt--/qml/Qt/labs/folderlistmodel/plugins.qmltypes:qml/Qt/labs/folderlistmodel/plugins.qmltypes</item>
-        <item>--Added-by-androiddeployqt--/qml/Qt/labs/folderlistmodel/qmldir:qml/Qt/labs/folderlistmodel/qmldir</item>
         <item>--Added-by-androiddeployqt--/qml/Qt/labs/settings/plugins.qmltypes:qml/Qt/labs/settings/plugins.qmltypes</item>
         <item>--Added-by-androiddeployqt--/qml/Qt/labs/settings/qmldir:qml/Qt/labs/settings/qmldir</item>
-        <item>--Added-by-androiddeployqt--/qml/Qt/WebSockets/plugins.qmltypes:qml/Qt/WebSockets/plugins.qmltypes</item>
-        <item>--Added-by-androiddeployqt--/qml/Qt/WebSockets/qmldir:qml/Qt/WebSockets/qmldir</item>
-        <item>--Added-by-androiddeployqt--/qml/QtBluetooth/plugins.qmltypes:qml/QtBluetooth/plugins.qmltypes</item>
-        <item>--Added-by-androiddeployqt--/qml/QtBluetooth/qmldir:qml/QtBluetooth/qmldir</item>
         <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/Blend.qml:qml/QtGraphicalEffects/Blend.qml</item>
         <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/BrightnessContrast.qml:qml/QtGraphicalEffects/BrightnessContrast.qml</item>
         <item>--Added-by-androiddeployqt--/qml/QtGraphicalEffects/Colorize.qml:qml/QtGraphicalEffects/Colorize.qml</item>
