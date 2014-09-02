@@ -28,12 +28,14 @@
 import QtQuick 2.1
 
 Item {
+    id:root_item
     anchors.fill: parent
 
     Flickable {
         id:license_view
         anchors.fill: parent
         anchors.margins: 4
+        anchors.rightMargin: 16
         contentHeight: content_text.contentHeight
         Text {
             id: content_text
@@ -49,21 +51,18 @@ Item {
 
     Scroll_bar {
         id: scroll_bar
-        width: 12;
         anchors {
             top:license_view.top
             topMargin: 6
             bottom:license_view.bottom
             bottomMargin: 6
-            right: license_view.right
+            right: root_item.right
+            rightMargin: 4
         }
         orientation: Qt.Vertical
         position: license_view.visibleArea.yPosition
         pageSize: license_view.visibleArea.heightRatio
 
         opacity: license_view.movingVertically ? 0.7 : 0
-        Behavior on opacity {
-            NumberAnimation { properties: "opacity"; duration: 500 }
-        }
     }
 }

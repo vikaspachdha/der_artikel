@@ -27,14 +27,19 @@
  ******************************************************************************/
 import QtQuick 2.1
 
-Flickable {
+Item {
+    id:root_item
     anchors.fill: parent
-    anchors.margins: 4
-    contentHeight: content_text.contentHeight
-    Text {
-        id: content_text
+    Flickable {
+        id:help_view
         anchors.fill: parent
-        text:qsTr("<p>Scoring:<table border=\"1\"> \
+        anchors.margins: 4
+        anchors.rightMargin: 16
+        contentHeight: content_text.contentHeight
+        Text {
+            id: content_text
+            anchors.fill: parent
+            text:qsTr("<p>Scoring:<table border=\"1\"> \
 <tr> \
 <td><b>Game level</b></td> \
 <td>Correct article</td> \
@@ -145,10 +150,32 @@ Flickable {
 </tr> \
 </table></p>") + settings.i18n_empty_string
 
-        textFormat: Text.RichText
-        wrapMode: Text.WordWrap
-        font.family: regular_font.name
-        color:color_palette.color_font_01
-        font.pixelSize: settings.normal_text_size
+            textFormat: Text.RichText
+            wrapMode: Text.WordWrap
+            font.family: regular_font.name
+            color:color_palette.color_font_01
+            font.pixelSize: settings.normal_text_size
+        }
+    }
+
+
+    Scroll_bar {
+        id: scroll_bar
+        anchors {
+            top:root_item.top
+            topMargin: 6
+            bottom:root_item.bottom
+            bottomMargin: 6
+            right: root_item.right
+            rightMargin: 4
+        }
+        orientation: Qt.Vertical
+        position: help_view.visibleArea.yPosition
+        pageSize: help_view.visibleArea.heightRatio
+
+        opacity: help_view.movingVertically ? 0.7 : 0
+        Behavior on opacity {
+            NumberAnimation { properties: "opacity"; duration: 250 }
+        }
     }
 }

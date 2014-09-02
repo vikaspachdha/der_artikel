@@ -29,13 +29,14 @@ import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 
 Page {
-    page_id:Manager.WORDS_PAGE
     id: word_page_root
+    page_id:Manager.WORDS_PAGE
 
     Flickable
     {
         id: wordsFrame
         anchors.fill: word_page_root
+        anchors.rightMargin: 16
         clip: true
         contentHeight: wordFlow.childrenRect.height
         Flow
@@ -46,6 +47,23 @@ Page {
             anchors.top: parent.top
             spacing: 6
         }
+    }
+
+    Scroll_bar {
+        id: scroll_bar
+        anchors {
+            top:wordsFrame.top
+            topMargin: 6
+            bottom:wordsFrame.bottom
+            bottomMargin: 6
+            right: word_page_root.right
+            rightMargin: 4
+        }
+        orientation: Qt.Vertical
+        position: wordsFrame.visibleArea.yPosition
+        pageSize: wordsFrame.visibleArea.heightRatio
+
+        opacity: wordsFrame.movingVertically ? 0.7 : 0
     }
 
 

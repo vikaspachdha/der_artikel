@@ -27,13 +27,18 @@
  ******************************************************************************/
 import QtQuick 2.1
 
-Flickable {
+Item {
+    id:root_item
     anchors.fill: parent
-    anchors.margins: 4
-    Text {
-        id: content_text
+    Flickable {
+        id: help_view
         anchors.fill: parent
-        text:qsTr("<p>1.Time allocation for a gameplay depends on the game level selected. \
+        anchors.margins: 4
+        anchors.rightMargin: 16
+        Text {
+            id: content_text
+            anchors.fill: parent
+            text:qsTr("<p>1.Time allocation for a gameplay depends on the game level selected. \
 <table border=\"1\"> \
 <tr> \
 <td><b>Game level</b></td> \
@@ -108,13 +113,31 @@ and the magnitude of points deduction shall depend on the current state of thema
 </table> \
 </p><p>CAUTION: Points are deducted progressively. i.e if your experience points are 500 and \
 you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.</p>")
-        + settings.i18n_empty_string
+                 + settings.i18n_empty_string
 
-        wrapMode: Text.WordWrap
-        font.family: regular_font.name
-        color:color_palette.color_font_01
-        font.pixelSize: settings.normal_text_size
-        textFormat: Text.RichText
+            wrapMode: Text.WordWrap
+            font.family: regular_font.name
+            color:color_palette.color_font_01
+            font.pixelSize: settings.normal_text_size
+            textFormat: Text.RichText
+        }
+        contentHeight: content_text.contentHeight
     }
-    contentHeight: content_text.contentHeight
+
+    Scroll_bar {
+        id: scroll_bar
+        anchors {
+            top:help_view.top
+            topMargin: 6
+            bottom:help_view.bottom
+            bottomMargin: 6
+            right: root_item.right
+            rightMargin: 4
+        }
+        orientation: Qt.Vertical
+        position: help_view.visibleArea.yPosition
+        pageSize: help_view.visibleArea.heightRatio
+
+        opacity: help_view.movingVertically ? 0.7 : 0
+    }
 }

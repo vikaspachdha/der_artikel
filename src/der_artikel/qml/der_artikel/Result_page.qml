@@ -29,8 +29,25 @@ import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 
 Page {
+    id: root_item
     page_id:Manager.RESULT_PAGE
-    id: rectangle1
+
+    Scroll_bar {
+        id: scroll_bar
+        anchors {
+            top:list_view.top
+            topMargin: 6
+            bottom:list_view.bottom
+            bottomMargin: 6
+            right: root_item.right
+            rightMargin: 4
+        }
+        orientation: Qt.Vertical
+        position: list_view.visibleArea.yPosition
+        pageSize: list_view.visibleArea.heightRatio
+
+        opacity: list_view.movingVertically ? 0.7 : 0
+    }
 
     Label {
         id: title_label
@@ -97,6 +114,7 @@ Page {
         anchors.top: header_label_correct.bottom
         anchors.topMargin: 2
         anchors.right: parent.right
+        anchors.rightMargin: 16
         anchors.left: parent.left
         anchors.bottom: parent.bottom
         spacing:4

@@ -28,11 +28,14 @@
 import QtQuick 2.1
 
 Item {
+    id:root_item
     anchors.fill: parent
+
     Flickable {
         id: about_view
         anchors.fill: parent
         anchors.margins: 4
+        anchors.rightMargin: 16
         Item {
             id:text_rect
             anchors.top: parent.top
@@ -98,21 +101,18 @@ entire risk arising out of use or performance of the SOFTWARE remains with you."
 
     Scroll_bar {
         id: scroll_bar
-        width: 12;
         anchors {
             top:about_view.top
             topMargin: 6
             bottom:about_view.bottom
             bottomMargin: 6
-            right: about_view.right
+            right: root_item.right
+            rightMargin: 4
         }
         orientation: Qt.Vertical
         position: about_view.visibleArea.yPosition
         pageSize: about_view.visibleArea.heightRatio
 
         opacity: about_view.movingVertically ? 0.7 : 0
-        Behavior on opacity {
-            NumberAnimation { properties: "opacity"; duration: 500 }
-        }
     }
 }

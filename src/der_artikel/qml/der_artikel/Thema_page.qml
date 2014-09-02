@@ -29,15 +29,13 @@ import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 
 Page {
+    id:root_item
     page_id:Manager.THEMA_PAGE
 
     GridView {
         id: grid_view
-        anchors.rightMargin: 4
-        anchors.leftMargin: 4
-        anchors.bottomMargin: 4
-        anchors.topMargin: 4
         anchors.fill: parent
+        anchors.margins: 8
         model: themaModel
         cellHeight: settings.thema_item_width + 14
         cellWidth: settings.thema_item_height + 14
@@ -64,5 +62,22 @@ Page {
                 thema_object.selected = true;
             }
         }
+    }
+
+    Scroll_bar {
+        id: scroll_bar
+        anchors {
+            top:grid_view.top
+            topMargin: 6
+            bottom:grid_view.bottom
+            bottomMargin: 6
+            right: root_item.right
+            rightMargin: 4
+        }
+        orientation: Qt.Vertical
+        position: grid_view.visibleArea.yPosition
+        pageSize: grid_view.visibleArea.heightRatio
+
+        opacity: grid_view.movingVertically ? 0.7 : 0
     }
 }

@@ -29,6 +29,7 @@ import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 
 Page {
+    id:root_item
     page_id:Manager.HOME_PAGE
     ListModel
     {
@@ -42,8 +43,9 @@ Page {
     }
 
     GridView {
-        id: pageItemGrid
+        id: page_item_grid
         anchors.fill: parent
+        anchors.rightMargin: 4
         model:page_model
         cellWidth:settings.page_item_width + 8
         cellHeight:settings.page_item_height + 8
@@ -53,5 +55,22 @@ Page {
             label_text:qsTranslate("HomePage",title) + settings.i18n_empty_string
             page_icon: icon_src
         }
+    }
+
+    Scroll_bar {
+        id: scroll_bar
+        anchors {
+            top:page_item_grid.top
+            topMargin: 6
+            bottom:page_item_grid.bottom
+            bottomMargin: 6
+            right: root_item.right
+            rightMargin: 4
+        }
+        orientation: Qt.Vertical
+        position: page_item_grid.visibleArea.yPosition
+        pageSize: page_item_grid.visibleArea.heightRatio
+
+        opacity: page_item_grid.movingVertically ? 0.7 : 0
     }
 }

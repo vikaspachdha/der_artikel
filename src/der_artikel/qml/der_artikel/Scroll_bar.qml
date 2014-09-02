@@ -29,10 +29,14 @@ import QtQuick 2.1
 
 Item {
     id: scrollBar
-
+    width:8
     property real position
     property real pageSize
     property int orientation : Qt.Vertical
+
+    Behavior on opacity {
+        NumberAnimation { properties: "opacity"; duration: 250 }
+    }
 
     // Groove
     Rectangle {
@@ -47,10 +51,10 @@ Item {
     Rectangle {
         x: orientation == Qt.Vertical ? 1 : (scrollBar.position * (scrollBar.width-2) + 1)
         y: orientation == Qt.Vertical ? (scrollBar.position * (scrollBar.height-2) + 1) : 1
-        width: orientation == Qt.Vertical ? (parent.width-2) : (scrollBar.pageSize * (scrollBar.width-2))
-        height: orientation == Qt.Vertical ? (scrollBar.pageSize * (scrollBar.height-2)) : (parent.height-2)
+        width: orientation == Qt.Vertical ? (parent.width-2) : (Math.min(1.0,scrollBar.pageSize) * (scrollBar.width-2))
+        height: orientation == Qt.Vertical ? (Math.min(1.0,scrollBar.pageSize) * (scrollBar.height-2)) : (parent.height-2)
         radius: orientation == Qt.Vertical ? (width/2 - 1) : (height/2 - 1)
-        color: color_palette.shadow_color
+        color: color_palette.blanket_color
         opacity: 0.7
     }
 }
