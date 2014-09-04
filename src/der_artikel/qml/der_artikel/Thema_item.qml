@@ -39,6 +39,7 @@ Flipable {
     property alias icon_url:thema_icon.source
     property int count:0
     property bool thema_selected: false
+    property int current_state:Thema.RUSTY
     property int flip_timeout:5000
     property bool flipped: false
 
@@ -116,6 +117,12 @@ Flipable {
         radius:4
         anchors.fill: parent
         Image {
+            anchors.fill: thema_rect
+            anchors.margins: -2
+            source: getTexture(current_state)
+            opacity: 0.5
+        }
+        Image {
             id: thema_icon
             width: parent.width *0.60
             height: width
@@ -124,6 +131,7 @@ Flipable {
             anchors.top: parent.top
             anchors.topMargin: 4
         }
+
 
         Text {
             id: thema_title
@@ -249,6 +257,28 @@ Flipable {
         } else {
             flip_timer.stop()
         }
+    }
+
+    function getTexture(state)
+    {
+        var image_url = ""
+
+        switch(state) {
+        case Thema.RUSTY:
+            image_url = "qrc:/res/resources/rust.png";
+            break;
+        case Thema.SILVER:
+            image_url = "qrc:/res/resources/silver.png";
+            break;
+        case Thema.GOLD:
+            image_url = "qrc:/res/resources/gold.png";
+            break;
+        case Thema.INERT:
+            image_url = "qrc:/res/resources/inert.png";
+            break;
+        }
+
+        return image_url
     }
 
 }

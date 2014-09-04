@@ -50,6 +50,7 @@ Page {
             icon_url: "image://rootImageProvider/"+display_name
             count:word_count
             thema_selected: selected
+            current_state:thema_state
             onThemaClicked: {
                 if(flipped) {
                     flipped = !flipped
