@@ -36,6 +36,7 @@
 
 // Forward declaration
 class QTranslator;
+class QQmlContext;
 
 //******************************************************************************
 /*! \brief Application settings.
@@ -51,6 +52,8 @@ class Settings_C : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(Language_TP language READ language WRITE setLanguage NOTIFY languageChanged)
+    Q_PROPERTY(QObject* color_palette READ colorPalette NOTIFY colorPaletteChanged)
+    Q_PROPERTY(QString color_palette_class READ colorPaletteClass WRITE setColorPaletteClass NOTIFY colorPaletteChanged)
     Q_PROPERTY(QString i18n_empty_string READ i18EmptyString NOTIFY languageChanged)
     Q_PROPERTY(double sound_level READ soundLevel WRITE setSoundLevel NOTIFY soundLevelChanged)
     Q_PROPERTY(QString word_msg_time_str READ wordMsgTimeStr WRITE setWordMsgTimeStr NOTIFY wordMsgTimeChanged)
@@ -91,7 +94,7 @@ public:
     };
 
 public:
-    explicit Settings_C(QObject *parent = 0);
+    explicit Settings_C(QQmlContext& ref_qml_context, QObject *parent = 0);
     ~Settings_C();
 
 public:
@@ -99,6 +102,12 @@ public:
     //! Returns current language selected.
     Language_TP language() const { return _current_language; }
     void setLanguage(Language_TP language);
+
+    //! Returns the color palette instance.
+    QObject* colorPalette() const { return _color_palette; }
+
+    QString colorPaletteClass() const;
+    void setColorPaletteClass(QString class_name);
 
     //! Current sound level.
     double soundLevel() const { return _sound_level; }
@@ -164,6 +173,8 @@ signals:
     void wordMsgTimeChanged();
     void themaRemotePathChanged();
     void themaAutoUpdateChanged();
+    //! Emitted when color palette instance changes.
+    void colorPaletteChanged();
 
 private slots:
     void disableThemaAutoUpdate();
@@ -178,6 +189,8 @@ private:
     void setupDimesions();
 
 private:
+    //! Qml Context.
+    QQmlContext& _qml_context;
     //! Selected language.
     Language_TP _current_language;
     //! Installed language translators.
@@ -196,6 +209,8 @@ private:
     QDateTime _thema_auto_update_date;
     //! Flag to update thema files at startup.
     bool _startup_thema_update;
+    //! Color palate instance.
+    QObject* _color_palette;
     bool _mobile_platforms;
 
     int _title_text_size;

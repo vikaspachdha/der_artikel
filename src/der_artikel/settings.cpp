@@ -32,6 +32,8 @@
 #include <QSysInfo>
 #include <QGuiApplication>
 #include <QLocale>
+#include <QQmlContext>
+#include <QQmlComponent>
 #include <QSettings>
 #include <QStandardPaths>
 #include <QTimer>
@@ -57,16 +59,19 @@ static const int MSG_ANIM_TIME = 400; /*! Message bar default animation time */
  *
  *  \author Vikas Pachdha
  *
+ *  \param[in] ref_qml_context : The root qml context.
  *  \param[in] parent : Parent object instance.
  ******************************************************************************/
-Settings_C::Settings_C(QObject *parent) :
+Settings_C::Settings_C(QQmlContext &ref_qml_context, QObject *parent) :
     QObject(parent),
+    _qml_context(ref_qml_context),
     _current_language(ENGLISH),
     _sound_level(0.1),
     _word_message_time(1200),
     _first_run(true),
     _thema_auto_update(true),
     _startup_thema_update(false),
+    _color_palette(0),
     _mobile_platforms(false)
 {
     LOG_DEBUG("Settings_C::constructor");
@@ -140,6 +145,50 @@ void Settings_C::setLanguage(Settings_C::Language_TP language)
         _current_language = language;
         updateLangauge();
         emit languageChanged();
+    }
+}
+
+//******************************************************************************
+/*! \brief Returns the class name of color palette instance.
+ *
+ *  \author Mohita Gandotra
+ *
+ *  \return Current color palette's class name. Empty string in case there is no
+ *  color palette instantiated.
+ *
+ *  \see \ref Settings_C::colorPalette
+ ******************************************************************************/
+QString Settings_C::colorPaletteClass() const
+{
+    return _color_palette ? _color_palette->property("class_name").toString() : "";
+}
+
+//******************************************************************************
+/*! \brief Sets the class name of the current color palette.
+ *
+ *  \brief The color palette instance is created if the class name is valid. Old
+ *  color palette instance is deleted.
+ *
+ *  \author Mohita Gandotra
+ *
+ *  \param[in] class_name : Class name of the color palette.
+ *
+ *  \see \ref Settings_C::colorPalette
+ ******************************************************************************/
+void Settings_C::setColorPaletteClass(QString class_name)
+{
+    if(colorPaletteClass() != class_name) {
+        QUrl color_palette_url(QString("qrc:/res/qml/der_artikel/%1.qml").arg(class_name));
+        QQmlComponent color_palette_component(_qml_context.engine(),color_palette_url,&_qml_context);
+        QObject* color_palette_instance = color_palette_component.create();
+        QObject* old_color_palette_instance = _color_palette;
+        if(color_palette_instance) {
+             _color_palette = color_palette_instance;
+             emit colorPaletteChanged();
+             if(old_color_palette_instance) {
+                 delete old_color_palette_instance;
+             }
+        }
     }
 }
 
@@ -256,6 +305,7 @@ void Settings_C::saveSettings()
     QSettings settings;
     settings.beginGroup("appSettings");
     settings.setValue("language",_current_language);
+    settings.setValue("colorPalette",colorPaletteClass());
     settings.setValue("soundLevel",_sound_level);
     settings.setValue("wordMessageTime",_word_message_time);
     settings.setValue("remotePath",_thema_remote_path);
@@ -285,6 +335,10 @@ void Settings_C::loadSettings()
     if(msecs > 0) {
         _thema_auto_update_date = QDateTime::fromMSecsSinceEpoch(msecs);
     }
+
+    QString color_palette_class = settings.value("colorPalette","Color_palette_blue").toString();
+    setColorPaletteClass(color_palette_class);
+
     settings.endGroup();
 }
 

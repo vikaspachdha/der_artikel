@@ -28,6 +28,8 @@
 import QtQuick 2.1
 
 Color_palette {
+    class_name: "Color_palette_blue"
+
     color_bg_01: "#65779B"
     color_bg_02: "#495670"
 

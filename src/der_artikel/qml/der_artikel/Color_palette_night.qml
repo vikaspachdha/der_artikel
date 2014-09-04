@@ -28,6 +28,8 @@
 import QtQuick 2.1
 
 Color_palette {
+    class_name: "Color_palette_night"
+
     color_bg_01: "#303030"
     color_bg_02: "#310000"
 

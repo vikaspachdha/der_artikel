@@ -82,7 +82,7 @@ Manager_C::Manager_C(QQmlContext& ref_root_context, QObject *parent) :
     connect(_thema_updater,SIGNAL(updateFinished()),this,SLOT(onthemaFilesUpdated()));
     _app_updater = new AppUpdater_C(*this);
 
-    _settings = new Settings_C(this);
+    _settings = new Settings_C(ref_root_context, this);
     _current_result = new Result_C(this);
 
     _thema_model = new ThemaModel_C(this);
