@@ -143,7 +143,7 @@ signals:
     void stateChanged();
 
 private:
-    bool read(const QDomElement& element, bool defered=true);
+    bool read(const QDomElement& element, bool deferred=true);
     bool write(QIODevice* pDevice);
     void updateThemaState();
     QByteArray iconData() const;

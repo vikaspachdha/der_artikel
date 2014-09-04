@@ -165,6 +165,9 @@ void WordsPage_C::leave(Manager_C::PageId_TP next_page_id)
     thema->clearUserInput();
     thema->clearWords();
 
+    // Rebuild thema data with deferred load.
+    thema->read("",true);
+
     QQuickItem* title_item = _page_manager.titleItem(_page_id);
     if(title_item) {
         title_item->setProperty("timer_running",false);
