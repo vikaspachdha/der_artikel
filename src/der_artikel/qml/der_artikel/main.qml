@@ -39,24 +39,10 @@ Window{
     visible: true
     title:"Der Artikel - " + Qt.application.version
 
-    property QtObject color_palette : cp_blue
+    property QtObject color_palette : settings.color_palette
 
     // Text sizes
     property var startup_screen
-
-
-    // Color palettes
-    Color_palette_blue {
-        id:cp_blue
-    }
-
-    Color_palette_night {
-        id:cp_night
-    }
-
-    Color_palette_orange {
-        id:cp_orange
-    }
 
     // Fonts
     FontLoader {

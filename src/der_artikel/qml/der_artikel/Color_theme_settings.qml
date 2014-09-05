@@ -47,27 +47,27 @@ Flickable {
             id:cp_blue_btn
             width:parent.width
             text_h_alignment: Text.AlignHCenter
-            isDown: color_palette === cp_blue
+            isDown: settings.color_palette_class === "Color_palette_blue"
             buttonText: qsTr("Deep blue") + settings.i18n_empty_string
-            onActivated: color_palette = cp_blue
+            onActivated: settings.color_palette_class = "Color_palette_blue"
         }
 
         Button {
             id:cp_orange_btn
             width:parent.width
             text_h_alignment: Text.AlignHCenter
-            isDown: color_palette === cp_orange
+            isDown: settings.color_palette_class === "Color_palette_orange"
             buttonText: qsTr("Tangy Orange") + settings.i18n_empty_string
-            onActivated: color_palette = cp_orange
+            onActivated: settings.color_palette_class = "Color_palette_orange"
         }
 
         Button {
             id:cp_night_btn
             width:parent.width
             text_h_alignment: Text.AlignHCenter
-            isDown: color_palette === cp_night
+            isDown: settings.color_palette_class === "Color_palette_night"
             buttonText: qsTr("Dark night") + settings.i18n_empty_string
-            onActivated: color_palette = cp_night
+            onActivated: settings.color_palette_class = "Color_palette_night"
         }
 
     }

@@ -76,7 +76,7 @@ Thema_C::~Thema_C()
  *  \author Vikas Pachdha
  *
  *  \param[in] element : Xml node to read data from.
- *  \param[in] defered : Defers reading words. Defer to save memory.
+ *  \param[in] deferred : Defers reading words. Defer to save memory.
  *
  *  \return bool : Returns whether read was a success.
  *  \retval success status.
@@ -85,7 +85,7 @@ Thema_C::~Thema_C()
  *                         <li> True = Success
  *                      </ul>
  ******************************************************************************/
-bool Thema_C::read(const QDomElement &element, bool defered)
+bool Thema_C::read(const QDomElement &element, bool deferred)
 {
     bool success = false;
     clearWords();
@@ -142,7 +142,7 @@ bool Thema_C::read(const QDomElement &element, bool defered)
                 Word_C* word = new Word_C(this);
                 if(word->read(word_node.toElement())) {
                     _word_count += 1;
-                    if(defered) {
+                    if(deferred) {
                         delete word;
                     } else {
                         _words.append(word);

@@ -28,6 +28,8 @@
 import QtQuick 2.1
 
 Color_palette {
+    class_name: "Color_palette_orange"
+
     color_bg_01: "#FF6A00"
     color_bg_02: "#FF9245"
 
