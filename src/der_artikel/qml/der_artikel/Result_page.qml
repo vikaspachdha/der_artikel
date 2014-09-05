@@ -66,62 +66,20 @@ Page {
         }
     }
 
-    Label {
-        id: header_label_incorrect
-        text: qsTr("Incorrect   ") + settings.i18n_empty_string
-        text_color:color_palette.color_font_02
-        visible:list_view.count > 0
-        text_h_alignment:Text.AlignRight
-        background_gradient: Gradient {
-            GradientStop {position:0.0;color:color_palette.color_btn_02}
-            GradientStop {position:0.1;color:color_palette.color_btn_01}
-            GradientStop {position:0.9;color:color_palette.color_btn_01}
-            GradientStop {position:1.0;color:color_palette.color_btn_02}
-        }
-        anchors {
-            top: title_label.bottom
-            topMargin: 2
-            left: parent.left
-            right: parent.horizontalCenter
-            rightMargin: 4
-        }
-    }
-
-    Label {
-        id: header_label_correct
-        text: qsTr("    Correct") + settings.i18n_empty_string
-        text_color:color_palette.color_font_02
-        visible:list_view.count > 0
-        text_h_alignment:Text.AlignLeft
-        background_gradient: Gradient {
-            GradientStop {position:0.0;color:color_palette.color_btn_02}
-            GradientStop {position:0.1;color:color_palette.color_btn_01}
-            GradientStop {position:0.9;color:color_palette.color_btn_01}
-            GradientStop {position:1.0;color:color_palette.color_btn_02}
-        }
-        anchors {
-            top: title_label.bottom
-            topMargin: 2
-            left: parent.horizontalCenter
-            leftMargin: 4
-            right: parent.right
-        }
-    }
 
     ListView {
         id: list_view
 
-        anchors.top: header_label_correct.bottom
-        anchors.topMargin: 2
+        anchors.top: title_label.bottom
+        anchors.topMargin: 6
         anchors.right: parent.right
         anchors.rightMargin: 16
         anchors.left: parent.left
         anchors.bottom: parent.bottom
-        spacing:4
+        spacing:20
         clip:true
         model: currentResult.incorrectWordsModel
         delegate: Result_item {
-            //height: 24
             right_text: articleText(article)+" " + word_text
             left_text: word_text
             correct_article: article
