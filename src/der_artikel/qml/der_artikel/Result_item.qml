@@ -32,39 +32,33 @@ Item {
     property alias left_text: incorrect_noun.text
     property alias right_text: correct_noun.text
     property alias correct_article:correct_noun.article
+
     width:parent.width
     height: childrenRect.height
 
-    Row {
-        id:incorrect_item
+    Noun_Item {
+        id:correct_noun
+        anchors.top : incorrect_noun.bottom
+        anchors.topMargin: 4
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Noun_Item {
+        id:incorrect_noun
         anchors.top : parent.top
         anchors.topMargin: 6
         anchors.horizontalCenter: parent.horizontalCenter
-        height:incorrect_noun.height
-        Noun_Item {
-            id:incorrect_noun
-            article: Article.INVALID
-        }
-    }
-
-    Row {
-        id:correct_item
-        anchors.top : incorrect_item.bottom
-        anchors.topMargin: 4
-        anchors.horizontalCenter: parent.horizontalCenter
-        height:correct_noun.height
-        Noun_Item {
-            id:correct_noun
-        }
+        article: Article.INVALID
     }
 
     Rectangle {
         id: top_line
-        width:correct_item.width + 20
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: correct_item.bottom
+        width:parent.width/2
+        anchors.top: correct_noun.bottom
         anchors.topMargin: 4
+        anchors.horizontalCenter: parent.horizontalCenter
         height :1
+        color:color_palette.color_btn_01
     }
 
 }

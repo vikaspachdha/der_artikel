@@ -53,6 +53,7 @@ Page {
         id: title_label
         text: (list_view.count>0 ? qsTr("Mistakes") : qsTr("No Mistakes")) + settings.i18n_empty_string
         text_color:color_palette.color_font_02
+        text_px_size:settings.heading_1_size
         background_gradient: Gradient {
             GradientStop {position:0.0;color:color_palette.color_btn_02}
             GradientStop {position:0.1;color:color_palette.color_btn_01}
@@ -63,6 +64,7 @@ Page {
             top: parent.top
             left: parent.left
             right: parent.right
+            rightMargin: 16
         }
     }
 

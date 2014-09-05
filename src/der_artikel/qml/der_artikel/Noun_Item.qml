@@ -60,7 +60,6 @@ Item {
             default:return "qrc:/res/resources/paper_texture_middle.png";
             }
         }
-        fillMode: Image.TileHorizontally
     }
 
     Image {
