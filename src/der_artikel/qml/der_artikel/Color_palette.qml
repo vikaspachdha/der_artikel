@@ -46,7 +46,7 @@ QtObject {
     property string color_die: "#E882DA"
     property string color_das: "#AAAAAA"
 
-    property string  rust:"#B78470"
+    property string  rust:"#BFA3A3"
     property string  silver:"#FFFFF7"
     property string  gold:"#D6C593"
     property string  inert:"#E1E3FF"
