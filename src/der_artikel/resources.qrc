@@ -123,9 +123,5 @@
         <file>qml/der_artikel/License.qml</file>
         <file>resources/license.txt</file>
         <file>qml/der_artikel/Scroll_bar.qml</file>
-        <file>resources/rust.png</file>
-        <file>resources/gold.png</file>
-        <file>resources/inert.png</file>
-        <file>resources/silver.png</file>
     </qresource>
 </RCC>
