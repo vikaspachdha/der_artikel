@@ -72,29 +72,52 @@ Title_bar {
     }
 
     Text {
-        id: heading_1
+        id: thema_name
         text:{
             switch(themaModel.selection_state) {
             case ThemaModel.MULTIPLE_SELECTION:
-                return qsTr("Multi Mode - Coming soon") + settings.i18n_empty_string
+                return qsTr("Multi Mode - Coming soon") + settings.i18n_empty_string;
+            case ThemaModel.SINGLE_SELECTION:
+                return themaModel.selected_thema.name;
             default:
-                return qsTr("Select Thema") + settings.i18n_empty_string
+                return qsTr("Select Thema") + settings.i18n_empty_string;
             }
         }
 
         anchors {
-            top:parent.top
+            bottom: parent.verticalCenter
             left:parent.left
-            leftMargin: 6
-            topMargin: 6
+            right:parent.right
+            rightMargin: Math.max(coin.width,heading_1_right.width+heading_1_right.anchors.rightMargin)
+            leftMargin: Math.max(coin.width,heading_1_right.width+heading_1_right.anchors.rightMargin)
         }
-        visible: themaModel.selection_state === ThemaModel.SINGLE_SELECTION ? false:true
         color: color_palette.color_font_01
         font.family: title_font.name
         font.pixelSize: settings.heading_1_size
         fontSizeMode: Text.Fit
-        horizontalAlignment: Text.AlignLeft
+        horizontalAlignment: Text.AlignHCenter
         verticalAlignment:  Text.AlignVCenter
+        elide: Text.ElideRight
+    }
+
+    Text {
+        id: tr_name
+        text:themaModel.selection_state===ThemaModel.SINGLE_SELECTION?themaModel.selected_thema.tr_name:"";
+
+        anchors {
+            top: parent.verticalCenter
+            left:parent.left
+            right:parent.right
+            rightMargin: Math.max(coin.width,heading_1_right.width+heading_1_right.anchors.rightMargin)
+            leftMargin: Math.max(coin.width,heading_1_right.width+heading_1_right.anchors.rightMargin)
+        }
+        color: color_palette.color_font_01
+        font.family: title_font.name
+        font.pixelSize: settings.heading_1_size
+        fontSizeMode: Text.Fit
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment:  Text.AlignVCenter
+        elide: Text.ElideRight
     }
 
     Text {
