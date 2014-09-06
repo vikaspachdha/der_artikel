@@ -37,8 +37,8 @@ Item {
     property alias background_color: background.color
     property alias background_gradient : background.gradient
     property alias text_color: label.color
-    width: 80
-    height: 30
+    width: Math.max(80,label.contentWidth)
+    height: Math.max(30,label.contentHeight)
 
     Rectangle {
         id: background
