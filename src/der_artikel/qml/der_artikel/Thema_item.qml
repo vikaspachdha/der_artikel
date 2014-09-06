@@ -113,15 +113,9 @@ Flipable {
 
     Rectangle {
         id: thema_rect
-        color:color_palette.color_btn_01
+        color:getThemaColor(current_state)
         radius:4
         anchors.fill: parent
-        Image {
-            anchors.fill: thema_rect
-            anchors.margins: -2
-            source: getTexture(current_state)
-            opacity: 0.5
-        }
         Image {
             id: thema_icon
             width: parent.width *0.60
@@ -259,26 +253,14 @@ Flipable {
         }
     }
 
-    function getTexture(state)
+    function getThemaColor(state)
     {
-        var image_url = ""
-
         switch(state) {
-        case Thema.RUSTY:
-            image_url = "qrc:/res/resources/rust.png";
-            break;
-        case Thema.SILVER:
-            image_url = "qrc:/res/resources/silver.png";
-            break;
-        case Thema.GOLD:
-            image_url = "qrc:/res/resources/gold.png";
-            break;
-        case Thema.INERT:
-            image_url = "qrc:/res/resources/inert.png";
-            break;
+            case Thema.RUSTY:return color_palette.rust;
+            case Thema.SILVER:return color_palette.silver;
+            case Thema.GOLD:return color_palette.gold;
+            case Thema.INERT:return color_palette.inert;
         }
-
-        return image_url
     }
 
 }
