@@ -113,9 +113,7 @@ OTHER_FILES += ./der_artikel_de.ts \
     ./der_artikel_en.ts \
     ./der_artikel_hin.ts \
     code_comment_template.txt \
-    qml/der_artikel/utils.js \
-    android/AndroidManifest.xml \
-    android/res/values/libs.xml
+    qml/der_artikel/utils.js
 
 # Add more folders to ship with the application, here
 folder_01.source = languages
@@ -130,7 +128,6 @@ mac {
     LIBS += -L$${DESTDIR} -llog4qt
     LIBS += -L$${DESTDIR} -laes
 }
-
 
 
 # Copy log4qt files to build dir
@@ -160,5 +157,83 @@ win32{
 }
 QMAKE_PRE_LINK += $$QMAKE_COPY $$quote($$SOURCE_PATH) $$quote($$TARGET_PATH) $$escape_expand(\\n\\t)
 
-ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+
+#******************************************************************************
+#   Android settings
+#*****************************************************************************/
+android {
+    # libs dependencies
+    ANDROID_DEPLOYMENT_DEPENDENCIES = \
+        jar/QtAndroid-bundled.jar \
+        jar/QtAndroidAccessibility-bundled.jar \
+        jar/QtMultimedia-bundled.jar \
+        lib/libQt5Core.so \
+        lib/libQt5Gui.so \
+        lib/libQt5Network.so \
+        lib/libQt5Qml.so \
+        lib/libQt5Quick.so \
+        lib/libQt5QuickParticles.so \
+        lib/libQt5Multimedia.so \
+        lib/libQt5MultimediaQuick_p.so \
+        lib/libQt5Xml.so \
+        plugins/bearer/libqgenericbearer.so \
+        plugins/platforms/android/libqtforandroid.so \
+        plugins/platforms/libqeglfs.so \
+        plugins/audio/libqtaudio_opensles.so \
+        qml/QtQml/Models.2/libmodelsplugin.so \
+        qml/QtQuick/Window.2/libwindowplugin.so \
+        qml/QtQuick.2/libqtquick2plugin.so \
+        qml/QtMultimedia/libdeclarative_multimedia.so
+
+    # Assets dependencies
+    ANDROID_DEPLOYMENT_DEPENDENCIES += \
+        qml/QtGraphicalEffects/Blend.qml \
+        qml/QtGraphicalEffects/BrightnessContrast.qml \
+        qml/QtGraphicalEffects/Colorize.qml \
+        qml/QtGraphicalEffects/ColorOverlay.qml \
+        qml/QtGraphicalEffects/ConicalGradient.qml \
+        qml/QtGraphicalEffects/Desaturate.qml \
+        qml/QtGraphicalEffects/DirectionalBlur.qml \
+        qml/QtGraphicalEffects/Displace.qml \
+        qml/QtGraphicalEffects/DropShadow.qml \
+        qml/QtGraphicalEffects/FastBlur.qml \
+        qml/QtGraphicalEffects/GammaAdjust.qml \
+        qml/QtGraphicalEffects/GaussianBlur.qml \
+        qml/QtGraphicalEffects/Glow.qml \
+        qml/QtGraphicalEffects/HueSaturation.qml \
+        qml/QtGraphicalEffects/InnerShadow.qml \
+        qml/QtGraphicalEffects/LevelAdjust.qml \
+        qml/QtGraphicalEffects/LinearGradient.qml \
+        qml/QtGraphicalEffects/MaskedBlur.qml \
+        qml/QtGraphicalEffects/OpacityMask.qml \
+        qml/QtGraphicalEffects/private/FastGlow.qml \
+        qml/QtGraphicalEffects/private/FastInnerShadow.qml \
+        qml/QtGraphicalEffects/private/FastMaskedBlur.qml \
+        qml/QtGraphicalEffects/private/GaussianDirectionalBlur.qml \
+        qml/QtGraphicalEffects/private/GaussianGlow.qml \
+        qml/QtGraphicalEffects/private/GaussianInnerShadow.qml \
+        qml/QtGraphicalEffects/private/GaussianMaskedBlur.qml \
+        qml/QtGraphicalEffects/private/SourceProxy.qml \
+        qml/QtGraphicalEffects/qmldir \
+        qml/QtGraphicalEffects/RadialBlur.qml \
+        qml/QtGraphicalEffects/RadialGradient.qml \
+        qml/QtGraphicalEffects/RectangularGlow.qml \
+        qml/QtGraphicalEffects/RecursiveBlur.qml \
+        qml/QtGraphicalEffects/ThresholdMask.qml \
+        qml/QtGraphicalEffects/ZoomBlur.qml \
+        qml/QtMultimedia/plugins.qmltypes \
+        qml/QtMultimedia/qmldir \
+        qml/QtMultimedia/Video.qml \
+        qml/QtQml/Models.2/qmldir \
+        qml/QtQuick/Window.2/plugins.qmltypes \
+        qml/QtQuick/Window.2/qmldir \
+        qml/QtQuick.2/plugins.qmltypes \
+        qml/QtQuick.2/qmldir
+
+    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+    OTHER_FILES += \
+        android/AndroidManifest.xml \
+        android/res/values/libs.xml
+}
 
