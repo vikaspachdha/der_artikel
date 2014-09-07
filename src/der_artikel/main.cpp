@@ -163,7 +163,6 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine* app_engine = new QQmlApplicationEngine;
     QQmlContext* root_context = app_engine->rootContext();
-    //
 
     Manager_C* manager = new Manager_C(*root_context);
 
@@ -182,8 +181,11 @@ int main(int argc, char *argv[])
     qDebug()<<component.errors();
 
     int return_code = app.exec();
+
+    delete root_item;
     delete manager;
     delete app_engine;
+
     LOG_INFO("Application end");
     return return_code;
 }
