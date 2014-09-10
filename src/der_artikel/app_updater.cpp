@@ -132,17 +132,25 @@ void AppUpdater_C::onVersionFileDownloadFinished()
     emit updateProgress(tr("Checking for new releases."), _progress);
     QByteArray file_data = _file_downloader.fileData();
     QString download_url;
-    if(parseVersionFile(file_data, download_url)) {
-        LOG_INFO(QString("App updater :: app update found. Url : %1").arg(download_url));
+    if(file_data.isEmpty()) {
+        LOG_WARN("App updater :: Data is null.");
         _progress = 1.0;
-        emit updateProgress(tr("Update available."), _progress);
-        _download_url = QUrl::fromUserInput(download_url);
-        setUpdateState(UPDATE_AVAILABLE);
-    } else {
-        _progress = 1.0;
-        emit updateProgress(tr("No App update available."), _progress);
-        setUpdateState(UPDATE_NOT_AVAILABLE);
+        emit updateProgress(tr("Server issue. Aborting update."), _progress);
+        setUpdateState(UPDATE_ABORTED);
         setUpdateState(UPDATE_FINISHED);
+    } else {
+        if(parseVersionFile(file_data, download_url)) {
+            LOG_INFO(QString("App updater :: app update found. Url : %1").arg(download_url));
+            _progress = 1.0;
+            emit updateProgress(tr("Update available."), _progress);
+            _download_url = QUrl::fromUserInput(download_url);
+            setUpdateState(UPDATE_AVAILABLE);
+        } else {
+            _progress = 1.0;
+            emit updateProgress(tr("No App update available."), _progress);
+            setUpdateState(UPDATE_NOT_AVAILABLE);
+            setUpdateState(UPDATE_FINISHED);
+        }
     }
 }
 
@@ -222,6 +230,11 @@ bool AppUpdater_C::parseVersionFile(QByteArray file_data, QString& download_url)
  ******************************************************************************/
 void AppUpdater_C::setUpdateState(AppUpdater_C::UpdateState_TP new_state)
 {
+    if(_state == UPDATE_FINISHED && new_state > UPDATE_FINISHED) {
+        // After finish don't entertain any error state.
+        return;
+    }
+
     if(_state != new_state) {
         _state = new_state;
         LOG_INFO(QString("App updater :: Update state changed : %1").arg(_state));

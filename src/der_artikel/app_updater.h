@@ -57,13 +57,13 @@ public:
 
     //! Update response codes
     enum UpdateState_TP {
-        UPDATE_STARTED = 1, //! Update process started.
+        INVALID = 1,//! Update process is in invalid or virgin state.
+        UPDATE_STARTED, //! Update process started.
+        UPDATE_FINISHED, //! Update finished.
         UPDATE_AVAILABLE, //! Update is available.
         UPDATE_NOT_AVAILABLE, //! Update is not available.
         UPDATE_ERROR, //! Error encountered while updating.
-        UPDATE_FINISHED, //! Update finished.
         UPDATE_ABORTED, //! Update process is aborted.
-        INVALID //! Update process is in invalid or virgin state.
     };
 
 public:
