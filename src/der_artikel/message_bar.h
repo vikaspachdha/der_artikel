@@ -48,6 +48,7 @@ class MessageBar_C : public QObject
     Q_DISABLE_COPY(MessageBar_C)
     Q_ENUMS(MsgType_TP)
     Q_ENUMS(RetrunType_TP)
+    Q_PROPERTY(bool message_bar_visible READ messageBarVisible WRITE setMessageBarVisible NOTIFY messageBarVisibleChanged)
 public:
     //! Message bar type.
     //! <ul>
@@ -79,6 +80,10 @@ private:
 public:
     static MessageBar_C& instance();
 
+    //! Returns True if message bar is visible, false otherwise.
+    bool messageBarVisible() const { return _message_bar_visible; }
+    void setMessageBarVisible(bool visible);
+
     void init(QQuickItem* msg_bar, Settings_C *settings);
 
     Q_INVOKABLE void setAccepted(bool accepted);
@@ -102,7 +107,14 @@ public:
 public slots:
     static void closeMsg();
 
+signals:
+    //! Emitted on message bar visibility.
+    void messageBarVisibleChanged();
+
 private:
+    //! Message bar visible flag
+    bool _message_bar_visible;
+
     //! Event loop for message bar.
     QEventLoop* _message_loop;
 

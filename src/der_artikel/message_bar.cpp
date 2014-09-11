@@ -46,6 +46,7 @@
  ******************************************************************************/
 MessageBar_C::MessageBar_C(QObject *parent) :
     QObject(parent),
+    _message_bar_visible(false),
     _message_loop(0),
     _close_loop(0),
     _msg_bar(0),
@@ -72,6 +73,21 @@ MessageBar_C& MessageBar_C::instance()
 }
 
 //******************************************************************************
+/*! \brief Sets the visible state of the message bar.
+ *
+ *  \author Vikas Pachdha
+ *
+ *  \param[in] visible : True to set state visible, false otherwise.
+ ******************************************************************************/
+void MessageBar_C::setMessageBarVisible(bool visible)
+{
+    if(_message_bar_visible != visible) {
+        _message_bar_visible = visible;
+        emit messageBarVisibleChanged();
+    }
+}
+
+//******************************************************************************
 /*! \brief Initializes the message bar.
  *
  *  \author Vikas Pachdha
@@ -94,9 +110,11 @@ void MessageBar_C::init(QQuickItem *msg_bar, Settings_C* settings)
  ******************************************************************************/
 void MessageBar_C::setAccepted(bool accepted)
 {
-    MessageBar_C& msg_bar_instance = instance();
-    msg_bar_instance._accepted = accepted;
-    closeMsg();
+    if(_msg_bar->property("buttons_visible").toBool()) {
+        MessageBar_C& msg_bar_instance = instance();
+        msg_bar_instance._accepted = accepted;
+        closeMsg();
+    }
 }
 
 //******************************************************************************

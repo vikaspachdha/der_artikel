@@ -37,6 +37,7 @@ Item {
     property int type:0
     property bool hiding: false
     property real progress: 0
+    property bool buttons_visible:btnFrame.visible
     signal msgCompleted()
 
     Blanket {
@@ -184,6 +185,9 @@ Item {
                     widthBehavior.enabled = false;
                     rootItem.progress = 0;
                     widthBehavior.enabled = true;
+                    messageBarInstance.message_bar_visible = false;
+                    btnFrame.visible = false;
+                    hiding = false;
                 }
             }
         }
@@ -194,7 +198,6 @@ Item {
         id:close_timer
         onTriggered: {
             closeMessage()
-            hiding = false;
         }
     }
 
@@ -205,11 +208,10 @@ Item {
 
     function showMessage(title,msg,duration,msg_type,accept_str,reject_str)
     {
+        messageBarInstance.message_bar_visible = true;
         rootItem.title_text=title
         rootItem.message_txt=msg
         rootItem.type = msg_type==null ? MessageBar.INFO : msg_type
-
-
 
         if(duration == null) {
             close_timer.interval = msg_animation.duration + 1200
