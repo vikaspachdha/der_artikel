@@ -5,7 +5,7 @@ QT_QML_PLUGINS_PATH=$QT_PATH/qml
 SOURCE_PATH=./source
 OUTPUT_PATH=./output
 TEMPLATE_PATH=./template
-APP_NAME=der_artikel
+APP_NAME=DerArtikel
 
 APP_PATH=$OUTPUT_PATH/$APP_NAME.app/Contents/MacOS
 
@@ -69,16 +69,16 @@ cp $SOURCE_PATH/$APP_NAME.app/Contents/MacOS/liblog4qt.1.dylib $APP_PATH/../Libs
 # ID's for frameworks.
 ###################################################################################
 echo Fixing id of frameworks...
-install_name_tool -id @executable_path/../Frameworks/QtCore ./output/der_artikel.app/Contents/Frameworks/QtCore
-install_name_tool -id @executable_path/../Frameworks/QtGui ./output/der_artikel.app/Contents/Frameworks/QtGui
-install_name_tool -id @executable_path/../Frameworks/QtMultimedia ./output/der_artikel.app/Contents/Frameworks/QtMultimedia
-install_name_tool -id @executable_path/../Frameworks/QtMultimediaQuick_p ./output/der_artikel.app/Contents/Frameworks/QtMultimediaQuick_p
-install_name_tool -id @executable_path/../Frameworks/QtNetwork ./output/der_artikel.app/Contents/Frameworks/QtNetwork
-install_name_tool -id @executable_path/../Frameworks/QtPrintSupport ./output/der_artikel.app/Contents/Frameworks/QtPrintSupport
-install_name_tool -id @executable_path/../Frameworks/QtQml ./output/der_artikel.app/Contents/Frameworks/QtQml
-install_name_tool -id @executable_path/../Frameworks/QtQuick ./output/der_artikel.app/Contents/Frameworks/QtQuick
-install_name_tool -id @executable_path/../Frameworks/QtWidgets ./output/der_artikel.app/Contents/Frameworks/QtWidgets
-install_name_tool -id @executable_path/../Frameworks/QtXml ./output/der_artikel.app/Contents/Frameworks/QtXml
+install_name_tool -id @executable_path/../Frameworks/QtCore ./output/$APP_NAME.app/Contents/Frameworks/QtCore
+install_name_tool -id @executable_path/../Frameworks/QtGui ./output/$APP_NAME.app/Contents/Frameworks/QtGui
+install_name_tool -id @executable_path/../Frameworks/QtMultimedia ./output/$APP_NAME.app/Contents/Frameworks/QtMultimedia
+install_name_tool -id @executable_path/../Frameworks/QtMultimediaQuick_p ./output/$APP_NAME.app/Contents/Frameworks/QtMultimediaQuick_p
+install_name_tool -id @executable_path/../Frameworks/QtNetwork ./output/$APP_NAME.app/Contents/Frameworks/QtNetwork
+install_name_tool -id @executable_path/../Frameworks/QtPrintSupport ./output/$APP_NAME.app/Contents/Frameworks/QtPrintSupport
+install_name_tool -id @executable_path/../Frameworks/QtQml ./output/$APP_NAME.app/Contents/Frameworks/QtQml
+install_name_tool -id @executable_path/../Frameworks/QtQuick ./output/$APP_NAME.app/Contents/Frameworks/QtQuick
+install_name_tool -id @executable_path/../Frameworks/QtWidgets ./output/$APP_NAME.app/Contents/Frameworks/QtWidgets
+install_name_tool -id @executable_path/../Frameworks/QtXml ./output/$APP_NAME.app/Contents/Frameworks/QtXml
 
 
 
@@ -89,29 +89,29 @@ install_name_tool -id @executable_path/../Frameworks/QtXml ./output/der_artikel.
 
 echo Fixing qt framwork internal dependencies...
 ### Dependency fix - Frameworks Internal
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtGui -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimedia -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimedia -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimedia -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtMultimedia.framework/Versions/5/QtMultimedia @executable_path/../Frameworks/QtMultimedia
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtQml.framework/Versions/5/QtQml @executable_path/../Frameworks/QtQml
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtQuick.framework/Versions/5/QtQuick @executable_path/../Frameworks/QtQuick
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtNetwork -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtPrintSupport -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtPrintSupport -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtPrintSupport -change $QT_LIB_PATH/QtWidgets.framework/Versions/5/QtWidgets @executable_path/../Frameworks/QtWidgets
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtQml -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtQml -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtQuick -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtQuick -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtQuick -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtQuick -change $QT_LIB_PATH/QtQml.framework/Versions/5/QtQml @executable_path/../Frameworks/QtQml
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtWidgets -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtWidgets -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
-install_name_tool ./output/der_artikel.app/Contents/Frameworks/QtXml -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtGui -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimedia -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimedia -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimedia -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtMultimedia.framework/Versions/5/QtMultimedia @executable_path/../Frameworks/QtMultimedia
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtQml.framework/Versions/5/QtQml @executable_path/../Frameworks/QtQml
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtMultimediaQuick_p -change $QT_LIB_PATH/QtQuick.framework/Versions/5/QtQuick @executable_path/../Frameworks/QtQuick
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtNetwork -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtPrintSupport -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtPrintSupport -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtPrintSupport -change $QT_LIB_PATH/QtWidgets.framework/Versions/5/QtWidgets @executable_path/../Frameworks/QtWidgets
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtQml -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtQml -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtQuick -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtQuick -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtQuick -change $QT_LIB_PATH/QtNetwork.framework/Versions/5/QtNetwork @executable_path/../Frameworks/QtNetwork
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtQuick -change $QT_LIB_PATH/QtQml.framework/Versions/5/QtQml @executable_path/../Frameworks/QtQml
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtWidgets -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtWidgets -change $QT_LIB_PATH/QtGui.framework/Versions/5/QtGui @executable_path/../Frameworks/QtGui
+install_name_tool ./output/$APP_NAME.app/Contents/Frameworks/QtXml -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
 
 echo Fixing qt plugins dependencies...
 ### Dependency fix - Plugins -> Frameworks
@@ -143,8 +143,8 @@ install_name_tool $APP_PATH/audio/libqtaudio_coreaudio.dylib -change $QT_LIB_PAT
 
 echo Fixing libs dependencies...
 ### Dependency fix - Plugins -> Frameworks
-install_name_tool ./output/der_artikel.app/Contents/Libs/liblog4qt.1.dylib -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
-install_name_tool ./output/der_artikel.app/Contents/Libs/libaes.1.dylib -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Libs/liblog4qt.1.dylib -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
+install_name_tool ./output/$APP_NAME.app/Contents/Libs/libaes.1.dylib -change $QT_LIB_PATH/QtCore.framework/Versions/5/QtCore @executable_path/../Frameworks/QtCore
 
 echo Fixing app dependencies...
 ### Dependency fix - app -> Frameworks 
