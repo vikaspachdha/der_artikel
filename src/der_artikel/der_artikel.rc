@@ -3,8 +3,8 @@ IDI_ICON1               ICON    DISCARDABLE     "der_artikel.ico"
 #include <windows.h>
 
 VS_VERSION_INFO VERSIONINFO
-FILEVERSION     1,0,0,0
-PRODUCTVERSION  1,0,0,0
+FILEVERSION     1,0,2,0
+PRODUCTVERSION  1,0,2,0
 BEGIN
     BLOCK "StringFileInfo"
     BEGIN
@@ -12,14 +12,14 @@ BEGIN
         BEGIN
             VALUE "CompanyName",        "Vystosi\0"
             VALUE "FileDescription",    "Der Artikel binary\0"
-            VALUE "FileVersion",        "1.0.0\0"
+            VALUE "FileVersion",        "1.0.2\0"
             VALUE "InternalName",       "Der Artikel\0"
             VALUE "LegalCopyright",     "Copyright \251 2014 Vystosi\0"
             VALUE "LegalTrademarks1",   "All Rights Reserved\0"
             VALUE "LegalTrademarks2",   "All Rights Reserved\0"
             VALUE "OriginalFilename",   "der_artikel.exe\0"
             VALUE "ProductName",        "Der Artikel\0"
-            VALUE "ProductVersion",     "1.0.0\0"
+            VALUE "ProductVersion",     "1.0.2\0"
         END
     END
 
