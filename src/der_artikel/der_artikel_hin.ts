@@ -4,7 +4,7 @@
 <context>
     <name>About</name>
     <message>
-        <location filename="qml/der_artikel/About.qml" line="45"/>
+        <location filename="qml/der_artikel/About.qml" line="51"/>
         <source>Version
 </source>
         <translation>संस्करण 
@@ -73,21 +73,26 @@
     </message>
     <message>
         <location filename="app_updater.cpp" line="138"/>
+        <source>Server issue. Aborting update.</source>
+        <translation>सर्वर समस्या| अपडेट विफल किया जा रहा है|</translation>
+    </message>
+    <message>
+        <location filename="app_updater.cpp" line="145"/>
         <source>Update available.</source>
         <translation>नवीनीकरण उपलब्ध है|</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="143"/>
+        <location filename="app_updater.cpp" line="150"/>
         <source>No App update available.</source>
         <translation>कोई App नवीनीकरण उपलब्ध नहीं है.</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="158"/>
+        <location filename="app_updater.cpp" line="166"/>
         <source>Network issue. Aborting update.</source>
         <translation>नेटवर्क समस्या| अपडेट विफल किया जा रहा है|</translation>
     </message>
     <message>
-        <location filename="app_updater.cpp" line="242"/>
+        <location filename="app_updater.cpp" line="255"/>
         <source>Contacting server.</source>
         <translation>सर्वर से संपर्क किया जा रहा है|</translation>
     </message>
@@ -121,12 +126,12 @@
 <context>
     <name>Command_frame</name>
     <message>
-        <location filename="qml/der_artikel/Command_frame.qml" line="92"/>
+        <location filename="qml/der_artikel/Command_frame.qml" line="83"/>
         <source>Home</source>
         <translation>मुख पृष्ठ</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Command_frame.qml" line="104"/>
+        <location filename="qml/der_artikel/Command_frame.qml" line="95"/>
         <source>Quit</source>
         <translation>बंद करें</translation>
     </message>
@@ -157,7 +162,7 @@
 <context>
     <name>General_help</name>
     <message>
-        <location filename="qml/der_artikel/General_help.qml" line="36"/>
+        <location filename="qml/der_artikel/General_help.qml" line="42"/>
         <source>To play the game select a thema from thema page and click start. 
 words page shall open with the words displayed on right side and articles on left side.
 
@@ -232,32 +237,32 @@ Change in background color of word confirms article assignment. The user must as
 <context>
     <name>HomePage</name>
     <message>
-        <location filename="qml/der_artikel/Home_page.qml" line="36"/>
+        <location filename="qml/der_artikel/Home_page.qml" line="37"/>
         <source>Thema</source>
         <translation>शब्दकोश</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Home_page.qml" line="37"/>
+        <location filename="qml/der_artikel/Home_page.qml" line="38"/>
         <source>Result</source>
         <translation>परिणाम</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Home_page.qml" line="38"/>
+        <location filename="qml/der_artikel/Home_page.qml" line="39"/>
         <source>Statistics</source>
         <translation>आंकड़े</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Home_page.qml" line="39"/>
+        <location filename="qml/der_artikel/Home_page.qml" line="40"/>
         <source>Help</source>
         <translation>सहायता</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Home_page.qml" line="40"/>
+        <location filename="qml/der_artikel/Home_page.qml" line="41"/>
         <source>Settings</source>
         <translation>सेटिंग्स</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Home_page.qml" line="41"/>
+        <location filename="qml/der_artikel/Home_page.qml" line="42"/>
         <source>About</source>
         <translation>जानकारी</translation>
     </message>
@@ -283,13 +288,13 @@ Change in background color of word confirms article assignment. The user must as
 <context>
     <name>Manager_C</name>
     <message>
-        <location filename="manager.cpp" line="457"/>
+        <location filename="manager.cpp" line="458"/>
         <source>Do you realy want to quit?</source>
         <oldsource>Do you realy want to quit ?</oldsource>
         <translation>क्या आप वास्तव में बंद करना चाहते हैं?</translation>
     </message>
     <message>
-        <location filename="manager.cpp" line="481"/>
+        <location filename="manager.cpp" line="482"/>
         <source>Loading installed themas.</source>
         <translation>उपलब्ध शब्दकोश लोड हो रहे हैं|</translation>
     </message>
@@ -297,12 +302,12 @@ Change in background color of word confirms article assignment. The user must as
 <context>
     <name>MessageBar_C</name>
     <message>
-        <location filename="message_bar.h" line="87"/>
+        <location filename="message_bar.h" line="92"/>
         <source>Ok</source>
         <translation>ठीक है</translation>
     </message>
     <message>
-        <location filename="message_bar.h" line="88"/>
+        <location filename="message_bar.h" line="93"/>
         <source>Cancel</source>
         <translation>नहीं</translation>
     </message>
@@ -310,7 +315,7 @@ Change in background color of word confirms article assignment. The user must as
 <context>
     <name>Others_help</name>
     <message>
-        <location filename="qml/der_artikel/Others_help.qml" line="36"/>
+        <location filename="qml/der_artikel/Others_help.qml" line="42"/>
         <source>For any other assistance or help please mail your queries to 
 mail@derartikel.com 
 
@@ -391,42 +396,47 @@ mail@derartikel.com
 <context>
     <name>Result_page</name>
     <message>
-        <location filename="qml/der_artikel/Result_page.qml" line="37"/>
+        <location filename="qml/der_artikel/Result_page.qml" line="55"/>
+        <source>Corrections</source>
+        <translation>सुधार</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Result_page.qml" line="55"/>
+        <source>No Corrections</source>
+        <translation>कोई सुधार नहीं है</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Result_page.qml" line="56"/>
         <source>Mistakes</source>
         <translation>गलतियाँ</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Result_page.qml" line="37"/>
+        <location filename="qml/der_artikel/Result_page.qml" line="56"/>
         <source>No Mistakes</source>
         <translation>कोई गलती नहीं है</translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Result_page.qml" line="54"/>
-        <source>Incorrect   </source>
-        <translation>गलत    </translation>
-    </message>
-    <message>
-        <location filename="qml/der_artikel/Result_page.qml" line="75"/>
-        <source>    Correct</source>
-        <translation>    सही</translation>
     </message>
 </context>
 <context>
     <name>Result_page_panel</name>
     <message>
-        <location filename="qml/der_artikel/Result_page_panel.qml" line="43"/>
+        <location filename="qml/der_artikel/Result_page_panel.qml" line="44"/>
         <source>Options</source>
         <translation>विकल्प</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Result_page_panel.qml" line="62"/>
+        <location filename="qml/der_artikel/Result_page_panel.qml" line="63"/>
         <source>Replay</source>
         <translation>दुबारा</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Result_page_panel.qml" line="70"/>
-        <source>Stats</source>
-        <translation>आंकड़े</translation>
+        <location filename="qml/der_artikel/Result_page_panel.qml" line="78"/>
+        <source>Corrections</source>
+        <translation>सुधार</translation>
+    </message>
+    <message>
+        <location filename="qml/der_artikel/Result_page_panel.qml" line="87"/>
+        <source>Mistakes</source>
+        <translation>गलतियाँ</translation>
     </message>
 </context>
 <context>
@@ -445,7 +455,7 @@ mail@derartikel.com
 <context>
     <name>Rules_help</name>
     <message>
-        <location filename="qml/der_artikel/Rules_help.qml" line="36"/>
+        <location filename="qml/der_artikel/Rules_help.qml" line="41"/>
         <source>&lt;p&gt;1.Time allocation for a gameplay depends on the game level selected. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Time (secs)&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;words-count x 4&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;words-count x 3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;words-count x 2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;2. Correct article gains experience points. &lt;/p&gt;&lt;p&gt;3. Incorrect article shall result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gameplay. &lt;/p&gt;&lt;p&gt;4. Unplayed words may result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gameplay. &lt;/p&gt;&lt;p&gt;5. Gaining points changes the state of the thema. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Experience&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;100&lt;/td&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;500&lt;/td&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;6. A thema shall lose points if experience points gain does not occur within 24 hrs and the magnitude of points deduction shall depend on the current state of thema. &lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Experience deduction&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;td&gt;2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;CAUTION: Points are deducted progressively. i.e if your experience points are 500 and you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.&lt;/p&gt;</source>
         <oldsource>&lt;p&gt;1.Time allocation for a gameplay depends on the game level selected. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Time (secs)&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;words-count x 4&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;words-count x 3&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;words-count x 2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;2. Correct article gains experience points.&lt;br&gt;&lt;br&gt;3. Incorrect article shall result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gameplay.&lt;br&gt;&lt;br&gt;4. Unplayed words may result into experience points deduction. Magnitude of the deduction shall depend on the game level selected for gameplay.&lt;br&gt;&lt;br&gt;5. Gaining points changes the state of the thema. &lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Experience&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;100&lt;/td&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;500&lt;/td&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;6. A thema shall lose points if experience points gain does not occur within 24 hrs and the magnitude of points deduction shall depend on the current state of thema. &lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;State&lt;/b&gt;&lt;/td&gt; &lt;td&gt;&lt;b&gt;Experience deduction&lt;/b&gt;&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;RUSTY&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;SILVER&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;GOLD&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;INERT&lt;/td&gt; &lt;td&gt;2&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;CAUTION: Points are deducted progressively. i.e if your experience points are 500 and you did not earn score for the thema for consecutive 3 days then 12 points shall be deducted.&lt;/p&gt;</oldsource>
         <translation>&lt;p&gt;1.समय आवंटन चयनित खेल के स्तर पर निर्भर करता है|&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;खेल का स्तर&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;समय.(मिली सेकंड)&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;आसान&lt;/td&gt;&lt;td&gt;शब्द संख्या x 4&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;मध्यम &lt;/td&gt;&lt;td&gt;शब्द संख्या x 3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;माहिर&lt;/td&gt;&lt;td&gt;शब्द संख्या x 2&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/p&gt;&lt;p&gt;2. सही लेख आवंटन से अनुभव अंक में वृद्धि होती है|&lt;/p&gt;&lt;p&gt;3. गलत लेख आवंटन से अनुभव अंक में कटौती होती है|  कटौती की गणना चयनित खेल के स्तर पर निर्भर करेगा|&lt;p&gt;&lt;/p&gt;4. छोड़े गए शब्दों अनुभव अंक की कटौती में परिनाम कर सकता है| कटौती की गणना चयनित खेल के स्तर पर निर्भर करेगा|&lt;/p&gt;&lt;p&gt;5. अंक वृद्धि से THEMA की स्थिति बदल जाती है| &lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;अनुभव अंक&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;स्थिति&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;lt;100&lt;/td&gt;&lt;td&gt;जंग&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;100 &amp; &amp;lt;250&lt;/td&gt;&lt;td&gt;रजत&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;250 &amp; &amp;lt;500&lt;/td&gt;&lt;td&gt;स्वर्ण&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;500&lt;/td&gt;&lt;td&gt;स्थिर&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/p&gt;&lt;p&gt;6. 24 घंटों के भीतर Thema अंक में वृद्धि ना होने से अनुभव अंक में कटौती होती है| कटौती की गणना Thema की वर्तमान स्थिति पर निर्भर करेगा| &lt;table border=&quot;1&quot; bordercolor=&quot;white&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;स्थिति&lt;/b&gt;&lt;/td&gt;&lt;td&gt;&lt;b&gt;अनुभव अंक में कटौती&lt;/b&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;जंग&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;रजत&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;स्वर्ण&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;स्थिर&lt;/td&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;br&gt;चेतावनी: अंक उत्तरोत्तर रूप से काट लिये जाते हैं यानी अगर आपके अनुभव अंक 500 हैं तो 3 दिन तक ना खेलने के कारन के 12 अंक काट लिए जाएंगे|&lt;/p&gt;</translation>
@@ -454,7 +464,7 @@ mail@derartikel.com
 <context>
     <name>Scoring_help</name>
     <message>
-        <location filename="qml/der_artikel/Scoring_help.qml" line="37"/>
+        <location filename="qml/der_artikel/Scoring_help.qml" line="42"/>
         <source>&lt;p&gt;Scoring:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Game level&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Correct article&lt;/td&gt; &lt;td&gt;Incorrect article&lt;/td&gt; &lt;td&gt;Unplayed word&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;EASY&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;-0.5&lt;/td&gt; &lt;td&gt;-0.25&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;-0.5&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;td&gt;1&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;Grading:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;SCORE&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Grade&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;94.99&lt;/td&gt; &lt;td&gt;A+&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;89.99&lt;/td&gt; &lt;td&gt;A&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;79.99&lt;/td&gt; &lt;td&gt;B+&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;69.99&lt;/td&gt; &lt;td&gt;B&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;59.99&lt;/td&gt; &lt;td&gt;C&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;gt;49.99&lt;/td&gt; &lt;td&gt;D&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;&amp;lt;49.99&lt;/td&gt; &lt;td&gt;E&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt; &lt;/p&gt;&lt;p&gt;Experience:&lt;table border=&quot;1&quot;&gt; &lt;tr&gt; &lt;td&gt;&lt;b&gt;Grade&lt;/b&gt;&lt;/td&gt; &lt;td&gt;Easy&lt;/td&gt; &lt;td&gt;Moderate&lt;/td&gt; &lt;td&gt;Expert&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;A+&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;td&gt;80&lt;/td&gt; &lt;td&gt;100&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;A&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;td&gt;60&lt;/td&gt; &lt;td&gt;80&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;B+&lt;/td&gt; &lt;td&gt;30&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;td&gt;70&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;B&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;td&gt;60&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;C&lt;/td&gt; &lt;td&gt;10&lt;/td&gt; &lt;td&gt;30&lt;/td&gt; &lt;td&gt;50&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;D&lt;/td&gt; &lt;td&gt;5&lt;/td&gt; &lt;td&gt;20&lt;/td&gt; &lt;td&gt;40&lt;/td&gt; &lt;/tr&gt; &lt;tr&gt; &lt;td&gt;E&lt;/td&gt; &lt;td&gt;0&lt;/td&gt; &lt;td&gt;-10&lt;/td&gt; &lt;td&gt;-20&lt;/td&gt; &lt;/tr&gt; &lt;/table&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;अंक गणना:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;खेल का स्तर&lt;/b&gt;&lt;/td&gt;&lt;td&gt;सही लेख&lt;/td&gt;&lt;td&gt;गलत लेख&lt;/td&gt;&lt;td&gt;छोड़े गए शब्द&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;आसान&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;-0.5&lt;/td&gt;&lt;td&gt;-0.25&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;मध्यम&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;-0.5&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;माहिर&lt;/td&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;&lt;p&gt;ग्रेडिंग:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;अंक&lt;/b&gt;&lt;/td&gt;&lt;td&gt;ग्रेड&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;94.99&lt;/td&gt;&lt;td&gt;A+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;89.99&lt;/td&gt;&lt;td&gt;A&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;79.99&lt;/td&gt;&lt;td&gt;B+&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;69.99&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;59.99&lt;/td&gt;&lt;td&gt;C&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;gt;49.99&lt;/td&gt;&lt;td&gt;D&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&amp;lt;49.99&lt;/td&gt;&lt;td&gt;E&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;&lt;p&gt;अनुभव अंक:&lt;table border=&quot;1&quot;&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;ग्रेड&lt;/b&gt;&lt;/td&gt;&lt;td&gt;आसान&lt;/td&gt;&lt;td&gt;मध्यम&lt;/td&gt;&lt;td&gt;माहिर&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A+&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;td&gt;100&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;td&gt;80&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B+&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;td&gt;70&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;B&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;td&gt;60&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;C&lt;/td&gt;&lt;td&gt;10&lt;/td&gt;&lt;td&gt;30&lt;/td&gt;&lt;td&gt;50&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;D&lt;/td&gt;&lt;td&gt;5&lt;/td&gt;&lt;td&gt;20&lt;/td&gt;&lt;td&gt;40&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;E&lt;/td&gt;&lt;td&gt;0&lt;/td&gt;&lt;td&gt;-10&lt;/td&gt;&lt;td&gt;-20&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/p&gt;</translation>
     </message>
@@ -485,7 +495,7 @@ mail@derartikel.com
 <context>
     <name>Settings_C</name>
     <message>
-        <location filename="settings.cpp" line="399"/>
+        <location filename="settings.cpp" line="521"/>
         <source>Do you really want to disable the thema update?</source>
         <translation>क्या आप वास्तव में शब्दकोश स्वतः अपडेट बंद करना चाहते हैं?</translation>
     </message>
@@ -539,7 +549,7 @@ mail@derartikel.com
 <context>
     <name>Startup_screen</name>
     <message>
-        <location filename="qml/der_artikel/Startup_screen.qml" line="85"/>
+        <location filename="qml/der_artikel/Startup_screen.qml" line="72"/>
         <source>Loading...</source>
         <translation>लोड हो रहा है...</translation>
     </message>
@@ -562,7 +572,7 @@ mail@derartikel.com
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="53"/>
         <source>Total word count : </source>
-        <translation>कुल शब्द संख्या</translation>
+        <translation>कुल शब्द संख्या : </translation>
     </message>
     <message>
         <location filename="qml/der_artikel/Stats_page.qml" line="54"/>
@@ -638,39 +648,39 @@ mail@derartikel.com
         <translation>अमान्य url</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="117"/>
+        <location filename="thema_updater.cpp" line="118"/>
         <source>Parsing server data.</source>
         <translation>सर्वर डेटा का विश्लेषण किया जा रहा है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="127"/>
+        <location filename="thema_updater.cpp" line="128"/>
         <source>Parsing error. Aborting update.</source>
         <translation>विश्लेषण त्रुटि| अपडेट विफल किया जा रहा है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="142"/>
+        <location filename="thema_updater.cpp" line="144"/>
         <source>Network issue. Aborting update.</source>
         <translation>नेटवर्क समस्या| अपडेट विफल किया जा रहा है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="213"/>
+        <location filename="thema_updater.cpp" line="215"/>
         <source>Downloading thema files.</source>
         <translation>उपलब्ध शब्दकोश डाउनलोड हो रहे हैं|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="216"/>
+        <location filename="thema_updater.cpp" line="218"/>
         <source>Update finished.</source>
         <translation>अपडेट पूरा हो गया है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="221"/>
+        <location filename="thema_updater.cpp" line="223"/>
         <source>No update is available.</source>
         <translation>कोई नवीनीकरण उपलब्ध नहीं है|</translation>
     </message>
     <message>
-        <location filename="thema_updater.cpp" line="236"/>
-        <location filename="thema_updater.cpp" line="314"/>
-        <location filename="thema_updater.cpp" line="325"/>
+        <location filename="thema_updater.cpp" line="238"/>
+        <location filename="thema_updater.cpp" line="316"/>
+        <location filename="thema_updater.cpp" line="327"/>
         <source>Comparing current thema&apos;s.</source>
         <translation>वर्तमान शब्दकोशों की तुलना की जा रही है|</translation>
     </message>
@@ -678,17 +688,17 @@ mail@derartikel.com
 <context>
     <name>Thema_item</name>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="72"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="73"/>
         <source>Author :</source>
         <translation>लेखक : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="95"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="96"/>
         <source>Last Played :</source>
         <translation>पिछली बार खेला : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_item.qml" line="159"/>
+        <location filename="qml/der_artikel/Thema_item.qml" line="161"/>
         <source>Words</source>
         <translation>शब्द</translation>
     </message>
@@ -742,37 +752,37 @@ mail@derartikel.com
         <translation>बहु मोड - जल्द ही आ रहा है</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="81"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="83"/>
         <source>Select Thema</source>
         <translation>शब्दकोश का चयन करें</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="103"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="126"/>
         <source>Experience : </source>
         <translation>अनुभव : </translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="123"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="146"/>
         <source>State - </source>
         <translation>दशा</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="126"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="149"/>
         <source>Inert</source>
         <translation>स्थिर</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="129"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="152"/>
         <source>Gold</source>
         <translation>स्वर्ण</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="132"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="155"/>
         <source>Silver</source>
         <translation>रजत</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/Thema_page_title.qml" line="135"/>
+        <location filename="qml/der_artikel/Thema_page_title.qml" line="158"/>
         <source>Rusty</source>
         <translation>जंग</translation>
     </message>
@@ -785,17 +795,17 @@ mail@derartikel.com
         <translation>शब्दकोश लोड हो रहा है...</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="292"/>
+        <location filename="pages/words_page.cpp" line="295"/>
         <source>Knowledge loss detected</source>
         <translation>ज्ञान का नुकसान हुआ है</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="293"/>
+        <location filename="pages/words_page.cpp" line="296"/>
         <source>%1 experience points are deducted. Go to Help -&gt; Rules for details.</source>
         <translation>%1 अनुभव अंक की कटौती की जा रही है. जानकारी के लिए सहायता-&gt; नियम पर जाएँ|</translation>
     </message>
     <message>
-        <location filename="pages/words_page.cpp" line="294"/>
+        <location filename="pages/words_page.cpp" line="297"/>
         <source>OK</source>
         <translation>ठीक है</translation>
     </message>
@@ -844,58 +854,58 @@ mail@derartikel.com
 <context>
     <name>main</name>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="159"/>
+        <location filename="qml/der_artikel/main.qml" line="168"/>
         <source>App update...</source>
         <translation>App अपडेट...</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="164"/>
+        <location filename="qml/der_artikel/main.qml" line="173"/>
         <source>No Update Available.</source>
         <translation>कोई नवीनीकरण उपलब्ध नहीं है.</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="165"/>
+        <location filename="qml/der_artikel/main.qml" line="174"/>
         <source>You are running latest version.</source>
         <translation>आप नवीनतम संस्करण चला रहे हैं|</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="167"/>
-        <location filename="qml/der_artikel/main.qml" line="175"/>
+        <location filename="qml/der_artikel/main.qml" line="176"/>
+        <location filename="qml/der_artikel/main.qml" line="184"/>
         <source>Ok</source>
         <translation>ठीक है</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="172"/>
+        <location filename="qml/der_artikel/main.qml" line="181"/>
         <source>Update Error.</source>
         <translation>अपडेट त्रुटि|</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="173"/>
+        <location filename="qml/der_artikel/main.qml" line="182"/>
         <source>Please try later.</source>
         <translation>बाद में कोशिश करें|</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="179"/>
+        <location filename="qml/der_artikel/main.qml" line="188"/>
         <source>Update available.</source>
         <translation>नवीनीकरण उपलब्ध है|</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="180"/>
+        <location filename="qml/der_artikel/main.qml" line="189"/>
         <source>Do you want to download the latest version?</source>
         <translation>आप नवीनतम संस्करण को डाउनलोड करना चाहते हैं?</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="181"/>
+        <location filename="qml/der_artikel/main.qml" line="190"/>
         <source>Yes</source>
         <translation>हां</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="182"/>
+        <location filename="qml/der_artikel/main.qml" line="191"/>
         <source>No</source>
         <translation>नहीं</translation>
     </message>
     <message>
-        <location filename="qml/der_artikel/main.qml" line="206"/>
+        <location filename="qml/der_artikel/main.qml" line="215"/>
         <source>Updating thema</source>
         <translation>शब्दकोश अपडेट किया जा रहा है</translation>
     </message>
