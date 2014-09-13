@@ -51,7 +51,9 @@ Page {
 
     Label {
         id: title_label
-        text: (list_view.count>0 ? qsTr("Mistakes") : qsTr("No Mistakes")) + settings.i18n_empty_string
+        text: (result_page_instance.view_type === ResultPage.VIEW_CORRECTION ?
+                  list_view.count>0 ? qsTr("Corrections") : qsTr("No Corrections") :
+                  list_view.count>0 ? qsTr("Mistakes") : qsTr("No Mistakes") )+ settings.i18n_empty_string
         text_color:color_palette.color_font_02
         text_px_size:settings.heading_1_size
         background_gradient: Gradient {
@@ -68,7 +70,6 @@ Page {
         }
     }
 
-
     ListView {
         id: list_view
 
@@ -80,11 +81,12 @@ Page {
         anchors.bottom: parent.bottom
         spacing:20
         clip:true
-        model: currentResult.incorrectWordsModel
+        model: currentResult.incorrect_words_model
         delegate: Result_item {
-            right_text: articleText(article)+" " + word_text
-            left_text: word_text
-            correct_article: article
+            text: articleText(result_page_instance.view_type === ResultPage.VIEW_CORRECTION ? article : user_article)
+                  + " " + word_text;
+            correct_article: result_page_instance.view_type === ResultPage.VIEW_CORRECTION ?
+                                 article : Article.INVALID
         }
     }
 

@@ -29,8 +29,7 @@ import QtQuick 2.1
 import com.vystosi.qmlcomponents 1.0
 
 Item {
-    property alias left_text: incorrect_noun.text
-    property alias right_text: correct_noun.text
+    property alias text: correct_noun.text
     property alias correct_article:correct_noun.article
 
     width:parent.width
@@ -38,27 +37,8 @@ Item {
 
     Noun_Item {
         id:correct_noun
-        anchors.top : incorrect_noun.bottom
-        anchors.topMargin: 4
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-
-    Noun_Item {
-        id:incorrect_noun
         anchors.top : parent.top
-        anchors.topMargin: 6
-        anchors.horizontalCenter: parent.horizontalCenter
-        article: Article.INVALID
-    }
-
-    Rectangle {
-        id: top_line
-        width:parent.width/2
-        anchors.top: correct_noun.bottom
         anchors.topMargin: 4
         anchors.horizontalCenter: parent.horizontalCenter
-        height :1
-        color:color_palette.color_btn_01
     }
-
 }

@@ -65,7 +65,8 @@ SOURCES += \
     main.cpp \
     message_bar.cpp \
     app_updater.cpp \
-    pages/about_page.cpp
+    pages/about_page.cpp \
+    pages/result_page.cpp
 
 HEADERS += \
     algo/easy_result_algo.h \
@@ -91,7 +92,8 @@ HEADERS += \
     manager.h \
     message_bar.h \
     app_updater.h \
-    pages/about_page.h
+    pages/about_page.h \
+    pages/result_page.h
 
 RESOURCES += \
     resources.qrc

@@ -48,6 +48,7 @@
 #include "message_bar.h"
 #include "pages/about_page.h"
 #include "pages/help_page.h"
+#include "pages/result_page.h"
 #include "pages/settings_page.h"
 #include "pages/stats_page.h"
 #include "pages/thema_page.h"
@@ -520,6 +521,7 @@ void Manager_C::initPages()
 {
     LOG_DEBUG("Manager_C::InitPages()");
     _page_hash[HELP_PAGE] = new HelpPage_C(*this, _root_context,this);
+    _page_hash[RESULT_PAGE] = new ResultPage_C(*this, _root_context,this);
     _page_hash[ABOUT_PAGE] = new AboutPage_C(*this, _root_context,this);
     _page_hash[WORDS_PAGE] = new WordsPage_C(*this, _root_context,*_settings,this);
     _page_hash[STATS_PAGE] = new StatsPage_C(*this,_root_context,this);

@@ -31,6 +31,7 @@ import com.vystosi.qmlcomponents 1.0
 Page_panel
 {
     page_id:Manager.RESULT_PAGE
+
     Label {
         id: result_lbl
         anchors.top: parent.top
@@ -44,9 +45,9 @@ Page_panel
     }
 
     Column {
-        id: result_level_col
+        id: view_type_col
         anchors.top: result_lbl.bottom
-        anchors.topMargin: 6
+        anchors.topMargin: 12
         anchors.left: parent.left
         anchors.leftMargin: 4
         anchors.right: parent.right
@@ -63,12 +64,29 @@ Page_panel
             onActivated: manager.current_page = Manager.WORDS_PAGE
         }
 
+        Item {
+            id:spacer
+            width:parent.width
+            height: 20
+            visible:replay_btn.visible
+        }
+
         Button {
-            id:stats_btn
+            id:correction_btn
             width:parent.width
             text_h_alignment: Text.AlignHCenter
-            buttonText: qsTr("Stats") + settings.i18n_empty_string
-            onActivated: manager.current_page = Manager.STATS_PAGE
+            buttonText: qsTr("Corrections") + settings.i18n_empty_string
+            isDown: result_page_instance.view_type === ResultPage.VIEW_CORRECTION
+            onActivated: result_page_instance.view_type = ResultPage.VIEW_CORRECTION
+        }
+
+        Button {
+            id:mistakes_btn
+            width:parent.width
+            text_h_alignment: Text.AlignHCenter
+            buttonText: qsTr("Mistakes") + settings.i18n_empty_string
+            isDown: result_page_instance.view_type === ResultPage.VIEW_MISTAKES
+            onActivated: result_page_instance.view_type = ResultPage.VIEW_MISTAKES
         }
     }
 }

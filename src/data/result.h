@@ -62,7 +62,7 @@ class Result_C : public QObject
     Q_PROPERTY(QString mistake_string READ mistakeString NOTIFY resultUpdated)
     Q_PROPERTY(QString grade_string READ gradeString NOTIFY resultUpdated)
     Q_PROPERTY(QString unplayed_string READ unplayedString NOTIFY resultUpdated)
-    Q_PROPERTY(QAbstractItemModel* incorrectWordsModel READ GetIncorrectWordModel CONSTANT)
+    Q_PROPERTY(QAbstractItemModel* incorrect_words_model READ incorrectWordModel CONSTANT)
 
 public:
     //******************************************************************************
@@ -119,7 +119,7 @@ public:
     void setExperienceChange(int change);
 
     //! Returns incorrect word model.
-    QAbstractItemModel* GetIncorrectWordModel() { return _incorrect_words_model; }
+    QAbstractItemModel* incorrectWordModel() { return _incorrect_words_model; }
 
 public:
     void clear();
